@@ -1,0 +1,19 @@
+# macOS
+.DS_Store
+
+# Pipeline artifacts
+data/.cache/
+
+# Frontend (will exist after bootstrap)
+frontend/node_modules/
+frontend/dist/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.uv/
+
+# Editors
+.vscode/
+.idea/
