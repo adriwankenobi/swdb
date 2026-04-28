@@ -3,16 +3,17 @@
 
 # Pipeline artifacts
 data/.cache/
-
-# Frontend (will exist after bootstrap)
-frontend/node_modules/
-frontend/dist/
+data/unmatched.log
 
 # Python
 __pycache__/
 *.py[cod]
 .venv/
 .uv/
+
+# Frontend (will exist after bootstrap)
+frontend/node_modules/
+frontend/dist/
 
 # Editors
 .vscode/
