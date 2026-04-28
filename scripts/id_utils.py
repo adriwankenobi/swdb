@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+import unicodedata
 import uuid
 
 # Fixed namespace UUID. Do not change this value; IDs depend on it.
@@ -12,12 +13,12 @@ _SLUG_RE = re.compile(r"[^a-z0-9]+")
 
 
 def slugify(text: str) -> str:
-    """Lowercase, strip punctuation, collapse separators."""
+    """Lowercase, transliterate to ASCII, strip punctuation, collapse separators."""
     if not text:
         return ""
-    lowered = text.lower()
-    replaced = _SLUG_RE.sub("-", lowered)
-    return replaced.strip("-")
+    normalized = unicodedata.normalize("NFKD", text)
+    ascii_text = normalized.encode("ascii", "ignore").decode("ascii")
+    return _SLUG_RE.sub("-", ascii_text.lower()).strip("-")
 
 
 def make_id(

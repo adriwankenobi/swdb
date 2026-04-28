@@ -1,7 +1,5 @@
 import uuid
 
-import pytest
-
 from scripts.id_utils import make_id, slugify
 
 
@@ -45,6 +43,34 @@ def test_make_id_handles_missing_optional_inputs():
 
 
 def test_make_id_returns_uuid_string():
-    result = make_id(era=0, series="Dawn of the Jedi", title="Eruption", medium="Short Story", number=None)
+    result = make_id(
+        era=0, series="Dawn of the Jedi", title="Eruption", medium="Short Story", number=None
+    )
     parsed = uuid.UUID(result)
     assert parsed.version == 5
+
+
+def test_slugify_transliterates_diacritics_to_ascii():
+    assert slugify("Le côté obscur") == "le-cote-obscur"
+
+
+def test_slugify_is_stable_across_unicode_normalization_forms():
+    import unicodedata
+    nfc = unicodedata.normalize("NFC", "côté")
+    nfd = unicodedata.normalize("NFD", "côté")
+    assert nfc != nfd  # sanity: the two forms are byte-different
+    assert slugify(nfc) == slugify(nfd) == "cote"
+
+
+def test_make_id_pinned_canonical_value():
+    # Locks the canonical-key format. If you change the namespace UUID, the
+    # field order, or the slug-of-each-field separator, this test will fail
+    # and you must consciously update the expected value.
+    result = make_id(
+        era=5,
+        series="Star Wars Episode",
+        title="A New Hope",
+        medium="Novel",
+        number="IV",
+    )
+    assert result == "34a13f75-b121-5c91-b435-f765f951e4a5"
