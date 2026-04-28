@@ -58,18 +58,19 @@ No multi-source fallback for v1. If specific fields turn out to be sparse, we ca
   - `frontend/public/data/works.json` — consumed by the app.
   - `data/.cache/wookieepedia/<slug>.html` — on-disk HTTP cache (gitignored).
   - `data/unmatched.log` — append-only list of rows whose Wookieepedia page could not be confidently resolved.
+  - `data/missing_year.log` — rows for which neither Excel nor Wookieepedia produced a `year_in_universe`. These rows are **excluded** from the JSON; the user must add the year to the Excel and re-run.
 
 ### 4.2 Steps
 
-1. **Read Excel** with `openpyxl`. Iterate every sheet; sheet name = era. Skip header row. Capture `era` (sheet name), `title`, `series`, `medium`, `number`, plus the original `INFO` and `COVER` URLs if present.
+1. **Read Excel** with `openpyxl`. Iterate every sheet; sheet name = era. Skip header row. Capture `era` (sheet name), `title`, `series`, `medium`, `number`, the original `INFO` and `COVER` URLs if present, and an `excel_order` running counter (incremented per data row across all sheets, starting at 0). `excel_order` is the canonical tiebreaker for ordering and must never change for an existing row; new rows added to the Excel get a higher counter and slot in at the end.
 2. **Resolve Wookieepedia URL** per row:
    - `INFO` filled → use it.
    - `INFO` empty → call `action=opensearch` with `<title> <series>`. Accept the top match only if the matched page title contains the work's `title` (case-insensitive substring after slug-normalizing both). Otherwise log to `unmatched.log` and proceed Excel-only.
 3. **Fetch HTML** via the cache. Re-runs are near-free; `--refresh` flag bypasses the cache; `just clean-cache` deletes it.
-4. **Parse infobox** with BeautifulSoup. Extract `authors[]`, `publisher`, `release_date` (ISO 8601), `cover_url`, `wiki_url`. Whitespace and date normalization happen here.
-5. **Normalize era + year** — sheet name → integer index 0–9 via the `ERAS` constant; `25793 BBY` → `-25793`, `4 ABY` → `4` as a single signed integer (`year_in_universe`).
+4. **Parse infobox** with BeautifulSoup. Extract `authors[]`, `publisher`, `release_date` (ISO 8601), `cover_url`, `wiki_url`, and an in-universe year (`Timeline` / `Set in` / `Date` infobox label). Whitespace and date normalization happen here.
+5. **Normalize era + year** — sheet name → integer index 0–9 via the `ERAS` constant; `25793 BBY` → `-25793`, `4 ABY` → `4` as a single signed integer (`year_in_universe`). Resolution order: Excel `YEAR` first; if empty, infobox year. If still empty, write the row to `missing_year.log` and exclude it from the JSON.
 6. **Generate IDs** — `uuid5` of a fixed namespace UUID applied to the canonical key `era|series|title|medium|#`. Stable across rebuilds, deterministic, collision-free across mediums.
-7. **Emit JSON** with the schema in §5. Omit any null/empty fields.
+7. **Emit JSON** with the schema in §5. Omit any null/empty fields. Print a summary of `unmatched` and `missing_year` counts at the end of the run.
 
 ### 4.3 Flags
 
@@ -78,9 +79,11 @@ No multi-source fallback for v1. If specific fields turn out to be sparse, we ca
 
 ### 4.4 Override semantics
 
-- Excel **overrides** Wookieepedia for the four reliable fields (`title`, `series`, `medium`, `number`).
+- Excel **overrides** Wookieepedia for the four reliable fields (`title`, `series`, `medium`, `number`) and for `year_in_universe` when present in the Excel.
+- Wookieepedia **fills in** `year_in_universe` only when the Excel cell is empty.
 - Wookieepedia **overrides** Excel for everything else (`authors`, `publisher`, `release_date`, `cover_url`).
 - `wiki_url` is whichever URL was used to fetch (the resolved one).
+- `excel_order` is fully owned by the Excel; never overridden.
 
 ## 5. Data model
 
@@ -93,6 +96,7 @@ No multi-source fallback for v1. If specific fields turn out to be sparse, we ca
     {
       "id": "<uuid5>",
       "era": 5,
+      "excel_order": 1234,
       "title": "A New Hope",
       "series": "Star Wars Episode",
       "number": "IV",
@@ -108,8 +112,10 @@ No multi-source fallback for v1. If specific fields turn out to be sparse, we ca
 }
 ```
 
-**Required fields:** `id`, `era`, `title`, `series`, `medium`, `year_in_universe`.
-**Optional fields** are present only when known. No nulls or empty arrays in the JSON.
+**Required fields:** `id`, `era`, `excel_order`, `title`, `medium`, `year_in_universe`.
+**Optional fields** are present only when known. `series` is optional (some short stories have no series). No nulls or empty arrays in the JSON.
+
+`excel_order` is a stable per-row integer (running counter across all sheets, in the order rows appear in the Excel). It is the canonical tiebreaker for sorting: chronology sort uses `(era, year_in_universe, excel_order)`; release sort uses `(release_date, excel_order)`. New rows appended to the Excel get a higher counter and naturally slot in at the end.
 
 `era` is an integer index. The frontend keeps a constant:
 
@@ -237,6 +243,8 @@ A segmented control in the TopBar switches between Cards, Table, and Timeline. S
 - *Release date*: section headers are real-world years (1976 …). No era bands; era is shown as a colored dot/ring on each marker so era distribution is still visible.
 Markers are small cover thumbnails with hover tooltips. Click → modal.
 
+Within any group (an era + year cluster, or a release year), works are ordered by `excel_order` so the in-Excel sequence is preserved.
+
 ### 6.6 Filtering & search
 
 Sidebar (desktop) / drawer (mobile) facets:
@@ -253,6 +261,7 @@ Free-text search in the TopBar matches `title`, `series`, and `authors` (case-in
 - Within a field: **OR** (checking Novel + Comic shows works of either medium; works with multiple matching `authors` match if any author is selected).
 - Between fields: **AND** (all field constraints must hold).
 - Search AND-combines with the facet filters.
+- **Sort tiebreaker:** all sorts use `excel_order` as the final key. Chronology sort = `(era, year_in_universe, excel_order)`. Release sort = `(release_date, excel_order)`.
 
 Empty state: "No works match these filters" + "Clear filters" button.
 
