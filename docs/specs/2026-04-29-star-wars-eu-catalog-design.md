@@ -144,7 +144,7 @@ const fmt = (y: number) => y >= 0 ? `${y} ABY` : `${-y} BBY`;
 - Zustand for state.
 - `@tanstack/react-virtual` for virtualization in Cards and Table views.
 - Static deploy via `gh-pages` npm package.
-- `vite.config.ts` `base: '/<repo-name>/'` for GitHub Pages project pages.
+- `vite.config.ts` `base: '/swdb/'` for GitHub Pages project pages.
 
 ### 6.2 Folder structure
 
@@ -366,7 +366,7 @@ Rough sequencing for the implementation plan (each phase ends in a runnable chec
 
 ## 12. Deployment
 
-- Hosting: GitHub Pages, project page under `adriwankenobi` (URL `https://adriwankenobi.github.io/<repo-name>/`).
-- Vite `base` matches `/<repo-name>/`.
+- Repo: <https://github.com/adriwankenobi/swdb> (public).
+- Hosting: GitHub Pages, project page at <https://adriwankenobi.github.io/swdb/>.
+- Vite `base` is `/swdb/`.
 - `npm run deploy` (uses `gh-pages` package) publishes the `frontend/dist` build to the `gh-pages` branch.
-- Repo not yet initialized; will be created when the code stabilizes.
