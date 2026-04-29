@@ -1,6 +1,12 @@
-import pytest
+from pathlib import Path
 
-from scripts.excel_colors import apply_tint, parse_theme_colors
+import pytest
+from openpyxl import load_workbook
+
+from scripts.excel_colors import ColorResolver, apply_tint, parse_theme_colors
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+EXCEL_PATH = REPO_ROOT / "Star Wars EU.xlsx"
 
 
 THEME_XML_SAMPLE = b"""<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -87,3 +93,41 @@ def test_parse_theme_colors_handles_sysclr():
     # After lt/dk swap: index 0 = lt1 (DDDDDD), index 1 = dk1 (222222)
     assert colors[0] == "DDDDDD"
     assert colors[1] == "222222"
+
+
+@pytest.fixture(scope="module")
+def workbook():
+    return load_workbook(EXCEL_PATH, data_only=True)
+
+
+def test_resolver_returns_hex_for_filled_row(workbook):
+    resolver = ColorResolver(workbook)
+    sheet = workbook["REBELLION"]
+    cell = sheet.cell(row=2, column=1)
+    color = resolver.resolve(cell)
+    assert color is not None
+    assert color.startswith("#") and len(color) == 7
+
+
+def test_resolver_returns_none_for_no_fill_row(workbook):
+    resolver = ColorResolver(workbook)
+    sheet = workbook["REBELLION"]
+    no_fill_cell = None
+    for row in sheet.iter_rows(min_row=2, max_col=1):
+        cell = row[0]
+        if cell.fill.patternType is None and cell.value is None:
+            no_fill_cell = cell
+            break
+    assert no_fill_cell is not None, "expected a no-fill row in REBELLION"
+    assert resolver.resolve(no_fill_cell) is None
+
+
+def test_resolver_handles_raw_rgb():
+    from openpyxl import Workbook
+    from openpyxl.styles import PatternFill
+    wb = Workbook()
+    ws = wb.active
+    cell = ws.cell(row=1, column=1, value="x")
+    cell.fill = PatternFill(start_color="FF112233", end_color="FF112233", fill_type="solid")
+    resolver = ColorResolver(wb)
+    assert resolver.resolve(cell) == "#112233"

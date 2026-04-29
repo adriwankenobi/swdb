@@ -3,7 +3,10 @@
 from __future__ import annotations
 
 import colorsys
+import sys
 import xml.etree.ElementTree as ET
+
+from openpyxl.styles.colors import COLOR_INDEX
 
 _NS = {"a": "http://schemas.openxmlformats.org/drawingml/2006/main"}
 
@@ -63,3 +66,47 @@ def apply_tint(rgb_hex: str, tint: float) -> str:
     lum = max(0.0, min(1.0, lum))
     r2, g2, b2 = colorsys.hls_to_rgb(h, lum, s)
     return f"{round(r2 * 255):02X}{round(g2 * 255):02X}{round(b2 * 255):02X}"
+
+
+class ColorResolver:
+    """Resolve a cell's fill to '#RRGGBB' (or None when no fill)."""
+
+    def __init__(self, workbook):
+        theme_bytes = getattr(workbook, "loaded_theme", None)
+        self._theme: list[str] | None = (
+            parse_theme_colors(theme_bytes) if theme_bytes else None
+        )
+
+    def resolve(self, cell) -> str | None:
+        fill = cell.fill
+        if fill is None or fill.patternType is None:
+            return None
+        fg = fill.fgColor
+        if fg is None:
+            return None
+        kind = fg.type
+        if kind == "rgb":
+            rgb = fg.rgb
+            if not isinstance(rgb, str):
+                return None
+            return f"#{rgb[-6:].upper()}"
+        if kind == "theme":
+            if self._theme is None:
+                return None
+            idx = fg.theme
+            if not isinstance(idx, int) or not (0 <= idx < len(self._theme)):
+                return None
+            base = self._theme[idx]
+            tint = fg.tint if isinstance(fg.tint, (int, float)) else 0.0
+            tinted = apply_tint(base, float(tint))
+            return f"#{tinted}"
+        if kind == "indexed":
+            try:
+                rgb = COLOR_INDEX[fg.indexed]
+            except (IndexError, TypeError):
+                return None
+            if not isinstance(rgb, str) or len(rgb) < 6:
+                return None
+            return f"#{rgb[-6:].upper()}"
+        print(f"[warn] unknown fgColor.type={kind!r}; skipping", file=sys.stderr)
+        return None
