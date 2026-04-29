@@ -1,4 +1,4 @@
-import { MEDIUMS } from "@/constants/mediums";
+import { MEDIUMS, MEDIUM_COLORS } from "@/constants/mediums";
 import { useFilterStore } from "@/store/filterStore";
 
 export function MediumTabs() {
@@ -35,12 +35,12 @@ export function MediumTabs() {
             key={label}
             type="button"
             onClick={() => pickMedium(i)}
-            className={[
-              "rounded px-3 py-1 text-sm font-medium transition",
+            className="rounded px-3 py-1 text-sm font-medium transition"
+            style={
               active
-                ? "bg-foreground text-background"
-                : "bg-muted text-muted-foreground hover:bg-muted/80",
-            ].join(" ")}
+                ? { backgroundColor: MEDIUM_COLORS[i], color: "white" }
+                : { border: "1px solid currentColor", opacity: 0.6 }
+            }
           >
             {label}
           </button>

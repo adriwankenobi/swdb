@@ -1,7 +1,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { ERAS, ERA_COLORS, type EraIndex } from "@/constants/eras";
-import { MEDIUMS } from "@/constants/mediums";
+import { MEDIUMS, MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { formatSeriesAndNumber } from "@/lib/formatSeriesAndNumber";
 import { useCatalogStore } from "@/store/catalogStore";
@@ -56,7 +56,7 @@ export function WorkDetailModal() {
                       {formatSeriesAndNumber(work)}
                     </button>
                   )}
-                  <Badge variant="outline">{mediumLabel}</Badge>
+                  <Badge style={{ backgroundColor: MEDIUM_COLORS[work.medium], color: "white" }}>{mediumLabel}</Badge>
                   <Badge style={{ backgroundColor: ERA_COLORS[work.era as EraIndex], color: "white" }}>
                     {ERAS[work.era]}
                   </Badge>
