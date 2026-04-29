@@ -7,6 +7,7 @@ import { Landing } from "./components/layout/Landing";
 import { filterWorks } from "./lib/filterWorks";
 import { ActiveFilterChips } from "./components/filters/ActiveFilterChips";
 import { CardGrid } from "./components/views/CardGrid";
+import { TableView } from "./components/views/TableView";
 import { WorkDetailModal } from "./components/work/WorkDetailModal";
 import type { EraIndex } from "./constants/eras";
 
@@ -61,7 +62,7 @@ export default function App() {
         <div className="flex h-full flex-col">
           <ActiveFilterChips />
           {filterState.view === "cards" && <CardGrid works={visible} />}
-          {filterState.view === "table" && <p className="text-muted-foreground">Table view (Phase 7)</p>}
+          {filterState.view === "table" && <TableView works={visible} />}
           {filterState.view === "timeline" && <p className="text-muted-foreground">Timeline view (Phase 8)</p>}
         </div>
       </AppShell>
