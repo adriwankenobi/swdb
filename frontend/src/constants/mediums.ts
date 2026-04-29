@@ -11,11 +11,11 @@ export const MEDIUMS = [
 export type MediumIndex = number;
 
 export const MEDIUM_COLORS: Record<number, string> = {
-  0: "#e64545", // Comic        — bright red
-  1: "#f29a3c", // Junior Novel — warm orange
-  2: "#3aa6c2", // Movie        — teal/cyan (clearly different from era blues)
-  3: "#9b6b3a", // Novel        — book tan
-  4: "#a8a8a8", // Short Story  — light gray
-  5: "#c659a0", // TV Show      — magenta
-  6: "#6cc24a", // Videogame    — lime green
+  0: "#c83a3a", // Comic        — strong red
+  1: "#d97c1a", // Junior Novel — burnt orange
+  2: "#1f8aaa", // Movie        — deep teal
+  3: "#7a5836", // Novel        — book tan-brown
+  4: "#5e5e5e", // Short Story  — neutral mid-gray
+  5: "#a14687", // TV Show      — magenta
+  6: "#3fa845", // Videogame    — bright green
 };
