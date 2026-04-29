@@ -51,6 +51,7 @@ class ExcelRow:
     year_end: int | None # end year of a range; None for single-year entries
     info_url: str | None
     cover_url: str | None  # raw — may be ignored later in favor of wiki-fetched cover
+    color: str | None    # '#RRGGBB' from row's Excel fill, or None when row has no fill
 
 
 def _normalize_medium(raw: str | None) -> str:
@@ -60,37 +61,39 @@ def _normalize_medium(raw: str | None) -> str:
     return _MEDIUM_NORMALIZE.get(cleaned.lower(), cleaned)
 
 
-def _stringify(cell: object) -> str | None:
-    if cell is None:
+def _stringify(cell_value: object) -> str | None:
+    if cell_value is None:
         return None
-    s = str(cell).strip()
+    s = str(cell_value).strip()
     return s or None
 
 
 def read_works(path: Path) -> Iterator[ExcelRow]:
-    """Yield ExcelRow per non-empty data row in every sheet, in workbook order."""
-    wb = load_workbook(path, data_only=True, read_only=True)
+    """Yield ExcelRow per non-empty data row in every sheet, in workbook order.
+
+    Loads the workbook with styles enabled (read_only=False) so the row's
+    background fill can be resolved to a hex color via ColorResolver.
+    """
+    from scripts.excel_colors import ColorResolver
+
+    wb = load_workbook(path, data_only=True)
     try:
+        resolver = ColorResolver(wb)
         for sheet_name in wb.sheetnames:
             if sheet_name not in ERA_INDEX:
                 continue
             era = ERA_INDEX[sheet_name]
             ws = wb[sheet_name]
-            rows_iter = ws.iter_rows(values_only=True)
-            try:
-                next(rows_iter)
-            except StopIteration:
-                continue
-            # Header layout: YEAR, MEDIUM, SERIES, TITLE, #, AUTHOR, PUBLISHER, RELEASE,
-            # COLLECTED, INFO, COVER. We trust positions 0..10 by index.
-            for raw in rows_iter:
-                year_raw = _stringify(raw[0])
-                medium_raw = _stringify(raw[1])
-                series = _stringify(raw[2])
-                title = _stringify(raw[3])
-                number = _stringify(raw[4])
-                info_url = _stringify(raw[9]) if len(raw) > 9 else None
-                cover_url = _stringify(raw[10]) if len(raw) > 10 else None
+            for raw in ws.iter_rows(min_row=2):
+                # Header layout: YEAR, MEDIUM, SERIES, TITLE, #, AUTHOR, PUBLISHER,
+                # RELEASE, COLLECTED, INFO, COVER. Trust positions 0..10 by index.
+                year_raw = _stringify(raw[0].value)
+                medium_raw = _stringify(raw[1].value)
+                series = _stringify(raw[2].value)
+                title = _stringify(raw[3].value)
+                number = _stringify(raw[4].value)
+                info_url = _stringify(raw[9].value) if len(raw) > 9 else None
+                cover_url = _stringify(raw[10].value) if len(raw) > 10 else None
                 if not title or not medium_raw:
                     continue
                 parsed = parse_year_range(year_raw)
@@ -101,6 +104,7 @@ def read_works(path: Path) -> Iterator[ExcelRow]:
                     start, end = parsed
                     year_val = start
                     year_end_val = end if end != start else None
+                color = resolver.resolve(raw[0])
                 yield ExcelRow(
                     era=era,
                     title=title,
@@ -111,6 +115,7 @@ def read_works(path: Path) -> Iterator[ExcelRow]:
                     year_end=year_end_val,
                     info_url=info_url,
                     cover_url=cover_url,
+                    color=color,
                 )
     finally:
         wb.close()

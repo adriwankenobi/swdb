@@ -47,6 +47,12 @@ def test_year_parsed(rows):
     assert sample.year == 0
 
 
+def test_excel_row_has_color_for_filled_row(rows):
+    sample = next(r for r in rows if r.title == "A New Hope" and r.medium == "Novel")
+    assert sample.color is not None
+    assert sample.color.startswith("#") and len(sample.color) == 7
+
+
 def test_excel_row_skips_empty_rows(rows):
     # Defensive — no rows should be missing a title.
     assert all(row.title for row in rows)
