@@ -10,19 +10,10 @@ Wookieepedia (cached), emits `frontend/public/data/works.json`. Frontend:
 Vite + React + TypeScript + Tailwind 4 + shadcn/ui + zustand. Deploys to
 GitHub Pages.
 
-## Hard rules
+## Personal rules
 
-1. **Never write "Legends" or any Disney-era Star Wars terminology** in code,
-   comments, docs, UI copy, or commit messages. The user is an Expanded
-   Universe purist; "Legends" is the Disney rebrand and is considered
-   degrading. Use "Expanded Universe" or "EU".
-2. **Never include a "Co-Authored-By: Claude" trailer** or any
-   "Generated with Claude Code" line in git commits or PR bodies.
-3. **Spec / plan paths are `docs/specs/` and `docs/plans/`** — never
-   `docs/superpowers/...`. The "superpowers" namespace is Claude tooling and
-   shouldn't appear in this repo.
-4. **GitHub account is `adriwankenobi`** (personal account; repos can be
-   public).
+See `CLAUDE.local.md` (gitignored, not committed) for personal hard rules
+specific to this user (terminology preferences, commit conventions, etc.).
 
 ## Tech stack details
 

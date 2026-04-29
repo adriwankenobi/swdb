@@ -21,3 +21,6 @@ frontend/dist/
 # Editors
 .vscode/
 .idea/
+
+# Local Claude config
+CLAUDE.local.md
