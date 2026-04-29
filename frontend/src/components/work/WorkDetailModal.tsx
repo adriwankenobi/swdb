@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { ERAS, ERA_COLORS, type EraIndex } from "@/constants/eras";
 import { MEDIUMS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
+import { formatSeriesAndNumber } from "@/lib/formatSeriesAndNumber";
 import { useCatalogStore } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
 
@@ -19,17 +20,17 @@ export function WorkDetailModal() {
         if (!open) set({ openWorkId: null });
       }}
     >
-      <DialogContent className="max-w-3xl">
+      <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
         {work && (
           <>
             <DialogHeader>
               <DialogTitle className="leading-tight">{work.title}</DialogTitle>
             </DialogHeader>
             <div className="grid gap-6 sm:grid-cols-[240px_1fr]">
-              <div className="aspect-[2/3] w-full overflow-hidden rounded-md bg-muted">
+              <div className="aspect-[2/3] w-full overflow-hidden rounded-md bg-muted/40">
                 {work.cover_url ? (
                   <a href={work.cover_url} target="_blank" rel="noopener noreferrer">
-                    <img src={work.cover_url} alt="" className="h-full w-full object-cover" />
+                    <img src={work.cover_url} alt="" className="h-full w-full object-contain bg-muted/40" />
                   </a>
                 ) : (
                   <div
@@ -44,7 +45,7 @@ export function WorkDetailModal() {
                 <div className="flex flex-wrap items-center gap-2">
                   {work.series && (
                     <span className="font-medium">
-                      {work.series}{work.number ? ` #${work.number}` : ""}
+                      {formatSeriesAndNumber(work)}
                     </span>
                   )}
                   <Badge variant="outline">{mediumLabel}</Badge>
@@ -53,7 +54,7 @@ export function WorkDetailModal() {
                   </Badge>
                 </div>
                 <p>
-                  <span className="text-muted-foreground">In-universe year:</span>{" "}
+                  <span className="text-muted-foreground">Year:</span>{" "}
                   {formatYear(work.year)}
                 </p>
                 {work.release_date && (

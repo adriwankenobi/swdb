@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { ERAS, ERA_COLORS, type EraIndex } from "@/constants/eras";
 import { MEDIUMS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
+import { formatSeriesAndNumber } from "@/lib/formatSeriesAndNumber";
 import type { Work } from "@/types/work";
 
 export function WorkCard({ work, onClick }: { work: Work; onClick: () => void }) {
@@ -18,7 +19,7 @@ export function WorkCard({ work, onClick }: { work: Work; onClick: () => void })
             src={work.cover_url}
             alt=""
             loading="lazy"
-            className="h-full w-full object-cover transition group-hover:scale-[1.02]"
+            className="h-full w-full object-contain bg-muted/40 transition group-hover:scale-[1.02]"
           />
         ) : (
           <div
@@ -33,8 +34,7 @@ export function WorkCard({ work, onClick }: { work: Work; onClick: () => void })
         <p className="line-clamp-2 font-medium leading-tight">{work.title}</p>
         {work.series && (
           <p className="line-clamp-1 text-xs text-muted-foreground">
-            {work.series}
-            {work.number ? ` #${work.number}` : ""}
+            {formatSeriesAndNumber(work)}
           </p>
         )}
         <div className="flex flex-wrap items-center gap-1 pt-1">
