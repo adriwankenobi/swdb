@@ -4,6 +4,7 @@
 # Pipeline artifacts
 data/.cache/
 data/unmatched.log
+data/duplicates.log
 
 # Python
 __pycache__/
