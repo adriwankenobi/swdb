@@ -42,10 +42,28 @@ export function DecadeTabs() {
     });
   }
 
+  const allActive = releaseMin === null && releaseMax === null;
+
+  function clearDecade() {
+    set({ releaseMin: null, releaseMax: null });
+  }
+
   if (decades.length === 0) return null;
 
   return (
     <div className="flex flex-wrap items-center gap-1 border-b px-4 py-2">
+      <button
+        type="button"
+        onClick={clearDecade}
+        className={[
+          "rounded px-3 py-1 text-sm font-medium transition",
+          allActive
+            ? "bg-foreground text-background"
+            : "bg-muted text-muted-foreground hover:bg-muted/80",
+        ].join(" ")}
+      >
+        All
+      </button>
       {decades.map((dec) => (
         <button
           key={dec}
