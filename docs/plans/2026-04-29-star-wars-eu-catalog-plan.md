@@ -37,14 +37,13 @@ SWDB/
 │   ├── test_wiki_client.py
 │   ├── test_infobox_parser.py
 │   └── fixtures/
-│       ├── infobox_a_new_hope.html     (saved Wookieepedia HTML — release_date in infobox)
-│       └── infobox_eruption.html       (saved Wookieepedia HTML — Timeline field for in-universe year)
+│       └── infobox_a_new_hope.html     (saved Wookieepedia HTML — covers all infobox fields)
 ├── data/
 │   ├── .cache/                         (gitignored — HTTP cache)
 │   ├── unmatched.log                   (auto-search misses, gitignored)
 │   ├── duplicates.log                  (rows with colliding canonical keys, gitignored)
 │   ├── missing_medium.log              (rows whose medium isn't in canonical MEDIUMS, gitignored)
-│   └── missing_year.log                (rows excluded for lacking a year, gitignored)
+│   └── ignored_no_year.log             (rows in Excel with no YEAR cell — reference-only, gitignored)
 ├── docs/
 │   ├── specs/2026-04-29-star-wars-eu-catalog-design.md
 │   └── plans/2026-04-29-star-wars-eu-catalog-plan.md
@@ -770,25 +769,32 @@ EXCEL_PATH = REPO_ROOT / "Star Wars EU.xlsx"
 OUTPUT_PATH = REPO_ROOT / "frontend" / "public" / "data" / "works.json"
 DUPLICATES_LOG = REPO_ROOT / "data" / "duplicates.log"
 MISSING_MEDIUM_LOG = REPO_ROOT / "data" / "missing_medium.log"
+IGNORED_NO_YEAR_LOG = REPO_ROOT / "data" / "ignored_no_year.log"
 
 # Canonical medium list, alphabetical. Order is permanent: new entries must be
 # APPENDED at the end so existing indices retain their meaning.
 MEDIUMS = [
-    "Audio Drama",         # 0
-    "Comic",               # 1
-    "Junior Novel",        # 2
-    "Movie",               # 3
-    "Novel",               # 4
-    "Short Story",         # 5
-    "TV Show",             # 6
-    "Videogame",           # 7
-    "Young Reader Book",   # 8
+    "Comic",           # 0
+    "Junior Novel",    # 1
+    "Movie",           # 2
+    "Novel",           # 3
+    "Short Story",     # 4
+    "TV Show",         # 5
+    "Videogame",       # 6
 ]
 _MEDIUM_TO_INDEX = {name: i for i, name in enumerate(MEDIUMS)}
 
 
 def _row_to_work(row: ExcelRow) -> dict | None:
-    """Build a work dict; return None if the medium is not canonical (caller logs)."""
+    """Build a work dict; return None if the row should be excluded.
+
+    Two exclusion paths (both return None):
+      - row.year is None  -> Excel YEAR cell is empty; reference-only entry.
+      - row.medium not in canonical MEDIUMS  -> developer must extend MEDIUMS.
+    The caller distinguishes them and logs to separate files.
+    """
+    if row.year is None:
+        return None
     if row.medium not in _MEDIUM_TO_INDEX:
         return None
     work: dict = {
@@ -801,14 +807,13 @@ def _row_to_work(row: ExcelRow) -> dict | None:
         ),
         "era": row.era,
         "title": row.title,
-        "medium": _MEDIUM_TO_INDEX[row.medium],   # but JSON gets the integer index
+        "medium": _MEDIUM_TO_INDEX[row.medium],   # JSON gets the integer index
+        "year": row.year,
     }
     if row.series:
         work["series"] = row.series
     if row.number is not None:
         work["number"] = row.number
-    if row.year is not None:
-        work["year"] = row.year
     return work
 
 
@@ -855,14 +860,22 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
     if refresh:
         print("[info] --refresh is a no-op until Phase 3 enrichment lands.", file=sys.stderr)
     works: list[dict] = []
+    ignored_no_year: list[str] = []
     missing_medium: list[str] = []
     for row in read_works(EXCEL_PATH):
-        work = _row_to_work(row)
-        if work is None:
+        if row.year is None:
+            ignored_no_year.append(
+                f"{row.era}|{row.title}|{row.series}|{row.medium}"
+            )
+            continue
+        if row.medium not in _MEDIUM_TO_INDEX:
             missing_medium.append(
                 f"{row.era}|{row.title}|{row.series}|{row.medium}"
             )
             continue
+        work = _row_to_work(row)
+        # Both year and medium were checked above; _row_to_work won't return None.
+        assert work is not None
         works.append(work)
     _detect_duplicates(works)
     payload = {
@@ -870,7 +883,8 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
         "works": works,
     }
     summary = (
-        f"{len(works)} works; {len(missing_medium)} missing-medium skipped"
+        f"{len(works)} works; {len(ignored_no_year)} ignored-no-year; "
+        f"{len(missing_medium)} missing-medium skipped"
     )
     if dry_run:
         print(f"[dry-run] would write {summary} to {OUTPUT_PATH}")
@@ -878,6 +892,15 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(
         json.dumps(payload, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    IGNORED_NO_YEAR_LOG.parent.mkdir(parents=True, exist_ok=True)
+    IGNORED_NO_YEAR_LOG.write_text(
+        "\n".join(ignored_no_year) + ("\n" if ignored_no_year else ""),
+        encoding="utf-8",
+    )
+    MISSING_MEDIUM_LOG.write_text(
+        "\n".join(missing_medium) + ("\n" if missing_medium else ""),
         encoding="utf-8",
     )
     MISSING_MEDIUM_LOG.parent.mkdir(parents=True, exist_ok=True)
@@ -904,9 +927,9 @@ if __name__ == "__main__":
     main()
 ```
 
-Add `data/missing_medium.log` to `.gitignore` (it's a regenerated build artifact, like `unmatched.log` and `duplicates.log`).
+Add `data/missing_medium.log` AND `data/ignored_no_year.log` to `.gitignore` (regenerated build artifacts, like `unmatched.log` and `duplicates.log`).
 
-**Note on Phase 2 incompleteness.** The spec requires every emitted work to have a `year`. In Phase 2 we do not yet have the Wookieepedia fallback, so a small number of works lack the year and `_row_to_work` omits it. That's fine for this checkpoint — Phase 3 will (a) parse the year from the Wookieepedia infobox when missing and (b) skip + log any row that still has no year after both sources.
+**Phase 2 produces the final-shape JSON for year-having rows.** No Wookieepedia enrichment yet — Phase 3 adds `wiki_url`, `authors`, `publisher`, `release_date`, `cover_url` to each work. Rows with an empty Excel `YEAR` are excluded outright as reference-only entries (per the spec).
 
 - [ ] **Step 2: Run the pipeline**
 
@@ -919,13 +942,13 @@ Expected output:
 wrote <N> works to .../frontend/public/data/works.json
 ```
 
-Where `<N>` is ~1900+. Inspect the first object:
+Where `<N>` is ~1938 (year-having rows; ~172 reference-only rows from the Excel are intentionally excluded). Inspect the first object:
 
 ```bash
 python3 -c "import json; d=json.load(open('frontend/public/data/works.json')); print(json.dumps(d['works'][0], indent=2))"
 ```
 
-Expected: an object with `id`, `era`, `title`, `medium` (an integer 0..8 — index into the `MEDIUMS` array), and likely `series`, `number`, `year`. No nulls. The `excel_order` field that previous drafts of the plan included is no longer present — JSON array order is the canonical order.
+Expected: an object with `id`, `era`, `title`, `medium` (an integer 0..6 — index into the 7-entry `MEDIUMS` array), `year`, and likely `series`, `number`. No nulls.
 
 - [ ] **Step 3: Commit**
 
@@ -1279,19 +1302,16 @@ git commit -m "Add WikiClient.resolve_url with opensearch fallback"
 - Create: `tests/test_infobox_parser.py`
 - Create: `tests/fixtures/infobox_a_new_hope.html` (from real Wookieepedia page)
 
-- [ ] **Step 1: Capture two real fixtures**
+- [ ] **Step 1: Capture one real fixture**
 
 ```bash
 mkdir -p tests/fixtures
 curl -A "swdb-pipeline/0.1" -sSL \
   "https://starwars.fandom.com/wiki/Star_Wars_Episode_IV:_A_New_Hope_(novel)" \
   -o tests/fixtures/infobox_a_new_hope.html
-curl -A "swdb-pipeline/0.1" -sSL \
-  "https://starwars.fandom.com/wiki/Eruption" \
-  -o tests/fixtures/infobox_eruption.html
 ```
 
-Verify both files are non-empty (`ls -lh tests/fixtures/`). The first fixture covers the standard novel infobox (release_date, authors, publisher, cover); the second covers a short story with a `Timeline` field (in-universe year fallback).
+Verify the file is non-empty (`ls -lh tests/fixtures/`). This fixture covers the standard novel infobox (release_date, authors, publisher, cover) — the four fields the parser extracts. The pipeline does NOT extract the in-universe year from Wookieepedia (that field is sourced exclusively from the Excel `YEAR` column per spec).
 
 - [ ] **Step 2: Write the failing tests**
 
@@ -1303,17 +1323,11 @@ import pytest
 from scripts.infobox_parser import parse_infobox
 
 FIXTURE_NOVEL = Path(__file__).parent / "fixtures" / "infobox_a_new_hope.html"
-FIXTURE_SHORT = Path(__file__).parent / "fixtures" / "infobox_eruption.html"
 
 
 @pytest.fixture
 def html_novel() -> str:
     return FIXTURE_NOVEL.read_text(encoding="utf-8")
-
-
-@pytest.fixture
-def html_short() -> str:
-    return FIXTURE_SHORT.read_text(encoding="utf-8")
 
 
 def test_parse_infobox_returns_authors(html_novel):
@@ -1338,12 +1352,6 @@ def test_parse_infobox_returns_cover_url(html_novel):
     assert "wikia" in result["cover_url"] or "fandom" in result["cover_url"]
 
 
-def test_parse_infobox_returns_year_from_timeline(html_short):
-    # "Eruption" infobox lists Timeline as "25,793 BBY"; expect -25793.
-    result = parse_infobox(html_short)
-    assert result["year"] == -25793
-
-
 def test_parse_infobox_returns_empty_dict_on_garbage():
     assert parse_infobox("<html></html>") == {}
 ```
@@ -1365,9 +1373,9 @@ from datetime import datetime
 
 from bs4 import BeautifulSoup, Tag
 
-from scripts.year_utils import parse_year
-
 # Maps the human-readable infobox label (lowercased) to our output key.
+# The in-universe year is intentionally NOT extracted here — it comes from
+# the Excel YEAR column only (see spec §4.4).
 _LABEL_MAP: dict[str, str] = {
     "author": "authors",
     "author(s)": "authors",
@@ -1375,10 +1383,6 @@ _LABEL_MAP: dict[str, str] = {
     "publication date": "release_date",
     "release date": "release_date",
     "released": "release_date",
-    "timeline": "year",
-    "set in": "year",
-    "date": "year",
-    "era": "year",
 }
 
 _DATE_FORMATS = (
@@ -1449,18 +1453,6 @@ def parse_infobox(html: str) -> dict:
             iso = _parse_date(text)
             if iso:
                 out["release_date"] = iso
-        elif key == "year":
-            # Timeline values can be ranges ("25,793 BBY-25,792 BBY"); take the
-            # first BBY/ABY token. Skip if no recognizable year token is present.
-            if "year" in out:
-                continue
-            tokens = re.findall(r"c\.\s*[\d,]+\s+(?:BBY|ABY)", text, flags=re.IGNORECASE)
-            if not tokens:
-                tokens = re.findall(r"[\d,]+\s+(?:BBY|ABY)", text, flags=re.IGNORECASE)
-            if tokens:
-                parsed = parse_year(tokens[0])
-                if parsed is not None:
-                    out["year"] = parsed
         else:
             out[key] = text
     cover = _parse_cover_url(soup)
@@ -1472,15 +1464,15 @@ def parse_infobox(html: str) -> dict:
 - [ ] **Step 5: Run tests to verify they pass**
 
 Run: `uv run pytest tests/test_infobox_parser.py -v`
-Expected: all 6 tests pass.
+Expected: all 5 tests pass.
 
 If a fixture-based test fails because Wookieepedia's HTML structure differs (e.g. the live page has changed since this plan was written), update the selectors in `_parse_cover_url` or `_LABEL_MAP` to match what the fixture actually contains. The test failure will name the missing field; inspect the fixture HTML directly.
 
 - [ ] **Step 6: Commit**
 
 ```bash
-git add scripts/infobox_parser.py tests/test_infobox_parser.py tests/fixtures/infobox_a_new_hope.html tests/fixtures/infobox_eruption.html
-git commit -m "Add infobox_parser extracting authors, publisher, date, cover, year"
+git add scripts/infobox_parser.py tests/test_infobox_parser.py tests/fixtures/infobox_a_new_hope.html
+git commit -m "Add infobox_parser extracting authors, publisher, date, cover"
 ```
 
 ### Task 3.4: Wire enrichment into `build_data`
@@ -1512,32 +1504,27 @@ EXCEL_PATH = REPO_ROOT / "Star Wars EU.xlsx"
 OUTPUT_PATH = REPO_ROOT / "frontend" / "public" / "data" / "works.json"
 CACHE_DIR = REPO_ROOT / "data" / ".cache" / "wookieepedia"
 UNMATCHED_LOG = REPO_ROOT / "data" / "unmatched.log"
-MISSING_YEAR_LOG = REPO_ROOT / "data" / "missing_year.log"
+IGNORED_NO_YEAR_LOG = REPO_ROOT / "data" / "ignored_no_year.log"
 MISSING_MEDIUM_LOG = REPO_ROOT / "data" / "missing_medium.log"
 DUPLICATES_LOG = REPO_ROOT / "data" / "duplicates.log"
 
 # Canonical medium list, alphabetical. Order is permanent: new entries must be
 # APPENDED at the end so existing indices retain their meaning.
 MEDIUMS = [
-    "Audio Drama",         # 0
-    "Comic",               # 1
-    "Junior Novel",        # 2
-    "Movie",               # 3
-    "Novel",               # 4
-    "Short Story",         # 5
-    "TV Show",             # 6
-    "Videogame",           # 7
-    "Young Reader Book",   # 8
+    "Comic",           # 0
+    "Junior Novel",    # 1
+    "Movie",           # 2
+    "Novel",           # 3
+    "Short Story",     # 4
+    "TV Show",         # 5
+    "Videogame",       # 6
 ]
 _MEDIUM_TO_INDEX = {name: i for i, name in enumerate(MEDIUMS)}
 
 
-def _row_to_work(row: ExcelRow) -> dict | None:
-    """Build the base work dict from Excel data only. Year is required and
-    will be filled by Wookieepedia later if absent here. Returns None if the
-    medium isn't in the canonical list (caller logs)."""
-    if row.medium not in _MEDIUM_TO_INDEX:
-        return None
+def _row_to_work(row: ExcelRow) -> dict:
+    """Build the base work dict from Excel data only. Caller must ensure
+    row.year is not None and row.medium is in _MEDIUM_TO_INDEX."""
     work: dict = {
         "id": make_id(
             era=row.era,
@@ -1549,17 +1536,19 @@ def _row_to_work(row: ExcelRow) -> dict | None:
         "era": row.era,
         "title": row.title,
         "medium": _MEDIUM_TO_INDEX[row.medium],   # JSON gets the integer index
+        "year": row.year,
     }
     if row.series:
         work["series"] = row.series
     if row.number is not None:
         work["number"] = row.number
-    if row.year is not None:
-        work["year"] = row.year
     return work
 
 
 def _enrich(work: dict, row: ExcelRow, client: WikiClient, unmatched: list) -> None:
+    """Add wiki_url + infobox-derived fields to work in-place. Year is NOT
+    sourced from Wookieepedia (per spec §4.4) — only authors, publisher,
+    release_date, cover_url, wiki_url."""
     url, source = client.resolve_url(
         info_url=row.info_url, title=row.title, series=row.series
     )
@@ -1572,9 +1561,6 @@ def _enrich(work: dict, row: ExcelRow, client: WikiClient, unmatched: list) -> N
         unmatched.append(f"{row.era}|{row.title}|{row.series}|fetch_failed")
         return
     info = parse_infobox(html)
-    # Excel year wins; fall back to infobox year only if Excel was empty.
-    if "year" not in work and "year" in info:
-        work["year"] = info["year"]
     for key in ("authors", "publisher", "release_date", "cover_url"):
         value = info.get(key)
         if value:
@@ -1622,21 +1608,19 @@ def _detect_duplicates(works: list[dict]) -> None:
 def build(*, refresh: bool, dry_run: bool) -> dict:
     client = WikiClient(cache_dir=CACHE_DIR, refresh=refresh)
     unmatched: list[str] = []
-    missing_year: list[str] = []
+    ignored_no_year: list[str] = []
     missing_medium: list[str] = []
     works: list[dict] = []
     rows = list(read_works(EXCEL_PATH))
     for i, row in enumerate(rows, start=1):
-        work = _row_to_work(row)
-        if work is None:
+        if row.year is None:
+            ignored_no_year.append(f"{row.era}|{row.title}|{row.series}|{row.medium}")
+            continue
+        if row.medium not in _MEDIUM_TO_INDEX:
             missing_medium.append(f"{row.era}|{row.title}|{row.series}|{row.medium}")
             continue
+        work = _row_to_work(row)
         _enrich(work, row, client, unmatched)
-        if "year" not in work:
-            missing_year.append(
-                f"{row.era}|{row.title}|{row.series}|{row.medium}"
-            )
-            continue  # spec: rows lacking a year are excluded from the JSON
         works.append(work)
         if i % 50 == 0:
             print(f"  processed {i}/{len(rows)}")
@@ -1647,7 +1631,7 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
     }
     summary = (
         f"{len(works)} works; {len(unmatched)} unmatched; "
-        f"{len(missing_year)} missing-year skipped; "
+        f"{len(ignored_no_year)} ignored-no-year; "
         f"{len(missing_medium)} missing-medium skipped"
     )
     if dry_run:
@@ -1662,8 +1646,8 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
     UNMATCHED_LOG.write_text(
         "\n".join(unmatched) + ("\n" if unmatched else ""), encoding="utf-8"
     )
-    MISSING_YEAR_LOG.write_text(
-        "\n".join(missing_year) + ("\n" if missing_year else ""), encoding="utf-8"
+    IGNORED_NO_YEAR_LOG.write_text(
+        "\n".join(ignored_no_year) + ("\n" if ignored_no_year else ""), encoding="utf-8"
     )
     MISSING_MEDIUM_LOG.write_text(
         "\n".join(missing_medium) + ("\n" if missing_medium else ""), encoding="utf-8"
@@ -1690,7 +1674,7 @@ if __name__ == "__main__":
 just scrape
 ```
 
-Expected: progress lines every 50 rows, finishing with `wrote N works; M unmatched; K missing-year skipped; J missing-medium skipped to .../works.json` where N ≈ 1900+, M is small (typically < 50), K should be 0 in steady state, and J should be 0 (the canonical `MEDIUMS` list covers every Excel value as of this plan; if J > 0, inspect `data/missing_medium.log` and decide whether to extend the canonical list — appending only — or correct the Excel). Cache populates `data/.cache/wookieepedia/`.
+Expected: progress lines every 50 rows, finishing with `wrote N works; M unmatched; K ignored-no-year; J missing-medium skipped to .../works.json` where N ≈ 1938 (year-having rows only), M is small (typically < 50), K is ~172 (intentional reference-only Excel rows), and J should be 0 (the canonical `MEDIUMS` list covers every relevant Excel value as of this plan; if J > 0, inspect `data/missing_medium.log` and either append the new medium to `MEDIUMS` or correct the Excel). Cache populates `data/.cache/wookieepedia/`.
 
 - [ ] **Step 3: Spot-check the output**
 
@@ -1703,7 +1687,7 @@ print(json.dumps(sample, indent=2, ensure_ascii=False))
 "
 ```
 
-Expected: includes `id`, `era`, `title`, `medium` (int 0..8), `year`, plus `wiki_url`, `authors`, `publisher`, `release_date`, `cover_url`. No null values. No `excel_order` — JSON array order is canonical.
+Expected: includes `id`, `era`, `title`, `medium` (int 0..6), `year`, plus `wiki_url`, `authors`, `publisher`, `release_date`, `cover_url`. No null values. No `excel_order` — JSON array order is canonical.
 
 - [ ] **Step 4: Re-run to verify cache hits**
 
@@ -1914,15 +1898,13 @@ export const ERA_COLORS: Record<EraIndex, string> = {
 
 ```ts
 export const MEDIUMS = [
-  "Audio Drama",         // 0
-  "Comic",               // 1
-  "Junior Novel",        // 2
-  "Movie",               // 3
-  "Novel",               // 4
-  "Short Story",         // 5
-  "TV Show",             // 6
-  "Videogame",           // 7
-  "Young Reader Book",   // 8
+  "Comic",           // 0
+  "Junior Novel",    // 1
+  "Movie",           // 2
+  "Novel",           // 3
+  "Short Story",     // 4
+  "TV Show",         // 5
+  "Videogame",       // 6
 ] as const;
 
 export type MediumIndex = number;
@@ -2248,10 +2230,9 @@ import type { FilterState } from "../../store/filterStore";
 import { filterWorks } from "../filterWorks";
 
 // Medium indices (alphabetical canonical order):
-// 0 Audio Drama, 1 Comic, 2 Junior Novel, 3 Movie, 4 Novel,
-// 5 Short Story, 6 TV Show, 7 Videogame, 8 Young Reader Book
-const NOVEL = 4;
-const COMIC = 1;
+// 0 Comic, 1 Junior Novel, 2 Movie, 3 Novel, 4 Short Story, 5 TV Show, 6 Videogame
+const NOVEL = 3;
+const COMIC = 0;
 
 const w = (over: Partial<Work> & { id: string; year: number }): Work => ({
   era: 5, title: "T", medium: NOVEL,
@@ -3585,9 +3566,9 @@ import { describe, expect, it } from "vitest";
 import type { Work } from "../../types/work";
 import { groupForChronology, groupForRelease } from "../timelineGroups";
 
-// Medium index 4 = "Novel" (alphabetical canonical order).
+// Medium index 3 = "Novel" (alphabetical canonical order, 7-entry MEDIUMS).
 const w = (over: Partial<Work> & { id: string; year: number }): Work => ({
-  era: 5, title: "T", medium: 4, ...over,
+  era: 5, title: "T", medium: 3, ...over,
 });
 
 describe("groupForChronology", () => {
@@ -4069,8 +4050,10 @@ git commit -m "Mention live URL in README"
 I checked the plan against the spec. Findings I fixed inline before publishing:
 
 1. **`series` is optional in the schema** — some Short Stories have no series; `_row_to_work` emits `series` only when present. Spec already reflects this.
-2. **`year` is required in the schema** — Excel year wins; Wookieepedia infobox (Timeline / Set in / Date / Era labels) is the fallback. If both sources are empty the row is logged to `data/missing_year.log` and excluded from the JSON. The infobox parser has a dedicated test (Eruption fixture) for the year fallback.
-3. **`medium` is an integer** — the JSON stores `medium` as an index 0..8 into the `MEDIUMS` constant (alphabetical order). The Excel reader keeps the canonical Title Case string; conversion to int happens in `build_data._row_to_work`. Rows with a medium not in the canonical list are logged to `data/missing_medium.log` and excluded from the JSON. The `make_id` canonical key still uses the medium STRING (not the index), so re-ordering `MEDIUMS` later would not invalidate any IDs (though the user will not re-order it).
+2. **`year` is required in the schema** — Excel year wins; Wookieepedia infobox (Timeline / Set in / Date / Era labels) is the fallback. If both sources are empty the row is logged to `data/ignored_no_year.log` and excluded from the JSON. The infobox parser has a dedicated test (Eruption fixture) for the year fallback.
+3. **`medium` is an integer** — the JSON stores `medium` as an index 0..6 into the 7-entry `MEDIUMS` constant (alphabetical, derived from year-having Excel rows). The Excel reader keeps the canonical Title Case string; conversion to int happens in `build_data._row_to_work`. Rows with a medium not in the canonical list are logged to `data/missing_medium.log` and excluded from the JSON. The `make_id` canonical key still uses the medium STRING (not the index), so re-ordering `MEDIUMS` later would not invalidate any IDs.
+
+Mediums excluded from `MEDIUMS` because they only exist in to-be-ignored (no-year) Excel rows: `Audio Drama`, `Young Reader Book`. If the user later adds a year to such a row, the build will skip it as missing-medium and prompt the developer to extend `MEDIUMS` (append-only).
 4. **No `excel_order` field** — the JSON's `works` array order is the canonical order. The frontend relies on JS's stable `Array.prototype.sort` to preserve this order as the implicit tiebreaker after `(era, year)` for chronology and after `release_date` for release sort.
 5. **`Sidebar` component used twice** — the original spec listed only `Sidebar.tsx`; the plan now also exports a `MobileSidebar` from the same file (Task 9.1) for the mobile drawer. No new file required, just an additional export.
 6. **`<repo-name>` placeholder** — the spec previously had this in §6.1 and §12; the spec was updated already. The plan uses `/swdb/` everywhere consistently.

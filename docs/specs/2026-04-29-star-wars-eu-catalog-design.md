@@ -58,20 +58,21 @@ No multi-source fallback for v1. If specific fields turn out to be sparse, we ca
   - `frontend/public/data/works.json` — consumed by the app.
   - `data/.cache/wookieepedia/<slug>.html` — on-disk HTTP cache (gitignored).
   - `data/unmatched.log` — append-only list of rows whose Wookieepedia page could not be confidently resolved.
-  - `data/missing_year.log` — rows for which neither Excel nor Wookieepedia produced a `year`. These rows are **excluded** from the JSON; the user must add the year to the Excel and re-run.
-  - `data/missing_medium.log` — rows whose normalized `MEDIUM` value isn't in the canonical `MEDIUMS` list. Also excluded from the JSON; the developer must extend the canonical list (appending new entries at the end, never reordering) and re-run.
+  - `data/ignored_no_year.log` — rows whose Excel `YEAR` cell is empty. These are intentional reference-only / incomplete entries in the spreadsheet; the pipeline silently excludes them from the JSON. The log exists for visibility only — it is not an error condition.
+  - `data/missing_medium.log` — rows whose normalized `MEDIUM` value isn't in the canonical `MEDIUMS` list. Excluded from the JSON; the developer must extend the canonical list (appending new entries at the end, never reordering) and re-run.
 
 ### 4.2 Steps
 
-1. **Read Excel** with `openpyxl`. Iterate every sheet; sheet name = era. Skip header row. Capture `era` (sheet name), `title`, `series`, `medium`, `number`, the original `INFO` and `COVER` URLs if present. The order in which works appear in the Excel is the canonical order — the JSON's `works` array must preserve it, and the frontend relies on stable sorting (no explicit tiebreaker key carried in the data).
-2. **Resolve Wookieepedia URL** per row:
+1. **Read Excel** with `openpyxl`. Iterate every sheet; sheet name = era. Skip header row. Capture `era` (sheet name), `title`, `series`, `medium`, `number`, `year`, plus the original `INFO` and `COVER` URLs if present. The order in which works appear in the Excel is the canonical order — the JSON's `works` array must preserve it, and the frontend relies on stable sorting (no explicit tiebreaker key carried in the data).
+2. **Filter to year-having rows.** A row whose Excel `YEAR` cell is empty is treated as a reference-only / incomplete entry and **excluded** from the JSON outright. Append it to `data/ignored_no_year.log` for visibility. (No Wookieepedia fallback for year — the Excel is the sole authority.)
+3. **Resolve Wookieepedia URL** for each surviving row:
    - `INFO` filled → use it.
    - `INFO` empty → call `action=opensearch` with `<title> <series>`. Accept the top match only if the matched page title contains the work's `title` (case-insensitive substring after slug-normalizing both). Otherwise log to `unmatched.log` and proceed Excel-only.
-3. **Fetch HTML** via the cache. Re-runs are near-free; `--refresh` flag bypasses the cache; `just clean-cache` deletes it.
-4. **Parse infobox** with BeautifulSoup. Extract `authors[]`, `publisher`, `release_date` (ISO 8601), `cover_url`, `wiki_url`, and an in-universe year (`Timeline` / `Set in` / `Date` infobox label). Whitespace and date normalization happen here.
-5. **Normalize era + medium + year** — sheet name → integer index 0–9 via the `ERAS` constant; medium string → integer index 0–8 via the `MEDIUMS` constant; `25793 BBY` → `-25793`, `4 ABY` → `4` as a single signed integer (`year`). Resolution order for year: Excel `YEAR` first; if empty, infobox year. If still empty, write the row to `missing_year.log` and exclude it from the JSON.
-6. **Generate IDs** — `uuid5` of a fixed namespace UUID applied to the canonical key `era|series|title|medium|#`. The medium component uses the **canonical medium string** (e.g. `"Novel"`), not the integer index, so that re-ordering the `MEDIUMS` array later does not invalidate any IDs. Stable across rebuilds, deterministic, collision-free across mediums.
-7. **Emit JSON** with the schema in §5. Omit any null/empty fields. The `works` array preserves the Excel iteration order. Print a summary of `unmatched`, `missing_year`, and `missing_medium` counts at the end of the run.
+4. **Fetch HTML** via the cache. Re-runs are near-free; `--refresh` flag bypasses the cache; `just clean-cache` deletes it.
+5. **Parse infobox** with BeautifulSoup. Extract `authors[]`, `publisher`, `release_date` (ISO 8601), `cover_url`, `wiki_url`. Whitespace and date normalization happen here. (No year parsing — year comes from Excel only.)
+6. **Normalize era + medium + year** — sheet name → integer index 0–9 via the `ERAS` constant; medium string → integer index via the `MEDIUMS` constant; `25793 BBY` → `-25793`, `4 ABY` → `4` as a single signed integer (`year`).
+7. **Generate IDs** — `uuid5` of a fixed namespace UUID applied to the canonical key `era|series|title|medium|#`. The medium component uses the **canonical medium string** (e.g. `"Novel"`), not the integer index, so that re-ordering the `MEDIUMS` array later does not invalidate any IDs. Stable across rebuilds, deterministic, collision-free across mediums.
+8. **Emit JSON** with the schema in §5. Omit any null/empty fields. The `works` array preserves the Excel iteration order (year-having rows only). Print a summary of `unmatched`, `ignored_no_year`, and `missing_medium` counts at the end of the run.
 
 ### 4.3 Flags
 
@@ -80,9 +81,8 @@ No multi-source fallback for v1. If specific fields turn out to be sparse, we ca
 
 ### 4.4 Override semantics
 
-- Excel **overrides** Wookieepedia for the four reliable fields (`title`, `series`, `medium`, `number`) and for `year` when present in the Excel.
-- Wookieepedia **fills in** `year` only when the Excel cell is empty.
-- Wookieepedia **overrides** Excel for everything else (`authors`, `publisher`, `release_date`, `cover_url`).
+- Excel is the **sole authority** for `title`, `series`, `medium`, `number`, and `year`. None of these are ever taken from Wookieepedia.
+- Wookieepedia is the sole source for `authors`, `publisher`, `release_date`, `cover_url`.
 - `wiki_url` is whichever URL was used to fetch (the resolved one).
 - The order of works in the JSON's `works` array is fully owned by the Excel; never reordered.
 
@@ -100,7 +100,7 @@ No multi-source fallback for v1. If specific fields turn out to be sparse, we ca
       "title": "A New Hope",
       "series": "Star Wars Episode",
       "number": "IV",
-      "medium": 4,
+      "medium": 3,
       "year": 0,
       "release_date": "1976-11-12",
       "authors": ["Alan Dean Foster"],
@@ -134,23 +134,21 @@ export const ERAS = [
 ] as const;
 ```
 
-`medium` is an integer index into the `MEDIUMS` constant, in alphabetical order. The frontend keeps:
+`medium` is an integer index into the `MEDIUMS` constant, in alphabetical order. The list is derived from the mediums actually present among year-having rows in the Excel. The frontend keeps:
 
 ```ts
 export const MEDIUMS = [
-  'Audio Drama',         // 0
-  'Comic',               // 1
-  'Junior Novel',        // 2
-  'Movie',               // 3
-  'Novel',               // 4
-  'Short Story',         // 5
-  'TV Show',             // 6
-  'Videogame',           // 7
-  'Young Reader Book',   // 8
+  'Comic',           // 0
+  'Junior Novel',    // 1
+  'Movie',           // 2
+  'Novel',           // 3
+  'Short Story',     // 4
+  'TV Show',         // 5
+  'Videogame',       // 6
 ] as const;
 ```
 
-The order is permanent — additions must be appended at the end (highest index) so existing indices keep their meaning. Casing in the Excel (e.g. `COMIC`) is normalized to the canonical Title Case before lookup. Rows whose medium isn't in this set are logged to `data/missing_medium.log` and excluded from the JSON.
+The order is permanent — additions must be appended at the end (highest index) so existing indices keep their meaning. Mediums that only appear in to-be-ignored (no-year) rows — e.g. `Audio Drama`, `Young Reader Book` in the current Excel — are intentionally NOT in this list. Casing in the Excel (e.g. `COMIC`) is normalized to the canonical Title Case before lookup. Rows whose medium isn't in this set (and have a year) are logged to `data/missing_medium.log` and excluded from the JSON; the developer should append the new medium at the end of `MEDIUMS` and re-run.
 
 `year` formatting in the UI:
 ```ts
