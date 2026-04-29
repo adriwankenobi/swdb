@@ -2,8 +2,6 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { SeriesFilter } from "@/components/filters/SeriesFilter";
 import { AuthorFilter } from "@/components/filters/AuthorFilter";
 import { PublisherFilter } from "@/components/filters/PublisherFilter";
-import { YearRangeFilter } from "@/components/filters/YearRangeFilter";
-import { ReleaseRangeFilter } from "@/components/filters/ReleaseRangeFilter";
 
 export function Sidebar() {
   return (
@@ -13,8 +11,6 @@ export function Sidebar() {
           <SeriesFilter />
           <AuthorFilter />
           <PublisherFilter />
-          <YearRangeFilter />
-          <ReleaseRangeFilter />
         </div>
       </ScrollArea>
     </aside>

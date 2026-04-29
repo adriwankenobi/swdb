@@ -4,7 +4,6 @@ import { useCatalogStore } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
 
 function formatRelease(iso: string): string {
-  // Show just the year for compactness
   return iso.slice(0, 4);
 }
 
@@ -39,7 +38,6 @@ export function ReleaseRangeFilter() {
   const [lowIdx, setLowIdx] = useState(initLow);
   const [highIdx, setHighIdx] = useState(initHigh);
 
-  // Reset when catalog loads or filter cleared
   useEffect(() => {
     if (releaseMin === null && releaseMax === null) {
       setLowIdx(0);
@@ -59,19 +57,18 @@ export function ReleaseRangeFilter() {
   }
 
   return (
-    <section className="space-y-2">
-      <h3 className="text-sm font-medium">Release date</h3>
+    <div className="flex items-center gap-2">
+      <span className="shrink-0 text-xs font-medium text-muted-foreground">Release:</span>
+      <span className="shrink-0 text-xs text-muted-foreground">{formatRelease(sortedDates[lowIdx])}</span>
       <Slider
         min={0}
         max={maxIdx}
         step={1}
         value={[lowIdx, highIdx]}
         onValueChange={handleChange}
+        className="w-36"
       />
-      <div className="flex justify-between text-xs text-muted-foreground">
-        <span>{formatRelease(sortedDates[lowIdx])}</span>
-        <span>{formatRelease(sortedDates[highIdx])}</span>
-      </div>
-    </section>
+      <span className="shrink-0 text-xs text-muted-foreground">{formatRelease(sortedDates[highIdx])}</span>
+    </div>
   );
 }

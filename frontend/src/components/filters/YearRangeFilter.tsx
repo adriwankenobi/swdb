@@ -33,7 +33,6 @@ export function YearRangeFilter() {
   const [lowIdx, setLowIdx] = useState(initLow);
   const [highIdx, setHighIdx] = useState(initHigh);
 
-  // Reset if catalog loads after mount
   useEffect(() => {
     if (yearMin === null && yearMax === null) {
       setLowIdx(0);
@@ -53,19 +52,18 @@ export function YearRangeFilter() {
   }
 
   return (
-    <section className="space-y-2">
-      <h3 className="text-sm font-medium">Year (in-universe)</h3>
+    <div className="flex items-center gap-2">
+      <span className="shrink-0 text-xs font-medium text-muted-foreground">Year:</span>
+      <span className="shrink-0 text-xs text-muted-foreground">{formatYear(sortedYears[lowIdx])}</span>
       <Slider
         min={0}
         max={maxIdx}
         step={1}
         value={[lowIdx, highIdx]}
         onValueChange={handleChange}
+        className="w-36"
       />
-      <div className="flex justify-between text-xs text-muted-foreground">
-        <span>{formatYear(sortedYears[lowIdx])}</span>
-        <span>{formatYear(sortedYears[highIdx])}</span>
-      </div>
-    </section>
+      <span className="shrink-0 text-xs text-muted-foreground">{formatYear(sortedYears[highIdx])}</span>
+    </div>
   );
 }

@@ -15,7 +15,7 @@ export function MediumTabs() {
   }
 
   return (
-    <div className="flex flex-wrap items-center gap-1 border-b px-4 py-2">
+    <div className="flex flex-wrap items-center gap-1">
       <button
         type="button"
         onClick={clearMedium}
