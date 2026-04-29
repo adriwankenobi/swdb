@@ -31,9 +31,9 @@ class WikiClient:
             return cache_path.read_text(encoding="utf-8")
         try:
             time.sleep(POLITE_DELAY_SECONDS)
-            response = self._session.get(url, headers={}, timeout=REQUEST_TIMEOUT)
+            response = self._session.get(url, timeout=REQUEST_TIMEOUT)
             response.raise_for_status()
-        except requests.HTTPError:
+        except requests.RequestException:
             return None
         html = response.text
         cache_path.write_text(html, encoding="utf-8")

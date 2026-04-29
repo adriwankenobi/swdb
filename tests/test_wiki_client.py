@@ -13,7 +13,7 @@ def cache_dir(tmp_path: Path) -> Path:
 def test_fetch_html_caches_response(cache_dir, monkeypatch):
     calls = {"n": 0}
 
-    def fake_get(url, headers, timeout):
+    def fake_get(url, timeout):
         calls["n"] += 1
 
         class R:
@@ -38,7 +38,7 @@ def test_fetch_html_caches_response(cache_dir, monkeypatch):
 def test_fetch_html_refresh_bypasses_cache(cache_dir, monkeypatch):
     calls = {"n": 0}
 
-    def fake_get(url, headers, timeout):
+    def fake_get(url, timeout):
         calls["n"] += 1
 
         class R:
@@ -58,7 +58,7 @@ def test_fetch_html_refresh_bypasses_cache(cache_dir, monkeypatch):
 
 
 def test_fetch_html_404_returns_none(cache_dir, monkeypatch):
-    def fake_get(url, headers, timeout):
+    def fake_get(url, timeout):
         class R:
             status_code = 404
             text = "Not Found"
@@ -69,6 +69,17 @@ def test_fetch_html_404_returns_none(cache_dir, monkeypatch):
                 raise HTTPError("404")
 
         return R()
+
+    client = WikiClient(cache_dir=cache_dir)
+    monkeypatch.setattr(client._session, "get", fake_get)
+    assert client.fetch_html("https://example.com/missing") is None
+
+
+def test_fetch_html_returns_none_on_connection_error(cache_dir, monkeypatch):
+    def fake_get(url, timeout):
+        from requests import ConnectionError
+
+        raise ConnectionError("DNS lookup failed")
 
     client = WikiClient(cache_dir=cache_dir)
     monkeypatch.setattr(client._session, "get", fake_get)
