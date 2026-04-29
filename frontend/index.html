@@ -5,6 +5,18 @@
     <link rel="icon" type="image/svg+xml" href="/swdb/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SWDB — Star Wars EU Catalog</title>
+  <script>
+    (function () {
+      var p = new URLSearchParams(window.location.search);
+      var encoded = p.get("p");
+      if (encoded !== null) {
+        p.delete("p");
+        var rest = p.toString();
+        var newPath = "/swdb/" + encoded + (rest ? "?" + rest : "");
+        window.history.replaceState(null, "", newPath);
+      }
+    })();
+  </script>
   </head>
   <body>
     <div id="root"></div>
