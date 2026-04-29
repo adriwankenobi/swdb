@@ -5,6 +5,7 @@ import { readFromUrl, writeToUrl } from "./lib/urlState";
 import { AppShell } from "./components/layout/AppShell";
 import { filterWorks } from "./lib/filterWorks";
 import { ActiveFilterChips } from "./components/filters/ActiveFilterChips";
+import { CardGrid } from "./components/views/CardGrid";
 
 export default function App() {
   const { status, works, error, load } = useCatalogStore();
@@ -34,8 +35,13 @@ export default function App() {
 
   return (
     <AppShell>
-      <ActiveFilterChips />
-      <p className="text-sm text-muted-foreground">{visible.length} of {works.length} works</p>
+      <div className="flex h-full flex-col">
+        <ActiveFilterChips />
+        <p className="pb-3 text-sm text-muted-foreground">{visible.length} of {works.length} works</p>
+        {filterState.view === "cards" && <CardGrid works={visible} />}
+        {filterState.view === "table" && <p className="text-muted-foreground">Table view (Phase 7)</p>}
+        {filterState.view === "timeline" && <p className="text-muted-foreground">Timeline view (Phase 8)</p>}
+      </div>
     </AppShell>
   );
 }
