@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SWDB</title>
+  <script>
+    var l = window.location;
+    var path = l.pathname.replace(/^\/swdb\//, "");
+    var qs = l.search ? l.search : "";
+    l.replace("/swdb/?p=" + encodeURIComponent(path) + "&" + qs.replace(/^\?/, ""));
+  </script>
+</head>
+<body></body>
+</html>

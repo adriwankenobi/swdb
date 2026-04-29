@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+
+# Pipeline artifacts
+data/.cache/
+data/unmatched.log
+data/duplicates.log
+data/missing_medium.log
+data/ignored_no_year.log
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.uv/
+
+# Frontend (will exist after bootstrap)
+frontend/node_modules/
+frontend/dist/
+
+# Editors
+.vscode/
+.idea/
+
+# Local-only construction notes (specs, plans, etc.)
+docs/
+
+# Local Claude config
+CLAUDE.local.md
