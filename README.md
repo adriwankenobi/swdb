@@ -4,6 +4,10 @@ A personal browsable catalog of every work in the Star Wars Expanded Universe.
 
 Live: <https://adriwankenobi.github.io/swdb/>
 
+## Status
+
+Live at <https://adriwankenobi.github.io/swdb/>. ~1933 works indexed across 10 eras of the Star Wars Expanded Universe, sourced from `Star Wars EU.xlsx` and enriched with Wookieepedia metadata via the MediaWiki API.
+
 ## Stack
 
 - **Pipeline:** Python (uv, openpyxl, requests, beautifulsoup4) reads `Star Wars EU.xlsx` and enriches each row from Wookieepedia, emitting `frontend/public/data/works.json`.
