@@ -18,18 +18,20 @@ def test_fetch_html_caches_response(cache_dir, monkeypatch):
 
         class R:
             status_code = 200
-            text = "<html>ok</html>"
 
             def raise_for_status(self):
                 pass
+
+            def json(self):
+                return {"parse": {"text": {"*": "<html>ok</html>"}}}
 
         return R()
 
     client = WikiClient(cache_dir=cache_dir)
     monkeypatch.setattr(client._session, "get", fake_get)
 
-    html_a = client.fetch_html("https://example.com/page")
-    html_b = client.fetch_html("https://example.com/page")
+    html_a = client.fetch_html("https://starwars.fandom.com/wiki/page")
+    html_b = client.fetch_html("https://starwars.fandom.com/wiki/page")
     assert html_a == "<html>ok</html>"
     assert html_b == "<html>ok</html>"
     assert calls["n"] == 1  # cache hit
@@ -43,17 +45,19 @@ def test_fetch_html_refresh_bypasses_cache(cache_dir, monkeypatch):
 
         class R:
             status_code = 200
-            text = f"<html>{calls['n']}</html>"
 
             def raise_for_status(self):
                 pass
+
+            def json(self):
+                return {"parse": {"text": {"*": f"<html>{calls['n']}</html>"}}}
 
         return R()
 
     client = WikiClient(cache_dir=cache_dir, refresh=True)
     monkeypatch.setattr(client._session, "get", fake_get)
-    client.fetch_html("https://example.com/page")
-    client.fetch_html("https://example.com/page")
+    client.fetch_html("https://starwars.fandom.com/wiki/page")
+    client.fetch_html("https://starwars.fandom.com/wiki/page")
     assert calls["n"] == 2
 
 
@@ -61,18 +65,20 @@ def test_fetch_html_404_returns_none(cache_dir, monkeypatch):
     def fake_get(url, timeout):
         class R:
             status_code = 404
-            text = "Not Found"
 
             def raise_for_status(self):
                 from requests import HTTPError
 
                 raise HTTPError("404")
 
+            def json(self):
+                return {}
+
         return R()
 
     client = WikiClient(cache_dir=cache_dir)
     monkeypatch.setattr(client._session, "get", fake_get)
-    assert client.fetch_html("https://example.com/missing") is None
+    assert client.fetch_html("https://starwars.fandom.com/wiki/missing") is None
 
 
 def test_fetch_html_returns_none_on_connection_error(cache_dir, monkeypatch):
@@ -83,7 +89,7 @@ def test_fetch_html_returns_none_on_connection_error(cache_dir, monkeypatch):
 
     client = WikiClient(cache_dir=cache_dir)
     monkeypatch.setattr(client._session, "get", fake_get)
-    assert client.fetch_html("https://example.com/missing") is None
+    assert client.fetch_html("https://starwars.fandom.com/wiki/missing") is None
 
 
 def test_resolve_url_returns_info_url_when_present(cache_dir):
@@ -138,3 +144,44 @@ def test_resolve_url_returns_none_when_opensearch_empty(cache_dir, monkeypatch):
     url, source = client.resolve_url(info_url=None, title="Nonexistent Work", series=None)
     assert url is None
     assert source == "unmatched"
+
+
+def test_fetch_html_uses_mediawiki_api(cache_dir, monkeypatch):
+    captured: dict = {}
+
+    def fake_get(url, timeout):
+        captured["url"] = url
+
+        class R:
+            status_code = 200
+
+            def raise_for_status(self):
+                pass
+
+            def json(self):
+                return {"parse": {"text": {"*": "<aside>body</aside>"}}}
+
+        return R()
+
+    client = WikiClient(cache_dir=cache_dir)
+    monkeypatch.setattr(client._session, "get", fake_get)
+    html = client.fetch_html("https://starwars.fandom.com/wiki/A_New_Hope")
+    assert html == "<aside>body</aside>"
+    assert "api.php?action=parse" in captured["url"]
+    assert "page=A_New_Hope" in captured["url"]
+
+
+def test_fetch_html_returns_none_on_malformed_json(cache_dir, monkeypatch):
+    def fake_get(url, timeout):
+        class R:
+            def raise_for_status(self):
+                pass
+
+            def json(self):
+                return {"unexpected": "shape"}
+
+        return R()
+
+    client = WikiClient(cache_dir=cache_dir)
+    monkeypatch.setattr(client._session, "get", fake_get)
+    assert client.fetch_html("https://starwars.fandom.com/wiki/X") is None
