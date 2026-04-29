@@ -1668,13 +1668,69 @@ if __name__ == "__main__":
     main()
 ```
 
-- [ ] **Step 2: First full run (this fetches ~1900 pages; allow 10–20 minutes)**
+- [ ] **Step 2: Switch `wiki_client.fetch_html` to the MediaWiki API (preemptive Cloudflare avoidance)**
+
+Cloudflare blocks plain `requests` access to `https://starwars.fandom.com/wiki/<title>` HTML pages. The MediaWiki API (`/api.php?action=parse`) is unguarded and returns the same article body. Update `WikiClient.fetch_html` to:
+
+1. Extract the article title from the input wiki URL (everything after `/wiki/`).
+2. Call `https://starwars.fandom.com/api.php?action=parse&page=<title>&prop=text&format=json&redirects=true`.
+3. Parse the JSON response and read `parse.text["*"]` (the article body HTML).
+4. Cache the body HTML on disk keyed by the original wiki URL (so the cache key is stable regardless of how we fetch).
+
+Existing `wiki_client.py` tests still pass because they monkey-patch `client._session.get` — the underlying HTTP shape doesn't matter to them. Add one new test that asserts the API URL is what gets called:
+
+```python
+def test_fetch_html_uses_mediawiki_api(cache_dir, monkeypatch):
+    captured: dict = {}
+
+    def fake_get(url, timeout):
+        captured["url"] = url
+
+        class R:
+            status_code = 200
+
+            def raise_for_status(self):
+                pass
+
+            def json(self):
+                return {"parse": {"text": {"*": "<aside>body</aside>"}}}
+
+        return R()
+
+    client = WikiClient(cache_dir=cache_dir)
+    monkeypatch.setattr(client._session, "get", fake_get)
+    html = client.fetch_html("https://starwars.fandom.com/wiki/A_New_Hope")
+    assert html == "<aside>body</aside>"
+    assert "api.php?action=parse" in captured["url"]
+    assert "page=A_New_Hope" in captured["url"]
+```
+
+- [ ] **Step 3: Add `scripts/excel_writer.py` and integrate the writeback**
+
+Create a new module `scripts/excel_writer.py` exporting `update_excel(path, lookup)`:
+
+- `lookup` is `dict[tuple, dict]` keyed by `(era: int, title: str, series: str | None, medium_canonical: str, number: str | None)` → `{"authors": [...], "publisher": "...", "release_date": "1976-11-12", "cover_url": "..."}`.
+- Open the workbook in **normal mode** (NOT `read_only=True`).
+- Iterate sheets matching `ERA_INDEX`. For each data row (skip header), build the same lookup key from the cells (apply `_normalize_medium` + `_stringify` from `excel_reader`).
+- If the key is in the lookup AND we have a value, write to:
+  - Column F (`AUTHOR`): authors list joined with `" and "`.
+  - Column G (`PUBLISHER`): publisher string.
+  - Column H (`RELEASE`): convert ISO `YYYY-MM-DD` → dotted `YYYY.MM.DD`.
+  - Column K (`COVER`): cover_url string.
+- Skip writing for any field where the value is missing/empty (preserve existing Excel content).
+- Save the workbook in place.
+
+Then in `build_data.build()`: after collecting `works[]` and writing JSON, build the `lookup` dict from each enriched work (re-using the canonical key) and call `excel_writer.update_excel(EXCEL_PATH, lookup)`.
+
+Tests for `excel_writer`: copy a small fixture xlsx to `tmp_path`, build a fake lookup, run `update_excel`, re-open with read_only=True and assert the cells changed; assert untouched cells unchanged. Use a tiny 2-3-row test sheet, not the real Excel file.
+
+- [ ] **Step 4: First full run (this fetches ~1938 pages; allow 10–20 minutes)**
 
 ```bash
 just scrape
 ```
 
-Expected: progress lines every 50 rows, finishing with `wrote N works; M unmatched; K ignored-no-year; J missing-medium skipped to .../works.json` where N ≈ 1938 (year-having rows only), M is small (typically < 50), K is ~172 (intentional reference-only Excel rows), and J should be 0 (the canonical `MEDIUMS` list covers every relevant Excel value as of this plan; if J > 0, inspect `data/missing_medium.log` and either append the new medium to `MEDIUMS` or correct the Excel). Cache populates `data/.cache/wookieepedia/`.
+Expected: progress lines every 50 rows, finishing with `wrote N works; M unmatched; K ignored-no-year; J missing-medium skipped to .../works.json` where N ≈ 1938 (year-having rows only), M is small (typically < 50), K is ~172 (intentional reference-only Excel rows), and J should be 0. Cache populates `data/.cache/wookieepedia/`. The Excel file is updated in place with enriched authors / publisher / release / cover values.
 
 - [ ] **Step 3: Spot-check the output**
 

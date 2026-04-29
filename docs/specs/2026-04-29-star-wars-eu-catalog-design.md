@@ -85,6 +85,8 @@ No multi-source fallback for v1. If specific fields turn out to be sparse, we ca
 - Wookieepedia is the sole source for `authors`, `publisher`, `release_date`, `cover_url`.
 - `wiki_url` is whichever URL was used to fetch (the resolved one).
 - The order of works in the JSON's `works` array is fully owned by the Excel; never reordered.
+- **Excel writeback.** After enrichment, the four Wookieepedia-sourced fields are also written **back into the Excel cells** (columns `AUTHOR`, `PUBLISHER`, `RELEASE`, `COVER`) of the corresponding row. The trusted columns (`YEAR`, `MEDIUM`, `SERIES`, `TITLE`, `#`, `INFO`, `COLLECTED`) are never modified. openpyxl preserves cell formatting (colors, borders, widths, frozen panes) on save. Format conversions: authors are joined with `" and "` to match the Excel convention; release dates are converted from ISO (`1976-11-12`) to dotted (`1976.11.12`).
+- **Network strategy.** The pipeline uses Wookieepedia's MediaWiki API (`/api.php?action=parse&page=<title>&prop=text&format=json&redirects=true`) rather than scraping HTML pages directly. Cloudflare's bot protection blocks plain `requests` access to the rendered HTML pages, but the API endpoint is open. The returned HTML is the same article body either way, so the existing infobox parser works on it unchanged.
 
 ## 5. Data model
 
