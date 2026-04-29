@@ -15,7 +15,8 @@ export function WorkRow({ work, onClick }: WorkRowProps) {
   return (
     <div
       onClick={onClick}
-      className="flex cursor-pointer items-center border-b text-sm hover:bg-muted/40"
+      className="flex cursor-pointer items-center border-b text-sm transition-shadow hover:shadow-[inset_0_0_0_9999px_rgba(0,0,0,0.05)]"
+      style={{ backgroundColor: work.color ?? undefined }}
     >
       {/* Cover */}
       <div className={`shrink-0 px-2 py-1 ${COLUMNS[0].width}`}>
