@@ -31,6 +31,15 @@ function matchesYear(w: Work, min: number | null, max: number | null): boolean {
   return true;
 }
 
+function matchesRelease(w: Work, min: string | null, max: string | null): boolean {
+  if (min === null && max === null) return true;
+  const d = w.release_date;
+  if (!d) return false; // no release_date → excluded when filter is active
+  if (min !== null && d < min) return false;
+  if (max !== null && d > max) return false;
+  return true;
+}
+
 // Sorts return 0 for equal keys so JS's stable Array.prototype.sort
 // preserves the input order — which is the JSON / Excel order.
 function compareChronology(a: Work, b: Work): number {
@@ -56,6 +65,7 @@ export function filterWorks(works: Work[], filters: FilterState): Work[] {
     matchesArray(filters.publishers, w.publisher) &&
     matchesAnyOf(filters.authors, w.authors) &&
     matchesYear(w, filters.yearMin, filters.yearMax) &&
+    matchesRelease(w, filters.releaseMin, filters.releaseMax) &&
     matchesQuery(w, filters.q),
   );
   const cmp = filters.sort === "release" ? compareRelease : compareChronology;

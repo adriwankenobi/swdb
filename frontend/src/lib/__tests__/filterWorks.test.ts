@@ -15,7 +15,7 @@ const w = (over: Partial<Work> & { id: string; year: number }): Work => ({
 
 const empty: FilterState = {
   eras: [], mediums: [], series: [], authors: [], publishers: [],
-  q: "", yearMin: null, yearMax: null,
+  q: "", yearMin: null, yearMax: null, releaseMin: null, releaseMax: null,
   view: "cards", sort: "chronology", openWorkId: null,
 };
 
@@ -91,5 +91,33 @@ describe("filterWorks", () => {
     ];
     const r = filterWorks(data, { ...empty, sort: "release" });
     expect(r.map((x) => x.id)).toEqual(["first", "second"]);
+  });
+
+  it("filters by release date range inclusive", () => {
+    const data: Work[] = [
+      w({ id: "early", year: 0, release_date: "1976-11-12" }),
+      w({ id: "mid",   year: 0, release_date: "1999-04-01" }),
+      w({ id: "late",  year: 0, release_date: "2015-09-04" }),
+    ];
+    const r = filterWorks(data, { ...empty, releaseMin: "1990-01-01", releaseMax: "2010-01-01" });
+    expect(r.map((x) => x.id)).toEqual(["mid"]);
+  });
+
+  it("release date filter excludes works without release_date", () => {
+    const data: Work[] = [
+      w({ id: "dated",   year: 0, release_date: "2000-01-01" }),
+      w({ id: "undated", year: 0 }),
+    ];
+    const r = filterWorks(data, { ...empty, releaseMin: "1990-01-01", releaseMax: "2010-01-01" });
+    expect(r.map((x) => x.id)).toEqual(["dated"]);
+  });
+
+  it("release date filter inactive shows all (including undated)", () => {
+    const data: Work[] = [
+      w({ id: "dated",   year: 0, release_date: "2000-01-01" }),
+      w({ id: "undated", year: 0 }),
+    ];
+    const r = filterWorks(data, { ...empty, releaseMin: null, releaseMax: null });
+    expect(r).toHaveLength(2);
   });
 });

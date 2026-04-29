@@ -21,6 +21,12 @@ export function ActiveFilterChips() {
       clear: () => s.set({ yearMin: null, yearMax: null }),
     });
   }
+  if (s.releaseMin !== null || s.releaseMax !== null) {
+    chips.push({
+      label: "release",
+      clear: () => s.set({ releaseMin: null, releaseMax: null }),
+    });
+  }
   if (chips.length === 0) return null;
   return (
     <div className="flex flex-wrap items-center gap-2 pb-3">
