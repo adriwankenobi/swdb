@@ -20,10 +20,11 @@ specific to this user (terminology preferences, commit conventions, etc.).
 - **Python:** managed by [uv](https://docs.astral.sh/uv/). Located at
   `~/.local/bin/uv`. If `uv` is not on PATH in a fresh shell, run
   `source ~/.local/bin/env` first.
-- **Node:** Node 25.9.0 from Homebrew (`/usr/local/Cellar/node/25.9.0_2/bin`).
-  The user's nvm-installed Node (8.x) is too old for Vite 6. Always prepend
-  the Homebrew node path when running `npm` commands:
-  `PATH="/usr/local/Cellar/node/25.9.0_2/bin:$PATH" npm <cmd>`.
+- **Node:** Homebrew node at `/usr/local/opt/node/bin` (version-stable
+  symlink). The user's nvm-installed Node (8.x) is too old for Vite 6. The
+  `justfile` exports this path at the top, so every `just` recipe (`just dev`,
+  `just build`, etc.) Just Works™. For raw `npm` invocations outside `just`,
+  prepend it manually: `PATH="/usr/local/opt/node/bin:$PATH" npm <cmd>`.
 
 ## Schema (works.json)
 
@@ -64,3 +65,4 @@ pipeline excludes them from the JSON and logs them to
 - `just build` / `just deploy` — production build / publish to GitHub Pages.
 - `just test-pipeline` / `just test-frontend` — test suites.
 - `just --list` — all recipes.
+- Bare `just` (no args) opens an fzf picker over the recipes.

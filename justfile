@@ -1,3 +1,12 @@
+# Prepend Homebrew node so recipes invoking npm bypass the system/nvm node
+# (which is too old for Vite 6).
+export PATH := "/usr/local/opt/node/bin:" + env_var('PATH')
+
+# Bare `just` opens an fzf picker over the recipes below.
+[private]
+default:
+    @just --choose
+
 # Run the build pipeline (Excel -> works.json). Uses on-disk cache.
 scrape:
     uv run python -m scripts.build_data
