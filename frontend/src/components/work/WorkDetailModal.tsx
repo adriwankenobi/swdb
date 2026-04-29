@@ -100,12 +100,12 @@ export function WorkDetailModal() {
                   </p>
                 )}
                 {work.wiki_url && (
-                  <p>
+                  <p className="break-words">
                     <a
                       href={work.wiki_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="underline break-all"
+                      className="underline inline-block"
                     >
                       Open on Wookieepedia →
                     </a>
