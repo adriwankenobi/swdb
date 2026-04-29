@@ -5,6 +5,7 @@
 data/.cache/
 data/unmatched.log
 data/duplicates.log
+data/missing_medium.log
 
 # Python
 __pycache__/

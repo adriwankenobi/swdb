@@ -42,9 +42,9 @@ def test_medium_casing_is_normalized(rows):
     assert "Novel" in mediums
 
 
-def test_year_in_universe_parsed(rows):
+def test_year_parsed(rows):
     sample = next(r for r in rows if r.title == "A New Hope" and r.medium == "Novel")
-    assert sample.year_in_universe == 0
+    assert sample.year == 0
 
 
 def test_excel_row_skips_empty_rows(rows):
@@ -57,15 +57,19 @@ def test_info_url_present_for_known_row(rows):
     assert sample.info_url and "starwars.fandom.com" in sample.info_url
 
 
-def test_excel_order_is_unique_and_contiguous(rows):
-    orders = [row.excel_order for row in rows]
-    assert orders == list(range(len(rows)))
-
-
-def test_excel_order_preserves_in_sheet_sequence(rows):
-    # First two rows of OLD REPUBLIC sheet should have consecutive excel_order values.
-    old_rep = [r for r in rows if r.era == 1]
-    assert old_rep[0].excel_order + 1 == old_rep[1].excel_order
+def test_read_works_yields_rows_in_canonical_excel_order(rows):
+    # The order in which rows are yielded IS the canonical order. This test
+    # encodes that contract: the first row of REBELLION (era 5) appears in the
+    # output before the first row of NEW REPUBLIC (era 6), regardless of any
+    # later sorting in the frontend.
+    eras_in_yield_order = [r.era for r in rows]
+    # Rows are grouped by era in sheet-iteration order; eras must appear in
+    # non-decreasing chunks.
+    seen_eras: list[int] = []
+    for e in eras_in_yield_order:
+        if not seen_eras or seen_eras[-1] != e:
+            seen_eras.append(e)
+    assert seen_eras == sorted(seen_eras)
 
 
 def test_read_works_closes_workbook_on_early_termination():

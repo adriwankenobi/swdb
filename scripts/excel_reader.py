@@ -43,13 +43,11 @@ _MEDIUM_NORMALIZE: dict[str, str] = {
 @dataclass(frozen=True)
 class ExcelRow:
     era: int
-    excel_order: int  # global running counter, 0-based, stable across rebuilds
     title: str
     series: str | None
-    medium: str
+    medium: str          # canonical Title Case (e.g. "Novel"); converted to int in build_data
     number: str | None
-    # may be None when Excel YEAR is empty; Wookieepedia fallback in build_data
-    year_in_universe: int | None
+    year: int | None     # may be None when Excel YEAR is empty; Wookieepedia fallback in build_data
     info_url: str | None
     cover_url: str | None  # raw — may be ignored later in favor of wiki-fetched cover
 
@@ -69,10 +67,9 @@ def _stringify(cell: object) -> str | None:
 
 
 def read_works(path: Path) -> Iterator[ExcelRow]:
-    """Yield ExcelRow per non-empty data row in every sheet."""
+    """Yield ExcelRow per non-empty data row in every sheet, in workbook order."""
     wb = load_workbook(path, data_only=True, read_only=True)
     try:
-        counter = 0
         for sheet_name in wb.sheetnames:
             if sheet_name not in ERA_INDEX:
                 continue
@@ -83,6 +80,8 @@ def read_works(path: Path) -> Iterator[ExcelRow]:
                 next(rows_iter)
             except StopIteration:
                 continue
+            # Header layout: YEAR, MEDIUM, SERIES, TITLE, #, AUTHOR, PUBLISHER, RELEASE,
+            # COLLECTED, INFO, COVER. We trust positions 0..10 by index.
             for raw in rows_iter:
                 year_raw = _stringify(raw[0])
                 medium_raw = _stringify(raw[1])
@@ -95,15 +94,13 @@ def read_works(path: Path) -> Iterator[ExcelRow]:
                     continue
                 yield ExcelRow(
                     era=era,
-                    excel_order=counter,
                     title=title,
                     series=series,
                     medium=_normalize_medium(medium_raw),
                     number=number,
-                    year_in_universe=parse_year(year_raw),
+                    year=parse_year(year_raw),
                     info_url=info_url,
                     cover_url=cover_url,
                 )
-                counter += 1
     finally:
         wb.close()
