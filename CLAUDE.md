@@ -50,8 +50,9 @@ pipeline excludes them from the JSON and logs them to
 - `scripts/` — Python pipeline (`build_data.py` orchestrates).
 - `tests/` — pytest suite for the pipeline.
 - `frontend/` — React SPA.
-- `docs/specs/2026-04-29-star-wars-eu-catalog-design.md` — current design.
-- `docs/plans/2026-04-29-star-wars-eu-catalog-plan.md` — current plan.
+- `ARCHITECTURE.md` — public technical overview of the shipped system.
+- `docs/superpowers/specs/2026-04-29-star-wars-eu-catalog-design.md` — local-only design doc (gitignored).
+- `docs/superpowers/plans/2026-04-29-star-wars-eu-catalog-plan.md` — local-only implementation plan (gitignored).
 - `data/.cache/wookieepedia/` — HTTP cache (gitignored).
 - `data/{unmatched,duplicates,missing_medium,ignored_no_year}.log` —
   build-time logs (gitignored).

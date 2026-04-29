@@ -23,9 +23,9 @@ just --list          # all commands
 
 ## Repo layout
 
+- `Star Wars EU.xlsx` — source of truth for title / series / medium / # / year
 - `scripts/` — Python build pipeline
 - `tests/` — pytest suite for the pipeline
 - `frontend/` — React SPA
-- `data/` — `.cache/` (HTTP cache, gitignored) and `unmatched.log`
-- `docs/specs/` — design documents
-- `docs/plans/` — implementation plans
+- `data/` — `.cache/` (HTTP cache, gitignored) and build-time logs
+- `ARCHITECTURE.md` — technical overview of the system

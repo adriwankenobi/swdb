@@ -22,5 +22,8 @@ frontend/dist/
 .vscode/
 .idea/
 
+# Local-only construction notes (specs, plans, etc.)
+docs/
+
 # Local Claude config
 CLAUDE.local.md
