@@ -43,7 +43,8 @@ function Marker({ work, onClick }: MarkerProps) {
 }
 
 export function TimelineView({ works }: { works: Work[] }) {
-  const { sort, set } = useFilterStore((s) => ({ sort: s.sort, set: s.set }));
+  const sort = useFilterStore((s) => s.sort);
+  const set = useFilterStore((s) => s.set);
 
   if (works.length === 0) {
     return (
