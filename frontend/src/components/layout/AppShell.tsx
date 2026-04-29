@@ -1,11 +1,13 @@
 import type { ReactNode } from "react";
 import { Sidebar } from "./Sidebar";
 import { TopBar } from "./TopBar";
+import { EraTabs } from "./EraTabs";
 
 export function AppShell({ children }: { children: ReactNode }) {
   return (
     <div className="flex h-screen flex-col">
       <TopBar />
+      <EraTabs />
       <div className="flex flex-1 overflow-hidden">
         <Sidebar />
         <main className="flex-1 overflow-auto p-4">{children}</main>

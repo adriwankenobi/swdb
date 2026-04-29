@@ -1,5 +1,4 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { EraFilter } from "@/components/filters/EraFilter";
 import { MediumFilter } from "@/components/filters/MediumFilter";
 import { SeriesFilter } from "@/components/filters/SeriesFilter";
 import { AuthorFilter } from "@/components/filters/AuthorFilter";
@@ -11,7 +10,6 @@ export function Sidebar() {
     <aside className="hidden w-72 shrink-0 border-r md:block">
       <ScrollArea className="h-full p-4">
         <div className="space-y-6 text-sm">
-          <EraFilter />
           <MediumFilter />
           <SeriesFilter />
           <AuthorFilter />
