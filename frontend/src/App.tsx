@@ -8,6 +8,7 @@ import { filterWorks } from "./lib/filterWorks";
 import { ActiveFilterChips } from "./components/filters/ActiveFilterChips";
 import { CardGrid } from "./components/views/CardGrid";
 import { TableView } from "./components/views/TableView";
+import { TimelineView } from "./components/views/TimelineView";
 import { WorkDetailModal } from "./components/work/WorkDetailModal";
 import type { EraIndex } from "./constants/eras";
 
@@ -63,7 +64,7 @@ export default function App() {
           <ActiveFilterChips />
           {filterState.view === "cards" && <CardGrid works={visible} />}
           {filterState.view === "table" && <TableView works={visible} />}
-          {filterState.view === "timeline" && <p className="text-muted-foreground">Timeline view (Phase 8)</p>}
+          {filterState.view === "timeline" && <TimelineView works={visible} />}
         </div>
       </AppShell>
       <WorkDetailModal />
