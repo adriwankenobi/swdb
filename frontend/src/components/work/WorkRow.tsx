@@ -2,6 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { ERAS, ERA_COLORS, type EraIndex } from "@/constants/eras";
 import { MEDIUMS, MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
+import { formatReleaseDateCompact } from "@/lib/formatReleaseDate";
 import type { Work } from "@/types/work";
 import { COLUMNS } from "@/components/views/_tableColumns";
 
@@ -69,7 +70,7 @@ export function WorkRow({ work, onClick }: WorkRowProps) {
 
       {/* Release */}
       <div className={`shrink-0 px-2 py-1 text-muted-foreground whitespace-nowrap ${COLUMNS[7].width}`}>
-        {work.release_date ?? ""}
+        {work.release_date ? formatReleaseDateCompact(work.release_date, work.release_precision) : ""}
       </div>
 
       {/* Authors */}

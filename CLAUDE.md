@@ -38,8 +38,11 @@ Each work has the shape:
   Videogame)
 - `title`: string (required)
 - `year`: signed int (negative = BBY, non-negative = ABY) — required
-- `series`, `number`, `release_date`, `authors[]`, `publisher`, `cover_url`,
-  `wiki_url`: optional, omitted when empty (no nulls in the JSON)
+- `series`, `number`, `release_date`, `release_precision`, `authors[]`,
+  `publisher`, `cover_url`, `wiki_url`: optional, omitted when empty (no
+  nulls in the JSON). `release_precision` is `"day" | "month" | "year"`
+  and is always emitted alongside `release_date` so the frontend can render
+  faithfully (e.g. `"November 1996"` vs `"November 1, 1996"`).
 
 Excel rows with no `YEAR` cell are intentional reference-only entries; the
 pipeline excludes them from the JSON and logs them to

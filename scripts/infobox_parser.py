@@ -25,6 +25,10 @@ _LABEL_MAP: dict[str, str] = {
     "publication date": "release_date",
     "release date": "release_date",
     "released": "release_date",
+    # TV-show episode infoboxes use "Air date" (and occasional "Airdate")
+    # instead of "Release date". Same downstream key.
+    "air date": "release_date",
+    "airdate": "release_date",
 }
 
 _DATE_FORMATS = (
@@ -36,6 +40,29 @@ _DATE_FORMATS = (
     "%Y",
 )
 
+# Wookieepedia frequently lists release_date as month + year only
+# (e.g. "November 1996", "October, 1997") or as a range whose endpoints
+# share the year ("February – May 1997", "October 1998 – February 1999").
+# We pick the earliest month and earliest year independently so the leading
+# month binds to the trailing year in shared-year ranges.
+_MONTH_TOKEN_RE = re.compile(
+    r"\b(January|February|March|April|May|June|July|August|September|"
+    r"October|November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)\b",
+    re.IGNORECASE,
+)
+_YEAR_TOKEN_RE = re.compile(r"\b(19|20)\d{2}\b")
+_MONTH_TO_NUM = {
+    m.lower(): i
+    for i, m in enumerate(
+        ("January", "February", "March", "April", "May", "June",
+         "July", "August", "September", "October", "November", "December"),
+        start=1,
+    )
+}
+_MONTH_TO_NUM.update({
+    "jan": 1, "feb": 2, "mar": 3, "apr": 4, "jun": 6, "jul": 7,
+    "aug": 8, "sep": 9, "sept": 9, "oct": 10, "nov": 11, "dec": 12,
+})
 
 _REF_RE = re.compile(r"\s*\[\s*\d+\s*\]\s*")
 _LIST_TAG_RE = re.compile(r"</?(br|li)\s*/?>", re.IGNORECASE)
@@ -68,7 +95,15 @@ def _split_authors(text: str) -> list[str]:
     return [p.strip() for p in parts if p.strip()]
 
 
-def _parse_date(text: str) -> str | None:
+def _parse_date(text: str) -> tuple[str, str] | None:
+    """Parse a Wookieepedia release-date string.
+
+    Returns (iso_date, precision) where precision is "day", "month", or "year".
+    The ISO date always has the YYYY-MM-DD shape; for month precision DD=01,
+    for year precision MM-DD=01-01. Callers use the precision tag to render
+    or serialise the date faithfully (e.g. "November 1996" vs "November 1, 1996").
+    Returns None when no real-world date can be extracted.
+    """
     # Take only the first parenthesis-free segment (e.g. "November 12 , 1976 (Paperback)")
     cleaned = text.strip().split("(")[0].strip()
     # Normalise spaces around comma: "November 12 , 1976" -> "November 12, 1976"
@@ -77,13 +112,21 @@ def _parse_date(text: str) -> str | None:
     for candidate in (cleaned, cleaned_tight):
         for fmt in _DATE_FORMATS:
             try:
-                return datetime.strptime(candidate, fmt).date().isoformat()
+                iso = datetime.strptime(candidate, fmt).date().isoformat()
             except ValueError:
                 continue
-    # Fallback: pull a 4-digit year.
-    match = re.search(r"\b(19|20)\d{2}\b", cleaned)
-    if match:
-        return f"{match.group(0)}-01-01"
+            precision = "year" if fmt == "%Y" else "day"
+            return iso, precision
+    # Month-precision fallback: earliest month + earliest year, combined.
+    # Handles "November 1996", "October, 1997", and shared-year ranges like
+    # "February – May 1997" (year applies to both endpoints, take Feb).
+    year_match = _YEAR_TOKEN_RE.search(cleaned)
+    if year_match:
+        month_match = _MONTH_TOKEN_RE.search(cleaned)
+        if month_match:
+            month = _MONTH_TO_NUM[month_match.group(1).lower()]
+            return f"{year_match.group(0)}-{month:02d}-01", "month"
+        return f"{year_match.group(0)}-01-01", "year"
     return None
 
 
@@ -133,9 +176,11 @@ def parse_infobox(html: str) -> dict:
                 if a not in existing:
                     existing.append(a)
         elif key == "release_date":
-            iso = _parse_date(text)
-            if iso:
+            parsed = _parse_date(text)
+            if parsed:
+                iso, precision = parsed
                 out["release_date"] = iso
+                out["release_precision"] = precision
         else:
             out[key] = text
     cover = _parse_cover_url(soup)

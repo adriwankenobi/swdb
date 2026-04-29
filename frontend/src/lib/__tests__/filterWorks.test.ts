@@ -16,6 +16,7 @@ const w = (over: Partial<Work> & { id: string; year: number }): Work => ({
 const empty: FilterState = {
   eras: [], mediums: [], series: [], authors: [], publishers: [],
   q: "", yearMin: null, yearMax: null, releaseMin: null, releaseMax: null,
+  releaseUndated: false,
   view: "cards", sort: "chronology", openWorkId: null,
 };
 
@@ -146,6 +147,28 @@ describe("filterWorks", () => {
     ];
     const r = filterWorks(data, { ...empty, releaseMin: null, releaseMax: null });
     expect(r).toHaveLength(2);
+  });
+
+  it("releaseUndated filter keeps only works with no release_date", () => {
+    const data: Work[] = [
+      w({ id: "dated",   year: 0, release_date: "2000-01-01" }),
+      w({ id: "undated", year: 0 }),
+    ];
+    const r = filterWorks(data, { ...empty, releaseUndated: true });
+    expect(r.map((x) => x.id)).toEqual(["undated"]);
+  });
+
+  it("search bypasses releaseUndated filter — searching returns dated matches too", () => {
+    const data: Work[] = [
+      w({ id: "dated",   title: "Dark Empire", year: 0, release_date: "1991-12-01" }),
+      w({ id: "undated", title: "Dark Sketches", year: 0 }),
+    ];
+    // Without search: releaseUndated restricts to undated only
+    const withoutSearch = filterWorks(data, { ...empty, releaseUndated: true });
+    expect(withoutSearch.map((x) => x.id)).toEqual(["undated"]);
+    // With search active: releaseUndated is bypassed, both works match "dark"
+    const withSearch = filterWorks(data, { ...empty, releaseUndated: true, q: "dark" });
+    expect(withSearch.map((x) => x.id)).toEqual(["dated", "undated"]);
   });
 
   it("search bypasses era filter — searching returns matches from all eras", () => {

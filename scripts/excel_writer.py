@@ -29,9 +29,14 @@ def _format_authors(authors: list[str]) -> str:
     return ", ".join(a.strip() for a in authors if a and a.strip())
 
 
-def _format_release(iso_date: str) -> str:
-    # "1976-11-12" -> "1976.11.12"
-    return iso_date.replace("-", ".")
+def _format_release(iso_date: str, precision: str = "day") -> str:
+    # "1976-11-12" -> "1976.11.12" (day), "1996.11" (month), "1996" (year)
+    parts = iso_date.split("-")  # ["1976", "11", "12"]
+    if precision == "year":
+        return parts[0]
+    if precision == "month":
+        return ".".join(parts[:2])
+    return ".".join(parts)
 
 
 def update_excel(path: Path, enriched: dict[tuple, dict]) -> dict:
@@ -74,7 +79,10 @@ def update_excel(path: Path, enriched: dict[tuple, dict]) -> dict:
                     row[COL_PUBLISHER - 1].value = fields["publisher"]
                     changed = True
                 if fields.get("release_date"):
-                    formatted = _format_release(fields["release_date"])
+                    formatted = _format_release(
+                        fields["release_date"],
+                        fields.get("release_precision", "day"),
+                    )
                     if row[COL_RELEASE - 1].value != formatted:
                         row[COL_RELEASE - 1].value = formatted
                         changed = True

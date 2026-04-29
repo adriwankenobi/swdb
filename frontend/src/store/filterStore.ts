@@ -14,6 +14,7 @@ export interface FilterState {
   yearMax: number | null;
   releaseMin: string | null; // ISO date string or null
   releaseMax: string | null; // ISO date string or null
+  releaseUndated: boolean;   // when true, only works WITHOUT release_date pass
   view: ViewMode;
   sort: SortMode;
   openWorkId: string | null;
@@ -30,6 +31,7 @@ const defaultState: FilterState = {
   yearMax: null,
   releaseMin: null,
   releaseMax: null,
+  releaseUndated: false,
   view: "cards",
   sort: "chronology",
   openWorkId: null,

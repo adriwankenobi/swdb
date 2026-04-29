@@ -41,6 +41,11 @@ function matchesRelease(w: Work, min: string | null, max: string | null): boolea
   return true;
 }
 
+function matchesReleaseUndated(w: Work, undatedOnly: boolean): boolean {
+  if (!undatedOnly) return true;
+  return w.release_date === undefined;
+}
+
 // Sorts return 0 for equal keys so JS's stable Array.prototype.sort
 // preserves the input order — which is the JSON / Excel order.
 // Within an era, works are intentionally ordered by their position in the
@@ -69,6 +74,7 @@ export function filterWorks(works: Work[], filters: FilterState): Work[] {
     matchesAnyOf(filters.authors, w.authors) &&
     matchesYear(w, filters.yearMin, filters.yearMax) &&
     (searchActive || matchesRelease(w, filters.releaseMin, filters.releaseMax)) &&
+    (searchActive || matchesReleaseUndated(w, filters.releaseUndated)) &&
     matchesQuery(w, filters.q),
   );
   const cmp = filters.sort === "release" ? compareRelease : compareChronology;

@@ -146,6 +146,7 @@ def _enrich(work: dict, row: ExcelRow, client: WikiClient, unmatched: list[str])
         work["publisher"] = fields["publisher"]
     if fields.get("release_date"):
         work["release_date"] = fields["release_date"]
+        work["release_precision"] = fields["release_precision"]
     if fields.get("cover_url"):
         work["cover_url"] = fields["cover_url"]
 
@@ -200,6 +201,7 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
             fields["publisher"] = work["publisher"]
         if "release_date" in work:
             fields["release_date"] = work["release_date"]
+            fields["release_precision"] = work["release_precision"]
         if "cover_url" in work:
             fields["cover_url"] = work["cover_url"]
         if fields:

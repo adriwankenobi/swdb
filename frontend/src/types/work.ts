@@ -10,6 +10,7 @@ export interface Work {
   series?: string;
   number?: string;
   release_date?: string;
+  release_precision?: "day" | "month" | "year";
   authors?: string[];
   publisher?: string;
   cover_url?: string;

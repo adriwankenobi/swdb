@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { ERAS, ERA_COLORS, type EraIndex } from "@/constants/eras";
 import { MEDIUMS, MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
+import { formatReleaseDate } from "@/lib/formatReleaseDate";
 import { formatSeriesAndNumber } from "@/lib/formatSeriesAndNumber";
 import { useCatalogStore } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
@@ -79,7 +80,8 @@ export function WorkDetailModal() {
                 </p>
                 {work.release_date && (
                   <p>
-                    <span className="text-muted-foreground">Released:</span> {work.release_date}
+                    <span className="text-muted-foreground">Released:</span>{" "}
+                    {formatReleaseDate(work.release_date, work.release_precision)}
                   </p>
                 )}
                 {work.authors && work.authors.length > 0 && (

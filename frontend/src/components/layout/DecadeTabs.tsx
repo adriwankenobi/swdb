@@ -3,21 +3,29 @@ import { useCatalogStore } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
 import { DECADE_COLORS } from "@/constants/decades";
 
+const UNKNOWN_COLOR = "#6b7280"; // neutral gray for the "no release_date" bucket
+
 export function DecadeTabs() {
   const works = useCatalogStore((s) => s.works);
-  const { releaseMin, releaseMax, set } = useFilterStore();
+  const { releaseMin, releaseMax, releaseUndated, set } = useFilterStore();
 
-  const decades = useMemo(() => {
-    const set = new Set<number>();
+  const { decades, hasUndated } = useMemo(() => {
+    const decadeSet = new Set<number>();
+    let undated = false;
     for (const w of works) {
       if (w.release_date) {
         const year = parseInt(w.release_date.slice(0, 4), 10);
         if (!isNaN(year)) {
-          set.add(Math.floor(year / 10) * 10);
+          decadeSet.add(Math.floor(year / 10) * 10);
         }
+      } else {
+        undated = true;
       }
     }
-    return Array.from(set).sort((a, b) => a - b);
+    return {
+      decades: Array.from(decadeSet).sort((a, b) => a - b),
+      hasUndated: undated,
+    };
   }, [works]);
 
   function activeDecade(): number | null {
@@ -39,16 +47,21 @@ export function DecadeTabs() {
     set({
       releaseMin: `${dec}-01-01`,
       releaseMax: `${dec + 9}-12-31`,
+      releaseUndated: false,
     });
   }
 
-  const allActive = releaseMin === null && releaseMax === null;
-
-  function clearDecade() {
-    set({ releaseMin: null, releaseMax: null });
+  function pickUnknown() {
+    set({ releaseMin: null, releaseMax: null, releaseUndated: true });
   }
 
-  if (decades.length === 0) return null;
+  const allActive = releaseMin === null && releaseMax === null && !releaseUndated;
+
+  function clearDecade() {
+    set({ releaseMin: null, releaseMax: null, releaseUndated: false });
+  }
+
+  if (decades.length === 0 && !hasUndated) return null;
 
   return (
     <div className="flex flex-wrap items-center gap-1 border-b px-4 py-2">
@@ -84,6 +97,22 @@ export function DecadeTabs() {
           </button>
         );
       })}
+      {hasUndated && (
+        <button
+          key="unknown"
+          type="button"
+          onClick={pickUnknown}
+          className="rounded px-3 py-1 text-sm font-medium text-white transition hover:opacity-90"
+          style={{
+            backgroundColor: UNKNOWN_COLOR,
+            opacity: releaseUndated ? 1 : 0.45,
+            outline: releaseUndated ? `2px solid ${UNKNOWN_COLOR}` : undefined,
+            outlineOffset: releaseUndated ? "1px" : undefined,
+          }}
+        >
+          Unknown
+        </button>
+      )}
     </div>
   );
 }

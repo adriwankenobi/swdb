@@ -110,8 +110,8 @@ export function TimelineView({ works }: { works: Work[] }) {
     <div className="h-full overflow-auto">
       <div className="space-y-6 p-4">
         {groups.map((group) => {
-          const headerLabel = group.year !== null ? String(group.year) : "Undated";
-          const key = group.year !== null ? group.year : "undated";
+          const headerLabel = group.year !== null ? String(group.year) : "Unknown";
+          const key = group.year !== null ? group.year : "unknown";
           return (
             <div key={key}>
               {/* Year header */}

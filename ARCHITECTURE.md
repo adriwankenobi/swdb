@@ -108,6 +108,7 @@ JSON are rendered.
       "series":       "Star Wars Episode",
       "number":       "IV",
       "release_date": "1976-11-12",
+      "release_precision": "day",
       "authors":      ["Alan Dean Foster"],
       "publisher":    "Del Rey",
       "cover_url":    "https://static.wikia.nocookie.net/...",
@@ -119,7 +120,11 @@ JSON are rendered.
 
 **Required:** `id`, `era`, `medium`, `title`, `year`.  
 **Optional** (omitted when unknown, no nulls): `series`, `number`,
-`release_date`, `authors`, `publisher`, `cover_url`, `wiki_url`.
+`release_date`, `release_precision`, `authors`, `publisher`, `cover_url`,
+`wiki_url`. `release_precision` is `"day" | "month" | "year"` and is always
+emitted alongside `release_date`; it lets the UI render `"November 1996"`
+(month-only Wookieepedia source) faithfully rather than fabricating a `01`
+day component.
 
 - `era` — int 0–9, index into the 10-entry `ERAS` constant.
 - `medium` — int 0–6, index into `MEDIUMS` (see above).

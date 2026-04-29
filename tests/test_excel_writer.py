@@ -36,6 +36,7 @@ def test_update_excel_writes_authors_publisher_release_cover(tiny_xlsx: Path):
             "authors": ["Alan Dean Foster"],
             "publisher": "Ballantine Books",
             "release_date": "1976-11-12",
+            "release_precision": "day",
             "cover_url": "https://example.com/cover.jpg",
         },
     }
@@ -53,6 +54,25 @@ def test_update_excel_writes_authors_publisher_release_cover(tiny_xlsx: Path):
     # Trusted columns are unchanged
     assert row2[0] == "0 ABY"
     assert row2[3] == "A New Hope"
+    wb.close()
+
+
+@pytest.mark.parametrize(
+    "precision,expected",
+    [("day", "1976.11.12"), ("month", "1976.11"), ("year", "1976")],
+)
+def test_update_excel_writes_release_at_precision(tiny_xlsx: Path, precision, expected):
+    enriched = {
+        (5, "A New Hope", "Star Wars Episode", "Novel", "IV"): {
+            "release_date": "1976-11-12",
+            "release_precision": precision,
+        },
+    }
+    update_excel(tiny_xlsx, enriched)
+    wb = load_workbook(tiny_xlsx, data_only=True)
+    ws = wb["REBELLION"]
+    row2 = list(ws.iter_rows(min_row=2, max_row=2, values_only=True))[0]
+    assert row2[7] == expected
     wb.close()
 
 

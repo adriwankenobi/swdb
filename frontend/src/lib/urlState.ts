@@ -33,6 +33,7 @@ export function readFromUrl(search: string): Partial<FilterState> {
     yearMax: parseInt1(p.get("year_max")),
     releaseMin: p.get("release_min"),
     releaseMax: p.get("release_max"),
+    releaseUndated: p.get("release_undated") === "1",
     view: VIEWS.includes(view as ViewMode) ? (view as ViewMode) : "cards",
     sort: SORTS.includes(sort as SortMode) ? (sort as SortMode) : "chronology",
     openWorkId: p.get("work"),
@@ -56,6 +57,7 @@ export function writeToUrl(state: FilterState): string {
   if (state.yearMax !== null) p.set("year_max", String(state.yearMax));
   if (state.releaseMin !== null) p.set("release_min", state.releaseMin);
   if (state.releaseMax !== null) p.set("release_max", state.releaseMax);
+  if (state.releaseUndated) p.set("release_undated", "1");
   if (state.view !== "cards") p.set("view", state.view);
   if (state.sort !== "chronology") p.set("sort", state.sort);
   if (state.openWorkId) p.set("work", state.openWorkId);
