@@ -120,4 +120,34 @@ describe("filterWorks", () => {
     const r = filterWorks(data, { ...empty, releaseMin: null, releaseMax: null });
     expect(r).toHaveLength(2);
   });
+
+  it("search bypasses era filter — searching returns matches from all eras", () => {
+    const data: Work[] = [
+      w({ id: "era5", title: "Shadow of the Empire", era: 5, year: 0 }),
+      w({ id: "era7", title: "Shadow of Doubt",      era: 7, year: 1 }),
+    ];
+    // Without search: era filter restricts to era 5 only
+    const withoutSearch = filterWorks(data, { ...empty, eras: [5] });
+    expect(withoutSearch.map((x) => x.id)).toEqual(["era5"]);
+    // With search active: era filter is bypassed, both works match "shadow"
+    const withSearch = filterWorks(data, { ...empty, eras: [5], q: "shadow" });
+    expect(withSearch.map((x) => x.id)).toEqual(["era5", "era7"]);
+  });
+
+  it("search bypasses release filter — searching returns matches across release dates", () => {
+    const data: Work[] = [
+      w({ id: "inside",  title: "Dark Empire", year: 0, release_date: "1991-12-01" }),
+      w({ id: "outside", title: "Dark Force Rising", year: 1, release_date: "1992-06-01" }),
+    ];
+    // Without search: range excludes "outside"
+    const withoutSearch = filterWorks(data, {
+      ...empty, releaseMin: "1990-01-01", releaseMax: "1992-01-01",
+    });
+    expect(withoutSearch.map((x) => x.id)).toEqual(["inside"]);
+    // With search active: release filter is bypassed, both works match "dark"
+    const withSearch = filterWorks(data, {
+      ...empty, releaseMin: "1990-01-01", releaseMax: "1992-01-01", q: "dark",
+    });
+    expect(withSearch.map((x) => x.id)).toEqual(["inside", "outside"]);
+  });
 });

@@ -58,14 +58,15 @@ function compareRelease(a: Work, b: Work): number {
 }
 
 export function filterWorks(works: Work[], filters: FilterState): Work[] {
+  const searchActive = filters.q.length > 0;
   const filtered = works.filter((w) =>
-    matchesArray(filters.eras, w.era) &&
+    (searchActive || matchesArray(filters.eras, w.era)) &&
     matchesArray(filters.mediums, w.medium) &&
     matchesArray(filters.series, w.series) &&
     matchesArray(filters.publishers, w.publisher) &&
     matchesAnyOf(filters.authors, w.authors) &&
     matchesYear(w, filters.yearMin, filters.yearMax) &&
-    matchesRelease(w, filters.releaseMin, filters.releaseMax) &&
+    (searchActive || matchesRelease(w, filters.releaseMin, filters.releaseMax)) &&
     matchesQuery(w, filters.q),
   );
   const cmp = filters.sort === "release" ? compareRelease : compareChronology;
