@@ -17,27 +17,28 @@ EXCEL_PATH = REPO_ROOT / "Star Wars EU.xlsx"
 OUTPUT_PATH = REPO_ROOT / "frontend" / "public" / "data" / "works.json"
 DUPLICATES_LOG = REPO_ROOT / "data" / "duplicates.log"
 MISSING_MEDIUM_LOG = REPO_ROOT / "data" / "missing_medium.log"
+IGNORED_NO_YEAR_LOG = REPO_ROOT / "data" / "ignored_no_year.log"
 
 # Canonical medium list, alphabetical. Order is permanent: new entries must be
 # APPENDED at the end so existing indices retain their meaning.
 MEDIUMS = [
-    "Audio Drama",         # 0
-    "Comic",               # 1
-    "Junior Novel",        # 2
-    "Movie",               # 3
-    "Novel",               # 4
-    "Short Story",         # 5
-    "TV Show",             # 6
-    "Videogame",           # 7
-    "Young Reader Book",   # 8
+    "Comic",           # 0
+    "Junior Novel",    # 1
+    "Movie",           # 2
+    "Novel",           # 3
+    "Short Story",     # 4
+    "TV Show",         # 5
+    "Videogame",       # 6
 ]
 _MEDIUM_TO_INDEX = {name: i for i, name in enumerate(MEDIUMS)}
 
 
-def _row_to_work(row: ExcelRow) -> dict | None:
-    """Build a work dict; return None if the medium is not canonical (caller logs)."""
-    if row.medium not in _MEDIUM_TO_INDEX:
-        return None
+def _row_to_work(row: ExcelRow) -> dict:
+    """Build a work dict.
+
+    Precondition: caller has already verified row.year is not None and
+    row.medium is in _MEDIUM_TO_INDEX.
+    """
     work: dict = {
         "id": make_id(
             era=row.era,
@@ -48,14 +49,13 @@ def _row_to_work(row: ExcelRow) -> dict | None:
         ),
         "era": row.era,
         "title": row.title,
-        "medium": _MEDIUM_TO_INDEX[row.medium],   # but JSON gets the integer index
+        "medium": _MEDIUM_TO_INDEX[row.medium],   # JSON gets the integer index
+        "year": row.year,
     }
     if row.series:
         work["series"] = row.series
     if row.number is not None:
         work["number"] = row.number
-    if row.year is not None:
-        work["year"] = row.year
     return work
 
 
@@ -102,14 +102,20 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
     if refresh:
         print("[info] --refresh is a no-op until Phase 3 enrichment lands.", file=sys.stderr)
     works: list[dict] = []
+    ignored_no_year: list[str] = []
     missing_medium: list[str] = []
     for row in read_works(EXCEL_PATH):
-        work = _row_to_work(row)
-        if work is None:
+        if row.year is None:
+            ignored_no_year.append(
+                f"{row.era}|{row.title}|{row.series}|{row.medium}"
+            )
+            continue
+        if row.medium not in _MEDIUM_TO_INDEX:
             missing_medium.append(
                 f"{row.era}|{row.title}|{row.series}|{row.medium}"
             )
             continue
+        work = _row_to_work(row)
         works.append(work)
     _detect_duplicates(works)
     payload = {
@@ -117,7 +123,8 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
         "works": works,
     }
     summary = (
-        f"{len(works)} works; {len(missing_medium)} missing-medium skipped"
+        f"{len(works)} works; {len(ignored_no_year)} ignored-no-year; "
+        f"{len(missing_medium)} missing-medium skipped"
     )
     if dry_run:
         print(f"[dry-run] would write {summary} to {OUTPUT_PATH}")
@@ -125,6 +132,11 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT_PATH.write_text(
         json.dumps(payload, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    IGNORED_NO_YEAR_LOG.parent.mkdir(parents=True, exist_ok=True)
+    IGNORED_NO_YEAR_LOG.write_text(
+        "\n".join(ignored_no_year) + ("\n" if ignored_no_year else ""),
         encoding="utf-8",
     )
     MISSING_MEDIUM_LOG.parent.mkdir(parents=True, exist_ok=True)
