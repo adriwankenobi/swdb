@@ -4,6 +4,7 @@ import { useFilterStore } from "./store/filterStore";
 import { readFromUrl, writeToUrl } from "./lib/urlState";
 import { AppShell } from "./components/layout/AppShell";
 import { filterWorks } from "./lib/filterWorks";
+import { ActiveFilterChips } from "./components/filters/ActiveFilterChips";
 
 export default function App() {
   const { status, works, error, load } = useCatalogStore();
@@ -33,6 +34,7 @@ export default function App() {
 
   return (
     <AppShell>
+      <ActiveFilterChips />
       <p className="text-sm text-muted-foreground">{visible.length} of {works.length} works</p>
     </AppShell>
   );
