@@ -3,6 +3,7 @@ import { ERAS, ERA_COLORS, type EraIndex } from "@/constants/eras";
 import { MEDIUMS, MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import type { Work } from "@/types/work";
+import { COLUMNS } from "@/components/views/_tableColumns";
 
 interface WorkRowProps {
   work: Work;
@@ -11,12 +12,12 @@ interface WorkRowProps {
 
 export function WorkRow({ work, onClick }: WorkRowProps) {
   return (
-    <tr
+    <div
       onClick={onClick}
-      className="cursor-pointer border-b text-sm hover:bg-muted/40"
+      className="flex cursor-pointer items-center border-b text-sm hover:bg-muted/40"
     >
-      {/* Cover thumbnail */}
-      <td className="w-12 px-2 py-1">
+      {/* Cover */}
+      <div className={`shrink-0 px-2 py-1 ${COLUMNS[0].width}`}>
         {work.cover_url ? (
           <img
             src={work.cover_url}
@@ -30,42 +31,56 @@ export function WorkRow({ work, onClick }: WorkRowProps) {
             style={{ backgroundColor: ERA_COLORS[work.era as EraIndex] }}
           />
         )}
-      </td>
+      </div>
 
       {/* Title */}
-      <td className="px-2 py-1 font-medium">{work.title}</td>
+      <div className={`shrink-0 px-2 py-1 font-medium truncate ${COLUMNS[1].width}`}>
+        {work.title}
+      </div>
 
       {/* Series */}
-      <td className="px-2 py-1 text-muted-foreground">{work.series ?? ""}</td>
+      <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[2].width}`}>
+        {work.series ?? ""}
+      </div>
 
       {/* Number */}
-      <td className="px-2 py-1 text-muted-foreground">{work.number ?? ""}</td>
+      <div className={`shrink-0 px-2 py-1 text-muted-foreground ${COLUMNS[3].width}`}>
+        {work.number ?? ""}
+      </div>
 
-      {/* Medium */}
-      <td className="px-2 py-1">
+      {/* Medium badge */}
+      <div className={`shrink-0 px-2 py-1 ${COLUMNS[4].width}`}>
         <Badge style={{ backgroundColor: MEDIUM_COLORS[work.medium], color: "white" }}>
           {MEDIUMS[work.medium]}
         </Badge>
-      </td>
+      </div>
 
-      {/* Era */}
-      <td className="px-2 py-1">
+      {/* Era badge */}
+      <div className={`shrink-0 px-2 py-1 ${COLUMNS[5].width}`}>
         <Badge style={{ backgroundColor: ERA_COLORS[work.era as EraIndex], color: "white" }}>
           {ERAS[work.era]}
         </Badge>
-      </td>
+      </div>
 
       {/* Year */}
-      <td className="px-2 py-1 text-muted-foreground whitespace-nowrap">{formatYear(work.year)}</td>
+      <div className={`shrink-0 px-2 py-1 text-muted-foreground whitespace-nowrap ${COLUMNS[6].width}`}>
+        {formatYear(work.year)}
+      </div>
 
-      {/* Release date */}
-      <td className="px-2 py-1 text-muted-foreground whitespace-nowrap">{work.release_date ?? ""}</td>
+      {/* Release */}
+      <div className={`shrink-0 px-2 py-1 text-muted-foreground whitespace-nowrap ${COLUMNS[7].width}`}>
+        {work.release_date ?? ""}
+      </div>
 
       {/* Authors */}
-      <td className="px-2 py-1 text-muted-foreground">{work.authors?.join(", ") ?? ""}</td>
+      <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[8].width}`}>
+        {work.authors?.join(", ") ?? ""}
+      </div>
 
       {/* Publisher */}
-      <td className="px-2 py-1 text-muted-foreground">{work.publisher ?? ""}</td>
-    </tr>
+      <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[9].width}`}>
+        {work.publisher ?? ""}
+      </div>
+    </div>
   );
 }
