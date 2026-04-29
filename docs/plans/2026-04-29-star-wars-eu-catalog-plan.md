@@ -41,8 +41,10 @@ SWDB/
 │       └── infobox_eruption.html       (saved Wookieepedia HTML — Timeline field for in-universe year)
 ├── data/
 │   ├── .cache/                         (gitignored — HTTP cache)
-│   ├── unmatched.log                   (auto-search misses)
-│   └── missing_year.log                (rows excluded for lacking a year)
+│   ├── unmatched.log                   (auto-search misses, gitignored)
+│   ├── duplicates.log                  (rows with colliding canonical keys, gitignored)
+│   ├── missing_medium.log              (rows whose medium isn't in canonical MEDIUMS, gitignored)
+│   └── missing_year.log                (rows excluded for lacking a year, gitignored)
 ├── docs/
 │   ├── specs/2026-04-29-star-wars-eu-catalog-design.md
 │   └── plans/2026-04-29-star-wars-eu-catalog-plan.md
@@ -62,7 +64,7 @@ SWDB/
     │   ├── main.tsx
     │   ├── App.tsx
     │   ├── styles/globals.css
-    │   ├── constants/eras.ts
+    │   ├── constants/{eras,mediums}.ts
     │   ├── types/work.ts
     │   ├── store/
     │   │   ├── catalogStore.ts         (read-only data + derived facets)
@@ -582,9 +584,9 @@ def test_medium_casing_is_normalized(rows):
     assert "Novel" in mediums
 
 
-def test_year_in_universe_parsed(rows):
+def test_year_parsed(rows):
     sample = next(r for r in rows if r.title == "A New Hope" and r.medium == "Novel")
-    assert sample.year_in_universe == 0
+    assert sample.year == 0
 
 
 def test_excel_row_skips_empty_rows(rows):
@@ -597,15 +599,19 @@ def test_info_url_present_for_known_row(rows):
     assert sample.info_url and "starwars.fandom.com" in sample.info_url
 
 
-def test_excel_order_is_unique_and_contiguous(rows):
-    orders = [row.excel_order for row in rows]
-    assert orders == list(range(len(rows)))
-
-
-def test_excel_order_preserves_in_sheet_sequence(rows):
-    # First two rows of OLD REPUBLIC sheet should have consecutive excel_order values.
-    old_rep = [r for r in rows if r.era == 1]
-    assert old_rep[0].excel_order + 1 == old_rep[1].excel_order
+def test_read_works_yields_rows_in_canonical_excel_order(rows):
+    # The order in which rows are yielded IS the canonical order. This test
+    # encodes that contract: the first row of REBELLION (era 5) appears in the
+    # output before the first row of NEW REPUBLIC (era 6), regardless of any
+    # later sorting in the frontend.
+    eras_in_yield_order = [r.era for r in rows]
+    # Rows are grouped by era in sheet-iteration order; eras must appear in
+    # non-decreasing chunks.
+    seen_eras: list[int] = []
+    for e in eras_in_yield_order:
+        if not seen_eras or seen_eras[-1] != e:
+            seen_eras.append(e)
+    assert seen_eras == sorted(seen_eras)
 ```
 
 - [ ] **Step 2: Run tests to verify they fail**
@@ -661,14 +667,13 @@ _MEDIUM_NORMALIZE: dict[str, str] = {
 @dataclass(frozen=True)
 class ExcelRow:
     era: int
-    excel_order: int          # global running counter, 0-based, stable across rebuilds
     title: str
     series: str | None
-    medium: str
+    medium: str               # canonical Title Case (e.g. "Novel"); converted to int in build_data
     number: str | None
-    year_in_universe: int | None  # may be None when Excel YEAR is empty; Wookieepedia fallback in build_data
+    year: int | None          # may be None when Excel YEAR is empty; Wookieepedia fallback in build_data
     info_url: str | None
-    cover_url: str | None  # raw — may be ignored later in favor of wiki-fetched cover
+    cover_url: str | None     # raw — may be ignored later in favor of wiki-fetched cover
 
 
 def _normalize_medium(raw: str | None) -> str:
@@ -686,56 +691,55 @@ def _stringify(cell: object) -> str | None:
 
 
 def read_works(path: Path) -> Iterator[ExcelRow]:
-    """Yield ExcelRow per non-empty data row in every sheet."""
+    """Yield ExcelRow per non-empty data row in every sheet, in workbook order."""
     wb = load_workbook(path, data_only=True, read_only=True)
-    counter = 0
-    for sheet_name in wb.sheetnames:
-        if sheet_name not in ERA_INDEX:
-            continue
-        era = ERA_INDEX[sheet_name]
-        ws = wb[sheet_name]
-        rows_iter = ws.iter_rows(values_only=True)
-        try:
-            header = next(rows_iter)
-        except StopIteration:
-            continue
-        # Header layout: YEAR, MEDIUM, SERIES, TITLE, #, AUTHOR, PUBLISHER, RELEASE, COLLECTED, INFO, COVER
-        # We trust positions 0..10 by index.
-        for raw in rows_iter:
-            year_raw = _stringify(raw[0])
-            medium_raw = _stringify(raw[1])
-            series = _stringify(raw[2])
-            title = _stringify(raw[3])
-            number = _stringify(raw[4])
-            info_url = _stringify(raw[9]) if len(raw) > 9 else None
-            cover_url = _stringify(raw[10]) if len(raw) > 10 else None
-            if not title or not medium_raw:
+    try:
+        for sheet_name in wb.sheetnames:
+            if sheet_name not in ERA_INDEX:
                 continue
-            yield ExcelRow(
-                era=era,
-                excel_order=counter,
-                title=title,
-                series=series,
-                medium=_normalize_medium(medium_raw),
-                number=number,
-                year_in_universe=parse_year(year_raw),
-                info_url=info_url,
-                cover_url=cover_url,
-            )
-            counter += 1
-    wb.close()
+            era = ERA_INDEX[sheet_name]
+            ws = wb[sheet_name]
+            rows_iter = ws.iter_rows(values_only=True)
+            try:
+                next(rows_iter)
+            except StopIteration:
+                continue
+            # Header layout: YEAR, MEDIUM, SERIES, TITLE, #, AUTHOR, PUBLISHER, RELEASE, COLLECTED, INFO, COVER
+            # We trust positions 0..10 by index.
+            for raw in rows_iter:
+                year_raw = _stringify(raw[0])
+                medium_raw = _stringify(raw[1])
+                series = _stringify(raw[2])
+                title = _stringify(raw[3])
+                number = _stringify(raw[4])
+                info_url = _stringify(raw[9]) if len(raw) > 9 else None
+                cover_url = _stringify(raw[10]) if len(raw) > 10 else None
+                if not title or not medium_raw:
+                    continue
+                yield ExcelRow(
+                    era=era,
+                    title=title,
+                    series=series,
+                    medium=_normalize_medium(medium_raw),
+                    number=number,
+                    year=parse_year(year_raw),
+                    info_url=info_url,
+                    cover_url=cover_url,
+                )
+    finally:
+        wb.close()
 ```
 
 - [ ] **Step 4: Run tests to verify they pass**
 
 Run: `uv run pytest tests/test_excel_reader.py -v`
-Expected: all 9 tests pass against the real Excel file.
+Expected: all 8 tests pass against the real Excel file.
 
 - [ ] **Step 5: Commit**
 
 ```bash
 git add scripts/excel_reader.py tests/test_excel_reader.py
-git commit -m "Add excel_reader.read_works with medium normalization and excel_order"
+git commit -m "Add excel_reader.read_works with medium normalization"
 ```
 
 ### Task 2.4: `build_data` orchestrator emits Wookieepedia-empty JSON
@@ -753,60 +757,144 @@ from __future__ import annotations
 
 import argparse
 import json
-from datetime import datetime, timezone
+import sys
+from collections import defaultdict
+from datetime import UTC, datetime
 from pathlib import Path
 
-from scripts.excel_reader import read_works
+from scripts.excel_reader import ExcelRow, read_works
 from scripts.id_utils import make_id
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 EXCEL_PATH = REPO_ROOT / "Star Wars EU.xlsx"
 OUTPUT_PATH = REPO_ROOT / "frontend" / "public" / "data" / "works.json"
+DUPLICATES_LOG = REPO_ROOT / "data" / "duplicates.log"
+MISSING_MEDIUM_LOG = REPO_ROOT / "data" / "missing_medium.log"
+
+# Canonical medium list, alphabetical. Order is permanent: new entries must be
+# APPENDED at the end so existing indices retain their meaning.
+MEDIUMS = [
+    "Audio Drama",         # 0
+    "Comic",               # 1
+    "Junior Novel",        # 2
+    "Movie",               # 3
+    "Novel",               # 4
+    "Short Story",         # 5
+    "TV Show",             # 6
+    "Videogame",           # 7
+    "Young Reader Book",   # 8
+]
+_MEDIUM_TO_INDEX = {name: i for i, name in enumerate(MEDIUMS)}
 
 
-def _row_to_work(row) -> dict:
+def _row_to_work(row: ExcelRow) -> dict | None:
+    """Build a work dict; return None if the medium is not canonical (caller logs)."""
+    if row.medium not in _MEDIUM_TO_INDEX:
+        return None
     work: dict = {
         "id": make_id(
             era=row.era,
             series=row.series,
             title=row.title,
-            medium=row.medium,
+            medium=row.medium,    # ID uses the canonical medium STRING for stability
             number=row.number,
         ),
         "era": row.era,
-        "excel_order": row.excel_order,
         "title": row.title,
-        "medium": row.medium,
+        "medium": _MEDIUM_TO_INDEX[row.medium],   # but JSON gets the integer index
     }
     if row.series:
         work["series"] = row.series
     if row.number is not None:
         work["number"] = row.number
-    if row.year_in_universe is not None:
-        work["year_in_universe"] = row.year_in_universe
+    if row.year is not None:
+        work["year"] = row.year
     return work
 
 
+def _detect_duplicates(works: list[dict]) -> list[list[dict]]:
+    by_id: dict[str, list[dict]] = defaultdict(list)
+    for w in works:
+        by_id[w["id"]].append(w)
+    groups = [g for g in by_id.values() if len(g) > 1]
+    if not groups:
+        return groups
+    for g in groups:
+        print(f"[WARN] duplicate id {g[0]['id']}:", file=sys.stderr)
+        for w in g:
+            print(
+                f"  era={w['era']} title={w['title']!r} medium={w['medium']} "
+                f"series={w.get('series')} number={w.get('number')}",
+                file=sys.stderr,
+            )
+    rows_total = sum(len(g) for g in groups)
+    print(
+        f"{len(groups)} duplicate id group{'s' if len(groups) != 1 else ''} "
+        f"({rows_total} rows). See {DUPLICATES_LOG.relative_to(REPO_ROOT)}.",
+        file=sys.stderr,
+    )
+    DUPLICATES_LOG.parent.mkdir(parents=True, exist_ok=True)
+    DUPLICATES_LOG.write_text(
+        "\n\n".join(
+            "\n".join(
+                [f"id {g[0]['id']}"]
+                + [
+                    f"  era={w['era']} title={w['title']!r} medium={w['medium']} "
+                    f"series={w.get('series')} number={w.get('number')}"
+                    for w in g
+                ]
+            )
+            for g in groups
+        ) + "\n",
+        encoding="utf-8",
+    )
+    return groups
+
+
 def build(*, refresh: bool, dry_run: bool) -> dict:
-    works = []
+    if refresh:
+        print("[info] --refresh is a no-op until Phase 3 enrichment lands.", file=sys.stderr)
+    works: list[dict] = []
+    missing_medium: list[str] = []
     for row in read_works(EXCEL_PATH):
-        works.append(_row_to_work(row))
+        work = _row_to_work(row)
+        if work is None:
+            missing_medium.append(
+                f"{row.era}|{row.title}|{row.series}|{row.medium}"
+            )
+            continue
+        works.append(work)
+    _detect_duplicates(works)
     payload = {
-        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
         "works": works,
     }
+    summary = (
+        f"{len(works)} works; {len(missing_medium)} missing-medium skipped"
+    )
     if dry_run:
-        print(f"[dry-run] would write {len(works)} works to {OUTPUT_PATH}")
+        print(f"[dry-run] would write {summary} to {OUTPUT_PATH}")
         return payload
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_PATH.write_text(json.dumps(payload, indent=2, ensure_ascii=False))
-    print(f"wrote {len(works)} works to {OUTPUT_PATH}")
+    OUTPUT_PATH.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    MISSING_MEDIUM_LOG.parent.mkdir(parents=True, exist_ok=True)
+    MISSING_MEDIUM_LOG.write_text(
+        "\n".join(missing_medium) + ("\n" if missing_medium else ""),
+        encoding="utf-8",
+    )
+    print(f"wrote {summary} to {OUTPUT_PATH}")
     return payload
 
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--refresh", action="store_true", help="Bypass HTTP cache (no-op until Phase 3).")
+    parser.add_argument(
+        "--refresh", action="store_true",
+        help="Bypass HTTP cache (no-op until Phase 3).",
+    )
     parser.add_argument("--dry-run", action="store_true", help="Do not write the JSON.")
     args = parser.parse_args()
     build(refresh=args.refresh, dry_run=args.dry_run)
@@ -816,7 +904,9 @@ if __name__ == "__main__":
     main()
 ```
 
-**Note on Phase 2 incompleteness.** The spec requires every emitted work to have a `year_in_universe`. In Phase 2 we do not yet have the Wookieepedia fallback, so a small number of works lack the year and `_row_to_work` omits it. That's fine for this checkpoint — Phase 3 will (a) parse the year from the Wookieepedia infobox when missing and (b) skip + log any row that still has no year after both sources.
+Add `data/missing_medium.log` to `.gitignore` (it's a regenerated build artifact, like `unmatched.log` and `duplicates.log`).
+
+**Note on Phase 2 incompleteness.** The spec requires every emitted work to have a `year`. In Phase 2 we do not yet have the Wookieepedia fallback, so a small number of works lack the year and `_row_to_work` omits it. That's fine for this checkpoint — Phase 3 will (a) parse the year from the Wookieepedia infobox when missing and (b) skip + log any row that still has no year after both sources.
 
 - [ ] **Step 2: Run the pipeline**
 
@@ -835,7 +925,7 @@ Where `<N>` is ~1900+. Inspect the first object:
 python3 -c "import json; d=json.load(open('frontend/public/data/works.json')); print(json.dumps(d['works'][0], indent=2))"
 ```
 
-Expected: an object with `id`, `era`, `excel_order`, `title`, `medium`, and likely `series`, `number`, `year_in_universe`. No nulls.
+Expected: an object with `id`, `era`, `title`, `medium` (an integer 0..8 — index into the `MEDIUMS` array), and likely `series`, `number`, `year`. No nulls. The `excel_order` field that previous drafts of the plan included is no longer present — JSON array order is the canonical order.
 
 - [ ] **Step 3: Commit**
 
@@ -1248,10 +1338,10 @@ def test_parse_infobox_returns_cover_url(html_novel):
     assert "wikia" in result["cover_url"] or "fandom" in result["cover_url"]
 
 
-def test_parse_infobox_returns_year_in_universe_from_timeline(html_short):
+def test_parse_infobox_returns_year_from_timeline(html_short):
     # "Eruption" infobox lists Timeline as "25,793 BBY"; expect -25793.
     result = parse_infobox(html_short)
-    assert result["year_in_universe"] == -25793
+    assert result["year"] == -25793
 
 
 def test_parse_infobox_returns_empty_dict_on_garbage():
@@ -1285,10 +1375,10 @@ _LABEL_MAP: dict[str, str] = {
     "publication date": "release_date",
     "release date": "release_date",
     "released": "release_date",
-    "timeline": "year_in_universe",
-    "set in": "year_in_universe",
-    "date": "year_in_universe",
-    "era": "year_in_universe",
+    "timeline": "year",
+    "set in": "year",
+    "date": "year",
+    "era": "year",
 }
 
 _DATE_FORMATS = (
@@ -1359,10 +1449,10 @@ def parse_infobox(html: str) -> dict:
             iso = _parse_date(text)
             if iso:
                 out["release_date"] = iso
-        elif key == "year_in_universe":
+        elif key == "year":
             # Timeline values can be ranges ("25,793 BBY-25,792 BBY"); take the
             # first BBY/ABY token. Skip if no recognizable year token is present.
-            if "year_in_universe" in out:
+            if "year" in out:
                 continue
             tokens = re.findall(r"c\.\s*[\d,]+\s+(?:BBY|ABY)", text, flags=re.IGNORECASE)
             if not tokens:
@@ -1370,7 +1460,7 @@ def parse_infobox(html: str) -> dict:
             if tokens:
                 parsed = parse_year(tokens[0])
                 if parsed is not None:
-                    out["year_in_universe"] = parsed
+                    out["year"] = parsed
         else:
             out[key] = text
     cover = _parse_cover_url(soup)
@@ -1390,7 +1480,7 @@ If a fixture-based test fails because Wookieepedia's HTML structure differs (e.g
 
 ```bash
 git add scripts/infobox_parser.py tests/test_infobox_parser.py tests/fixtures/infobox_a_new_hope.html tests/fixtures/infobox_eruption.html
-git commit -m "Add infobox_parser extracting authors, publisher, date, cover, year_in_universe"
+git commit -m "Add infobox_parser extracting authors, publisher, date, cover, year"
 ```
 
 ### Task 3.4: Wire enrichment into `build_data`
@@ -1407,7 +1497,9 @@ from __future__ import annotations
 
 import argparse
 import json
-from datetime import datetime, timezone
+import sys
+from collections import defaultdict
+from datetime import UTC, datetime
 from pathlib import Path
 
 from scripts.excel_reader import ExcelRow, read_works
@@ -1421,30 +1513,49 @@ OUTPUT_PATH = REPO_ROOT / "frontend" / "public" / "data" / "works.json"
 CACHE_DIR = REPO_ROOT / "data" / ".cache" / "wookieepedia"
 UNMATCHED_LOG = REPO_ROOT / "data" / "unmatched.log"
 MISSING_YEAR_LOG = REPO_ROOT / "data" / "missing_year.log"
+MISSING_MEDIUM_LOG = REPO_ROOT / "data" / "missing_medium.log"
+DUPLICATES_LOG = REPO_ROOT / "data" / "duplicates.log"
+
+# Canonical medium list, alphabetical. Order is permanent: new entries must be
+# APPENDED at the end so existing indices retain their meaning.
+MEDIUMS = [
+    "Audio Drama",         # 0
+    "Comic",               # 1
+    "Junior Novel",        # 2
+    "Movie",               # 3
+    "Novel",               # 4
+    "Short Story",         # 5
+    "TV Show",             # 6
+    "Videogame",           # 7
+    "Young Reader Book",   # 8
+]
+_MEDIUM_TO_INDEX = {name: i for i, name in enumerate(MEDIUMS)}
 
 
-def _row_to_work(row: ExcelRow) -> dict:
+def _row_to_work(row: ExcelRow) -> dict | None:
     """Build the base work dict from Excel data only. Year is required and
-    will be filled by Wookieepedia later if absent here."""
+    will be filled by Wookieepedia later if absent here. Returns None if the
+    medium isn't in the canonical list (caller logs)."""
+    if row.medium not in _MEDIUM_TO_INDEX:
+        return None
     work: dict = {
         "id": make_id(
             era=row.era,
             series=row.series,
             title=row.title,
-            medium=row.medium,
+            medium=row.medium,    # ID uses the canonical medium STRING for stability
             number=row.number,
         ),
         "era": row.era,
-        "excel_order": row.excel_order,
         "title": row.title,
-        "medium": row.medium,
+        "medium": _MEDIUM_TO_INDEX[row.medium],   # JSON gets the integer index
     }
     if row.series:
         work["series"] = row.series
     if row.number is not None:
         work["number"] = row.number
-    if row.year_in_universe is not None:
-        work["year_in_universe"] = row.year_in_universe
+    if row.year is not None:
+        work["year"] = row.year
     return work
 
 
@@ -1462,50 +1573,102 @@ def _enrich(work: dict, row: ExcelRow, client: WikiClient, unmatched: list) -> N
         return
     info = parse_infobox(html)
     # Excel year wins; fall back to infobox year only if Excel was empty.
-    if "year_in_universe" not in work and "year_in_universe" in info:
-        work["year_in_universe"] = info["year_in_universe"]
+    if "year" not in work and "year" in info:
+        work["year"] = info["year"]
     for key in ("authors", "publisher", "release_date", "cover_url"):
         value = info.get(key)
         if value:
             work[key] = value
 
 
+def _detect_duplicates(works: list[dict]) -> None:
+    by_id: dict[str, list[dict]] = defaultdict(list)
+    for w in works:
+        by_id[w["id"]].append(w)
+    groups = [g for g in by_id.values() if len(g) > 1]
+    if not groups:
+        return
+    for g in groups:
+        print(f"[WARN] duplicate id {g[0]['id']}:", file=sys.stderr)
+        for w in g:
+            print(
+                f"  era={w['era']} title={w['title']!r} medium={w['medium']} "
+                f"series={w.get('series')} number={w.get('number')}",
+                file=sys.stderr,
+            )
+    rows_total = sum(len(g) for g in groups)
+    print(
+        f"{len(groups)} duplicate id group{'s' if len(groups) != 1 else ''} "
+        f"({rows_total} rows). See {DUPLICATES_LOG.relative_to(REPO_ROOT)}.",
+        file=sys.stderr,
+    )
+    DUPLICATES_LOG.parent.mkdir(parents=True, exist_ok=True)
+    DUPLICATES_LOG.write_text(
+        "\n\n".join(
+            "\n".join(
+                [f"id {g[0]['id']}"]
+                + [
+                    f"  era={w['era']} title={w['title']!r} medium={w['medium']} "
+                    f"series={w.get('series')} number={w.get('number')}"
+                    for w in g
+                ]
+            )
+            for g in groups
+        ) + "\n",
+        encoding="utf-8",
+    )
+
+
 def build(*, refresh: bool, dry_run: bool) -> dict:
     client = WikiClient(cache_dir=CACHE_DIR, refresh=refresh)
     unmatched: list[str] = []
     missing_year: list[str] = []
-    works = []
+    missing_medium: list[str] = []
+    works: list[dict] = []
     rows = list(read_works(EXCEL_PATH))
     for i, row in enumerate(rows, start=1):
         work = _row_to_work(row)
+        if work is None:
+            missing_medium.append(f"{row.era}|{row.title}|{row.series}|{row.medium}")
+            continue
         _enrich(work, row, client, unmatched)
-        if "year_in_universe" not in work:
+        if "year" not in work:
             missing_year.append(
-                f"{row.era}|{row.title}|{row.series}|{row.medium}|excel_order={row.excel_order}"
+                f"{row.era}|{row.title}|{row.series}|{row.medium}"
             )
             continue  # spec: rows lacking a year are excluded from the JSON
         works.append(work)
         if i % 50 == 0:
             print(f"  processed {i}/{len(rows)}")
+    _detect_duplicates(works)
     payload = {
-        "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
         "works": works,
     }
+    summary = (
+        f"{len(works)} works; {len(unmatched)} unmatched; "
+        f"{len(missing_year)} missing-year skipped; "
+        f"{len(missing_medium)} missing-medium skipped"
+    )
     if dry_run:
-        print(
-            f"[dry-run] would write {len(works)} works; "
-            f"{len(unmatched)} unmatched; {len(missing_year)} missing-year (skipped)"
-        )
+        print(f"[dry-run] would write {summary}")
         return payload
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    OUTPUT_PATH.write_text(json.dumps(payload, indent=2, ensure_ascii=False))
-    UNMATCHED_LOG.parent.mkdir(parents=True, exist_ok=True)
-    UNMATCHED_LOG.write_text("\n".join(unmatched) + ("\n" if unmatched else ""))
-    MISSING_YEAR_LOG.write_text("\n".join(missing_year) + ("\n" if missing_year else ""))
-    print(
-        f"wrote {len(works)} works to {OUTPUT_PATH} "
-        f"({len(unmatched)} unmatched; {len(missing_year)} missing-year skipped)"
+    OUTPUT_PATH.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False),
+        encoding="utf-8",
     )
+    UNMATCHED_LOG.parent.mkdir(parents=True, exist_ok=True)
+    UNMATCHED_LOG.write_text(
+        "\n".join(unmatched) + ("\n" if unmatched else ""), encoding="utf-8"
+    )
+    MISSING_YEAR_LOG.write_text(
+        "\n".join(missing_year) + ("\n" if missing_year else ""), encoding="utf-8"
+    )
+    MISSING_MEDIUM_LOG.write_text(
+        "\n".join(missing_medium) + ("\n" if missing_medium else ""), encoding="utf-8"
+    )
+    print(f"wrote {summary} to {OUTPUT_PATH}")
     return payload
 
 
@@ -1527,7 +1690,7 @@ if __name__ == "__main__":
 just scrape
 ```
 
-Expected: progress lines every 50 rows, finishing with `wrote N works to .../works.json (M unmatched; K missing-year skipped)` where N ≈ 1900+, M is small (typically < 50), and K should be 0 in steady state. If K > 0, inspect `data/missing_year.log`, add the year to the Excel for those rows, and re-run. Cache populates `data/.cache/wookieepedia/`.
+Expected: progress lines every 50 rows, finishing with `wrote N works; M unmatched; K missing-year skipped; J missing-medium skipped to .../works.json` where N ≈ 1900+, M is small (typically < 50), K should be 0 in steady state, and J should be 0 (the canonical `MEDIUMS` list covers every Excel value as of this plan; if J > 0, inspect `data/missing_medium.log` and decide whether to extend the canonical list — appending only — or correct the Excel). Cache populates `data/.cache/wookieepedia/`.
 
 - [ ] **Step 3: Spot-check the output**
 
@@ -1540,7 +1703,7 @@ print(json.dumps(sample, indent=2, ensure_ascii=False))
 "
 ```
 
-Expected: includes `id`, `era`, `excel_order`, `title`, `medium`, `year_in_universe`, plus `wiki_url`, `authors`, `publisher`, `release_date`, `cover_url`. No null values.
+Expected: includes `id`, `era`, `title`, `medium` (int 0..8), `year`, plus `wiki_url`, `authors`, `publisher`, `release_date`, `cover_url`. No null values. No `excel_order` — JSON array order is canonical.
 
 - [ ] **Step 4: Re-run to verify cache hits**
 
@@ -1553,7 +1716,7 @@ Expected: completes in seconds; no network requests for cached URLs.
 - [ ] **Step 5: Commit**
 
 ```bash
-git add scripts/build_data.py frontend/public/data/works.json data/unmatched.log data/missing_year.log
+git add scripts/build_data.py frontend/public/data/works.json
 git commit -m "Enrich works.json from Wookieepedia (incl. year fallback) and skip year-less rows"
 ```
 
@@ -1660,11 +1823,12 @@ git add frontend/ -- ':!frontend/node_modules' ':!frontend/dist'
 git commit -m "Scaffold Vite + React + TS + Tailwind 4"
 ```
 
-### Task 4.2: Define `Work` type, `ERAS` constant, `formatYear`
+### Task 4.2: Define `Work` type, `ERAS`/`MEDIUMS` constants, `formatYear`
 
 **Files:**
 - Create: `frontend/src/types/work.ts`
 - Create: `frontend/src/constants/eras.ts`
+- Create: `frontend/src/constants/mediums.ts`
 - Create: `frontend/src/lib/formatYear.ts`
 - Create: `frontend/src/lib/__tests__/formatYear.test.ts`
 
@@ -1712,7 +1876,7 @@ export function formatYear(year: number): string {
 Run: `cd frontend && npm test -- formatYear`
 Expected: all 3 tests pass.
 
-- [ ] **Step 5: Write `ERAS` constant and `Work` type**
+- [ ] **Step 5: Write `ERAS`, `MEDIUMS`, and `Work` type**
 
 `frontend/src/constants/eras.ts`:
 
@@ -1746,6 +1910,24 @@ export const ERA_COLORS: Record<EraIndex, string> = {
 };
 ```
 
+`frontend/src/constants/mediums.ts`:
+
+```ts
+export const MEDIUMS = [
+  "Audio Drama",         // 0
+  "Comic",               // 1
+  "Junior Novel",        // 2
+  "Movie",               // 3
+  "Novel",               // 4
+  "Short Story",         // 5
+  "TV Show",             // 6
+  "Videogame",           // 7
+  "Young Reader Book",   // 8
+] as const;
+
+export type MediumIndex = number;
+```
+
 `frontend/src/types/work.ts`:
 
 ```ts
@@ -1754,10 +1936,9 @@ import type { EraIndex } from "../constants/eras";
 export interface Work {
   id: string;
   era: EraIndex;
-  excel_order: number;
   title: string;
-  medium: string;
-  year_in_universe: number;
+  medium: number;          // index into MEDIUMS
+  year: number;            // signed in-universe year (negative = BBY)
   series?: string;
   number?: string;
   release_date?: string;
@@ -1777,7 +1958,7 @@ export interface WorksFile {
 
 ```bash
 git add frontend/src/types frontend/src/constants frontend/src/lib/formatYear.ts frontend/src/lib/__tests__/formatYear.test.ts
-git commit -m "Add Work type, ERAS constant, formatYear util"
+git commit -m "Add Work type, ERAS + MEDIUMS constants, formatYear util"
 ```
 
 ### Task 4.3: `slug.ts` for URL params and facet keys
@@ -1847,12 +2028,13 @@ git commit -m "Add frontend slugify util"
 
 ```ts
 import { create } from "zustand";
+import { MEDIUMS } from "../constants/mediums";
 import type { Work, WorksFile } from "../types/work";
 
-interface Facet {
-  value: string;        // canonical (used by filterStore)
-  label: string;        // display
-  count: number;        // works that have this value
+export interface Facet<V = string> {
+  value: V;       // canonical (used by filterStore)
+  label: string;  // display
+  count: number;  // works that have this value
 }
 
 interface CatalogState {
@@ -1864,7 +2046,7 @@ interface CatalogState {
     series: Facet[];
     authors: Facet[];
     publishers: Facet[];
-    mediums: Facet[];
+    mediums: Facet<number>[];
     yearMin: number;
     yearMax: number;
   };
@@ -1881,7 +2063,7 @@ const empty: CatalogState["facets"] = {
 };
 
 function buildFacets(works: Work[]): CatalogState["facets"] {
-  const counts = (key: (w: Work) => string[] | string | undefined) => {
+  const counts = (key: (w: Work) => string[] | string | undefined): Facet[] => {
     const map = new Map<string, number>();
     for (const w of works) {
       const raw = key(w);
@@ -1894,12 +2076,19 @@ function buildFacets(works: Work[]): CatalogState["facets"] {
       .sort((a, b) => a[0].localeCompare(b[0]))
       .map(([label, count]) => ({ value: label, label, count }));
   };
-  const years = works.map((w) => w.year_in_universe);
+  const mediumCounts = new Map<number, number>();
+  for (const w of works) {
+    mediumCounts.set(w.medium, (mediumCounts.get(w.medium) ?? 0) + 1);
+  }
+  const mediums: Facet<number>[] = [...mediumCounts.entries()]
+    .sort((a, b) => a[0] - b[0])
+    .map(([idx, count]) => ({ value: idx, label: MEDIUMS[idx], count }));
+  const years = works.map((w) => w.year);
   return {
     series: counts((w) => w.series),
     authors: counts((w) => w.authors),
     publishers: counts((w) => w.publisher),
-    mediums: counts((w) => w.medium),
+    mediums,
     yearMin: years.length ? Math.min(...years) : 0,
     yearMax: years.length ? Math.max(...years) : 0,
   };
@@ -1988,7 +2177,7 @@ export type SortMode = "chronology" | "release";
 
 export interface FilterState {
   eras: number[];          // era indices
-  mediums: string[];       // canonical medium strings, e.g. "Novel"
+  mediums: number[];       // indices into MEDIUMS (e.g. 4 = Novel)
   series: string[];        // canonical series strings
   authors: string[];
   publishers: string[];
@@ -2058,8 +2247,14 @@ import type { Work } from "../../types/work";
 import type { FilterState } from "../../store/filterStore";
 import { filterWorks } from "../filterWorks";
 
-const w = (over: Partial<Work> & { id: string; year_in_universe: number; excel_order: number }): Work => ({
-  era: 5, title: "T", medium: "Novel",
+// Medium indices (alphabetical canonical order):
+// 0 Audio Drama, 1 Comic, 2 Junior Novel, 3 Movie, 4 Novel,
+// 5 Short Story, 6 TV Show, 7 Videogame, 8 Young Reader Book
+const NOVEL = 4;
+const COMIC = 1;
+
+const w = (over: Partial<Work> & { id: string; year: number }): Work => ({
+  era: 5, title: "T", medium: NOVEL,
   ...over,
 });
 
@@ -2070,10 +2265,12 @@ const empty: FilterState = {
 };
 
 describe("filterWorks", () => {
+  // Catalog order matters: this is the JSON order, which the frontend treats
+  // as the canonical tiebreaker via stable sorting.
   const all: Work[] = [
-    w({ id: "a", title: "A New Hope", medium: "Novel", era: 5, year_in_universe: 0, excel_order: 100, authors: ["Foster"] }),
-    w({ id: "b", title: "Vector Prime", medium: "Novel", era: 7, year_in_universe: 25, excel_order: 200, authors: ["Salvatore"] }),
-    w({ id: "c", title: "Chewbacca", medium: "Comic", era: 7, year_in_universe: 25, excel_order: 201, authors: ["Macan"] }),
+    w({ id: "a", title: "A New Hope", medium: NOVEL, era: 5, year: 0, authors: ["Foster"] }),
+    w({ id: "b", title: "Vector Prime", medium: NOVEL, era: 7, year: 25, authors: ["Salvatore"] }),
+    w({ id: "c", title: "Chewbacca", medium: COMIC, era: 7, year: 25, authors: ["Macan"] }),
   ];
 
   it("returns all when no filters", () => {
@@ -2081,14 +2278,14 @@ describe("filterWorks", () => {
   });
 
   it("filters by medium (OR within field)", () => {
-    const r = filterWorks(all, { ...empty, mediums: ["Novel", "Comic"] });
+    const r = filterWorks(all, { ...empty, mediums: [NOVEL, COMIC] });
     expect(r).toHaveLength(3);
-    const r2 = filterWorks(all, { ...empty, mediums: ["Novel"] });
+    const r2 = filterWorks(all, { ...empty, mediums: [NOVEL] });
     expect(r2.map((x) => x.id)).toEqual(["a", "b"]);
   });
 
   it("filters by era and medium (AND between fields)", () => {
-    const r = filterWorks(all, { ...empty, mediums: ["Novel"], eras: [7] });
+    const r = filterWorks(all, { ...empty, mediums: [NOVEL], eras: [7] });
     expect(r.map((x) => x.id)).toEqual(["b"]);
   });
 
@@ -2107,34 +2304,35 @@ describe("filterWorks", () => {
     expect(r.map((x) => x.id)).toEqual(["c"]);
   });
 
-  it("chronology sort: era, then year, then excel_order", () => {
+  it("chronology sort: era, then year, then JSON order (stable)", () => {
     const r = filterWorks(all, empty);
     expect(r.map((x) => x.id)).toEqual(["a", "b", "c"]);
   });
 
-  it("chronology tiebreak respects excel_order over title", () => {
+  it("chronology stable-sort tiebreak preserves input order", () => {
+    // 'z' precedes 'a' in the input; both have era=5 and year=0; output keeps that.
     const data: Work[] = [
-      w({ id: "z", era: 5, year_in_universe: 0, excel_order: 50, title: "Zeta" }),
-      w({ id: "a", era: 5, year_in_universe: 0, excel_order: 51, title: "Alpha" }),
+      w({ id: "z", era: 5, year: 0, title: "Zeta" }),
+      w({ id: "a", era: 5, year: 0, title: "Alpha" }),
     ];
     const r = filterWorks(data, empty);
     expect(r.map((x) => x.id)).toEqual(["z", "a"]);
   });
 
-  it("release sort: release_date, then excel_order; missing dates last", () => {
+  it("release sort: release_date asc, missing dates last, ties keep input order", () => {
     const data: Work[] = [
-      w({ id: "x", year_in_universe: 0, excel_order: 10, release_date: "2010-01-01" }),
-      w({ id: "y", year_in_universe: 0, excel_order: 20, release_date: "1999-01-01" }),
-      w({ id: "z", year_in_universe: 0, excel_order: 30 }),
+      w({ id: "x", year: 0, release_date: "2010-01-01" }),
+      w({ id: "y", year: 0, release_date: "1999-01-01" }),
+      w({ id: "z", year: 0 }),
     ];
     const r = filterWorks(data, { ...empty, sort: "release" });
     expect(r.map((x) => x.id)).toEqual(["y", "x", "z"]);
   });
 
-  it("release sort tiebreak respects excel_order on identical dates", () => {
+  it("release sort: equal-date works keep input order", () => {
     const data: Work[] = [
-      w({ id: "second", year_in_universe: 0, excel_order: 200, release_date: "2010-01-01" }),
-      w({ id: "first", year_in_universe: 0, excel_order: 199, release_date: "2010-01-01" }),
+      w({ id: "first", year: 0, release_date: "2010-01-01" }),
+      w({ id: "second", year: 0, release_date: "2010-01-01" }),
     ];
     const r = filterWorks(data, { ...empty, sort: "release" });
     expect(r.map((x) => x.id)).toEqual(["first", "second"]);
@@ -2177,16 +2375,17 @@ function matchesQuery(w: Work, q: string): boolean {
 
 function matchesYear(w: Work, min: number | null, max: number | null): boolean {
   if (min === null && max === null) return true;
-  const y = w.year_in_universe;
+  const y = w.year;
   if (min !== null && y < min) return false;
   if (max !== null && y > max) return false;
   return true;
 }
 
+// Sorts return 0 for equal keys so JS's stable Array.prototype.sort
+// preserves the input order — which is the JSON / Excel order.
 function compareChronology(a: Work, b: Work): number {
   if (a.era !== b.era) return a.era - b.era;
-  if (a.year_in_universe !== b.year_in_universe) return a.year_in_universe - b.year_in_universe;
-  return a.excel_order - b.excel_order;
+  return a.year - b.year;
 }
 
 function compareRelease(a: Work, b: Work): number {
@@ -2196,7 +2395,7 @@ function compareRelease(a: Work, b: Work): number {
   if (!ar && br) return 1;
   if (ar < br) return -1;
   if (ar > br) return 1;
-  return a.excel_order - b.excel_order;
+  return 0;
 }
 
 export function filterWorks(works: Work[], filters: FilterState): Work[] {
@@ -2260,7 +2459,7 @@ export function readFromUrl(search: string): Partial<FilterState> {
   const sort = p.get("sort");
   return {
     eras: parseInts(p.get("era")),
-    mediums: parseCsv(p.get("medium")),
+    mediums: parseInts(p.get("medium")),
     series: parseCsv(p.get("series")),
     authors: parseCsv(p.get("author")),
     publishers: parseCsv(p.get("publisher")),
@@ -2787,6 +2986,7 @@ export function YearRangeFilter() {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ERAS } from "@/constants/eras";
+import { MEDIUMS } from "@/constants/mediums";
 import { useFilterStore } from "@/store/filterStore";
 
 export function ActiveFilterChips() {
@@ -2796,7 +2996,7 @@ export function ActiveFilterChips() {
     chips.push({ label: ERAS[e], clear: () => s.toggleArrayValue("eras", e) }),
   );
   s.mediums.forEach((m) =>
-    chips.push({ label: m, clear: () => s.toggleArrayValue("mediums", m) }),
+    chips.push({ label: MEDIUMS[m], clear: () => s.toggleArrayValue("mediums", m) }),
   );
   s.series.forEach((m) =>
     chips.push({ label: m, clear: () => s.toggleArrayValue("series", m) }),
@@ -2899,10 +3099,12 @@ git commit -m "Add sidebar facet filters, year range, active chips"
 ```tsx
 import { Badge } from "@/components/ui/badge";
 import { ERAS, ERA_COLORS, type EraIndex } from "@/constants/eras";
+import { MEDIUMS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import type { Work } from "@/types/work";
 
 export function WorkCard({ work, onClick }: { work: Work; onClick: () => void }) {
+  const mediumLabel = MEDIUMS[work.medium];
   return (
     <button
       type="button"
@@ -2922,7 +3124,7 @@ export function WorkCard({ work, onClick }: { work: Work; onClick: () => void })
             className="flex h-full items-center justify-center text-3xl text-white/70"
             style={{ backgroundColor: ERA_COLORS[work.era as EraIndex] }}
           >
-            {work.medium[0]}
+            {mediumLabel[0]}
           </div>
         )}
       </div>
@@ -2935,13 +3137,11 @@ export function WorkCard({ work, onClick }: { work: Work; onClick: () => void })
           </p>
         )}
         <div className="flex flex-wrap items-center gap-1 pt-1">
-          <Badge variant="outline">{work.medium}</Badge>
+          <Badge variant="outline">{mediumLabel}</Badge>
           <Badge style={{ backgroundColor: ERA_COLORS[work.era as EraIndex], color: "white" }}>
             {ERAS[work.era]}
           </Badge>
-          {work.year_in_universe !== undefined && (
-            <span className="text-xs text-muted-foreground">{formatYear(work.year_in_universe)}</span>
-          )}
+          <span className="text-xs text-muted-foreground">{formatYear(work.year)}</span>
         </div>
         {work.authors && work.authors.length > 0 && (
           <p className="line-clamp-1 text-xs text-muted-foreground">{work.authors.join(", ")}</p>
@@ -3098,6 +3298,7 @@ git commit -m "Add virtualized CardGrid view"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { ERAS, ERA_COLORS, type EraIndex } from "@/constants/eras";
+import { MEDIUMS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { useCatalogStore } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
@@ -3106,6 +3307,7 @@ export function WorkDetailModal() {
   const { openWorkId, set } = useFilterStore();
   const works = useCatalogStore((s) => s.works);
   const work = openWorkId ? works.find((w) => w.id === openWorkId) : null;
+  const mediumLabel = work ? MEDIUMS[work.medium] : "";
 
   return (
     <Dialog
@@ -3131,7 +3333,7 @@ export function WorkDetailModal() {
                     className="flex h-full items-center justify-center text-5xl text-white/70"
                     style={{ backgroundColor: ERA_COLORS[work.era as EraIndex] }}
                   >
-                    {work.medium[0]}
+                    {mediumLabel[0]}
                   </div>
                 )}
               </div>
@@ -3142,17 +3344,15 @@ export function WorkDetailModal() {
                       {work.series}{work.number ? ` #${work.number}` : ""}
                     </span>
                   )}
-                  <Badge variant="outline">{work.medium}</Badge>
+                  <Badge variant="outline">{mediumLabel}</Badge>
                   <Badge style={{ backgroundColor: ERA_COLORS[work.era as EraIndex], color: "white" }}>
                     {ERAS[work.era]}
                   </Badge>
                 </div>
-                {work.year_in_universe !== undefined && (
-                  <p>
-                    <span className="text-muted-foreground">In-universe year:</span>{" "}
-                    {formatYear(work.year_in_universe)}
-                  </p>
-                )}
+                <p>
+                  <span className="text-muted-foreground">In-universe year:</span>{" "}
+                  {formatYear(work.year)}
+                </p>
                 {work.release_date && (
                   <p>
                     <span className="text-muted-foreground">Released:</span> {work.release_date}
@@ -3234,6 +3434,7 @@ git commit -m "Add WorkDetailModal with deep-link via ?work=<id>"
 ```tsx
 import { Badge } from "@/components/ui/badge";
 import { ERAS, ERA_COLORS, type EraIndex } from "@/constants/eras";
+import { MEDIUMS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import type { Work } from "@/types/work";
 
@@ -3256,15 +3457,13 @@ export function WorkRow({ work, onClick }: { work: Work; onClick: () => void }) 
       <td className="p-2 font-medium">{work.title}</td>
       <td className="p-2 text-muted-foreground">{work.series ?? ""}</td>
       <td className="p-2 text-muted-foreground">{work.number ?? ""}</td>
-      <td className="p-2"><Badge variant="outline">{work.medium}</Badge></td>
+      <td className="p-2"><Badge variant="outline">{MEDIUMS[work.medium]}</Badge></td>
       <td className="p-2">
         <Badge style={{ backgroundColor: ERA_COLORS[work.era as EraIndex], color: "white" }}>
           {ERAS[work.era]}
         </Badge>
       </td>
-      <td className="p-2 text-muted-foreground">
-        {work.year_in_universe !== undefined ? formatYear(work.year_in_universe) : ""}
-      </td>
+      <td className="p-2 text-muted-foreground">{formatYear(work.year)}</td>
       <td className="p-2 text-muted-foreground">{work.release_date ?? ""}</td>
       <td className="p-2 text-muted-foreground">{work.authors?.join(", ") ?? ""}</td>
       <td className="p-2 text-muted-foreground">{work.publisher ?? ""}</td>
@@ -3386,38 +3585,41 @@ import { describe, expect, it } from "vitest";
 import type { Work } from "../../types/work";
 import { groupForChronology, groupForRelease } from "../timelineGroups";
 
-const w = (over: Partial<Work> & { id: string; year_in_universe: number; excel_order: number }): Work => ({
-  era: 5, title: "T", medium: "Novel", ...over,
+// Medium index 4 = "Novel" (alphabetical canonical order).
+const w = (over: Partial<Work> & { id: string; year: number }): Work => ({
+  era: 5, title: "T", medium: 4, ...over,
 });
 
 describe("groupForChronology", () => {
-  it("groups by era then year, sorted by era index, works ordered by excel_order", () => {
+  it("groups by era then year, sorted by era index, works keep input order within a year", () => {
+    // 'b' precedes 'e' in input; both are era=5, year=0, so they keep that order.
     const data = [
-      w({ id: "a", era: 0, year_in_universe: -25793, excel_order: 1 }),
-      w({ id: "b", era: 5, year_in_universe: 0, excel_order: 100 }),
-      w({ id: "c", era: 5, year_in_universe: 4, excel_order: 110 }),
-      w({ id: "d", era: 7, year_in_universe: 25, excel_order: 200 }),
-      w({ id: "e", era: 5, year_in_universe: 0, excel_order: 99 }),
+      w({ id: "a", era: 0, year: -25793 }),
+      w({ id: "b", era: 5, year: 0 }),
+      w({ id: "c", era: 5, year: 4 }),
+      w({ id: "d", era: 7, year: 25 }),
+      w({ id: "e", era: 5, year: 0 }),
     ];
     const groups = groupForChronology(data);
     expect(groups.map((g) => g.eraIndex)).toEqual([0, 5, 7]);
     const era5 = groups.find((g) => g.eraIndex === 5)!;
     expect(era5.years.map((y) => y.year)).toEqual([0, 4]);
-    expect(era5.years[0].works.map((x) => x.id)).toEqual(["e", "b"]);
+    expect(era5.years[0].works.map((x) => x.id)).toEqual(["b", "e"]);
   });
 });
 
 describe("groupForRelease", () => {
-  it("groups by release year, ascending; works without a date go to a final 'undated' bucket; ordered by excel_order within each year", () => {
+  it("groups by release year, ascending; works without a date go to a final 'undated' bucket; preserves input order within each year", () => {
+    // 'b' precedes 'd' in input; both released in 2010; output keeps that.
     const data = [
-      w({ id: "a", year_in_universe: 0, excel_order: 1, release_date: "1976-11-12" }),
-      w({ id: "b", year_in_universe: 0, excel_order: 50, release_date: "2010-04-01" }),
-      w({ id: "c", year_in_universe: 0, excel_order: 60 }),
-      w({ id: "d", year_in_universe: 0, excel_order: 49, release_date: "2010-08-08" }),
+      w({ id: "a", year: 0, release_date: "1976-11-12" }),
+      w({ id: "b", year: 0, release_date: "2010-04-01" }),
+      w({ id: "c", year: 0 }),
+      w({ id: "d", year: 0, release_date: "2010-08-08" }),
     ];
     const groups = groupForRelease(data);
     expect(groups.map((g) => g.year)).toEqual([1976, 2010, null]);
-    expect(groups[1].works.map((x) => x.id)).toEqual(["d", "b"]);
+    expect(groups[1].works.map((x) => x.id)).toEqual(["b", "d"]);
     expect(groups[2].works.map((x) => x.id)).toEqual(["c"]);
   });
 });
@@ -3443,17 +3645,15 @@ export interface ReleaseGroup {
   works: Work[];
 }
 
-function byExcelOrder(a: Work, b: Work): number {
-  return a.excel_order - b.excel_order;
-}
-
+// Push-order into each bucket preserves the input array order, which is the
+// JSON / Excel order — the canonical tiebreaker. No explicit sort needed.
 export function groupForChronology(works: Work[]): ChronologyGroup[] {
   const eraMap = new Map<number, Map<number, Work[]>>();
   for (const w of works) {
     if (!eraMap.has(w.era)) eraMap.set(w.era, new Map());
     const yearMap = eraMap.get(w.era)!;
-    if (!yearMap.has(w.year_in_universe)) yearMap.set(w.year_in_universe, []);
-    yearMap.get(w.year_in_universe)!.push(w);
+    if (!yearMap.has(w.year)) yearMap.set(w.year, []);
+    yearMap.get(w.year)!.push(w);
   }
   return [...eraMap.entries()]
     .sort((a, b) => a[0] - b[0])
@@ -3461,7 +3661,7 @@ export function groupForChronology(works: Work[]): ChronologyGroup[] {
       eraIndex,
       years: [...yearMap.entries()]
         .sort((a, b) => a[0] - b[0])
-        .map(([year, works]) => ({ year, works: [...works].sort(byExcelOrder) })),
+        .map(([year, works]) => ({ year, works })),
     }));
 }
 
@@ -3483,8 +3683,8 @@ export function groupForRelease(works: Work[]): ReleaseGroup[] {
   }
   const groups: ReleaseGroup[] = [...dated.entries()]
     .sort((a, b) => a[0] - b[0])
-    .map(([year, works]) => ({ year, works: [...works].sort(byExcelOrder) }));
-  if (undated.length > 0) groups.push({ year: null, works: [...undated].sort(byExcelOrder) });
+    .map(([year, works]) => ({ year, works }));
+  if (undated.length > 0) groups.push({ year: null, works: undated });
   return groups;
 }
 ```
@@ -3510,6 +3710,7 @@ git commit -m "Add timelineGroups helpers (chronology + release)"
 
 ```tsx
 import { ERAS, ERA_COLORS, type EraIndex } from "@/constants/eras";
+import { MEDIUMS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { groupForChronology, groupForRelease } from "@/lib/timelineGroups";
 import { useFilterStore } from "@/store/filterStore";
@@ -3531,7 +3732,7 @@ function Marker({ work, onClick }: { work: Work; onClick: () => void }) {
           className="flex h-full w-full items-center justify-center text-xs text-white"
           style={{ backgroundColor: ERA_COLORS[work.era as EraIndex] }}
         >
-          {work.medium[0]}
+          {MEDIUMS[work.medium][0]}
         </div>
       )}
     </button>
@@ -3868,12 +4069,13 @@ git commit -m "Mention live URL in README"
 I checked the plan against the spec. Findings I fixed inline before publishing:
 
 1. **`series` is optional in the schema** — some Short Stories have no series; `_row_to_work` emits `series` only when present. Spec already reflects this.
-2. **`year_in_universe` is required in the schema** — Excel year wins; Wookieepedia infobox (Timeline / Set in / Date / Era labels) is the fallback. If both sources are empty the row is logged to `data/missing_year.log` and excluded from the JSON. The infobox parser has a dedicated test (Eruption fixture) for the year fallback.
-3. **`excel_order` is a required field** — the Excel reader assigns a global running counter starting at 0; this is the canonical tiebreaker for both chronology and release sorts and propagates into `filterWorks` and the timeline groupings.
-4. **`Sidebar` component used twice** — the original spec listed only `Sidebar.tsx`; the plan now also exports a `MobileSidebar` from the same file (Task 9.1) for the mobile drawer. No new file required, just an additional export.
-5. **`<repo-name>` placeholder** — the spec previously had this in §6.1 and §12; the spec was updated already. The plan uses `/swdb/` everywhere consistently.
-6. **`uuid5 namespace UUID`** — plan now declares the exact namespace UUID once (in `id_utils.py`) and never changes it; the spec's "fixed namespace UUID constant" requirement is satisfied.
-7. **Forward-compat slots** — the spec explicitly bans placeholder files for the future user account / Read button features. The plan has none.
+2. **`year` is required in the schema** — Excel year wins; Wookieepedia infobox (Timeline / Set in / Date / Era labels) is the fallback. If both sources are empty the row is logged to `data/missing_year.log` and excluded from the JSON. The infobox parser has a dedicated test (Eruption fixture) for the year fallback.
+3. **`medium` is an integer** — the JSON stores `medium` as an index 0..8 into the `MEDIUMS` constant (alphabetical order). The Excel reader keeps the canonical Title Case string; conversion to int happens in `build_data._row_to_work`. Rows with a medium not in the canonical list are logged to `data/missing_medium.log` and excluded from the JSON. The `make_id` canonical key still uses the medium STRING (not the index), so re-ordering `MEDIUMS` later would not invalidate any IDs (though the user will not re-order it).
+4. **No `excel_order` field** — the JSON's `works` array order is the canonical order. The frontend relies on JS's stable `Array.prototype.sort` to preserve this order as the implicit tiebreaker after `(era, year)` for chronology and after `release_date` for release sort.
+5. **`Sidebar` component used twice** — the original spec listed only `Sidebar.tsx`; the plan now also exports a `MobileSidebar` from the same file (Task 9.1) for the mobile drawer. No new file required, just an additional export.
+6. **`<repo-name>` placeholder** — the spec previously had this in §6.1 and §12; the spec was updated already. The plan uses `/swdb/` everywhere consistently.
+7. **`uuid5 namespace UUID`** — plan now declares the exact namespace UUID once (in `id_utils.py`) and never changes it; the spec's "fixed namespace UUID constant" requirement is satisfied.
+8. **Forward-compat slots** — the spec explicitly bans placeholder files for the future user account / Read button features. The plan has none.
 
 No remaining "TBD"/"TODO"/"implement later" markers.
 

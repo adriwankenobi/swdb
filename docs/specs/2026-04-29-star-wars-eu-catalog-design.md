@@ -58,19 +58,20 @@ No multi-source fallback for v1. If specific fields turn out to be sparse, we ca
   - `frontend/public/data/works.json` — consumed by the app.
   - `data/.cache/wookieepedia/<slug>.html` — on-disk HTTP cache (gitignored).
   - `data/unmatched.log` — append-only list of rows whose Wookieepedia page could not be confidently resolved.
-  - `data/missing_year.log` — rows for which neither Excel nor Wookieepedia produced a `year_in_universe`. These rows are **excluded** from the JSON; the user must add the year to the Excel and re-run.
+  - `data/missing_year.log` — rows for which neither Excel nor Wookieepedia produced a `year`. These rows are **excluded** from the JSON; the user must add the year to the Excel and re-run.
+  - `data/missing_medium.log` — rows whose normalized `MEDIUM` value isn't in the canonical `MEDIUMS` list. Also excluded from the JSON; the developer must extend the canonical list (appending new entries at the end, never reordering) and re-run.
 
 ### 4.2 Steps
 
-1. **Read Excel** with `openpyxl`. Iterate every sheet; sheet name = era. Skip header row. Capture `era` (sheet name), `title`, `series`, `medium`, `number`, the original `INFO` and `COVER` URLs if present, and an `excel_order` running counter (incremented per data row across all sheets, starting at 0). `excel_order` is the canonical tiebreaker for ordering and must never change for an existing row; new rows added to the Excel get a higher counter and slot in at the end.
+1. **Read Excel** with `openpyxl`. Iterate every sheet; sheet name = era. Skip header row. Capture `era` (sheet name), `title`, `series`, `medium`, `number`, the original `INFO` and `COVER` URLs if present. The order in which works appear in the Excel is the canonical order — the JSON's `works` array must preserve it, and the frontend relies on stable sorting (no explicit tiebreaker key carried in the data).
 2. **Resolve Wookieepedia URL** per row:
    - `INFO` filled → use it.
    - `INFO` empty → call `action=opensearch` with `<title> <series>`. Accept the top match only if the matched page title contains the work's `title` (case-insensitive substring after slug-normalizing both). Otherwise log to `unmatched.log` and proceed Excel-only.
 3. **Fetch HTML** via the cache. Re-runs are near-free; `--refresh` flag bypasses the cache; `just clean-cache` deletes it.
 4. **Parse infobox** with BeautifulSoup. Extract `authors[]`, `publisher`, `release_date` (ISO 8601), `cover_url`, `wiki_url`, and an in-universe year (`Timeline` / `Set in` / `Date` infobox label). Whitespace and date normalization happen here.
-5. **Normalize era + year** — sheet name → integer index 0–9 via the `ERAS` constant; `25793 BBY` → `-25793`, `4 ABY` → `4` as a single signed integer (`year_in_universe`). Resolution order: Excel `YEAR` first; if empty, infobox year. If still empty, write the row to `missing_year.log` and exclude it from the JSON.
-6. **Generate IDs** — `uuid5` of a fixed namespace UUID applied to the canonical key `era|series|title|medium|#`. Stable across rebuilds, deterministic, collision-free across mediums.
-7. **Emit JSON** with the schema in §5. Omit any null/empty fields. Print a summary of `unmatched` and `missing_year` counts at the end of the run.
+5. **Normalize era + medium + year** — sheet name → integer index 0–9 via the `ERAS` constant; medium string → integer index 0–8 via the `MEDIUMS` constant; `25793 BBY` → `-25793`, `4 ABY` → `4` as a single signed integer (`year`). Resolution order for year: Excel `YEAR` first; if empty, infobox year. If still empty, write the row to `missing_year.log` and exclude it from the JSON.
+6. **Generate IDs** — `uuid5` of a fixed namespace UUID applied to the canonical key `era|series|title|medium|#`. The medium component uses the **canonical medium string** (e.g. `"Novel"`), not the integer index, so that re-ordering the `MEDIUMS` array later does not invalidate any IDs. Stable across rebuilds, deterministic, collision-free across mediums.
+7. **Emit JSON** with the schema in §5. Omit any null/empty fields. The `works` array preserves the Excel iteration order. Print a summary of `unmatched`, `missing_year`, and `missing_medium` counts at the end of the run.
 
 ### 4.3 Flags
 
@@ -79,11 +80,11 @@ No multi-source fallback for v1. If specific fields turn out to be sparse, we ca
 
 ### 4.4 Override semantics
 
-- Excel **overrides** Wookieepedia for the four reliable fields (`title`, `series`, `medium`, `number`) and for `year_in_universe` when present in the Excel.
-- Wookieepedia **fills in** `year_in_universe` only when the Excel cell is empty.
+- Excel **overrides** Wookieepedia for the four reliable fields (`title`, `series`, `medium`, `number`) and for `year` when present in the Excel.
+- Wookieepedia **fills in** `year` only when the Excel cell is empty.
 - Wookieepedia **overrides** Excel for everything else (`authors`, `publisher`, `release_date`, `cover_url`).
 - `wiki_url` is whichever URL was used to fetch (the resolved one).
-- `excel_order` is fully owned by the Excel; never overridden.
+- The order of works in the JSON's `works` array is fully owned by the Excel; never reordered.
 
 ## 5. Data model
 
@@ -96,12 +97,11 @@ No multi-source fallback for v1. If specific fields turn out to be sparse, we ca
     {
       "id": "<uuid5>",
       "era": 5,
-      "excel_order": 1234,
       "title": "A New Hope",
       "series": "Star Wars Episode",
       "number": "IV",
-      "medium": "Novel",
-      "year_in_universe": 0,
+      "medium": 4,
+      "year": 0,
       "release_date": "1976-11-12",
       "authors": ["Alan Dean Foster"],
       "publisher": "Del Rey",
@@ -112,10 +112,10 @@ No multi-source fallback for v1. If specific fields turn out to be sparse, we ca
 }
 ```
 
-**Required fields:** `id`, `era`, `excel_order`, `title`, `medium`, `year_in_universe`.
+**Required fields:** `id`, `era`, `title`, `medium`, `year`.
 **Optional fields** are present only when known. `series` is optional (some short stories have no series). No nulls or empty arrays in the JSON.
 
-`excel_order` is a stable per-row integer (running counter across all sheets, in the order rows appear in the Excel). It is the canonical tiebreaker for sorting: chronology sort uses `(era, year_in_universe, excel_order)`; release sort uses `(release_date, excel_order)`. New rows appended to the Excel get a higher counter and naturally slot in at the end.
+The `works` array order is the canonical order (the order in which rows appear in the Excel). The frontend relies on JS's stable `Array.prototype.sort` to preserve this order as the implicit tiebreaker after `(era, year)` for chronology sort and after `release_date` for release sort. There is no explicit `excel_order` field in the JSON.
 
 `era` is an integer index. The frontend keeps a constant:
 
@@ -134,9 +134,25 @@ export const ERAS = [
 ] as const;
 ```
 
-`medium` is a normalized string from the canonical set: `Novel`, `Junior Novel`, `Young Reader Book`, `Comic`, `Short Story`, `Movie`, `TV Show`, `Videogame`, `Audio Drama`. Casing in the Excel (e.g. `COMIC`) is normalized at ingest.
+`medium` is an integer index into the `MEDIUMS` constant, in alphabetical order. The frontend keeps:
 
-`year_in_universe` formatting in the UI:
+```ts
+export const MEDIUMS = [
+  'Audio Drama',         // 0
+  'Comic',               // 1
+  'Junior Novel',        // 2
+  'Movie',               // 3
+  'Novel',               // 4
+  'Short Story',         // 5
+  'TV Show',             // 6
+  'Videogame',           // 7
+  'Young Reader Book',   // 8
+] as const;
+```
+
+The order is permanent — additions must be appended at the end (highest index) so existing indices keep their meaning. Casing in the Excel (e.g. `COMIC`) is normalized to the canonical Title Case before lookup. Rows whose medium isn't in this set are logged to `data/missing_medium.log` and excluded from the JSON.
+
+`year` formatting in the UI:
 ```ts
 const fmt = (y: number) => y >= 0 ? `${y} ABY` : `${-y} BBY`;
 ```
@@ -203,7 +219,7 @@ frontend/
 ### 6.3 State
 
 - **`catalogStore`** — read-only: `works[]` loaded from `works.json`, plus derived facet lists (unique series, authors, publishers, year-bounds) computed once on load.
-- **`filterStore`** — UI state: active filters (`eras: number[]`, `mediums: string[]`, `series: string[]`, `authors: string[]`, `publishers: string[]`, `yearMin: number`, `yearMax: number`, `q: string`), `view: 'cards' | 'table' | 'timeline'`, `sort: 'chronology' | 'release'`, and the currently open `workId | null`.
+- **`filterStore`** — UI state: active filters (`eras: number[]`, `mediums: number[]`, `series: string[]`, `authors: string[]`, `publishers: string[]`, `yearMin: number`, `yearMax: number`, `q: string`), `view: 'cards' | 'table' | 'timeline'`, `sort: 'chronology' | 'release'`, and the currently open `workId | null`.
 - **`filterWorks(works, filters)`** is a pure, memoized function returning the filtered, sorted result. All views consume it.
 
 Splitting these stores keeps catalog data and UI state independent. A future per-user store (read/unread, ratings) can be added as a third store without touching the others.
@@ -239,11 +255,11 @@ A segmented control in the TopBar switches between Cards, Table, and Timeline. S
 **Table.** Columns: Cover thumb · Title · Series · # · Medium · Era · Year · Release date · Authors · Publisher. Sticky header, click-to-sort columns, virtualized rows. Row click → modal.
 
 **Timeline.** Vertical scroll. Behavior depends on the active sort:
-- *Chronology*: section headers are the 10 eras, color-coded; works grouped by `year_in_universe`; long empty year stretches collapsed into a `…` gap so dense regions aren't dwarfed by the 25,000-year span.
+- *Chronology*: section headers are the 10 eras, color-coded; works grouped by `year`; long empty year stretches collapsed into a `…` gap so dense regions aren't dwarfed by the 25,000-year span.
 - *Release date*: section headers are real-world years (1976 …). No era bands; era is shown as a colored dot/ring on each marker so era distribution is still visible.
 Markers are small cover thumbnails with hover tooltips. Click → modal.
 
-Within any group (an era + year cluster, or a release year), works are ordered by `excel_order` so the in-Excel sequence is preserved.
+Within any group (an era + year cluster, or a release year), works keep their JSON-array order (which is the Excel order), preserved by stable sorting.
 
 ### 6.6 Filtering & search
 
@@ -261,7 +277,7 @@ Free-text search in the TopBar matches `title`, `series`, and `authors` (case-in
 - Within a field: **OR** (checking Novel + Comic shows works of either medium; works with multiple matching `authors` match if any author is selected).
 - Between fields: **AND** (all field constraints must hold).
 - Search AND-combines with the facet filters.
-- **Sort tiebreaker:** all sorts use `excel_order` as the final key. Chronology sort = `(era, year_in_universe, excel_order)`. Release sort = `(release_date, excel_order)`.
+- **Sort tiebreaker:** sorts are **stable** (JS `Array.prototype.sort` preserves original order for equal keys). Chronology sort key = `(era, year)`. Release sort key = `(release_date)`. Equal-keyed works fall back to JSON-array order, which is the Excel order.
 
 Empty state: "No works match these filters" + "Clear filters" button.
 
