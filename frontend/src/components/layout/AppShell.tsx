@@ -2,9 +2,11 @@ import type { ReactNode } from "react";
 import { Sidebar } from "./Sidebar";
 import { TopBar } from "./TopBar";
 import { EraTabs } from "./EraTabs";
+import { DecadeTabs } from "./DecadeTabs";
 import { MediumTabs } from "./MediumTabs";
 import { YearRangeFilter } from "@/components/filters/YearRangeFilter";
 import { ReleaseRangeFilter } from "@/components/filters/ReleaseRangeFilter";
+import { useFilterStore } from "@/store/filterStore";
 
 interface AppShellProps {
   children: ReactNode;
@@ -12,10 +14,11 @@ interface AppShellProps {
 }
 
 export function AppShell({ children, onHome }: AppShellProps) {
+  const sort = useFilterStore((s) => s.sort);
   return (
     <div className="flex h-screen flex-col">
       <TopBar onHome={onHome} />
-      <EraTabs />
+      {sort === "chronology" ? <EraTabs /> : <DecadeTabs />}
       <div className="flex flex-wrap items-center gap-4 border-b px-4 py-2">
         <div className="flex-1 min-w-0">
           <MediumTabs />
