@@ -10,6 +10,14 @@ interface TopBarProps {
 export function TopBar({ onHome }: TopBarProps) {
   const { q, set, view, sort } = useFilterStore();
   const previousQ = useRef(q);
+
+  const onSelectSort = (next: "chronology" | "release") => {
+    if (next === "chronology") {
+      set({ sort: next, releaseMin: null, releaseMax: null });
+    } else {
+      set({ sort: next, eras: [], yearMin: null, yearMax: null });
+    }
+  };
   return (
     <header className="flex items-center gap-3 border-b px-4 py-2">
       <button
@@ -54,7 +62,7 @@ export function TopBar({ onHome }: TopBarProps) {
               key={s}
               variant={sort === s ? "default" : "ghost"}
               size="sm"
-              onClick={() => set({ sort: s })}
+              onClick={() => onSelectSort(s)}
               className="rounded-none first:rounded-l-md last:rounded-r-md"
             >
               {s}
