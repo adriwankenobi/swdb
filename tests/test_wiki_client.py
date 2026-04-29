@@ -84,3 +84,57 @@ def test_fetch_html_returns_none_on_connection_error(cache_dir, monkeypatch):
     client = WikiClient(cache_dir=cache_dir)
     monkeypatch.setattr(client._session, "get", fake_get)
     assert client.fetch_html("https://example.com/missing") is None
+
+
+def test_resolve_url_returns_info_url_when_present(cache_dir):
+    client = WikiClient(cache_dir=cache_dir)
+    assert client.resolve_url(
+        info_url="https://starwars.fandom.com/wiki/Eruption",
+        title="Eruption",
+        series="Dawn of the Jedi",
+    ) == ("https://starwars.fandom.com/wiki/Eruption", "from_excel")
+
+
+def test_resolve_url_uses_opensearch_when_info_missing(cache_dir, monkeypatch):
+    client = WikiClient(cache_dir=cache_dir)
+
+    def fake_opensearch(query):
+        # Mimic MediaWiki opensearch tuple response: [query, [titles], [descs], [urls]]
+        return [
+            query,
+            ["A New Hope", "A New Hope (novel)"],
+            ["", ""],
+            [
+                "https://starwars.fandom.com/wiki/A_New_Hope",
+                "https://starwars.fandom.com/wiki/A_New_Hope_(novel)",
+            ],
+        ]
+
+    monkeypatch.setattr(client, "_opensearch", fake_opensearch)
+    url, source = client.resolve_url(info_url=None, title="A New Hope", series="Star Wars Episode")
+    assert url == "https://starwars.fandom.com/wiki/A_New_Hope"
+    assert source == "opensearch"
+
+
+def test_resolve_url_rejects_unrelated_top_match(cache_dir, monkeypatch):
+    client = WikiClient(cache_dir=cache_dir)
+
+    def fake_opensearch(query):
+        return [query, ["Tatooine"], [""], ["https://starwars.fandom.com/wiki/Tatooine"]]
+
+    monkeypatch.setattr(client, "_opensearch", fake_opensearch)
+    url, source = client.resolve_url(info_url=None, title="Eruption", series="Dawn of the Jedi")
+    assert url is None
+    assert source == "unmatched"
+
+
+def test_resolve_url_returns_none_when_opensearch_empty(cache_dir, monkeypatch):
+    client = WikiClient(cache_dir=cache_dir)
+
+    def fake_opensearch(query):
+        return [query, [], [], []]
+
+    monkeypatch.setattr(client, "_opensearch", fake_opensearch)
+    url, source = client.resolve_url(info_url=None, title="Nonexistent Work", series=None)
+    assert url is None
+    assert source == "unmatched"

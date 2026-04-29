@@ -5,12 +5,16 @@ from __future__ import annotations
 import hashlib
 import time
 from pathlib import Path
+from urllib.parse import urlencode
 
 import requests
+
+from scripts.id_utils import slugify
 
 USER_AGENT = "swdb-pipeline/0.1 (https://github.com/adriwankenobi/swdb)"
 REQUEST_TIMEOUT = 30
 POLITE_DELAY_SECONDS = 0.2
+OPENSEARCH_URL = "https://starwars.fandom.com/api.php"
 
 
 class WikiClient:
@@ -38,3 +42,41 @@ class WikiClient:
         html = response.text
         cache_path.write_text(html, encoding="utf-8")
         return html
+
+    def _opensearch(self, query: str) -> list:
+        params = {
+            "action": "opensearch",
+            "search": query,
+            "limit": "5",
+            "namespace": "0",
+            "format": "json",
+        }
+        time.sleep(POLITE_DELAY_SECONDS)
+        response = self._session.get(
+            f"{OPENSEARCH_URL}?{urlencode(params)}", timeout=REQUEST_TIMEOUT
+        )
+        response.raise_for_status()
+        return response.json()
+
+    def resolve_url(
+        self, *, info_url: str | None, title: str, series: str | None
+    ) -> tuple[str | None, str]:
+        """Return (url, source) where source is one of: 'from_excel', 'opensearch', 'unmatched'."""
+        if info_url:
+            return info_url, "from_excel"
+        query = f"{title} {series}" if series else title
+        try:
+            payload = self._opensearch(query)
+        except requests.RequestException:
+            return None, "unmatched"
+        if not payload or len(payload) < 4:
+            return None, "unmatched"
+        titles = payload[1]
+        urls = payload[3]
+        if not titles or not urls:
+            return None, "unmatched"
+        title_slug = slugify(title)
+        for matched_title, matched_url in zip(titles, urls, strict=False):
+            if title_slug and title_slug in slugify(matched_title):
+                return matched_url, "opensearch"
+        return None, "unmatched"
