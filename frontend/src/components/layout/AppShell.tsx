@@ -23,12 +23,16 @@ export function AppShell({ children, onHome }: AppShellProps) {
         <div className="flex-1 min-w-0">
           <MediumTabs />
         </div>
-        <div className="shrink-0">
-          <YearRangeFilter />
-        </div>
-        <div className="shrink-0">
-          <ReleaseRangeFilter />
-        </div>
+        {sort === "chronology" && (
+          <div className="shrink-0">
+            <YearRangeFilter />
+          </div>
+        )}
+        {sort === "release" && (
+          <div className="shrink-0">
+            <ReleaseRangeFilter />
+          </div>
+        )}
       </div>
       <div className="flex flex-1 overflow-hidden">
         <Sidebar />
