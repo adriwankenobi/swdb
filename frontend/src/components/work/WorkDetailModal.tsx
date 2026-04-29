@@ -24,14 +24,14 @@ export function WorkDetailModal() {
         if (!open) set({ openWorkId: null });
       }}
     >
-      <DialogContent className="max-w-5xl max-h-[90vh] overflow-y-auto">
+      <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto overflow-x-hidden">
         {work && (
           <>
             <DialogHeader>
-              <DialogTitle className="leading-tight">{work.title}</DialogTitle>
+              <DialogTitle className="leading-tight break-words">{work.title}</DialogTitle>
             </DialogHeader>
-            <div className="grid gap-6 sm:grid-cols-[240px_1fr]">
-              <div className="aspect-[2/3] w-full overflow-hidden rounded-md bg-muted/40">
+            <div className="flex flex-col md:flex-row gap-6">
+              <div className="w-full md:w-[200px] shrink-0 aspect-[2/3] overflow-hidden rounded-md bg-muted/40">
                 {work.cover_url ? (
                   <a href={work.cover_url} target="_blank" rel="noopener noreferrer">
                     <img src={work.cover_url} alt="" className="h-full w-full object-contain bg-muted/40" />
@@ -45,12 +45,12 @@ export function WorkDetailModal() {
                   </div>
                 )}
               </div>
-              <div className="space-y-3 text-sm">
+              <div className="min-w-0 flex-1 space-y-3 text-sm">
                 <div className="flex flex-wrap items-center gap-2">
                   {work.series && (
                     <button
                       type="button"
-                      className="font-medium cursor-pointer hover:underline"
+                      className="font-medium cursor-pointer hover:underline break-words"
                       onClick={() => { toggleArrayValue("series", work.series!); closeModal(); }}
                     >
                       {formatSeriesAndNumber(work)}
@@ -71,7 +71,7 @@ export function WorkDetailModal() {
                   </p>
                 )}
                 {work.authors && work.authors.length > 0 && (
-                  <p>
+                  <p className="break-words">
                     <span className="text-muted-foreground">Authors:</span>{" "}
                     {work.authors.map((author, i) => (
                       <span key={author}>
@@ -88,7 +88,7 @@ export function WorkDetailModal() {
                   </p>
                 )}
                 {work.publisher && (
-                  <p>
+                  <p className="break-words">
                     <span className="text-muted-foreground">Publisher:</span>{" "}
                     <button
                       type="button"
@@ -105,7 +105,7 @@ export function WorkDetailModal() {
                       href={work.wiki_url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="underline"
+                      className="underline break-all"
                     >
                       Open on Wookieepedia →
                     </a>
