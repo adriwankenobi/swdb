@@ -11,7 +11,8 @@ export function WorkCard({ work, onClick }: { work: Work; onClick: () => void })
     <button
       type="button"
       onClick={onClick}
-      className="group flex flex-col overflow-hidden rounded-lg border bg-card text-left shadow-sm transition hover:shadow-md focus:outline-none focus:ring-2 focus:ring-ring"
+      className="group flex flex-col overflow-hidden rounded-lg border text-left shadow-sm transition hover:shadow-md focus:outline-none focus:ring-2 focus:ring-ring"
+      style={{ backgroundColor: work.color ?? "var(--card)" }}
     >
       <div className="aspect-[2/3] w-full overflow-hidden bg-muted">
         {work.cover_url ? (
