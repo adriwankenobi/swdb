@@ -1,14 +1,10 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MEDIUMS } from "@/constants/mediums";
 import { useFilterStore } from "@/store/filterStore";
 
 export function ActiveFilterChips() {
   const s = useFilterStore();
   const chips: { label: string; clear: () => void }[] = [];
-  s.mediums.forEach((m) =>
-    chips.push({ label: MEDIUMS[m], clear: () => s.toggleArrayValue("mediums", m) }),
-  );
   s.series.forEach((m) =>
     chips.push({ label: m, clear: () => s.toggleArrayValue("series", m) }),
   );
