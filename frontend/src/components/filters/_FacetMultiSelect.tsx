@@ -28,10 +28,10 @@ export function FacetMultiSelect({ title, facets, selected, onToggle }: Props) {
         value={q}
         onChange={(e) => setQ(e.target.value)}
         placeholder={`Search ${title.toLowerCase()}…`}
-        className="h-8"
+        className="h-7 text-xs"
       />
-      <ScrollArea className="h-48 rounded-md border">
-        <ul className="space-y-1 p-2">
+      <ScrollArea className="h-28 rounded-md border">
+        <ul className="space-y-0.5 p-1">
           {filtered.map((f) => (
             <li key={f.value} className="flex items-center gap-2">
               <Checkbox
@@ -41,7 +41,7 @@ export function FacetMultiSelect({ title, facets, selected, onToggle }: Props) {
               />
               <label
                 htmlFor={`${title}-${f.value}`}
-                className="cursor-pointer truncate text-sm"
+                className="cursor-pointer truncate text-xs"
               >
                 {f.label}
               </label>
