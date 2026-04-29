@@ -15,6 +15,7 @@ export interface Work {
   publisher?: string;
   cover_url?: string;
   wiki_url?: string;
+  color?: string;
 }
 
 export interface WorksFile {
