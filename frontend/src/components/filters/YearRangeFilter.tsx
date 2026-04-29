@@ -52,18 +52,19 @@ export function YearRangeFilter() {
   }
 
   return (
-    <div className="flex items-center gap-2">
-      <span className="shrink-0 text-xs font-medium text-muted-foreground">Year:</span>
-      <span className="shrink-0 text-xs text-muted-foreground">{formatYear(sortedYears[lowIdx])}</span>
+    <div className="w-72 flex items-center gap-2">
+      <span className="shrink-0 text-xs font-medium text-muted-foreground whitespace-nowrap">Year</span>
       <Slider
         min={0}
         max={maxIdx}
         step={1}
         value={[lowIdx, highIdx]}
         onValueChange={handleChange}
-        className="w-36"
+        className="w-40"
       />
-      <span className="shrink-0 text-xs text-muted-foreground">{formatYear(sortedYears[highIdx])}</span>
+      <span className="shrink-0 text-xs text-muted-foreground whitespace-nowrap">
+        {formatYear(sortedYears[lowIdx])} – {formatYear(sortedYears[highIdx])}
+      </span>
     </div>
   );
 }

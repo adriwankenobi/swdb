@@ -57,18 +57,19 @@ export function ReleaseRangeFilter() {
   }
 
   return (
-    <div className="flex items-center gap-2">
-      <span className="shrink-0 text-xs font-medium text-muted-foreground">Release:</span>
-      <span className="shrink-0 text-xs text-muted-foreground">{formatRelease(sortedDates[lowIdx])}</span>
+    <div className="w-72 flex items-center gap-2">
+      <span className="shrink-0 text-xs font-medium text-muted-foreground whitespace-nowrap">Release</span>
       <Slider
         min={0}
         max={maxIdx}
         step={1}
         value={[lowIdx, highIdx]}
         onValueChange={handleChange}
-        className="w-36"
+        className="w-40"
       />
-      <span className="shrink-0 text-xs text-muted-foreground">{formatRelease(sortedDates[highIdx])}</span>
+      <span className="shrink-0 text-xs text-muted-foreground whitespace-nowrap">
+        {formatRelease(sortedDates[lowIdx])} – {formatRelease(sortedDates[highIdx])}
+      </span>
     </div>
   );
 }
