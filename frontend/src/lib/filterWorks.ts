@@ -25,9 +25,10 @@ function matchesQuery(w: Work, q: string): boolean {
 
 function matchesYear(w: Work, min: number | null, max: number | null): boolean {
   if (min === null && max === null) return true;
-  const y = w.year;
-  if (min !== null && y < min) return false;
-  if (max !== null && y > max) return false;
+  const start = w.year;
+  const end = w.year_end ?? w.year;
+  if (max !== null && start > max) return false;
+  if (min !== null && end < min) return false;
   return true;
 }
 
@@ -42,9 +43,10 @@ function matchesRelease(w: Work, min: string | null, max: string | null): boolea
 
 // Sorts return 0 for equal keys so JS's stable Array.prototype.sort
 // preserves the input order — which is the JSON / Excel order.
+// Within an era, works are intentionally ordered by their position in the
+// Excel workbook (the user's canonical chronology), not by the `year` field.
 function compareChronology(a: Work, b: Work): number {
-  if (a.era !== b.era) return a.era - b.era;
-  return a.year - b.year;
+  return a.era - b.era;
 }
 
 function compareRelease(a: Work, b: Work): number {

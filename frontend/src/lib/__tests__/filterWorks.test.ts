@@ -49,6 +49,21 @@ describe("filterWorks", () => {
     expect(r.map((x) => x.id)).toEqual(["a"]);
   });
 
+  it("year filter matches a range work when the window overlaps its span", () => {
+    // Work spans -5000 to -3000 BBY.
+    const data: Work[] = [w({ id: "span", year: -5000, year_end: -3000 })];
+    // Window contained within span.
+    expect(filterWorks(data, { ...empty, yearMin: -4000, yearMax: -3500 }).map((x) => x.id)).toEqual(["span"]);
+    // Window touches start.
+    expect(filterWorks(data, { ...empty, yearMin: -6000, yearMax: -5000 }).map((x) => x.id)).toEqual(["span"]);
+    // Window touches end.
+    expect(filterWorks(data, { ...empty, yearMin: -3000, yearMax: -2000 }).map((x) => x.id)).toEqual(["span"]);
+    // Window fully before the span.
+    expect(filterWorks(data, { ...empty, yearMin: -10000, yearMax: -6000 })).toHaveLength(0);
+    // Window fully after the span.
+    expect(filterWorks(data, { ...empty, yearMin: -2000, yearMax: 0 })).toHaveLength(0);
+  });
+
   it("free-text search matches title", () => {
     const r = filterWorks(all, { ...empty, q: "hope" });
     expect(r.map((x) => x.id)).toEqual(["a"]);
@@ -59,13 +74,25 @@ describe("filterWorks", () => {
     expect(r.map((x) => x.id)).toEqual(["c"]);
   });
 
-  it("chronology sort: era, then year, then JSON order (stable)", () => {
+  it("chronology sort: era then Excel order (stable; year is not a tiebreaker)", () => {
     const r = filterWorks(all, empty);
     expect(r.map((x) => x.id)).toEqual(["a", "b", "c"]);
   });
 
-  it("chronology stable-sort tiebreak preserves input order", () => {
-    // 'z' precedes 'a' in the input; both have era=5 and year=0; output keeps that.
+  it("chronology sort uses Excel order within an era, not year", () => {
+    // Within era 5, the 'later' work appears in the input BEFORE 'earlier' but
+    // has a higher in-universe year. Output keeps input order — proving the
+    // sort relies on Excel position, not the year column.
+    const data: Work[] = [
+      w({ id: "later",   era: 5, year: 5, title: "Later" }),
+      w({ id: "earlier", era: 5, year: 0, title: "Earlier" }),
+    ];
+    const r = filterWorks(data, empty);
+    expect(r.map((x) => x.id)).toEqual(["later", "earlier"]);
+  });
+
+  it("chronology stable-sort tiebreak preserves input order across same-era works", () => {
+    // 'z' precedes 'a' in the input; both have era=5; output keeps that.
     const data: Work[] = [
       w({ id: "z", era: 5, year: 0, title: "Zeta" }),
       w({ id: "a", era: 5, year: 0, title: "Alpha" }),

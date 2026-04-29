@@ -29,7 +29,7 @@ export function WorkDetailModal() {
         if (!open) set({ openWorkId: null });
       }}
     >
-      <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto overflow-x-hidden">
+      <DialogContent className="!max-w-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden">
         {work && (
           <>
             <DialogHeader>
@@ -56,8 +56,8 @@ export function WorkDetailModal() {
                 )}
               </div>
               <div className="min-w-0 flex-1 space-y-3 text-sm">
-                <div className="flex flex-wrap items-center gap-2">
-                  {work.series && (
+                {work.series && (
+                  <div>
                     <button
                       type="button"
                       className="font-medium cursor-pointer hover:underline break-words"
@@ -65,15 +65,17 @@ export function WorkDetailModal() {
                     >
                       {formatSeriesAndNumber(work)}
                     </button>
-                  )}
+                  </div>
+                )}
+                <div className="flex flex-wrap items-center gap-2">
                   <Badge style={{ backgroundColor: MEDIUM_COLORS[work.medium], color: "white" }}>{mediumLabel}</Badge>
                   <Badge style={{ backgroundColor: ERA_COLORS[work.era as EraIndex], color: "white" }}>
                     {ERAS[work.era]}
                   </Badge>
                 </div>
-                <p>
+                <p className="whitespace-nowrap">
                   <span className="text-muted-foreground">Year:</span>{" "}
-                  {formatYear(work.year)}
+                  {formatYear(work.year, work.year_end)}
                 </p>
                 {work.release_date && (
                   <p>

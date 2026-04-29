@@ -8,7 +8,7 @@ from pathlib import Path
 
 from openpyxl import load_workbook
 
-from scripts.year_utils import parse_year
+from scripts.year_utils import parse_year_range
 
 # Sheet name -> era index. Order matches the spec's ERAS constant.
 ERA_INDEX: dict[str, int] = {
@@ -47,7 +47,8 @@ class ExcelRow:
     series: str | None
     medium: str          # canonical Title Case (e.g. "Novel"); converted to int in build_data
     number: str | None
-    year: int | None     # may be None when Excel YEAR is empty; Wookieepedia fallback in build_data
+    year: int | None     # start year; may be None when Excel YEAR is empty
+    year_end: int | None # end year of a range; None for single-year entries
     info_url: str | None
     cover_url: str | None  # raw — may be ignored later in favor of wiki-fetched cover
 
@@ -92,13 +93,22 @@ def read_works(path: Path) -> Iterator[ExcelRow]:
                 cover_url = _stringify(raw[10]) if len(raw) > 10 else None
                 if not title or not medium_raw:
                     continue
+                parsed = parse_year_range(year_raw)
+                if parsed is None:
+                    year_val: int | None = None
+                    year_end_val: int | None = None
+                else:
+                    start, end = parsed
+                    year_val = start
+                    year_end_val = end if end != start else None
                 yield ExcelRow(
                     era=era,
                     title=title,
                     series=series,
                     medium=_normalize_medium(medium_raw),
                     number=number,
-                    year=parse_year(year_raw),
+                    year=year_val,
+                    year_end=year_end_val,
                     info_url=info_url,
                     cover_url=cover_url,
                 )

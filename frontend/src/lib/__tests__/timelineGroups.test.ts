@@ -10,23 +10,58 @@ const w = (over: Partial<Work> & { id: string; year: number }): Work => ({
 });
 
 describe("groupForChronology", () => {
-  it("returns groups in era index order, with year-sorted sub-buckets, preserving input order within ties", () => {
+  it("groups by era ascending; rows follow Excel order, not year order", () => {
     const works: Work[] = [
       w({ id: "b", era: 7, year: 25 }),
       w({ id: "a", era: 5, year: 0 }),
-      w({ id: "c", era: 7, year: 10 }),
-      w({ id: "d", era: 5, year: 0 }), // tie with "a": input order preserved
+      w({ id: "c", era: 7, year: 10 }), // year 10 < 25 but appears AFTER "b" in Excel
+      w({ id: "d", era: 5, year: 0 }),  // same span as "a", contiguous → coalesces
     ];
     const groups = groupForChronology(works);
     expect(groups.map((g) => g.eraIndex)).toEqual([5, 7]);
-    // Era 5: years sorted ascending
+
+    // Era 5: single row (a + d coalesced; both year 0).
     const era5 = groups[0];
-    expect(era5.years.map((y) => y.year)).toEqual([0]);
-    // Within year 0, input order: a then d
-    expect(era5.years[0].works.map((w) => w.id)).toEqual(["a", "d"]);
-    // Era 7: year 10 before 25
+    expect(era5.rows).toHaveLength(1);
+    expect(era5.rows[0].year).toBe(0);
+    expect(era5.rows[0].works.map((w) => w.id)).toEqual(["a", "d"]);
+
+    // Era 7: rows in Excel order — "b" (year 25) THEN "c" (year 10), not year-sorted.
     const era7 = groups[1];
-    expect(era7.years.map((y) => y.year)).toEqual([10, 25]);
+    expect(era7.rows.map((r) => r.year)).toEqual([25, 10]);
+    expect(era7.rows[0].works.map((w) => w.id)).toEqual(["b"]);
+    expect(era7.rows[1].works.map((w) => w.id)).toEqual(["c"]);
+  });
+
+  it("non-contiguous same-year works produce separate rows", () => {
+    const works: Work[] = [
+      w({ id: "early1", era: 5, year: 0 }),
+      w({ id: "later",  era: 5, year: 5 }), // breaks the run
+      w({ id: "early2", era: 5, year: 0 }),
+    ];
+    const groups = groupForChronology(works);
+    const rows = groups[0].rows;
+    expect(rows.map((r) => r.year)).toEqual([0, 5, 0]);
+    expect(rows[0].works.map((w) => w.id)).toEqual(["early1"]);
+    expect(rows[1].works.map((w) => w.id)).toEqual(["later"]);
+    expect(rows[2].works.map((w) => w.id)).toEqual(["early2"]);
+  });
+
+  it("coalesces consecutive range works with the same span", () => {
+    const works: Work[] = [
+      w({ id: "r1", era: 1, year: -3996, year_end: -3994 }),
+      w({ id: "r2", era: 1, year: -3996, year_end: -3994 }),
+      w({ id: "single", era: 1, year: -3996 }), // same start, no end → different span
+    ];
+    const groups = groupForChronology(works);
+    const rows = groups[0].rows;
+    expect(rows).toHaveLength(2);
+    expect(rows[0].year).toBe(-3996);
+    expect(rows[0].year_end).toBe(-3994);
+    expect(rows[0].works.map((w) => w.id)).toEqual(["r1", "r2"]);
+    expect(rows[1].year).toBe(-3996);
+    expect(rows[1].year_end).toBeUndefined();
+    expect(rows[1].works.map((w) => w.id)).toEqual(["single"]);
   });
 
   it("excludes nothing — every work appears exactly once", () => {
@@ -36,7 +71,7 @@ describe("groupForChronology", () => {
       w({ id: "z", era: 5, year: 4 }),
     ];
     const groups = groupForChronology(works);
-    const allWorks = groups.flatMap((g) => g.years.flatMap((y) => y.works));
+    const allWorks = groups.flatMap((g) => g.rows.flatMap((r) => r.works));
     expect(allWorks).toHaveLength(3);
     const ids = allWorks.map((w) => w.id).sort();
     expect(ids).toEqual(["x", "y", "z"]);

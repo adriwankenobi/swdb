@@ -43,8 +43,9 @@ function buildFacets(works: Work[]): CatalogState["facets"] {
         map.set(v, (map.get(v) ?? 0) + 1);
       }
     }
+    // Sort by occurrence (count desc); break ties alphabetically.
     return [...map.entries()]
-      .sort((a, b) => a[0].localeCompare(b[0]))
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
       .map(([label, count]) => ({ value: label, label, count }));
   };
   const mediumCounts = new Map<number, number>();

@@ -8,7 +8,7 @@ export const COLUMNS = [
   { key: "number",    label: "#",         width: "w-12"  },  // 3rem
   { key: "medium",    label: "Medium",    width: "w-32"  },  // 8rem
   { key: "era",       label: "Era",       width: "w-44"  },  // 11rem
-  { key: "year",      label: "Year",      width: "w-24"  },  // 6rem
+  { key: "year",      label: "Year",      width: "w-44"  },  // 11rem (fits "25,200 BBY - 671 BBY")
   { key: "release",   label: "Release",   width: "w-28"  },  // 7rem
   { key: "authors",   label: "Authors",   width: "w-56"  },  // 14rem
   { key: "publisher", label: "Publisher", width: "w-36"  },  // 9rem

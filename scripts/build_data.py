@@ -57,6 +57,8 @@ def _row_to_work(row: ExcelRow) -> dict:
         "medium": _MEDIUM_TO_INDEX[row.medium],   # JSON gets the integer index
         "year": row.year,
     }
+    if row.year_end is not None:
+        work["year_end"] = row.year_end
     if row.series:
         work["series"] = row.series
     if row.number is not None:

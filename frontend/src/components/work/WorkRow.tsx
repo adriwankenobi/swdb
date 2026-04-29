@@ -64,7 +64,7 @@ export function WorkRow({ work, onClick }: WorkRowProps) {
 
       {/* Year */}
       <div className={`shrink-0 px-2 py-1 text-muted-foreground whitespace-nowrap ${COLUMNS[6].width}`}>
-        {formatYear(work.year)}
+        {formatYear(work.year, work.year_end)}
       </div>
 
       {/* Release */}

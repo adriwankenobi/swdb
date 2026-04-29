@@ -11,7 +11,8 @@ interface MarkerProps {
 }
 
 function Marker({ work, onClick }: MarkerProps) {
-  const tooltip = `${work.title}${work.series ? ` — ${work.series}` : ""}`;
+  const yearLabel = formatYear(work.year, work.year_end);
+  const tooltip = `${work.title}${work.series ? ` — ${work.series}` : ""} (${yearLabel})`;
   const mediumColor = MEDIUM_COLORS[work.medium];
   const eraColor = ERA_COLORS[work.era as EraIndex];
 
@@ -76,15 +77,15 @@ export function TimelineView({ works }: { works: Work[] }) {
                     {eraName}
                   </span>
                 </div>
-                {/* Year rows */}
+                {/* Year rows (in Excel order; consecutive same-span works coalesce) */}
                 <div className="space-y-2 pl-2">
-                  {group.years.map(({ year, works: yearWorks }) => (
-                    <div key={year} className="flex items-start gap-3">
-                      <span className="w-24 shrink-0 pt-1 text-right text-xs text-muted-foreground tabular-nums">
-                        {formatYear(year)}
+                  {group.rows.map((row, idx) => (
+                    <div key={`${row.year}-${row.year_end ?? ""}-${idx}`} className="flex items-start gap-3">
+                      <span className="w-40 shrink-0 pt-1 text-right text-xs text-muted-foreground tabular-nums whitespace-nowrap">
+                        {formatYear(row.year, row.year_end)}
                       </span>
                       <div className="flex flex-wrap gap-2">
-                        {yearWorks.map((work) => (
+                        {row.works.map((work) => (
                           <Marker
                             key={work.id}
                             work={work}

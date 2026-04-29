@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-29T11:43:18+00:00",
+  "generated_at": "2026-04-29T18:39:19+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -298,6 +298,16 @@
       "publisher": "Dark Horse Comics",
       "release_date": "2014-03-19",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/44/DotJ-FW5.jpg/revision/latest"
+    },
+    {
+      "id": "8e5445d7-2d07-5196-ba1e-a8a52224adc7",
+      "era": 0,
+      "title": "Xim The Despot",
+      "medium": 4,
+      "year": -25200,
+      "year_end": -671,
+      "wiki_url": "https://starwars.fandom.com/wiki/Masthead_of_Xim_the_Despot",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b2/Masthead_of_Xim.png/revision/latest"
     },
     {
       "id": "e2fafaa3-aa44-5dbe-8b15-bad3c6abe0ac",
@@ -802,6 +812,120 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/62/Tojdls6cover.jpg/revision/latest"
     },
     {
+      "id": "a5f4d322-b2d5-5401-9355-0f502a4bc919",
+      "era": 1,
+      "title": "The Sith War",
+      "medium": 0,
+      "year": -3996,
+      "year_end": -3994,
+      "series": "Tales of the Jedi",
+      "number": "1",
+      "wiki_url": "https://starwars.fandom.com/wiki/Tales_of_the_Jedi_%E2%80%93_The_Sith_War_1",
+      "authors": [
+        "Kevin J. Anderson",
+        "Dario Carrasco",
+        "Jr."
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1995-08-15",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/58/Tojtsw1cover.jpg/revision/latest"
+    },
+    {
+      "id": "8de5c435-939e-5af0-b9b0-2df34507d020",
+      "era": 1,
+      "title": "The Sith War",
+      "medium": 0,
+      "year": -3996,
+      "year_end": -3994,
+      "series": "Tales of the Jedi",
+      "number": "2",
+      "wiki_url": "https://starwars.fandom.com/wiki/Tales_of_the_Jedi_%E2%80%93_The_Sith_War_2",
+      "authors": [
+        "Kevin J. Anderson",
+        "Dario Carrasco",
+        "Jr."
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1995-09-19",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/1f/Tojtsw2cover.jpg/revision/latest"
+    },
+    {
+      "id": "f9afa73a-07f1-5f5c-9d92-f86a2dc5cc3d",
+      "era": 1,
+      "title": "The Sith War",
+      "medium": 0,
+      "year": -3996,
+      "year_end": -3994,
+      "series": "Tales of the Jedi",
+      "number": "3",
+      "wiki_url": "https://starwars.fandom.com/wiki/Tales_of_the_Jedi_%E2%80%93_The_Sith_War_3",
+      "authors": [
+        "Kevin J. Anderson",
+        "Dario Carrasco",
+        "Jr."
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1995-10-17",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6f/Tojtsw3cover.jpg/revision/latest"
+    },
+    {
+      "id": "33c66340-a719-5875-a984-a55843ad3462",
+      "era": 1,
+      "title": "The Sith War",
+      "medium": 0,
+      "year": -3996,
+      "year_end": -3994,
+      "series": "Tales of the Jedi",
+      "number": "4",
+      "wiki_url": "https://starwars.fandom.com/wiki/Tales_of_the_Jedi_%E2%80%93_The_Sith_War_4",
+      "authors": [
+        "Kevin J. Anderson",
+        "Dario Carrasco",
+        "Jr."
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1995-11-01",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cb/Tojtsw4cover.jpg/revision/latest"
+    },
+    {
+      "id": "aef422fc-084c-5a3d-a839-97758fbfd002",
+      "era": 1,
+      "title": "The Sith War",
+      "medium": 0,
+      "year": -3996,
+      "year_end": -3994,
+      "series": "Tales of the Jedi",
+      "number": "5",
+      "wiki_url": "https://starwars.fandom.com/wiki/Tales_of_the_Jedi_%E2%80%93_The_Sith_War_5",
+      "authors": [
+        "Kevin J. Anderson",
+        "Dario Carrasco",
+        "Jr."
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1995-12-09",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/30/Tojtsw5cover.jpg/revision/latest"
+    },
+    {
+      "id": "9c25f413-1e6c-5fab-9e35-63cd3560cecf",
+      "era": 1,
+      "title": "The Sith War",
+      "medium": 0,
+      "year": -3996,
+      "year_end": -3994,
+      "series": "Tales of the Jedi",
+      "number": "6",
+      "wiki_url": "https://starwars.fandom.com/wiki/Tales_of_the_Jedi_%E2%80%93_The_Sith_War_6",
+      "authors": [
+        "Kevin J. Anderson",
+        "Dario Carrasco",
+        "Jr."
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1996-01-01",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c8/Tojtsw6cover.jpg/revision/latest"
+    },
+    {
       "id": "6ca35769-244a-5778-a8b0-bda4a5b57962",
       "era": 1,
       "title": "Light and Shadow",
@@ -909,6 +1033,21 @@
       "publisher": "Dark Horse Comics",
       "release_date": "1998-11-25",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/96/Tojrd5cover.jpg/revision/latest"
+    },
+    {
+      "id": "f4c97837-283e-5efc-9ce8-88c68e32ee4e",
+      "era": 1,
+      "title": "The Secret Journal of Doctor Demagol",
+      "medium": 4,
+      "year": -3964,
+      "year_end": -3963,
+      "series": "Knights of the Old Republic",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Secret_Journal_of_Doctor_Demagol_(article)",
+      "authors": [
+        "John Jackson Miller"
+      ],
+      "release_date": "2010-04-29",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9c/Demagol-KotOR48.jpg/revision/latest"
     },
     {
       "id": "24b74d56-f358-5893-b521-480259b447f7",
@@ -1949,6 +2088,22 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d9/Kotoriibox.jpg/revision/latest"
     },
     {
+      "id": "185a30c6-633e-5960-9141-c612524d64a1",
+      "era": 1,
+      "title": "Revan",
+      "medium": 3,
+      "year": -3954,
+      "year_end": -3950,
+      "series": "The Old Republic",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Old_Republic:_Revan",
+      "authors": [
+        "Drew Karpyshyn"
+      ],
+      "publisher": "Del Rey",
+      "release_date": "2011-11-15",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/63/TOR-Revan.jpg/revision/latest"
+    },
+    {
       "id": "db22f73d-e30c-59d7-b32e-4786d3ebf78d",
       "era": 1,
       "title": "Vacation",
@@ -2192,6 +2347,16 @@
       "release_date": "2015-04-24"
     },
     {
+      "id": "9afb3af3-ec9b-51d1-9a9f-be62ecde6fb9",
+      "era": 1,
+      "title": "The Old Republic",
+      "medium": 6,
+      "year": -3643,
+      "year_end": -3639,
+      "series": "The Old Republic",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Old_Republic"
+    },
+    {
       "id": "06dbadcf-cc92-5cbe-ba12-15480e9c15b1",
       "era": 1,
       "title": "The Lost Suns",
@@ -2401,6 +2566,18 @@
       "series": "The Old Republic",
       "wiki_url": "https://starwars.fandom.com/wiki/Brothers_(short_story)",
       "release_date": "2015-07-28"
+    },
+    {
+      "id": "83ac9e89-aa2a-57f5-aff8-9255cdc169e5",
+      "era": 1,
+      "title": "Knights of the Fallen Empire",
+      "medium": 6,
+      "year": -3637,
+      "year_end": -3630,
+      "series": "The Old Republic",
+      "wiki_url": "https://starwars.fandom.com/wiki/Knights_of_the_Fallen_Empire",
+      "release_date": "2015-10-20",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b0/Knights_of_the_Fallen_Empire_cover.jpg/revision/latest"
     },
     {
       "id": "231b80ce-d77a-5db1-8d6e-9619fb90cc66",
@@ -3059,6 +3236,38 @@
       "publisher": "Wizards of the Coast",
       "release_date": "2001-04-17",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b0/Gamer-3-bane.jpg/revision/latest"
+    },
+    {
+      "id": "a4d2ad2c-a31f-5caf-9b80-f2dd4e6be6bc",
+      "era": 1,
+      "title": "Path of Destruction",
+      "medium": 3,
+      "year": -1003,
+      "year_end": -1000,
+      "series": "Darth Bane Trilogy",
+      "wiki_url": "https://starwars.fandom.com/wiki/Darth_Bane:_Path_of_Destruction",
+      "authors": [
+        "Drew Karpyshyn"
+      ],
+      "publisher": "Del Rey",
+      "release_date": "2006-09-26",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9b/Path-of-destruction.jpg/revision/latest"
+    },
+    {
+      "id": "2190601b-f55c-5502-bccc-cbdcd3436508",
+      "era": 1,
+      "title": "Rule of Two",
+      "medium": 3,
+      "year": -1000,
+      "year_end": -990,
+      "series": "Darth Bane Trilogy",
+      "wiki_url": "https://starwars.fandom.com/wiki/Darth_Bane:_Rule_of_Two",
+      "authors": [
+        "Drew Karpyshyn"
+      ],
+      "publisher": "Del Rey",
+      "release_date": "2007-12-26",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/13/RuleofTwo.jpg/revision/latest"
     },
     {
       "id": "210a3a4a-4eed-5058-9592-c0b0881b73d3",
@@ -3960,6 +4169,132 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/dc/MaulLockdownCover.jpg/revision/latest"
     },
     {
+      "id": "de29a9c8-6f3c-5dc6-ad50-3d5bb203f937",
+      "era": 2,
+      "title": "Prelude to Rebellion",
+      "medium": 0,
+      "year": -67,
+      "year_end": -32,
+      "series": "Republic",
+      "number": "0",
+      "wiki_url": "https://starwars.fandom.com/wiki/Prelude_to_Rebellion_0",
+      "authors": [
+        "Peet Janes",
+        "John Nadeau"
+      ],
+      "publisher": "StarWars.com",
+      "release_date": "1998-07-12",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/99/Prelude_to_Rebellion_0.jpg/revision/latest"
+    },
+    {
+      "id": "3552c074-6c95-507d-b6ad-65ed13d00b2a",
+      "era": 2,
+      "title": "Prelude to Rebellion",
+      "medium": 0,
+      "year": -67,
+      "year_end": -32,
+      "series": "Republic",
+      "number": "1",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_(1998)_1",
+      "authors": [
+        "Jan Strnad",
+        "Anthony Winn"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1998-12-16",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6b/Swr1cover.jpg/revision/latest"
+    },
+    {
+      "id": "76159008-4934-5a30-8437-8f0b3d51679e",
+      "era": 2,
+      "title": "Prelude to Rebellion",
+      "medium": 0,
+      "year": -67,
+      "year_end": -32,
+      "series": "Republic",
+      "number": "2",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_(1998)_2",
+      "authors": [
+        "Jan Strnad",
+        "Anthony Winn"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1999-01-27",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a9/Swr2cover.jpg/revision/latest"
+    },
+    {
+      "id": "5bbc25ff-e5b2-5f9e-96e5-f9df08c3d9d1",
+      "era": 2,
+      "title": "Prelude to Rebellion",
+      "medium": 0,
+      "year": -67,
+      "year_end": -32,
+      "series": "Republic",
+      "number": "3",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_(1998)_3",
+      "authors": [
+        "Jan Strnad",
+        "Anthony Winn"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1999-02-17",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c9/Swr3cover.jpg/revision/latest"
+    },
+    {
+      "id": "b385f11d-1e12-559b-ac7b-e77f28dea592",
+      "era": 2,
+      "title": "Prelude to Rebellion",
+      "medium": 0,
+      "year": -67,
+      "year_end": -32,
+      "series": "Republic",
+      "number": "4",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_(1998)_4",
+      "authors": [
+        "Jan Strnad",
+        "Anthony Winn"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1999-03-17",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c1/Swr4cover.jpg/revision/latest"
+    },
+    {
+      "id": "34a1a92b-0301-592c-9177-2a240fc1fa01",
+      "era": 2,
+      "title": "Prelude to Rebellion",
+      "medium": 0,
+      "year": -67,
+      "year_end": -32,
+      "series": "Republic",
+      "number": "5",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_(1998)_5",
+      "authors": [
+        "Jan Strnad",
+        "Anthony Winn"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1999-04-21",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/Swr5cover.jpg/revision/latest"
+    },
+    {
+      "id": "fc00d0d6-e00a-55e2-abf7-277959523ac6",
+      "era": 2,
+      "title": "Prelude to Rebellion",
+      "medium": 0,
+      "year": -67,
+      "year_end": -32,
+      "series": "Republic",
+      "number": "6",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_(1998)_6",
+      "authors": [
+        "Jan Strnad",
+        "Anthony Winn"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1999-05-19",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/69/Swr6cover.jpg/revision/latest"
+    },
+    {
       "id": "3263fe69-6a6a-52ee-b26c-30f2ad1b5fc3",
       "era": 2,
       "title": "Darth Maul",
@@ -4525,6 +4860,21 @@
       "publisher": "Dark Horse Comics",
       "release_date": "2000-12-19",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/37/PodracingTales.png/revision/latest"
+    },
+    {
+      "id": "a3f8ca64-cd90-5c22-9cfc-bc02a4dee583",
+      "era": 2,
+      "title": "Darth Plagueis",
+      "medium": 3,
+      "year": -67,
+      "year_end": -32,
+      "wiki_url": "https://starwars.fandom.com/wiki/Darth_Plagueis_(novel)",
+      "authors": [
+        "James Luceno"
+      ],
+      "publisher": "Del Rey (US), Arrow (UK)",
+      "release_date": "2012-01-10",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/05/Darthplagueis-cover.jpg/revision/latest"
     },
     {
       "id": "3c096bdf-a965-5722-89f2-75de5d67d662",
@@ -5404,6 +5754,23 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/df/Republic45.jpg/revision/latest"
     },
     {
+      "id": "9d37ec8a-0967-5dc2-9e98-9e37b7dfbce8",
+      "era": 2,
+      "title": "Deceptions",
+      "medium": 1,
+      "year": -44,
+      "year_end": -29,
+      "series": "Jedi Apprentice",
+      "number": "1",
+      "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Apprentice_Special_Edition:_Deceptions",
+      "authors": [
+        "Jude Watson"
+      ],
+      "publisher": "Scholastic",
+      "release_date": "2001-01-01",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/01/Deceptions.jpg/revision/latest"
+    },
+    {
       "id": "eb66bf70-1d33-5eb8-81c3-5f9a4cca5e13",
       "era": 2,
       "title": "Rogue Planet",
@@ -5416,6 +5783,23 @@
       "publisher": "Del Rey",
       "release_date": "2000-05-02",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3d/Rogue_Planet.jpg/revision/latest"
+    },
+    {
+      "id": "10c6b97d-4307-54de-8dd1-e37108b1a769",
+      "era": 2,
+      "title": "The Followers",
+      "medium": 1,
+      "year": -39,
+      "year_end": -29,
+      "series": "Jedi Apprentice",
+      "number": "2",
+      "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Apprentice_Special_Edition:_The_Followers",
+      "authors": [
+        "Jude Watson"
+      ],
+      "publisher": "Scholastic",
+      "release_date": "2002-01-01",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d4/JA_SE2_Followers.jpg/revision/latest"
     },
     {
       "id": "b29dacb7-9ff4-578a-bf04-74ab00e8aa5e",
@@ -6869,6 +7253,21 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2f/Equipment.png/revision/latest"
     },
     {
+      "id": "65d0d420-4544-59ef-a3b1-44b5302f5000",
+      "era": 3,
+      "title": "Legacy of the Jedi",
+      "medium": 1,
+      "year": -89,
+      "year_end": -22,
+      "wiki_url": "https://starwars.fandom.com/wiki/Legacy_of_the_Jedi",
+      "authors": [
+        "Jude Watson"
+      ],
+      "publisher": "Scholastic",
+      "release_date": "2003-01-01",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/56/Legacy_of_the_Jedi.jpg/revision/latest"
+    },
+    {
       "id": "f8d14979-9002-517a-adc9-37fac74aa1fc",
       "era": 3,
       "title": "Dark Journey",
@@ -7227,6 +7626,21 @@
       "publisher": "Paizo Publishing",
       "release_date": "2004-01-01",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/ac/Dagro.jpg/revision/latest"
+    },
+    {
+      "id": "0ed5dc7b-0d11-59b1-83b4-79fbce53e798",
+      "era": 3,
+      "title": "Secrets of the Jedi",
+      "medium": 1,
+      "year": -39,
+      "year_end": -22,
+      "wiki_url": "https://starwars.fandom.com/wiki/Secrets_of_the_Jedi_(novel)",
+      "authors": [
+        "Jude Watson"
+      ],
+      "publisher": "Scholastic",
+      "release_date": "2005-01-01",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a4/SecretsoftheJedi.png/revision/latest"
     },
     {
       "id": "169c8759-9e20-539d-94de-bc0730c0fd88",
@@ -13403,6 +13817,23 @@
       "release_date": "1994-01-01"
     },
     {
+      "id": "9f8c7441-190c-5ec6-83d9-d537db920867",
+      "era": 4,
+      "title": "The Hutt Gambit",
+      "medium": 3,
+      "year": -5,
+      "year_end": -4,
+      "series": "Han Solo Trilogy",
+      "number": "2",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Hutt_Gambit",
+      "authors": [
+        "A. C. Crispin"
+      ],
+      "publisher": "Bantam Spectra",
+      "release_date": "1997-08-11",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/83/The_Hutt_Gambit_cover.jpg/revision/latest"
+    },
+    {
       "id": "4055bff9-b633-54e6-886f-c910a1311c2b",
       "era": 4,
       "title": "Lando Calrissian and the Mindharp of Sharu",
@@ -14627,6 +15058,39 @@
       "publisher": "Dark Horse Comics",
       "release_date": "2012-07-25",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/30/BloodTies8Final.jpg/revision/latest"
+    },
+    {
+      "id": "158b9794-939c-547c-ba86-c5ed76bba6e6",
+      "era": 4,
+      "title": "Death Star",
+      "medium": 3,
+      "year": -3,
+      "year_end": 0,
+      "wiki_url": "https://starwars.fandom.com/wiki/Death_Star_(novel)",
+      "authors": [
+        "Michael Reaves",
+        "Steve Perry"
+      ],
+      "publisher": "Del Rey",
+      "release_date": "2007-10-16",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/50/DeathStarNovel.jpg/revision/latest"
+    },
+    {
+      "id": "813fcfa8-2bae-560c-9cc9-1b9e2b1feac9",
+      "era": 4,
+      "title": "Rebel Dawn",
+      "medium": 3,
+      "year": -5,
+      "year_end": 0,
+      "series": "Han Solo Trilogy",
+      "number": "3",
+      "wiki_url": "https://starwars.fandom.com/wiki/Rebel_Dawn",
+      "authors": [
+        "A. C. Crispin"
+      ],
+      "publisher": "Bantam Spectra",
+      "release_date": "1998-01-01",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c4/Rebel_Dawn_cover.jpg/revision/latest"
     },
     {
       "id": "6c1fda73-9416-5242-9932-265872d7e343",
