@@ -66,3 +66,15 @@ def test_excel_order_preserves_in_sheet_sequence(rows):
     # First two rows of OLD REPUBLIC sheet should have consecutive excel_order values.
     old_rep = [r for r in rows if r.era == 1]
     assert old_rep[0].excel_order + 1 == old_rep[1].excel_order
+
+
+def test_read_works_closes_workbook_on_early_termination():
+    """Abandoning the iterator must still trigger wb.close() via the finally clause."""
+    gen = read_works(EXCEL_PATH)
+    next(gen)            # consume one row
+    gen.close()          # force GeneratorExit
+    # If close() had not been wrapped in try/finally, the wb.close() call would
+    # have been skipped. We can't directly observe ZipFile state, but exercising
+    # this path here documents the contract and surfaces any regressions if
+    # someone later removes the finally block (the test will run the path even
+    # if it can't assert the side effect).

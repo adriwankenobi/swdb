@@ -71,39 +71,39 @@ def _stringify(cell: object) -> str | None:
 def read_works(path: Path) -> Iterator[ExcelRow]:
     """Yield ExcelRow per non-empty data row in every sheet."""
     wb = load_workbook(path, data_only=True, read_only=True)
-    counter = 0
-    for sheet_name in wb.sheetnames:
-        if sheet_name not in ERA_INDEX:
-            continue
-        era = ERA_INDEX[sheet_name]
-        ws = wb[sheet_name]
-        rows_iter = ws.iter_rows(values_only=True)
-        try:
-            next(rows_iter)  # skip header row
-        except StopIteration:
-            continue
-        # Header layout: YEAR, MEDIUM, SERIES, TITLE, #, AUTHOR, PUBLISHER,
-        # RELEASE, COLLECTED, INFO, COVER — trust positions 0..10 by index.
-        for raw in rows_iter:
-            year_raw = _stringify(raw[0])
-            medium_raw = _stringify(raw[1])
-            series = _stringify(raw[2])
-            title = _stringify(raw[3])
-            number = _stringify(raw[4])
-            info_url = _stringify(raw[9]) if len(raw) > 9 else None
-            cover_url = _stringify(raw[10]) if len(raw) > 10 else None
-            if not title or not medium_raw:
+    try:
+        counter = 0
+        for sheet_name in wb.sheetnames:
+            if sheet_name not in ERA_INDEX:
                 continue
-            yield ExcelRow(
-                era=era,
-                excel_order=counter,
-                title=title,
-                series=series,
-                medium=_normalize_medium(medium_raw),
-                number=number,
-                year_in_universe=parse_year(year_raw),
-                info_url=info_url,
-                cover_url=cover_url,
-            )
-            counter += 1
-    wb.close()
+            era = ERA_INDEX[sheet_name]
+            ws = wb[sheet_name]
+            rows_iter = ws.iter_rows(values_only=True)
+            try:
+                next(rows_iter)
+            except StopIteration:
+                continue
+            for raw in rows_iter:
+                year_raw = _stringify(raw[0])
+                medium_raw = _stringify(raw[1])
+                series = _stringify(raw[2])
+                title = _stringify(raw[3])
+                number = _stringify(raw[4])
+                info_url = _stringify(raw[9]) if len(raw) > 9 else None
+                cover_url = _stringify(raw[10]) if len(raw) > 10 else None
+                if not title or not medium_raw:
+                    continue
+                yield ExcelRow(
+                    era=era,
+                    excel_order=counter,
+                    title=title,
+                    series=series,
+                    medium=_normalize_medium(medium_raw),
+                    number=number,
+                    year_in_universe=parse_year(year_raw),
+                    info_url=info_url,
+                    cover_url=cover_url,
+                )
+                counter += 1
+    finally:
+        wb.close()
