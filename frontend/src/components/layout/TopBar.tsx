@@ -16,7 +16,7 @@ export function TopBar({ onHome }: TopBarProps) {
 
   const onSelectSort = (next: "chronology" | "release") => {
     if (next === "chronology") {
-      set({ sort: next, releaseMin: null, releaseMax: null });
+      set({ sort: next, releaseMin: null, releaseMax: null, releaseUndated: false });
     } else {
       set({ sort: next, eras: [], yearMin: null, yearMax: null });
     }
