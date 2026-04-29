@@ -51,7 +51,7 @@ export function WorkRow({ work, onClick }: WorkRowProps) {
       {/* Medium badge */}
       <div className={`shrink-0 px-2 py-1 ${COLUMNS[4].width}`}>
         <Badge style={{ backgroundColor: MEDIUM_COLORS[work.medium], color: "white" }}>
-          {MEDIUMS[work.medium]}
+          {MEDIUMS[work.medium] ?? "?"}
         </Badge>
       </div>
 

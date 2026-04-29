@@ -7,11 +7,16 @@ import { formatSeriesAndNumber } from "@/lib/formatSeriesAndNumber";
 import { useCatalogStore } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
 
+function safeHttpUrl(url: string | undefined): string | undefined {
+  if (!url) return undefined;
+  return /^https?:\/\//i.test(url) ? url : undefined;
+}
+
 export function WorkDetailModal() {
   const { openWorkId, set, toggleArrayValue } = useFilterStore();
   const works = useCatalogStore((s) => s.works);
   const work = openWorkId ? works.find((w) => w.id === openWorkId) : null;
-  const mediumLabel = work ? MEDIUMS[work.medium] : "";
+  const mediumLabel = work ? (MEDIUMS[work.medium] ?? "?") : "";
 
   function closeModal() {
     set({ openWorkId: null });
@@ -32,11 +37,16 @@ export function WorkDetailModal() {
             </DialogHeader>
             <div className="flex flex-col md:flex-row gap-6">
               <div className="w-full md:w-[200px] shrink-0 aspect-[2/3] overflow-hidden rounded-md bg-muted/40">
-                {work.cover_url ? (
-                  <a href={work.cover_url} target="_blank" rel="noopener noreferrer">
+                {work.cover_url ? (() => {
+                  const safeCover = safeHttpUrl(work.cover_url);
+                  return safeCover ? (
+                    <a href={safeCover} target="_blank" rel="noopener noreferrer">
+                      <img src={safeCover} alt="" className="h-full w-full object-contain bg-muted/40" />
+                    </a>
+                  ) : (
                     <img src={work.cover_url} alt="" className="h-full w-full object-contain bg-muted/40" />
-                  </a>
-                ) : (
+                  );
+                })() : (
                   <div
                     className="flex h-full items-center justify-center text-5xl text-white/70"
                     style={{ backgroundColor: ERA_COLORS[work.era as EraIndex] }}
@@ -99,10 +109,10 @@ export function WorkDetailModal() {
                     </button>
                   </p>
                 )}
-                {work.wiki_url && (
+                {safeHttpUrl(work.wiki_url) && (
                   <p className="break-words">
                     <a
-                      href={work.wiki_url}
+                      href={safeHttpUrl(work.wiki_url)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="underline inline-block"

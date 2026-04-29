@@ -4,25 +4,27 @@ import { useFilterStore } from "@/store/filterStore";
 
 export function ActiveFilterChips() {
   const s = useFilterStore();
-  const chips: { label: string; clear: () => void }[] = [];
+  const chips: { key: string; label: string; clear: () => void }[] = [];
   s.series.forEach((m) =>
-    chips.push({ label: m, clear: () => s.toggleArrayValue("series", m) }),
+    chips.push({ key: `series:${m}`, label: m, clear: () => s.toggleArrayValue("series", m) }),
   );
   s.authors.forEach((m) =>
-    chips.push({ label: m, clear: () => s.toggleArrayValue("authors", m) }),
+    chips.push({ key: `author:${m}`, label: m, clear: () => s.toggleArrayValue("authors", m) }),
   );
   s.publishers.forEach((m) =>
-    chips.push({ label: m, clear: () => s.toggleArrayValue("publishers", m) }),
+    chips.push({ key: `publisher:${m}`, label: m, clear: () => s.toggleArrayValue("publishers", m) }),
   );
-  if (s.q) chips.push({ label: `"${s.q}"`, clear: () => s.set({ q: "" }) });
+  if (s.q) chips.push({ key: `q:${s.q}`, label: `"${s.q}"`, clear: () => s.set({ q: "" }) });
   if (s.yearMin !== null || s.yearMax !== null) {
     chips.push({
+      key: "year",
       label: "year",
       clear: () => s.set({ yearMin: null, yearMax: null }),
     });
   }
   if (s.releaseMin !== null || s.releaseMax !== null) {
     chips.push({
+      key: "release",
       label: "release",
       clear: () => s.set({ releaseMin: null, releaseMax: null }),
     });
@@ -30,8 +32,8 @@ export function ActiveFilterChips() {
   if (chips.length === 0) return null;
   return (
     <div className="flex flex-wrap items-center gap-2 pb-3">
-      {chips.map((c, i) => (
-        <Badge key={i} variant="secondary" className="cursor-pointer" onClick={c.clear}>
+      {chips.map((c) => (
+        <Badge key={c.key} variant="secondary" className="cursor-pointer" onClick={c.clear}>
           {c.label} ×
         </Badge>
       ))}

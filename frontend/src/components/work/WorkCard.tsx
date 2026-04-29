@@ -6,7 +6,7 @@ import { formatSeriesAndNumber } from "@/lib/formatSeriesAndNumber";
 import type { Work } from "@/types/work";
 
 export function WorkCard({ work, onClick }: { work: Work; onClick: () => void }) {
-  const mediumLabel = MEDIUMS[work.medium];
+  const mediumLabel = MEDIUMS[work.medium] ?? "?";
   return (
     <button
       type="button"

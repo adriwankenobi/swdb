@@ -14,7 +14,7 @@ function Marker({ work, onClick }: MarkerProps) {
   const tooltip = `${work.title}${work.series ? ` — ${work.series}` : ""}`;
   const mediumColor = MEDIUM_COLORS[work.medium];
   const eraColor = ERA_COLORS[work.era as EraIndex];
-  const mediumLetter = MEDIUMS[work.medium][0];
+  const mediumLetter = (MEDIUMS[work.medium] ?? "?")[0];
 
   return (
     <button
