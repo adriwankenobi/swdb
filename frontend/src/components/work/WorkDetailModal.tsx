@@ -30,7 +30,10 @@ export function WorkDetailModal() {
         if (!open) set({ openWorkId: null });
       }}
     >
-      <DialogContent className="!max-w-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden">
+      <DialogContent
+        className="!max-w-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden"
+        style={work?.color ? { backgroundColor: work.color } : undefined}
+      >
         {work && (
           <>
             <DialogHeader>
