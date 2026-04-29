@@ -64,24 +64,26 @@ export function DecadeTabs() {
       >
         All
       </button>
-      {decades.map((dec) => (
-        <button
-          key={dec}
-          type="button"
-          onClick={() => pickDecade(dec)}
-          className={[
-            "rounded px-3 py-1 text-sm font-medium transition",
-            active === dec ? "" : "bg-muted text-muted-foreground hover:bg-muted/80",
-          ].join(" ")}
-          style={
-            active === dec
-              ? { backgroundColor: DECADE_COLORS[dec] ?? "#3a6cba", color: "white" }
-              : undefined
-          }
-        >
-          {dec}s
-        </button>
-      ))}
+      {decades.map((dec) => {
+        const isActive = active === dec;
+        const color = DECADE_COLORS[dec] ?? "#3a6cba";
+        return (
+          <button
+            key={dec}
+            type="button"
+            onClick={() => pickDecade(dec)}
+            className="rounded px-3 py-1 text-sm font-medium text-white transition hover:opacity-90"
+            style={{
+              backgroundColor: color,
+              opacity: isActive ? 1 : 0.45,
+              outline: isActive ? `2px solid ${color}` : undefined,
+              outlineOffset: isActive ? "1px" : undefined,
+            }}
+          >
+            {dec}s
+          </button>
+        );
+      })}
     </div>
   );
 }
