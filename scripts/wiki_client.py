@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import difflib
 import hashlib
 import time
 from pathlib import Path
@@ -15,6 +16,11 @@ USER_AGENT = "swdb-pipeline/0.1 (https://github.com/adriwankenobi/swdb)"
 REQUEST_TIMEOUT = 30
 POLITE_DELAY_SECONDS = 0.2
 OPENSEARCH_URL = "https://starwars.fandom.com/api.php"
+# Minimum SequenceMatcher ratio to accept a non-exact opensearch match.
+# Typos and small word variations (Apocalype vs Apocalypse, "Counter Attack"
+# vs "Counterattack") clear this; substantially different titles ("Sphere of
+# Influence" vs "Sphere of Galactic Influence" at 0.81) do not.
+_FUZZY_MATCH_THRESHOLD = 0.85
 
 
 class WikiClient:
@@ -84,22 +90,63 @@ class WikiClient:
     def resolve_url(
         self, *, info_url: str | None, title: str, series: str | None
     ) -> tuple[str | None, str]:
-        """Return (url, source) where source is one of: 'from_excel', 'opensearch', 'unmatched'."""
+        """Return (url, source) where source is one of: 'from_excel', 'opensearch', 'unmatched'.
+
+        Strategy when no info_url is given:
+        - Run two opensearch queries: `title + series` (more specific) and
+          `title` alone (broader). Pool the candidates, deduped by URL,
+          preserving the order of discovery (specific query first).
+        - Prefer an exact slug match of any candidate title against the work
+          title — this short-circuits typo/superset hazards.
+        - Otherwise take the candidate with the highest SequenceMatcher slug
+          ratio above _FUZZY_MATCH_THRESHOLD. Catches typos ("Apocalype" -
+          "Apocalypse"), word variants ("Counter Attack" - "Counterattack"),
+          minor connectives ("Battle of" - "Battle for"), etc.
+        """
         if info_url:
             return info_url, "from_excel"
-        query = f"{title} {series}" if series else title
-        try:
-            payload = self._opensearch(query)
-        except requests.RequestException:
-            return None, "unmatched"
-        if not payload or len(payload) < 4:
-            return None, "unmatched"
-        titles = payload[1]
-        urls = payload[3]
-        if not titles or not urls:
-            return None, "unmatched"
         title_slug = slugify(title)
-        for matched_title, matched_url in zip(titles, urls, strict=False):
-            if title_slug and title_slug in slugify(matched_title):
-                return matched_url, "opensearch"
+        if not title_slug:
+            return None, "unmatched"
+        queries: list[str] = []
+        if series:
+            queries.append(f"{title} {series}")
+        queries.append(title)
+        candidates: list[tuple[str, str]] = []
+        seen_urls: set[str] = set()
+        for q in queries:
+            try:
+                payload = self._opensearch(q)
+            except requests.RequestException:
+                continue
+            if not payload or len(payload) < 4:
+                continue
+            for t, u in zip(payload[1], payload[3], strict=False):
+                if u and u not in seen_urls:
+                    candidates.append((t, u))
+                    seen_urls.add(u)
+        if not candidates:
+            return None, "unmatched"
+        # Exact slug match short-circuits everything (e.g. when the broader
+        # title-only query surfaces the canonical page that the specific
+        # query buried under more-specific results).
+        for t, u in candidates:
+            if slugify(t) == title_slug:
+                return u, "opensearch"
+        # Title is substring of matched: handles superset titles like
+        # "The Sith Lords" -> "KOTOR II: The Sith Lords".
+        for t, u in candidates:
+            if title_slug in slugify(t):
+                return u, "opensearch"
+        # Best fuzzy match above threshold (typos, word variants, connectives);
+        # ties broken by discovery order.
+        best_url: str | None = None
+        best_ratio = 0.0
+        for t, u in candidates:
+            ratio = difflib.SequenceMatcher(None, title_slug, slugify(t)).ratio()
+            if ratio > best_ratio:
+                best_ratio = ratio
+                best_url = u
+        if best_ratio >= _FUZZY_MATCH_THRESHOLD:
+            return best_url, "opensearch"
         return None, "unmatched"

@@ -104,7 +104,12 @@ def _detect_duplicates(works: list[dict]) -> list[list[dict]]:
 
 
 def _enrich(work: dict, row: ExcelRow, client: WikiClient, unmatched: list[str]) -> None:
-    """Resolve wiki URL, fetch HTML, parse infobox, add enriched fields to work in-place."""
+    """Resolve wiki URL, fetch HTML, parse infobox, add enriched fields to work in-place.
+
+    If the Excel-provided info_url returns a dead fetch, fall back to opensearch
+    in case the URL is outdated. Genuine fetch failures end up in `unmatched.log`
+    with source="dead_url" so the user can fix them.
+    """
     url, source = client.resolve_url(
         info_url=row.info_url,
         title=row.title,
@@ -117,7 +122,20 @@ def _enrich(work: dict, row: ExcelRow, client: WikiClient, unmatched: list[str])
         return
     work["wiki_url"] = url
     html = client.fetch_html(url)
+    if not html and source == "from_excel":
+        # Excel URL is dead — try resolving via opensearch and re-fetch.
+        alt_url, alt_source = client.resolve_url(
+            info_url=None, title=row.title, series=row.series,
+        )
+        if alt_url and alt_url != url:
+            alt_html = client.fetch_html(alt_url)
+            if alt_html:
+                work["wiki_url"] = alt_url
+                html = alt_html
     if not html:
+        unmatched.append(
+            f"{row.era}|{row.title}|{row.series}|{row.medium}|source=dead_url"
+        )
         return
     fields = parse_infobox(html)
     if fields.get("authors"):

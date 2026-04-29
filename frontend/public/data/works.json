@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-29T10:43:12+00:00",
+  "generated_at": "2026-04-29T11:43:18+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -1914,21 +1914,7 @@
       "year": -3956,
       "series": "Knights of the Old Republic",
       "number": "1",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Knights_of_the_Old_Republic_(comic_series)",
-      "authors": [
-        "John Jackson Miller",
-        "Brian Ching",
-        "Travel Foreman",
-        "Dustin Weaver",
-        "Harvey Tolibao",
-        "Bong Dazo",
-        "Scott Hepburn",
-        "Alan Robinson",
-        "Dean Zachary",
-        "Ron Chan"
-      ],
-      "publisher": "Dark Horse Comics",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/df/Kotorhandbookcoverandtitle.jpg/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Knights_of_the_Old_Republic"
     },
     {
       "id": "83d891c2-6640-531c-8607-415a7534aa88",
@@ -1968,7 +1954,8 @@
       "title": "Vacation",
       "medium": 4,
       "year": -3680,
-      "wiki_url": "https://www.BioWare/blog/vacation"
+      "wiki_url": "https://starwars.fandom.com/wiki/Vacation",
+      "release_date": "2015-07-07"
     },
     {
       "id": "a1229fd4-4055-52b4-8924-5d805ef40590",
@@ -2153,7 +2140,8 @@
       "medium": 4,
       "year": -3644,
       "series": "The Old Republic",
-      "wiki_url": "https://www.BioWare/blog/final-trial"
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Final_Trial",
+      "release_date": "2015-03-06"
     },
     {
       "id": "93a7a7f6-ab0a-59d3-9541-126a3d21ba3f",
@@ -2177,7 +2165,11 @@
       "medium": 4,
       "year": -3643,
       "series": "The Old Republic",
-      "wiki_url": "https://www.BioWare/blog/price-power"
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Price_of_Power",
+      "authors": [
+        "Courtney Woods"
+      ],
+      "release_date": "2015-02-05"
     },
     {
       "id": "2129ca0e-5491-54e5-8cf9-08faeb8bbb45",
@@ -2186,7 +2178,8 @@
       "medium": 4,
       "year": -3643,
       "series": "The Old Republic",
-      "wiki_url": "https://www.BioWare/blog/sixth-line-part-one"
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Sixth_Line",
+      "release_date": "2015-04-24"
     },
     {
       "id": "81a6e1e8-d9d0-5762-8302-8cfa3f5a02dd",
@@ -2195,7 +2188,8 @@
       "medium": 4,
       "year": -3643,
       "series": "The Old Republic",
-      "wiki_url": "https://www.BioWare/blog/sixth-line-part-two"
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Sixth_Line",
+      "release_date": "2015-04-24"
     },
     {
       "id": "06dbadcf-cc92-5cbe-ba12-15480e9c15b1",
@@ -2334,7 +2328,8 @@
       "medium": 4,
       "year": -3637,
       "series": "The Old Republic",
-      "wiki_url": "https://www.BioWare/blog/surface-details"
+      "wiki_url": "https://starwars.fandom.com/wiki/Surface_Details",
+      "release_date": "2014-08-14"
     },
     {
       "id": "51a9afad-dfff-5aab-8677-e7527265e2ed",
@@ -2343,7 +2338,8 @@
       "medium": 4,
       "year": -3637,
       "series": "The Old Republic",
-      "wiki_url": "https://www.BioWare/blog/wanted-dead-and-dismantled"
+      "wiki_url": "https://starwars.fandom.com/wiki/Wanted:_Dead_and_Dismantled",
+      "release_date": "2014-08-26"
     },
     {
       "id": "58ae67e8-c365-5ae0-92e2-9ee48db616af",
@@ -2352,7 +2348,8 @@
       "medium": 4,
       "year": -3637,
       "series": "The Old Republic",
-      "wiki_url": "https://www.BioWare/blog/remnants"
+      "wiki_url": "https://starwars.fandom.com/wiki/Remnants",
+      "release_date": "2014-09-04"
     },
     {
       "id": "cb8c6900-e71e-5891-aeb5-5757b6cc745a",
@@ -2361,7 +2358,8 @@
       "medium": 4,
       "year": -3637,
       "series": "The Old Republic",
-      "wiki_url": "https://www.BioWare/info/news/blog/20141028"
+      "wiki_url": "https://starwars.fandom.com/wiki/Bedtime_on_Concordia",
+      "release_date": "2014-10-28"
     },
     {
       "id": "3adadb66-bcb0-5b0f-8830-70b5f923fafa",
@@ -2370,7 +2368,7 @@
       "medium": 6,
       "year": -3637,
       "series": "The Old Republic",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Old_Republic:_Shadow_of_Revan",
+      "wiki_url": "https://starwars.fandom.com/wiki/Shadow_of_Revan",
       "release_date": "2014-12-02",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e5/Shadow_of_Revan_Cover.jpg/revision/latest"
     },
@@ -2391,7 +2389,8 @@
       "medium": 4,
       "year": -3636,
       "series": "The Old Republic",
-      "wiki_url": "https://www.BioWare/blog/regrets"
+      "wiki_url": "https://starwars.fandom.com/wiki/Regrets",
+      "release_date": "2015-04-03"
     },
     {
       "id": "ae7ad940-15cd-54f6-ab7b-aa531eb8e2c7",
@@ -2400,7 +2399,8 @@
       "medium": 4,
       "year": -3636,
       "series": "The Old Republic",
-      "wiki_url": "https://www.BioWare/info/news/blog/20150728"
+      "wiki_url": "https://starwars.fandom.com/wiki/Brothers_(short_story)",
+      "release_date": "2015-07-28"
     },
     {
       "id": "231b80ce-d77a-5db1-8d6e-9619fb90cc66",
@@ -2409,7 +2409,11 @@
       "medium": 4,
       "year": -3630,
       "series": "The Old Republic",
-      "wiki_url": "https://www.BioWare/info/news/blog/20161117"
+      "wiki_url": "https://starwars.fandom.com/wiki/A_Mother%27s_Hope",
+      "authors": [
+        "Drew Karpyshyn"
+      ],
+      "release_date": "2016-11-17"
     },
     {
       "id": "d9af7fce-ad44-5342-8d33-ad064eab9f35",
@@ -2429,7 +2433,12 @@
       "medium": 4,
       "year": -3629,
       "series": "The Old Republic",
-      "wiki_url": "https://www.BioWare/info/news/news-article/20170817"
+      "wiki_url": "https://starwars.fandom.com/wiki/Trading_Scars",
+      "authors": [
+        "Samantha Wallschlaeger"
+      ],
+      "release_date": "2017-08-17",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2d/Umbara-Planet_SWTOR.jpg/revision/latest"
     },
     {
       "id": "8f47a894-61f9-5830-94d6-ab12c1f788f5",
@@ -2438,7 +2447,11 @@
       "medium": 4,
       "year": -3629,
       "series": "The Old Republic",
-      "wiki_url": "https://www.BioWare/info/news/news-article/20171116"
+      "wiki_url": "https://starwars.fandom.com/wiki/Chasing_Copero",
+      "authors": [
+        "Charles Boyd"
+      ],
+      "release_date": "2017-11-16"
     },
     {
       "id": "a519ea22-4df9-5287-b980-91c2b4a16e59",
@@ -2447,7 +2460,12 @@
       "medium": 4,
       "year": -3626,
       "series": "The Old Republic",
-      "wiki_url": "https://www.BioWare/info/news/article/20210413"
+      "wiki_url": "https://starwars.fandom.com/wiki/Quite_A_Story_To_Tell",
+      "authors": [
+        "Caitlin Sullivan Kelly"
+      ],
+      "release_date": "2021-04-13",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e8/QuiteAStoryToTell.jpg/revision/latest"
     },
     {
       "id": "d079a9f2-ed5d-54b2-aa86-fc25e84f896f",
@@ -3431,7 +3449,13 @@
       "medium": 0,
       "year": -43,
       "series": "Tales",
-      "wiki_url": "https://starwars.fandom.com/wiki/George_R._Binks_(comic)"
+      "wiki_url": "https://starwars.fandom.com/wiki/George_R._Binks",
+      "authors": [
+        "Tony Millionaire"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-06-30",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/GeorgeRBinks.jpg/revision/latest"
     },
     {
       "id": "f5779e1e-82d5-587a-a2ba-cab2a5ca63a4",
@@ -4382,13 +4406,8 @@
       "medium": 1,
       "year": -32,
       "series": "Star Wars Episode I Journal",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Journal:_Anakin_Skywalker",
-      "authors": [
-        "Todd Strasser"
-      ],
-      "publisher": "Scholastic",
-      "release_date": "1999-01-01",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/bf/AnakinJournal.jpg/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Anakin_Skywalker",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6f/Anakin_Skywalker_RotS.png/revision/latest"
     },
     {
       "id": "010a3937-9c1b-5216-af98-2cb4cf03815f",
@@ -4397,13 +4416,8 @@
       "medium": 1,
       "year": -32,
       "series": "Star Wars Episode I Journal",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Journal:_Darth_Maul",
-      "authors": [
-        "Jude Watson"
-      ],
-      "publisher": "Scholastic",
-      "release_date": "2000-01-01",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/13/DMaulJournal.jpg/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Darth_Maul",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/89/MaulHS_SWI185.png/revision/latest"
     },
     {
       "id": "1e51b2fe-7249-5ac0-9140-de378289d24c",
@@ -6105,9 +6119,13 @@
       "year": -22,
       "series": "Star Wars Episode",
       "number": "II",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_II_Attack_of_the_Clones_(video_game)",
+      "wiki_url": "https://starwars.fandom.com/wiki/Attack_of_the_Clones",
+      "authors": [
+        "George Lucas",
+        "Jonathan Hales"
+      ],
       "release_date": "2002-05-16",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b4/Attack_of_the_Clones_video_game_cover.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/dd/Attack-Clones-Poster.jpg/revision/latest"
     },
     {
       "id": "60a172a1-3ecd-589f-bdab-42a200458829",
@@ -6133,9 +6151,13 @@
       "year": -22,
       "series": "Star Wars Episode",
       "number": "II",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_II_Attack_of_the_Clones_(video_game)",
+      "wiki_url": "https://starwars.fandom.com/wiki/Attack_of_the_Clones",
+      "authors": [
+        "George Lucas",
+        "Jonathan Hales"
+      ],
       "release_date": "2002-05-16",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b4/Attack_of_the_Clones_video_game_cover.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/dd/Attack-Clones-Poster.jpg/revision/latest"
     },
     {
       "id": "202292fe-4164-5e22-aba7-3a885fd57446",
@@ -6157,9 +6179,8 @@
       "medium": 6,
       "year": -22,
       "series": "Republic Commando",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Republic_Commando",
-      "release_date": "2005-02-28",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2d/RCcover.jpg/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Republic_Commando",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/RepublicCommandoLogo.png/revision/latest"
     },
     {
       "id": "6310eaca-8bc1-5264-a812-79b676110fa1",
@@ -6292,7 +6313,12 @@
       "title": "SkyeWalkers: A Clone Wars Story",
       "medium": 4,
       "year": -22,
-      "wiki_url": "https://web.archive.org/web/20151030215018/http://www.abelgpena.com/SkyeWalkersCWstory.pdf"
+      "wiki_url": "https://starwars.fandom.com/wiki/SkyeWalkers:_A_Clone_Wars_Story",
+      "authors": [
+        "Abel G. Peña"
+      ],
+      "release_date": "2015-03-06",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/75/Skyewalkers.jpg/revision/latest"
     },
     {
       "id": "3b77c31e-8369-5063-899d-80f0ee7fae88",
@@ -6570,8 +6596,7 @@
       "year": -22,
       "series": "Star Wars Clone Wars",
       "number": "1x02",
-      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_2_(Star_Wars:_Clone_Wars)",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/66/CW_Chapter_2.png/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_2"
     },
     {
       "id": "f41b29ca-3352-53d0-b266-6e05e8205636",
@@ -6581,8 +6606,7 @@
       "year": -22,
       "series": "Star Wars Clone Wars",
       "number": "1x03",
-      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_3_(Star_Wars:_Clone_Wars)",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ea/CW_Chapter_3.png/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_3"
     },
     {
       "id": "aa1a3a0b-2709-5d97-af43-de8df99f3db6",
@@ -6735,8 +6759,11 @@
       "year": -22,
       "series": "Star Wars Clone Wars",
       "number": "2x07",
-      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_17_(Star_Wars:_Clone_Wars)",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fa/CW_Chapter_17.png/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_17",
+      "authors": [
+        "Jon Favreau"
+      ],
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/31/Chapter17-TheApostate.png/revision/latest"
     },
     {
       "id": "302a86ef-475f-58d9-b125-42e4d10008bb",
@@ -6746,8 +6773,11 @@
       "year": -22,
       "series": "Star Wars Clone Wars",
       "number": "2x08",
-      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_18_(Star_Wars:_Clone_Wars)",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b7/CW_Chapter_18.png/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_18",
+      "authors": [
+        "Jon Favreau"
+      ],
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a1/Chapter18-TheMinesofMandalore.png/revision/latest"
     },
     {
       "id": "60dc6222-a00d-5aed-a779-c9ccb8aad6dc",
@@ -6757,8 +6787,12 @@
       "year": -22,
       "series": "Star Wars Clone Wars",
       "number": "2x09",
-      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_19_(Star_Wars:_Clone_Wars)",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4d/CW_Chapter_19.png/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_19",
+      "authors": [
+        "Noah Kloor",
+        "Jon Favreau"
+      ],
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a3/Chapter19-TheConvert.png/revision/latest"
     },
     {
       "id": "828ea5a6-d729-5e58-bc18-a8b0cd5fd6dd",
@@ -7552,9 +7586,7 @@
       "medium": 2,
       "year": -19,
       "series": "The Clone Wars",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Clone_Wars_(video_game)",
-      "release_date": "2002-10-29",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/22/TCW-GameCube.jpg/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars"
     },
     {
       "id": "2bd47ea9-b83c-56f2-afd8-b52ed146abea",
@@ -7608,11 +7640,13 @@
       "medium": 0,
       "year": -19,
       "series": "The Clone Wars Webcomics",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Prelude",
+      "wiki_url": "https://starwars.fandom.com/wiki/Pr%C3%A9lude...",
       "authors": [
-        "Pablo Hidalgo"
+        "Pierre Zaplotny"
       ],
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/18/TCW-Prelude-Shakedown.jpg/revision/latest"
+      "publisher": "Welcome Multimédia",
+      "release_date": "1989-01-01",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6e/Prelude-COM15.jpg/revision/latest"
     },
     {
       "id": "40ef8d47-2bfd-5e85-b4aa-44283bcc0b2f",
@@ -8033,11 +8067,13 @@
       "medium": 0,
       "year": -19,
       "series": "The Clone Wars Webcomics",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Bait",
+      "wiki_url": "https://starwars.fandom.com/wiki/Bait",
       "authors": [
-        "Pablo Hidalgo"
+        "Alan Dean Foster"
       ],
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e3/Bait_cover.png/revision/latest"
+      "publisher": "Titan Magazines",
+      "release_date": "2015-12-22",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/ff/Bait.png/revision/latest"
     },
     {
       "id": "4078cea3-fb45-5dba-b095-f81d322d502e",
@@ -8062,11 +8098,7 @@
       "medium": 0,
       "year": -19,
       "series": "The Clone Wars Webcomics",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Switch",
-      "authors": [
-        "Pablo Hidalgo"
-      ],
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/70/Switch.png/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Switch"
     },
     {
       "id": "b58bd70c-3771-5f5b-945f-261e8dc1e90d",
@@ -8236,11 +8268,8 @@
       "year": -19,
       "series": "The Clone Wars",
       "number": "1x17",
-      "wiki_url": "https://starwars.fandom.com/wiki/Blue_Shadow_Virus_(episode)",
-      "authors": [
-        "Craig Titley"
-      ],
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5b/Epguide017.png/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Blue_Shadow_Virus",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fb/Blue_shadow_virus_vial.png/revision/latest"
     },
     {
       "id": "9df084c1-8127-5f9e-8dea-bba1da204451",
@@ -8507,13 +8536,11 @@
       "year": -19,
       "series": "The Clone Wars",
       "number": "2x17",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Stand_Aside_-_Bounty_Hunters!",
+      "wiki_url": "https://starwars.fandom.com/wiki/Bounty_Hunters",
       "authors": [
-        "Simon Beecroft"
+        "Carl Ellsworth"
       ],
-      "publisher": "DK Publishing",
-      "release_date": "2009-12-07",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d0/Bountyhunters_bg.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ef/Epguide217.png/revision/latest"
     },
     {
       "id": "20d25009-46a7-54ae-96b0-f14e80a09aa1",
@@ -8523,11 +8550,11 @@
       "year": -19,
       "series": "The Clone Wars",
       "number": "2x18",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Zillo_Beast_Strikes_Back",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Zillo_Beast",
       "authors": [
-        "Steven Melching"
+        "Craig Titley"
       ],
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b7/Epguide219.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/47/Epguide218.jpg/revision/latest"
     },
     {
       "id": "25048133-1aab-5160-ba38-1b0e7e2c6f7a",
@@ -8651,10 +8678,13 @@
       "year": -19,
       "series": "The Clone Wars",
       "number": "2x07",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Legacy_of_Terror",
-      "publisher": "Penguin Books",
-      "release_date": "2010-01-01",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/13/Legacy_of_Terror_storybook.jpg/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Legacy_of_Terror",
+      "authors": [
+        "Eoghan Mahony",
+        "Drew Z. Greenberg",
+        "Brian Larsen"
+      ],
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/50/Epguide207.jpg/revision/latest"
     },
     {
       "id": "d1d1f499-d4dc-511d-aecd-4aa3cfa6d8f6",
@@ -8852,11 +8882,7 @@
       "year": -19,
       "series": "The Clone Wars",
       "number": "3x05",
-      "wiki_url": "https://starwars.fandom.com/wiki/Corruption_(episode)",
-      "authors": [
-        "Cameron Litvack"
-      ],
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/37/Epguide305.png/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Corruption"
     },
     {
       "id": "a42e59f0-c76a-54aa-be7e-827825ef46cc",
@@ -8920,7 +8946,14 @@
       "medium": 5,
       "year": -19,
       "series": "The Clone Wars",
-      "number": "3x04"
+      "number": "3x04",
+      "wiki_url": "https://starwars.fandom.com/wiki/Sphere_of_Influence",
+      "authors": [
+        "Katie Lucas",
+        "Steven Melching",
+        "Drew Z. Greenberg"
+      ],
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/04/Epguide304b.png/revision/latest"
     },
     {
       "id": "a28dd5e0-75fe-5839-938c-ddf108bf6ef1",
@@ -8990,11 +9023,12 @@
       "medium": 0,
       "year": -19,
       "series": "The Clone Wars Webcomics",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Hunting_the_Hunters_(Part_II)",
+      "wiki_url": "https://starwars.fandom.com/wiki/Hunting_the_Hunters",
       "authors": [
-        "Pablo Hidalgo"
+        "Bill Smith"
       ],
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/22/Hunting_the_Hunters_Part_2.png/revision/latest"
+      "release_date": "1996-01-01",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/34/NarissSivLoqesh.jpg/revision/latest"
     },
     {
       "id": "bf8f9eb8-979c-5b30-8741-c02a17a8fe4b",
@@ -9062,8 +9096,8 @@
       "year": -19,
       "series": "The Clone Wars",
       "number": "3x12",
-      "wiki_url": "https://starwars.fandom.com/wiki/Nightsisters/Legends",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/88/Nightsisters_NEGTF_Full.jpg/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Nightsisters",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d7/Nightsisters_symbol_-_JFO.svg/revision/latest"
     },
     {
       "id": "08687ae1-b580-5283-b5d0-3977714a53d8",
@@ -9187,7 +9221,12 @@
       "medium": 5,
       "year": -19,
       "series": "The Clone Wars",
-      "number": "3x19"
+      "number": "3x19",
+      "wiki_url": "https://starwars.fandom.com/wiki/Counterattack",
+      "authors": [
+        "Matt Michnovetz"
+      ],
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/03/Epguide319.png/revision/latest"
     },
     {
       "id": "54871969-ca95-538e-9efb-6228c86973b4",
@@ -9285,13 +9324,11 @@
       "year": -19,
       "series": "The Clone Wars",
       "number": "4x03",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_No_Prisoners",
+      "wiki_url": "https://starwars.fandom.com/wiki/Prisoners",
       "authors": [
-        "Karen Traviss"
+        "Jose Molina"
       ],
-      "publisher": "Del Rey",
-      "release_date": "2009-05-19",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3a/No_Prisoners_cover.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e4/Epguide403.jpg/revision/latest"
     },
     {
       "id": "08147183-10ef-5d78-b385-de57998b7e2c",
@@ -9374,11 +9411,8 @@
       "year": -19,
       "series": "The Clone Wars",
       "number": "4x08",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_General_(episode)",
-      "authors": [
-        "Matt Michnovetz"
-      ],
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/91/Epguide408.png/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/The_General",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6d/General.png/revision/latest"
     },
     {
       "id": "67f05f8f-843b-5e90-bc17-0981f41c474c",
@@ -9431,15 +9465,12 @@
       "year": -19,
       "series": "The Clone Wars",
       "number": "4x12",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Clone_Wars:_Slaves_of_the_Republic",
+      "wiki_url": "https://starwars.fandom.com/wiki/Slaves_of_the_Republic",
       "authors": [
         "Henry Gilroy",
-        "Scott Hepburn",
-        "Ramón Pérez",
-        "Lucas Marangon"
+        "Steven Melching"
       ],
-      "publisher": "Dark Horse Comics",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/46/Clonewars1.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a1/SlavesOfTheRepublic-EpisodeGuideThumbnail.jpg/revision/latest"
     },
     {
       "id": "61f19611-6cf7-59e0-9159-2af6492f077a",
@@ -9680,11 +9711,7 @@
       "year": -19,
       "series": "The Clone Wars",
       "number": "4x20",
-      "wiki_url": "https://starwars.fandom.com/wiki/Bounty_(episode)",
-      "authors": [
-        "Katie Lucas"
-      ],
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/30/Epguide420.png/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Bounty"
     },
     {
       "id": "a2b4b758-e612-5180-9b9e-d579ca0e8149",
@@ -9708,11 +9735,8 @@
       "year": -19,
       "series": "The Clone Wars",
       "number": "4x22",
-      "wiki_url": "https://starwars.fandom.com/wiki/Revenge_(episode)",
-      "authors": [
-        "Katie Lucas"
-      ],
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a2/Epguide422.png/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Revenge",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7e/The_Revenge.jpg/revision/latest"
     },
     {
       "id": "c13017bb-640b-5ba4-87ad-c9a497a55a76",
@@ -10007,11 +10031,7 @@
       "year": -19,
       "series": "The Clone Wars",
       "number": "5x01",
-      "wiki_url": "https://starwars.fandom.com/wiki/Revival_(episode)",
-      "authors": [
-        "Chris Collins"
-      ],
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/20/Epguide501.jpg/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Revival"
     },
     {
       "id": "4121bdc5-df12-542e-9053-8f7dd2fee69e",
@@ -10233,11 +10253,11 @@
       "year": -19,
       "series": "The Clone Wars",
       "number": "6x08",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Disappeared,_Part_I",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Disappeared",
       "authors": [
-        "Jonathan W. Rinzler"
+        "Steven Melching"
       ],
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/00/EpGuide608.png/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d4/TheDisappeared-EpisodeGuide.jpg/revision/latest"
     },
     {
       "id": "efe8d72a-08a9-5fd6-b033-5a5a6f6606e9",
@@ -10246,7 +10266,12 @@
       "medium": 5,
       "year": -19,
       "series": "The Clone Wars",
-      "number": "6x09"
+      "number": "6x09",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Disappeared,_Part_II",
+      "authors": [
+        "Jonathan W. Rinzler"
+      ],
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b1/EpGuide609.png/revision/latest"
     },
     {
       "id": "e5b62101-2c51-5afa-922c-800a6a2e074f",
@@ -10284,11 +10309,7 @@
       "year": -19,
       "series": "The Clone Wars",
       "number": "6x12",
-      "wiki_url": "https://starwars.fandom.com/wiki/Destiny_(The_Clone_Wars)",
-      "authors": [
-        "Christian Taylor"
-      ],
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d1/Epguide612.png/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Destiny"
     },
     {
       "id": "4ed53883-09ed-5edf-b934-b9f9b89c02d6",
@@ -12784,7 +12805,13 @@
       "medium": 5,
       "year": -15,
       "series": "Droids: The Adventures of R2D2 and C3PO",
-      "number": "1x10"
+      "number": "1x10",
+      "wiki_url": "https://starwars.fandom.com/wiki/Tail_of_the_Roon_Comets",
+      "authors": [
+        "Ben Burtt",
+        "Michael Reaves"
+      ],
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/13/Droids-trailroon.jpg/revision/latest"
     },
     {
       "id": "3f8dc59b-eb37-53cb-856e-339db567e44a",
@@ -12900,14 +12927,7 @@
       "medium": 0,
       "year": -9,
       "series": "Tales",
-      "wiki_url": "https://starwars.fandom.com/wiki/Sandstorm_(comic_story)",
-      "authors": [
-        "Jason Hall",
-        "Sunny Lee"
-      ],
-      "publisher": "Dark Horse Comics",
-      "release_date": "2003-03-12",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/75/Sandstorm.jpg/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Sandstorm"
     },
     {
       "id": "b5cbe9a8-e822-57b5-9939-36598cbecc3c",
@@ -13818,7 +13838,14 @@
       "medium": 0,
       "year": -2,
       "series": "Han Solo Adventures",
-      "number": "1"
+      "number": "1",
+      "wiki_url": "https://starwars.fandom.com/wiki/Han_Solo_at_Stars%27_End",
+      "authors": [
+        "Brian Daley"
+      ],
+      "publisher": "Del Rey",
+      "release_date": "1979-01-01",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f8/HanSoloatStarsEnd-Hardcover.jpg/revision/latest"
     },
     {
       "id": "74f0ec37-b35a-59d6-8df8-7e7b2126ad02",
@@ -14034,16 +14061,6 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6b/Lost_Legacy_Cover.jpg/revision/latest"
     },
     {
-      "id": "653f0d17-431c-5be2-9802-c95ae0b215cc",
-      "era": 4,
-      "title": "Han Solo: Nomad",
-      "medium": 3,
-      "year": -2,
-      "series": "Han Solo Adventures",
-      "number": "4",
-      "wiki_url": "https://happybeeps.net/starwars-story/han-solo-nomadjai-han-solo-at-doomsdays-edge-5920/"
-    },
-    {
       "id": "cca39833-c0a1-5694-b8bc-1195ae8a9719",
       "era": 4,
       "title": "Han Solo: Imperial Agent",
@@ -14051,27 +14068,14 @@
       "year": -2,
       "series": "Han Solo Adventures",
       "number": "5",
-      "wiki_url": "https://happybeeps.net/starwars-story/han-solo-a-birodalmi-ugynok-han-solos-gambit-5921/"
-    },
-    {
-      "id": "93e7f7bb-b0cd-5ac3-9f5a-1ff727dfd003",
-      "era": 4,
-      "title": "Han Solo and the Bounty Hunters",
-      "medium": 3,
-      "year": -2,
-      "series": "Han Solo Adventures",
-      "number": "6",
-      "wiki_url": "https://happybeeps.net/starwars-story/han-solo-es-a-fejvadaszok-han-solo-and-the-bounty-hunters-5922/"
-    },
-    {
-      "id": "be998fd6-b3ba-5aca-b874-b6af2d55ec09",
-      "era": 4,
-      "title": "Han Solo's War",
-      "medium": 3,
-      "year": -2,
-      "series": "Han Solo Adventures",
-      "number": "7",
-      "wiki_url": "https://happybeeps.net/starwars-story/han-solo-haboruja-han-solos-war-5923/"
+      "wiki_url": "https://starwars.fandom.com/wiki/Han_Solo_-_Imperial_Cadet_1",
+      "authors": [
+        "Robbie Thompson",
+        "Leonard Kirk"
+      ],
+      "publisher": "Marvel Comics",
+      "release_date": "2018-11-07",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d1/HanSoloImperialCadet1-Cover.jpg/revision/latest"
     },
     {
       "id": "438303e3-13f3-5e60-9c74-cf0a5329ac74",
@@ -14713,13 +14717,12 @@
       "year": 0,
       "series": "Star Wars Episode",
       "number": "IV",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_A_New_Hope_(novelization)",
+      "wiki_url": "https://starwars.fandom.com/wiki/A_New_Hope",
       "authors": [
-        "Alan Dean Foster"
+        "George Lucas"
       ],
-      "publisher": "Ballantine Books",
-      "release_date": "1976-11-12",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3a/FromtheAdventuresofLukeSkywalker.png/revision/latest"
+      "release_date": "1977-05-25",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/44/1977-StarWars-theatricalposter.jpg/revision/latest"
     },
     {
       "id": "34a13f75-b121-5c91-b435-f765f951e4a5",
@@ -14846,9 +14849,12 @@
       "medium": 6,
       "year": 0,
       "series": "Jedi Knight",
-      "wiki_url": "https://starwars.fandom.com/wiki/Dark_Forces/Jedi_Knight",
+      "wiki_url": "https://starwars.fandom.com/wiki/Dark_Forces",
+      "authors": [
+        "Justin Chin"
+      ],
       "release_date": "1995-02-15",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a0/DFJKLogo.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d2/Dark_Forces_Box_Cover.jpg/revision/latest"
     },
     {
       "id": "457c1016-aa98-5fa4-b31e-6b64221be5af",
@@ -16922,7 +16928,15 @@
       "title": "The Assasination of Darth Vader",
       "medium": 0,
       "year": 0,
-      "series": "Star Wars"
+      "series": "Star Wars",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Assassination_of_Darth_Vader",
+      "authors": [
+        "Brian Wood",
+        "Ryan Odagawa"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2013-05-04",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c1/The_Assassination_of_Darth_Vader.jpg/revision/latest"
     },
     {
       "id": "40ae90e3-f9a6-5052-a77f-22ca05400bfb",
@@ -17039,7 +17053,15 @@
       "medium": 0,
       "year": 0,
       "series": "Star Wars",
-      "number": "13"
+      "number": "13",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_(2013)_13",
+      "authors": [
+        "Brian Wood",
+        "Facundo Percio"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2014-01-08",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0e/StarWars13Final.jpg/revision/latest"
     },
     {
       "id": "e42dedc4-4656-5539-bf94-01d60389f2a7",
@@ -17048,7 +17070,15 @@
       "medium": 0,
       "year": 0,
       "series": "Star Wars",
-      "number": "14"
+      "number": "14",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_(2013)_14",
+      "authors": [
+        "Brian Wood",
+        "Facundo Percio"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2014-02-12",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f3/StarWars14Final.jpg/revision/latest"
     },
     {
       "id": "6f710170-54b3-53d9-94d2-3f10dc2713da",
@@ -18883,7 +18913,14 @@
       "year": 0,
       "series": "Rebellion",
       "number": "3",
-      "wiki_url": "https://www.theverge.com/2022/7/14/23205804/imessage-unsend-ios-16-beta-ios15"
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Rebellion:_My_Brother,_My_Enemy",
+      "authors": [
+        "Rob Williams",
+        "Brandon Badeaux",
+        "Michel Lacombe"
+      ],
+      "publisher": "Dark Horse Comics",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/67/Rebellion1FullCover.jpg/revision/latest"
     },
     {
       "id": "cd72b950-7e23-53c7-bb85-c22fcf890df3",
@@ -19380,7 +19417,15 @@
       "title": "Blind Furyl",
       "medium": 0,
       "year": 1,
-      "series": "Devilworlds"
+      "series": "Devilworlds",
+      "wiki_url": "https://starwars.fandom.com/wiki/Blind_Fury!",
+      "authors": [
+        "Alan Moore",
+        "John Stokes"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1982-01-01",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0b/Blindfury.jpg/revision/latest"
     },
     {
       "id": "d5e2c518-8e7c-5b02-abe9-26b269a28583",
@@ -20082,13 +20127,6 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2b/Double_Cross_on_Ord_Mantell_GM5.jpg/revision/latest"
     },
     {
-      "id": "f82c5840-132d-547a-9ec1-cdb99e42cf7f",
-      "era": 5,
-      "title": "Escape from Kalist",
-      "medium": 4,
-      "year": 3
-    },
-    {
       "id": "49414a6a-4cd8-5f62-a782-0928a5711105",
       "era": 5,
       "title": "Meltdown on Hoth",
@@ -20110,13 +20148,14 @@
       "year": 3,
       "series": "Star Wars Episode",
       "number": "V",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Empire_Strikes_Back_(radio)",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Empire_Strikes_Back",
       "authors": [
-        "Brian Daley"
+        "George Lucas",
+        "Leigh Brackett",
+        "Lawrence Kasdan"
       ],
-      "publisher": "National Public Radio, HighBridge Audio",
-      "release_date": "1983-01-01",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cd/Esb-radio.png/revision/latest"
+      "release_date": "1980-05-21",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e8/1980-EmpireStrikesBack-theatricalposter.jpg/revision/latest"
     },
     {
       "id": "340431d9-b2f4-5360-b5d7-e4f8d8dcf8c9",
@@ -20143,13 +20182,14 @@
       "year": 3,
       "series": "Star Wars Episode",
       "number": "V",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Empire_Strikes_Back_(radio)",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Empire_Strikes_Back",
       "authors": [
-        "Brian Daley"
+        "George Lucas",
+        "Leigh Brackett",
+        "Lawrence Kasdan"
       ],
-      "publisher": "National Public Radio, HighBridge Audio",
-      "release_date": "1983-01-01",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cd/Esb-radio.png/revision/latest"
+      "release_date": "1980-05-21",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e8/1980-EmpireStrikesBack-theatricalposter.jpg/revision/latest"
     },
     {
       "id": "d615635c-9a59-5937-83b7-864ed9339525",
@@ -20158,13 +20198,8 @@
       "medium": 0,
       "year": 3,
       "series": "Tales",
-      "wiki_url": "https://starwars.fandom.com/wiki/Hoth_(comic_story)",
-      "authors": [
-        "Tony Millionaire"
-      ],
-      "publisher": "Dark Horse Comics",
-      "release_date": "2000-09-27",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ee/HothComic.jpg/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Hoth",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a1/Hoth-2024SWHyperspace.png/revision/latest"
     },
     {
       "id": "7ff81bee-d1b0-5f4c-8f07-15096f2b259e",
@@ -20818,7 +20853,16 @@
       "medium": 0,
       "year": 3,
       "series": "Marvel's Star Wars",
-      "number": "65"
+      "number": "65",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_(1977)_65",
+      "authors": [
+        "David Michelinie",
+        "Walt Simonson",
+        "Tom Palmer"
+      ],
+      "publisher": "Marvel Comics",
+      "release_date": "1982-08-17",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3d/Mswc65cover.jpg/revision/latest"
     },
     {
       "id": "39f6e9e0-74bb-5edb-a387-eab582be23b6",
@@ -21070,7 +21114,11 @@
       "medium": 5,
       "year": 3,
       "series": "Ewoks",
-      "number": "1x06"
+      "number": "1x06",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Tree_of_Life",
+      "publisher": "Disney–Lucasfilm Press",
+      "release_date": "2021-09-07",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/01/LifeDayBackCover.png/revision/latest"
     },
     {
       "id": "1bd013aa-53b1-52ef-bc15-f4f0e9402461",
@@ -21206,7 +21254,12 @@
       "medium": 5,
       "year": 3,
       "series": "Ewoks",
-      "number": "2x03"
+      "number": "2x03",
+      "wiki_url": "https://starwars.fandom.com/wiki/Home_Is_Where_the_Shrieks_Are",
+      "authors": [
+        "Bob Carrau"
+      ],
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fa/Ewoks_2-03a.jpg/revision/latest"
     },
     {
       "id": "823d54aa-f4cb-58e0-8dcc-6dd12e7f9f4c",
@@ -21384,11 +21437,8 @@
       "year": 3,
       "series": "Ewoks",
       "number": "2x16",
-      "wiki_url": "https://starwars.fandom.com/wiki/Horville%27s_Hut_of_Horrors_(episode)",
-      "authors": [
-        "Paul Dini"
-      ],
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/11/Horville.jpg/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Horville%27s_Hut_of_Horrors",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d3/HorvillesHutOfHorrors.jpg/revision/latest"
     },
     {
       "id": "8123af1b-0261-5fde-92d9-a65ec4b86347",
@@ -21440,7 +21490,12 @@
       "medium": 5,
       "year": 3,
       "series": "Ewoks",
-      "number": "2x20"
+      "number": "2x20",
+      "wiki_url": "https://starwars.fandom.com/wiki/Battle_for_the_Sunstar",
+      "authors": [
+        "Paul Dini"
+      ],
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d3/BattlefortheSunstar.png/revision/latest"
     },
     {
       "id": "1f034627-9905-50d6-8b5f-b7b89b03e826",
@@ -21967,7 +22022,13 @@
       "era": 5,
       "title": "The Regalia Office",
       "medium": 4,
-      "year": 3
+      "year": 3,
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Regalia_of_Office",
+      "authors": [
+        "Peter M. Schweighofer"
+      ],
+      "publisher": "West End Games",
+      "release_date": "1996-01-01"
     },
     {
       "id": "94ce80fd-0f83-5c52-bfcc-064c0cdff48d",
@@ -23361,13 +23422,6 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6b/StarWars1977-107.jpg/revision/latest"
     },
     {
-      "id": "c36acab7-6437-54ae-8174-94c79cdb3d2e",
-      "era": 5,
-      "title": "The Forgotten War: The Nagai and the Torfs",
-      "medium": 4,
-      "year": 4
-    },
-    {
       "id": "9edd24d6-d300-5783-9588-6e4ad1e7e840",
       "era": 5,
       "title": "Spare Parts",
@@ -24616,13 +24670,12 @@
       "medium": 6,
       "year": 5,
       "series": "Jedi Knight",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Jedi_Knight:_Dark_Forces_II:_The_Official_Strategy_Guide",
+      "wiki_url": "https://starwars.fandom.com/wiki/Dark_Forces_II",
       "authors": [
-        "Rick Barba"
+        "Justin Chin"
       ],
-      "publisher": "Prima Publishing",
-      "release_date": "1997-11-25",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/88/PrimaJediKnight.jpg/revision/latest"
+      "release_date": "1997-10-09",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6e/Sw-jk_box_art.jpg/revision/latest"
     },
     {
       "id": "e78fc4b0-e763-5b3e-81bc-7b6c2b002bda",
@@ -24675,7 +24728,8 @@
       "era": 6,
       "title": "Jodo Kast and Dengar: Preying for Time",
       "medium": 4,
-      "year": 5
+      "year": 5,
+      "wiki_url": "https://starwars.fandom.com/wiki/Jodo_Kast_%26_Dengar:_Preying_for_Time"
     },
     {
       "id": "c9fba8d1-8ad0-5c43-8d37-6892b826950e",
@@ -24823,7 +24877,14 @@
       "era": 6,
       "title": "The Heart of the Jedi",
       "medium": 3,
-      "year": 5
+      "year": 5,
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Heart_of_a_Jedi",
+      "authors": [
+        "Rebecca L. Schmidt"
+      ],
+      "publisher": "Giunti, Hachette Jeunesse, Planeta Junior",
+      "release_date": "2021-01-20",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3e/HeartOfAJedi.jpg/revision/latest"
     },
     {
       "id": "d3203acc-97b9-5172-9f73-b66bb1692e5b",
@@ -25765,7 +25826,10 @@
       "title": "Mysteries of the Sith",
       "medium": 6,
       "year": 10,
-      "series": "Jedi Knight"
+      "series": "Jedi Knight",
+      "wiki_url": "https://starwars.fandom.com/wiki/Mysteries_of_the_Sith",
+      "release_date": "1998-02-16",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7b/MOTS_box.jpg/revision/latest"
     },
     {
       "id": "d0d703a1-a832-5a82-b4ad-741c53870ebb",
@@ -25811,7 +25875,12 @@
       "era": 6,
       "title": "Down And Out On Cosruscant",
       "medium": 4,
-      "year": 10
+      "year": 10,
+      "wiki_url": "https://starwars.fandom.com/wiki/Down_And_Out_On_Coruscant",
+      "authors": [
+        "Michael Allen Horne"
+      ],
+      "release_date": "1993-01-01"
     },
     {
       "id": "1cd0df71-afd7-528e-ab82-f667c25936cb",
@@ -26573,9 +26642,9 @@
       "medium": 6,
       "year": 12,
       "series": "Jedi Knight",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Jedi_Knight_II:_Jedi_Outcast_demo",
-      "release_date": "2002-03-10",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f3/ColdHandsWarmGun-JODemo.png/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Outcast",
+      "release_date": "2002-03-26",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/87/JediOutcastcover.jpg/revision/latest"
     },
     {
       "id": "702c7f49-b1d5-582f-a3f2-c334bbf182ff",
@@ -27575,7 +27644,15 @@
       "title": "Apocalype Endor",
       "medium": 0,
       "year": 22,
-      "series": "Tales"
+      "series": "Tales",
+      "wiki_url": "https://starwars.fandom.com/wiki/Apocalypse_Endor",
+      "authors": [
+        "Christian Read",
+        "Clayton Henry"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2002-12-11",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3f/ApocalypseEndor.jpg/revision/latest"
     },
     {
       "id": "5fd687ab-a94b-5c22-85e9-ee8bd8749366",
