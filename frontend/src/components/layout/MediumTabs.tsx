@@ -35,12 +35,13 @@ export function MediumTabs() {
             key={label}
             type="button"
             onClick={() => pickMedium(i)}
-            className="rounded px-3 py-1 text-sm font-medium transition"
-            style={
-              active
-                ? { backgroundColor: MEDIUM_COLORS[i], color: "white" }
-                : { border: "1px solid currentColor", opacity: 0.6 }
-            }
+            className="rounded px-3 py-1 text-sm font-medium text-white transition hover:opacity-90"
+            style={{
+              backgroundColor: MEDIUM_COLORS[i],
+              opacity: active ? 1 : 0.45,
+              outline: active ? `2px solid ${MEDIUM_COLORS[i]}` : undefined,
+              outlineOffset: active ? "1px" : undefined,
+            }}
           >
             {label}
           </button>
