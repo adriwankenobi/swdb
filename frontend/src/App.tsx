@@ -1,16 +1,23 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useCatalogStore } from "./store/catalogStore";
 import { useFilterStore } from "./store/filterStore";
 import { readFromUrl, writeToUrl } from "./lib/urlState";
 import { AppShell } from "./components/layout/AppShell";
+import { Landing } from "./components/layout/Landing";
 import { filterWorks } from "./lib/filterWorks";
 import { ActiveFilterChips } from "./components/filters/ActiveFilterChips";
 import { CardGrid } from "./components/views/CardGrid";
 import { WorkDetailModal } from "./components/work/WorkDetailModal";
+import type { EraIndex } from "./constants/eras";
 
 export default function App() {
   const { status, works, error, load } = useCatalogStore();
   const filterState = useFilterStore();
+
+  // Show landing on fresh visit (no query params), stay in catalog if URL has filters
+  const [showLanding, setShowLanding] = useState<boolean>(
+    () => window.location.search === ""
+  );
 
   useEffect(() => {
     filterState.set(readFromUrl(window.location.search));
@@ -32,11 +39,25 @@ export default function App() {
   if (status === "loading" || status === "idle") return <p className="p-4">Loading…</p>;
   if (status === "error") return <p className="p-4 text-red-600">Failed to load: {error}</p>;
 
+  if (showLanding) {
+    return (
+      <Landing
+        onPick={(_era: EraIndex) => setShowLanding(false)}
+        onBrowseAll={() => setShowLanding(false)}
+      />
+    );
+  }
+
+  function handleHome() {
+    filterState.clearAll();
+    setShowLanding(true);
+  }
+
   const visible = filterWorks(works, filterState);
 
   return (
     <>
-      <AppShell>
+      <AppShell onHome={handleHome}>
         <div className="flex h-full flex-col">
           <ActiveFilterChips />
           <p className="pb-3 text-sm text-muted-foreground">{visible.length} of {works.length} works</p>

@@ -2,11 +2,21 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useFilterStore } from "@/store/filterStore";
 
-export function TopBar() {
+interface TopBarProps {
+  onHome?: () => void;
+}
+
+export function TopBar({ onHome }: TopBarProps) {
   const { q, set, view, sort } = useFilterStore();
   return (
     <header className="flex items-center gap-3 border-b px-4 py-2">
-      <h1 className="text-lg font-semibold tracking-tight">SWDB</h1>
+      <button
+        type="button"
+        onClick={onHome}
+        className="text-lg font-semibold tracking-tight hover:opacity-70 transition-opacity"
+      >
+        SWDB
+      </button>
       <Input
         placeholder="Search title, series, author…"
         value={q}
