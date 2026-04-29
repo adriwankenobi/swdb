@@ -63,6 +63,8 @@ def _row_to_work(row: ExcelRow) -> dict:
         work["series"] = row.series
     if row.number is not None:
         work["number"] = row.number
+    if row.color is not None:
+        work["color"] = row.color
     return work
 
 
