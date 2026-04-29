@@ -26,7 +26,7 @@ def _make_lookup_key(
 
 
 def _format_authors(authors: list[str]) -> str:
-    return " and ".join(a.strip() for a in authors if a and a.strip())
+    return ", ".join(a.strip() for a in authors if a and a.strip())
 
 
 def _format_release(iso_date: str) -> str:
@@ -70,19 +70,17 @@ def update_excel(path: Path, enriched: dict[tuple, dict]) -> dict:
                     if new_value and row[COL_AUTHOR - 1].value != new_value:
                         row[COL_AUTHOR - 1].value = new_value
                         changed = True
-                if fields.get("publisher"):
-                    if row[COL_PUBLISHER - 1].value != fields["publisher"]:
-                        row[COL_PUBLISHER - 1].value = fields["publisher"]
-                        changed = True
+                if fields.get("publisher") and row[COL_PUBLISHER - 1].value != fields["publisher"]:
+                    row[COL_PUBLISHER - 1].value = fields["publisher"]
+                    changed = True
                 if fields.get("release_date"):
                     formatted = _format_release(fields["release_date"])
                     if row[COL_RELEASE - 1].value != formatted:
                         row[COL_RELEASE - 1].value = formatted
                         changed = True
-                if fields.get("cover_url"):
-                    if row[COL_COVER - 1].value != fields["cover_url"]:
-                        row[COL_COVER - 1].value = fields["cover_url"]
-                        changed = True
+                if fields.get("cover_url") and row[COL_COVER - 1].value != fields["cover_url"]:
+                    row[COL_COVER - 1].value = fields["cover_url"]
+                    changed = True
                 if changed:
                     updated += 1
         wb.save(path)

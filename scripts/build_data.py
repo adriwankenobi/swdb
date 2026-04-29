@@ -172,7 +172,7 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
 
     # Build enriched lookup for Excel writeback
     enriched_lookup: dict[tuple, dict] = {}
-    for work, row in zip(works, valid_rows):
+    for work, row in zip(works, valid_rows, strict=True):
         fields: dict = {}
         if "authors" in work:
             fields["authors"] = work["authors"]

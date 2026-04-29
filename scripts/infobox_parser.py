@@ -13,6 +13,14 @@ from bs4 import BeautifulSoup, Tag
 _LABEL_MAP: dict[str, str] = {
     "author": "authors",
     "author(s)": "authors",
+    "writer": "authors",
+    "writer(s)": "authors",
+    "writers": "authors",
+    # Comics often credit penciller separately from writer; per the spec,
+    # both go into the AUTHOR field, deduped and preserving discovery order.
+    "penciller": "authors",
+    "penciller(s)": "authors",
+    "pencillers": "authors",
     "publisher": "publisher",
     "publication date": "release_date",
     "release date": "release_date",
@@ -29,15 +37,34 @@ _DATE_FORMATS = (
 )
 
 
+_REF_RE = re.compile(r"\s*\[\s*\d+\s*\]\s*")
+_LIST_TAG_RE = re.compile(r"</?(br|li)\s*/?>", re.IGNORECASE)
+
+
 def _normalize_text(node: Tag) -> str:
-    return " ".join(node.get_text(" ", strip=True).split())
+    # Wookieepedia infoboxes render multi-value fields (e.g. multiple authors)
+    # using <br> or <li> tags. get_text(" ") would join them with a single
+    # space, which is indistinguishable from the spaces inside an individual
+    # name. Convert those structural tags to commas before extracting text so
+    # downstream splitters (e.g. _split_authors) can separate the values.
+    html_with_commas = _LIST_TAG_RE.sub(", ", str(node))
+    reparsed = BeautifulSoup(html_with_commas, "html.parser")
+    raw = reparsed.get_text(" ", strip=True)
+    # Strip Wookieepedia footnote markers like "[1]", "[ 1 ]" (rendered from
+    # <sup class="reference">…</sup>).
+    cleaned = _REF_RE.sub(" ", raw)
+    # Collapse whitespace, then collapse comma-space runs (e.g. ", ,").
+    text = " ".join(cleaned.split())
+    text = re.sub(r"(?:\s*,\s*)+", ", ", text).strip(" ,")
+    return text
 
 
 def _split_authors(text: str) -> list[str]:
     # Strip ghost-writer parentheticals: "Alan Dean Foster (as George Lucas)"
     text = re.sub(r"\s*\([^)]*\)", "", text)
-    # Wookieepedia separates multiple authors with commas, semicolons, "and", or "/".
-    parts = re.split(r"\s*(?:,|;|\band\b|/)\s*", text)
+    # Wookieepedia separates multiple authors with commas, semicolons,
+    # "and", "&", or "/".
+    parts = re.split(r"\s*(?:,|;|\band\b|/|&)\s*", text)
     return [p.strip() for p in parts if p.strip()]
 
 
@@ -98,7 +125,13 @@ def parse_infobox(html: str) -> dict:
         if not text:
             continue
         if key == "authors":
-            out["authors"] = _split_authors(text)
+            # Multiple infobox labels can map to "authors" (Writer, Penciller,
+            # etc.). Merge them all, deduping while preserving discovery order.
+            new_authors = _split_authors(text)
+            existing = out.setdefault("authors", [])
+            for a in new_authors:
+                if a not in existing:
+                    existing.append(a)
         elif key == "release_date":
             iso = _parse_date(text)
             if iso:

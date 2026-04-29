@@ -5,7 +5,7 @@ from __future__ import annotations
 import hashlib
 import time
 from pathlib import Path
-from urllib.parse import urlencode
+from urllib.parse import unquote, urlencode
 
 import requests
 
@@ -33,14 +33,18 @@ class WikiClient:
         cache_path = self._cache_path(url)
         if not self.refresh and cache_path.exists():
             return cache_path.read_text(encoding="utf-8")
-        # Extract article title from the wiki URL (everything after /wiki/)
+        # Extract article title from the wiki URL (everything after /wiki/).
+        # The URL is typically already percent-encoded (em-dashes, apostrophes,
+        # etc.); we must DECODE before re-encoding via urlencode below, otherwise
+        # the percent signs get encoded a second time and the API rejects the
+        # page name as nonexistent.
         wiki_prefix = "/wiki/"
         wiki_idx = url.find(wiki_prefix)
         if wiki_idx == -1:
             return None
-        title = url[wiki_idx + len(wiki_prefix):]
+        title = unquote(url[wiki_idx + len(wiki_prefix):])
         api_url = (
-            f"https://starwars.fandom.com/api.php?"
+            "https://starwars.fandom.com/api.php?"
             + urlencode({
                 "action": "parse",
                 "page": title,
