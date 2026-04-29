@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useFilterStore } from "@/store/filterStore";
@@ -8,6 +9,7 @@ interface TopBarProps {
 
 export function TopBar({ onHome }: TopBarProps) {
   const { q, set, view, sort } = useFilterStore();
+  const previousQ = useRef(q);
   return (
     <header className="flex items-center gap-3 border-b px-4 py-2">
       <button
@@ -20,7 +22,16 @@ export function TopBar({ onHome }: TopBarProps) {
       <Input
         placeholder="Search title, series, author…"
         value={q}
-        onChange={(e) => set({ q: e.target.value })}
+        onChange={(e) => {
+          const newQ = e.target.value;
+          // When transitioning from empty to non-empty, clear era/decade selection.
+          if (!previousQ.current && newQ) {
+            set({ q: newQ, eras: [], releaseMin: null, releaseMax: null });
+          } else {
+            set({ q: newQ });
+          }
+          previousQ.current = newQ;
+        }}
         className="max-w-md"
       />
       <div className="ml-auto flex items-center gap-2">
