@@ -8,10 +8,14 @@ import { useCatalogStore } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
 
 export function WorkDetailModal() {
-  const { openWorkId, set } = useFilterStore();
+  const { openWorkId, set, toggleArrayValue } = useFilterStore();
   const works = useCatalogStore((s) => s.works);
   const work = openWorkId ? works.find((w) => w.id === openWorkId) : null;
   const mediumLabel = work ? MEDIUMS[work.medium] : "";
+
+  function closeModal() {
+    set({ openWorkId: null });
+  }
 
   return (
     <Dialog
@@ -44,9 +48,13 @@ export function WorkDetailModal() {
               <div className="space-y-3 text-sm">
                 <div className="flex flex-wrap items-center gap-2">
                   {work.series && (
-                    <span className="font-medium">
+                    <button
+                      type="button"
+                      className="font-medium cursor-pointer hover:underline"
+                      onClick={() => { toggleArrayValue("series", work.series!); closeModal(); }}
+                    >
                       {formatSeriesAndNumber(work)}
-                    </span>
+                    </button>
                   )}
                   <Badge variant="outline">{mediumLabel}</Badge>
                   <Badge style={{ backgroundColor: ERA_COLORS[work.era as EraIndex], color: "white" }}>
@@ -65,12 +73,30 @@ export function WorkDetailModal() {
                 {work.authors && work.authors.length > 0 && (
                   <p>
                     <span className="text-muted-foreground">Authors:</span>{" "}
-                    {work.authors.join(", ")}
+                    {work.authors.map((author, i) => (
+                      <span key={author}>
+                        {i > 0 && ", "}
+                        <button
+                          type="button"
+                          className="cursor-pointer hover:underline"
+                          onClick={() => { toggleArrayValue("authors", author); closeModal(); }}
+                        >
+                          {author}
+                        </button>
+                      </span>
+                    ))}
                   </p>
                 )}
                 {work.publisher && (
                   <p>
-                    <span className="text-muted-foreground">Publisher:</span> {work.publisher}
+                    <span className="text-muted-foreground">Publisher:</span>{" "}
+                    <button
+                      type="button"
+                      className="cursor-pointer hover:underline"
+                      onClick={() => { toggleArrayValue("publishers", work.publisher!); closeModal(); }}
+                    >
+                      {work.publisher}
+                    </button>
                   </p>
                 )}
                 {work.wiki_url && (
