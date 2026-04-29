@@ -48,10 +48,10 @@ export function WorkDetailModal() {
                   );
                 })() : (
                   <div
-                    className="flex h-full items-center justify-center text-5xl text-white/70"
+                    className="flex h-full items-center justify-center px-3 text-center text-base font-semibold leading-snug text-white text-balance line-clamp-6 break-words"
                     style={{ backgroundColor: ERA_COLORS[work.era as EraIndex] }}
                   >
-                    {mediumLabel[0]}
+                    {work.title}
                   </div>
                 )}
               </div>

@@ -1,5 +1,5 @@
 import { ERAS, ERA_COLORS, type EraIndex } from "@/constants/eras";
-import { MEDIUMS, MEDIUM_COLORS } from "@/constants/mediums";
+import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { groupForChronology, groupForRelease } from "@/lib/timelineGroups";
 import { useFilterStore } from "@/store/filterStore";
@@ -14,14 +14,13 @@ function Marker({ work, onClick }: MarkerProps) {
   const tooltip = `${work.title}${work.series ? ` — ${work.series}` : ""}`;
   const mediumColor = MEDIUM_COLORS[work.medium];
   const eraColor = ERA_COLORS[work.era as EraIndex];
-  const mediumLetter = (MEDIUMS[work.medium] ?? "?")[0];
 
   return (
     <button
       type="button"
       onClick={onClick}
       title={tooltip}
-      className="size-12 shrink-0 overflow-hidden rounded"
+      className="size-16 shrink-0 overflow-hidden rounded"
       style={{ boxShadow: `0 0 0 2px ${mediumColor}` }}
     >
       {work.cover_url ? (
@@ -32,10 +31,10 @@ function Marker({ work, onClick }: MarkerProps) {
         />
       ) : (
         <div
-          className="flex h-full w-full items-center justify-center text-sm font-bold text-white"
+          className="flex h-full w-full items-center justify-center px-1 text-center text-[10px] font-semibold leading-tight text-white line-clamp-3 break-words"
           style={{ backgroundColor: eraColor }}
         >
-          {mediumLetter}
+          {work.title}
         </div>
       )}
     </button>

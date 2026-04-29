@@ -23,10 +23,10 @@ export function WorkCard({ work, onClick }: { work: Work; onClick: () => void })
           />
         ) : (
           <div
-            className="flex h-full items-center justify-center text-3xl text-white/70"
+            className="flex h-full items-center justify-center px-3 text-center text-sm font-semibold leading-snug text-white text-balance line-clamp-6 break-words"
             style={{ backgroundColor: ERA_COLORS[work.era as EraIndex] }}
           >
-            {mediumLabel[0]}
+            {work.title}
           </div>
         )}
       </div>
