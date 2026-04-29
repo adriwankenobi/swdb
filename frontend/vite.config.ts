@@ -6,7 +6,23 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   base: "/swdb/",
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    react(),
+    tailwindcss(),
+    {
+      name: 'swdb-trailing-slash',
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+          if (req.url === '/swdb') {
+            res.writeHead(301, { Location: '/swdb/' });
+            res.end();
+            return;
+          }
+          next();
+        });
+      },
+    },
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),

@@ -60,7 +60,6 @@ export default function App() {
       <AppShell onHome={handleHome}>
         <div className="flex h-full flex-col">
           <ActiveFilterChips />
-          <p className="pb-3 text-sm text-muted-foreground">{visible.length} of {works.length} works</p>
           {filterState.view === "cards" && <CardGrid works={visible} />}
           {filterState.view === "table" && <p className="text-muted-foreground">Table view (Phase 7)</p>}
           {filterState.view === "timeline" && <p className="text-muted-foreground">Timeline view (Phase 8)</p>}
