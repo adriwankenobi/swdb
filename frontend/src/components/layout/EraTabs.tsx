@@ -1,14 +1,8 @@
-import { ERAS, ERA_COLORS, type EraName } from "@/constants/eras";
+import { ERAS, ERA_COLORS } from "@/constants/eras";
 import { useFilterStore } from "@/store/filterStore";
 
 export function EraTabs() {
-  const { eras, set } = useFilterStore();
-
-  const selectedEra = eras.length === 1 ? eras[0] : null;
-
-  function pickEra(era: EraName) {
-    set({ eras: [era] });
-  }
+  const { eras, set, toggleArrayValue } = useFilterStore();
 
   return (
     <div className="flex flex-wrap items-center gap-1 border-b px-4 py-2">
@@ -25,12 +19,12 @@ export function EraTabs() {
         All
       </button>
       {ERAS.map((era) => {
-        const active = selectedEra === era;
+        const active = eras.includes(era);
         return (
           <button
             key={era}
             type="button"
-            onClick={() => pickEra(era)}
+            onClick={() => toggleArrayValue("eras", era)}
             className="rounded px-3 py-1 text-sm font-medium text-white transition hover:opacity-90"
             style={{
               backgroundColor: ERA_COLORS[era],
