@@ -15,8 +15,8 @@ const w = (over: Partial<Work> & { id: string; year: number }): Work => ({
 });
 
 const empty: FilterState = {
-  eras: [], mediums: [], series: [], authors: [], publishers: [],
-  q: "", yearMin: null, yearMax: null, releaseMin: null, releaseMax: null,
+  eras: [], mediums: [], decades: [], series: [], authors: [], publishers: [],
+  q: "",
   releaseUndated: false,
   view: "cards", sort: "chronology", openWorkId: null,
 };
@@ -46,24 +46,23 @@ describe("filterWorks", () => {
     expect(r.map((x) => x.id)).toEqual(["b"]);
   });
 
-  it("filters by year range inclusive", () => {
-    const r = filterWorks(all, { ...empty, yearMin: 0, yearMax: 10 });
-    expect(r.map((x) => x.id)).toEqual(["a"]);
+  it("filters by decade (OR within field)", () => {
+    const data: Work[] = [
+      w({ id: "old",  year: 0, release_date: "1991-12-01" }),  // 1990s
+      w({ id: "mid",  year: 0, release_date: "2005-03-19" }),  // 2000s
+      w({ id: "new",  year: 0, release_date: "2015-09-04" }),  // 2010s
+    ];
+    const r = filterWorks(data, { ...empty, decades: [1990, 2010] });
+    expect(r.map((x) => x.id)).toEqual(["old", "new"]);
   });
 
-  it("year filter matches a range work when the window overlaps its span", () => {
-    // Work spans -5000 to -3000 BBY.
-    const data: Work[] = [w({ id: "span", year: -5000, year_end: -3000 })];
-    // Window contained within span.
-    expect(filterWorks(data, { ...empty, yearMin: -4000, yearMax: -3500 }).map((x) => x.id)).toEqual(["span"]);
-    // Window touches start.
-    expect(filterWorks(data, { ...empty, yearMin: -6000, yearMax: -5000 }).map((x) => x.id)).toEqual(["span"]);
-    // Window touches end.
-    expect(filterWorks(data, { ...empty, yearMin: -3000, yearMax: -2000 }).map((x) => x.id)).toEqual(["span"]);
-    // Window fully before the span.
-    expect(filterWorks(data, { ...empty, yearMin: -10000, yearMax: -6000 })).toHaveLength(0);
-    // Window fully after the span.
-    expect(filterWorks(data, { ...empty, yearMin: -2000, yearMax: 0 })).toHaveLength(0);
+  it("decade filter excludes works without release_date", () => {
+    const data: Work[] = [
+      w({ id: "dated",   year: 0, release_date: "1991-12-01" }),
+      w({ id: "undated", year: 0 }),
+    ];
+    const r = filterWorks(data, { ...empty, decades: [1990] });
+    expect(r.map((x) => x.id)).toEqual(["dated"]);
   });
 
   it("free-text search matches title", () => {
@@ -82,9 +81,6 @@ describe("filterWorks", () => {
   });
 
   it("chronology sort uses Excel order within an era, not year", () => {
-    // Within era 5, the 'later' work appears in the input BEFORE 'earlier' but
-    // has a higher in-universe year. Output keeps input order — proving the
-    // sort relies on Excel position, not the year column.
     const data: Work[] = [
       w({ id: "later",   era: REBELLION, year: 5, title: "Later" }),
       w({ id: "earlier", era: REBELLION, year: 0, title: "Earlier" }),
@@ -94,7 +90,6 @@ describe("filterWorks", () => {
   });
 
   it("chronology stable-sort tiebreak preserves input order across same-era works", () => {
-    // 'z' precedes 'a' in the input; both have era=5; output keeps that.
     const data: Work[] = [
       w({ id: "z", era: REBELLION, year: 0, title: "Zeta" }),
       w({ id: "a", era: REBELLION, year: 0, title: "Alpha" }),
@@ -122,34 +117,6 @@ describe("filterWorks", () => {
     expect(r.map((x) => x.id)).toEqual(["first", "second"]);
   });
 
-  it("filters by release date range inclusive", () => {
-    const data: Work[] = [
-      w({ id: "early", year: 0, release_date: "1976-11-12" }),
-      w({ id: "mid",   year: 0, release_date: "1999-04-01" }),
-      w({ id: "late",  year: 0, release_date: "2015-09-04" }),
-    ];
-    const r = filterWorks(data, { ...empty, releaseMin: "1990-01-01", releaseMax: "2010-01-01" });
-    expect(r.map((x) => x.id)).toEqual(["mid"]);
-  });
-
-  it("release date filter excludes works without release_date", () => {
-    const data: Work[] = [
-      w({ id: "dated",   year: 0, release_date: "2000-01-01" }),
-      w({ id: "undated", year: 0 }),
-    ];
-    const r = filterWorks(data, { ...empty, releaseMin: "1990-01-01", releaseMax: "2010-01-01" });
-    expect(r.map((x) => x.id)).toEqual(["dated"]);
-  });
-
-  it("release date filter inactive shows all (including undated)", () => {
-    const data: Work[] = [
-      w({ id: "dated",   year: 0, release_date: "2000-01-01" }),
-      w({ id: "undated", year: 0 }),
-    ];
-    const r = filterWorks(data, { ...empty, releaseMin: null, releaseMax: null });
-    expect(r).toHaveLength(2);
-  });
-
   it("releaseUndated filter keeps only works with no release_date", () => {
     const data: Work[] = [
       w({ id: "dated",   year: 0, release_date: "2000-01-01" }),
@@ -164,10 +131,8 @@ describe("filterWorks", () => {
       w({ id: "dated",   title: "Dark Empire", year: 0, release_date: "1991-12-01" }),
       w({ id: "undated", title: "Dark Sketches", year: 0 }),
     ];
-    // Without search: releaseUndated restricts to undated only
     const withoutSearch = filterWorks(data, { ...empty, releaseUndated: true });
     expect(withoutSearch.map((x) => x.id)).toEqual(["undated"]);
-    // With search active: releaseUndated is bypassed, both works match "dark"
     const withSearch = filterWorks(data, { ...empty, releaseUndated: true, q: "dark" });
     expect(withSearch.map((x) => x.id)).toEqual(["dated", "undated"]);
   });
@@ -177,28 +142,20 @@ describe("filterWorks", () => {
       w({ id: "era5", title: "Shadow of the Empire", era: REBELLION, year: 0 }),
       w({ id: "era7", title: "Shadow of Doubt",      era: NEW_JEDI_ORDER, year: 1 }),
     ];
-    // Without search: era filter restricts to REBELLION only
     const withoutSearch = filterWorks(data, { ...empty, eras: [REBELLION] });
     expect(withoutSearch.map((x) => x.id)).toEqual(["era5"]);
-    // With search active: era filter is bypassed, both works match "shadow"
     const withSearch = filterWorks(data, { ...empty, eras: [REBELLION], q: "shadow" });
     expect(withSearch.map((x) => x.id)).toEqual(["era5", "era7"]);
   });
 
-  it("search bypasses release filter — searching returns matches across release dates", () => {
+  it("search bypasses decade filter — searching returns matches across decades", () => {
     const data: Work[] = [
       w({ id: "inside",  title: "Dark Empire", year: 0, release_date: "1991-12-01" }),
-      w({ id: "outside", title: "Dark Force Rising", year: 1, release_date: "1992-06-01" }),
+      w({ id: "outside", title: "Dark Force Rising", year: 1, release_date: "2015-09-04" }),
     ];
-    // Without search: range excludes "outside"
-    const withoutSearch = filterWorks(data, {
-      ...empty, releaseMin: "1990-01-01", releaseMax: "1992-01-01",
-    });
+    const withoutSearch = filterWorks(data, { ...empty, decades: [1990] });
     expect(withoutSearch.map((x) => x.id)).toEqual(["inside"]);
-    // With search active: release filter is bypassed, both works match "dark"
-    const withSearch = filterWorks(data, {
-      ...empty, releaseMin: "1990-01-01", releaseMax: "1992-01-01", q: "dark",
-    });
+    const withSearch = filterWorks(data, { ...empty, decades: [1990], q: "dark" });
     expect(withSearch.map((x) => x.id)).toEqual(["inside", "outside"]);
   });
 });

@@ -24,22 +24,13 @@ function matchesQuery(w: Work, q: string): boolean {
   return haystack.includes(q.toLowerCase());
 }
 
-function matchesYear(w: Work, min: number | null, max: number | null): boolean {
-  if (min === null && max === null) return true;
-  const start = w.year;
-  const end = w.year_end ?? w.year;
-  if (max !== null && start > max) return false;
-  if (min !== null && end < min) return false;
-  return true;
-}
-
-function matchesRelease(w: Work, min: string | null, max: string | null): boolean {
-  if (min === null && max === null) return true;
-  const d = w.release_date;
-  if (!d) return false; // no release_date → excluded when filter is active
-  if (min !== null && d < min) return false;
-  if (max !== null && d > max) return false;
-  return true;
+function matchesDecade(w: Work, decades: number[]): boolean {
+  if (decades.length === 0) return true;
+  if (!w.release_date) return false;
+  const year = parseInt(w.release_date.slice(0, 4), 10);
+  if (Number.isNaN(year)) return false;
+  const decade = Math.floor(year / 10) * 10;
+  return decades.includes(decade);
 }
 
 function matchesReleaseUndated(w: Work, undatedOnly: boolean): boolean {
@@ -73,8 +64,7 @@ export function filterWorks(works: Work[], filters: FilterState): Work[] {
     matchesArray(filters.series, w.series) &&
     matchesArray(filters.publishers, w.publisher) &&
     matchesAnyOf(filters.authors, w.authors) &&
-    matchesYear(w, filters.yearMin, filters.yearMax) &&
-    (searchActive || matchesRelease(w, filters.releaseMin, filters.releaseMax)) &&
+    (searchActive || matchesDecade(w, filters.decades)) &&
     (searchActive || matchesReleaseUndated(w, filters.releaseUndated)) &&
     matchesQuery(w, filters.q),
   );
