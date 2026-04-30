@@ -1,24 +1,31 @@
 import { describe, expect, it } from "vitest";
 import type { Work } from "../../types/work";
+import type { EraName } from "../../constants/eras";
 import { groupForChronology, groupForRelease } from "../timelineGroups";
 
+const REBELLION: EraName = "REBELLION";              // ERAS index 5
+const NEW_JEDI_ORDER: EraName = "NEW JEDI ORDER";    // ERAS index 7
+const PRE_REPUBLIC: EraName = "PRE-REPUBLIC";        // ERAS index 0
+const THE_CLONE_WARS: EraName = "THE CLONE WARS";    // ERAS index 3
+const OLD_REPUBLIC: EraName = "OLD REPUBLIC";        // ERAS index 1
+
 const w = (over: Partial<Work> & { id: string; year: number }): Work => ({
-  era: 5,
+  era: REBELLION,
   title: "T",
-  medium: 3,
+  medium: "Novel",
   ...over,
 });
 
 describe("groupForChronology", () => {
   it("groups by era ascending; rows follow Excel order, not year order", () => {
     const works: Work[] = [
-      w({ id: "b", era: 7, year: 25 }),
-      w({ id: "a", era: 5, year: 0 }),
-      w({ id: "c", era: 7, year: 10 }), // year 10 < 25 but appears AFTER "b" in Excel
-      w({ id: "d", era: 5, year: 0 }),  // same span as "a", contiguous → coalesces
+      w({ id: "b", era: NEW_JEDI_ORDER, year: 25 }),
+      w({ id: "a", era: REBELLION, year: 0 }),
+      w({ id: "c", era: NEW_JEDI_ORDER, year: 10 }), // year 10 < 25 but appears AFTER "b" in Excel
+      w({ id: "d", era: REBELLION, year: 0 }),  // same span as "a", contiguous → coalesces
     ];
     const groups = groupForChronology(works);
-    expect(groups.map((g) => g.eraIndex)).toEqual([5, 7]);
+    expect(groups.map((g) => g.eraName)).toEqual([REBELLION, NEW_JEDI_ORDER]);
 
     // Era 5: single row (a + d coalesced; both year 0).
     const era5 = groups[0];
@@ -35,9 +42,9 @@ describe("groupForChronology", () => {
 
   it("non-contiguous same-year works produce separate rows", () => {
     const works: Work[] = [
-      w({ id: "early1", era: 5, year: 0 }),
-      w({ id: "later",  era: 5, year: 5 }), // breaks the run
-      w({ id: "early2", era: 5, year: 0 }),
+      w({ id: "early1", era: REBELLION, year: 0 }),
+      w({ id: "later",  era: REBELLION, year: 5 }), // breaks the run
+      w({ id: "early2", era: REBELLION, year: 0 }),
     ];
     const groups = groupForChronology(works);
     const rows = groups[0].rows;
@@ -49,9 +56,9 @@ describe("groupForChronology", () => {
 
   it("coalesces consecutive range works with the same span", () => {
     const works: Work[] = [
-      w({ id: "r1", era: 1, year: -3996, year_end: -3994 }),
-      w({ id: "r2", era: 1, year: -3996, year_end: -3994 }),
-      w({ id: "single", era: 1, year: -3996 }), // same start, no end → different span
+      w({ id: "r1", era: OLD_REPUBLIC, year: -3996, year_end: -3994 }),
+      w({ id: "r2", era: OLD_REPUBLIC, year: -3996, year_end: -3994 }),
+      w({ id: "single", era: OLD_REPUBLIC, year: -3996 }), // same start, no end → different span
     ];
     const groups = groupForChronology(works);
     const rows = groups[0].rows;
@@ -66,9 +73,9 @@ describe("groupForChronology", () => {
 
   it("excludes nothing — every work appears exactly once", () => {
     const works: Work[] = [
-      w({ id: "x", era: 0, year: -25000 }),
-      w({ id: "y", era: 3, year: -22 }),
-      w({ id: "z", era: 5, year: 4 }),
+      w({ id: "x", era: PRE_REPUBLIC, year: -25000 }),
+      w({ id: "y", era: THE_CLONE_WARS, year: -22 }),
+      w({ id: "z", era: REBELLION, year: 4 }),
     ];
     const groups = groupForChronology(works);
     const allWorks = groups.flatMap((g) => g.rows.flatMap((r) => r.works));

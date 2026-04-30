@@ -1,3 +1,4 @@
+import { ERAS, type EraName } from "../constants/eras";
 import type { Work } from "../types/work";
 
 export interface ChronologyRow {
@@ -7,28 +8,23 @@ export interface ChronologyRow {
 }
 
 export interface ChronologyGroup {
-  eraIndex: number;
+  eraName: EraName;
   rows: ChronologyRow[];
 }
 
 export interface ReleaseGroup {
-  year: number | null; // null = "undated" bucket
+  year: number | null;
   works: Work[];
 }
 
-// Walk works in input (= JSON / Excel) order. Within each era, coalesce a run
-// of consecutive works that share the same year span into a single row. The
-// row order itself follows Excel position, not year value — so the timeline's
-// chronology mirrors the user's canonical ordering in the workbook.
 export function groupForChronology(works: Work[]): ChronologyGroup[] {
-  const eraMap = new Map<number, ChronologyRow[]>();
+  const eraMap = new Map<EraName, ChronologyRow[]>();
 
   for (const work of works) {
-    const era = work.era as number;
-    if (!eraMap.has(era)) {
-      eraMap.set(era, []);
+    if (!eraMap.has(work.era)) {
+      eraMap.set(work.era, []);
     }
-    const rows = eraMap.get(era)!;
+    const rows = eraMap.get(work.era)!;
     const last = rows[rows.length - 1];
     const sameSpan =
       last !== undefined &&
@@ -43,15 +39,16 @@ export function groupForChronology(works: Work[]): ChronologyGroup[] {
     }
   }
 
-  const sortedEras = [...eraMap.keys()].sort((a, b) => a - b);
-  return sortedEras.map((eraIndex) => ({
-    eraIndex,
-    rows: eraMap.get(eraIndex)!,
+  const sortedEras = [...eraMap.keys()].sort(
+    (a, b) => ERAS.indexOf(a) - ERAS.indexOf(b),
+  );
+  return sortedEras.map((eraName) => ({
+    eraName,
+    rows: eraMap.get(eraName)!,
   }));
 }
 
 export function groupForRelease(works: Work[]): ReleaseGroup[] {
-  // Map: year (number) -> Work[]; null bucket is tracked separately
   const yearMap = new Map<number, Work[]>();
   const undated: Work[] = [];
 
@@ -69,14 +66,12 @@ export function groupForRelease(works: Work[]): ReleaseGroup[] {
     undated.push(work);
   }
 
-  // Sort ascending by year
   const sortedYears = [...yearMap.keys()].sort((a, b) => a - b);
   const result: ReleaseGroup[] = sortedYears.map((year) => ({
     year,
     works: yearMap.get(year)!,
   }));
 
-  // Append null bucket last if non-empty
   if (undated.length > 0) {
     result.push({ year: null, works: undated });
   }
