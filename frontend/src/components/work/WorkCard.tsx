@@ -1,12 +1,11 @@
 import { Badge } from "@/components/ui/badge";
-import { ERAS, ERA_COLORS, type EraIndex } from "@/constants/eras";
-import { MEDIUMS, MEDIUM_COLORS } from "@/constants/mediums";
+import { ERA_COLORS } from "@/constants/eras";
+import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { formatSeriesAndNumber } from "@/lib/formatSeriesAndNumber";
 import type { Work } from "@/types/work";
 
 export function WorkCard({ work, onClick }: { work: Work; onClick: () => void }) {
-  const mediumLabel = MEDIUMS[work.medium] ?? "?";
   return (
     <button
       type="button"
@@ -25,7 +24,7 @@ export function WorkCard({ work, onClick }: { work: Work; onClick: () => void })
         ) : (
           <div
             className="flex h-full items-center justify-center px-3 text-center text-sm font-semibold leading-snug text-white text-balance line-clamp-6 break-words"
-            style={{ backgroundColor: ERA_COLORS[work.era as EraIndex] }}
+            style={{ backgroundColor: ERA_COLORS[work.era] }}
           >
             {work.title}
           </div>
@@ -39,9 +38,9 @@ export function WorkCard({ work, onClick }: { work: Work; onClick: () => void })
           </p>
         )}
         <div className="flex flex-wrap items-center gap-1 pt-1">
-          <Badge style={{ backgroundColor: MEDIUM_COLORS[work.medium], color: "white" }}>{mediumLabel}</Badge>
-          <Badge style={{ backgroundColor: ERA_COLORS[work.era as EraIndex], color: "white" }}>
-            {ERAS[work.era]}
+          <Badge style={{ backgroundColor: MEDIUM_COLORS[work.medium], color: "white" }}>{work.medium}</Badge>
+          <Badge style={{ backgroundColor: ERA_COLORS[work.era], color: "white" }}>
+            {work.era}
           </Badge>
           <span className="text-xs text-muted-foreground">{formatYear(work.year, work.year_end)}</span>
         </div>

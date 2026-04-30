@@ -1,7 +1,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
-import { ERAS, ERA_COLORS, type EraIndex } from "@/constants/eras";
-import { MEDIUMS, MEDIUM_COLORS } from "@/constants/mediums";
+import { ERA_COLORS } from "@/constants/eras";
+import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { formatReleaseDate } from "@/lib/formatReleaseDate";
 import { formatSeriesAndNumber } from "@/lib/formatSeriesAndNumber";
@@ -17,7 +17,6 @@ export function WorkDetailModal() {
   const { openWorkId, set, toggleArrayValue } = useFilterStore();
   const works = useCatalogStore((s) => s.works);
   const work = openWorkId ? works.find((w) => w.id === openWorkId) : null;
-  const mediumLabel = work ? (MEDIUMS[work.medium] ?? "?") : "";
 
   function closeModal() {
     set({ openWorkId: null });
@@ -53,7 +52,7 @@ export function WorkDetailModal() {
                 })() : (
                   <div
                     className="flex h-full items-center justify-center px-3 text-center text-base font-semibold leading-snug text-white text-balance line-clamp-6 break-words"
-                    style={{ backgroundColor: ERA_COLORS[work.era as EraIndex] }}
+                    style={{ backgroundColor: ERA_COLORS[work.era] }}
                   >
                     {work.title}
                   </div>
@@ -72,9 +71,9 @@ export function WorkDetailModal() {
                   </div>
                 )}
                 <div className="flex flex-wrap items-center gap-2">
-                  <Badge style={{ backgroundColor: MEDIUM_COLORS[work.medium], color: "white" }}>{mediumLabel}</Badge>
-                  <Badge style={{ backgroundColor: ERA_COLORS[work.era as EraIndex], color: "white" }}>
-                    {ERAS[work.era]}
+                  <Badge style={{ backgroundColor: MEDIUM_COLORS[work.medium], color: "white" }}>{work.medium}</Badge>
+                  <Badge style={{ backgroundColor: ERA_COLORS[work.era], color: "white" }}>
+                    {work.era}
                   </Badge>
                 </div>
                 <p className="whitespace-nowrap">

@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
-import { ERAS, ERA_COLORS, type EraIndex } from "@/constants/eras";
-import { MEDIUMS, MEDIUM_COLORS } from "@/constants/mediums";
+import { ERA_COLORS } from "@/constants/eras";
+import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { formatReleaseDateCompact } from "@/lib/formatReleaseDate";
 import type { Work } from "@/types/work";
@@ -30,7 +30,7 @@ export function WorkRow({ work, onClick }: WorkRowProps) {
         ) : (
           <div
             className="h-12 w-8 rounded"
-            style={{ backgroundColor: ERA_COLORS[work.era as EraIndex] }}
+            style={{ backgroundColor: ERA_COLORS[work.era] }}
           />
         )}
       </div>
@@ -53,14 +53,14 @@ export function WorkRow({ work, onClick }: WorkRowProps) {
       {/* Medium badge */}
       <div className={`shrink-0 px-2 py-1 ${COLUMNS[4].width}`}>
         <Badge style={{ backgroundColor: MEDIUM_COLORS[work.medium], color: "white" }}>
-          {MEDIUMS[work.medium] ?? "?"}
+          {work.medium}
         </Badge>
       </div>
 
       {/* Era badge */}
       <div className={`shrink-0 px-2 py-1 ${COLUMNS[5].width}`}>
-        <Badge style={{ backgroundColor: ERA_COLORS[work.era as EraIndex], color: "white" }}>
-          {ERAS[work.era]}
+        <Badge style={{ backgroundColor: ERA_COLORS[work.era], color: "white" }}>
+          {work.era}
         </Badge>
       </div>
 
