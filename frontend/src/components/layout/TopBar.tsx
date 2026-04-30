@@ -16,9 +16,9 @@ export function TopBar({ onHome }: TopBarProps) {
 
   const onSelectSort = (next: "chronology" | "release") => {
     if (next === "chronology") {
-      set({ sort: next, releaseMin: null, releaseMax: null, releaseUndated: false });
+      set({ sort: next, decades: [], releaseUndated: false });
     } else {
-      set({ sort: next, eras: [], yearMin: null, yearMax: null });
+      set({ sort: next, eras: [] });
     }
   };
   return (
@@ -47,7 +47,7 @@ export function TopBar({ onHome }: TopBarProps) {
             const newQ = e.target.value;
             // When transitioning from empty to non-empty, clear era/decade selection.
             if (!previousQ.current && newQ) {
-              set({ q: newQ, eras: [], releaseMin: null, releaseMax: null });
+              set({ q: newQ, eras: [], decades: [] });
             } else {
               set({ q: newQ });
             }

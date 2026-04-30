@@ -22,10 +22,7 @@ export default function App() {
   const authors = useFilterStore((s) => s.authors);
   const publishers = useFilterStore((s) => s.publishers);
   const q = useFilterStore((s) => s.q);
-  const yearMin = useFilterStore((s) => s.yearMin);
-  const yearMax = useFilterStore((s) => s.yearMax);
-  const releaseMin = useFilterStore((s) => s.releaseMin);
-  const releaseMax = useFilterStore((s) => s.releaseMax);
+  const decades = useFilterStore((s) => s.decades);
   const releaseUndated = useFilterStore((s) => s.releaseUndated);
   const view = useFilterStore((s) => s.view);
   const sort = useFilterStore((s) => s.sort);
@@ -35,8 +32,8 @@ export default function App() {
 
   // Bundle fields into a stable object for filterWorks and writeToUrl.
   const filterState = useMemo(
-    () => ({ eras, mediums, series, authors, publishers, q, yearMin, yearMax, releaseMin, releaseMax, releaseUndated, view, sort, openWorkId }),
-    [eras, mediums, series, authors, publishers, q, yearMin, yearMax, releaseMin, releaseMax, releaseUndated, view, sort, openWorkId]
+    () => ({ eras, mediums, decades, series, authors, publishers, q, releaseUndated, view, sort, openWorkId }),
+    [eras, mediums, decades, series, authors, publishers, q, releaseUndated, view, sort, openWorkId]
   );
 
   // Show landing on fresh visit (no query params), stay in catalog if URL has filters
@@ -53,8 +50,8 @@ export default function App() {
   useEffect(() => {
     const id = setTimeout(() => {
       const next = writeToUrl({
-        eras, mediums, series, authors, publishers,
-        q, yearMin, yearMax, releaseMin, releaseMax, releaseUndated,
+        eras, mediums, decades, series, authors, publishers,
+        q, releaseUndated,
         view, sort, openWorkId,
       });
       const target = `${window.location.pathname}${next}`;
@@ -63,7 +60,7 @@ export default function App() {
       }
     }, 100);
     return () => clearTimeout(id);
-  }, [eras, mediums, series, authors, publishers, q, yearMin, yearMax, releaseMin, releaseMax, releaseUndated, view, sort, openWorkId]);
+  }, [eras, mediums, decades, series, authors, publishers, q, releaseUndated, view, sort, openWorkId]);
 
   if (status === "loading" || status === "idle") return <p className="p-4">Loading…</p>;
   if (status === "error") return <p className="p-4 text-red-600">Failed to load: {error}</p>;
