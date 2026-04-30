@@ -1,4 +1,4 @@
-import { MEDIUMS, MEDIUM_COLORS } from "@/constants/mediums";
+import { MEDIUMS, MEDIUM_COLORS, type MediumName } from "@/constants/mediums";
 import { useFilterStore } from "@/store/filterStore";
 
 export function MediumTabs() {
@@ -6,8 +6,8 @@ export function MediumTabs() {
 
   const selectedMedium = mediums.length === 1 ? mediums[0] : null;
 
-  function pickMedium(idx: number) {
-    set({ mediums: [idx] });
+  function pickMedium(medium: MediumName) {
+    set({ mediums: [medium] });
   }
 
   function clearMedium() {
@@ -28,22 +28,22 @@ export function MediumTabs() {
       >
         All
       </button>
-      {MEDIUMS.map((label, i) => {
-        const active = selectedMedium === i;
+      {MEDIUMS.map((medium) => {
+        const active = selectedMedium === medium;
         return (
           <button
-            key={label}
+            key={medium}
             type="button"
-            onClick={() => pickMedium(i)}
+            onClick={() => pickMedium(medium)}
             className="rounded px-3 py-1 text-sm font-medium text-white transition hover:opacity-90"
             style={{
-              backgroundColor: MEDIUM_COLORS[i],
+              backgroundColor: MEDIUM_COLORS[medium],
               opacity: active ? 1 : 0.45,
-              outline: active ? `2px solid ${MEDIUM_COLORS[i]}` : undefined,
+              outline: active ? `2px solid ${MEDIUM_COLORS[medium]}` : undefined,
               outlineOffset: active ? "1px" : undefined,
             }}
           >
-            {label}
+            {medium}
           </button>
         );
       })}

@@ -1,4 +1,4 @@
-import { ERAS, ERA_COLORS, type EraIndex } from "@/constants/eras";
+import { ERAS, ERA_COLORS, type EraName } from "@/constants/eras";
 import { useFilterStore } from "@/store/filterStore";
 
 export function EraTabs() {
@@ -6,8 +6,8 @@ export function EraTabs() {
 
   const selectedEra = eras.length === 1 ? eras[0] : null;
 
-  function pickEra(idx: EraIndex) {
-    set({ eras: [idx] });
+  function pickEra(era: EraName) {
+    set({ eras: [era] });
   }
 
   return (
@@ -24,23 +24,22 @@ export function EraTabs() {
       >
         All
       </button>
-      {ERAS.map((label, i) => {
-        const idx = i as EraIndex;
-        const active = selectedEra === idx;
+      {ERAS.map((era) => {
+        const active = selectedEra === era;
         return (
           <button
-            key={label}
+            key={era}
             type="button"
-            onClick={() => pickEra(idx)}
+            onClick={() => pickEra(era)}
             className="rounded px-3 py-1 text-sm font-medium text-white transition hover:opacity-90"
             style={{
-              backgroundColor: ERA_COLORS[idx],
+              backgroundColor: ERA_COLORS[era],
               opacity: active ? 1 : 0.45,
-              outline: active ? `2px solid ${ERA_COLORS[idx]}` : undefined,
+              outline: active ? `2px solid ${ERA_COLORS[era]}` : undefined,
               outlineOffset: active ? "1px" : undefined,
             }}
           >
-            {label}
+            {era}
           </button>
         );
       })}

@@ -1,9 +1,9 @@
-import { ERAS, ERA_COLORS, type EraIndex } from "@/constants/eras";
+import { ERAS, ERA_COLORS, type EraName } from "@/constants/eras";
 import { useCatalogStore } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
 
 interface LandingProps {
-  onPick: (era: EraIndex) => void;
+  onPick: (era: EraName) => void;
   onBrowseAll: () => void;
 }
 
@@ -11,9 +11,9 @@ export function Landing({ onPick, onBrowseAll }: LandingProps) {
   const works = useCatalogStore((s) => s.works);
   const { set } = useFilterStore();
 
-  function handlePick(idx: EraIndex) {
-    set({ eras: [idx] });
-    onPick(idx);
+  function handlePick(era: EraName) {
+    set({ eras: [era] });
+    onPick(era);
   }
 
   function handleBrowseAll() {
@@ -34,19 +34,18 @@ export function Landing({ onPick, onBrowseAll }: LandingProps) {
       </div>
 
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5 max-w-4xl w-full mb-10">
-        {ERAS.map((label, i) => {
-          const idx = i as EraIndex;
-          const count = works.filter((w) => w.era === idx).length;
+        {ERAS.map((era) => {
+          const count = works.filter((w) => w.era === era).length;
           return (
             <button
-              key={label}
+              key={era}
               type="button"
-              onClick={() => handlePick(idx)}
+              onClick={() => handlePick(era)}
               className="group flex flex-col items-center justify-center rounded-xl p-5 text-white transition hover:scale-105 hover:shadow-xl active:scale-100"
-              style={{ backgroundColor: ERA_COLORS[idx] }}
+              style={{ backgroundColor: ERA_COLORS[era] }}
             >
               <span className="text-sm font-bold text-center leading-tight mb-2 uppercase tracking-wide">
-                {label}
+                {era}
               </span>
               <span className="text-2xl font-semibold">{count}</span>
               <span className="text-xs opacity-80 mt-1">works</span>

@@ -10,7 +10,7 @@ import { CardGrid } from "./components/views/CardGrid";
 import { TableView } from "./components/views/TableView";
 import { TimelineView } from "./components/views/TimelineView";
 import { WorkDetailModal } from "./components/work/WorkDetailModal";
-import type { EraIndex } from "./constants/eras";
+import type { EraName } from "./constants/eras";
 
 export default function App() {
   const { status, works, error, load } = useCatalogStore();
@@ -71,7 +71,7 @@ export default function App() {
   if (showLanding) {
     return (
       <Landing
-        onPick={(_era: EraIndex) => setShowLanding(false)}
+        onPick={(_era: EraName) => setShowLanding(false)}
         onBrowseAll={() => setShowLanding(false)}
       />
     );
