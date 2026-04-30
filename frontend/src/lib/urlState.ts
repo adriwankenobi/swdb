@@ -1,13 +1,13 @@
+import { ERAS, type EraName } from "../constants/eras";
+import { MEDIUMS, type MediumName } from "../constants/mediums";
+import { slugify } from "./slug";
 import type { FilterState, ViewMode, SortMode } from "../store/filterStore";
 
-const csv = (arr: (string | number)[]): string | undefined =>
+const csv = (arr: string[]): string | undefined =>
   arr.length === 0 ? undefined : arr.join(",");
 
 const parseCsv = (raw: string | null): string[] =>
   raw ? raw.split(",").filter(Boolean) : [];
-
-const parseInts = (raw: string | null): number[] =>
-  parseCsv(raw).map((s) => Number(s)).filter((n) => Number.isFinite(n));
 
 const parseInt1 = (raw: string | null): number | null => {
   if (raw === null || raw === "") return null;
@@ -18,13 +18,33 @@ const parseInt1 = (raw: string | null): number | null => {
 const VIEWS: ViewMode[] = ["cards", "table", "timeline"];
 const SORTS: SortMode[] = ["chronology", "release"];
 
+// Reverse maps: slug → canonical name. Built once at module load.
+const ERA_BY_SLUG: Map<string, EraName> = new Map(
+  ERAS.map((era) => [slugify(era), era]),
+);
+const MEDIUM_BY_SLUG: Map<string, MediumName> = new Map(
+  MEDIUMS.map((medium) => [slugify(medium), medium]),
+);
+
+function readEraSlugs(raw: string | null): EraName[] {
+  return parseCsv(raw)
+    .map((slug) => ERA_BY_SLUG.get(slug))
+    .filter((era): era is EraName => era !== undefined);
+}
+
+function readMediumSlugs(raw: string | null): MediumName[] {
+  return parseCsv(raw)
+    .map((slug) => MEDIUM_BY_SLUG.get(slug))
+    .filter((medium): medium is MediumName => medium !== undefined);
+}
+
 export function readFromUrl(search: string): Partial<FilterState> {
   const p = new URLSearchParams(search);
   const view = p.get("view");
   const sort = p.get("sort");
   return {
-    eras: parseInts(p.get("era")),
-    mediums: parseInts(p.get("medium")),
+    eras: readEraSlugs(p.get("era")),
+    mediums: readMediumSlugs(p.get("medium")),
     series: parseCsv(p.get("series")),
     authors: parseCsv(p.get("author")),
     publishers: parseCsv(p.get("publisher")),
@@ -42,8 +62,8 @@ export function readFromUrl(search: string): Partial<FilterState> {
 
 export function writeToUrl(state: FilterState): string {
   const p = new URLSearchParams();
-  const era = csv(state.eras);
-  const medium = csv(state.mediums);
+  const era = csv(state.eras.map((e) => slugify(e)));
+  const medium = csv(state.mediums.map((m) => slugify(m)));
   const series = csv(state.series);
   const author = csv(state.authors);
   const publisher = csv(state.publishers);
