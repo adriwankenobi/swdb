@@ -45,7 +45,7 @@ class ExcelRow:
     era: int
     title: str
     series: str | None
-    medium: str          # canonical Title Case (e.g. "Novel"); converted to int in build_data
+    medium: str          # canonical Title Case (e.g. "Novel"); emitted as-is in works.json
     number: str | None
     year: int | None     # start year; may be None when Excel YEAR is empty
     year_end: int | None # end year of a range; None for single-year entries

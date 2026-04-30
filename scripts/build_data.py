@@ -58,12 +58,15 @@ def _row_to_work(row: ExcelRow) -> dict:
     Precondition: caller has already verified row.year is not None and
     row.medium is in MEDIUMS.
     """
+    # make_id consumes the int era + canonical medium STRING so the canonical
+    # key string is unchanged across the JSON schema flip. Do NOT pass
+    # ERAS[row.era] here — it would invalidate every existing UUID.
     work: dict = {
         "id": make_id(
-            era=row.era,           # int kept for ID stability
+            era=row.era,
             series=row.series,
             title=row.title,
-            medium=row.medium,     # canonical Title Case string
+            medium=row.medium,
             number=row.number,
         ),
         "era": ERAS[row.era],
