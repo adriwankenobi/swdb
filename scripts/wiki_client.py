@@ -16,6 +16,7 @@ USER_AGENT = "swdb-pipeline/0.1 (https://github.com/adriwankenobi/swdb)"
 REQUEST_TIMEOUT = 30
 POLITE_DELAY_SECONDS = 0.2
 OPENSEARCH_URL = "https://starwars.fandom.com/api.php"
+URL_VERIFIED_FILENAME = "url_verified.txt"
 # Minimum SequenceMatcher ratio to accept a non-exact opensearch match.
 # Typos and small word variations (Apocalype vs Apocalypse, "Counter Attack"
 # vs "Counterattack") clear this; substantially different titles ("Sphere of
@@ -30,6 +31,16 @@ class WikiClient:
         self.cache_dir.mkdir(parents=True, exist_ok=True)
         self._session = requests.Session()
         self._session.headers.update({"User-Agent": USER_AGENT})
+        self._verified_path = self.cache_dir / URL_VERIFIED_FILENAME
+        if refresh and self._verified_path.exists():
+            self._verified_path.unlink()
+        self._verified: set[str] = set()
+        if self._verified_path.exists():
+            self._verified = {
+                line.strip()
+                for line in self._verified_path.read_text(encoding="utf-8").splitlines()
+                if line.strip()
+            }
 
     def _cache_path(self, url: str) -> Path:
         digest = hashlib.sha256(url.encode("utf-8")).hexdigest()[:32]
@@ -150,3 +161,28 @@ class WikiClient:
         if best_ratio >= _FUZZY_MATCH_THRESHOLD:
             return best_url, "opensearch"
         return None, "unmatched"
+
+    def verify_url_alive(self, url: str) -> bool:
+        """HEAD-check `url`; cache successful URLs to skip future checks.
+
+        Returns True for 2xx (after redirects). Returns False for 4xx/5xx
+        and network errors; failures are NOT cached, so the next scrape
+        retries them.
+        """
+        if not url:
+            return False
+        if url in self._verified:
+            return True
+        try:
+            time.sleep(POLITE_DELAY_SECONDS)
+            response = self._session.head(
+                url, allow_redirects=True, timeout=10
+            )
+        except requests.RequestException:
+            return False
+        if 200 <= response.status_code < 300:
+            self._verified.add(url)
+            with self._verified_path.open("a", encoding="utf-8") as f:
+                f.write(url + "\n")
+            return True
+        return False

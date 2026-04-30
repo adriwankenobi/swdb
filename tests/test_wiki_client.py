@@ -185,3 +185,86 @@ def test_fetch_html_returns_none_on_malformed_json(cache_dir, monkeypatch):
     client = WikiClient(cache_dir=cache_dir)
     monkeypatch.setattr(client._session, "get", fake_get)
     assert client.fetch_html("https://starwars.fandom.com/wiki/X") is None
+
+
+def test_verify_url_alive_cached_skips_network(cache_dir, monkeypatch):
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    (cache_dir / "url_verified.txt").write_text(
+        "https://starwars.fandom.com/wiki/A\nhttps://example.com/cover.jpg\n"
+    )
+    client = WikiClient(cache_dir=cache_dir)
+    calls = {"n": 0}
+
+    def fake_head(url, **kw):
+        calls["n"] += 1
+        raise AssertionError("should not be called")
+
+    monkeypatch.setattr(client._session, "head", fake_head)
+    assert client.verify_url_alive("https://starwars.fandom.com/wiki/A") is True
+    assert client.verify_url_alive("https://example.com/cover.jpg") is True
+    assert calls["n"] == 0
+
+
+def test_verify_url_alive_uncached_2xx_caches(cache_dir, monkeypatch):
+    client = WikiClient(cache_dir=cache_dir)
+
+    class R:
+        status_code = 200
+
+        def raise_for_status(self):
+            pass
+
+    monkeypatch.setattr(client._session, "head", lambda url, **kw: R())
+    assert client.verify_url_alive("https://example.com/x") is True
+    cached = (cache_dir / "url_verified.txt").read_text().splitlines()
+    assert "https://example.com/x" in cached
+
+
+def test_verify_url_alive_uncached_4xx_returns_false_no_cache(cache_dir, monkeypatch):
+    client = WikiClient(cache_dir=cache_dir)
+
+    class R:
+        status_code = 404
+
+        def raise_for_status(self):
+            pass
+
+    monkeypatch.setattr(client._session, "head", lambda url, **kw: R())
+    assert client.verify_url_alive("https://example.com/dead") is False
+    cache = cache_dir / "url_verified.txt"
+    if cache.exists():
+        assert "https://example.com/dead" not in cache.read_text()
+
+
+def test_verify_url_alive_network_error_returns_false(cache_dir, monkeypatch):
+    import requests
+    client = WikiClient(cache_dir=cache_dir)
+
+    def boom(url, **kw):
+        raise requests.RequestException("network down")
+
+    monkeypatch.setattr(client._session, "head", boom)
+    assert client.verify_url_alive("https://example.com/timeout") is False
+
+
+def test_verify_url_alive_refresh_clears_cache(cache_dir, monkeypatch):
+    cache_dir.mkdir(parents=True, exist_ok=True)
+    (cache_dir / "url_verified.txt").write_text("https://example.com/x\n")
+    client = WikiClient(cache_dir=cache_dir, refresh=True)
+    # With refresh=True, the cache file should have been deleted on init
+    # so the URL is no longer considered verified without a HEAD.
+    calls = {"n": 0}
+
+    class R:
+        status_code = 200
+
+        def raise_for_status(self):
+            pass
+
+    def fake_head(url, **kw):
+        calls["n"] += 1
+        return R()
+
+    monkeypatch.setattr(client._session, "head", fake_head)
+    assert client.verify_url_alive("https://example.com/x") is True
+    assert calls["n"] == 1
