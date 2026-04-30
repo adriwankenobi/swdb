@@ -1,20 +1,22 @@
 import { create } from "zustand";
+import type { EraName } from "../constants/eras";
+import type { MediumName } from "../constants/mediums";
 
 export type ViewMode = "cards" | "table" | "timeline";
 export type SortMode = "chronology" | "release";
 
 export interface FilterState {
-  eras: number[];          // era indices
-  mediums: number[];       // indices into MEDIUMS (e.g. 4 = Novel)
-  series: string[];        // canonical series strings
+  eras: EraName[];
+  mediums: MediumName[];
+  series: string[];
   authors: string[];
   publishers: string[];
   q: string;
-  yearMin: number | null;  // null = unset
+  yearMin: number | null;
   yearMax: number | null;
-  releaseMin: string | null; // ISO date string or null
-  releaseMax: string | null; // ISO date string or null
-  releaseUndated: boolean;   // when true, only works WITHOUT release_date pass
+  releaseMin: string | null;
+  releaseMax: string | null;
+  releaseUndated: boolean;
   view: ViewMode;
   sort: SortMode;
   openWorkId: string | null;
