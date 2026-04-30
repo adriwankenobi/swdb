@@ -1,24 +1,14 @@
-import { MEDIUMS, MEDIUM_COLORS, type MediumName } from "@/constants/mediums";
+import { MEDIUMS, MEDIUM_COLORS } from "@/constants/mediums";
 import { useFilterStore } from "@/store/filterStore";
 
 export function MediumTabs() {
-  const { mediums, set } = useFilterStore();
-
-  const selectedMedium = mediums.length === 1 ? mediums[0] : null;
-
-  function pickMedium(medium: MediumName) {
-    set({ mediums: [medium] });
-  }
-
-  function clearMedium() {
-    set({ mediums: [] });
-  }
+  const { mediums, set, toggleArrayValue } = useFilterStore();
 
   return (
     <div className="flex flex-wrap items-center gap-1">
       <button
         type="button"
-        onClick={clearMedium}
+        onClick={() => set({ mediums: [] })}
         className={[
           "rounded px-3 py-1 text-sm font-medium transition",
           mediums.length === 0
@@ -29,12 +19,12 @@ export function MediumTabs() {
         All
       </button>
       {MEDIUMS.map((medium) => {
-        const active = selectedMedium === medium;
+        const active = mediums.includes(medium);
         return (
           <button
             key={medium}
             type="button"
-            onClick={() => pickMedium(medium)}
+            onClick={() => toggleArrayValue("mediums", medium)}
             className="rounded px-3 py-1 text-sm font-medium text-white transition hover:opacity-90"
             style={{
               backgroundColor: MEDIUM_COLORS[medium],
