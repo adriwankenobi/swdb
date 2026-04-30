@@ -7,9 +7,9 @@ const UNKNOWN_COLOR = "#6b7280"; // neutral gray for the "no release_date" bucke
 
 export function DecadeTabs() {
   const works = useCatalogStore((s) => s.works);
-  const { releaseMin, releaseMax, releaseUndated, set } = useFilterStore();
+  const { decades, releaseUndated, set, toggleArrayValue } = useFilterStore();
 
-  const { decades, hasUndated } = useMemo(() => {
+  const { availableDecades, hasUndated } = useMemo(() => {
     const decadeSet = new Set<number>();
     let undated = false;
     for (const w of works) {
@@ -23,45 +23,22 @@ export function DecadeTabs() {
       }
     }
     return {
-      decades: Array.from(decadeSet).sort((a, b) => a - b),
+      availableDecades: Array.from(decadeSet).sort((a, b) => a - b),
       hasUndated: undated,
     };
   }, [works]);
 
-  function activeDecade(): number | null {
-    if (!releaseMin || !releaseMax) return null;
-    // Check if releaseMin/Max exactly bracket a decade
-    const minMatch = releaseMin.match(/^(\d{4})-01-01$/);
-    const maxMatch = releaseMax.match(/^(\d{4})-12-31$/);
-    if (!minMatch || !maxMatch) return null;
-    const minYear = parseInt(minMatch[1], 10);
-    const maxYear = parseInt(maxMatch[1], 10);
-    const dec = Math.floor(minYear / 10) * 10;
-    if (minYear === dec && maxYear === dec + 9) return dec;
-    return null;
-  }
-
-  const active = activeDecade();
-
-  function pickDecade(dec: number) {
-    set({
-      releaseMin: `${dec}-01-01`,
-      releaseMax: `${dec + 9}-12-31`,
-      releaseUndated: false,
-    });
-  }
-
-  function pickUnknown() {
-    set({ releaseMin: null, releaseMax: null, releaseUndated: true });
-  }
-
-  const allActive = releaseMin === null && releaseMax === null && !releaseUndated;
+  const allActive = decades.length === 0 && !releaseUndated;
 
   function clearDecade() {
-    set({ releaseMin: null, releaseMax: null, releaseUndated: false });
+    set({ decades: [], releaseUndated: false });
   }
 
-  if (decades.length === 0 && !hasUndated) return null;
+  function toggleUnknown() {
+    set({ releaseUndated: !releaseUndated });
+  }
+
+  if (availableDecades.length === 0 && !hasUndated) return null;
 
   return (
     <div className="flex flex-wrap items-center gap-1 border-b px-4 py-2">
@@ -77,14 +54,14 @@ export function DecadeTabs() {
       >
         All
       </button>
-      {decades.map((dec) => {
-        const isActive = active === dec;
+      {availableDecades.map((dec) => {
+        const isActive = decades.includes(dec);
         const color = DECADE_COLORS[dec] ?? "#3a6cba";
         return (
           <button
             key={dec}
             type="button"
-            onClick={() => pickDecade(dec)}
+            onClick={() => toggleArrayValue("decades", dec)}
             className="rounded px-3 py-1 text-sm font-medium text-white transition hover:opacity-90"
             style={{
               backgroundColor: color,
@@ -101,7 +78,7 @@ export function DecadeTabs() {
         <button
           key="unknown"
           type="button"
-          onClick={pickUnknown}
+          onClick={toggleUnknown}
           className="rounded px-3 py-1 text-sm font-medium text-white transition hover:opacity-90"
           style={{
             backgroundColor: UNKNOWN_COLOR,
