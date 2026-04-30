@@ -6,7 +6,7 @@ from scripts.excel_reader import ExcelRow
 
 def _row(**over) -> ExcelRow:
     base = dict(
-        era=1,                # OLD REPUBLIC
+        era=1,
         title="Knight Errant",
         series=None,
         medium="Novel",
@@ -16,6 +16,9 @@ def _row(**over) -> ExcelRow:
         info_url=None,
         cover_url=None,
         color=None,
+        author=None,
+        publisher=None,
+        release_date_str=None,
     )
     base.update(over)
     return ExcelRow(**base)

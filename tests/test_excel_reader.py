@@ -88,3 +88,39 @@ def test_read_works_closes_workbook_on_early_termination():
     # this path here documents the contract and surfaces any regressions if
     # someone later removes the finally block (the test will run the path even
     # if it can't assert the side effect).
+
+
+def test_reads_author_publisher_release_columns(tmp_path):
+    from openpyxl import Workbook
+    from scripts.excel_reader import read_works
+
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "REBELLION"
+    ws.append([
+        "YEAR", "MEDIUM", "SERIES", "TITLE", "#",
+        "AUTHOR", "PUBLISHER", "RELEASE", "COLLECTED", "INFO", "COVER",
+    ])
+    ws.append([
+        "0 ABY", "Novel", "Star Wars Episode", "A New Hope", "IV",
+        "Alan Dean Foster", "Ballantine Books", "1976.11.12",
+        None, "https://example.com/wiki", "https://example.com/cover.jpg",
+    ])
+    ws.append([
+        "0 ABY", "Comic", None, "Sparse Row", "1",
+        None, None, None, None, None, None,
+    ])
+    path = tmp_path / "test.xlsx"
+    wb.save(path)
+    wb.close()
+
+    rows = list(read_works(path))
+    assert len(rows) == 2
+    full = rows[0]
+    assert full.author == "Alan Dean Foster"
+    assert full.publisher == "Ballantine Books"
+    assert full.release_date_str == "1976.11.12"
+    sparse = rows[1]
+    assert sparse.author is None
+    assert sparse.publisher is None
+    assert sparse.release_date_str is None

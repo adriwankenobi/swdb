@@ -52,6 +52,10 @@ class ExcelRow:
     info_url: str | None
     cover_url: str | None  # raw — may be ignored later in favor of wiki-fetched cover
     color: str | None    # '#RRGGBB' from row's Excel fill, or None when row has no fill
+    # Excel-as-source-of-truth fields. None when the cell is empty.
+    author: str | None
+    publisher: str | None
+    release_date_str: str | None  # raw Excel "YYYY[.MM[.DD]]" string
 
 
 def _normalize_medium(raw: str | None) -> str:
@@ -92,6 +96,9 @@ def read_works(path: Path) -> Iterator[ExcelRow]:
                 series = _stringify(raw[2].value)
                 title = _stringify(raw[3].value)
                 number = _stringify(raw[4].value)
+                author = _stringify(raw[5].value) if len(raw) > 5 else None
+                publisher = _stringify(raw[6].value) if len(raw) > 6 else None
+                release_date_str = _stringify(raw[7].value) if len(raw) > 7 else None
                 info_url = _stringify(raw[9].value) if len(raw) > 9 else None
                 cover_url = _stringify(raw[10].value) if len(raw) > 10 else None
                 if not title or not medium_raw:
@@ -116,6 +123,9 @@ def read_works(path: Path) -> Iterator[ExcelRow]:
                     info_url=info_url,
                     cover_url=cover_url,
                     color=color,
+                    author=author,
+                    publisher=publisher,
+                    release_date_str=release_date_str,
                 )
     finally:
         wb.close()
