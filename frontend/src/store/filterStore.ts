@@ -8,14 +8,11 @@ export type SortMode = "chronology" | "release";
 export interface FilterState {
   eras: EraName[];
   mediums: MediumName[];
+  decades: number[];
   series: string[];
   authors: string[];
   publishers: string[];
   q: string;
-  yearMin: number | null;
-  yearMax: number | null;
-  releaseMin: string | null;
-  releaseMax: string | null;
   releaseUndated: boolean;
   view: ViewMode;
   sort: SortMode;
@@ -25,14 +22,11 @@ export interface FilterState {
 const defaultState: FilterState = {
   eras: [],
   mediums: [],
+  decades: [],
   series: [],
   authors: [],
   publishers: [],
   q: "",
-  yearMin: null,
-  yearMax: null,
-  releaseMin: null,
-  releaseMax: null,
   releaseUndated: false,
   view: "cards",
   sort: "chronology",
@@ -41,7 +35,7 @@ const defaultState: FilterState = {
 
 interface FilterActions {
   set: (patch: Partial<FilterState>) => void;
-  toggleArrayValue: <K extends "eras" | "mediums" | "series" | "authors" | "publishers">(
+  toggleArrayValue: <K extends "eras" | "mediums" | "decades" | "series" | "authors" | "publishers">(
     key: K,
     value: FilterState[K][number],
   ) => void;
