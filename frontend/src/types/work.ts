@@ -1,12 +1,13 @@
-import type { EraIndex } from "../constants/eras";
+import type { EraName } from "../constants/eras";
+import type { MediumName } from "../constants/mediums";
 
 export interface Work {
   id: string;
-  era: EraIndex;
+  era: EraName;
   title: string;
-  medium: number;       // index into MEDIUMS
-  year: number;         // signed in-universe year (negative = BBY); start of the range
-  year_end?: number;    // present only when the work spans a range of years
+  medium: MediumName;
+  year: number;
+  year_end?: number;
   series?: string;
   number?: string;
   release_date?: string;
