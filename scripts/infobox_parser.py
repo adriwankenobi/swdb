@@ -21,10 +21,17 @@ _LABEL_MAP: dict[str, str] = {
     "penciller": "authors",
     "penciller(s)": "authors",
     "pencillers": "authors",
+    # Some comic infoboxes only credit the artist (no separate writer/penciller).
+    "artist": "authors",
+    "artist(s)": "authors",
+    "artists": "authors",
     "publisher": "publisher",
     "publication date": "release_date",
     "release date": "release_date",
     "released": "release_date",
+    # Short stories and some prose works use "First published" instead of
+    # "Release date" / "Published date".
+    "first published": "release_date",
     # TV-show episode infoboxes use "Air date" (and occasional "Airdate")
     # instead of "Release date". Same downstream key.
     "air date": "release_date",
