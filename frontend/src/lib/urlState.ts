@@ -9,12 +9,6 @@ const csv = (arr: string[]): string | undefined =>
 const parseCsv = (raw: string | null): string[] =>
   raw ? raw.split(",").filter(Boolean) : [];
 
-const parseInt1 = (raw: string | null): number | null => {
-  if (raw === null || raw === "") return null;
-  const n = Number(raw);
-  return Number.isFinite(n) ? n : null;
-};
-
 const VIEWS: ViewMode[] = ["cards", "table", "timeline"];
 const SORTS: SortMode[] = ["chronology", "release"];
 
@@ -38,6 +32,12 @@ function readMediumSlugs(raw: string | null): MediumName[] {
     .filter((medium): medium is MediumName => medium !== undefined);
 }
 
+function readDecades(raw: string | null): number[] {
+  return parseCsv(raw)
+    .map((s) => Number(s))
+    .filter((n) => Number.isFinite(n));
+}
+
 export function readFromUrl(search: string): Partial<FilterState> {
   const p = new URLSearchParams(search);
   const view = p.get("view");
@@ -45,14 +45,11 @@ export function readFromUrl(search: string): Partial<FilterState> {
   return {
     eras: readEraSlugs(p.get("era")),
     mediums: readMediumSlugs(p.get("medium")),
+    decades: readDecades(p.get("decade")),
     series: parseCsv(p.get("series")),
     authors: parseCsv(p.get("author")),
     publishers: parseCsv(p.get("publisher")),
     q: p.get("q") ?? "",
-    yearMin: parseInt1(p.get("year_min")),
-    yearMax: parseInt1(p.get("year_max")),
-    releaseMin: p.get("release_min"),
-    releaseMax: p.get("release_max"),
     releaseUndated: p.get("release_undated") === "1",
     view: VIEWS.includes(view as ViewMode) ? (view as ViewMode) : "cards",
     sort: SORTS.includes(sort as SortMode) ? (sort as SortMode) : "chronology",
@@ -64,19 +61,17 @@ export function writeToUrl(state: FilterState): string {
   const p = new URLSearchParams();
   const era = csv(state.eras.map((e) => slugify(e)));
   const medium = csv(state.mediums.map((m) => slugify(m)));
+  const decade = csv(state.decades.map((d) => String(d)));
   const series = csv(state.series);
   const author = csv(state.authors);
   const publisher = csv(state.publishers);
   if (era) p.set("era", era);
   if (medium) p.set("medium", medium);
+  if (decade) p.set("decade", decade);
   if (series) p.set("series", series);
   if (author) p.set("author", author);
   if (publisher) p.set("publisher", publisher);
   if (state.q) p.set("q", state.q);
-  if (state.yearMin !== null) p.set("year_min", String(state.yearMin));
-  if (state.yearMax !== null) p.set("year_max", String(state.yearMax));
-  if (state.releaseMin !== null) p.set("release_min", state.releaseMin);
-  if (state.releaseMax !== null) p.set("release_max", state.releaseMax);
   if (state.releaseUndated) p.set("release_undated", "1");
   if (state.view !== "cards") p.set("view", state.view);
   if (state.sort !== "chronology") p.set("sort", state.sort);

@@ -3,8 +3,8 @@ import { readFromUrl, writeToUrl } from "../urlState";
 import type { FilterState } from "../../store/filterStore";
 
 const empty: FilterState = {
-  eras: [], mediums: [], series: [], authors: [], publishers: [],
-  q: "", yearMin: null, yearMax: null, releaseMin: null, releaseMax: null,
+  eras: [], mediums: [], decades: [], series: [], authors: [], publishers: [],
+  q: "",
   releaseUndated: false,
   view: "cards", sort: "chronology", openWorkId: null,
 };
@@ -20,6 +20,11 @@ describe("urlState", () => {
     expect(qs).toBe("?medium=tv-show%2Cjunior-novel");
   });
 
+  it("writes decades as a CSV of integers", () => {
+    const qs = writeToUrl({ ...empty, decades: [1990, 2010] });
+    expect(qs).toBe("?decade=1990%2C2010");
+  });
+
   it("reads era slugs back as canonical names", () => {
     const r = readFromUrl("?era=old-republic,rise-of-the-empire");
     expect(r.eras).toEqual(["OLD REPUBLIC", "RISE OF THE EMPIRE"]);
@@ -30,21 +35,29 @@ describe("urlState", () => {
     expect(r.mediums).toEqual(["TV Show", "Junior Novel"]);
   });
 
+  it("reads decade integers back", () => {
+    const r = readFromUrl("?decade=1990,2010");
+    expect(r.decades).toEqual([1990, 2010]);
+  });
+
+  it("drops non-numeric decade values", () => {
+    const r = readFromUrl("?decade=1990,bogus,2010");
+    expect(r.decades).toEqual([1990, 2010]);
+  });
+
   it("round-trips a complex state without loss", () => {
     const state: FilterState = {
       ...empty,
       eras: ["REBELLION", "NEW JEDI ORDER"],
       mediums: ["Novel", "Comic"],
+      decades: [1990, 2010],
       q: "vader",
-      yearMin: -5,
-      yearMax: 25,
     };
     const round = readFromUrl(writeToUrl(state));
     expect(round.eras).toEqual(state.eras);
     expect(round.mediums).toEqual(state.mediums);
+    expect(round.decades).toEqual(state.decades);
     expect(round.q).toBe(state.q);
-    expect(round.yearMin).toBe(state.yearMin);
-    expect(round.yearMax).toBe(state.yearMax);
   });
 
   it("silently drops legacy integer era values from old bookmarks", () => {
@@ -60,5 +73,11 @@ describe("urlState", () => {
   it("silently drops unknown slugs", () => {
     const r = readFromUrl("?era=old-republic,bogus-era");
     expect(r.eras).toEqual(["OLD REPUBLIC"]);
+  });
+
+  it("silently ignores legacy year_min / year_max / release_min / release_max params", () => {
+    const r = readFromUrl("?year_min=-5&year_max=25&release_min=1990-01-01&release_max=2010-12-31");
+    expect(r.decades).toEqual([]);
+    expect(r.eras).toEqual([]);
   });
 });
