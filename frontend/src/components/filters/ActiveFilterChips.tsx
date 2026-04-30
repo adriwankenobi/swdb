@@ -11,6 +11,16 @@ export function ActiveFilterChips() {
   s.mediums.forEach((medium) =>
     chips.push({ key: `medium:${medium}`, label: medium, clear: () => s.toggleArrayValue("mediums", medium) }),
   );
+  s.decades.forEach((dec) =>
+    chips.push({ key: `decade:${dec}`, label: `${dec}s`, clear: () => s.toggleArrayValue("decades", dec) }),
+  );
+  if (s.releaseUndated) {
+    chips.push({
+      key: "releaseUndated",
+      label: "Undated",
+      clear: () => s.set({ releaseUndated: false }),
+    });
+  }
   s.series.forEach((m) =>
     chips.push({ key: `series:${m}`, label: m, clear: () => s.toggleArrayValue("series", m) }),
   );
@@ -21,20 +31,6 @@ export function ActiveFilterChips() {
     chips.push({ key: `publisher:${m}`, label: m, clear: () => s.toggleArrayValue("publishers", m) }),
   );
   if (s.q) chips.push({ key: `q:${s.q}`, label: `"${s.q}"`, clear: () => s.set({ q: "" }) });
-  if (s.yearMin !== null || s.yearMax !== null) {
-    chips.push({
-      key: "year",
-      label: "year",
-      clear: () => s.set({ yearMin: null, yearMax: null }),
-    });
-  }
-  if (s.releaseMin !== null || s.releaseMax !== null) {
-    chips.push({
-      key: "release",
-      label: "release",
-      clear: () => s.set({ releaseMin: null, releaseMax: null }),
-    });
-  }
   if (chips.length === 0) return null;
   return (
     <div className="flex flex-wrap items-center gap-2 pb-3">
