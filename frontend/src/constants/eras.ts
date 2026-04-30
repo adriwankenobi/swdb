@@ -11,17 +11,17 @@ export const ERAS = [
   "NON-CANON",
 ] as const;
 
-export type EraIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
+export type EraName = (typeof ERAS)[number];
 
-export const ERA_COLORS: Record<EraIndex, string> = {
-  0: "#5b6770",
-  1: "#7a4ea3",
-  2: "#2f5d8c",
-  3: "#c44a3a",
-  4: "#3a3a3a",
-  5: "#b8862f",
-  6: "#2f8a5e",
-  7: "#0d4a6e",
-  8: "#7a2238",
-  9: "#888888",
+export const ERA_COLORS: Record<EraName, string> = {
+  "PRE-REPUBLIC":       "#5b6770",
+  "OLD REPUBLIC":       "#7a4ea3",
+  "RISE OF THE EMPIRE": "#2f5d8c",
+  "THE CLONE WARS":     "#c44a3a",
+  "THE DARK TIMES":     "#3a3a3a",
+  "REBELLION":          "#b8862f",
+  "NEW REPUBLIC":       "#2f8a5e",
+  "NEW JEDI ORDER":     "#0d4a6e",
+  "LEGACY":             "#7a2238",
+  "NON-CANON":          "#888888",
 };
