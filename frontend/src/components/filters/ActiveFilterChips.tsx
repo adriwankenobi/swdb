@@ -5,6 +5,12 @@ import { useFilterStore } from "@/store/filterStore";
 export function ActiveFilterChips() {
   const s = useFilterStore();
   const chips: { key: string; label: string; clear: () => void }[] = [];
+  s.eras.forEach((era) =>
+    chips.push({ key: `era:${era}`, label: era, clear: () => s.toggleArrayValue("eras", era) }),
+  );
+  s.mediums.forEach((medium) =>
+    chips.push({ key: `medium:${medium}`, label: medium, clear: () => s.toggleArrayValue("mediums", medium) }),
+  );
   s.series.forEach((m) =>
     chips.push({ key: `series:${m}`, label: m, clear: () => s.toggleArrayValue("series", m) }),
   );
