@@ -3,13 +3,14 @@ import type { Work } from "../../types/work";
 import type { FilterState } from "../../store/filterStore";
 import { filterWorks } from "../filterWorks";
 
-// Medium indices (alphabetical canonical order):
-// 0 Comic, 1 Junior Novel, 2 Movie, 3 Novel, 4 Short Story, 5 TV Show, 6 Videogame
-const NOVEL = 3;
-const COMIC = 0;
+// Era / medium values are canonical name strings (matching ERAS / MEDIUMS).
+const NOVEL = "Novel" as const;
+const COMIC = "Comic" as const;
+const REBELLION = "REBELLION" as const;            // ERAS index 5
+const NEW_JEDI_ORDER = "NEW JEDI ORDER" as const;  // ERAS index 7
 
 const w = (over: Partial<Work> & { id: string; year: number }): Work => ({
-  era: 5, title: "T", medium: NOVEL,
+  era: REBELLION, title: "T", medium: NOVEL,
   ...over,
 });
 
@@ -24,9 +25,9 @@ describe("filterWorks", () => {
   // Catalog order matters: this is the JSON order, which the frontend treats
   // as the canonical tiebreaker via stable sorting.
   const all: Work[] = [
-    w({ id: "a", title: "A New Hope", medium: NOVEL, era: 5, year: 0, authors: ["Foster"] }),
-    w({ id: "b", title: "Vector Prime", medium: NOVEL, era: 7, year: 25, authors: ["Salvatore"] }),
-    w({ id: "c", title: "Chewbacca", medium: COMIC, era: 7, year: 25, authors: ["Macan"] }),
+    w({ id: "a", title: "A New Hope", medium: NOVEL, era: REBELLION, year: 0, authors: ["Foster"] }),
+    w({ id: "b", title: "Vector Prime", medium: NOVEL, era: NEW_JEDI_ORDER, year: 25, authors: ["Salvatore"] }),
+    w({ id: "c", title: "Chewbacca", medium: COMIC, era: NEW_JEDI_ORDER, year: 25, authors: ["Macan"] }),
   ];
 
   it("returns all when no filters", () => {
@@ -41,7 +42,7 @@ describe("filterWorks", () => {
   });
 
   it("filters by era and medium (AND between fields)", () => {
-    const r = filterWorks(all, { ...empty, mediums: [NOVEL], eras: [7] });
+    const r = filterWorks(all, { ...empty, mediums: [NOVEL], eras: [NEW_JEDI_ORDER] });
     expect(r.map((x) => x.id)).toEqual(["b"]);
   });
 
@@ -85,8 +86,8 @@ describe("filterWorks", () => {
     // has a higher in-universe year. Output keeps input order — proving the
     // sort relies on Excel position, not the year column.
     const data: Work[] = [
-      w({ id: "later",   era: 5, year: 5, title: "Later" }),
-      w({ id: "earlier", era: 5, year: 0, title: "Earlier" }),
+      w({ id: "later",   era: REBELLION, year: 5, title: "Later" }),
+      w({ id: "earlier", era: REBELLION, year: 0, title: "Earlier" }),
     ];
     const r = filterWorks(data, empty);
     expect(r.map((x) => x.id)).toEqual(["later", "earlier"]);
@@ -95,8 +96,8 @@ describe("filterWorks", () => {
   it("chronology stable-sort tiebreak preserves input order across same-era works", () => {
     // 'z' precedes 'a' in the input; both have era=5; output keeps that.
     const data: Work[] = [
-      w({ id: "z", era: 5, year: 0, title: "Zeta" }),
-      w({ id: "a", era: 5, year: 0, title: "Alpha" }),
+      w({ id: "z", era: REBELLION, year: 0, title: "Zeta" }),
+      w({ id: "a", era: REBELLION, year: 0, title: "Alpha" }),
     ];
     const r = filterWorks(data, empty);
     expect(r.map((x) => x.id)).toEqual(["z", "a"]);
@@ -173,14 +174,14 @@ describe("filterWorks", () => {
 
   it("search bypasses era filter — searching returns matches from all eras", () => {
     const data: Work[] = [
-      w({ id: "era5", title: "Shadow of the Empire", era: 5, year: 0 }),
-      w({ id: "era7", title: "Shadow of Doubt",      era: 7, year: 1 }),
+      w({ id: "era5", title: "Shadow of the Empire", era: REBELLION, year: 0 }),
+      w({ id: "era7", title: "Shadow of Doubt",      era: NEW_JEDI_ORDER, year: 1 }),
     ];
-    // Without search: era filter restricts to era 5 only
-    const withoutSearch = filterWorks(data, { ...empty, eras: [5] });
+    // Without search: era filter restricts to REBELLION only
+    const withoutSearch = filterWorks(data, { ...empty, eras: [REBELLION] });
     expect(withoutSearch.map((x) => x.id)).toEqual(["era5"]);
     // With search active: era filter is bypassed, both works match "shadow"
-    const withSearch = filterWorks(data, { ...empty, eras: [5], q: "shadow" });
+    const withSearch = filterWorks(data, { ...empty, eras: [REBELLION], q: "shadow" });
     expect(withSearch.map((x) => x.id)).toEqual(["era5", "era7"]);
   });
 

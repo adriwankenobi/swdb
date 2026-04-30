@@ -1,3 +1,4 @@
+import { ERAS } from "../constants/eras";
 import type { Work } from "../types/work";
 import type { FilterState } from "../store/filterStore";
 
@@ -51,7 +52,7 @@ function matchesReleaseUndated(w: Work, undatedOnly: boolean): boolean {
 // Within an era, works are intentionally ordered by their position in the
 // Excel workbook (the user's canonical chronology), not by the `year` field.
 function compareChronology(a: Work, b: Work): number {
-  return a.era - b.era;
+  return ERAS.indexOf(a.era) - ERAS.indexOf(b.era);
 }
 
 function compareRelease(a: Work, b: Work): number {
