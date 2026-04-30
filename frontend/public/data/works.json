@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-30T11:04:31+00:00",
+  "generated_at": "2026-04-30T15:07:21+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -343,8 +343,12 @@
       "year": -25200,
       "year_end": -671,
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Masthead_of_Xim_the_Despot",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b2/Masthead_of_Xim.png/revision/latest"
+      "wiki_url": "https://starwars.fandom.com/wiki/Xim_Week:_The_Despotica",
+      "authors": [
+        "Michael Kogge"
+      ],
+      "release_date": "2009-12-08",
+      "release_precision": "day"
     },
     {
       "id": "e2fafaa3-aa44-5dbe-8b15-bad3c6abe0ac",
@@ -2325,6 +2329,9 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Knights_of_the_Old_Republic_II:_The_Sith_Lords",
       "authors": [
+        "Aaron Meyers",
+        "Dmitri Ellingson",
+        "Jim Rice",
         "Chris Avellone",
         "Ferret Baudoin"
       ],
@@ -8992,8 +8999,11 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Shadowed",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Thomas Hodges"
       ],
+      "release_date": "2009-02-06",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d7/Shadowed_cover.png/revision/latest"
     },
     {
@@ -9140,8 +9150,13 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Shakedown",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Thomas Hodges",
+        "Grant Gould",
+        "Jeffery Carlisle"
       ],
+      "release_date": "2008-10-02",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/18/TCW-Prelude-Shakedown.jpg/revision/latest"
     },
     {
@@ -9172,8 +9187,11 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Procedure",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Grant Gould"
       ],
+      "release_date": "2008-10-06",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0c/Procedure.png/revision/latest"
     },
     {
@@ -9204,8 +9222,11 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Agenda",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Katie Cook"
       ],
+      "release_date": "2008-10-14",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/67/Agenda.png/revision/latest"
     },
     {
@@ -9325,8 +9346,13 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Mouse_Hunt",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Thomas Hodges",
+        "Grant Gould",
+        "Steven D. Anderson"
       ],
+      "release_date": "2008-10-23",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ef/Mouse_Hunt.png/revision/latest"
     },
     {
@@ -9358,8 +9384,12 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_The_Fall_of_Falleen",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Thomas Hodges",
+        "Grant Gould"
       ],
+      "release_date": "2008-11-07",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/ae/FallOfFalleen.png/revision/latest"
     },
     {
@@ -9390,8 +9420,11 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Discount",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Grant Gould"
       ],
+      "release_date": "2008-11-12",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/31/Discount_cover.png/revision/latest"
     },
     {
@@ -9456,8 +9489,11 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Departure",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Jeffery Carlisle"
       ],
+      "release_date": "2008-11-19",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/20/TCW_Departure.png/revision/latest"
     },
     {
@@ -9489,8 +9525,12 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Transfer",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Katie Cook",
+        "Grant Gould"
       ],
+      "release_date": "2008-12-04",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/47/Transfer_cover.png/revision/latest"
     },
     {
@@ -9521,8 +9561,14 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_The_Dreams_of_General_Grievous",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Katie Cook",
+        "Grant Gould",
+        "Thomas Hodges",
+        "Jeffery Carlisle"
       ],
+      "release_date": "2008-12-10",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b4/DreamsOfGrievous.png/revision/latest"
     },
     {
@@ -9657,8 +9703,12 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Headgames",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Tom Hodges",
+        "Grant Gould"
       ],
+      "release_date": "2009-01-15",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f1/Headgames.png/revision/latest"
     },
     {
@@ -9690,8 +9740,11 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Neighbors",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Katie Cook"
       ],
+      "release_date": "2009-01-21",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/71/Neighbors.png/revision/latest"
     },
     {
@@ -9755,8 +9808,11 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Cold_Snap",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Jeffery Carlisle"
       ],
+      "release_date": "2009-01-29",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d4/Cold_Snap_cover.png/revision/latest"
     },
     {
@@ -9786,8 +9842,11 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_The_Valley",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Grant Gould"
       ],
+      "release_date": "2009-02-13",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/1d/The_Valley_cover.png/revision/latest"
     },
     {
@@ -9907,8 +9966,11 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Covetous",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Grant Gould"
       ],
+      "release_date": "2009-02-26",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/dc/Covetous_cover.png/revision/latest"
     },
     {
@@ -9938,8 +10000,11 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Curfew",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Katie Cook"
       ],
+      "release_date": "2009-03-09",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d3/Curfew_cover.png/revision/latest"
     },
     {
@@ -9971,8 +10036,11 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_The_Ballad_of_Cham_Syndulla",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Jeffrey Carlisle"
       ],
+      "release_date": "2009-03-12",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9d/Ballad_of_Cham_Syndulla.png/revision/latest"
     },
     {
@@ -10021,8 +10089,14 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Act_on_Instinct",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Thomas Hodges",
+        "Grant Gould",
+        "Jeffery Carlisle",
+        "Daniel Falconer"
       ],
+      "release_date": "2009-09-30",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4d/Act_on_Instinct.png/revision/latest"
     },
     {
@@ -10093,6 +10167,8 @@
       "authors": [
         "Tom Hodges"
       ],
+      "release_date": "2010-09-14",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/63/TheValsedianOperation_cover.png/revision/latest"
     },
     {
@@ -10643,8 +10719,11 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Invitation_Only",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Thomas Hodges"
       ],
+      "release_date": "2009-03-19",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/09/Invitation_Only.png/revision/latest"
     },
     {
@@ -12660,8 +12739,11 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Reversal_of_Fortune",
       "authors": [
-        "Paul Ens"
+        "Paul Ens",
+        "Tom Hodges"
       ],
+      "release_date": "2004-10-01",
+      "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8d/Reversal.jpg/revision/latest"
     },
     {
@@ -13528,8 +13610,11 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Evasive_Action:_Recruitment",
       "authors": [
-        "Paul Ens"
+        "Paul Ens",
+        "Tom Hodges"
       ],
+      "release_date": "2005-08-01",
+      "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/54/Recruitment.jpg/revision/latest"
     },
     {
@@ -14418,8 +14503,11 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Evasive_Action:_Prey",
       "authors": [
-        "Paul Ens"
+        "Paul Ens",
+        "Tom Hodges"
       ],
+      "release_date": "2006-03-06",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3b/Prey.jpg/revision/latest"
     },
     {
@@ -14433,8 +14521,11 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Evasive_Action:_End_Game",
       "authors": [
-        "Paul Ens"
+        "Paul Ens",
+        "Tom Hodges"
       ],
+      "release_date": "2006-11-06",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9c/End_game.jpg/revision/latest"
     },
     {
@@ -15930,6 +16021,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Force_Unleashed",
       "authors": [
+        "Matt Omernick",
         "W. Haden Blackman",
         "Shawn Pitman",
         "John Stafford",
@@ -15970,6 +16062,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Force_Unleashed",
       "authors": [
+        "Matt Omernick",
         "W. Haden Blackman",
         "Shawn Pitman",
         "John Stafford",
@@ -22317,6 +22410,8 @@
       "authors": [
         "Pablo Hidalgo"
       ],
+      "release_date": "2006-02-06",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c7/Rookies.jpg/revision/latest"
     },
     {
@@ -22332,6 +22427,8 @@
       "authors": [
         "Pablo Hidalgo"
       ],
+      "release_date": "2006-06-01",
+      "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/27/NoTurningBack.jpg/revision/latest"
     },
     {
@@ -28448,6 +28545,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Dark_Forces_II",
       "authors": [
+        "Peter Chan",
         "Justin Chin"
       ],
       "release_date": "1997-10-09",
