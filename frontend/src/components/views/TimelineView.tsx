@@ -1,4 +1,4 @@
-import { ERAS, ERA_COLORS, type EraIndex } from "@/constants/eras";
+import { ERA_COLORS } from "@/constants/eras";
 import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { groupForChronology, groupForRelease } from "@/lib/timelineGroups";
@@ -14,7 +14,7 @@ function Marker({ work, onClick }: MarkerProps) {
   const yearLabel = formatYear(work.year, work.year_end);
   const tooltip = `${work.title}${work.series ? ` — ${work.series}` : ""} (${yearLabel})`;
   const mediumColor = MEDIUM_COLORS[work.medium];
-  const eraColor = ERA_COLORS[work.era as EraIndex];
+  const eraColor = ERA_COLORS[work.era];
 
   return (
     <button
@@ -64,17 +64,16 @@ export function TimelineView({ works }: { works: Work[] }) {
       <div className="h-full overflow-auto">
         <div className="space-y-8 p-4">
           {groups.map((group) => {
-            const eraColor = ERA_COLORS[group.eraIndex as EraIndex];
-            const eraName = ERAS[group.eraIndex as EraIndex];
+            const eraColor = ERA_COLORS[group.era];
             return (
-              <div key={group.eraIndex}>
+              <div key={group.era}>
                 {/* Era header */}
                 <div className="mb-3 flex items-center gap-2">
                   <span
                     className="rounded px-2 py-0.5 text-xs font-semibold uppercase tracking-wider text-white"
                     style={{ backgroundColor: eraColor }}
                   >
-                    {eraName}
+                    {group.era}
                   </span>
                 </div>
                 {/* Year rows (in Excel order; consecutive same-span works coalesce) */}

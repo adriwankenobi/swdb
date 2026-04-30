@@ -8,7 +8,7 @@ export interface ChronologyRow {
 }
 
 export interface ChronologyGroup {
-  eraName: EraName;
+  era: EraName;
   rows: ChronologyRow[];
 }
 
@@ -47,7 +47,7 @@ export function groupForChronology(works: Work[]): ChronologyGroup[] {
     (a, b) => ERAS.indexOf(a) - ERAS.indexOf(b),
   );
   return sortedEras.map((eraName) => ({
-    eraName,
+    era: eraName,
     rows: eraMap.get(eraName)!,
   }));
 }

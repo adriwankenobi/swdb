@@ -25,7 +25,7 @@ describe("groupForChronology", () => {
       w({ id: "d", era: REBELLION, year: 0 }),  // same span as "a", contiguous → coalesces
     ];
     const groups = groupForChronology(works);
-    expect(groups.map((g) => g.eraName)).toEqual([REBELLION, NEW_JEDI_ORDER]);
+    expect(groups.map((g) => g.era)).toEqual([REBELLION, NEW_JEDI_ORDER]);
 
     // Era 5: single row (a + d coalesced; both year 0).
     const era5 = groups[0];
