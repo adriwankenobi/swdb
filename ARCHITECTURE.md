@@ -47,9 +47,9 @@ written back into the corresponding Excel cells (`AUTHOR`, `PUBLISHER`,
 modified.
 
 **Mediums:** `MEDIUMS` is a 7-entry alphabetical canonical list:
-`Comic`, `Junior Novel`, `Movie`, `Novel`, `Short Story`, `TV Show`, `Videogame`
-(indices 0–6). Order is permanent; new entries must be appended so existing
-indices remain stable.
+`Comic`, `Junior Novel`, `Movie`, `Novel`, `Short Story`, `TV Show`, `Videogame`.
+Order is permanent — `MEDIUMS.indexOf` drives the frontend facet ordering, and
+URL slug aliases derive from these spellings via `slugify`.
 
 **Caching:** fetched HTML is stored under `data/.cache/wookieepedia/` (gitignored).
 `--refresh` bypasses it; `just clean-cache` deletes it.
@@ -81,8 +81,11 @@ field: OR semantics. Between fields: AND semantics.
 **Top-bar tabs** filter by era, medium, and decade simultaneously.
 
 **URL state:** filter selection, view mode, sort order, and the open work id are
-all reflected as query params (`?era=5,6&medium=0&view=cards&work=<id>`).
-`history.replaceState` keeps the URL current without adding history entries.
+all reflected as query params (`?era=rebellion,new-republic&medium=novel&view=cards&work=<id>`).
+Era and medium values are kebab-case slug aliases of their canonical names.
+Unknown slugs (including legacy integer values from old bookmarks) are silently
+dropped on read. `history.replaceState` keeps the URL current without adding
+history entries.
 
 **Stable sort:** `Array.prototype.sort` is stable; JSON-array order (which is
 Excel row order) is the implicit tiebreaker for equal sort keys. There is no
@@ -101,8 +104,8 @@ JSON are rendered.
   "works": [
     {
       "id":           "<uuid5>",
-      "era":          5,
-      "medium":       3,
+      "era":          "REBELLION",
+      "medium":       "Novel",
       "title":        "A New Hope",
       "year":         0,
       "series":       "Star Wars Episode",
@@ -126,11 +129,12 @@ emitted alongside `release_date`; it lets the UI render `"November 1996"`
 (month-only Wookieepedia source) faithfully rather than fabricating a `01`
 day component.
 
-- `era` — int 0–9, index into the 10-entry `ERAS` constant.
-- `medium` — int 0–6, index into `MEDIUMS` (see above).
+- `era` — string from the 10-entry `ERAS` list (UPPERCASE, e.g. `"REBELLION"`).
+- `medium` — string from the `MEDIUMS` list (Title Case, e.g. `"Novel"`).
 - `year` — signed int; negative = BBY, non-negative = ABY.
-- `id` — uuid5 keyed on `era|series|title|medium|#` (medium as the canonical
-  string, not the integer, so re-ordering `MEDIUMS` never invalidates IDs).
+- `id` — uuid5 keyed on `era|series|title|medium|#`. The era component is the
+  canonical *index* (kept as `int` internally) and the medium component is the
+  canonical string, so flipping the JSON encoding leaves IDs stable.
 
 ## Build & deploy
 
