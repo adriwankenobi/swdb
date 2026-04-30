@@ -24,37 +24,51 @@ IGNORED_NO_YEAR_LOG = REPO_ROOT / "data" / "ignored_no_year.log"
 CACHE_DIR = REPO_ROOT / "data" / ".cache" / "wookieepedia"
 UNMATCHED_LOG = REPO_ROOT / "data" / "unmatched.log"
 
-# Canonical medium list, alphabetical. Order is permanent: new entries must be
-# APPENDED at the end so existing indices retain their meaning.
-MEDIUMS = [
-    "Comic",           # 0
-    "Junior Novel",    # 1
-    "Movie",           # 2
-    "Novel",           # 3
-    "Short Story",     # 4
-    "TV Show",         # 5
-    "Videogame",       # 6
+# Canonical era list, indexed by ExcelRow.era. Order matches
+# excel_reader.ERA_INDEX. New entries must be APPENDED so existing indices
+# (used internally by make_id) retain their meaning.
+ERAS = [
+    "PRE-REPUBLIC",        # 0
+    "OLD REPUBLIC",        # 1
+    "RISE OF THE EMPIRE",  # 2
+    "THE CLONE WARS",      # 3
+    "THE DARK TIMES",      # 4
+    "REBELLION",           # 5
+    "NEW REPUBLIC",        # 6
+    "NEW JEDI ORDER",      # 7
+    "LEGACY",              # 8
+    "NON-CANON",           # 9
 ]
-_MEDIUM_TO_INDEX = {name: i for i, name in enumerate(MEDIUMS)}
+
+# Canonical medium list, alphabetical. Order is permanent.
+MEDIUMS = [
+    "Comic",
+    "Junior Novel",
+    "Movie",
+    "Novel",
+    "Short Story",
+    "TV Show",
+    "Videogame",
+]
 
 
 def _row_to_work(row: ExcelRow) -> dict:
     """Build a work dict.
 
     Precondition: caller has already verified row.year is not None and
-    row.medium is in _MEDIUM_TO_INDEX.
+    row.medium is in MEDIUMS.
     """
     work: dict = {
         "id": make_id(
-            era=row.era,
+            era=row.era,           # int kept for ID stability
             series=row.series,
             title=row.title,
-            medium=row.medium,    # ID uses the canonical medium STRING for stability
+            medium=row.medium,     # canonical Title Case string
             number=row.number,
         ),
-        "era": row.era,
+        "era": ERAS[row.era],
         "title": row.title,
-        "medium": _MEDIUM_TO_INDEX[row.medium],   # JSON gets the integer index
+        "medium": row.medium,
         "year": row.year,
     }
     if row.year_end is not None:
@@ -170,7 +184,7 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
                 f"{row.era}|{row.title}|{row.series}|{row.medium}"
             )
             continue
-        if row.medium not in _MEDIUM_TO_INDEX:
+        if row.medium not in MEDIUMS:
             missing_medium.append(
                 f"{row.era}|{row.title}|{row.series}|{row.medium}"
             )
@@ -211,7 +225,7 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
                 row.era,
                 row.title,
                 row.series,
-                MEDIUMS[work["medium"]],
+                work["medium"],   # already a canonical string
                 row.number,
             )
             enriched_lookup[key] = fields
