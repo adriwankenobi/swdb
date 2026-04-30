@@ -74,11 +74,11 @@ Stack: Vite · React · TypeScript · Tailwind CSS 4 · shadcn/ui · zustand ·
 - **Timeline** — vertical scroll; Chronology mode groups by era then in-universe
   year; Release mode groups by real-world release year.
 
-**Sidebar facets:** Era (10 checkboxes) · Medium (7 checkboxes) · Series /
-Author / Publisher (searchable multi-select) · Year range slider. Within a
-field: OR semantics. Between fields: AND semantics.
-
-**Top-bar tabs** filter by era, medium, and decade simultaneously.
+**Top-bar tabs** filter by Era (multi-select), Medium (multi-select), and
+Decade (multi-select, in release-sort mode). The decade strip also includes
+an "Unknown" toggle for works with no `release_date`. **Sidebar facets:**
+Series / Author / Publisher (searchable multi-select). Within a field: OR
+semantics. Between fields: AND semantics.
 
 **URL state:** filter selection, view mode, sort order, and the open work id are
 all reflected as query params (`?era=rebellion,new-republic&medium=novel&view=cards&work=<id>`).
@@ -124,10 +124,11 @@ JSON are rendered.
 **Required:** `id`, `era`, `medium`, `title`, `year`.  
 **Optional** (omitted when unknown, no nulls): `series`, `number`,
 `release_date`, `release_precision`, `authors`, `publisher`, `cover_url`,
-`wiki_url`. `release_precision` is `"day" | "month" | "year"` and is always
-emitted alongside `release_date`; it lets the UI render `"November 1996"`
+`wiki_url`, `color`. `release_precision` is `"day" | "month" | "year"` and is
+always emitted alongside `release_date`; it lets the UI render `"November 1996"`
 (month-only Wookieepedia source) faithfully rather than fabricating a `01`
-day component.
+day component. `color` is a `#RRGGBB` hex string copied from the Excel row's
+fill color (used as the work's background tint in card / row / modal views).
 
 - `era` — string from the 10-entry `ERAS` list (UPPERCASE, e.g. `"REBELLION"`).
 - `medium` — string from the `MEDIUMS` list (Title Case, e.g. `"Novel"`).
