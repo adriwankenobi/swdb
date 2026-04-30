@@ -1,11 +1,11 @@
 import { create } from "zustand";
-import { MEDIUMS } from "../constants/mediums";
+import { MEDIUMS, type MediumName } from "../constants/mediums";
 import type { Work, WorksFile } from "../types/work";
 
 export interface Facet<V = string> {
-  value: V;      // canonical (used by filterStore)
-  label: string; // display
-  count: number; // works that have this value
+  value: V;
+  label: string;
+  count: number;
 }
 
 interface CatalogState {
@@ -17,7 +17,7 @@ interface CatalogState {
     series: Facet[];
     authors: Facet[];
     publishers: Facet[];
-    mediums: Facet<number>[];
+    mediums: Facet<MediumName>[];
     yearMin: number;
     yearMax: number;
   };
@@ -43,18 +43,19 @@ function buildFacets(works: Work[]): CatalogState["facets"] {
         map.set(v, (map.get(v) ?? 0) + 1);
       }
     }
-    // Sort by occurrence (count desc); break ties alphabetically.
     return [...map.entries()]
       .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
       .map(([label, count]) => ({ value: label, label, count }));
   };
-  const mediumCounts = new Map<number, number>();
+  const mediumCounts = new Map<MediumName, number>();
   for (const w of works) {
     mediumCounts.set(w.medium, (mediumCounts.get(w.medium) ?? 0) + 1);
   }
-  const mediums: Facet<number>[] = [...mediumCounts.entries()]
-    .sort((a, b) => a[0] - b[0])
-    .map(([idx, count]) => ({ value: idx, label: MEDIUMS[idx], count }));
+  const mediums: Facet<MediumName>[] = [...mediumCounts.entries()]
+    .sort(
+      (a, b) => MEDIUMS.indexOf(a[0]) - MEDIUMS.indexOf(b[0]),
+    )
+    .map(([name, count]) => ({ value: name, label: name, count }));
   const years = works.map((w) => w.year);
   return {
     series: counts((w) => w.series),
