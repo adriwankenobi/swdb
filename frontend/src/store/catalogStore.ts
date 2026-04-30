@@ -18,8 +18,6 @@ interface CatalogState {
     authors: Facet[];
     publishers: Facet[];
     mediums: Facet<MediumName>[];
-    yearMin: number;
-    yearMax: number;
   };
   load: (url: string) => Promise<void>;
 }
@@ -29,8 +27,6 @@ const empty: CatalogState["facets"] = {
   authors: [],
   publishers: [],
   mediums: [],
-  yearMin: 0,
-  yearMax: 0,
 };
 
 function buildFacets(works: Work[]): CatalogState["facets"] {
@@ -56,14 +52,11 @@ function buildFacets(works: Work[]): CatalogState["facets"] {
       (a, b) => MEDIUMS.indexOf(a[0]) - MEDIUMS.indexOf(b[0]),
     )
     .map(([name, count]) => ({ value: name, label: name, count }));
-  const years = works.map((w) => w.year);
   return {
     series: counts((w) => w.series),
     authors: counts((w) => w.authors),
     publishers: counts((w) => w.publisher),
     mediums,
-    yearMin: years.length ? Math.min(...years) : 0,
-    yearMax: years.length ? Math.max(...years) : 0,
   };
 }
 
