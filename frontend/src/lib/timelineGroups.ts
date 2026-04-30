@@ -17,6 +17,10 @@ export interface ReleaseGroup {
   works: Work[];
 }
 
+// Walk works in input (= JSON / Excel) order. Within each era, coalesce a run
+// of consecutive works that share the same year span into a single row. The
+// row order itself follows Excel position, not year value — so the timeline's
+// chronology mirrors the user's canonical ordering in the workbook.
 export function groupForChronology(works: Work[]): ChronologyGroup[] {
   const eraMap = new Map<EraName, ChronologyRow[]>();
 
