@@ -13,6 +13,7 @@ from scripts.excel_reader import ExcelRow, read_works
 from scripts.excel_writer import update_excel
 from scripts.id_utils import make_id
 from scripts.infobox_parser import parse_infobox
+from scripts.release_utils import parse_excel_release
 from scripts.wiki_client import WikiClient
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -23,6 +24,7 @@ MISSING_MEDIUM_LOG = REPO_ROOT / "data" / "missing_medium.log"
 IGNORED_NO_YEAR_LOG = REPO_ROOT / "data" / "ignored_no_year.log"
 CACHE_DIR = REPO_ROOT / "data" / ".cache" / "wookieepedia"
 UNMATCHED_LOG = REPO_ROOT / "data" / "unmatched.log"
+DEAD_LINKS_LOG = REPO_ROOT / "data" / "dead_links.log"
 
 # Canonical era list, indexed by ExcelRow.era. Order matches
 # excel_reader.ERA_INDEX. New entries must be APPENDED so existing indices
@@ -124,17 +126,21 @@ def _detect_duplicates(works: list[dict]) -> list[list[dict]]:
     return groups
 
 
-def _enrich(work: dict, row: ExcelRow, client: WikiClient, unmatched: list[str]) -> None:
-    """Resolve wiki URL, fetch HTML, parse infobox, add enriched fields to work in-place.
+def _enrich(
+    work: dict,
+    row: ExcelRow,
+    client: WikiClient,
+    unmatched: list[str],
+    dead_links: list[str],
+) -> None:
+    """Resolve wiki URL and populate enriched fields on `work` in-place.
 
-    If the Excel-provided info_url returns a dead fetch, fall back to opensearch
-    in case the URL is outdated. Genuine fetch failures end up in `unmatched.log`
-    with source="dead_url" so the user can fix them.
+    Excel is the source of truth: any populated Excel cell wins wholesale
+    over the parser. When all four enriched fields are populated AND a
+    wiki URL is set, skip fetch+parse entirely and just verify the URLs.
     """
     url, source = client.resolve_url(
-        info_url=row.info_url,
-        title=row.title,
-        series=row.series,
+        info_url=row.info_url, title=row.title, series=row.series,
     )
     if not url:
         unmatched.append(
@@ -142,9 +148,27 @@ def _enrich(work: dict, row: ExcelRow, client: WikiClient, unmatched: list[str])
         )
         return
     work["wiki_url"] = url
+
+    excel_full = bool(
+        row.author and row.publisher and row.release_date_str and row.cover_url
+    )
+
+    if excel_full:
+        if not client.verify_url_alive(url):
+            dead_links.append(
+                f"{row.era}|{row.title}|{row.series}|{row.medium}|"
+                f"{row.number}|wiki|{url}"
+            )
+        if not client.verify_url_alive(row.cover_url):
+            dead_links.append(
+                f"{row.era}|{row.title}|{row.series}|{row.medium}|"
+                f"{row.number}|cover|{row.cover_url}"
+            )
+        _populate_from_excel(work, row)
+        return
+
     html = client.fetch_html(url)
     if not html and source == "from_excel":
-        # Excel URL is dead — try resolving via opensearch and re-fetch.
         alt_url, alt_source = client.resolve_url(
             info_url=None, title=row.title, series=row.series,
         )
@@ -159,14 +183,50 @@ def _enrich(work: dict, row: ExcelRow, client: WikiClient, unmatched: list[str])
         )
         return
     fields = parse_infobox(html)
-    if fields.get("authors"):
+    _merge_excel_priority(work, row, fields)
+
+
+def _populate_from_excel(work: dict, row: ExcelRow) -> None:
+    """Populate enriched fields entirely from Excel."""
+    if row.author:
+        work["authors"] = [a.strip() for a in row.author.split(",") if a.strip()]
+    if row.publisher:
+        work["publisher"] = row.publisher
+    if row.release_date_str:
+        parsed = parse_excel_release(row.release_date_str)
+        if parsed:
+            iso, precision = parsed
+            work["release_date"] = iso
+            work["release_precision"] = precision
+    if row.cover_url:
+        work["cover_url"] = row.cover_url
+
+
+def _merge_excel_priority(work: dict, row: ExcelRow, fields: dict) -> None:
+    """Merge parser results with Excel taking wholesale priority per field."""
+    if row.author:
+        work["authors"] = [a.strip() for a in row.author.split(",") if a.strip()]
+    elif fields.get("authors"):
         work["authors"] = fields["authors"]
-    if fields.get("publisher"):
+
+    if row.publisher:
+        work["publisher"] = row.publisher
+    elif fields.get("publisher"):
         work["publisher"] = fields["publisher"]
-    if fields.get("release_date"):
+
+    if row.release_date_str:
+        parsed = parse_excel_release(row.release_date_str)
+        if parsed:
+            iso, precision = parsed
+            work["release_date"] = iso
+            work["release_precision"] = precision
+    elif fields.get("release_date"):
         work["release_date"] = fields["release_date"]
         work["release_precision"] = fields["release_precision"]
-    if fields.get("cover_url"):
+
+    if row.cover_url:
+        work["cover_url"] = row.cover_url
+    elif fields.get("cover_url"):
         work["cover_url"] = fields["cover_url"]
 
 
@@ -176,6 +236,7 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
     ignored_no_year: list[str] = []
     missing_medium: list[str] = []
     unmatched: list[str] = []
+    dead_links: list[str] = []
 
     client = WikiClient(cache_dir=CACHE_DIR, refresh=refresh)
     rows = list(read_works(EXCEL_PATH))
@@ -194,7 +255,7 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
             continue
         work = _row_to_work(row)
         if not dry_run:
-            _enrich(work, row, client, unmatched)
+            _enrich(work, row, client, unmatched, dead_links)
         works.append(work)
         valid_rows.append(row)
         if (i + 1) % 50 == 0:
@@ -263,12 +324,18 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
         "\n".join(unmatched) + ("\n" if unmatched else ""),
         encoding="utf-8",
     )
+    DEAD_LINKS_LOG.parent.mkdir(parents=True, exist_ok=True)
+    DEAD_LINKS_LOG.write_text(
+        "\n".join(dead_links) + ("\n" if dead_links else ""),
+        encoding="utf-8",
+    )
 
     writeback = update_excel(EXCEL_PATH, enriched_lookup)
     print(
         f"wrote {summary} to {OUTPUT_PATH}; "
         f"excel writeback: {writeback['updated']} updated, "
-        f"{writeback['not_found_in_excel']} not-found-in-excel"
+        f"{writeback['not_found_in_excel']} not-found-in-excel; "
+        f"{len(dead_links)} dead links"
     )
     return payload
 
