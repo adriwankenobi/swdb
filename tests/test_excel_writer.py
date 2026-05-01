@@ -30,7 +30,47 @@ def tiny_xlsx(tmp_path: Path) -> Path:
     return path
 
 
-def test_update_excel_writes_authors_publisher_release_cover(tiny_xlsx: Path):
+def test_update_excel_fills_empty_cells(tmp_path: Path):
+    """Writer fills empty cells with parser values."""
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "REBELLION"
+    ws.append([
+        "YEAR", "MEDIUM", "SERIES", "TITLE", "#",
+        "AUTHOR", "PUBLISHER", "RELEASE", "COLLECTED", "INFO", "COVER",
+    ])
+    ws.append([
+        "0 ABY", "Novel", "Star Wars Episode", "A New Hope", "IV",
+        None, None, None, None, None, None,  # all enriched cells empty
+    ])
+    path = tmp_path / "empty.xlsx"
+    wb.save(path)
+    wb.close()
+
+    enriched = {
+        (5, "A New Hope", "Star Wars Episode", "Novel", "IV"): {
+            "authors": ["Alan Dean Foster"],
+            "publisher": "Ballantine Books",
+            "release_date": "1976-11-12",
+            "release_precision": "day",
+            "cover_url": "https://example.com/cover.jpg",
+        },
+    }
+    result = update_excel(path, enriched)
+    assert result["updated"] == 1
+
+    wb = load_workbook(path, data_only=True)
+    ws = wb["REBELLION"]
+    row2 = list(ws.iter_rows(min_row=2, max_row=2, values_only=True))[0]
+    assert row2[5] == "Alan Dean Foster"
+    assert row2[6] == "Ballantine Books"
+    assert row2[7] == "1976.11.12"
+    assert row2[10] == "https://example.com/cover.jpg"
+    wb.close()
+
+
+def test_update_excel_does_not_overwrite_populated_cells(tiny_xlsx: Path):
+    """Cells that already have a value are NEVER overwritten by the parser."""
     enriched = {
         (5, "A New Hope", "Star Wars Episode", "Novel", "IV"): {
             "authors": ["Alan Dean Foster"],
@@ -41,19 +81,16 @@ def test_update_excel_writes_authors_publisher_release_cover(tiny_xlsx: Path):
         },
     }
     result = update_excel(tiny_xlsx, enriched)
-    assert result["updated"] == 1
+    # tiny_xlsx row 2 is fully populated with OLD values; nothing changes.
+    assert result["updated"] == 0
 
     wb = load_workbook(tiny_xlsx, data_only=True)
     ws = wb["REBELLION"]
     row2 = list(ws.iter_rows(min_row=2, max_row=2, values_only=True))[0]
-    # AUTHOR (index 5), PUBLISHER (6), RELEASE (7), COVER (10)
-    assert row2[5] == "Alan Dean Foster"
-    assert row2[6] == "Ballantine Books"
-    assert row2[7] == "1976.11.12"
-    assert row2[10] == "https://example.com/cover.jpg"
-    # Trusted columns are unchanged
-    assert row2[0] == "0 ABY"
-    assert row2[3] == "A New Hope"
+    assert row2[5] == "OLD AUTHOR"
+    assert row2[6] == "OLD PUBLISHER"
+    assert row2[7] == "1976.01.01"
+    assert row2[10] == "OLD COVER"
     wb.close()
 
 
@@ -61,15 +98,30 @@ def test_update_excel_writes_authors_publisher_release_cover(tiny_xlsx: Path):
     "precision,expected",
     [("day", "1976.11.12"), ("month", "1976.11"), ("year", "1976")],
 )
-def test_update_excel_writes_release_at_precision(tiny_xlsx: Path, precision, expected):
+def test_update_excel_writes_release_at_precision(tmp_path: Path, precision, expected):
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "REBELLION"
+    ws.append([
+        "YEAR", "MEDIUM", "SERIES", "TITLE", "#",
+        "AUTHOR", "PUBLISHER", "RELEASE", "COLLECTED", "INFO", "COVER",
+    ])
+    ws.append([
+        "0 ABY", "Novel", "Star Wars Episode", "A New Hope", "IV",
+        None, None, None, None, None, None,
+    ])
+    path = tmp_path / f"prec-{precision}.xlsx"
+    wb.save(path)
+    wb.close()
+
     enriched = {
         (5, "A New Hope", "Star Wars Episode", "Novel", "IV"): {
             "release_date": "1976-11-12",
             "release_precision": precision,
         },
     }
-    update_excel(tiny_xlsx, enriched)
-    wb = load_workbook(tiny_xlsx, data_only=True)
+    update_excel(path, enriched)
+    wb = load_workbook(path, data_only=True)
     ws = wb["REBELLION"]
     row2 = list(ws.iter_rows(min_row=2, max_row=2, values_only=True))[0]
     assert row2[7] == expected
@@ -91,19 +143,34 @@ def test_update_excel_does_not_touch_unrelated_rows(tiny_xlsx: Path):
     wb.close()
 
 
-def test_update_excel_skips_missing_fields(tiny_xlsx: Path):
-    # Only authors provided; publisher/release/cover should NOT be cleared
+def test_update_excel_skips_missing_fields(tmp_path: Path):
+    """Fields not in enriched dict do not affect populated cells."""
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "REBELLION"
+    ws.append([
+        "YEAR", "MEDIUM", "SERIES", "TITLE", "#",
+        "AUTHOR", "PUBLISHER", "RELEASE", "COLLECTED", "INFO", "COVER",
+    ])
+    ws.append([
+        "0 ABY", "Novel", "Star Wars Episode", "A New Hope", "IV",
+        None, "OLD PUBLISHER", "1976.01.01", None, None, "OLD COVER",
+    ])
+    path = tmp_path / "partial.xlsx"
+    wb.save(path)
+    wb.close()
+
     enriched = {
         (5, "A New Hope", "Star Wars Episode", "Novel", "IV"): {
-            "authors": ["Alan Dean Foster"],
+            "authors": ["Alan Dean Foster"],  # only authors provided
         },
     }
-    update_excel(tiny_xlsx, enriched)
-    wb = load_workbook(tiny_xlsx, data_only=True)
+    update_excel(path, enriched)
+    wb = load_workbook(path, data_only=True)
     ws = wb["REBELLION"]
     row2 = list(ws.iter_rows(min_row=2, max_row=2, values_only=True))[0]
-    assert row2[5] == "Alan Dean Foster"
-    assert row2[6] == "OLD PUBLISHER"
-    assert row2[7] == "1976.01.01"
-    assert row2[10] == "OLD COVER"
+    assert row2[5] == "Alan Dean Foster"  # was empty, now filled
+    assert row2[6] == "OLD PUBLISHER"     # untouched
+    assert row2[7] == "1976.01.01"        # untouched
+    assert row2[10] == "OLD COVER"        # untouched
     wb.close()

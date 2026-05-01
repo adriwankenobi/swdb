@@ -70,23 +70,22 @@ def update_excel(path: Path, enriched: dict[tuple, dict]) -> dict:
                     not_found += 1
                     continue
                 changed = False
-                if fields.get("authors"):
+                if fields.get("authors") and not row[COL_AUTHOR - 1].value:
                     new_value = _format_authors(fields["authors"])
-                    if new_value and row[COL_AUTHOR - 1].value != new_value:
+                    if new_value:
                         row[COL_AUTHOR - 1].value = new_value
                         changed = True
-                if fields.get("publisher") and row[COL_PUBLISHER - 1].value != fields["publisher"]:
+                if fields.get("publisher") and not row[COL_PUBLISHER - 1].value:
                     row[COL_PUBLISHER - 1].value = fields["publisher"]
                     changed = True
-                if fields.get("release_date"):
+                if fields.get("release_date") and not row[COL_RELEASE - 1].value:
                     formatted = _format_release(
                         fields["release_date"],
                         fields.get("release_precision", "day"),
                     )
-                    if row[COL_RELEASE - 1].value != formatted:
-                        row[COL_RELEASE - 1].value = formatted
-                        changed = True
-                if fields.get("cover_url") and row[COL_COVER - 1].value != fields["cover_url"]:
+                    row[COL_RELEASE - 1].value = formatted
+                    changed = True
+                if fields.get("cover_url") and not row[COL_COVER - 1].value:
                     row[COL_COVER - 1].value = fields["cover_url"]
                     changed = True
                 if changed:
