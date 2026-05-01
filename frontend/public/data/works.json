@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-01T10:42:44+00:00",
+  "generated_at": "2026-05-01T10:59:16+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -17936,7 +17936,13 @@
       "medium": "Short Story",
       "year": 0,
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Spare_Parts_(disambiguation)"
+      "wiki_url": "https://starwars.fandom.com/wiki/Spare_Parts_(short_story)",
+      "authors": [
+        "Pablo Hidalgo"
+      ],
+      "publisher": "West End Games",
+      "release_date": "1996-11-01",
+      "release_precision": "month"
     },
     {
       "id": "638e5653-016a-5db2-8e37-8be1fc1e6de7",
@@ -23773,7 +23779,13 @@
       "medium": "Short Story",
       "year": 3,
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Mutiny_on_the_Rand_Ecliptic"
+      "wiki_url": "https://starwars.fandom.com/wiki/Mutiny_on_the_Rand_Ecliptic_(short_story)",
+      "authors": [
+        "Michael Stern"
+      ],
+      "publisher": "West End Games",
+      "release_date": "1989-01-01",
+      "release_precision": "year"
     },
     {
       "id": "2c93452f-8f54-5a7a-bf02-54fd2d71a2d7",
@@ -25792,7 +25804,14 @@
       "series": "Shadows of the Empire",
       "number": "1",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Shadows_of_the_Empire",
+      "wiki_url": "https://starwars.fandom.com/wiki/Shadows_of_the_Empire_1",
+      "authors": [
+        "John Wagner",
+        "Kilian Plunkett"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1996-05-01",
+      "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3f/SOTE-logo.jpg/revision/latest"
     },
     {
@@ -25804,7 +25823,14 @@
       "series": "Shadows of the Empire",
       "number": "2",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Shadows_of_the_Empire",
+      "wiki_url": "https://starwars.fandom.com/wiki/Shadows_of_the_Empire_2",
+      "authors": [
+        "John Wagner",
+        "Kilian Plunkett"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1996-06-04",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3f/SOTE-logo.jpg/revision/latest"
     },
     {
@@ -25816,7 +25842,14 @@
       "series": "Shadows of the Empire",
       "number": "3",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Shadows_of_the_Empire",
+      "wiki_url": "https://starwars.fandom.com/wiki/Shadows_of_the_Empire_3",
+      "authors": [
+        "John Wagner",
+        "Kilian Plunkett"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1996-07-03",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3f/SOTE-logo.jpg/revision/latest"
     },
     {
@@ -25828,7 +25861,14 @@
       "series": "Shadows of the Empire",
       "number": "4",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Shadows_of_the_Empire",
+      "wiki_url": "https://starwars.fandom.com/wiki/Shadows_of_the_Empire_4",
+      "authors": [
+        "John Wagner",
+        "Kilian Plunkett"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1996-08-07",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3f/SOTE-logo.jpg/revision/latest"
     },
     {
@@ -25840,7 +25880,14 @@
       "series": "Shadows of the Empire",
       "number": "5",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Shadows_of_the_Empire",
+      "wiki_url": "https://starwars.fandom.com/wiki/Shadows_of_the_Empire_5",
+      "authors": [
+        "John Wagner",
+        "Kilian Plunkett"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1996-09-04",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3f/SOTE-logo.jpg/revision/latest"
     },
     {
@@ -25852,7 +25899,14 @@
       "series": "Shadows of the Empire",
       "number": "6",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Shadows_of_the_Empire",
+      "wiki_url": "https://starwars.fandom.com/wiki/Shadows_of_the_Empire_6",
+      "authors": [
+        "John Wagner",
+        "Kilian Plunkett"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1996-10-02",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3f/SOTE-logo.jpg/revision/latest"
     },
     {
