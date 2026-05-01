@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-01T12:53:51+00:00",
+  "generated_at": "2026-05-01T14:34:20+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -1048,7 +1048,9 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Light_and_Shadow",
       "authors": [
         "Paul Danner"
-      ]
+      ],
+      "release_date": "1999-07-01",
+      "release_precision": "month"
     },
     {
       "id": "5ef88cd0-8d1d-571b-9dc5-79ed952fd162",
@@ -2305,7 +2307,7 @@
       "series": "Knights of the Old Republic",
       "number": "1",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Knights_of_the_Old_Republic",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Knights_of_the_Old_Republic",
       "authors": [
         "John Jackson Miller",
         "Brian Ching",
@@ -2318,7 +2320,10 @@
         "Dean Zachary",
         "Ron Chan"
       ],
-      "publisher": "Dark Horse Comics"
+      "publisher": "Dark Horse Comics",
+      "release_date": "2003-07-15",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/15/KotOR_Cover.png/revision/latest"
     },
     {
       "id": "83d891c2-6640-531c-8607-415a7534aa88",
@@ -2668,7 +2673,15 @@
       "year_end": -3639,
       "series": "The Old Republic",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Old_Republic"
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Old_Republic",
+      "authors": [
+        "Jeff Dobson",
+        "Arnie Jorgensen",
+        "Daniel Erickson"
+      ],
+      "release_date": "2011-12-13",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f2/The_Old_Republic_cover.png/revision/latest"
     },
     {
       "id": "06dbadcf-cc92-5cbe-ba12-15480e9c15b1",
@@ -5266,7 +5279,7 @@
       "medium": "Videogame",
       "year": -32,
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Racer_Revenge",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_I_Racer",
       "release_date": "2002-02-12",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d4/Swracerrevenge.jpg/revision/latest"
@@ -7444,7 +7457,7 @@
       "year": -22,
       "series": "Republic Commando",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Republic_Commando",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Republic_Commando",
       "release_date": "2005-02-28",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/RepublicCommandoLogo.png/revision/latest"
@@ -7921,7 +7934,10 @@
       "series": "Star Wars Clone Wars",
       "number": "1x02",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_2"
+      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_2_(Star_Wars:_Clone_Wars)",
+      "release_date": "2003-11-10",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/66/CW_Chapter_2.png/revision/latest"
     },
     {
       "id": "f41b29ca-3352-53d0-b266-6e05e8205636",
@@ -7932,7 +7948,10 @@
       "series": "Star Wars Clone Wars",
       "number": "1x03",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_3"
+      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_3_(Star_Wars:_Clone_Wars)",
+      "release_date": "2003-11-11",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ea/CW_Chapter_3.png/revision/latest"
     },
     {
       "id": "aa1a3a0b-2709-5d97-af43-de8df99f3db6",
@@ -8125,7 +8144,7 @@
       "series": "Star Wars Clone Wars",
       "number": "2x07",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_17",
+      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_17_(Star_Wars:_Clone_Wars)",
       "authors": [
         "Jon Favreau"
       ],
@@ -8142,7 +8161,7 @@
       "series": "Star Wars Clone Wars",
       "number": "2x08",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_18",
+      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_18_(Star_Wars:_Clone_Wars)",
       "authors": [
         "Jon Favreau"
       ],
@@ -8159,7 +8178,7 @@
       "series": "Star Wars Clone Wars",
       "number": "2x09",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_19",
+      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_19_(Star_Wars:_Clone_Wars)",
       "authors": [
         "Noah Kloor",
         "Jon Favreau"
@@ -9101,9 +9120,15 @@
       "year": -19,
       "series": "The Clone Wars",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Clone_Wars_(film)",
+      "authors": [
+        "Henry Gilroy",
+        "Scott Murphy",
+        "Steven Melching"
+      ],
       "release_date": "2002-10-29",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/ff/The_Clone_Wars_film_poster.jpg/revision/latest"
     },
     {
       "id": "2bd47ea9-b83c-56f2-afd8-b52ed146abea",
@@ -9724,10 +9749,13 @@
       "year": -19,
       "series": "The Clone Wars Webcomics",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Switch",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Switch",
       "authors": [
         "Pablo Hidalgo"
-      ]
+      ],
+      "release_date": "2009-01-09",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/70/Switch.png/revision/latest"
     },
     {
       "id": "b58bd70c-3771-5f5b-945f-261e8dc1e90d",
@@ -9933,10 +9961,12 @@
       "series": "The Clone Wars",
       "number": "1x17",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Blue_Shadow_Virus",
+      "wiki_url": "https://starwars.fandom.com/wiki/Blue_Shadow_Virus_(episode)",
       "authors": [
         "Craig Titley"
       ],
+      "release_date": "2009-02-13",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fb/Blue_shadow_virus_vial.png/revision/latest"
     },
     {
@@ -10669,10 +10699,13 @@
       "series": "The Clone Wars",
       "number": "3x05",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Corruption",
+      "wiki_url": "https://starwars.fandom.com/wiki/Corruption_(episode)",
       "authors": [
         "Cameron Litvack"
-      ]
+      ],
+      "release_date": "2010-10-08",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/37/Epguide305.png/revision/latest"
     },
     {
       "id": "a42e59f0-c76a-54aa-be7e-827825ef46cc",
@@ -10701,7 +10734,14 @@
       "series": "The Clone Wars",
       "number": "3x07",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Assassin"
+      "wiki_url": "https://starwars.fandom.com/wiki/Assassin_(episode)",
+      "authors": [
+        "Katie Lucas",
+        "Drew Z. Greenberg"
+      ],
+      "release_date": "2010-10-22",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c6/Epguide307.jpg/revision/latest"
     },
     {
       "id": "a0013f9e-5320-52ed-9225-a25527b3079b",
@@ -10925,7 +10965,12 @@
       "series": "The Clone Wars",
       "number": "3x12",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Nightsisters",
+      "wiki_url": "https://starwars.fandom.com/wiki/Nightsisters_(episode)",
+      "authors": [
+        "Katie Lucas"
+      ],
+      "release_date": "2011-01-07",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d7/Nightsisters_symbol_-_JFO.svg/revision/latest"
     },
     {
@@ -11026,7 +11071,12 @@
       "series": "The Clone Wars",
       "number": "3x16",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Altar_of_Mortis",
+      "wiki_url": "https://starwars.fandom.com/wiki/Altar_of_Mortis_(episode)",
+      "authors": [
+        "Christian Taylor"
+      ],
+      "release_date": "2011-02-04",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c3/AltarOfMortis-AOM.png/revision/latest"
     },
     {
@@ -11299,10 +11349,12 @@
       "series": "The Clone Wars",
       "number": "4x08",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_General",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_General_(episode)",
       "authors": [
         "Matt Michnovetz"
       ],
+      "release_date": "2011-11-04",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6d/General.png/revision/latest"
     },
     {
@@ -11654,10 +11706,13 @@
       "series": "The Clone Wars",
       "number": "4x20",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Bounty",
+      "wiki_url": "https://starwars.fandom.com/wiki/Bounty_(episode)",
       "authors": [
         "Katie Lucas"
-      ]
+      ],
+      "release_date": "2012-03-02",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/30/Epguide420.png/revision/latest"
     },
     {
       "id": "a2b4b758-e612-5180-9b9e-d579ca0e8149",
@@ -11685,10 +11740,12 @@
       "series": "The Clone Wars",
       "number": "4x22",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Revenge",
+      "wiki_url": "https://starwars.fandom.com/wiki/Revenge_(episode)",
       "authors": [
         "Katie Lucas"
       ],
+      "release_date": "2012-03-16",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7e/The_Revenge.jpg/revision/latest"
     },
     {
@@ -12035,10 +12092,13 @@
       "series": "The Clone Wars",
       "number": "5x01",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Revival",
+      "wiki_url": "https://starwars.fandom.com/wiki/Revival_(episode)",
       "authors": [
         "Chris Collins"
-      ]
+      ],
+      "release_date": "2012-08-24",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/20/Epguide501.jpg/revision/latest"
     },
     {
       "id": "4121bdc5-df12-542e-9053-8f7dd2fee69e",
@@ -12373,10 +12433,13 @@
       "series": "The Clone Wars",
       "number": "6x12",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Destiny",
+      "wiki_url": "https://starwars.fandom.com/wiki/Destiny_(episode)",
       "authors": [
         "Christian Taylor"
-      ]
+      ],
+      "release_date": "2014-03-07",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d1/Epguide612.png/revision/latest"
     },
     {
       "id": "4ed53883-09ed-5edf-b934-b9f9b89c02d6",
@@ -13007,7 +13070,7 @@
       "series": "Star Wars Clone Wars",
       "number": "3x01",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_21:_The_Pirate",
+      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_21_(Star_Wars:_Clone_Wars)",
       "authors": [
         "Jon Favreau"
       ],
@@ -19840,12 +19903,14 @@
       "series": "Star Wars",
       "number": "1",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_In_the_Shadow_of_Yavin",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_(2013)_1",
       "authors": [
         "Brian Wood",
         "Carlos D'Anda"
       ],
       "publisher": "Dark Horse Comics",
+      "release_date": "2013-01-09",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/SWDH_1.jpg/revision/latest"
     },
     {
@@ -19857,12 +19922,14 @@
       "series": "Star Wars",
       "number": "2",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_In_the_Shadow_of_Yavin",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_(2013)_2",
       "authors": [
         "Brian Wood",
         "Carlos D'Anda"
       ],
       "publisher": "Dark Horse Comics",
+      "release_date": "2013-02-13",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/SWDH_1.jpg/revision/latest"
     },
     {
@@ -19874,12 +19941,14 @@
       "series": "Star Wars",
       "number": "3",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_In_the_Shadow_of_Yavin",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_(2013)_3",
       "authors": [
         "Brian Wood",
         "Carlos D'Anda"
       ],
       "publisher": "Dark Horse Comics",
+      "release_date": "2013-03-13",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/SWDH_1.jpg/revision/latest"
     },
     {
@@ -19891,12 +19960,14 @@
       "series": "Star Wars",
       "number": "4",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_In_the_Shadow_of_Yavin",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_(2013)_4",
       "authors": [
         "Brian Wood",
         "Carlos D'Anda"
       ],
       "publisher": "Dark Horse Comics",
+      "release_date": "2013-04-10",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/SWDH_1.jpg/revision/latest"
     },
     {
@@ -19908,12 +19979,14 @@
       "series": "Star Wars",
       "number": "5",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_In_the_Shadow_of_Yavin",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_(2013)_5",
       "authors": [
         "Brian Wood",
         "Carlos D'Anda"
       ],
       "publisher": "Dark Horse Comics",
+      "release_date": "2013-05-08",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/SWDH_1.jpg/revision/latest"
     },
     {
@@ -19925,12 +19998,14 @@
       "series": "Star Wars",
       "number": "6",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_In_the_Shadow_of_Yavin",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_(2013)_6",
       "authors": [
         "Brian Wood",
         "Carlos D'Anda"
       ],
       "publisher": "Dark Horse Comics",
+      "release_date": "2013-06-12",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/SWDH_1.jpg/revision/latest"
     },
     {
@@ -23176,7 +23251,9 @@
       "wiki_url": "https://starwars.fandom.com/wiki/The_Contact",
       "authors": [
         "Charlene Newcomb and Rich Handley"
-      ]
+      ],
+      "release_date": "2018-01-01",
+      "release_precision": "year"
     },
     {
       "id": "6e7ce1f7-9f89-59f9-ba53-2a9ca9a5ac00",
@@ -23384,7 +23461,9 @@
       "authors": [
         "James L. Cambias"
       ],
-      "publisher": "Unofficially Published"
+      "publisher": "Unofficially Published",
+      "release_date": "1998-02-01",
+      "release_precision": "month"
     },
     {
       "id": "f71df683-cbd0-51d6-ad1a-140ca93843d3",
@@ -23397,7 +23476,9 @@
       "authors": [
         "George R. Strayton"
       ],
-      "publisher": "Unofficially Published"
+      "publisher": "Unofficially Published",
+      "release_date": "1998-02-01",
+      "release_precision": "month"
     },
     {
       "id": "4b6b2a52-f9ab-5cd2-a147-bbbfd57d1d5b",
@@ -23410,7 +23491,9 @@
       "authors": [
         "Jean Rabe"
       ],
-      "publisher": "Unofficially Published"
+      "publisher": "Unofficially Published",
+      "release_date": "1998-05-01",
+      "release_precision": "month"
     },
     {
       "id": "5a382e09-f21e-5148-8e31-198ad69dfc55",
@@ -23423,7 +23506,9 @@
       "authors": [
         "Paul Danner"
       ],
-      "publisher": "Unofficially Published"
+      "publisher": "Unofficially Published",
+      "release_date": "2000-12-01",
+      "release_precision": "month"
     },
     {
       "id": "3c2d35e1-e2a7-5617-a0d2-9601b5953f7a",
@@ -24680,15 +24765,18 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/df/TheTravellingJindas.png/revision/latest"
     },
     {
-      "id": "bb0d8e9d-1337-5c41-b438-95e3c9c7b787",
+      "id": "880bd44a-4065-583a-b9d4-1eca71872dbf",
       "era": "REBELLION",
-      "title": "The Tree of Life",
+      "title": "The Tree of Light",
       "medium": "TV Show",
       "year": 3,
       "series": "Ewoks",
       "number": "1x06",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Tree_of_Life",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Tree_of_Light",
+      "authors": [
+        "Bob Carrau"
+      ],
       "publisher": "Disney–Lucasfilm Press",
       "release_date": "2021-09-07",
       "release_precision": "day",
@@ -25078,10 +25166,12 @@
       "series": "Ewoks",
       "number": "2x16",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Horville%27s_Hut_of_Horrors",
+      "wiki_url": "https://starwars.fandom.com/wiki/Horville%27s_Hut_of_Horrors_(episode)",
       "authors": [
         "Paul Dini"
       ],
+      "release_date": "1986-11-15",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d3/HorvillesHutOfHorrors.jpg/revision/latest"
     },
     {
@@ -25647,7 +25737,9 @@
       "year": 3,
       "series": "Shadows of the Empire",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Shadows_of_the_Empire",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Shadows_of_the_Empire_(video_game)",
+      "release_date": "1996-11-03",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3f/SOTE-logo.jpg/revision/latest"
     },
     {
@@ -26183,7 +26275,9 @@
       "authors": [
         "John Beyer",
         "Kathy Burdette"
-      ]
+      ],
+      "release_date": "1998-05-01",
+      "release_precision": "month"
     },
     {
       "id": "473de2ce-c099-5c57-932f-952a934c6888",
@@ -28841,7 +28935,9 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Jodo_Kast_%26_Dengar:_Preying_for_Time",
       "authors": [
         "Andy Mangels"
-      ]
+      ],
+      "release_date": "2024-01-01",
+      "release_precision": "month"
     },
     {
       "id": "c9fba8d1-8ad0-5c43-8d37-6892b826950e",
@@ -29124,7 +29220,9 @@
       "authors": [
         "Patricia A. Jackson"
       ],
-      "publisher": "SWRPGNetwork"
+      "publisher": "SWRPGNetwork",
+      "release_date": "2001-08-01",
+      "release_precision": "month"
     },
     {
       "id": "53c18410-c3ef-579a-9f80-c8fdaa424c8d",
@@ -30291,7 +30389,9 @@
       "authors": [
         "Tom Veitch"
       ],
-      "publisher": "Unpublished"
+      "publisher": "Unpublished",
+      "release_date": "2022-11-01",
+      "release_precision": "month"
     },
     {
       "id": "e537f74f-53f5-54eb-a770-50b9a2af171b",
@@ -30966,7 +31066,9 @@
       "authors": [
         "Paul Danner"
       ],
-      "publisher": "Unofficially Published"
+      "publisher": "Unofficially Published",
+      "release_date": "1998-05-01",
+      "release_precision": "month"
     },
     {
       "id": "d6308bec-9258-586f-9f07-3f6f35d7c2d9",
@@ -31369,7 +31471,10 @@
       "year": 14,
       "series": "Jedi Knight",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Jedi_academy"
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Jedi_Knight:_Jedi_Academy",
+      "release_date": "2003-09-16",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f1/Jedi_Academy_PC.png/revision/latest"
     },
     {
       "id": "6521dad0-5266-5424-9795-68021417a78c",
@@ -33206,7 +33311,9 @@
       "authors": [
         "Joseph Bongiorno",
         "Rich Handley"
-      ]
+      ],
+      "release_date": "2017-12-25",
+      "release_precision": "day"
     },
     {
       "id": "62701b5f-5628-5fde-8d61-fec01072b957",
@@ -33218,7 +33325,9 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Supernatural_Encounters:_The_Trial_and_Transformation_of_Arhul_Hextrophon",
       "authors": [
         "Joseph Bongiorno"
-      ]
+      ],
+      "release_date": "2023-01-01",
+      "release_precision": "year"
     },
     {
       "id": "5df65a68-2e99-5766-b7d5-96484ebc3270",
