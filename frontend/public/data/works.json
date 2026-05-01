@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-30T15:07:21+00:00",
+  "generated_at": "2026-05-01T07:46:10+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -47,8 +47,10 @@
       "authors": [
         "Tim Lebbon"
       ],
+      "publisher": "Kindle Daily Post",
       "release_date": "2013-04-25",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://cdn.vox-cdn.com/thumbor/u_VaxYS9Qx9X13OaIihqL8sUF48=/1400x1400/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/9521997/kindle_app_logo.jpg"
     },
     {
       "id": "5cd24bd9-b39e-5aa6-a8c1-71744ed02aa0",
@@ -336,9 +338,9 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/44/DotJ-FW5.jpg/revision/latest"
     },
     {
-      "id": "8e5445d7-2d07-5196-ba1e-a8a52224adc7",
+      "id": "c91f21b2-a41c-57b1-b43a-3b95eac9edfa",
       "era": "PRE-REPUBLIC",
-      "title": "Xim The Despot",
+      "title": "Xim Week: The Despotica",
       "medium": "Short Story",
       "year": -25200,
       "year_end": -671,
@@ -347,6 +349,7 @@
       "authors": [
         "Michael Kogge"
       ],
+      "publisher": "Hyperspace",
       "release_date": "2009-12-08",
       "release_precision": "day"
     },
@@ -1043,7 +1046,10 @@
       "medium": "Short Story",
       "year": -3994,
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Light_and_Shadow"
+      "wiki_url": "https://starwars.fandom.com/wiki/Light_and_Shadow",
+      "authors": [
+        "Paul Danner"
+      ]
     },
     {
       "id": "5ef88cd0-8d1d-571b-9dc5-79ed952fd162",
@@ -1171,6 +1177,7 @@
       "authors": [
         "John Jackson Miller"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2010-04-29",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9c/Demagol-KotOR48.jpg/revision/latest"
@@ -1660,6 +1667,7 @@
       "authors": [
         "John Jackson Miller"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2008-09-29",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fe/Interference.jpg/revision/latest"
@@ -2298,7 +2306,21 @@
       "series": "Knights of the Old Republic",
       "number": "1",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Knights_of_the_Old_Republic"
+      "wiki_url": "https://starwars.fandom.com/wiki/Knights_of_the_Old_Republic",
+      "authors": [
+        "John Jackson Miller",
+        "Brian Ching",
+        "Travel Foreman",
+        "Dustin Weaver",
+        "Harvey Tolibao",
+        "Bong Dazo",
+        "Scott Hepburn",
+        "Alan Robinson",
+        "Dean Zachary",
+        "Ron Chan"
+      ],
+      "publisher": "Dark Horse Comics",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/df/Kotorhandbookcoverandtitle.jpg/revision/latest"
     },
     {
       "id": "83d891c2-6640-531c-8607-415a7534aa88",
@@ -2364,9 +2386,14 @@
       "medium": "Short Story",
       "year": -3680,
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Vacation",
+      "wiki_url": "https://www.BioWare/blog/vacation",
+      "authors": [
+        "Uncredited"
+      ],
+      "publisher": "BioWare",
       "release_date": "2015-07-07",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "http://www.eteknix.com/wp-content/uploads/2011/11/swtor-logo.jpg"
     },
     {
       "id": "a1229fd4-4055-52b4-8924-5d805ef40590",
@@ -2574,9 +2601,14 @@
       "year": -3644,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Final_Trial",
+      "wiki_url": "https://www.BioWare/blog/final-trial",
+      "authors": [
+        "Uncredited"
+      ],
+      "publisher": "BioWare",
       "release_date": "2015-03-06",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "http://www.eteknix.com/wp-content/uploads/2011/11/swtor-logo.jpg"
     },
     {
       "id": "93a7a7f6-ab0a-59d3-9541-126a3d21ba3f",
@@ -2603,12 +2635,14 @@
       "year": -3643,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Price_of_Power",
+      "wiki_url": "https://www.BioWare/blog/price-power",
       "authors": [
         "Courtney Woods"
       ],
+      "publisher": "BioWare",
       "release_date": "2015-02-05",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "http://www.eteknix.com/wp-content/uploads/2011/11/swtor-logo.jpg"
     },
     {
       "id": "2129ca0e-5491-54e5-8cf9-08faeb8bbb45",
@@ -2619,8 +2653,13 @@
       "series": "The Old Republic",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Sixth_Line",
+      "authors": [
+        "Uncredited"
+      ],
+      "publisher": "BioWare",
       "release_date": "2015-04-24",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "http://www.eteknix.com/wp-content/uploads/2011/11/swtor-logo.jpg"
     },
     {
       "id": "81a6e1e8-d9d0-5762-8302-8cfa3f5a02dd",
@@ -2631,8 +2670,13 @@
       "series": "The Old Republic",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Sixth_Line",
+      "authors": [
+        "Uncredited"
+      ],
+      "publisher": "BioWare",
       "release_date": "2015-04-24",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "http://www.eteknix.com/wp-content/uploads/2011/11/swtor-logo.jpg"
     },
     {
       "id": "9afb3af3-ec9b-51d1-9a9f-be62ecde6fb9",
@@ -2799,9 +2843,14 @@
       "year": -3637,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Surface_Details",
+      "wiki_url": "https://www.BioWare/blog/surface-details",
+      "authors": [
+        "Uncredited"
+      ],
+      "publisher": "BioWare",
       "release_date": "2014-08-14",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "http://www.eteknix.com/wp-content/uploads/2011/11/swtor-logo.jpg"
     },
     {
       "id": "51a9afad-dfff-5aab-8677-e7527265e2ed",
@@ -2811,9 +2860,14 @@
       "year": -3637,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Wanted:_Dead_and_Dismantled",
+      "wiki_url": "https://www.BioWare/blog/wanted-dead-and-dismantled",
+      "authors": [
+        "Uncredited"
+      ],
+      "publisher": "BioWare",
       "release_date": "2014-08-26",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "http://www.eteknix.com/wp-content/uploads/2011/11/swtor-logo.jpg"
     },
     {
       "id": "58ae67e8-c365-5ae0-92e2-9ee48db616af",
@@ -2823,9 +2877,14 @@
       "year": -3637,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Remnants",
+      "wiki_url": "https://www.BioWare/blog/remnants",
+      "authors": [
+        "Uncredited"
+      ],
+      "publisher": "BioWare",
       "release_date": "2014-09-04",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "http://www.eteknix.com/wp-content/uploads/2011/11/swtor-logo.jpg"
     },
     {
       "id": "cb8c6900-e71e-5891-aeb5-5757b6cc745a",
@@ -2835,9 +2894,14 @@
       "year": -3637,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Bedtime_on_Concordia",
+      "wiki_url": "https://www.BioWare/info/news/blog/20141028",
+      "authors": [
+        "Uncredited"
+      ],
+      "publisher": "BioWare",
       "release_date": "2014-10-28",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "http://www.eteknix.com/wp-content/uploads/2011/11/swtor-logo.jpg"
     },
     {
       "id": "3adadb66-bcb0-5b0f-8830-70b5f923fafa",
@@ -2861,8 +2925,13 @@
       "series": "The Old Republic",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/One_Night_in_the_Dealer%27s_Den",
+      "authors": [
+        "Uncredited"
+      ],
+      "publisher": "BioWare",
       "release_date": "2015-02-13",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "http://www.eteknix.com/wp-content/uploads/2011/11/swtor-logo.jpg"
     },
     {
       "id": "b32c1c90-7e51-5963-920f-88a6c7d956a8",
@@ -2872,9 +2941,14 @@
       "year": -3636,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Regrets",
+      "wiki_url": "https://www.BioWare/blog/regrets",
+      "authors": [
+        "Uncredited"
+      ],
+      "publisher": "BioWare",
       "release_date": "2015-04-03",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "http://www.eteknix.com/wp-content/uploads/2011/11/swtor-logo.jpg"
     },
     {
       "id": "ae7ad940-15cd-54f6-ab7b-aa531eb8e2c7",
@@ -2884,9 +2958,14 @@
       "year": -3636,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Brothers_(short_story)",
+      "wiki_url": "https://www.BioWare/info/news/blog/20150728",
+      "authors": [
+        "Uncredited"
+      ],
+      "publisher": "BioWare",
       "release_date": "2015-07-28",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "http://www.eteknix.com/wp-content/uploads/2011/11/swtor-logo.jpg"
     },
     {
       "id": "83ac9e89-aa2a-57f5-aff8-9255cdc169e5",
@@ -2910,12 +2989,14 @@
       "year": -3630,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/A_Mother%27s_Hope",
+      "wiki_url": "https://www.BioWare/info/news/blog/20161117",
       "authors": [
         "Drew Karpyshyn"
       ],
+      "publisher": "BioWare",
       "release_date": "2016-11-17",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "http://www.eteknix.com/wp-content/uploads/2011/11/swtor-logo.jpg"
     },
     {
       "id": "d9af7fce-ad44-5342-8d33-ad064eab9f35",
@@ -2938,10 +3019,11 @@
       "year": -3629,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Trading_Scars",
+      "wiki_url": "https://www.BioWare/info/news/news-article/20170817",
       "authors": [
         "Samantha Wallschlaeger"
       ],
+      "publisher": "BioWare",
       "release_date": "2017-08-17",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2d/Umbara-Planet_SWTOR.jpg/revision/latest"
@@ -2954,12 +3036,14 @@
       "year": -3629,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Chasing_Copero",
+      "wiki_url": "https://www.BioWare/info/news/news-article/20171116",
       "authors": [
         "Charles Boyd"
       ],
+      "publisher": "BioWare",
       "release_date": "2017-11-16",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "http://www.eteknix.com/wp-content/uploads/2011/11/swtor-logo.jpg"
     },
     {
       "id": "a519ea22-4df9-5287-b980-91c2b4a16e59",
@@ -2969,10 +3053,11 @@
       "year": -3626,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Quite_A_Story_To_Tell",
+      "wiki_url": "https://www.BioWare/info/news/article/20210413",
       "authors": [
         "Caitlin Sullivan Kelly"
       ],
+      "publisher": "BioWare",
       "release_date": "2021-04-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e8/QuiteAStoryToTell.jpg/revision/latest"
@@ -3028,7 +3113,8 @@
       ],
       "publisher": "Del Rey",
       "release_date": "2012-07-24",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6b/LTOTSppbk.jpg/revision/latest?cb=20120124002646"
     },
     {
       "id": "720e785d-f146-53e1-b1f4-447eba32ec21",
@@ -3154,6 +3240,7 @@
       "authors": [
         "John Jackson Miller"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2010-10-19",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a6/SWKnightErrantInflux.jpg/revision/latest"
@@ -4116,7 +4203,7 @@
       "year": -43,
       "series": "Tales",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/George_R._Binks",
+      "wiki_url": "https://starwars.fandom.com/wiki/George_R._Binks_(comic)",
       "authors": [
         "Tony Millionaire"
       ],
@@ -4581,6 +4668,7 @@
       "authors": [
         "Steve Miller"
       ],
+      "publisher": "Wizards of the Coast",
       "release_date": "2000-11-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/68/Gamer-1-starfighter.jpg/revision/latest"
@@ -5336,6 +5424,12 @@
       "series": "Star Wars Episode I Journal",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Anakin_Skywalker",
+      "authors": [
+        "Todd Strasser"
+      ],
+      "publisher": "Scholastic",
+      "release_date": "1999-01-01",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6f/Anakin_Skywalker_RotS.png/revision/latest"
     },
     {
@@ -5347,6 +5441,12 @@
       "series": "Star Wars Episode I Journal",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Maul",
+      "authors": [
+        "Jude Watson"
+      ],
+      "publisher": "Scholastic",
+      "release_date": "2000-01-01",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/89/MaulHS_SWI185.png/revision/latest"
     },
     {
@@ -6710,7 +6810,14 @@
       "medium": "Comic",
       "year": -27,
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Jango_Fett"
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Jango_Fett",
+      "authors": [
+        "Ron Marz"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2002-03-13",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/23/Jango_Fett.jpg/revision/latest?cb=20110320042850"
     },
     {
       "id": "789d2f69-e2be-578f-ad92-8db843f29dcd",
@@ -7268,7 +7375,14 @@
       "year": -23,
       "series": "Hasbro Toys R Us",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Practice_Makes_Perfect"
+      "wiki_url": "https://starwars.fandom.com/wiki/Practice_Makes_Perfect",
+      "authors": [
+        "Jason Hall"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2002-01-01",
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cc/Tru3.jpg/revision/latest?cb=20060530031311"
     },
     {
       "id": "39fb0967-6e7b-56ca-8242-a4e4a5712f85",
@@ -7371,7 +7485,8 @@
       ],
       "publisher": "StarWars.com",
       "release_date": "2008-04-23",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://cdn.freebiesupply.com/logos/large/2x/star-wars-logo-png-transparent.png"
     },
     {
       "id": "5826bab9-a329-5345-b1ec-44d028a4d556",
@@ -7382,6 +7497,8 @@
       "series": "Republic Commando",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Republic_Commando",
+      "release_date": "2005-02-28",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/RepublicCommandoLogo.png/revision/latest"
     },
     {
@@ -7532,10 +7649,11 @@
       "medium": "Short Story",
       "year": -22,
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/SkyeWalkers:_A_Clone_Wars_Story",
+      "wiki_url": "https://web.archive.org/web/20151030215018/http://www.abelgpena.com/SkyeWalkersCWstory.pdf",
       "authors": [
         "Abel G. Peña"
       ],
+      "publisher": "Unofficially",
       "release_date": "2015-03-06",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/75/Skyewalkers.jpg/revision/latest"
@@ -7754,8 +7872,10 @@
       "authors": [
         "Aaron Allston"
       ],
+      "publisher": "Paizo Publishing",
       "release_date": "2003-01-21",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/1c/Insider65.jpg/revision/latest?cb=20050811231501"
     },
     {
       "id": "ecffd1fa-5e33-59d0-958e-d97524e5db72",
@@ -7768,6 +7888,7 @@
       "authors": [
         "Aaron Allston"
       ],
+      "publisher": "Paizo Publishing",
       "release_date": "2004-01-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7d/JoramKithe-Insider73.jpg/revision/latest"
@@ -7801,6 +7922,7 @@
       "authors": [
         "Karen Traviss"
       ],
+      "publisher": "IDG Entertainment",
       "release_date": "2005-03-28",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fd/Omega_Squad-_Targets.jpg/revision/latest"
@@ -7852,7 +7974,8 @@
       "series": "Star Wars Clone Wars",
       "number": "1x02",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_2"
+      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_2",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/66/CW_Chapter_2.png/revision/latest"
     },
     {
       "id": "f41b29ca-3352-53d0-b266-6e05e8205636",
@@ -7863,7 +7986,8 @@
       "series": "Star Wars Clone Wars",
       "number": "1x03",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_3"
+      "wiki_url": "https://starwars.fandom.com/wiki/Chapter_3",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ea/CW_Chapter_3.png/revision/latest"
     },
     {
       "id": "aa1a3a0b-2709-5d97-af43-de8df99f3db6",
@@ -8303,7 +8427,8 @@
       ],
       "publisher": "Paizo Publishing",
       "release_date": "2003-06-03",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d5/Insider68.jpg/revision/latest?cb=20051117071059"
     },
     {
       "id": "0fe3c105-cd9f-51d7-b094-5cbdd36ddd71",
@@ -8318,7 +8443,8 @@
       ],
       "publisher": "Paizo Publishing",
       "release_date": "2003-06-03",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/bc/Insider69.jpg/revision/latest?cb=20051117071307"
     },
     {
       "id": "c51d128f-6dce-5acc-94f0-4a8bff5b7f03",
@@ -8333,7 +8459,8 @@
       ],
       "publisher": "Paizo Publishing",
       "release_date": "2003-06-03",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c6/Insider70.jpg/revision/latest?cb=20051120062906"
     },
     {
       "id": "13144245-d80f-5aa3-adfd-c26f2be2ab8a",
@@ -8636,6 +8763,7 @@
       "authors": [
         "Karen Traviss"
       ],
+      "publisher": "IDG Entertainment",
       "release_date": "2006-04-17",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/99/Odds.jpg/revision/latest"
@@ -9031,7 +9159,10 @@
       "year": -19,
       "series": "The Clone Wars",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars"
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars",
+      "release_date": "2002-10-29",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/22/TCW-GameCube.jpg/revision/latest"
     },
     {
       "id": "2bd47ea9-b83c-56f2-afd8-b52ed146abea",
@@ -9652,7 +9783,11 @@
       "year": -19,
       "series": "The Clone Wars Webcomics",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Switch"
+      "wiki_url": "https://starwars.fandom.com/wiki/Switch",
+      "authors": [
+        "Pablo Hidalgo"
+      ],
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/70/Switch.png/revision/latest"
     },
     {
       "id": "b58bd70c-3771-5f5b-945f-261e8dc1e90d",
@@ -9859,6 +9994,9 @@
       "number": "1x17",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Blue_Shadow_Virus",
+      "authors": [
+        "Craig Titley"
+      ],
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fb/Blue_shadow_virus_vial.png/revision/latest"
     },
     {
@@ -10095,6 +10233,7 @@
         "Jeffery Carlisle",
         "Daniel Falconer"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2009-09-30",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4d/Act_on_Instinct.png/revision/latest"
@@ -10167,6 +10306,7 @@
       "authors": [
         "Tom Hodges"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2010-09-14",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/63/TheValsedianOperation_cover.png/revision/latest"
@@ -10184,6 +10324,7 @@
       "authors": [
         "Carl Ellsworth"
       ],
+      "publisher": "DK Publishing",
       "release_date": "2010-04-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ef/Epguide217.png/revision/latest"
@@ -10352,6 +10493,7 @@
         "Drew Z. Greenberg",
         "Brian Larsen"
       ],
+      "publisher": "Penguin Books",
       "release_date": "2009-11-20",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/50/Epguide207.jpg/revision/latest"
@@ -10587,7 +10729,11 @@
       "series": "The Clone Wars",
       "number": "3x05",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Corruption"
+      "wiki_url": "https://starwars.fandom.com/wiki/Corruption",
+      "authors": [
+        "Cameron Litvack"
+      ],
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/37/Epguide305.png/revision/latest"
     },
     {
       "id": "a42e59f0-c76a-54aa-be7e-827825ef46cc",
@@ -11113,6 +11259,7 @@
       "authors": [
         "Jose Molina"
       ],
+      "publisher": "Del Rey",
       "release_date": "2011-09-23",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e4/Epguide403.jpg/revision/latest"
@@ -11214,6 +11361,9 @@
       "number": "4x08",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/The_General",
+      "authors": [
+        "Matt Michnovetz"
+      ],
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6d/General.png/revision/latest"
     },
     {
@@ -11282,6 +11432,7 @@
         "Henry Gilroy",
         "Steven Melching"
       ],
+      "publisher": "Dark Horse Comics",
       "release_date": "2011-12-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a1/SlavesOfTheRepublic-EpisodeGuideThumbnail.jpg/revision/latest"
@@ -11514,6 +11665,7 @@
       "authors": [
         "Jason Fry"
       ],
+      "publisher": "Titan Magazines",
       "release_date": "2013-01-29",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/37/Speaking_Silently.png/revision/latest"
@@ -11563,7 +11715,11 @@
       "series": "The Clone Wars",
       "number": "4x20",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Bounty"
+      "wiki_url": "https://starwars.fandom.com/wiki/Bounty",
+      "authors": [
+        "Katie Lucas"
+      ],
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/30/Epguide420.png/revision/latest"
     },
     {
       "id": "a2b4b758-e612-5180-9b9e-d579ca0e8149",
@@ -11592,6 +11748,9 @@
       "number": "4x22",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Revenge",
+      "authors": [
+        "Katie Lucas"
+      ],
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7e/The_Revenge.jpg/revision/latest"
     },
     {
@@ -11938,7 +12097,11 @@
       "series": "The Clone Wars",
       "number": "5x01",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Revival"
+      "wiki_url": "https://starwars.fandom.com/wiki/Revival",
+      "authors": [
+        "Chris Collins"
+      ],
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/20/Epguide501.jpg/revision/latest"
     },
     {
       "id": "4121bdc5-df12-542e-9053-8f7dd2fee69e",
@@ -12273,7 +12436,11 @@
       "series": "The Clone Wars",
       "number": "6x12",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Destiny"
+      "wiki_url": "https://starwars.fandom.com/wiki/Destiny",
+      "authors": [
+        "Christian Taylor"
+      ],
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d1/Epguide612.png/revision/latest"
     },
     {
       "id": "4ed53883-09ed-5edf-b934-b9f9b89c02d6",
@@ -12742,6 +12909,7 @@
         "Paul Ens",
         "Tom Hodges"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2004-10-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8d/Reversal.jpg/revision/latest"
@@ -13050,7 +13218,8 @@
       ],
       "publisher": "Prima Publishing",
       "release_date": "2001-11-07",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6f/PrimaSWGB.jpg/revision/latest?cb=20070618211323"
     },
     {
       "id": "ad0170c3-7675-5b31-a0f8-df4bdb455165",
@@ -13213,7 +13382,8 @@
       ],
       "publisher": "StarWars.com",
       "release_date": "2015-03-06",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://cdn.freebiesupply.com/logos/large/2x/star-wars-logo-png-transparent.png"
     },
     {
       "id": "d5dc6b85-6635-547b-8003-f799f3c1989e",
@@ -13260,7 +13430,8 @@
       ],
       "publisher": "Scholastic",
       "release_date": "2006-05-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/14/Legacy_Secrets.jpg/revision/latest?cb=20060717055250"
     },
     {
       "id": "2153e708-472c-5001-be9f-bf9f7f460538",
@@ -13307,6 +13478,7 @@
       "authors": [
         "Karen Traviss"
       ],
+      "publisher": "IDG Entertainment",
       "release_date": "2005-07-14",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/ff/VohaiAmbush.jpg/revision/latest"
@@ -13613,6 +13785,7 @@
         "Paul Ens",
         "Tom Hodges"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2005-08-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/54/Recruitment.jpg/revision/latest"
@@ -14506,6 +14679,7 @@
         "Paul Ens",
         "Tom Hodges"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2006-03-06",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3b/Prey.jpg/revision/latest"
@@ -14524,6 +14698,7 @@
         "Paul Ens",
         "Tom Hodges"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2006-11-06",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9c/End_game.jpg/revision/latest"
@@ -14578,7 +14753,8 @@
       ],
       "publisher": "IDG Entertainment",
       "release_date": "2006-06-13",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/11/Insider_88a.jpg/revision/latest?cb=20060519050006"
     },
     {
       "id": "a0f5c9e4-74f5-51b3-b6e6-21da56782695",
@@ -14772,6 +14948,7 @@
       "authors": [
         "Karen Traviss"
       ],
+      "publisher": "IDG Entertainment",
       "release_date": "2005-11-28",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/77/V_sparring_C_clone.jpg/revision/latest"
@@ -15177,6 +15354,7 @@
       "authors": [
         "Eric S. Trautmann"
       ],
+      "publisher": "Topps Publishing",
       "release_date": "1996-07-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/74/Dark_Vendetta.jpg/revision/latest"
@@ -15243,7 +15421,15 @@
       "year": -9,
       "series": "Tales",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Sandstorm"
+      "wiki_url": "https://starwars.fandom.com/wiki/Sandstorm",
+      "authors": [
+        "Jason Hall",
+        "Sunny Lee"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2003-03-12",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/75/Sandstorm.jpg/revision/latest"
     },
     {
       "id": "b5cbe9a8-e822-57b5-9939-36598cbecc3c",
@@ -15258,7 +15444,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1993-06-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/04/Dark_Empire_Sourcebook.jpg/revision/latest?cb=20110210153853"
     },
     {
       "id": "08df7cbd-1da6-5851-b3ed-e515d3534c6d",
@@ -15351,7 +15538,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-02-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/29/SWAJ5.jpg/revision/latest?cb=20080429234124"
     },
     {
       "id": "42d4a534-e6d7-540c-8899-92bc417cc18f",
@@ -15776,7 +15964,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-11-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/de/SWAJ4.jpg/revision/latest?cb=20080430001953"
     },
     {
       "id": "9f8c7441-190c-5ec6-83d9-d537db920867",
@@ -15846,7 +16035,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-08-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3a/SWAJ7.jpg/revision/latest?cb=20080506023528"
     },
     {
       "id": "5b0d8582-7b54-5c1f-abcb-1ecea231a222",
@@ -15861,7 +16051,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-05-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/10/SWAJ2.jpg/revision/latest?cb=20080504160725"
     },
     {
       "id": "550d6c97-b793-5436-bcca-4ecef59d8cce",
@@ -16006,6 +16197,7 @@
       "authors": [
         "David West Reynolds"
       ],
+      "publisher": "Cricket Media",
       "release_date": "1999-07-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f7/Digcover.jpg/revision/latest"
@@ -16346,7 +16538,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-08-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/42/SWAJ3.jpg/revision/latest?cb=20080425230452"
     },
     {
       "id": "c6e706d6-2ef5-55ce-892b-04e924b10d3b",
@@ -16502,6 +16695,8 @@
         "Ryder Windham"
       ],
       "publisher": "Scholastic",
+      "release_date": "2010-09-01",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b6/TheBigSwitch.jpg/revision/latest"
     },
     {
@@ -16547,7 +16742,7 @@
       "series": "Han Solo Adventures",
       "number": "5",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Han_Solo_-_Imperial_Cadet_1",
+      "wiki_url": "https://happybeeps.net/starwars-story/han-solo-a-birodalmi-ugynok-han-solos-gambit-5921/",
       "authors": [
         "Robbie Thompson",
         "Leonard Kirk"
@@ -16568,6 +16763,7 @@
       "authors": [
         "Kathy Tyers"
       ],
+      "publisher": "Wizards of the Coast",
       "release_date": "2001-09-04",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/13/Rebel_Bass.jpg/revision/latest"
@@ -16829,7 +17025,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-11-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/de/SWAJ4.jpg/revision/latest?cb=20080430001953"
     },
     {
       "id": "920e16c9-66b2-5fd6-b6ae-a37b1555c121",
@@ -16970,6 +17167,7 @@
       "authors": [
         "Rusel DeMaria"
       ],
+      "publisher": "LucasArts Entertainment",
       "release_date": "1993-02-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/35/FarlanderPapers.jpg/revision/latest"
@@ -16982,7 +17180,14 @@
       "year": -1,
       "series": "Tales",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Resurrection"
+      "wiki_url": "https://starwars.fandom.com/wiki/Resurrection",
+      "authors": [
+        "Ron Marz"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2001-10-10",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/36/Swta9cover.jpg/revision/latest?cb=20120430210850"
     },
     {
       "id": "700dc170-19ee-5e98-b3e8-b5d6d5490e9a",
@@ -17055,7 +17260,8 @@
       ],
       "publisher": "Topps",
       "release_date": "1996-10-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e4/Swgm9.jpg/revision/latest?cb=20080902123927"
     },
     {
       "id": "333eb427-e9e8-5c80-99eb-c23a0caa33bf",
@@ -17262,7 +17468,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1999-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9d/Tftnr.jpg/revision/latest?cb=20090721205430"
     },
     {
       "id": "24aa4385-22e8-5e90-827f-b50461004689",
@@ -17271,7 +17478,14 @@
       "medium": "Short Story",
       "year": 0,
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Ringers"
+      "wiki_url": "https://starwars.fandom.com/wiki/Ringers",
+      "authors": [
+        "Laurie Burns"
+      ],
+      "publisher": "West End Games",
+      "release_date": "1995-05-01",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/01/SWAJ6.jpg/revision/latest?cb=20080430002818"
     },
     {
       "id": "bf4c47f6-1681-5450-884b-0f8bf1fe64c4",
@@ -17319,6 +17533,7 @@
       "authors": [
         "George Lucas"
       ],
+      "publisher": "Ballantine Books",
       "release_date": "1977-05-25",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/44/1977-StarWars-theatricalposter.jpg/revision/latest"
@@ -17480,12 +17695,13 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/A_Hunter%27s_Fate:_Greedo%27s_Tale",
       "authors": [
-        "Tom",
+        "Tom Veitch",
         "Martha Veitch"
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3e/TalesfromtheMosEisleyCantina.jpg/revision/latest?cb=20200602054746"
     },
     {
       "id": "401633d6-a0b8-51e6-a1fc-890e6d6f192f",
@@ -17500,7 +17716,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3e/TalesfromtheMosEisleyCantina.jpg/revision/latest?cb=20200602054746"
     },
     {
       "id": "dab7f304-b15c-5347-8e0c-5d2b8008d1a7",
@@ -17515,7 +17732,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3e/TalesfromtheMosEisleyCantina.jpg/revision/latest?cb=20200602054746"
     },
     {
       "id": "65021410-3b84-5c45-8307-22e4206ea91d",
@@ -17530,7 +17748,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3e/TalesfromtheMosEisleyCantina.jpg/revision/latest?cb=20200602054746"
     },
     {
       "id": "38619e82-ed98-5391-9f6e-08968a289b71",
@@ -17545,7 +17764,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3e/TalesfromtheMosEisleyCantina.jpg/revision/latest?cb=20200602054746"
     },
     {
       "id": "7120bb1b-2a6a-5e7b-8f77-4894c1aa6494",
@@ -17560,7 +17780,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3e/TalesfromtheMosEisleyCantina.jpg/revision/latest?cb=20200602054746"
     },
     {
       "id": "3a690923-943e-5f26-a5b8-26681ff5be09",
@@ -17575,7 +17796,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3e/TalesfromtheMosEisleyCantina.jpg/revision/latest?cb=20200602054746"
     },
     {
       "id": "75091d26-fe6b-5ad7-b327-208d10ad90a7",
@@ -17590,7 +17812,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3e/TalesfromtheMosEisleyCantina.jpg/revision/latest?cb=20200602054746"
     },
     {
       "id": "b1f80036-dab5-5d11-9b03-e2a5e40c98ce",
@@ -17605,7 +17828,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3e/TalesfromtheMosEisleyCantina.jpg/revision/latest?cb=20200602054746"
     },
     {
       "id": "473a2013-fb7f-5237-a8b8-33adb8fcb4ae",
@@ -17620,7 +17844,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3e/TalesfromtheMosEisleyCantina.jpg/revision/latest?cb=20200602054746"
     },
     {
       "id": "2877e77e-5b89-5b75-953b-3ac08ec98d86",
@@ -17635,7 +17860,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3e/TalesfromtheMosEisleyCantina.jpg/revision/latest?cb=20200602054746"
     },
     {
       "id": "0192d6b3-1aae-5d56-850b-824a1e4a2780",
@@ -17650,7 +17876,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3e/TalesfromtheMosEisleyCantina.jpg/revision/latest?cb=20200602054746"
     },
     {
       "id": "acaeed43-80e0-585b-b1f9-fe23c32f19b1",
@@ -17665,7 +17892,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3e/TalesfromtheMosEisleyCantina.jpg/revision/latest?cb=20200602054746"
     },
     {
       "id": "2f1c82dd-7363-5d14-9264-c81dfc26abf4",
@@ -17680,7 +17908,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3e/TalesfromtheMosEisleyCantina.jpg/revision/latest?cb=20200602054746"
     },
     {
       "id": "c76a99fb-77a1-5dfd-b324-dc2964dfbbad",
@@ -17720,6 +17949,7 @@
       "authors": [
         "John Chesterman"
       ],
+      "publisher": "Paradise Press",
       "release_date": "1979-01-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a6/Cantina_Communications_title.jpg/revision/latest"
@@ -17753,6 +17983,7 @@
       "authors": [
         "Charlene Newcomb"
       ],
+      "publisher": "West End Games",
       "release_date": "1995-11-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8a/A_Kiss.jpg/revision/latest"
@@ -17919,7 +18150,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-08-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/42/SWAJ3.jpg/revision/latest?cb=20080425230452"
     },
     {
       "id": "bf32c099-e215-598b-bac0-ec8ec872a0f1",
@@ -18079,7 +18311,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-08-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/42/SWAJ3.jpg/revision/latest?cb=20080425230452"
     },
     {
       "id": "1bcee4fc-525a-5711-ba87-5afac1ea1ba9",
@@ -18094,7 +18327,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-05-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/01/SWAJ6.jpg/revision/latest?cb=20080430002818"
     },
     {
       "id": "77e615f4-4e86-58e5-bede-f636938215bc",
@@ -18109,7 +18343,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1997-02-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/34/SWAJ12.jpg/revision/latest?cb=20080429235118"
     },
     {
       "id": "aeb56782-d820-526b-aefa-e3d36a576e23",
@@ -18124,7 +18359,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1997-05-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/57/SWAJ13.jpg/revision/latest?cb=20080429234440"
     },
     {
       "id": "80954653-06d6-5754-8f4b-9aba3c8b5d53",
@@ -18203,7 +18439,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-11-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6b/SWAJ8.jpg/revision/latest?cb=20080422010422"
     },
     {
       "id": "a2aea8f8-95ec-5c62-ae53-7b41e6677453",
@@ -21068,7 +21305,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1996-11-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/84/StarWarsAdventureJournal11.jpg/revision/latest?cb=20080504160846"
     },
     {
       "id": "abc4f379-7e7a-5bf8-a81b-09042b16070d",
@@ -21083,7 +21321,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3e/TalesfromtheMosEisleyCantina.jpg/revision/latest?cb=20200602054746"
     },
     {
       "id": "a4f0c6de-fe2f-56f2-b09b-ba1480452231",
@@ -21561,7 +21800,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-02-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/29/SWAJ5.jpg/revision/latest?cb=20080429234124"
     },
     {
       "id": "5ffa4139-212f-504b-96a9-34589a446cbb",
@@ -21670,7 +21910,8 @@
       ],
       "publisher": "StarWars.com",
       "release_date": "2009-06-01",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://cdn.freebiesupply.com/logos/large/2x/star-wars-logo-png-transparent.png"
     },
     {
       "id": "485d5d3a-2597-5782-b6da-662b929b33e8",
@@ -22018,13 +22259,15 @@
       "series": "Rebellion",
       "number": "3",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Rebellion:_My_Brother,_My_Enemy",
+      "wiki_url": "https://www.theverge.com/2022/7/14/23205804/imessage-unsend-ios-16-beta-ios15",
       "authors": [
         "Rob Williams",
         "Brandon Badeaux",
         "Michel Lacombe"
       ],
       "publisher": "Dark Horse Comics",
+      "release_date": "2006-06-21",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/67/Rebellion1FullCover.jpg/revision/latest"
     },
     {
@@ -22326,6 +22569,7 @@
       "authors": [
         "Kilian Plunkett"
       ],
+      "publisher": "Dark Horse Comics",
       "release_date": "2000-06-28",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/53/SandBlasted.jpg/revision/latest"
@@ -22395,7 +22639,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1989-01-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f8/Gg1-1.jpg/revision/latest?cb=20100525191015"
     },
     {
       "id": "385d1565-f60e-5c3b-a5c3-0e39c71a0b0b",
@@ -22410,6 +22655,7 @@
       "authors": [
         "Pablo Hidalgo"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2006-02-06",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c7/Rookies.jpg/revision/latest"
@@ -22427,6 +22673,7 @@
       "authors": [
         "Pablo Hidalgo"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2006-06-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/27/NoTurningBack.jpg/revision/latest"
@@ -22763,7 +23010,8 @@
       ],
       "publisher": "StarWars.com",
       "release_date": "2008-05-24",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://cdn.freebiesupply.com/logos/large/2x/star-wars-logo-png-transparent.png"
     },
     {
       "id": "4403da10-d94d-51ce-b05d-48261c2f06fd",
@@ -22850,7 +23098,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-05-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/01/SWAJ6.jpg/revision/latest?cb=20080430002818"
     },
     {
       "id": "c2b6523c-8710-5e9e-ac1c-1c4545704ca2",
@@ -22865,7 +23114,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1997-08-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/eb/SWAJ14.jpg/revision/latest?cb=20080422011800"
     },
     {
       "id": "96f9db4b-9d23-5b66-9936-3c95c3a414fb",
@@ -23025,7 +23275,10 @@
       "medium": "Short Story",
       "year": 2,
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Contact"
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Contact",
+      "authors": [
+        "Charlene Newcomb and Rich Handley"
+      ]
     },
     {
       "id": "6e7ce1f7-9f89-59f9-ba53-2a9ca9a5ac00",
@@ -23040,7 +23293,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1996-02-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b1/SWAJ9.jpg/revision/latest?cb=20080430003235"
     },
     {
       "id": "7bcad6a8-4fd5-5238-a927-724dea8060bb",
@@ -23087,7 +23341,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1997-02-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/34/SWAJ12.jpg/revision/latest?cb=20080429235118"
     },
     {
       "id": "876ffc28-3a60-51fd-9bed-38bc7acab298",
@@ -23102,7 +23357,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1997-05-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/57/SWAJ13.jpg/revision/latest?cb=20080429234440"
     },
     {
       "id": "243b24a3-da1d-58cb-a4ab-db3c06179af0",
@@ -23205,7 +23461,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1997-11-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8b/SWAJ15.jpg/revision/latest?cb=20080429233352"
     },
     {
       "id": "4c6cc329-0974-50e4-a285-89854cedf2b9",
@@ -23220,7 +23477,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1997-11-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8b/SWAJ15.jpg/revision/latest?cb=20080429233352"
     },
     {
       "id": "aab73776-49a4-5a9e-8ecc-4a2c9a4b7f2a",
@@ -23232,7 +23490,8 @@
       "wiki_url": "https://starwars.fandom.com/wiki/A_Servant_of_the_Empire",
       "authors": [
         "James L. Cambias"
-      ]
+      ],
+      "publisher": "Unofficially Published"
     },
     {
       "id": "f71df683-cbd0-51d6-ad1a-140ca93843d3",
@@ -23241,7 +23500,11 @@
       "medium": "Short Story",
       "year": 2,
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Credit_Denied"
+      "wiki_url": "https://starwars.fandom.com/wiki/Credit_Denied",
+      "authors": [
+        "George R. Strayton"
+      ],
+      "publisher": "Unofficially Published"
     },
     {
       "id": "4b6b2a52-f9ab-5cd2-a147-bbbfd57d1d5b",
@@ -23250,7 +23513,11 @@
       "medium": "Short Story",
       "year": 2,
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Shifting_Gears"
+      "wiki_url": "https://starwars.fandom.com/wiki/Shifting_Gears",
+      "authors": [
+        "Jean Rabe"
+      ],
+      "publisher": "Unofficially Published"
     },
     {
       "id": "5a382e09-f21e-5148-8e31-198ad69dfc55",
@@ -23262,7 +23529,8 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Just_Business",
       "authors": [
         "Paul Danner"
-      ]
+      ],
+      "publisher": "Unofficially Published"
     },
     {
       "id": "3c2d35e1-e2a7-5617-a0d2-9601b5953f7a",
@@ -23419,6 +23687,7 @@
         "Leigh Brackett",
         "Lawrence Kasdan"
       ],
+      "publisher": "National Public Radio, HighBridge Audio",
       "release_date": "1980-05-21",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e8/1980-EmpireStrikesBack-theatricalposter.jpg/revision/latest"
@@ -23457,6 +23726,7 @@
         "Leigh Brackett",
         "Lawrence Kasdan"
       ],
+      "publisher": "National Public Radio, HighBridge Audio",
       "release_date": "1980-05-21",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e8/1980-EmpireStrikesBack-theatricalposter.jpg/revision/latest"
@@ -23470,6 +23740,12 @@
       "series": "Tales",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Hoth",
+      "authors": [
+        "Tony Millionaire"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2000-09-27",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a1/Hoth-2024SWHyperspace.png/revision/latest"
     },
     {
@@ -23512,7 +23788,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1996-01-01",
-      "release_precision": "year"
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d8/Gg3.jpg/revision/latest?cb=20051003113323"
     },
     {
       "id": "5e7efe3c-7d18-51c5-9fbf-9dc395f40cc5",
@@ -23527,7 +23804,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1989-01-01",
-      "release_precision": "year"
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e5/Gg3-1.jpg/revision/latest?cb=20081113204834"
     },
     {
       "id": "4f89461d-7170-53e4-8b6b-4f5fb5e39e67",
@@ -23843,6 +24121,9 @@
       "number": "149",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Empire_Strikes_Back_Monthly_149",
+      "authors": [
+        "Steve Moore"
+      ],
       "publisher": "Marvel Comics",
       "release_date": "1981-08-01",
       "release_precision": "month",
@@ -24302,6 +24583,7 @@
       "authors": [
         "Bill Smith"
       ],
+      "publisher": "Topps Publishing",
       "release_date": "1996-01-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/34/NarissSivLoqesh.jpg/revision/latest"
@@ -24335,7 +24617,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1996-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/39/TalesBounty.jpg/revision/latest?cb=20050503035241"
     },
     {
       "id": "80049ea6-2a14-5edb-a654-0bfa3f212fc9",
@@ -24382,7 +24665,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1996-11-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/84/StarWarsAdventureJournal11.jpg/revision/latest?cb=20080504160846"
     },
     {
       "id": "58bc1af2-0c3c-50ec-ae53-1de4eac8dda7",
@@ -24397,7 +24681,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-11-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6b/SWAJ8.jpg/revision/latest?cb=20080422010422"
     },
     {
       "id": "75e9565d-1826-5478-85cf-9f2ee57eca97",
@@ -24900,6 +25185,9 @@
       "number": "2x16",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Horville%27s_Hut_of_Horrors",
+      "authors": [
+        "Paul Dini"
+      ],
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d3/HorvillesHutOfHorrors.jpg/revision/latest"
     },
     {
@@ -25281,9 +25569,13 @@
       "series": "Ewoks Annual",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Chief_Chirpa_Kidnapped!",
+      "authors": [
+        "Uncredited"
+      ],
       "publisher": "Marvel UK",
       "release_date": "1988-08-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/91/Ewoksannual.jpg/revision/latest?cb=20060602193804"
     },
     {
       "id": "f85a867e-d9d7-5540-bed1-6e66ec27fbc1",
@@ -25294,9 +25586,13 @@
       "series": "Ewoks Annual",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Return_of_the_Great_One!",
+      "authors": [
+        "Uncredited"
+      ],
       "publisher": "Marvel UK",
       "release_date": "1988-08-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/91/Ewoksannual.jpg/revision/latest?cb=20060602193804"
     },
     {
       "id": "a2e13b1c-adc9-5433-8d23-c7a3cc578072",
@@ -25307,9 +25603,13 @@
       "series": "Ewoks Annual",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Ice_Princess!",
+      "authors": [
+        "Uncredited"
+      ],
       "publisher": "Marvel UK",
       "release_date": "1988-08-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/91/Ewoksannual.jpg/revision/latest?cb=20060602193804"
     },
     {
       "id": "3fd17b8b-6a21-58e4-997b-b18d4f13337d",
@@ -25992,7 +26292,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1990-01-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/1a/Gg5-1.jpg/revision/latest?cb=20080517042518"
     },
     {
       "id": "89ef8612-83f8-54d4-99d2-55c463e53861",
@@ -26023,7 +26324,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "1c55762e-02f9-5d23-87af-5ad5ed3b29e2",
@@ -26073,6 +26375,7 @@
       "authors": [
         "James Kahn"
       ],
+      "publisher": "Del Rey",
       "release_date": "1983-05-12",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b4/Episodevi_returnofthejedi.jpg/revision/latest"
@@ -26108,7 +26411,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "b8f57772-66c9-5b8e-8617-f03539b28918",
@@ -26119,12 +26423,13 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/A_Bad_Feeling:_The_Tale_of_EV-9D9",
       "authors": [
-        "Judith",
+        "Judith Reeves-Stevens",
         "Garfield Reeves-Stevens"
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "97b3dfe1-0360-5ff9-98ef-50305ccb9cb4",
@@ -26139,7 +26444,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "53df6ebd-b109-51b1-bdb7-569d8e5f6541",
@@ -26154,7 +26460,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "4d75bce0-0efb-5a0f-906e-969c7139d17b",
@@ -26169,7 +26476,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "f8d55b48-369b-5465-804b-298d8586e082",
@@ -26184,7 +26492,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "f3f790c5-d8e6-5a10-863f-d6b261b1fe43",
@@ -26199,7 +26508,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "90300e83-2cbd-5c0b-9611-487d06fc7a24",
@@ -26214,7 +26524,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "e1b7b0ea-5502-50b9-8822-f8381b45b082",
@@ -26229,7 +26540,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "9ac911df-94ce-54ef-94c7-657db2940d15",
@@ -26244,7 +26556,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "dc5be090-4bd7-5cc5-a3e5-b5a2815f65f2",
@@ -26260,7 +26573,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "55d84ee8-55ab-5004-ba8d-9657b65e47a8",
@@ -26275,7 +26589,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "38dd2d9a-c680-5c99-9567-b04142a00a20",
@@ -26290,7 +26605,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "2b58c028-18a4-51d1-8ef2-9ad9285b50d6",
@@ -26305,7 +26621,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "4063db33-d737-56c4-91ed-d1f2ce284eb3",
@@ -26320,7 +26637,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "27ef90f6-85a5-5c02-89b5-8110d6cc97c3",
@@ -26335,7 +26653,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "6d30a44f-78f4-50f3-b209-edc171c5def0",
@@ -26350,7 +26669,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "ed5eaf65-dfc2-539d-9cf7-92def893e3a5",
@@ -26366,7 +26686,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "359dcb53-ebd4-59ac-b4d5-4af94a561c99",
@@ -26381,7 +26702,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1996-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "d72e6cc6-5d10-51bf-a268-9ab2c4ce6f0f",
@@ -26412,7 +26734,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/TalesfromJabbasPalace.png/revision/latest?cb=20200715040926"
     },
     {
       "id": "e44dc4dc-cedd-5fc5-98d2-ae11f4ca2fd1",
@@ -26444,7 +26767,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1990-01-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/1a/Gg5-1.jpg/revision/latest?cb=20080517042518"
     },
     {
       "id": "0bbf67a0-ab88-58ff-837f-d2c193806776",
@@ -26459,7 +26783,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1990-01-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/1a/Gg5-1.jpg/revision/latest?cb=20080517042518"
     },
     {
       "id": "8cd7e38a-f5f6-5a48-a004-7a7ad2c8e760",
@@ -26472,8 +26797,10 @@
       "authors": [
         "Kathy Tyers"
       ],
+      "publisher": "West End Games",
       "release_date": "1996-02-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5a/TruceBakura_Sourcebook.jpg/revision/latest?cb=20090313020312"
     },
     {
       "id": "b038ebe9-eb87-5dc8-8df7-8812015a9ebc",
@@ -27377,7 +27704,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1997-05-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/57/SWAJ13.jpg/revision/latest?cb=20080429234440"
     },
     {
       "id": "066c3b50-1eee-506f-81e7-0b2462dac086",
@@ -27392,7 +27720,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1999-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9d/Tftnr.jpg/revision/latest?cb=20090721205430"
     },
     {
       "id": "2aa729e4-58d0-5510-8a62-d56690083f82",
@@ -28386,7 +28715,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-02-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/29/SWAJ5.jpg/revision/latest?cb=20080429234124"
     },
     {
       "id": "7753b637-e447-507c-9e4e-4a3272829ba7",
@@ -28548,6 +28878,7 @@
         "Peter Chan",
         "Justin Chin"
       ],
+      "publisher": "Prima Publishing",
       "release_date": "1997-10-09",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6e/Sw-jk_box_art.jpg/revision/latest"
@@ -28611,7 +28942,10 @@
       "medium": "Short Story",
       "year": 5,
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Jodo_Kast_%26_Dengar:_Preying_for_Time"
+      "wiki_url": "https://starwars.fandom.com/wiki/Jodo_Kast_%26_Dengar:_Preying_for_Time",
+      "authors": [
+        "Andy Mangels"
+      ]
     },
     {
       "id": "c9fba8d1-8ad0-5c43-8d37-6892b826950e",
@@ -28881,7 +29215,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-05-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/10/SWAJ2.jpg/revision/latest?cb=20080504160725"
     },
     {
       "id": "2a7587e2-cd69-5233-9740-47c278f04031",
@@ -28981,7 +29316,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1997-05-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/57/SWAJ13.jpg/revision/latest?cb=20080429234440"
     },
     {
       "id": "34ceeb67-0e02-5b35-b10b-832654ff850f",
@@ -29066,7 +29402,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-05-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/10/SWAJ2.jpg/revision/latest?cb=20080504160725"
     },
     {
       "id": "ece4d714-18ff-5037-b79d-572d705c10d8",
@@ -29081,7 +29418,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-08-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/42/SWAJ3.jpg/revision/latest?cb=20080425230452"
     },
     {
       "id": "2712a527-a5d1-53d3-b589-e8f93198e9cb",
@@ -29096,7 +29434,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-11-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/de/SWAJ4.jpg/revision/latest?cb=20080430001953"
     },
     {
       "id": "18dd818b-b1e1-5437-a52e-6fec18dfd0d8",
@@ -29111,7 +29450,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-02-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/29/SWAJ5.jpg/revision/latest?cb=20080429234124"
     },
     {
       "id": "b882d26c-c270-5b12-bf12-8ea51de68e29",
@@ -29126,7 +29466,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-05-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/01/SWAJ6.jpg/revision/latest?cb=20080430002818"
     },
     {
       "id": "0b8abddd-0568-53f9-8cca-27e4db1848dd",
@@ -29194,7 +29535,8 @@
       ],
       "publisher": "Del Rey",
       "release_date": "2011-09-06",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6d/HTTE_20th_Anniversary_Edition.jpg/revision/latest?cb=20120103053735"
     },
     {
       "id": "e86dc7a8-4071-5248-b5ca-0c850589b89d",
@@ -29207,6 +29549,7 @@
       "authors": [
         "Christopher Cerasi"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2008-08-22",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cd/Crossroads.jpg/revision/latest"
@@ -29241,7 +29584,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1999-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9d/Tftnr.jpg/revision/latest?cb=20090721205430"
     },
     {
       "id": "b0714edb-245d-57ee-9435-7cacf9c35943",
@@ -29256,7 +29600,8 @@
       ],
       "publisher": "Del Rey",
       "release_date": "2003-02-11",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8b/TatooineGhost.jpg/revision/latest?cb=20200821025300"
     },
     {
       "id": "0f0b1a64-1d39-5c64-8a67-39e52abb5e03",
@@ -29319,7 +29664,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-08-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/42/SWAJ3.jpg/revision/latest?cb=20080425230452"
     },
     {
       "id": "10a6a009-f561-5515-aeea-1e7adca2dccc",
@@ -29350,7 +29696,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-11-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/de/SWAJ4.jpg/revision/latest?cb=20080430001953"
     },
     {
       "id": "22301df5-8036-5db0-b279-114e01b531ae",
@@ -29774,7 +30121,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-05-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/01/SWAJ6.jpg/revision/latest?cb=20080430002818"
     },
     {
       "id": "8998c832-1cb3-58e4-9884-87f57002b8fe",
@@ -29847,7 +30195,8 @@
       ],
       "publisher": "West End Games",
       "release_date": "1997-02-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/34/SWAJ12.jpg/revision/latest?cb=20080429235118"
     },
     {
       "id": "8c966516-faa6-53a3-b425-3d7f3b8d55fe",
@@ -30056,7 +30405,12 @@
       "medium": "Novel",
       "year": 10,
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Lightsider_(story)"
+      "wiki_url": "https://starwars.fandom.com/wiki/Lightsider_(story)",
+      "authors": [
+        "Tom Veitch"
+      ],
+      "publisher": "Unpublished",
+      "cover_url": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/44dd0c9d-bb07-49d3-959f-ac3899a7dcda/df2eyo0-15beec8e-fe0f-4f31-abcb-6a4b8cd3087e.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQ0ZGQwYzlkLWJiMDctNDlkMy05NTlmLWFjMzg5OWE3ZGNkYVwvZGYyZXlvMC0xNWJlZWM4ZS1mZTBmLTRmMzEtYWJjYi02YTRiOGNkMzA4N2UucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.DYeJ9jhcEoJ8cUiS8CA2Gadf1nqLFC7SNrU7XEJt5d4"
     },
     {
       "id": "e537f74f-53f5-54eb-a770-50b9a2af171b",
@@ -30727,7 +31081,11 @@
       "medium": "Short Story",
       "year": 11,
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Love_Is_a_Warm_Blaster"
+      "wiki_url": "https://starwars.fandom.com/wiki/Love_Is_a_Warm_Blaster",
+      "authors": [
+        "Paul Danner"
+      ],
+      "publisher": "Unofficially Published"
     },
     {
       "id": "d6308bec-9258-586f-9f07-3f6f35d7c2d9",
@@ -30788,8 +31146,10 @@
       "authors": [
         "Charlene Newcomb"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2009-12-22",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://cdn.freebiesupply.com/logos/large/2x/star-wars-logo-png-transparent.png"
     },
     {
       "id": "6185dc9c-95c3-5d41-bc60-f428b7622bec",
@@ -31230,7 +31590,8 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1999-12-01",
-      "release_precision": "month"
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9d/Tftnr.jpg/revision/latest?cb=20090721205430"
     },
     {
       "id": "1b8c611c-a3a0-550f-baea-e2e5518afa58",
@@ -31405,6 +31766,7 @@
       "authors": [
         "Elaine Cunningham"
       ],
+      "publisher": "Wizards of the Coast",
       "release_date": "2001-11-06",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/27/RedSkyBlueFlameCover.jpg/revision/latest"
@@ -31592,6 +31954,7 @@
       "authors": [
         "Timothy Zahn"
       ],
+      "publisher": "Del Rey",
       "release_date": "2004-02-03",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e0/Foolsbargain.jpg/revision/latest"
@@ -32502,6 +32865,7 @@
       "authors": [
         "Greg Keyes"
       ],
+      "publisher": "Wizards of the Coast",
       "release_date": "2002-01-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7f/EotV-Logo.jpg/revision/latest"
@@ -32519,6 +32883,7 @@
       "authors": [
         "Greg Keyes"
       ],
+      "publisher": "Wizards of the Coast",
       "release_date": "2002-01-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7f/EotV-Logo.jpg/revision/latest"
@@ -32536,6 +32901,7 @@
       "authors": [
         "Greg Keyes"
       ],
+      "publisher": "Wizards of the Coast",
       "release_date": "2002-01-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7f/EotV-Logo.jpg/revision/latest"
@@ -32553,6 +32919,7 @@
       "authors": [
         "Greg Keyes"
       ],
+      "publisher": "Paizo Publishing",
       "release_date": "2002-01-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7f/EotV-Logo.jpg/revision/latest"
@@ -32570,6 +32937,7 @@
       "authors": [
         "Greg Keyes"
       ],
+      "publisher": "Paizo Publishing",
       "release_date": "2002-01-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7f/EotV-Logo.jpg/revision/latest"
@@ -32587,6 +32955,7 @@
       "authors": [
         "Greg Keyes"
       ],
+      "publisher": "Paizo Publishing",
       "release_date": "2002-01-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7f/EotV-Logo.jpg/revision/latest"
