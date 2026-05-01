@@ -24,18 +24,24 @@ function matchesQuery(w: Work, q: string): boolean {
   return haystack.includes(q.toLowerCase());
 }
 
-function matchesDecade(w: Work, decades: number[]): boolean {
-  if (decades.length === 0) return true;
-  if (!w.release_date) return false;
-  const year = parseInt(w.release_date.slice(0, 4), 10);
-  if (Number.isNaN(year)) return false;
-  const decade = Math.floor(year / 10) * 10;
-  return decades.includes(decade);
-}
-
-function matchesReleaseUndated(w: Work, undatedOnly: boolean): boolean {
-  if (!undatedOnly) return true;
-  return w.release_date === undefined;
+function matchesDecadeOrUndated(
+  w: Work,
+  decades: number[],
+  undatedOnly: boolean,
+): boolean {
+  // Neither filter active → accept all.
+  if (decades.length === 0 && !undatedOnly) return true;
+  // Union: a work passes if it falls in any selected decade
+  // OR it has no release_date and "Unknown" is on.
+  if (undatedOnly && w.release_date === undefined) return true;
+  if (decades.length > 0 && w.release_date !== undefined) {
+    const year = parseInt(w.release_date.slice(0, 4), 10);
+    if (!Number.isNaN(year)) {
+      const decade = Math.floor(year / 10) * 10;
+      if (decades.includes(decade)) return true;
+    }
+  }
+  return false;
 }
 
 // Sorts return 0 for equal keys so JS's stable Array.prototype.sort
@@ -64,8 +70,7 @@ export function filterWorks(works: Work[], filters: FilterState): Work[] {
     matchesArray(filters.series, w.series) &&
     matchesArray(filters.publishers, w.publisher) &&
     matchesAnyOf(filters.authors, w.authors) &&
-    (searchActive || matchesDecade(w, filters.decades)) &&
-    (searchActive || matchesReleaseUndated(w, filters.releaseUndated)) &&
+    (searchActive || matchesDecadeOrUndated(w, filters.decades, filters.releaseUndated)) &&
     matchesQuery(w, filters.q),
   );
   const cmp = filters.sort === "release" ? compareRelease : compareChronology;

@@ -17,7 +17,7 @@ export function ActiveFilterChips() {
   if (s.releaseUndated) {
     chips.push({
       key: "releaseUndated",
-      label: "Undated",
+      label: "Unknown",
       clear: () => s.set({ releaseUndated: false }),
     });
   }

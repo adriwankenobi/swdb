@@ -126,6 +126,17 @@ describe("filterWorks", () => {
     expect(r.map((x) => x.id)).toEqual(["undated"]);
   });
 
+  it("decades + releaseUndated unions: matching decade OR no release_date", () => {
+    const data: Work[] = [
+      w({ id: "1990s",   year: 0, release_date: "1991-01-01" }),
+      w({ id: "2000s",   year: 0, release_date: "2005-01-01" }),
+      w({ id: "2010s",   year: 0, release_date: "2015-01-01" }),
+      w({ id: "undated", year: 0 }),
+    ];
+    const r = filterWorks(data, { ...empty, decades: [1990], releaseUndated: true });
+    expect(r.map((x) => x.id).sort()).toEqual(["1990s", "undated"]);
+  });
+
   it("search bypasses releaseUndated filter — searching returns dated matches too", () => {
     const data: Work[] = [
       w({ id: "dated",   title: "Dark Empire", year: 0, release_date: "1991-12-01" }),
