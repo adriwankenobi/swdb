@@ -88,3 +88,31 @@ def test_parse_date_handles_partial_precision(text, expected):
 def test_parse_date_returns_none_for_undated():
     assert _parse_date("Canceled") is None
     assert _parse_date("22 BBY") is None  # in-universe years are not real-world dates
+
+
+def test_parse_infobox_drops_uncredited_author_alone():
+    # Some Wookieepedia infoboxes literally list the author as "Uncredited".
+    # Treat as no author rather than as a real name.
+    html = """
+    <aside class="portable-infobox">
+      <div class="pi-item pi-data">
+        <h3 class="pi-data-label">Author</h3>
+        <div class="pi-data-value">Uncredited</div>
+      </div>
+    </aside>
+    """
+    result = parse_infobox(html)
+    assert "authors" not in result
+
+
+def test_parse_infobox_drops_uncredited_among_other_authors():
+    html = """
+    <aside class="portable-infobox">
+      <div class="pi-item pi-data">
+        <h3 class="pi-data-label">Author</h3>
+        <div class="pi-data-value">Alan Dean Foster, Uncredited, John Doe</div>
+      </div>
+    </aside>
+    """
+    result = parse_infobox(html)
+    assert result["authors"] == ["Alan Dean Foster", "John Doe"]

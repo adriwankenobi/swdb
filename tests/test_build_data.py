@@ -163,3 +163,45 @@ def test_enrich_partial_excel_no_url_uses_opensearch():
     unmatched, dead = [], []
     _enrich(work, row, client, unmatched, dead)
     assert any("dead_url" in entry for entry in unmatched)
+
+
+def test_enrich_excel_uncredited_alone_falls_back_to_parser(monkeypatch):
+    # Excel author cell contains only "Uncredited" — treat as missing and let
+    # the parser fill it instead.
+    row = _row(
+        info_url="https://example.com/wiki/page",
+        cover_url="https://example.com/cover.jpg",
+        author="Uncredited",
+        publisher="Some Pub",
+        release_date_str="2020.05.01",
+    )
+    work = _row_to_work(row)
+    client = MagicMock()
+    client.resolve_url.return_value = (row.info_url, "from_excel")
+    client.fetch_html.return_value = "<html>infobox</html>"
+
+    monkeypatch.setattr(
+        "scripts.build_data.parse_infobox",
+        lambda html: {"authors": ["Real Author"]},
+    )
+    unmatched, dead = [], []
+    _enrich(work, row, client, unmatched, dead)
+    assert work["authors"] == ["Real Author"]
+
+
+def test_enrich_excel_uncredited_mixed_keeps_real_names():
+    row = _row(
+        info_url="https://example.com/wiki/page",
+        cover_url="https://example.com/cover.jpg",
+        author="Real Author, Uncredited, Another",
+        publisher="Some Pub",
+        release_date_str="2020.05.01",
+    )
+    work = _row_to_work(row)
+    client = MagicMock()
+    client.resolve_url.return_value = (row.info_url, "from_excel")
+    client.verify_url_alive.return_value = True
+
+    unmatched, dead = [], []
+    _enrich(work, row, client, unmatched, dead)
+    assert work["authors"] == ["Real Author", "Another"]

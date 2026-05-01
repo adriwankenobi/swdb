@@ -149,8 +149,13 @@ def _enrich(
         return
     work["wiki_url"] = url
 
+    # Author cell is "meaningful" if it has at least one real name after
+    # filtering out the "Uncredited" placeholder. A cell containing only
+    # "Uncredited" should NOT count as populated — we want the parser to fill
+    # it from the wiki page.
+    has_real_author = bool(row.author) and bool(_split_excel_authors(row.author))
     excel_full = bool(
-        row.author and row.publisher and row.release_date_str and row.cover_url
+        has_real_author and row.publisher and row.release_date_str and row.cover_url
     )
 
     if excel_full:
@@ -186,10 +191,24 @@ def _enrich(
     _merge_excel_priority(work, row, fields)
 
 
+def _split_excel_authors(text: str) -> list[str]:
+    """Split Excel author cell on commas; drop the "Uncredited" placeholder.
+
+    Excel author cells use comma-separated names. "Uncredited" is a
+    Wookieepedia placeholder we never want to surface as a real name.
+    """
+    return [
+        a.strip() for a in text.split(",")
+        if a.strip() and a.strip().lower() != "uncredited"
+    ]
+
+
 def _populate_from_excel(work: dict, row: ExcelRow) -> None:
     """Populate enriched fields entirely from Excel."""
     if row.author:
-        work["authors"] = [a.strip() for a in row.author.split(",") if a.strip()]
+        authors = _split_excel_authors(row.author)
+        if authors:
+            work["authors"] = authors
     if row.publisher:
         work["publisher"] = row.publisher
     if row.release_date_str:
@@ -205,7 +224,13 @@ def _populate_from_excel(work: dict, row: ExcelRow) -> None:
 def _merge_excel_priority(work: dict, row: ExcelRow, fields: dict) -> None:
     """Merge parser results with Excel taking wholesale priority per field."""
     if row.author:
-        work["authors"] = [a.strip() for a in row.author.split(",") if a.strip()]
+        authors = _split_excel_authors(row.author)
+        if authors:
+            work["authors"] = authors
+        elif fields.get("authors"):
+            # Excel cell only contained "Uncredited" placeholder noise — fall
+            # back to the parser instead of surfacing an empty author list.
+            work["authors"] = fields["authors"]
     elif fields.get("authors"):
         work["authors"] = fields["authors"]
 

@@ -99,7 +99,9 @@ def _split_authors(text: str) -> list[str]:
     # Wookieepedia separates multiple authors with commas, semicolons,
     # "and", "&", or "/".
     parts = re.split(r"\s*(?:,|;|\band\b|/|&)\s*", text)
-    return [p.strip() for p in parts if p.strip()]
+    # "Uncredited" is a Wookieepedia placeholder for "no author known"; treat
+    # it as missing rather than as a real author name.
+    return [p.strip() for p in parts if p.strip() and p.strip().lower() != "uncredited"]
 
 
 def _parse_date(text: str) -> tuple[str, str] | None:
@@ -193,4 +195,8 @@ def parse_infobox(html: str) -> dict:
     cover = _parse_cover_url(soup)
     if cover:
         out["cover_url"] = cover
+    # Drop empty authors list — happens when the infobox only had placeholder
+    # values like "Uncredited" that _split_authors filtered out.
+    if "authors" in out and not out["authors"]:
+        del out["authors"]
     return out
