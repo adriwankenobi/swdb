@@ -1,4 +1,5 @@
 import { ERAS } from "../constants/eras";
+import { UNCREDITED_AUTHOR_VALUE } from "../store/catalogStore";
 import type { Work } from "../types/work";
 import type { FilterState } from "../store/filterStore";
 
@@ -8,10 +9,16 @@ function matchesArray<T>(selected: T[], value: T | undefined): boolean {
   return selected.includes(value);
 }
 
-function matchesAnyOf<T>(selected: T[], values: T[] | undefined): boolean {
+function matchesAuthorsOrUncredited(w: Work, selected: string[]): boolean {
   if (selected.length === 0) return true;
-  if (!values || values.length === 0) return false;
-  return values.some((v) => selected.includes(v));
+  const noAuthors = !w.authors || w.authors.length === 0;
+  // The "Uncredited" sentinel matches works that have no listed author.
+  if (selected.includes(UNCREDITED_AUTHOR_VALUE) && noAuthors) return true;
+  // Real author names match against w.authors as before.
+  if (!noAuthors) {
+    return w.authors!.some((a) => selected.includes(a));
+  }
+  return false;
 }
 
 function matchesQuery(w: Work, q: string): boolean {
@@ -69,7 +76,7 @@ export function filterWorks(works: Work[], filters: FilterState): Work[] {
     matchesArray(filters.mediums, w.medium) &&
     matchesArray(filters.series, w.series) &&
     matchesArray(filters.publishers, w.publisher) &&
-    matchesAnyOf(filters.authors, w.authors) &&
+    matchesAuthorsOrUncredited(w, filters.authors) &&
     (searchActive || matchesDecadeOrUndated(w, filters.decades, filters.releaseUndated)) &&
     matchesQuery(w, filters.q),
   );

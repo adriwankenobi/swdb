@@ -2,6 +2,11 @@ import { create } from "zustand";
 import { MEDIUMS, type MediumName } from "../constants/mediums";
 import type { Work, WorksFile } from "../types/work";
 
+// Sentinel value for the synthetic "Uncredited" author facet that lets users
+// filter works with no listed author. Real author names will never collide
+// with this string.
+export const UNCREDITED_AUTHOR_VALUE = "__UNCREDITED__";
+
 export interface Facet<V = string> {
   value: V;
   label: string;
@@ -52,9 +57,20 @@ function buildFacets(works: Work[]): CatalogState["facets"] {
       (a, b) => MEDIUMS.indexOf(a[0]) - MEDIUMS.indexOf(b[0]),
     )
     .map(([name, count]) => ({ value: name, label: name, count }));
+  const authors: Facet[] = counts((w) => w.authors);
+  const noAuthorCount = works.filter(
+    (w) => !w.authors || w.authors.length === 0,
+  ).length;
+  if (noAuthorCount > 0) {
+    authors.unshift({
+      value: UNCREDITED_AUTHOR_VALUE,
+      label: "Uncredited",
+      count: noAuthorCount,
+    });
+  }
   return {
     series: counts((w) => w.series),
-    authors: counts((w) => w.authors),
+    authors,
     publishers: counts((w) => w.publisher),
     mediums,
   };

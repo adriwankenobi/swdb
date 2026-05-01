@@ -126,6 +126,30 @@ describe("filterWorks", () => {
     expect(r.map((x) => x.id)).toEqual(["undated"]);
   });
 
+  it("authors filter with Uncredited sentinel matches works without authors", async () => {
+    const { UNCREDITED_AUTHOR_VALUE } = await import("../../store/catalogStore");
+    const data: Work[] = [
+      w({ id: "with",     year: 0, authors: ["Foster"] }),
+      w({ id: "without",  year: 0 }),
+    ];
+    const r = filterWorks(data, { ...empty, authors: [UNCREDITED_AUTHOR_VALUE] });
+    expect(r.map((x) => x.id)).toEqual(["without"]);
+  });
+
+  it("authors filter with Uncredited + real name unions both", async () => {
+    const { UNCREDITED_AUTHOR_VALUE } = await import("../../store/catalogStore");
+    const data: Work[] = [
+      w({ id: "foster",  year: 0, authors: ["Foster"] }),
+      w({ id: "macan",   year: 0, authors: ["Macan"] }),
+      w({ id: "without", year: 0 }),
+    ];
+    const r = filterWorks(data, {
+      ...empty,
+      authors: [UNCREDITED_AUTHOR_VALUE, "Foster"],
+    });
+    expect(r.map((x) => x.id).sort()).toEqual(["foster", "without"]);
+  });
+
   it("decades + releaseUndated unions: matching decade OR no release_date", () => {
     const data: Work[] = [
       w({ id: "1990s",   year: 0, release_date: "1991-01-01" }),

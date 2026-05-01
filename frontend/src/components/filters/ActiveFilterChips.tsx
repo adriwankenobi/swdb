@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { UNCREDITED_AUTHOR_VALUE } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
 
 export function ActiveFilterChips() {
@@ -25,7 +26,11 @@ export function ActiveFilterChips() {
     chips.push({ key: `series:${m}`, label: m, clear: () => s.toggleArrayValue("series", m) }),
   );
   s.authors.forEach((m) =>
-    chips.push({ key: `author:${m}`, label: m, clear: () => s.toggleArrayValue("authors", m) }),
+    chips.push({
+      key: `author:${m}`,
+      label: m === UNCREDITED_AUTHOR_VALUE ? "Uncredited" : m,
+      clear: () => s.toggleArrayValue("authors", m),
+    }),
   );
   s.publishers.forEach((m) =>
     chips.push({ key: `publisher:${m}`, label: m, clear: () => s.toggleArrayValue("publishers", m) }),
