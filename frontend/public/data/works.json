@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-01T07:46:10+00:00",
+  "generated_at": "2026-05-01T08:33:04+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -2386,7 +2386,7 @@
       "medium": "Short Story",
       "year": -3680,
       "color": "#FBD9D7",
-      "wiki_url": "https://www.BioWare/blog/vacation",
+      "wiki_url": "https://starwars.fandom.com/wiki/Vacation",
       "authors": [
         "Uncredited"
       ],
@@ -2601,7 +2601,7 @@
       "year": -3644,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://www.BioWare/blog/final-trial",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Final_Trial",
       "authors": [
         "Uncredited"
       ],
@@ -2635,7 +2635,7 @@
       "year": -3643,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://www.BioWare/blog/price-power",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Price_of_Power",
       "authors": [
         "Courtney Woods"
       ],
@@ -2843,7 +2843,7 @@
       "year": -3637,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://www.BioWare/blog/surface-details",
+      "wiki_url": "https://starwars.fandom.com/wiki/Surface_Details",
       "authors": [
         "Uncredited"
       ],
@@ -2853,14 +2853,14 @@
       "cover_url": "http://www.eteknix.com/wp-content/uploads/2011/11/swtor-logo.jpg"
     },
     {
-      "id": "51a9afad-dfff-5aab-8677-e7527265e2ed",
+      "id": "217c8e23-84af-5340-a8f7-fd02f66989e5",
       "era": "OLD REPUBLIC",
-      "title": "Wanted: Dead and Dimantled",
+      "title": "Wanted: Dead and Dismantled",
       "medium": "Short Story",
       "year": -3637,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://www.BioWare/blog/wanted-dead-and-dismantled",
+      "wiki_url": "https://starwars.fandom.com/wiki/Wanted:_Dead_and_Dismantled",
       "authors": [
         "Uncredited"
       ],
@@ -2877,7 +2877,7 @@
       "year": -3637,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://www.BioWare/blog/remnants",
+      "wiki_url": "https://starwars.fandom.com/wiki/Remnants",
       "authors": [
         "Uncredited"
       ],
@@ -2894,7 +2894,7 @@
       "year": -3637,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://www.BioWare/info/news/blog/20141028",
+      "wiki_url": "https://starwars.fandom.com/wiki/Bedtime_on_Concordia",
       "authors": [
         "Uncredited"
       ],
@@ -2941,7 +2941,7 @@
       "year": -3636,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://www.BioWare/blog/regrets",
+      "wiki_url": "https://starwars.fandom.com/wiki/Regrets",
       "authors": [
         "Uncredited"
       ],
@@ -2958,7 +2958,7 @@
       "year": -3636,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://www.BioWare/info/news/blog/20150728",
+      "wiki_url": "https://starwars.fandom.com/wiki/Brothers_(short_story)",
       "authors": [
         "Uncredited"
       ],
@@ -2989,7 +2989,7 @@
       "year": -3630,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://www.BioWare/info/news/blog/20161117",
+      "wiki_url": "https://starwars.fandom.com/wiki/A_Mother's_Hope",
       "authors": [
         "Drew Karpyshyn"
       ],
@@ -3019,7 +3019,7 @@
       "year": -3629,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://www.BioWare/info/news/news-article/20170817",
+      "wiki_url": "https://starwars.fandom.com/wiki/Trading_Scars",
       "authors": [
         "Samantha Wallschlaeger"
       ],
@@ -3036,7 +3036,7 @@
       "year": -3629,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://www.BioWare/info/news/news-article/20171116",
+      "wiki_url": "https://starwars.fandom.com/wiki/Chasing_Copero",
       "authors": [
         "Charles Boyd"
       ],
@@ -3053,7 +3053,7 @@
       "year": -3626,
       "series": "The Old Republic",
       "color": "#FBD9D7",
-      "wiki_url": "https://www.BioWare/info/news/article/20210413",
+      "wiki_url": "https://starwars.fandom.com/wiki/Quite_A_Story_To_Tell",
       "authors": [
         "Caitlin Sullivan Kelly"
       ],
