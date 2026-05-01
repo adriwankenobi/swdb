@@ -268,3 +268,112 @@ def test_verify_url_alive_refresh_clears_cache(cache_dir, monkeypatch):
     monkeypatch.setattr(client._session, "head", fake_head)
     assert client.verify_url_alive("https://example.com/x") is True
     assert calls["n"] == 1
+
+
+def test_verify_url_alive_fandom_uses_api_not_head(cache_dir, monkeypatch):
+    """Fandom wiki URLs are bot-blocked on direct GET/HEAD; route via MediaWiki API."""
+    client = WikiClient(cache_dir=cache_dir)
+
+    def fake_head(url, **kw):
+        raise AssertionError(f"HEAD should not be called for fandom wiki URLs: {url}")
+
+    captured: dict = {}
+
+    def fake_get(url, timeout):
+        captured["url"] = url
+
+        class R:
+            status_code = 200
+
+            def raise_for_status(self):
+                pass
+
+            def json(self):
+                return {"query": {"pages": {"12345": {"pageid": 12345, "title": "Eruption"}}}}
+
+        return R()
+
+    monkeypatch.setattr(client._session, "head", fake_head)
+    monkeypatch.setattr(client._session, "get", fake_get)
+    assert client.verify_url_alive("https://starwars.fandom.com/wiki/Eruption") is True
+    assert "api.php" in captured["url"]
+    assert "action=query" in captured["url"]
+    assert "titles=Eruption" in captured["url"]
+
+
+def test_verify_url_alive_fandom_missing_page_returns_false(cache_dir, monkeypatch):
+    """MediaWiki API marks missing pages with pageid=-1."""
+    client = WikiClient(cache_dir=cache_dir)
+
+    def fake_get(url, timeout):
+        class R:
+            status_code = 200
+
+            def raise_for_status(self):
+                pass
+
+            def json(self):
+                # MediaWiki returns "-1" key with `missing: ""` for nonexistent pages.
+                return {"query": {"pages": {"-1": {"ns": 0, "title": "Nope", "missing": ""}}}}
+
+        return R()
+
+    monkeypatch.setattr(client._session, "get", fake_get)
+    assert client.verify_url_alive("https://starwars.fandom.com/wiki/Nope") is False
+    cache = cache_dir / "url_verified.txt"
+    if cache.exists():
+        assert "Nope" not in cache.read_text()
+
+
+def test_verify_url_alive_fandom_handles_url_encoded_title(cache_dir, monkeypatch):
+    """Percent-encoded wiki URLs decode to the page title before the API call."""
+    client = WikiClient(cache_dir=cache_dir)
+    captured: dict = {}
+
+    def fake_get(url, timeout):
+        captured["url"] = url
+
+        class R:
+            status_code = 200
+
+            def raise_for_status(self):
+                pass
+
+            def json(self):
+                return {"query": {"pages": {"99": {"pageid": 99}}}}
+
+        return R()
+
+    monkeypatch.setattr(client._session, "get", fake_get)
+    assert client.verify_url_alive(
+        "https://starwars.fandom.com/wiki/A_Mother%27s_Hope"
+    ) is True
+    # Decoded title with apostrophe must reach the API URL re-encoded
+    assert "A_Mother%27s_Hope" in captured["url"]
+
+
+def test_verify_url_alive_non_fandom_still_uses_head(cache_dir, monkeypatch):
+    """static.wikia.nocookie.net cover URLs still go through HEAD."""
+    client = WikiClient(cache_dir=cache_dir)
+    head_calls = {"n": 0}
+
+    def fake_get(url, timeout):
+        raise AssertionError(f"GET should not be called for non-fandom URLs: {url}")
+
+    def fake_head(url, **kw):
+        head_calls["n"] += 1
+
+        class R:
+            status_code = 200
+
+            def raise_for_status(self):
+                pass
+
+        return R()
+
+    monkeypatch.setattr(client._session, "get", fake_get)
+    monkeypatch.setattr(client._session, "head", fake_head)
+    assert client.verify_url_alive(
+        "https://static.wikia.nocookie.net/starwars/images/abc/cover.jpg"
+    ) is True
+    assert head_calls["n"] == 1

@@ -163,16 +163,32 @@ class WikiClient:
         return None, "unmatched"
 
     def verify_url_alive(self, url: str) -> bool:
-        """HEAD-check `url`; cache successful URLs to skip future checks.
+        """Verify `url` resolves; cache successful URLs to skip future checks.
 
-        Returns True for 2xx (after redirects). Returns False for 4xx/5xx
-        and network errors; failures are NOT cached, so the next scrape
-        retries them.
+        Fandom wiki pages (`*.fandom.com/wiki/...`) bot-block direct GET/HEAD
+        even with a polite User-Agent — Cloudflare returns 403 intermittently.
+        For those, we use the MediaWiki query API (the same endpoint
+        `fetch_html` uses successfully) to check page existence. Other URLs
+        (e.g. `static.wikia.nocookie.net` covers) use plain HEAD.
+
+        Returns True on 2xx / page-exists, False on 4xx/5xx / missing /
+        network error. Failures are NOT cached so the next scrape retries.
         """
         if not url:
             return False
         if url in self._verified:
             return True
+        if _is_fandom_wiki_url(url):
+            alive = self._verify_fandom_via_api(url)
+        else:
+            alive = self._verify_via_head(url)
+        if alive:
+            self._verified.add(url)
+            with self._verified_path.open("a", encoding="utf-8") as f:
+                f.write(url + "\n")
+        return alive
+
+    def _verify_via_head(self, url: str) -> bool:
         try:
             time.sleep(POLITE_DELAY_SECONDS)
             response = self._session.head(
@@ -180,9 +196,41 @@ class WikiClient:
             )
         except requests.RequestException:
             return False
-        if 200 <= response.status_code < 300:
-            self._verified.add(url)
-            with self._verified_path.open("a", encoding="utf-8") as f:
-                f.write(url + "\n")
-            return True
-        return False
+        return 200 <= response.status_code < 300
+
+    def _verify_fandom_via_api(self, url: str) -> bool:
+        """Check page existence via MediaWiki query API.
+
+        For URL `https://starwars.fandom.com/wiki/Eruption`, calls
+        `https://starwars.fandom.com/api.php?action=query&titles=Eruption&...`
+        and inspects the response. Missing pages have a "-1" key in
+        `query.pages`; existing pages have a positive pageid.
+        """
+        wiki_idx = url.find("/wiki/")
+        if wiki_idx == -1:
+            return False
+        title = unquote(url[wiki_idx + len("/wiki/"):])
+        api_url = (
+            url[:wiki_idx]
+            + "/api.php?"
+            + urlencode({
+                "action": "query",
+                "titles": title,
+                "format": "json",
+                "redirects": "true",
+            })
+        )
+        try:
+            time.sleep(POLITE_DELAY_SECONDS)
+            response = self._session.get(api_url, timeout=10)
+            response.raise_for_status()
+            data = response.json()
+        except (requests.RequestException, ValueError):
+            return False
+        pages = data.get("query", {}).get("pages", {})
+        # "-1" indicates a missing page; any other key has a real pageid.
+        return any(key != "-1" for key in pages.keys())
+
+
+def _is_fandom_wiki_url(url: str) -> bool:
+    return ".fandom.com/wiki/" in url
