@@ -25,6 +25,11 @@ just deploy          # publish to GitHub Pages
 just --list          # all commands
 ```
 
+### When to run `just scrape`
+
+- **New row added to Excel** (with YEAR, MEDIUM, TITLE, J=wiki URL; leave F/G/H/K empty): `just scrape` then `just deploy`.
+- **Existing row's wiki link is dead**: replace J with the new URL AND clear F/G/H/K (else `excel_full=true` skips re-parsing), then `just scrape` then `just deploy`.
+
 ## Repo layout
 
 - `Star Wars EU.xlsx` — source of truth for title / series / medium / # / year

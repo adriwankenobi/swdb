@@ -8,6 +8,13 @@ default:
     @just --choose
 
 # Run the build pipeline (Excel -> works.json). Uses on-disk cache.
+#
+# When to run:
+#   - New row added to Excel (with YEAR, MEDIUM, TITLE, J=wiki URL; leave
+#     F/G/H/K empty): `just scrape` then `just deploy`.
+#   - Existing row's wiki link is dead: replace J with the new URL AND clear
+#     F/G/H/K (else excel_full=true skips re-parsing), then `just scrape`
+#     then `just deploy`.
 scrape:
     uv run python -m scripts.build_data
 
