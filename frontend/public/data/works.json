@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-01T14:34:20+00:00",
+  "generated_at": "2026-05-01T23:18:52+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -2309,16 +2309,9 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Knights_of_the_Old_Republic",
       "authors": [
-        "John Jackson Miller",
-        "Brian Ching",
-        "Travel Foreman",
-        "Dustin Weaver",
-        "Harvey Tolibao",
-        "Bong Dazo",
-        "Scott Hepburn",
-        "Alan Robinson",
-        "Dean Zachary",
-        "Ron Chan"
+        "Derek Watts",
+        "Drew Karpyshyn",
+        "David Gaider"
       ],
       "publisher": "Dark Horse Comics",
       "release_date": "2003-07-15",
@@ -5280,9 +5273,9 @@
       "year": -32,
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_I_Racer",
-      "release_date": "2002-02-12",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d4/Swracerrevenge.jpg/revision/latest"
+      "release_date": "1999-05-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cd/Racer_N64.jpg/revision/latest"
     },
     {
       "id": "9e351737-8c06-5638-978c-1bfbc1a51b93",
@@ -7339,11 +7332,12 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Practice_Makes_Perfect_(comic_book)",
       "authors": [
-        "Jason Hall"
+        "Jason Hall",
+        "Manuel Garcia"
       ],
       "publisher": "Dark Horse Comics",
-      "release_date": "2002-01-01",
-      "release_precision": "year",
+      "release_date": "2002-06-01",
+      "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/97/PracticeMakesPerfectComicBook.jpg/revision/latest"
     },
     {
@@ -7460,7 +7454,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Republic_Commando",
       "release_date": "2005-02-28",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/RepublicCommandoLogo.png/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2d/RCcover.jpg/revision/latest"
     },
     {
       "id": "6310eaca-8bc1-5264-a812-79b676110fa1",
@@ -8148,9 +8142,9 @@
       "authors": [
         "Jon Favreau"
       ],
-      "release_date": "2023-03-01",
+      "release_date": "2004-04-05",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/31/Chapter17-TheApostate.png/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fa/CW_Chapter_17.png/revision/latest"
     },
     {
       "id": "302a86ef-475f-58d9-b125-42e4d10008bb",
@@ -8165,9 +8159,9 @@
       "authors": [
         "Jon Favreau"
       ],
-      "release_date": "2023-03-08",
+      "release_date": "2004-04-06",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a1/Chapter18-TheMinesofMandalore.png/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b7/CW_Chapter_18.png/revision/latest"
     },
     {
       "id": "60dc6222-a00d-5aed-a779-c9ccb8aad6dc",
@@ -8183,9 +8177,9 @@
         "Noah Kloor",
         "Jon Favreau"
       ],
-      "release_date": "2023-03-15",
+      "release_date": "2004-04-07",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a3/Chapter19-TheConvert.png/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4d/CW_Chapter_19.png/revision/latest"
     },
     {
       "id": "828ea5a6-d729-5e58-bc18-a8b0cd5fd6dd",
@@ -9126,7 +9120,7 @@
         "Scott Murphy",
         "Steven Melching"
       ],
-      "release_date": "2002-10-29",
+      "release_date": "2008-08-14",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/ff/The_Clone_Wars_film_poster.jpg/revision/latest"
     },
@@ -9751,7 +9745,8 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Switch",
       "authors": [
-        "Pablo Hidalgo"
+        "Pablo Hidalgo",
+        "Katie Cook"
       ],
       "release_date": "2009-01-09",
       "release_precision": "day",
@@ -9967,7 +9962,7 @@
       ],
       "release_date": "2009-02-13",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fb/Blue_shadow_virus_vial.png/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5b/Epguide017.png/revision/latest"
     },
     {
       "id": "9df084c1-8127-5f9e-8dea-bba1da204451",
@@ -10971,7 +10966,7 @@
       ],
       "release_date": "2011-01-07",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d7/Nightsisters_symbol_-_JFO.svg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/87/Epguide312.jpg/revision/latest"
     },
     {
       "id": "08687ae1-b580-5283-b5d0-3977714a53d8",
@@ -11077,7 +11072,7 @@
       ],
       "release_date": "2011-02-04",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c3/AltarOfMortis-AOM.png/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/eb/TransferForce-AOM.png/revision/latest"
     },
     {
       "id": "0b621241-f14e-558b-a901-0431a9e73932",
@@ -11355,7 +11350,7 @@
       ],
       "release_date": "2011-11-04",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6d/General.png/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/91/Epguide408.png/revision/latest"
     },
     {
       "id": "67f05f8f-843b-5e90-bc17-0981f41c474c",
@@ -11746,7 +11741,7 @@
       ],
       "release_date": "2012-03-16",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7e/The_Revenge.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a2/Epguide422.png/revision/latest"
     },
     {
       "id": "c13017bb-640b-5ba4-87ad-c9a497a55a76",
@@ -13074,9 +13069,9 @@
       "authors": [
         "Jon Favreau"
       ],
-      "release_date": "2023-03-29",
+      "release_date": "2005-03-21",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/68/Chapter21-ThePirate.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8c/CW_Chapter_21.png/revision/latest"
     },
     {
       "id": "f27a47d5-1a99-5035-894d-3867e6773ba2",
@@ -19911,7 +19906,7 @@
       "publisher": "Dark Horse Comics",
       "release_date": "2013-01-09",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/SWDH_1.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/21/SWDH_1Final.jpg/revision/latest"
     },
     {
       "id": "157b9b87-ccb9-5188-9b69-52e398be2280",
@@ -19930,7 +19925,7 @@
       "publisher": "Dark Horse Comics",
       "release_date": "2013-02-13",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/SWDH_1.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2a/SWDH_2Final.jpg/revision/latest"
     },
     {
       "id": "d584176a-7cc4-57ab-83cf-7db0a168ee21",
@@ -19949,7 +19944,7 @@
       "publisher": "Dark Horse Comics",
       "release_date": "2013-03-13",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/SWDH_1.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/ce/SWDH_3Final.jpg/revision/latest"
     },
     {
       "id": "bb488565-e344-577a-bb58-148d89396eb4",
@@ -19968,7 +19963,7 @@
       "publisher": "Dark Horse Comics",
       "release_date": "2013-04-10",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/SWDH_1.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4e/SWDH_4Final.jpg/revision/latest"
     },
     {
       "id": "cf68a277-61c7-5178-854c-a91b9aba86ee",
@@ -19987,7 +19982,7 @@
       "publisher": "Dark Horse Comics",
       "release_date": "2013-05-08",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/SWDH_1.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4c/SWDH_5Final.jpg/revision/latest"
     },
     {
       "id": "40f32c9e-b263-5ce9-8ce7-9cb2883ef29a",
@@ -20006,7 +20001,7 @@
       "publisher": "Dark Horse Comics",
       "release_date": "2013-06-12",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/SWDH_1.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/79/SWDH_6Final.jpg/revision/latest"
     },
     {
       "id": "0cf852e7-4b0c-5965-bfdb-f930c8cf3d00",
@@ -22715,19 +22710,7 @@
       "title": "The Star Wars Holiday Special",
       "medium": "Movie",
       "year": 1,
-      "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Star_Wars_Holiday_Special",
-      "authors": [
-        "Rod Warren",
-        "Bruce Vilanch",
-        "Pat Proft",
-        "Leonard Ripps",
-        "Mitzie Welch",
-        "George Lucas"
-      ],
-      "release_date": "1978-11-17",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/23/StarWarsHS.jpg/revision/latest"
+      "color": "#FBD9D7"
     },
     {
       "id": "03b9194f-590e-55b3-be2c-0150243cac15",
@@ -22808,16 +22791,7 @@
       "medium": "Comic",
       "year": 1,
       "series": "Devilworlds",
-      "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Blind_Fury!",
-      "authors": [
-        "Alan Moore",
-        "John Stokes"
-      ],
-      "publisher": "Dark Horse Comics",
-      "release_date": "1982-07-01",
-      "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0b/Blindfury.jpg/revision/latest"
+      "color": "#DAF2F4"
     },
     {
       "id": "d5e2c518-8e7c-5b02-abe9-26b269a28583",
@@ -22826,16 +22800,7 @@
       "medium": "Comic",
       "year": 1,
       "series": "Devilworlds",
-      "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Pandora_Effect",
-      "authors": [
-        "Alan Moore",
-        "Adolfo Buylla"
-      ],
-      "publisher": "Dark Horse Comics",
-      "release_date": "1981-11-01",
-      "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/94/Pandora.jpg/revision/latest"
+      "color": "#DAF2F4"
     },
     {
       "id": "c1561906-d26e-5a29-a9a3-32a2c474fb04",
@@ -22861,17 +22826,7 @@
       "medium": "Comic",
       "year": 1,
       "series": "Tales",
-      "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Walking_the_Path_That%27s_Given",
-      "authors": [
-        "Jeremy Barlow",
-        "Shane McCarthy",
-        "Michel Lacombe"
-      ],
-      "publisher": "Dark Horse Comics",
-      "release_date": "2004-10-20",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/24/WalkingthePathThatsGiven.jpg/revision/latest"
+      "color": "#FBD9D7"
     },
     {
       "id": "d0277ad7-3fe4-53ff-85a4-863b14b1bb53",
@@ -23113,15 +23068,7 @@
       "medium": "Comic",
       "year": 2,
       "number": "1",
-      "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Splinter_of_the_Mind%27s_Eye",
-      "authors": [
-        "Alan Dean Foster"
-      ],
-      "publisher": "Sphere Books (UK), Del Rey (US)",
-      "release_date": "1978-02-12",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f6/Splinter_of_the_Minds_Eye.png/revision/latest"
+      "color": "#DAF2F4"
     },
     {
       "id": "1d439122-186e-54b7-879c-7db1600b9136",
@@ -23130,15 +23077,7 @@
       "medium": "Comic",
       "year": 2,
       "number": "2",
-      "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Splinter_of_the_Mind%27s_Eye",
-      "authors": [
-        "Alan Dean Foster"
-      ],
-      "publisher": "Sphere Books (UK), Del Rey (US)",
-      "release_date": "1978-02-12",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f6/Splinter_of_the_Minds_Eye.png/revision/latest"
+      "color": "#DAF2F4"
     },
     {
       "id": "a82dd337-df78-56c1-83ef-5cbaac3e1632",
@@ -24778,9 +24717,9 @@
         "Bob Carrau"
       ],
       "publisher": "Disney–Lucasfilm Press",
-      "release_date": "2021-09-07",
+      "release_date": "1985-10-12",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/01/LifeDayBackCover.png/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9a/TheTreeofLight.png/revision/latest"
     },
     {
       "id": "1bd013aa-53b1-52ef-bc15-f4f0e9402461",
@@ -25172,7 +25111,7 @@
       ],
       "release_date": "1986-11-15",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d3/HorvillesHutOfHorrors.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/11/Horville.jpg/revision/latest"
     },
     {
       "id": "8123af1b-0261-5fde-92d9-a65ec4b86347",
@@ -25740,7 +25679,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Shadows_of_the_Empire_(video_game)",
       "release_date": "1996-11-03",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3f/SOTE-logo.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3a/SOTE-N64.png/revision/latest"
     },
     {
       "id": "d7379be8-0963-54b9-a1e2-e7b3764fa420",
@@ -25953,14 +25892,7 @@
       "title": "Out of the Picture",
       "medium": "Short Story",
       "year": 3,
-      "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Out_of_the_Picture",
-      "authors": [
-        "Peter M. Schweighofer"
-      ],
-      "publisher": "West End Games",
-      "release_date": "1996-06-01",
-      "release_precision": "month"
+      "color": "#FBD9D7"
     },
     {
       "id": "660779a4-0392-54c8-924b-31c38fd0ab3f",
@@ -29743,7 +29675,7 @@
       "series": "New Republic Trilogy",
       "number": "3",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Heir_to_the_Empire",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Heir_to_the_Empire_(comic_series)",
       "authors": [
         "Timothy Zahn"
       ],
