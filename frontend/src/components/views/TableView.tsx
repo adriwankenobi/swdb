@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { WorkRow } from "@/components/work/WorkRow";
 import { useFilterStore } from "@/store/filterStore";
+import { useScrollResetOnFilterChange } from "@/lib/useScrollResetOnFilterChange";
 import type { Work } from "@/types/work";
 import { COLUMNS } from "./_tableColumns";
 
@@ -14,6 +15,7 @@ interface TableViewProps {
 export function TableView({ works }: TableViewProps) {
   const parentRef = useRef<HTMLDivElement>(null);
   const set = useFilterStore((s) => s.set);
+  useScrollResetOnFilterChange(parentRef);
 
   const virtualizer = useVirtualizer({
     count: works.length,

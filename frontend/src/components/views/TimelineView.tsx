@@ -1,7 +1,9 @@
+import { useRef } from "react";
 import { ERA_COLORS } from "@/constants/eras";
 import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { groupForChronology, groupForRelease } from "@/lib/timelineGroups";
+import { useScrollResetOnFilterChange } from "@/lib/useScrollResetOnFilterChange";
 import { useFilterStore } from "@/store/filterStore";
 import type { Work } from "@/types/work";
 
@@ -45,6 +47,8 @@ function Marker({ work, onClick }: MarkerProps) {
 export function TimelineView({ works }: { works: Work[] }) {
   const sort = useFilterStore((s) => s.sort);
   const set = useFilterStore((s) => s.set);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  useScrollResetOnFilterChange(scrollRef);
 
   if (works.length === 0) {
     return (
@@ -61,7 +65,7 @@ export function TimelineView({ works }: { works: Work[] }) {
   if (sort === "chronology") {
     const groups = groupForChronology(works);
     return (
-      <div className="h-full overflow-auto">
+      <div ref={scrollRef} className="h-full overflow-auto">
         <div className="space-y-8 p-4">
           {groups.map((group) => {
             const eraColor = ERA_COLORS[group.era];
@@ -106,7 +110,7 @@ export function TimelineView({ works }: { works: Work[] }) {
   // Release mode
   const groups = groupForRelease(works);
   return (
-    <div className="h-full overflow-auto">
+    <div ref={scrollRef} className="h-full overflow-auto">
       <div className="space-y-6 p-4">
         {groups.map((group) => {
           const headerLabel = group.year !== null ? String(group.year) : "Unknown";

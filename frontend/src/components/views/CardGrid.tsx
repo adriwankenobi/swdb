@@ -2,6 +2,7 @@ import { useRef, useMemo, useEffect, useState } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { WorkCard } from "@/components/work/WorkCard";
 import { useFilterStore } from "@/store/filterStore";
+import { useScrollResetOnFilterChange } from "@/lib/useScrollResetOnFilterChange";
 import type { Work } from "@/types/work";
 
 const ROW_HEIGHT = 360;     // approximate card height + gap
@@ -30,6 +31,7 @@ export function CardGrid({ works }: { works: Work[] }) {
   const parentRef = useRef<HTMLDivElement>(null);
   const cols = useResponsiveColumns(parentRef);
   const set = useFilterStore((s) => s.set);
+  useScrollResetOnFilterChange(parentRef);
 
   const rows = useMemo(() => {
     const arr: Work[][] = [];
