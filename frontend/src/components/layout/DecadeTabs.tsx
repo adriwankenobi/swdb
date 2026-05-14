@@ -41,12 +41,12 @@ export function DecadeTabs() {
   if (availableDecades.length === 0 && !hasUndated) return null;
 
   return (
-    <div className="flex flex-wrap items-center gap-1 border-b px-4 py-2">
+    <div className="flex items-center gap-1 overflow-x-auto whitespace-nowrap border-b px-4 py-2 md:flex-wrap md:overflow-visible md:whitespace-normal">
       <button
         type="button"
         onClick={clearDecade}
         className={[
-          "rounded px-3 py-1 text-sm font-medium transition",
+          "shrink-0 rounded px-3 py-1 text-sm font-medium transition",
           allActive
             ? "bg-foreground text-background"
             : "bg-muted text-muted-foreground hover:bg-muted/80",
@@ -62,7 +62,7 @@ export function DecadeTabs() {
             key={dec}
             type="button"
             onClick={() => toggleArrayValue("decades", dec)}
-            className="rounded px-3 py-1 text-sm font-medium text-white transition hover:opacity-90"
+            className="shrink-0 rounded px-3 py-1 text-sm font-medium text-white transition hover:opacity-90"
             style={{
               backgroundColor: color,
               opacity: isActive ? 1 : 0.45,
@@ -79,7 +79,7 @@ export function DecadeTabs() {
           key="unknown"
           type="button"
           onClick={toggleUnknown}
-          className="rounded px-3 py-1 text-sm font-medium text-white transition hover:opacity-90"
+          className="shrink-0 rounded px-3 py-1 text-sm font-medium text-white transition hover:opacity-90"
           style={{
             backgroundColor: UNKNOWN_COLOR,
             opacity: releaseUndated ? 1 : 0.45,
