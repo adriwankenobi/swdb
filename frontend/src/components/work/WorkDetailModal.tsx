@@ -38,8 +38,8 @@ export function WorkDetailModal() {
             <DialogHeader>
               <DialogTitle className="leading-tight break-words">{work.title}</DialogTitle>
             </DialogHeader>
-            <div className="flex flex-col md:flex-row gap-6">
-              <div className="w-full md:w-[200px] shrink-0 aspect-[2/3] overflow-hidden rounded-md bg-muted/40">
+            <div className="flex flex-row gap-4 md:gap-6">
+              <div className="w-28 md:w-[200px] shrink-0 aspect-[2/3] overflow-hidden rounded-md bg-muted/40">
                 {work.cover_url ? (() => {
                   const safeCover = safeHttpUrl(work.cover_url);
                   return safeCover ? (
