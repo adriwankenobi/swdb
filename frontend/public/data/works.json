@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-14T18:43:20+00:00",
+  "generated_at": "2026-05-14T21:22:37+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -30542,8 +30542,7 @@
       ],
       "publisher": "Unpublished",
       "release_date": "2022-11-01",
-      "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fe/Darkempire4.jpg/revision/latest?cb=20070921215552"
+      "release_precision": "month"
     },
     {
       "id": "e537f74f-53f5-54eb-a770-50b9a2af171b",
@@ -31570,15 +31569,16 @@
       "year": 14,
       "series": "Tales",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Tall_Tales",
+      "wiki_url": "https://starwars.fandom.com/wiki/Tall_Tales_(Star_Wars_Tales)",
       "authors": [
-        "Alyssa Wong",
-        "David Baldeón"
+        "Scott Allie",
+        "Paul Lee",
+        "Brian Horton"
       ],
-      "publisher": "Marvel Comics",
-      "release_date": "2023-12-20",
+      "publisher": "Dark Horse Comics",
+      "release_date": "2002-03-20",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/ac/TallTalesStory.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f1/TallTales.jpg/revision/latest"
     },
     {
       "id": "64a867d8-945d-52e7-b77d-9b84bd21982e",
