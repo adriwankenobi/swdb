@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-14T08:36:34+00:00",
+  "generated_at": "2026-05-14T14:53:48+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -5249,21 +5249,80 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/33/ThePhantomMenaceNovelObiWan.jpg/revision/latest"
     },
     {
-      "id": "c012fb84-c289-52b0-8db5-ec5458552894",
+      "id": "b89536b5-d391-5859-b00a-5af6dfc46351",
       "era": "RISE OF THE EMPIRE",
       "title": "The Phantom Menace",
       "medium": "Comic",
       "year": -32,
       "series": "Star Wars Episode",
-      "number": "I",
+      "number": "I (1)",
       "color": "#FDE49B",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_I_%E2%80%94_The_Phantom_Menace_(comic_series)",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_I_%E2%80%94_The_Phantom_Menace_1",
       "authors": [
         "Henry Gilroy",
         "Rodolfo Damaggio"
       ],
       "publisher": "Dark Horse Comics",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/08/Tpmtpb.jpg/revision/latest"
+      "release_date": "1999-05-05",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a9/Tpmcomic1.jpg/revision/latest"
+    },
+    {
+      "id": "a6744745-f2ea-5792-adc5-d803ac5edfa2",
+      "era": "RISE OF THE EMPIRE",
+      "title": "The Phantom Menace",
+      "medium": "Comic",
+      "year": -32,
+      "series": "Star Wars Episode",
+      "number": "I (2)",
+      "color": "#FDE49B",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_I_%E2%80%94_The_Phantom_Menace_2",
+      "authors": [
+        "Henry Gilroy",
+        "Rodolfo Damaggio"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1999-05-12",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a9/Tpmcomic2.jpg/revision/latest"
+    },
+    {
+      "id": "35074c59-55ba-58e9-a5d6-fe0e3a86e7e3",
+      "era": "RISE OF THE EMPIRE",
+      "title": "The Phantom Menace",
+      "medium": "Comic",
+      "year": -32,
+      "series": "Star Wars Episode",
+      "number": "I (3)",
+      "color": "#FDE49B",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_I_%E2%80%94_The_Phantom_Menace_3",
+      "authors": [
+        "Henry Gilroy",
+        "Rodolfo Damaggio"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1999-05-19",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c6/Episode_I-_The_Phantom_Menace_0.5_Cover.jpg/revision/latest?cb=20060620075210"
+    },
+    {
+      "id": "7e237f58-13e0-50bf-9a2a-e5b53dae1ec7",
+      "era": "RISE OF THE EMPIRE",
+      "title": "The Phantom Menace",
+      "medium": "Comic",
+      "year": -32,
+      "series": "Star Wars Episode",
+      "number": "I (4)",
+      "color": "#FDE49B",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_I_%E2%80%94_The_Phantom_Menace_4",
+      "authors": [
+        "Henry Gilroy",
+        "Rodolfo Damaggio"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1999-05-26",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/13/Tpmobiwan.jpg/revision/latest?cb=20050910012723"
     },
     {
       "id": "935e3859-08fe-52bf-800c-c4c5b671e569",
@@ -7321,21 +7380,80 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3a/Attack_of_the_Clones_Cover.jpg/revision/latest"
     },
     {
-      "id": "20a00b7d-4a4c-58eb-bd8b-69d3db746dbe",
+      "id": "bddc9e2a-aac6-5233-9bd9-6a3a0312d4b1",
       "era": "THE CLONE WARS",
       "title": "Attack of the Clones",
       "medium": "Comic",
       "year": -22,
       "series": "Star Wars Episode",
-      "number": "II",
+      "number": "II (1)",
       "color": "#FDE49B",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_II_%E2%80%94_Attack_of_the_Clones_(comic_series)",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_II_%E2%80%94_Attack_of_the_Clones_1",
       "authors": [
         "Henry Gilroy",
         "Jan Duursema"
       ],
       "publisher": "Dark Horse Comics",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/98/Aotctpb.jpg/revision/latest"
+      "release_date": "2002-04-24",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e7/Aotccomic1.jpg/revision/latest"
+    },
+    {
+      "id": "c34201ef-128f-5e66-bb6c-88cfc1aa8fbc",
+      "era": "THE CLONE WARS",
+      "title": "Attack of the Clones",
+      "medium": "Comic",
+      "year": -22,
+      "series": "Star Wars Episode",
+      "number": "II (2)",
+      "color": "#FDE49B",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_II_%E2%80%94_Attack_of_the_Clones_2",
+      "authors": [
+        "Henry Gilroy",
+        "Jan Duursema"
+      ],
+      "publisher": "http://starwars.com/",
+      "release_date": "2002-04-24",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/89/Aotccomic2.jpg/revision/latest"
+    },
+    {
+      "id": "2ef88b86-d26e-5ce2-82f0-51314309a6f4",
+      "era": "THE CLONE WARS",
+      "title": "Attack of the Clones",
+      "medium": "Comic",
+      "year": -22,
+      "series": "Star Wars Episode",
+      "number": "II (3)",
+      "color": "#FDE49B",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_II_%E2%80%94_Attack_of_the_Clones_3",
+      "authors": [
+        "Henry Gilroy",
+        "Jan Duursema"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2002-05-01",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/88/Aotccomic3.jpg/revision/latest"
+    },
+    {
+      "id": "0ecd7463-0040-5a36-b4cb-a6ad5697f969",
+      "era": "THE CLONE WARS",
+      "title": "Attack of the Clones",
+      "medium": "Comic",
+      "year": -22,
+      "series": "Star Wars Episode",
+      "number": "II (4)",
+      "color": "#FDE49B",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_II_%E2%80%94_Attack_of_the_Clones_4",
+      "authors": [
+        "Henry Gilroy",
+        "Jan Duursema"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2002-05-08",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/25/Starwarstales14.jpg/revision/latest?cb=20091018044230"
     },
     {
       "id": "202292fe-4164-5e22-aba7-3a885fd57446",
@@ -7350,7 +7468,8 @@
       ],
       "publisher": "StarWars.com",
       "release_date": "2008-04-23",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4d/Tru4.jpg/revision/latest?cb=20110509165205"
     },
     {
       "id": "5826bab9-a329-5345-b1ec-44d028a4d556",
@@ -7738,7 +7857,8 @@
       ],
       "publisher": "Paizo Publishing",
       "release_date": "2003-01-21",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7e/Insider81.jpg/revision/latest?cb=20100215185703"
     },
     {
       "id": "ecffd1fa-5e33-59d0-958e-d97524e5db72",
@@ -8284,7 +8404,8 @@
       ],
       "publisher": "Paizo Publishing",
       "release_date": "2003-06-03",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d4/CestusDeception_PB.jpg/revision/latest?cb=20070719042926"
     },
     {
       "id": "0fe3c105-cd9f-51d7-b094-5cbdd36ddd71",
@@ -8299,7 +8420,8 @@
       ],
       "publisher": "Paizo Publishing",
       "release_date": "2003-06-03",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/76/The_hive.jpg/revision/latest?cb=20070719043337"
     },
     {
       "id": "c51d128f-6dce-5acc-94f0-4a8bff5b7f03",
@@ -8314,7 +8436,8 @@
       ],
       "publisher": "Paizo Publishing",
       "release_date": "2003-06-03",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4f/Republic55.jpg/revision/latest?cb=20090830210941"
     },
     {
       "id": "13144245-d80f-5aa3-adfd-c26f2be2ab8a",
@@ -10042,6 +10165,7 @@
         "Pablo Hidalgo",
         "Jeffrey Carlisle"
       ],
+      "publisher": "http://starwars.com/",
       "release_date": "2009-03-12",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9d/Ballad_of_Cham_Syndulla.png/revision/latest"
@@ -10117,6 +10241,7 @@
         "Paul Dini",
         "Scott Murphy"
       ],
+      "publisher": "http://starwars.com/",
       "release_date": "2009-10-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a3/Epguide201.png/revision/latest"
@@ -13117,21 +13242,80 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/88/RevengeOfTheSithNovel.jpg/revision/latest"
     },
     {
-      "id": "00e02205-cb9b-5acc-9407-53a80b2a94c8",
+      "id": "1080596c-a9a7-520b-aa72-9123b5d5f911",
       "era": "THE CLONE WARS",
       "title": "Revenge of the Sith",
       "medium": "Comic",
       "year": -19,
       "series": "Star Wars Episode",
-      "number": "III",
+      "number": "III (1)",
       "color": "#FDE49B",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_III_%E2%80%94_Revenge_of_the_Sith_(comic_series)",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_III_%E2%80%94_Revenge_of_the_Sith_1",
       "authors": [
         "Miles Lane",
         "Doug Wheatley"
       ],
       "publisher": "Dark Horse Comics",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3a/RotS-comic-TPB.jpg/revision/latest"
+      "release_date": "2005-04-02",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a8/Rotscomic1.jpg/revision/latest"
+    },
+    {
+      "id": "c9ca6276-b21e-5699-aed0-1c4c4af9d708",
+      "era": "THE CLONE WARS",
+      "title": "Revenge of the Sith",
+      "medium": "Comic",
+      "year": -19,
+      "series": "Star Wars Episode",
+      "number": "III (2)",
+      "color": "#FDE49B",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_III_%E2%80%94_Revenge_of_the_Sith_2",
+      "authors": [
+        "Miles Lane",
+        "Doug Wheatley"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2005-04-02",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/73/Rotscomic2.jpg/revision/latest"
+    },
+    {
+      "id": "64efb213-69c2-5a65-8271-4d59b21c0924",
+      "era": "THE CLONE WARS",
+      "title": "Revenge of the Sith",
+      "medium": "Comic",
+      "year": -19,
+      "series": "Star Wars Episode",
+      "number": "III (3)",
+      "color": "#FDE49B",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_III_%E2%80%94_Revenge_of_the_Sith_3",
+      "authors": [
+        "Miles Lane",
+        "Douglas Wheatley"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2005-04-02",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c7/Rotscomic3.jpg/revision/latest"
+    },
+    {
+      "id": "e1124913-abaf-5bd8-8e35-325e43eb924c",
+      "era": "THE CLONE WARS",
+      "title": "Revenge of the Sith",
+      "medium": "Comic",
+      "year": -19,
+      "series": "Star Wars Episode",
+      "number": "III (4)",
+      "color": "#FDE49B",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_III_%E2%80%94_Revenge_of_the_Sith_4",
+      "authors": [
+        "Miles Lane",
+        "Douglas Wheatley"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2005-04-02",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6a/Rotscomic4.jpg/revision/latest"
     },
     {
       "id": "e5ae738e-e162-575a-804c-233a5689f98f",
