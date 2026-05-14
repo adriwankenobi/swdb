@@ -5,12 +5,12 @@ export function MediumTabs() {
   const { mediums, set, toggleArrayValue } = useFilterStore();
 
   return (
-    <div className="flex flex-wrap items-center gap-1">
+    <div className="flex items-center gap-1 overflow-x-auto whitespace-nowrap md:flex-wrap md:overflow-visible md:whitespace-normal">
       <button
         type="button"
         onClick={() => set({ mediums: [] })}
         className={[
-          "rounded px-3 py-1 text-sm font-medium transition",
+          "shrink-0 rounded px-3 py-1 text-sm font-medium transition",
           mediums.length === 0
             ? "bg-foreground text-background"
             : "bg-muted text-muted-foreground hover:bg-muted/80",
@@ -25,7 +25,7 @@ export function MediumTabs() {
             key={medium}
             type="button"
             onClick={() => toggleArrayValue("mediums", medium)}
-            className="rounded px-3 py-1 text-sm font-medium text-white transition hover:opacity-90"
+            className="shrink-0 rounded px-3 py-1 text-sm font-medium text-white transition hover:opacity-90"
             style={{
               backgroundColor: MEDIUM_COLORS[medium],
               opacity: active ? 1 : 0.45,
