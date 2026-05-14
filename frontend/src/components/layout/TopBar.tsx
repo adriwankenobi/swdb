@@ -37,6 +37,7 @@ export function TopBar({ onHome }: TopBarProps) {
 
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 768px)");
+    setIsMdUp(mq.matches);
     const onChange = (e: MediaQueryListEvent) => setIsMdUp(e.matches);
     mq.addEventListener("change", onChange);
     return () => mq.removeEventListener("change", onChange);
@@ -74,6 +75,7 @@ export function TopBar({ onHome }: TopBarProps) {
           value={q}
           onChange={(e) => {
             const newQ = e.target.value;
+            // When transitioning from empty to non-empty, clear era/decade selection.
             if (!previousQ.current && newQ) {
               set({ q: newQ, eras: [], decades: [] });
             } else {
