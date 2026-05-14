@@ -3,26 +3,25 @@ import { useVirtualizer } from "@tanstack/react-virtual";
 import { WorkCard } from "@/components/work/WorkCard";
 import { useFilterStore } from "@/store/filterStore";
 import { useScrollResetOnFilterChange } from "@/lib/useScrollResetOnFilterChange";
+import { computeColumnCount } from "@/lib/computeColumnCount";
 import type { Work } from "@/types/work";
 
 const ROW_HEIGHT = 360;     // approximate card height + gap
-const COL_GAP = 16;
-const MIN_CARD_WIDTH = 180;
 
 function useResponsiveColumns(parentRef: React.RefObject<HTMLDivElement | null>) {
   const [cols, setCols] = useState(4);
   useEffect(() => {
     if (!parentRef.current) return;
     const el = parentRef.current;
-    const update = () => {
-      const w = el.clientWidth;
-      const next = Math.max(1, Math.floor((w + COL_GAP) / (MIN_CARD_WIDTH + COL_GAP)));
-      setCols(next);
-    };
+    const update = () => setCols(computeColumnCount(el.clientWidth, window.innerWidth));
     update();
     const ro = new ResizeObserver(update);
     ro.observe(el);
-    return () => ro.disconnect();
+    window.addEventListener("resize", update);
+    return () => {
+      ro.disconnect();
+      window.removeEventListener("resize", update);
+    };
   }, [parentRef]);
   return cols;
 }
