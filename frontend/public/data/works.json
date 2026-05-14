@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-01T23:18:52+00:00",
+  "generated_at": "2026-05-13T22:46:19+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -5257,13 +5257,13 @@
       "series": "Star Wars Episode",
       "number": "I",
       "color": "#FDE49B",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Phantom_Menace",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_I_%E2%80%94_The_Phantom_Menace_(comic_series)",
       "authors": [
-        "George Lucas"
+        "Henry Gilroy",
+        "Rodolfo Damaggio"
       ],
-      "release_date": "1999-05-01",
-      "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/75/EPI_TPM_poster.png/revision/latest"
+      "publisher": "Dark Horse Comics",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/08/Tpmtpb.jpg/revision/latest"
     },
     {
       "id": "935e3859-08fe-52bf-800c-c4c5b671e569",
@@ -5379,14 +5379,14 @@
       "year": -32,
       "series": "Star Wars Episode I Journal",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Anakin_Skywalker",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Journal:_Anakin_Skywalker",
       "authors": [
         "Todd Strasser"
       ],
       "publisher": "Scholastic",
-      "release_date": "1999-01-01",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6f/Anakin_Skywalker_RotS.png/revision/latest"
+      "release_date": "1999-05-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/bf/AnakinJournal.jpg/revision/latest"
     },
     {
       "id": "010a3937-9c1b-5216-af98-2cb4cf03815f",
@@ -5396,14 +5396,14 @@
       "year": -32,
       "series": "Star Wars Episode I Journal",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Darth_Maul",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Journal:_Darth_Maul",
       "authors": [
         "Jude Watson"
       ],
       "publisher": "Scholastic",
-      "release_date": "2000-01-01",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/89/MaulHS_SWI185.png/revision/latest"
+      "release_date": "2000-03-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/13/DMaulJournal.jpg/revision/latest"
     },
     {
       "id": "1e51b2fe-7249-5ac0-9140-de378289d24c",
@@ -5730,7 +5730,7 @@
       "publisher": "Dark Horse Comics",
       "release_date": "2004-10-20",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ec/Nomad.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4d/Nomad2.jpg/revision/latest"
     },
     {
       "id": "9a8f1048-14bc-51da-985e-00918d227477",
@@ -5749,7 +5749,7 @@
       "publisher": "Dark Horse Comics",
       "release_date": "2004-10-20",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ec/Nomad.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/20/Nomad3.jpg/revision/latest"
     },
     {
       "id": "f2805972-582c-563a-ba31-59f30b09e8bf",
@@ -5768,7 +5768,7 @@
       "publisher": "Dark Horse Comics",
       "release_date": "2004-10-20",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ec/Nomad.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/32/Nomad4.jpg/revision/latest"
     },
     {
       "id": "b1efeade-ce45-5471-8860-2c3bc8dba431",
@@ -6205,48 +6205,11 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cc/Republic31.jpg/revision/latest"
     },
     {
-      "id": "b79f61d6-d04e-5491-8b71-77d2a8757d6e",
+      "id": "22b516b3-03a6-5381-bf49-9b986cce8adc",
       "era": "RISE OF THE EMPIRE",
       "title": "Heart of Fire",
       "medium": "Comic",
       "year": -30,
-      "number": "1",
-      "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Heart_of_Fire_(comic)",
-      "authors": [
-        "John Ostrander",
-        "Jan Duursema"
-      ],
-      "publisher": "Dark Horse Comics",
-      "release_date": "2001-05-02",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0c/Heartoffiretitle.jpg/revision/latest"
-    },
-    {
-      "id": "f7654986-a6be-5350-acde-3c3f7569369c",
-      "era": "RISE OF THE EMPIRE",
-      "title": "Heart of Fire",
-      "medium": "Comic",
-      "year": -30,
-      "number": "2",
-      "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Heart_of_Fire_(comic)",
-      "authors": [
-        "John Ostrander",
-        "Jan Duursema"
-      ],
-      "publisher": "Dark Horse Comics",
-      "release_date": "2001-05-02",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0c/Heartoffiretitle.jpg/revision/latest"
-    },
-    {
-      "id": "3f2c159b-8352-567c-bed5-cab80ea8c99c",
-      "era": "RISE OF THE EMPIRE",
-      "title": "Heart of Fire",
-      "medium": "Comic",
-      "year": -30,
-      "number": "3",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Heart_of_Fire_(comic)",
       "authors": [
@@ -6766,13 +6729,15 @@
       "medium": "Comic",
       "year": -27,
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Jango_Fett",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Jango_Fett_(one-shot)",
       "authors": [
-        "Ron Marz"
+        "Ron Marz",
+        "Tom Fowler"
       ],
       "publisher": "Dark Horse Comics",
       "release_date": "2002-03-13",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/23/Jango_Fett.jpg/revision/latest"
     },
     {
       "id": "789d2f69-e2be-578f-ad92-8db843f29dcd",
@@ -6792,66 +6757,11 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/54/Zam_Wesell.jpg/revision/latest"
     },
     {
-      "id": "8f044617-d4fa-5812-b2cb-fbf132c21b1f",
+      "id": "2d4a230c-3f0c-5bc2-84aa-3966ead34fec",
       "era": "RISE OF THE EMPIRE",
       "title": "Poison Moon",
       "medium": "Comic",
       "year": -27,
-      "number": "1",
-      "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Poison_Moon",
-      "authors": [
-        "Michael Carriglitto",
-        "Adrian Sibar"
-      ],
-      "publisher": "Dark Horse Comics",
-      "release_date": "2002-02-06",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2d/Radiant_IX.jpg/revision/latest"
-    },
-    {
-      "id": "c088fb14-78f0-531e-99bc-9ef21dd37204",
-      "era": "RISE OF THE EMPIRE",
-      "title": "Poison Moon",
-      "medium": "Comic",
-      "year": -27,
-      "number": "2",
-      "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Poison_Moon",
-      "authors": [
-        "Michael Carriglitto",
-        "Adrian Sibar"
-      ],
-      "publisher": "Dark Horse Comics",
-      "release_date": "2002-02-06",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2d/Radiant_IX.jpg/revision/latest"
-    },
-    {
-      "id": "cfe6bc1b-8cd2-5d0b-be64-b6d2e5368262",
-      "era": "RISE OF THE EMPIRE",
-      "title": "Poison Moon",
-      "medium": "Comic",
-      "year": -27,
-      "number": "3",
-      "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Poison_Moon",
-      "authors": [
-        "Michael Carriglitto",
-        "Adrian Sibar"
-      ],
-      "publisher": "Dark Horse Comics",
-      "release_date": "2002-02-06",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2d/Radiant_IX.jpg/revision/latest"
-    },
-    {
-      "id": "f2db4c73-ac82-53b3-9738-b59c27cb7c60",
-      "era": "RISE OF THE EMPIRE",
-      "title": "Poison Moon",
-      "medium": "Comic",
-      "year": -27,
-      "number": "4",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Poison_Moon",
       "authors": [
@@ -7419,14 +7329,13 @@
       "series": "Star Wars Episode",
       "number": "II",
       "color": "#FDE49B",
-      "wiki_url": "https://starwars.fandom.com/wiki/Attack_of_the_Clones",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_II_%E2%80%94_Attack_of_the_Clones_(comic_series)",
       "authors": [
-        "George Lucas",
-        "Jonathan Hales"
+        "Henry Gilroy",
+        "Jan Duursema"
       ],
-      "release_date": "2002-05-16",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/dd/Attack-Clones-Poster.jpg/revision/latest"
+      "publisher": "Dark Horse Comics",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/98/Aotctpb.jpg/revision/latest"
     },
     {
       "id": "202292fe-4164-5e22-aba7-3a885fd57446",
@@ -8139,9 +8048,6 @@
       "number": "2x07",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_17_(Star_Wars:_Clone_Wars)",
-      "authors": [
-        "Jon Favreau"
-      ],
       "release_date": "2004-04-05",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fa/CW_Chapter_17.png/revision/latest"
@@ -8156,9 +8062,6 @@
       "number": "2x08",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_18_(Star_Wars:_Clone_Wars)",
-      "authors": [
-        "Jon Favreau"
-      ],
       "release_date": "2004-04-06",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b7/CW_Chapter_18.png/revision/latest"
@@ -8173,10 +8076,6 @@
       "number": "2x09",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_19_(Star_Wars:_Clone_Wars)",
-      "authors": [
-        "Noah Kloor",
-        "Jon Favreau"
-      ],
       "release_date": "2004-04-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4d/CW_Chapter_19.png/revision/latest"
@@ -8669,8 +8568,8 @@
         "Timothy Zahn"
       ],
       "publisher": "Paizo Publishing",
-      "release_date": "2004-05-01",
-      "release_precision": "month",
+      "release_date": "2004-05-18",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/ac/Dagro.jpg/revision/latest"
     },
     {
@@ -8685,8 +8584,8 @@
         "Timothy Zahn"
       ],
       "publisher": "Paizo Publishing",
-      "release_date": "2004-05-01",
-      "release_precision": "month",
+      "release_date": "2004-08-03",
+      "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/ac/Dagro.jpg/revision/latest"
     },
     {
@@ -9185,14 +9084,15 @@
       "year": -19,
       "series": "The Clone Wars Webcomics",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Pr%C3%A9lude...",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Prelude",
       "authors": [
-        "Pierre Zaplotny"
+        "Pablo Hidalgo",
+        "Thomas Hodges",
+        "Grant Gould"
       ],
-      "publisher": "Welcome Multimédia",
-      "release_date": "1989-01-01",
-      "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6e/Prelude-COM15.jpg/revision/latest"
+      "release_date": "2008-10-02",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/18/TCW-Prelude-Shakedown.jpg/revision/latest"
     },
     {
       "id": "40ef8d47-2bfd-5e85-b4aa-44283bcc0b2f",
@@ -9707,14 +9607,14 @@
       "year": -19,
       "series": "The Clone Wars Webcomics",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Bait",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Bait",
       "authors": [
-        "Alan Dean Foster"
+        "Pablo Hidalgo",
+        "Grant Gould"
       ],
-      "publisher": "Titan Magazines",
-      "release_date": "2015-12-22",
+      "release_date": "2009-01-02",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/ff/Bait.png/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e3/Bait_cover.png/revision/latest"
     },
     {
       "id": "4078cea3-fb45-5dba-b095-f81d322d502e",
@@ -10866,20 +10766,57 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/07/Epguide022.jpg/revision/latest"
     },
     {
-      "id": "7acbf9dc-0d1f-534e-b2ee-f355b19f436f",
+      "id": "79dfcea7-baff-5dca-96e4-3ce79b361248",
       "era": "THE CLONE WARS",
       "title": "Hunting the Hunters",
       "medium": "Comic",
       "year": -19,
       "series": "The Clone Wars Webcomics",
+      "number": "1",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Hunting_the_Hunters",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Hunting_the_Hunters_(Part_I)",
       "authors": [
-        "Bill Smith"
+        "Pablo Hidalgo",
+        "Thomas Hodges"
       ],
-      "release_date": "1996-01-01",
-      "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/34/NarissSivLoqesh.jpg/revision/latest"
+      "release_date": "2009-06-12",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9b/Hunting_the_Hunters_Part_1.png/revision/latest"
+    },
+    {
+      "id": "f512b0e0-97da-57ce-993e-8e170e23927a",
+      "era": "THE CLONE WARS",
+      "title": "Hunting the Hunters",
+      "medium": "Comic",
+      "year": -19,
+      "series": "The Clone Wars Webcomics",
+      "number": "2",
+      "color": "#FBD9D7",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Hunting_the_Hunters_(Part_II)",
+      "authors": [
+        "Pablo Hidalgo",
+        "Katie Cook"
+      ],
+      "release_date": "2009-07-16",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/22/Hunting_the_Hunters_Part_2.png/revision/latest"
+    },
+    {
+      "id": "1af20a8b-b501-50e4-bbca-47fea50a4a2d",
+      "era": "THE CLONE WARS",
+      "title": "Hunting the Hunters",
+      "medium": "Comic",
+      "year": -19,
+      "series": "The Clone Wars Webcomics",
+      "number": "3",
+      "color": "#FBD9D7",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Hunting_the_Hunters_(Part_III)",
+      "authors": [
+        "Pablo Hidalgo"
+      ],
+      "release_date": "2009-09-12",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/67/Hunting_the_Hunters_3.png/revision/latest"
     },
     {
       "id": "bf8f9eb8-979c-5b30-8741-c02a17a8fe4b",
@@ -12360,13 +12297,13 @@
       "series": "The Clone Wars",
       "number": "6x08",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/The_Disappeared",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Disappeared,_Part_I",
       "authors": [
-        "Steven Melching"
+        "Jonathan W. Rinzler"
       ],
-      "release_date": "2019-02-24",
+      "release_date": "2014-03-07",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d4/TheDisappeared-EpisodeGuide.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/00/EpGuide608.png/revision/latest"
     },
     {
       "id": "efe8d72a-08a9-5fd6-b033-5a5a6f6606e9",
@@ -13066,9 +13003,6 @@
       "number": "3x01",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_21_(Star_Wars:_Clone_Wars)",
-      "authors": [
-        "Jon Favreau"
-      ],
       "release_date": "2005-03-21",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8c/CW_Chapter_21.png/revision/latest"
@@ -13191,13 +13125,13 @@
       "series": "Star Wars Episode",
       "number": "III",
       "color": "#FDE49B",
-      "wiki_url": "https://starwars.fandom.com/wiki/Revenge_of_the_Sith",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_III_%E2%80%94_Revenge_of_the_Sith_(comic_series)",
       "authors": [
-        "George Lucas"
+        "Miles Lane",
+        "Doug Wheatley"
       ],
-      "release_date": "2005-05-19",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e7/EPIII_RotS_poster.png/revision/latest"
+      "publisher": "Dark Horse Comics",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3a/RotS-comic-TPB.jpg/revision/latest"
     },
     {
       "id": "e5ae738e-e162-575a-804c-233a5689f98f",
@@ -16236,18 +16170,17 @@
       "series": "The Force Unleashed",
       "number": "1",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Force_Unleashed",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Force_Unleashed_(graphic_novel)",
       "authors": [
-        "Matt Omernick",
-        "W. Haden Blackman",
-        "Shawn Pitman",
-        "John Stafford",
-        "Cameron Suey",
-        "Matt Emery"
+        "Haden Blackman",
+        "Brian Ching",
+        "Bong Dazo",
+        "Wayne Nichols"
       ],
-      "release_date": "2008-09-16",
+      "publisher": "Dark Horse Comics",
+      "release_date": "2008-08-18",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/86/TFU_cover_art.png/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3c/Forceunleashdcomic.jpg/revision/latest"
     },
     {
       "id": "e587d4d0-aaae-59cd-9c26-9a24abb86a2f",
@@ -16440,11 +16373,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6b/AgentsOfTheEmpire10Final.jpg/revision/latest"
     },
     {
-      "id": "4658cd30-71f0-5f65-99c3-995183887514",
+      "id": "2ba70867-7f6e-51ac-9ba3-ffedf8a3b86b",
       "era": "THE DARK TIMES",
       "title": "Han Solo at Stars' End",
       "medium": "Novel",
       "year": -2,
+      "series": "Han Solo Adventures",
       "number": "1",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Han_Solo_at_Stars%27_End",
@@ -16465,14 +16399,16 @@
       "series": "Han Solo Adventures",
       "number": "1",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Han_Solo_at_Stars%27_End",
+      "wiki_url": "https://starwars.fandom.com/wiki/Han_Solo_at_Stars%27_End_(comic_strip)",
       "authors": [
-        "Brian Daley"
+        "Brian Daley",
+        "Archie Goodwin",
+        "Alfredo Alcala"
       ],
-      "publisher": "Del Rey",
-      "release_date": "1979-04-01",
+      "publisher": "Los Angeles Times Syndicate",
+      "release_date": "1980-10-01",
       "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f8/HanSoloatStarsEnd-Hardcover.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9c/Stars_End_strip_banner.jpg/revision/latest"
     },
     {
       "id": "74f0ec37-b35a-59d6-8df8-7e7b2126ad02",
@@ -16717,25 +16653,6 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6b/Lost_Legacy_Cover.jpg/revision/latest"
     },
     {
-      "id": "cca39833-c0a1-5694-b8bc-1195ae8a9719",
-      "era": "THE DARK TIMES",
-      "title": "Han Solo: Imperial Agent",
-      "medium": "Novel",
-      "year": -2,
-      "series": "Han Solo Adventures",
-      "number": "5",
-      "color": "#FBD9D7",
-      "wiki_url": "https://happybeeps.net/starwars-story/han-solo-a-birodalmi-ugynok-han-solos-gambit-5921/",
-      "authors": [
-        "Robbie Thompson",
-        "Leonard Kirk"
-      ],
-      "publisher": "Marvel Comics",
-      "release_date": "2018-11-07",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d1/HanSoloImperialCadet1-Cover.jpg/revision/latest"
-    },
-    {
       "id": "438303e3-13f3-5e60-9c74-cf0a5329ac74",
       "era": "THE DARK TIMES",
       "title": "Rebel Bass",
@@ -16760,15 +16677,19 @@
       "series": "The Force Unleashed",
       "number": "2",
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Force_Unleashed_II_(novelization)",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Force_Unleashed_II",
       "authors": [
-        "Sean Williams",
-        "W. Haden Blackman"
+        "Matt Omernick",
+        "Kris Taylor",
+        "Rhett Bennatt",
+        "W. Haden Blackman",
+        "David Wayne Collins",
+        "John Stafford",
+        "Cameron Suey"
       ],
-      "publisher": "Del Rey",
-      "release_date": "2010-10-05",
+      "release_date": "2010-10-26",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/1b/TheForceUnleashedII.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/96/TFUII_Xbox360_Cover.png/revision/latest"
     },
     {
       "id": "cf7e947a-9def-5451-ba11-2b6073cab772",
@@ -17162,13 +17083,15 @@
       "year": -1,
       "series": "Tales",
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Resurrection",
+      "wiki_url": "https://starwars.fandom.com/wiki/Resurrection_(comic_story)",
       "authors": [
-        "Ron Marz"
+        "Ron Marz",
+        "Rick Leonardi"
       ],
       "publisher": "Dark Horse Comics",
       "release_date": "2001-10-10",
-      "release_precision": "day"
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c9/Resurrection2.jpg/revision/latest"
     },
     {
       "id": "700dc170-19ee-5e98-b3e8-b5d6d5490e9a",
@@ -22710,7 +22633,19 @@
       "title": "The Star Wars Holiday Special",
       "medium": "Movie",
       "year": 1,
-      "color": "#FBD9D7"
+      "color": "#FBD9D7",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Star_Wars_Holiday_Special",
+      "authors": [
+        "Rod Warren",
+        "Bruce Vilanch",
+        "Pat Proft",
+        "Leonard Ripps",
+        "Mitzie Welch",
+        "George Lucas"
+      ],
+      "release_date": "1978-11-17",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/23/StarWarsHS.jpg/revision/latest"
     },
     {
       "id": "03b9194f-590e-55b3-be2c-0150243cac15",
@@ -22791,7 +22726,16 @@
       "medium": "Comic",
       "year": 1,
       "series": "Devilworlds",
-      "color": "#DAF2F4"
+      "color": "#DAF2F4",
+      "wiki_url": "https://starwars.fandom.com/wiki/Blind_Fury!",
+      "authors": [
+        "Alan Moore",
+        "John Stokes"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1982-07-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0b/Blindfury.jpg/revision/latest"
     },
     {
       "id": "d5e2c518-8e7c-5b02-abe9-26b269a28583",
@@ -22800,7 +22744,16 @@
       "medium": "Comic",
       "year": 1,
       "series": "Devilworlds",
-      "color": "#DAF2F4"
+      "color": "#DAF2F4",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Pandora_Effect",
+      "authors": [
+        "Alan Moore",
+        "Adolfo Buylla"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1981-11-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/94/Pandora.jpg/revision/latest"
     },
     {
       "id": "c1561906-d26e-5a29-a9a3-32a2c474fb04",
@@ -22826,7 +22779,17 @@
       "medium": "Comic",
       "year": 1,
       "series": "Tales",
-      "color": "#FBD9D7"
+      "color": "#FBD9D7",
+      "wiki_url": "https://starwars.fandom.com/wiki/Walking_the_Path_That%27s_Given",
+      "authors": [
+        "Jeremy Barlow",
+        "Shane McCarthy",
+        "Michel Lacombe"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-10-20",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/24/WalkingthePathThatsGiven.jpg/revision/latest"
     },
     {
       "id": "d0277ad7-3fe4-53ff-85a4-863b14b1bb53",
@@ -23068,7 +23031,15 @@
       "medium": "Comic",
       "year": 2,
       "number": "1",
-      "color": "#DAF2F4"
+      "color": "#DAF2F4",
+      "wiki_url": "https://starwars.fandom.com/wiki/Splinter_of_the_Mind%27s_Eye",
+      "authors": [
+        "Alan Dean Foster"
+      ],
+      "publisher": "Sphere Books (UK), Del Rey (US)",
+      "release_date": "1978-02-12",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f6/Splinter_of_the_Minds_Eye.png/revision/latest"
     },
     {
       "id": "1d439122-186e-54b7-879c-7db1600b9136",
@@ -23077,7 +23048,15 @@
       "medium": "Comic",
       "year": 2,
       "number": "2",
-      "color": "#DAF2F4"
+      "color": "#DAF2F4",
+      "wiki_url": "https://starwars.fandom.com/wiki/Splinter_of_the_Mind%27s_Eye",
+      "authors": [
+        "Alan Dean Foster"
+      ],
+      "publisher": "Sphere Books (UK), Del Rey (US)",
+      "release_date": "1978-02-12",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f6/Splinter_of_the_Minds_Eye.png/revision/latest"
     },
     {
       "id": "a82dd337-df78-56c1-83ef-5cbaac3e1632",
@@ -25892,7 +25871,14 @@
       "title": "Out of the Picture",
       "medium": "Short Story",
       "year": 3,
-      "color": "#FBD9D7"
+      "color": "#FBD9D7",
+      "wiki_url": "https://starwars.fandom.com/wiki/Out_of_the_Picture",
+      "authors": [
+        "Peter M. Schweighofer"
+      ],
+      "publisher": "West End Games",
+      "release_date": "1996-06-01",
+      "release_precision": "month"
     },
     {
       "id": "660779a4-0392-54c8-924b-31c38fd0ab3f",
