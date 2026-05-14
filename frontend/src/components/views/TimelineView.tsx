@@ -23,7 +23,7 @@ function Marker({ work, onClick }: MarkerProps) {
       type="button"
       onClick={onClick}
       title={tooltip}
-      className="size-16 shrink-0 overflow-hidden rounded"
+      className="size-11 shrink-0 overflow-hidden rounded md:size-16"
       style={{ boxShadow: `0 0 0 2px ${mediumColor}` }}
     >
       {work.cover_url ? (
@@ -83,11 +83,14 @@ export function TimelineView({ works }: { works: Work[] }) {
                 {/* Year rows (in Excel order; consecutive same-span works coalesce) */}
                 <div className="space-y-2 pl-2">
                   {group.rows.map((row, idx) => (
-                    <div key={`${row.year}-${row.year_end ?? ""}-${idx}`} className="flex items-start gap-3">
-                      <span className="w-40 shrink-0 pt-1 text-right text-xs text-muted-foreground tabular-nums whitespace-nowrap">
+                    <div
+                      key={`${row.year}-${row.year_end ?? ""}-${idx}`}
+                      className="flex flex-col items-start gap-1 md:flex-row md:items-start md:gap-3"
+                    >
+                      <span className="text-xs text-muted-foreground tabular-nums whitespace-nowrap md:w-40 md:shrink-0 md:pt-1 md:text-right">
                         {formatYear(row.year, row.year_end)}
                       </span>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="flex flex-wrap gap-1 md:gap-2">
                         {row.works.map((work) => (
                           <Marker
                             key={work.id}
@@ -124,7 +127,7 @@ export function TimelineView({ works }: { works: Work[] }) {
                 </span>
               </div>
               {/* Works row */}
-              <div className="flex flex-wrap gap-2 pl-2">
+              <div className="flex flex-wrap gap-1 pl-2 md:gap-2">
                 {group.works.map((work) => (
                   <Marker
                     key={work.id}
