@@ -2,6 +2,8 @@
 
 from unittest.mock import MagicMock
 
+from scripts import build_data
+from scripts.aliases import AliasMap
 from scripts.build_data import _enrich, _row_to_work
 from scripts.excel_reader import ExcelRow
 
@@ -209,9 +211,6 @@ def test_enrich_excel_uncredited_mixed_keeps_real_names():
 
 def test_author_alias_normalizes_to_canonical():
     """Authors matching an alias variant are rewritten to canonical in works.json."""
-    from scripts import build_data
-    from scripts.aliases import AliasMap
-
     author_map = AliasMap({"W. Haden Blackman": "Haden Blackman"})
     publisher_map = AliasMap({"Dark Horse": "Dark Horse Comics"})
 
@@ -227,9 +226,6 @@ def test_author_alias_normalizes_to_canonical():
 
 def test_author_alias_dedupes_variant_and_canonical():
     """If both variant and canonical appear in authors[], collapse to single canonical."""
-    from scripts import build_data
-    from scripts.aliases import AliasMap
-
     author_map = AliasMap({"W. Haden Blackman": "Haden Blackman"})
     publisher_map = AliasMap({})
 
@@ -241,9 +237,6 @@ def test_author_alias_dedupes_variant_and_canonical():
 
 def test_normalize_with_aliases_no_fields():
     """Works without authors or publisher fields are passed through untouched."""
-    from scripts import build_data
-    from scripts.aliases import AliasMap
-
     empty = AliasMap({})
 
     work = {"title": "Nothing Here"}
