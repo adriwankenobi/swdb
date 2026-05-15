@@ -40,7 +40,7 @@ export function WorkCard({ work, onClick }: { work: Work; onClick: () => void })
         <div className="flex flex-wrap items-center gap-1 pt-1">
           <Badge style={{ backgroundColor: MEDIUM_COLORS[work.medium], color: "white" }}>{work.medium}</Badge>
           <Badge
-            className="hidden sm:inline-flex"
+            className="h-auto max-w-full whitespace-normal px-1 text-center text-[10px] leading-tight sm:h-5 sm:max-w-none sm:whitespace-nowrap sm:px-2 sm:text-xs sm:leading-normal"
             style={{ backgroundColor: ERA_COLORS[work.era], color: "white" }}
           >
             {work.era}
