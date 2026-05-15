@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-14T21:22:37+00:00",
+  "generated_at": "2026-05-15T00:26:26+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -8403,8 +8403,7 @@
       ],
       "publisher": "Paizo Publishing",
       "release_date": "2003-06-03",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d4/CestusDeception_PB.jpg/revision/latest?cb=20070719042926"
+      "release_precision": "day"
     },
     {
       "id": "0fe3c105-cd9f-51d7-b094-5cbdd36ddd71",
@@ -8419,8 +8418,7 @@
       ],
       "publisher": "Paizo Publishing",
       "release_date": "2003-06-03",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/76/The_hive.jpg/revision/latest?cb=20070719043337"
+      "release_precision": "day"
     },
     {
       "id": "c51d128f-6dce-5acc-94f0-4a8bff5b7f03",
@@ -8435,8 +8433,7 @@
       ],
       "publisher": "Paizo Publishing",
       "release_date": "2003-06-03",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4f/Republic55.jpg/revision/latest?cb=20090830210941"
+      "release_precision": "day"
     },
     {
       "id": "13144245-d80f-5aa3-adfd-c26f2be2ab8a",
@@ -31692,8 +31689,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1999-12-01",
-      "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/45/TyrantsTest.png/revision/latest?cb=20200301002949"
+      "release_precision": "month"
     },
     {
       "id": "1b8c611c-a3a0-550f-baea-e2e5518afa58",
