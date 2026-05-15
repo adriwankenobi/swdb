@@ -9,11 +9,10 @@ from collections import defaultdict
 from datetime import UTC, datetime
 from pathlib import Path
 
-from scripts.aliases import AliasMap
 from scripts.excel_reader import ExcelRow, read_works
 from scripts.excel_writer import update_excel
 from scripts.id_utils import make_id
-from scripts.infobox_parser import parse_infobox
+from scripts.infobox_parser import parse_infobox, select_publisher
 from scripts.release_utils import parse_excel_release
 from scripts.wiki_client import WikiClient
 
@@ -26,8 +25,6 @@ IGNORED_NO_YEAR_LOG = REPO_ROOT / "data" / "ignored_no_year.log"
 CACHE_DIR = REPO_ROOT / "data" / ".cache" / "wookieepedia"
 UNMATCHED_LOG = REPO_ROOT / "data" / "unmatched.log"
 DEAD_LINKS_LOG = REPO_ROOT / "data" / "dead_links.log"
-AUTHOR_ALIASES_PATH = REPO_ROOT / "frontend" / "public" / "data" / "author_aliases.json"
-PUBLISHER_ALIASES_PATH = REPO_ROOT / "frontend" / "public" / "data" / "publisher_aliases.json"
 
 # Canonical era list, indexed by ExcelRow.era. Order matches
 # excel_reader.ERA_INDEX. New entries must be APPENDED so existing indices
@@ -206,26 +203,10 @@ def _split_excel_authors(text: str) -> list[str]:
     ]
 
 
-def _normalize_with_aliases(
-    work: dict,
-    author_map: AliasMap,
-    publisher_map: AliasMap,
-) -> None:
-    """Canonicalize authors[] and publisher in-place using the given maps.
-
-    Authors are mapped per-entry then deduped in order of first appearance.
-    """
-    if "authors" in work:
-        canonical = [author_map.apply(a) for a in work["authors"]]
-        seen: set[str] = set()
-        deduped: list[str] = []
-        for name in canonical:
-            if name not in seen:
-                seen.add(name)
-                deduped.append(name)
-        work["authors"] = deduped
+def _normalize_publisher(work: dict) -> None:
+    """Pick a single publisher when an Excel cell lists several."""
     if "publisher" in work:
-        work["publisher"] = publisher_map.apply(work["publisher"])
+        work["publisher"] = select_publisher(work["publisher"])
 
 
 def _populate_from_excel(work: dict, row: ExcelRow) -> None:
@@ -289,8 +270,6 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
     dead_links: list[str] = []
 
     client = WikiClient(cache_dir=CACHE_DIR, refresh=refresh)
-    author_aliases = AliasMap.load(AUTHOR_ALIASES_PATH)
-    publisher_aliases = AliasMap.load(PUBLISHER_ALIASES_PATH)
     rows = list(read_works(EXCEL_PATH))
     total_rows = len(rows)
 
@@ -308,7 +287,7 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
         work = _row_to_work(row)
         if not dry_run:
             _enrich(work, row, client, unmatched, dead_links)
-        _normalize_with_aliases(work, author_aliases, publisher_aliases)
+        _normalize_publisher(work)
         works.append(work)
         valid_rows.append(row)
         if (i + 1) % 50 == 0:
@@ -383,12 +362,7 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
         encoding="utf-8",
     )
 
-    writeback = update_excel(
-        EXCEL_PATH,
-        enriched_lookup,
-        author_map=author_aliases,
-        publisher_map=publisher_aliases,
-    )
+    writeback = update_excel(EXCEL_PATH, enriched_lookup)
     print(
         f"wrote {summary} to {OUTPUT_PATH}; "
         f"excel writeback: {writeback['updated']} updated, "

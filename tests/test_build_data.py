@@ -3,7 +3,6 @@
 from unittest.mock import MagicMock
 
 from scripts import build_data
-from scripts.aliases import AliasMap
 from scripts.build_data import _enrich, _row_to_work
 from scripts.excel_reader import ExcelRow
 
@@ -209,36 +208,20 @@ def test_enrich_excel_uncredited_mixed_keeps_real_names():
     assert work["authors"] == ["Real Author", "Another"]
 
 
-def test_author_alias_normalizes_to_canonical():
-    """Authors matching an alias variant are rewritten to canonical in works.json."""
-    author_map = AliasMap({"W. Haden Blackman": "Haden Blackman"})
-    publisher_map = AliasMap({"Dark Horse": "Dark Horse Comics"})
+def test_normalize_publisher_selects_us_edition():
+    """Comma-separated publisher values get reduced to the US edition."""
+    work = {"publisher": "Sphere Books (UK), Del Rey (US)"}
+    build_data._normalize_publisher(work)
+    assert work["publisher"] == "Del Rey"
 
-    work = {
-        "authors": ["W. Haden Blackman", "Brian Ching"],
-        "publisher": "Dark Horse",
-    }
-    build_data._normalize_with_aliases(work, author_map, publisher_map)
 
-    assert work["authors"] == ["Haden Blackman", "Brian Ching"]
+def test_normalize_publisher_selects_worldwide_edition():
+    work = {"publisher": "Dark Horse Comics (worldwide), Titan Magazines (UK)"}
+    build_data._normalize_publisher(work)
     assert work["publisher"] == "Dark Horse Comics"
 
 
-def test_author_alias_dedupes_variant_and_canonical():
-    """If both variant and canonical appear in authors[], collapse to single canonical."""
-    author_map = AliasMap({"W. Haden Blackman": "Haden Blackman"})
-    publisher_map = AliasMap({})
-
-    work = {"authors": ["Haden Blackman", "Brian Ching", "W. Haden Blackman"]}
-    build_data._normalize_with_aliases(work, author_map, publisher_map)
-
-    assert work["authors"] == ["Haden Blackman", "Brian Ching"]
-
-
-def test_normalize_with_aliases_no_fields():
-    """Works without authors or publisher fields are passed through untouched."""
-    empty = AliasMap({})
-
-    work = {"title": "Nothing Here"}
-    build_data._normalize_with_aliases(work, empty, empty)
-    assert work == {"title": "Nothing Here"}
+def test_normalize_publisher_selects_first_when_no_region_markers():
+    work = {"publisher": "National Public Radio, HighBridge Audio"}
+    build_data._normalize_publisher(work)
+    assert work["publisher"] == "National Public Radio"
