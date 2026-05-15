@@ -383,7 +383,12 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
         encoding="utf-8",
     )
 
-    writeback = update_excel(EXCEL_PATH, enriched_lookup)
+    writeback = update_excel(
+        EXCEL_PATH,
+        enriched_lookup,
+        author_map=author_aliases,
+        publisher_map=publisher_aliases,
+    )
     print(
         f"wrote {summary} to {OUTPUT_PATH}; "
         f"excel writeback: {writeback['updated']} updated, "

@@ -3,6 +3,7 @@ from pathlib import Path
 import pytest
 from openpyxl import Workbook, load_workbook
 
+from scripts.aliases import AliasMap
 from scripts.excel_writer import update_excel
 
 
@@ -173,4 +174,74 @@ def test_update_excel_skips_missing_fields(tmp_path: Path):
     assert row2[6] == "OLD PUBLISHER"     # untouched
     assert row2[7] == "1976.01.01"        # untouched
     assert row2[10] == "OLD COVER"        # untouched
+    wb.close()
+
+
+def test_update_excel_applies_alias_to_filled_author(tmp_path: Path):
+    """When filling an empty AUTHOR cell, alias map maps to canonical form."""
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "REBELLION"
+    ws.append([
+        "YEAR", "MEDIUM", "SERIES", "TITLE", "#",
+        "AUTHOR", "PUBLISHER", "RELEASE", "COLLECTED", "INFO", "COVER",
+    ])
+    ws.append([
+        "0 ABY", "Novel", "Star Wars Episode", "A New Hope", "IV",
+        None, None, None, None, None, None,
+    ])
+    path = tmp_path / "x.xlsx"
+    wb.save(path)
+    wb.close()
+
+    author_map = AliasMap({"W. Haden Blackman": "Haden Blackman"})
+    publisher_map = AliasMap({"Dark Horse": "Dark Horse Comics"})
+
+    enriched = {
+        (5, "A New Hope", "Star Wars Episode", "Novel", "IV"): {
+            "authors": ["W. Haden Blackman", "Brian Ching"],
+            "publisher": "Dark Horse",
+        },
+    }
+    update_excel(path, enriched, author_map=author_map, publisher_map=publisher_map)
+
+    wb = load_workbook(path, data_only=True)
+    ws = wb["REBELLION"]
+    row2 = list(ws.iter_rows(min_row=2, max_row=2, values_only=True))[0]
+    assert row2[5] == "Haden Blackman, Brian Ching"
+    assert row2[6] == "Dark Horse Comics"
+    wb.close()
+
+
+def test_update_excel_alias_does_not_overwrite_populated_cell(tmp_path: Path):
+    """Existing non-canonical cells are NOT rewritten by the writer."""
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "REBELLION"
+    ws.append([
+        "YEAR", "MEDIUM", "SERIES", "TITLE", "#",
+        "AUTHOR", "PUBLISHER", "RELEASE", "COLLECTED", "INFO", "COVER",
+    ])
+    ws.append([
+        "0 ABY", "Novel", "Star Wars Episode", "A New Hope", "IV",
+        "W. Haden Blackman", None, None, None, None, None,
+    ])
+    path = tmp_path / "x.xlsx"
+    wb.save(path)
+    wb.close()
+
+    author_map = AliasMap({"W. Haden Blackman": "Haden Blackman"})
+    publisher_map = AliasMap({})
+
+    enriched = {
+        (5, "A New Hope", "Star Wars Episode", "Novel", "IV"): {
+            "authors": ["W. Haden Blackman"],
+        },
+    }
+    update_excel(path, enriched, author_map=author_map, publisher_map=publisher_map)
+
+    wb = load_workbook(path, data_only=True)
+    ws = wb["REBELLION"]
+    row2 = list(ws.iter_rows(min_row=2, max_row=2, values_only=True))[0]
+    assert row2[5] == "W. Haden Blackman"
     wb.close()

@@ -6,6 +6,7 @@ from pathlib import Path
 
 from openpyxl import load_workbook
 
+from scripts.aliases import AliasMap
 from scripts.excel_reader import ERA_INDEX, _normalize_medium, _stringify
 
 # Column indices (1-based) into the spreadsheet.
@@ -39,7 +40,13 @@ def _format_release(iso_date: str, precision: str = "day") -> str:
     return ".".join(parts)
 
 
-def update_excel(path: Path, enriched: dict[tuple, dict]) -> dict:
+def update_excel(
+    path: Path,
+    enriched: dict[tuple, dict],
+    *,
+    author_map: AliasMap | None = None,
+    publisher_map: AliasMap | None = None,
+) -> dict:
     """Write enriched fields back into the Excel file.
 
     `enriched` maps each lookup key (era, title, series, medium, number)
@@ -71,12 +78,24 @@ def update_excel(path: Path, enriched: dict[tuple, dict]) -> dict:
                     continue
                 changed = False
                 if fields.get("authors") and not row[COL_AUTHOR - 1].value:
-                    new_value = _format_authors(fields["authors"])
+                    authors = fields["authors"]
+                    if author_map is not None:
+                        seen: set[str] = set()
+                        canonical: list[str] = []
+                        for a in (author_map.apply(x) for x in authors):
+                            if a not in seen:
+                                seen.add(a)
+                                canonical.append(a)
+                        authors = canonical
+                    new_value = _format_authors(authors)
                     if new_value:
                         row[COL_AUTHOR - 1].value = new_value
                         changed = True
                 if fields.get("publisher") and not row[COL_PUBLISHER - 1].value:
-                    row[COL_PUBLISHER - 1].value = fields["publisher"]
+                    publisher = fields["publisher"]
+                    if publisher_map is not None:
+                        publisher = publisher_map.apply(publisher)
+                    row[COL_PUBLISHER - 1].value = publisher
                     changed = True
                 if fields.get("release_date") and not row[COL_RELEASE - 1].value:
                     formatted = _format_release(
