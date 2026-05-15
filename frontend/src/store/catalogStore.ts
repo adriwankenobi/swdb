@@ -62,11 +62,18 @@ function buildFacets(works: Work[]): CatalogState["facets"] {
     (w) => !w.authors || w.authors.length === 0,
   ).length;
   if (noAuthorCount > 0) {
-    authors.unshift({
+    const uncredited: Facet = {
       value: UNCREDITED_AUTHOR_VALUE,
       label: "Uncredited",
       count: noAuthorCount,
-    });
+    };
+    const idx = authors.findIndex(
+      (a) =>
+        a.count < noAuthorCount ||
+        (a.count === noAuthorCount && a.label.localeCompare("Uncredited") > 0),
+    );
+    if (idx === -1) authors.push(uncredited);
+    else authors.splice(idx, 0, uncredited);
   }
   return {
     series: counts((w) => w.series),
