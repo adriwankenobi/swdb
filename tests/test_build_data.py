@@ -3,7 +3,7 @@
 from unittest.mock import MagicMock
 
 from scripts import build_data
-from scripts.build_data import _enrich, _row_to_work
+from scripts.build_data import _enrich, _row_to_work, _split_series_and_number
 from scripts.excel_reader import ExcelRow
 
 
@@ -225,3 +225,89 @@ def test_normalize_publisher_selects_first_when_no_region_markers():
     work = {"publisher": "National Public Radio, HighBridge Audio"}
     build_data._normalize_publisher(work)
     assert work["publisher"] == "National Public Radio"
+
+
+# ---------------------------------------------------------------------------
+# _split_series_and_number tests
+# ---------------------------------------------------------------------------
+
+def test_split_series_and_number_single_value():
+    assert _split_series_and_number("X-Wing", "5") == (["X-Wing"], ["5"])
+
+
+def test_split_series_and_number_multi_value():
+    assert _split_series_and_number("X-Wing, Rebel Alliance", "5, 12") == (
+        ["X-Wing", "Rebel Alliance"],
+        ["5", "12"],
+    )
+
+
+def test_split_series_and_number_strips_whitespace():
+    assert _split_series_and_number("  X-Wing  ,Rebel Alliance ", "  5 , 12") == (
+        ["X-Wing", "Rebel Alliance"],
+        ["5", "12"],
+    )
+
+
+def test_split_series_and_number_drops_empties_from_double_commas():
+    assert _split_series_and_number("X-Wing,,Rebel", "5,,12") == (
+        ["X-Wing", "Rebel"],
+        ["5", "12"],
+    )
+
+
+def test_split_series_and_number_truncates_extra_numbers():
+    assert _split_series_and_number("X-Wing", "5, 12, 99") == (["X-Wing"], ["5"])
+
+
+def test_split_series_and_number_short_number_list_allowed():
+    assert _split_series_and_number("X-Wing, Rebel Alliance", "5") == (
+        ["X-Wing", "Rebel Alliance"],
+        ["5"],
+    )
+
+
+def test_split_series_and_number_empty_number():
+    assert _split_series_and_number("X-Wing", None) == (["X-Wing"], [])
+
+
+def test_split_series_and_number_empty_series_drops_number():
+    """Per spec: a number with no series to attach to is dropped."""
+    assert _split_series_and_number(None, "5") == ([], [])
+    assert _split_series_and_number("", "5") == ([], [])
+
+
+def test_split_series_and_number_both_empty():
+    assert _split_series_and_number(None, None) == ([], [])
+
+
+# ---------------------------------------------------------------------------
+# _row_to_work array-shape tests
+# ---------------------------------------------------------------------------
+
+def test_row_to_work_emits_series_as_array():
+    row = _row(series="Star Wars Adventures (comics)", number="1")
+    work = _row_to_work(row)
+    assert work["series"] == ["Star Wars Adventures (comics)"]
+    assert work["number"] == ["1"]
+
+
+def test_row_to_work_emits_multi_series_arrays():
+    row = _row(series="X-Wing, Rebel Alliance", number="5, 12")
+    work = _row_to_work(row)
+    assert work["series"] == ["X-Wing", "Rebel Alliance"]
+    assert work["number"] == ["5", "12"]
+
+
+def test_row_to_work_omits_series_when_empty():
+    row = _row(series=None, number=None)
+    work = _row_to_work(row)
+    assert "series" not in work
+    assert "number" not in work
+
+
+def test_row_to_work_omits_number_when_empty_but_series_present():
+    row = _row(series="The Clone Wars", number=None)
+    work = _row_to_work(row)
+    assert work["series"] == ["The Clone Wars"]
+    assert "number" not in work

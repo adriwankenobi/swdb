@@ -78,10 +78,11 @@ def _row_to_work(row: ExcelRow) -> dict:
     }
     if row.year_end is not None:
         work["year_end"] = row.year_end
-    if row.series:
-        work["series"] = row.series
-    if row.number is not None:
-        work["number"] = row.number
+    series, number = _split_series_and_number(row.series, row.number)
+    if series:
+        work["series"] = series
+    if number:
+        work["number"] = number
     if row.color is not None:
         work["color"] = row.color
     return work
@@ -189,6 +190,28 @@ def _enrich(
         return
     fields = parse_infobox(html)
     _merge_excel_priority(work, row, fields)
+
+
+def _split_series_and_number(
+    series_text: str | None,
+    number_text: str | None,
+) -> tuple[list[str], list[str]]:
+    """Split parallel comma-separated SERIES and # cells into aligned lists.
+
+    Numbers beyond the series count are dropped. An empty series cell
+    drops the numbers too — a number with no series to attach to is
+    meaningless.
+    """
+    def _split(text: str | None) -> list[str]:
+        if not text:
+            return []
+        return [p.strip() for p in text.split(",") if p.strip()]
+
+    series = _split(series_text)
+    if not series:
+        return [], []
+    numbers = _split(number_text)[: len(series)]
+    return series, numbers
 
 
 def _split_excel_authors(text: str) -> list[str]:
