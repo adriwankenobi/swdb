@@ -8,8 +8,8 @@ export interface Work {
   medium: MediumName;
   year: number;
   year_end?: number;
-  series?: string;
-  number?: string;
+  series?: string[];
+  number?: string[];
   release_date?: string;
   release_precision?: "day" | "month" | "year";
   authors?: string[];

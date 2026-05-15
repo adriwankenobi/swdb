@@ -4,7 +4,6 @@ import { ERA_COLORS } from "@/constants/eras";
 import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { formatReleaseDate } from "@/lib/formatReleaseDate";
-import { formatSeriesAndNumber } from "@/lib/formatSeriesAndNumber";
 import { useCatalogStore } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
 
@@ -59,15 +58,26 @@ export function WorkDetailModal() {
                 )}
               </div>
               <div className="min-w-0 flex-1 space-y-3 text-sm">
-                {work.series && (
-                  <div>
-                    <button
-                      type="button"
-                      className="font-medium cursor-pointer hover:underline break-words"
-                      onClick={() => { toggleArrayValue("series", work.series!); closeModal(); }}
-                    >
-                      {formatSeriesAndNumber(work)}
-                    </button>
+                {work.series && work.series.length > 0 && (
+                  <div className="flex flex-wrap gap-x-3 gap-y-1">
+                    {work.series.map((s, i) => {
+                      const n = work.number?.[i];
+                      const label = !n
+                        ? s
+                        : work.medium === "TV Show"
+                          ? `${s} ${n}`
+                          : `${s} #${n}`;
+                      return (
+                        <button
+                          key={s}
+                          type="button"
+                          className="font-medium cursor-pointer hover:underline break-words"
+                          onClick={() => { toggleArrayValue("series", s); closeModal(); }}
+                        >
+                          {label}
+                        </button>
+                      );
+                    })}
                   </div>
                 )}
                 <div className="flex flex-wrap items-center gap-2">

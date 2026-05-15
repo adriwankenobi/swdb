@@ -45,12 +45,12 @@ export function WorkRow({ work, onClick }: WorkRowProps) {
 
       {/* Series */}
       <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[2].width}`}>
-        {work.series ?? ""}
+        {work.series?.join(", ") ?? ""}
       </div>
 
       {/* Number */}
       <div className={`shrink-0 px-2 py-1 text-muted-foreground ${COLUMNS[3].width}`}>
-        {work.number ?? ""}
+        {work.number?.join(", ") ?? ""}
       </div>
 
       {/* Medium badge */}

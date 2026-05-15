@@ -9,6 +9,12 @@ function matchesArray<T>(selected: T[], value: T | undefined): boolean {
   return selected.includes(value);
 }
 
+function matchesSeries(selected: string[], series: string[] | undefined): boolean {
+  if (selected.length === 0) return true;
+  if (!series || series.length === 0) return false;
+  return series.some((s) => selected.includes(s));
+}
+
 function matchesAuthorsOrUncredited(w: Work, selected: string[]): boolean {
   if (selected.length === 0) return true;
   const noAuthors = !w.authors || w.authors.length === 0;
@@ -25,7 +31,7 @@ function matchesQuery(w: Work, q: string): boolean {
   if (!q) return true;
   const haystack = [
     w.title,
-    w.series ?? "",
+    ...(w.series ?? []),
     ...(w.authors ?? []),
   ].join(" ").toLowerCase();
   return haystack.includes(q.toLowerCase());
@@ -74,7 +80,7 @@ export function filterWorks(works: Work[], filters: FilterState): Work[] {
   const filtered = works.filter((w) =>
     (searchActive || matchesArray(filters.eras, w.era)) &&
     matchesArray(filters.mediums, w.medium) &&
-    matchesArray(filters.series, w.series) &&
+    matchesSeries(filters.series, w.series) &&
     matchesArray(filters.publishers, w.publisher) &&
     matchesAuthorsOrUncredited(w, filters.authors) &&
     (searchActive || matchesDecadeOrUndated(w, filters.decades, filters.releaseUndated)) &&

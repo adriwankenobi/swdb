@@ -32,7 +32,7 @@ export function WorkCard({ work, onClick }: { work: Work; onClick: () => void })
       </div>
       <div className="space-y-1 p-3">
         <p className="line-clamp-2 font-medium leading-tight">{work.title}</p>
-        {work.series && (
+        {work.series && work.series.length > 0 && (
           <p className="line-clamp-1 text-xs text-muted-foreground">
             {formatSeriesAndNumber(work)}
           </p>

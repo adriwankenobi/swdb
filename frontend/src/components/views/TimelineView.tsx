@@ -14,7 +14,8 @@ interface MarkerProps {
 
 function Marker({ work, onClick }: MarkerProps) {
   const yearLabel = formatYear(work.year, work.year_end);
-  const tooltip = `${work.title}${work.series ? ` — ${work.series}` : ""} (${yearLabel})`;
+  const seriesStr = (work.series ?? []).join(", ");
+  const tooltip = `${work.title}${seriesStr ? ` — ${seriesStr}` : ""} (${yearLabel})`;
   const mediumColor = MEDIUM_COLORS[work.medium];
   const eraColor = ERA_COLORS[work.era];
 
