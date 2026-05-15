@@ -19,7 +19,10 @@ export function WorkRow({ work, onClick }: WorkRowProps) {
       style={{ backgroundColor: work.color ?? undefined }}
     >
       {/* Cover */}
-      <div className={`shrink-0 px-2 py-1 ${COLUMNS[0].width}`}>
+      <div
+        className={`sticky left-0 z-10 shrink-0 px-2 py-1 ${COLUMNS[0].width}`}
+        style={{ backgroundColor: work.color ?? "var(--background)" }}
+      >
         {work.cover_url ? (
           <img
             src={work.cover_url}
@@ -36,10 +39,7 @@ export function WorkRow({ work, onClick }: WorkRowProps) {
       </div>
 
       {/* Title */}
-      <div
-        className={`sticky left-0 z-10 shrink-0 px-2 py-1 font-medium truncate ${COLUMNS[1].width}`}
-        style={{ backgroundColor: work.color ?? "var(--background)" }}
-      >
+      <div className={`shrink-0 px-2 py-1 font-medium truncate ${COLUMNS[1].width}`}>
         {work.title}
       </div>
 

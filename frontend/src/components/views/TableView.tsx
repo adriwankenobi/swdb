@@ -41,7 +41,7 @@ export function TableView({ works }: TableViewProps) {
             <div
               key={col.key}
               className={`shrink-0 px-2 py-2 ${col.width} ${
-                col.key === "title" ? "sticky left-0 z-20 bg-background" : ""
+                col.key === "cover" ? "sticky left-0 z-20 bg-background" : ""
               }`}
             >
               {col.label}
