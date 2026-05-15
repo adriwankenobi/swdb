@@ -205,3 +205,47 @@ def test_enrich_excel_uncredited_mixed_keeps_real_names():
     unmatched, dead = [], []
     _enrich(work, row, client, unmatched, dead)
     assert work["authors"] == ["Real Author", "Another"]
+
+
+def test_author_alias_normalizes_to_canonical():
+    """Authors matching an alias variant are rewritten to canonical in works.json."""
+    from scripts import build_data
+    from scripts.aliases import AliasMap
+
+    author_map = AliasMap({"W. Haden Blackman": "Haden Blackman"})
+    publisher_map = AliasMap({"Dark Horse": "Dark Horse Comics"})
+
+    work = {
+        "authors": ["W. Haden Blackman", "Brian Ching"],
+        "publisher": "Dark Horse",
+    }
+    build_data._normalize_with_aliases(work, author_map, publisher_map)
+
+    assert work["authors"] == ["Haden Blackman", "Brian Ching"]
+    assert work["publisher"] == "Dark Horse Comics"
+
+
+def test_author_alias_dedupes_variant_and_canonical():
+    """If both variant and canonical appear in authors[], collapse to single canonical."""
+    from scripts import build_data
+    from scripts.aliases import AliasMap
+
+    author_map = AliasMap({"W. Haden Blackman": "Haden Blackman"})
+    publisher_map = AliasMap({})
+
+    work = {"authors": ["Haden Blackman", "Brian Ching", "W. Haden Blackman"]}
+    build_data._normalize_with_aliases(work, author_map, publisher_map)
+
+    assert work["authors"] == ["Haden Blackman", "Brian Ching"]
+
+
+def test_normalize_with_aliases_no_fields():
+    """Works without authors or publisher fields are passed through untouched."""
+    from scripts import build_data
+    from scripts.aliases import AliasMap
+
+    empty = AliasMap({})
+
+    work = {"title": "Nothing Here"}
+    build_data._normalize_with_aliases(work, empty, empty)
+    assert work == {"title": "Nothing Here"}

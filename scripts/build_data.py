@@ -9,6 +9,7 @@ from collections import defaultdict
 from datetime import UTC, datetime
 from pathlib import Path
 
+from scripts.aliases import AliasMap
 from scripts.excel_reader import ExcelRow, read_works
 from scripts.excel_writer import update_excel
 from scripts.id_utils import make_id
@@ -25,6 +26,8 @@ IGNORED_NO_YEAR_LOG = REPO_ROOT / "data" / "ignored_no_year.log"
 CACHE_DIR = REPO_ROOT / "data" / ".cache" / "wookieepedia"
 UNMATCHED_LOG = REPO_ROOT / "data" / "unmatched.log"
 DEAD_LINKS_LOG = REPO_ROOT / "data" / "dead_links.log"
+AUTHOR_ALIASES_PATH = REPO_ROOT / "data" / "author_aliases.json"
+PUBLISHER_ALIASES_PATH = REPO_ROOT / "data" / "publisher_aliases.json"
 
 # Canonical era list, indexed by ExcelRow.era. Order matches
 # excel_reader.ERA_INDEX. New entries must be APPENDED so existing indices
@@ -203,6 +206,28 @@ def _split_excel_authors(text: str) -> list[str]:
     ]
 
 
+def _normalize_with_aliases(
+    work: dict,
+    author_map: AliasMap,
+    publisher_map: AliasMap,
+) -> None:
+    """Canonicalize authors[] and publisher in-place using the given maps.
+
+    Authors are mapped per-entry then deduped in order of first appearance.
+    """
+    if "authors" in work:
+        canonical = [author_map.apply(a) for a in work["authors"]]
+        seen: set[str] = set()
+        deduped: list[str] = []
+        for name in canonical:
+            if name not in seen:
+                seen.add(name)
+                deduped.append(name)
+        work["authors"] = deduped
+    if "publisher" in work:
+        work["publisher"] = publisher_map.apply(work["publisher"])
+
+
 def _populate_from_excel(work: dict, row: ExcelRow) -> None:
     """Populate enriched fields entirely from Excel."""
     if row.author:
@@ -264,6 +289,8 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
     dead_links: list[str] = []
 
     client = WikiClient(cache_dir=CACHE_DIR, refresh=refresh)
+    author_aliases = AliasMap.load(AUTHOR_ALIASES_PATH)
+    publisher_aliases = AliasMap.load(PUBLISHER_ALIASES_PATH)
     rows = list(read_works(EXCEL_PATH))
     total_rows = len(rows)
 
@@ -281,6 +308,7 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
         work = _row_to_work(row)
         if not dry_run:
             _enrich(work, row, client, unmatched, dead_links)
+        _normalize_with_aliases(work, author_aliases, publisher_aliases)
         works.append(work)
         valid_rows.append(row)
         if (i + 1) % 50 == 0:
