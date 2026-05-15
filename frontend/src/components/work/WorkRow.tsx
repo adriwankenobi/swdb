@@ -36,7 +36,10 @@ export function WorkRow({ work, onClick }: WorkRowProps) {
       </div>
 
       {/* Title */}
-      <div className={`shrink-0 px-2 py-1 font-medium truncate ${COLUMNS[1].width}`}>
+      <div
+        className={`sticky left-0 z-10 shrink-0 px-2 py-1 font-medium truncate ${COLUMNS[1].width}`}
+        style={{ backgroundColor: work.color ?? "var(--background)" }}
+      >
         {work.title}
       </div>
 

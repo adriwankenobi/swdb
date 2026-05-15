@@ -38,7 +38,12 @@ export function TableView({ works }: TableViewProps) {
         {/* Sticky header */}
         <div className="sticky top-0 z-10 flex border-b bg-background text-xs uppercase text-muted-foreground">
           {COLUMNS.map((col) => (
-            <div key={col.key} className={`shrink-0 px-2 py-2 ${col.width}`}>
+            <div
+              key={col.key}
+              className={`shrink-0 px-2 py-2 ${col.width} ${
+                col.key === "title" ? "sticky left-0 z-20 bg-background" : ""
+              }`}
+            >
               {col.label}
             </div>
           ))}
