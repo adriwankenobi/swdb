@@ -26,8 +26,8 @@ IGNORED_NO_YEAR_LOG = REPO_ROOT / "data" / "ignored_no_year.log"
 CACHE_DIR = REPO_ROOT / "data" / ".cache" / "wookieepedia"
 UNMATCHED_LOG = REPO_ROOT / "data" / "unmatched.log"
 DEAD_LINKS_LOG = REPO_ROOT / "data" / "dead_links.log"
-AUTHOR_ALIASES_PATH = REPO_ROOT / "data" / "author_aliases.json"
-PUBLISHER_ALIASES_PATH = REPO_ROOT / "data" / "publisher_aliases.json"
+AUTHOR_ALIASES_PATH = REPO_ROOT / "frontend" / "public" / "data" / "author_aliases.json"
+PUBLISHER_ALIASES_PATH = REPO_ROOT / "frontend" / "public" / "data" / "publisher_aliases.json"
 
 # Canonical era list, indexed by ExcelRow.era. Order matches
 # excel_reader.ERA_INDEX. New entries must be APPENDED so existing indices
