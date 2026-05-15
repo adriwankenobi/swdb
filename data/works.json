@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-15T00:26:26+00:00",
+  "generated_at": "2026-05-15T00:56:31+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -7631,7 +7631,7 @@
       "medium": "Short Story",
       "year": -22,
       "color": "#DAF2F4",
-      "wiki_url": "https://web.archive.org/web/20151030215018/http://www.abelgpena.com/SkyeWalkersCWstory.pdf",
+      "wiki_url": "https://starwars.fandom.com/wiki/SkyeWalkers:_A_Clone_Wars_Story",
       "authors": [
         "Abel G. Peña"
       ],
@@ -7856,8 +7856,7 @@
       ],
       "publisher": "Paizo Publishing",
       "release_date": "2003-01-21",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7e/Insider81.jpg/revision/latest?cb=20100215185703"
+      "release_precision": "day"
     },
     {
       "id": "ecffd1fa-5e33-59d0-958e-d97524e5db72",
@@ -24064,8 +24063,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1996-06-01",
-      "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/96/Mswc45cover.jpg/revision/latest?cb=20191125040938"
+      "release_precision": "month"
     },
     {
       "id": "3e678633-a412-5a83-ad98-c0f3732dc79e",
@@ -25701,8 +25699,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Chief_Chirpa_Kidnapped!",
       "publisher": "Marvel UK",
       "release_date": "1988-08-01",
-      "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a9/Ewoks12.jpg/revision/latest?cb=20070103104201"
+      "release_precision": "month"
     },
     {
       "id": "f85a867e-d9d7-5540-bed1-6e66ec27fbc1",
@@ -25715,8 +25712,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Return_of_the_Great_One!",
       "publisher": "Marvel UK",
       "release_date": "1988-08-01",
-      "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d4/Mvswewoks13.jpg/revision/latest?cb=20070103103719"
+      "release_precision": "month"
     },
     {
       "id": "a2e13b1c-adc9-5433-8d23-c7a3cc578072",
@@ -25729,8 +25725,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/The_Ice_Princess!",
       "publisher": "Marvel UK",
       "release_date": "1988-08-01",
-      "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5d/Mvswewoks14.jpg/revision/latest?cb=20070103103959"
+      "release_precision": "month"
     },
     {
       "id": "3fd17b8b-6a21-58e4-997b-b18d4f13337d",
@@ -26395,8 +26390,7 @@
         "Kathy Burdette"
       ],
       "release_date": "1997-05-01",
-      "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/af/StarWars1977-79.jpg/revision/latest?cb=20210930203950"
+      "release_precision": "month"
     },
     {
       "id": "7ffb7147-99c2-50c6-a1cb-30bf455e33e2",
@@ -29428,8 +29422,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1997-05-01",
-      "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f9/XWWedgesGamble.jpg/revision/latest?cb=20050621194055"
+      "release_precision": "month"
     },
     {
       "id": "34ceeb67-0e02-5b35-b10b-832654ff850f",
@@ -29514,8 +29507,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-05-01",
-      "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f2/XWIronFist.jpg/revision/latest?cb=20070719121312"
+      "release_precision": "month"
     },
     {
       "id": "ece4d714-18ff-5037-b79d-572d705c10d8",
@@ -29530,8 +29522,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-08-01",
-      "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/ac/XWSoloCommand.jpg/revision/latest?cb=20070915051240"
+      "release_precision": "month"
     },
     {
       "id": "2712a527-a5d1-53d3-b589-e8f93198e9cb",
@@ -29770,8 +29761,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-08-01",
-      "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cf/Forest_apart.jpg/revision/latest?cb=20070915050425"
+      "release_precision": "month"
     },
     {
       "id": "10a6a009-f561-5515-aeea-1e7adca2dccc",
@@ -29802,8 +29792,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-11-01",
-      "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/28/Insider67.jpg/revision/latest?cb=20120402151100"
+      "release_precision": "month"
     },
     {
       "id": "22301df5-8036-5db0-b279-114e01b531ae",
@@ -30280,8 +30269,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1993-04-01",
-      "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e1/XWIsardsRevenge.png/revision/latest?cb=20200824001254"
+      "release_precision": "month"
     },
     {
       "id": "6d5e28c2-f604-507a-ab0f-92c5e0c3972d",
@@ -31179,8 +31167,7 @@
       ],
       "publisher": "Unofficially Published",
       "release_date": "1998-05-01",
-      "release_precision": "month",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/1e/ChampionsoftheForce.jpg/revision/latest?cb=20210408184846"
+      "release_precision": "month"
     },
     {
       "id": "d6308bec-9258-586f-9f07-3f6f35d7c2d9",
@@ -31243,8 +31230,7 @@
       ],
       "publisher": "StarWars.com",
       "release_date": "2009-12-22",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/68/ChildrenoftheJedi-Paperback.png/revision/latest?cb=20200802023030"
+      "release_precision": "day"
     },
     {
       "id": "6185dc9c-95c3-5d41-bc60-f428b7622bec",
