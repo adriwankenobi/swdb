@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-15T00:56:31+00:00",
+  "generated_at": "2026-05-15T16:09:36+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -3782,7 +3782,7 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Stones",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Michael Zulli"
       ],
       "publisher": "Dark Horse Comics",
@@ -4711,7 +4711,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Single_Cell",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Jan Duursema"
       ],
       "publisher": "Dark Horse Comics",
@@ -6911,7 +6911,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Starfighter:_Crossbones_1",
       "authors": [
         "Haden Blackman",
-        "Ramon Bachs"
+        "Ramón F. Bachs"
       ],
       "publisher": "Dark Horse Comics",
       "release_date": "2002-01-09",
@@ -6929,7 +6929,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Starfighter:_Crossbones_2",
       "authors": [
         "Haden Blackman",
-        "Ramon Bachs"
+        "Ramón F. Bachs"
       ],
       "publisher": "Dark Horse Comics",
       "release_date": "2002-02-13",
@@ -6947,7 +6947,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Starfighter:_Crossbones_3",
       "authors": [
         "Haden Blackman",
-        "Ramon Bachs"
+        "Ramón F. Bachs"
       ],
       "publisher": "Dark Horse Comics",
       "release_date": "2002-03-13",
@@ -7412,7 +7412,7 @@
         "Henry Gilroy",
         "Jan Duursema"
       ],
-      "publisher": "http://starwars.com/",
+      "publisher": "StarWars.com",
       "release_date": "2002-04-24",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/89/Aotccomic2.jpg/revision/latest"
@@ -7631,11 +7631,11 @@
       "medium": "Short Story",
       "year": -22,
       "color": "#DAF2F4",
-      "wiki_url": "https://starwars.fandom.com/wiki/SkyeWalkers:_A_Clone_Wars_Story",
+      "wiki_url": "https://web.archive.org/web/20151030215018/http://www.abelgpena.com/SkyeWalkersCWstory.pdf",
       "authors": [
         "Abel G. Peña"
       ],
-      "publisher": "Unofficially",
+      "publisher": "Unofficially Published",
       "release_date": "2015-03-06",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/75/Skyewalkers.jpg/revision/latest"
@@ -7670,7 +7670,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Republic_50",
       "authors": [
         "John Ostrander",
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Scott Allie",
         "Jan Duursema",
         "Stephen Thompson",
@@ -8221,7 +8221,7 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Clone_Wars_Adventures_Volume_1",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Matthew Fillbach",
         "Shawn Fillbach",
         "Ben Caldwell"
@@ -8240,7 +8240,7 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Clone_Wars_Adventures_Volume_2",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Matthew Fillbach",
         "Shawn Fillbach",
         "Welles Hartley",
@@ -8477,7 +8477,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Republic_55",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Brian Ching"
       ],
       "publisher": "Dark Horse Comics",
@@ -8496,7 +8496,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Republic_56",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Brian Ching"
       ],
       "publisher": "Dark Horse Comics",
@@ -8515,7 +8515,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Republic_57",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Brian Ching"
       ],
       "publisher": "Dark Horse Comics",
@@ -8534,7 +8534,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Republic_58",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Brian Ching"
       ],
       "publisher": "Dark Horse Comics",
@@ -8572,7 +8572,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Republic_60",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Tomás Giorello"
       ],
       "publisher": "Dark Horse Comics",
@@ -8971,7 +8971,7 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Clone_Wars_Adventures_Volume_3",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Matthew Fillbach",
         "Shawn Fillbach",
         "Ryan Kaufman",
@@ -10014,7 +10014,7 @@
         "Steven Melching",
         "Scott Hepburn"
       ],
-      "publisher": "Dark Horse",
+      "publisher": "Dark Horse Comics",
       "release_date": "2009-07-15",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/85/SWTCW7.jpg/revision/latest"
@@ -10034,7 +10034,7 @@
         "Steven Melching",
         "Scott Hepburn"
       ],
-      "publisher": "Dark Horse",
+      "publisher": "Dark Horse Comics",
       "release_date": "2009-08-12",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c6/SWTCW8.jpg/revision/latest"
@@ -10054,7 +10054,7 @@
         "Steven Melching",
         "Scott Hepburn"
       ],
-      "publisher": "Dark Horse",
+      "publisher": "Dark Horse Comics",
       "release_date": "2009-09-16",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9d/SWTCW9.jpg/revision/latest"
@@ -10160,7 +10160,7 @@
         "Pablo Hidalgo",
         "Jeffrey Carlisle"
       ],
-      "publisher": "http://starwars.com/",
+      "publisher": "StarWars.com",
       "release_date": "2009-03-12",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9d/Ballad_of_Cham_Syndulla.png/revision/latest"
@@ -10236,7 +10236,7 @@
         "Paul Dini",
         "Scott Murphy"
       ],
-      "publisher": "http://starwars.com/",
+      "publisher": "StarWars.com",
       "release_date": "2009-10-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a3/Epguide201.png/revision/latest"
@@ -11569,7 +11569,7 @@
         "Henry Gilroy",
         "Scott Hepburn"
       ],
-      "publisher": "Dark Horse",
+      "publisher": "Dark Horse Comics",
       "release_date": "2009-02-11",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e5/SWTCW4.jpg/revision/latest"
@@ -12701,7 +12701,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Obsession_1",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Brian Ching"
       ],
       "publisher": "Dark Horse Comics",
@@ -12719,7 +12719,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Obsession_2",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Brian Ching"
       ],
       "publisher": "Dark Horse Comics",
@@ -12974,7 +12974,7 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Clone_Wars_Adventures_Volume_4",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Matthew Fillbach",
         "Shawn Fillbach",
         "Ryan Kaufman",
@@ -12996,7 +12996,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Clone_Wars_Adventures_Volume_5",
       "authors": [
         "Chris Avellone",
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Matthew Fillbach",
         "Shawn Fillbach",
         "Matt Jacobs",
@@ -13020,7 +13020,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Clone_Wars_Adventures_Volume_6",
       "authors": [
         "Thomas Andrews",
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Matthew Fillbach",
         "Shawn Fillbach",
         "Mike Kennedy",
@@ -13633,7 +13633,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Purge:_The_Hidden_Blade",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Chris Scalf"
       ],
       "publisher": "Dark Horse Comics",
@@ -13692,7 +13692,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Vader_and_the_Lost_Command_1",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Rick Leonardi"
       ],
       "publisher": "Dark Horse Comics",
@@ -13711,7 +13711,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Vader_and_the_Lost_Command_2",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Rick Leonardi"
       ],
       "publisher": "Dark Horse Comics",
@@ -13730,7 +13730,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Vader_and_the_Lost_Command_3",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Rick Leonardi"
       ],
       "publisher": "Dark Horse Comics",
@@ -13749,7 +13749,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Vader_and_the_Lost_Command_4",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Rick Leonardi"
       ],
       "publisher": "Dark Horse Comics",
@@ -13768,7 +13768,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Vader_and_the_Lost_Command_5",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Rick Leonardi"
       ],
       "publisher": "Dark Horse Comics",
@@ -14060,7 +14060,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Vader_and_the_Ghost_Prison_1",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Agustin Alessio"
       ],
       "publisher": "Dark Horse Comics",
@@ -14079,7 +14079,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Vader_and_the_Ghost_Prison_2",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Agustin Alessio"
       ],
       "publisher": "Dark Horse Comics",
@@ -14098,7 +14098,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Vader_and_the_Ghost_Prison_3",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Agustin Alessio"
       ],
       "publisher": "Dark Horse Comics",
@@ -14117,7 +14117,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Vader_and_the_Ghost_Prison_4",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Agustin Alessio"
       ],
       "publisher": "Dark Horse Comics",
@@ -14136,7 +14136,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Vader_and_the_Ghost_Prison_5",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Agustin Alessio"
       ],
       "publisher": "Dark Horse Comics",
@@ -15457,7 +15457,7 @@
       "authors": [
         "Eric S. Trautmann"
       ],
-      "publisher": "Topps Publishing",
+      "publisher": "Topps",
       "release_date": "1996-07-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/74/Dark_Vendetta.jpg/revision/latest"
@@ -15767,7 +15767,7 @@
         "Ryder Windham",
         "Bill Hughes"
       ],
-      "publisher": "The Topps Company, Inc.",
+      "publisher": "Topps",
       "release_date": "1994-10-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5d/Artoos_Day_Out_first_page.jpg/revision/latest"
@@ -16311,7 +16311,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Force_Unleashed",
       "authors": [
         "Matt Omernick",
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Shawn Pitman",
         "John Stafford",
         "Cameron Suey",
@@ -16861,7 +16861,7 @@
         "Matt Omernick",
         "Kris Taylor",
         "Rhett Bennatt",
-        "W. Haden Blackman",
+        "Haden Blackman",
         "David Wayne Collins",
         "John Stafford",
         "Cameron Suey"
@@ -16882,7 +16882,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/The_Force_Unleashed_II_(novel)",
       "authors": [
         "Sean Williams",
-        "W. Haden Blackman"
+        "Haden Blackman"
       ],
       "publisher": "Del Rey",
       "release_date": "2010-10-05",
@@ -21190,7 +21190,7 @@
         "Alan Moore",
         "John Stokes"
       ],
-      "publisher": "Marvel Comics UK",
+      "publisher": "Marvel UK",
       "release_date": "1982-02-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/17/Tilotnythrowsashape.jpg/revision/latest"
@@ -23060,7 +23060,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Galaxies:_The_Ruins_of_Dantooine",
       "authors": [
         "Voronica Whitney-Robinson",
-        "W. Haden Blackman"
+        "Haden Blackman"
       ],
       "publisher": "Del Rey",
       "release_date": "2003-12-30",
@@ -24347,7 +24347,7 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Droids_Can%27t_Fly",
       "authors": [
-        "Peter Schweighofer"
+        "Peter M. Schweighofer"
       ],
       "publisher": "West End Games",
       "release_date": "1996-06-01",
@@ -24708,7 +24708,7 @@
       "authors": [
         "Bill Smith"
       ],
-      "publisher": "Topps Publishing",
+      "publisher": "Topps",
       "release_date": "1996-01-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/34/NarissSivLoqesh.jpg/revision/latest"
@@ -25739,7 +25739,7 @@
       "authors": [
         "Zack Giallongo"
       ],
-      "publisher": "Dark Horse Books",
+      "publisher": "Dark Horse Comics",
       "release_date": "2013-10-09",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d0/Ewoks-ShadowsofEndor.png/revision/latest"
@@ -28827,7 +28827,7 @@
         "John Wagner",
         "Kilian Plunkett"
       ],
-      "publisher": "The Topps Company, Inc.",
+      "publisher": "Topps",
       "release_date": "1997-11-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ef/TheJabbaTape-FC.jpg/revision/latest"
@@ -28860,7 +28860,7 @@
         "Michael Mikaelian",
         "Patrick McLaughlin"
       ],
-      "publisher": "The Topps Company, Inc.",
+      "publisher": "Topps",
       "release_date": "1995-04-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6b/Lumiya.jpg/revision/latest"
@@ -29140,7 +29140,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Collapsing_New_Empires",
       "authors": [
         "Jim Pascoe",
-        "Ramón Bachs"
+        "Ramón F. Bachs"
       ],
       "publisher": "Dark Horse Comics",
       "release_date": "2004-05-14",
@@ -29679,7 +29679,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Hutt_and_Seek",
       "authors": [
         "Chris Cassidy",
-        "Tish Pahl"
+        "Tish Eggleston Pahl"
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1999-12-01",
@@ -30525,7 +30525,7 @@
       "authors": [
         "Tom Veitch"
       ],
-      "publisher": "Unpublished",
+      "publisher": "Unofficially Published",
       "release_date": "2022-11-01",
       "release_precision": "month"
     },
@@ -31777,7 +31777,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Union_1",
       "authors": [
-        "Michael Stackpole",
+        "Michael A. Stackpole",
         "Robert Teranishi"
       ],
       "publisher": "Dark Horse Comics",
@@ -31795,7 +31795,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Union_2",
       "authors": [
-        "Michael Stackpole",
+        "Michael A. Stackpole",
         "Robert Teranishi"
       ],
       "publisher": "Dark Horse Comics",
@@ -31813,7 +31813,7 @@
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Union_3",
       "authors": [
-        "Michael Stackpole",
+        "Michael A. Stackpole",
         "Robert Teranishi"
       ],
       "publisher": "Dark Horse Comics",
@@ -31968,7 +31968,7 @@
       "authors": [
         "Nancy Richardson"
       ],
-      "publisher": "Boulevard / Berkley Jam",
+      "publisher": "Boulevard",
       "release_date": "1996-04-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f5/Promises.jpg/revision/latest"
@@ -32004,7 +32004,7 @@
       "authors": [
         "Rebecca Moesta"
       ],
-      "publisher": "Berkley Boulevard",
+      "publisher": "Boulevard",
       "release_date": "1997-07-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8f/Vaders_Fortress.jpg/revision/latest"
@@ -32073,7 +32073,7 @@
         "Kevin J. Anderson",
         "Rebecca Moesta"
       ],
-      "publisher": "Berkley Boulevard",
+      "publisher": "Boulevard",
       "release_date": "1995-06-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c0/YJKHeirsoftheForce.jpg/revision/latest"
@@ -32092,7 +32092,7 @@
         "Kevin J. Anderson",
         "Rebecca Moesta"
       ],
-      "publisher": "Berkley Boulevard",
+      "publisher": "Boulevard",
       "release_date": "1995-09-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4b/ShadowAcademyBook.jpg/revision/latest"
@@ -32111,7 +32111,7 @@
         "Kevin J. Anderson",
         "Rebecca Moesta"
       ],
-      "publisher": "Berkley Boulevard",
+      "publisher": "Boulevard",
       "release_date": "1995-12-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d6/TheLostOnes.jpg/revision/latest"
@@ -32168,7 +32168,7 @@
         "Kevin J. Anderson",
         "Rebecca Moesta"
       ],
-      "publisher": "Berkley Boulevard",
+      "publisher": "Boulevard",
       "release_date": "1996-09-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ef/YJK-JediUnderSiege.jpg/revision/latest"
@@ -32187,7 +32187,7 @@
         "Kevin J. Anderson",
         "Rebecca Moesta"
       ],
-      "publisher": "Berkley Boulevard",
+      "publisher": "Boulevard",
       "release_date": "1997-01-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d3/YoungJediKnights-ShardsofAlderaan.jpg/revision/latest"
@@ -32206,7 +32206,7 @@
         "Kevin J. Anderson",
         "Rebecca Moesta"
       ],
-      "publisher": "Berkley Boulevard",
+      "publisher": "Boulevard",
       "release_date": "1997-04-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d2/YJK-DiversityAlliance.jpg/revision/latest"
@@ -32263,7 +32263,7 @@
         "Kevin J. Anderson",
         "Rebecca Moesta"
       ],
-      "publisher": "Boulevard / Berkley Jam",
+      "publisher": "Boulevard",
       "release_date": "1998-01-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/1d/YoungJediKnights-TheEmperorsPlague.jpg/revision/latest"
@@ -32282,7 +32282,7 @@
         "Kevin J. Anderson",
         "Rebecca Moesta"
       ],
-      "publisher": "Berkley Boulevard",
+      "publisher": "Boulevard",
       "release_date": "1998-05-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cb/Return_to_Ord_Mantell.jpg/revision/latest"
@@ -32824,7 +32824,7 @@
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Revenants",
       "authors": [
-        "W. Haden Blackman",
+        "Haden Blackman",
         "Dub with Niko Henrichon"
       ],
       "publisher": "Dark Horse Comics",
