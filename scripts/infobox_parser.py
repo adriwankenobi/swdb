@@ -93,6 +93,24 @@ def _normalize_text(node: Tag) -> str:
     return text
 
 
+def select_publisher(text: str) -> str:
+    # Wookieepedia often lists multiple regional publishers ("Del Rey (US),
+    # Arrow (UK)"). Prefer the US edition, fall back to worldwide, else the
+    # first listed. Then strip the trailing region parenthetical so the alias
+    # map sees a bare publisher name.
+    parts = [p.strip() for p in text.split(",") if p.strip()]
+    if not parts:
+        return text.strip()
+    chosen = next(
+        (p for p in parts if re.search(r"\(\s*US\s*\)\s*$", p)),
+        None,
+    ) or next(
+        (p for p in parts if re.search(r"\(\s*worldwide\s*\)\s*$", p, re.IGNORECASE)),
+        None,
+    ) or parts[0]
+    return re.sub(r"\s*\([^)]*\)\s*$", "", chosen).strip()
+
+
 def _split_authors(text: str) -> list[str]:
     # Strip ghost-writer parentheticals: "Alan Dean Foster (as George Lucas)"
     text = re.sub(r"\s*\([^)]*\)", "", text)
@@ -190,6 +208,8 @@ def parse_infobox(html: str) -> dict:
                 iso, precision = parsed
                 out["release_date"] = iso
                 out["release_precision"] = precision
+        elif key == "publisher":
+            out[key] = select_publisher(text)
         else:
             out[key] = text
     cover = _parse_cover_url(soup)

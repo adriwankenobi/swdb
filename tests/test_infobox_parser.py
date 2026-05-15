@@ -116,3 +116,49 @@ def test_parse_infobox_drops_uncredited_among_other_authors():
     """
     result = parse_infobox(html)
     assert result["authors"] == ["Alan Dean Foster", "John Doe"]
+
+
+def _publisher_html(value: str) -> str:
+    return f"""
+    <aside class="portable-infobox">
+      <div class="pi-item pi-data">
+        <h3 class="pi-data-label">Publisher</h3>
+        <div class="pi-data-value">{value}</div>
+      </div>
+    </aside>
+    """
+
+
+def test_parse_infobox_picks_us_publisher_when_multiple():
+    # "Del Rey (US), Arrow (UK)" -> US wins, region marker stripped.
+    result = parse_infobox(_publisher_html("Del Rey (US)<br>Arrow (UK)"))
+    assert result["publisher"] == "Del Rey"
+
+
+def test_parse_infobox_picks_us_publisher_regardless_of_order():
+    # US wins even when it's not first.
+    result = parse_infobox(_publisher_html("Sphere Books (UK)<br>Del Rey (US)"))
+    assert result["publisher"] == "Del Rey"
+
+
+def test_parse_infobox_picks_worldwide_when_no_us():
+    # "Dark Horse Comics (worldwide), Titan Magazines (UK)" -> worldwide wins.
+    result = parse_infobox(_publisher_html("Dark Horse Comics (worldwide)<br>Titan Magazines (UK)"))
+    assert result["publisher"] == "Dark Horse Comics"
+
+
+def test_parse_infobox_picks_first_when_no_region_markers():
+    # No (US) / (worldwide) markers -> first publisher wins.
+    result = parse_infobox(_publisher_html("Dark Horse Comics<br>Wizard Entertainment"))
+    assert result["publisher"] == "Dark Horse Comics"
+
+
+def test_parse_infobox_strips_region_marker_from_single_publisher():
+    # Single publisher with a trailing region marker still gets stripped.
+    result = parse_infobox(_publisher_html("Del Rey (US)"))
+    assert result["publisher"] == "Del Rey"
+
+
+def test_parse_infobox_leaves_single_publisher_without_marker_unchanged():
+    result = parse_infobox(_publisher_html("Ballantine Books"))
+    assert result["publisher"] == "Ballantine Books"
