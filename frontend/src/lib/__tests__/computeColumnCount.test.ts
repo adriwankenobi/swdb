@@ -13,8 +13,8 @@ describe("computeColumnCount", () => {
       expect(computeColumnCount(468, 500)).toBe(3);
     });
 
-    it("does not floor above 3 (calculation can still increase)", () => {
-      // hypothetical wide container at narrow viewport — unusual but well-defined
+    it("returns calculated value when it exceeds the floor (hypothetical wide container)", () => {
+      // unusual but well-defined: container wider than viewport — formula still applies
       expect(computeColumnCount(1000, 600)).toBe(5);
     });
   });
