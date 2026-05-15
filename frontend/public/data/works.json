@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-15T18:22:09+00:00",
+  "generated_at": "2026-05-15T18:38:11+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -5345,12 +5345,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cd/Racer_N64.jpg/revision/latest"
     },
     {
-      "id": "9e351737-8c06-5638-978c-1bfbc1a51b93",
+      "id": "aa54ca36-38cc-58b3-8268-311390b28a34",
       "era": "RISE OF THE EMPIRE",
       "title": "0.5",
       "medium": "Comic",
       "year": -32,
-      "series": "Episode I Adventures",
+      "series": "Episode I Adventures (comics)",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Episode_I:_The_Phantom_Menace_%C2%BD",
       "authors": [
@@ -5367,12 +5367,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c6/Episode_I-_The_Phantom_Menace_0.5_Cover.jpg/revision/latest"
     },
     {
-      "id": "2a2e1a9b-33ed-546b-9366-e30a420b862d",
+      "id": "f431d12f-56c3-54e8-b151-617341e06956",
       "era": "RISE OF THE EMPIRE",
       "title": "Obi-Wan Kenobi",
       "medium": "Comic",
       "year": -32,
-      "series": "Episode I Adventures",
+      "series": "Episode I Adventures (comics)",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Episode_I:_Obi-Wan_Kenobi",
       "authors": [
@@ -5385,12 +5385,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/13/Tpmobiwan.jpg/revision/latest"
     },
     {
-      "id": "1df08401-7ca3-5049-ae5b-315a4a1105e9",
+      "id": "a08c66d7-bac2-58bb-b30e-68b6d27318c4",
       "era": "RISE OF THE EMPIRE",
       "title": "Qui-Gon Jinn",
       "medium": "Comic",
       "year": -32,
-      "series": "Episode I Adventures",
+      "series": "Episode I Adventures (comics)",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Episode_I:_Qui-Gon_Jinn",
       "authors": [
@@ -5403,12 +5403,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cd/Tpmquigon.jpg/revision/latest"
     },
     {
-      "id": "fbaffad3-05dd-5f39-b5da-7e747156b912",
+      "id": "4e7038b6-bafb-50d4-a120-b9c072597fd7",
       "era": "RISE OF THE EMPIRE",
       "title": "Queen Amidala",
       "medium": "Comic",
       "year": -32,
-      "series": "Episode I Adventures",
+      "series": "Episode I Adventures (comics)",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Episode_I:_Queen_Amidala",
       "authors": [
@@ -5421,12 +5421,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/82/Tpmqueenamidala.jpg/revision/latest"
     },
     {
-      "id": "9836dcb7-657d-565d-ade7-57011a0ad1d6",
+      "id": "3898a84c-ad31-5806-b172-34873b0b6f87",
       "era": "RISE OF THE EMPIRE",
       "title": "Anakin Skywalker",
       "medium": "Comic",
       "year": -32,
-      "series": "Episode I Adventures",
+      "series": "Episode I Adventures (comics)",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Episode_I:_Anakin_Skywalker",
       "authors": [
@@ -9175,12 +9175,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/ff/The_Clone_Wars_film_poster.jpg/revision/latest"
     },
     {
-      "id": "2bd47ea9-b83c-56f2-afd8-b52ed146abea",
+      "id": "0d239f80-ea67-5014-ac99-78bdacd5850c",
       "era": "THE CLONE WARS",
       "title": "The Clone Wars",
       "medium": "Novel",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (novels)",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Clone_Wars_(novelization)",
       "authors": [
@@ -9597,12 +9597,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5a/Epguide007.jpg/revision/latest"
     },
     {
-      "id": "8cee9952-6136-520c-98c7-4a1624fcb946",
+      "id": "ef9ba331-6b54-56ba-baf0-f108c60a1fd8",
       "era": "THE CLONE WARS",
       "title": "Wild Space",
       "medium": "Novel",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (novels)",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_Wild_Space",
       "authors": [
@@ -9614,12 +9614,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a1/TCW_Wild_Space.jpg/revision/latest"
     },
     {
-      "id": "ad3d7ec4-dcd1-5ef8-a5fa-78cf916832f3",
+      "id": "f57ffe11-e832-5aaf-a6ff-f79b33926bad",
       "era": "THE CLONE WARS",
       "title": "No Prisoners",
       "medium": "Novel",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (novels)",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_No_Prisoners",
       "authors": [
@@ -9930,12 +9930,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/97/Epguide014.png/revision/latest"
     },
     {
-      "id": "0430e04d-3b07-5ad5-ae7a-934c90e8a3c5",
+      "id": "297f284b-a81c-539c-b2ae-fdfd1a861595",
       "era": "THE CLONE WARS",
       "title": "Gambit: Stealth",
       "medium": "Novel",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (novels)",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Clone_Wars_Gambit:_Stealth",
       "authors": [
@@ -9947,12 +9947,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/41/CW_Gambit_Stealth_front_cover.jpg/revision/latest"
     },
     {
-      "id": "4b3dba62-597d-5561-91ed-f51fded6e8eb",
+      "id": "5587d74d-8595-58b9-93d9-58df01ead26b",
       "era": "THE CLONE WARS",
       "title": "Gambit: Siege",
       "medium": "Novel",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (novels)",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Clone_Wars_Gambit:_Siege",
       "authors": [
@@ -10052,12 +10052,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7b/Epguide018.png/revision/latest"
     },
     {
-      "id": "50f8ae9f-b794-529b-bdd5-f8fe6a2122c3",
+      "id": "942f3e30-4186-51ba-b31f-ea85faedfee0",
       "era": "THE CLONE WARS",
       "title": "In Service of the Republic",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "7",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars_7",
@@ -10072,12 +10072,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/85/SWTCW7.jpg/revision/latest"
     },
     {
-      "id": "fdcf77b9-b724-55a9-a7ce-7d1ae8596590",
+      "id": "6cc79a32-2fd3-55a7-be61-15e81ba83145",
       "era": "THE CLONE WARS",
       "title": "In Service of the Republic",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "8",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars_8",
@@ -10092,12 +10092,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c6/SWTCW8.jpg/revision/latest"
     },
     {
-      "id": "49e192ca-06bf-5a5e-bb1e-50c91fbc6cc9",
+      "id": "e49cdd5d-c2b8-5940-8441-1ec354f51ad7",
       "era": "THE CLONE WARS",
       "title": "In Service of the Republic",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "9",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars_9",
@@ -10112,12 +10112,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9d/SWTCW9.jpg/revision/latest"
     },
     {
-      "id": "ba41d9b9-be42-547e-b878-cec6b8e5dd96",
+      "id": "d1055800-f5da-5313-af7c-bc6b07f237b6",
       "era": "THE CLONE WARS",
       "title": "The Gauntlet of Death",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_The_Gauntlet_of_Death",
       "authors": [
@@ -10408,12 +10408,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b7/Epguide219.jpg/revision/latest"
     },
     {
-      "id": "66d19e5d-a10e-592d-8d8d-e00a8f08ce2a",
+      "id": "40f98ea0-427d-5cab-a4b2-92b6b62fec57",
       "era": "THE CLONE WARS",
       "title": "Hero of the Confederacy",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "10",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars_10",
@@ -10428,12 +10428,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f6/SWTCW10.jpg/revision/latest"
     },
     {
-      "id": "c91ea2f9-0252-5f01-a2b8-04a09ec4c845",
+      "id": "108500a7-62c0-58df-8932-3ab11dcbe8da",
       "era": "THE CLONE WARS",
       "title": "Hero of the Confederacy",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "11",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars_11",
@@ -10448,12 +10448,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6a/SWTCW11.jpg/revision/latest"
     },
     {
-      "id": "4e816fc0-d2ca-51af-a954-6111d9a21769",
+      "id": "01eca545-e43b-58df-93f3-75bfc6b52037",
       "era": "THE CLONE WARS",
       "title": "Hero of the Confederacy",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "12",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars_12",
@@ -11604,12 +11604,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f5/PloKoonLeadingHisBros-EscapeFromKadavo.jpg/revision/latest"
     },
     {
-      "id": "da665fa8-eef3-55fd-bbb7-d6289b9bad82",
+      "id": "b3177c66-6b98-5ede-a00d-e2d1f683a16f",
       "era": "THE CLONE WARS",
       "title": "Slaves of the Republic",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "1",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars_1",
@@ -11623,12 +11623,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0a/TheCloneWars1final.jpg/revision/latest"
     },
     {
-      "id": "09217df5-7557-5e19-8a75-9b9ee4ab741d",
+      "id": "5c4592f6-52ae-5918-8050-42fcde448c88",
       "era": "THE CLONE WARS",
       "title": "Slaves of the Republic",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "2",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars_2",
@@ -11642,12 +11642,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/04/CloneWars2_full.jpg/revision/latest"
     },
     {
-      "id": "c31c929a-9b5a-5f58-9415-7b254ca703c4",
+      "id": "4c1dcfad-f5b9-5fa4-845c-a9cdea035d0b",
       "era": "THE CLONE WARS",
       "title": "Slaves of the Republic",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "3",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars_3",
@@ -11661,12 +11661,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/SWTCW3.jpg/revision/latest"
     },
     {
-      "id": "6c08b603-8485-5cb8-a24d-d2f36a3787cd",
+      "id": "9930531c-a495-5756-aa40-41e10bb1f912",
       "era": "THE CLONE WARS",
       "title": "Slaves of the Republic",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "4",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars_4",
@@ -11680,12 +11680,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e5/SWTCW4.jpg/revision/latest"
     },
     {
-      "id": "a1ddf5ef-4b9a-5866-8863-55759fdca6f6",
+      "id": "6a36e8d8-2f57-54a7-947a-06519c9f7420",
       "era": "THE CLONE WARS",
       "title": "Slaves of the Republic",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "5",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars_5",
@@ -11699,12 +11699,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3f/SW-TCW5.jpg/revision/latest"
     },
     {
-      "id": "573324cf-0a95-535b-a0b3-8fd06da826dc",
+      "id": "dc5dec9d-4cee-5323-adeb-f17bcadd6072",
       "era": "THE CLONE WARS",
       "title": "Slaves of the Republic",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "6",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Clone_Wars_6",
@@ -11951,12 +11951,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a9/The_Sith_Hunters_cover.jpg/revision/latest"
     },
     {
-      "id": "552efc14-f4e2-5dd0-94ff-522d2a7b9bfd",
+      "id": "92dd88e9-79b8-5fb9-825f-e79d2a303408",
       "era": "THE CLONE WARS",
       "title": "Darth Maul: Death Sentence",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "1",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Maul%E2%80%94Death_Sentence_1",
@@ -11970,12 +11970,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/61/DeathSentence1Final.jpg/revision/latest"
     },
     {
-      "id": "f4db1d55-9aee-5462-a1ef-55ab26ea245c",
+      "id": "ec53d2fe-b8ad-5698-ab02-ba667568c995",
       "era": "THE CLONE WARS",
       "title": "Darth Maul: Death Sentence",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "2",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Maul%E2%80%94Death_Sentence_2",
@@ -11989,12 +11989,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a6/DeathSentence2Final.jpg/revision/latest"
     },
     {
-      "id": "84ed2fcd-29ea-5c91-bb00-deef4bcc63ad",
+      "id": "5a76b50a-dc56-5449-8064-9105751a3a30",
       "era": "THE CLONE WARS",
       "title": "Darth Maul: Death Sentence",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "3",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Maul%E2%80%94Death_Sentence_3",
@@ -12008,12 +12008,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8d/DeathSentence3Final.jpg/revision/latest"
     },
     {
-      "id": "cedbde33-3d2b-5817-9435-ac33538140fd",
+      "id": "377fc5c7-537a-59c9-ac60-8071ba54d3e1",
       "era": "THE CLONE WARS",
       "title": "Darth Maul: Death Sentence",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "4",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Maul%E2%80%94Death_Sentence_4",
@@ -12763,12 +12763,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b6/Pursuit.jpg/revision/latest"
     },
     {
-      "id": "839e08ff-489e-5de3-bc13-ee2f842e4795",
+      "id": "f5f3fd01-8310-5cb8-83bd-305e8a430c4d",
       "era": "THE CLONE WARS",
       "title": "Darth Maul: Son of Dathomir",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "1",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Maul%E2%80%94Son_of_Dathomir_1",
@@ -12782,12 +12782,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2b/Darth_Maul_Son_of_Dathomir_1.png/revision/latest"
     },
     {
-      "id": "3061f95f-1c30-5514-83ed-e77617341376",
+      "id": "92bb8664-f0bf-5a66-af15-f74dad0ea4f1",
       "era": "THE CLONE WARS",
       "title": "Darth Maul: Son of Dathomir",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "2",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Maul%E2%80%94Son_of_Dathomir_2",
@@ -12801,12 +12801,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2a/Darth_Maul_Son_of_Dathomir_2.png/revision/latest"
     },
     {
-      "id": "da248f4a-0b3a-59c3-b83d-ae8ba4e8d77f",
+      "id": "b96d39c3-3df3-5bfe-96bf-4743b79a86d5",
       "era": "THE CLONE WARS",
       "title": "Darth Maul: Son of Dathomir",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "3",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Maul%E2%80%94Son_of_Dathomir_3",
@@ -12820,12 +12820,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/37/Darth_Maul_Son_of_Dathomir_3.png/revision/latest"
     },
     {
-      "id": "82c54078-605c-56fb-870b-fd4f62f8c965",
+      "id": "6e7d91a1-ccfc-5eab-9fa5-0f22ae8d22b6",
       "era": "THE CLONE WARS",
       "title": "Darth Maul: Son of Dathomir",
       "medium": "Comic",
       "year": -19,
-      "series": "The Clone Wars",
+      "series": "The Clone Wars (comics)",
       "number": "4",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Maul%E2%80%94Son_of_Dathomir_4",
@@ -16355,12 +16355,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/91/Starcave_of_ThonBoka_Cover.jpg/revision/latest"
     },
     {
-      "id": "ea4cada9-78fa-503d-850a-9886f581850e",
+      "id": "cc86d43f-08ba-5f6f-97c9-cfa406a88606",
       "era": "THE DARK TIMES",
       "title": "Enemy of the Empire",
       "medium": "Comic",
       "year": -3,
-      "series": "Boba Fett",
+      "series": "Boba Fett: Enemy of the Empire",
       "number": "1",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Boba_Fett:_Enemy_of_the_Empire_1",
@@ -16375,12 +16375,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f9/Bobafett_enemy1.jpg/revision/latest"
     },
     {
-      "id": "30a21762-c90a-5ea7-8fd5-0d800da3edf8",
+      "id": "ced722e7-544f-5062-bff3-688b102f8a83",
       "era": "THE DARK TIMES",
       "title": "Enemy of the Empire",
       "medium": "Comic",
       "year": -3,
-      "series": "Boba Fett",
+      "series": "Boba Fett: Enemy of the Empire",
       "number": "2",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Boba_Fett:_Enemy_of_the_Empire_2",
@@ -16395,12 +16395,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/ad/EnemyOfTheEmpire2.jpg/revision/latest"
     },
     {
-      "id": "1556a315-9136-5192-80f4-a9dd2e082559",
+      "id": "8e686f5d-e85b-501d-9680-61c018330eea",
       "era": "THE DARK TIMES",
       "title": "Enemy of the Empire",
       "medium": "Comic",
       "year": -3,
-      "series": "Boba Fett",
+      "series": "Boba Fett: Enemy of the Empire",
       "number": "3",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Boba_Fett:_Enemy_of_the_Empire_3",
@@ -16415,12 +16415,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a8/EnemyOfTheEmpire3.jpg/revision/latest"
     },
     {
-      "id": "f78b2501-d509-587e-b8ae-7bcf0ace0384",
+      "id": "c72d6ff8-7a81-5b9f-826a-ba72571b049c",
       "era": "THE DARK TIMES",
       "title": "Enemy of the Empire",
       "medium": "Comic",
       "year": -3,
-      "series": "Boba Fett",
+      "series": "Boba Fett: Enemy of the Empire",
       "number": "4",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Boba_Fett:_Enemy_of_the_Empire_4",
@@ -17081,12 +17081,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/82/TFU2coverGN.jpg/revision/latest"
     },
     {
-      "id": "4b50030e-2d4f-549c-a055-31764716d4b9",
+      "id": "a09dbc37-2f1d-512b-9d29-9123aa3d28ff",
       "era": "THE DARK TIMES",
       "title": "Han Solo and the Hollow Moon of Khorya",
       "medium": "Comic",
       "year": -1,
-      "series": "Star Wars Adventures",
+      "series": "Star Wars Adventures (comics)",
       "number": "1",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Adventures:_Han_Solo_and_the_Hollow_Moon_of_Khorya",
@@ -21334,12 +21334,13 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/52/The_Monsters_Secret.jpg/revision/latest"
     },
     {
-      "id": "ea83907f-f89b-54a0-8c9e-0c10ee2e9791",
+      "id": "98428724-f811-5399-897e-da1255eb7856",
       "era": "REBELLION",
       "title": "Dark Lord's Conscience",
       "medium": "Comic",
       "year": 0,
-      "series": "Devilworlds",
+      "series": "The Empire Strikes Back Monthly",
+      "number": "155",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Dark_Lord%27s_Conscience",
       "authors": [
@@ -21352,12 +21353,13 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/27/Darklordconsience.jpg/revision/latest"
     },
     {
-      "id": "3b306c23-c20f-5f3d-97e7-fe721f238f9d",
+      "id": "ab5ea421-a6db-588a-affa-48ac800f494a",
       "era": "REBELLION",
       "title": "Tilotny Throws a Shape",
       "medium": "Comic",
       "year": 0,
-      "series": "Devilworlds",
+      "series": "The Empire Strikes Back Monthly",
+      "number": "154",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Tilotny_Throws_a_Shape",
       "authors": [
@@ -22923,12 +22925,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/27/NoTurningBack.jpg/revision/latest"
     },
     {
-      "id": "6e0ded4c-a2ad-5bb4-9951-38e050a83e26",
+      "id": "b5d60c64-891f-528c-8cad-fd1fa311ba61",
       "era": "REBELLION",
       "title": "Chewbacca and the Slavers of the Shadowlands",
       "medium": "Comic",
       "year": 0,
-      "series": "Star Wars Adventures",
+      "series": "Star Wars Adventures (comics)",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Adventures:_Chewbacca_and_the_Slavers_of_the_Shadowlands",
       "authors": [
@@ -23071,12 +23073,13 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e4/Missions8.jpg/revision/latest"
     },
     {
-      "id": "61798f53-b4fb-53e3-acb5-cec0af11b62d",
+      "id": "3cb8c6a9-34c8-5374-ac12-a96293bb618d",
       "era": "REBELLION",
       "title": "Blind Furyl",
       "medium": "Comic",
       "year": 1,
-      "series": "Devilworlds",
+      "series": "The Empire Strikes Back Monthly",
+      "number": "159",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Blind_Fury!",
       "authors": [
@@ -23089,12 +23092,13 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0b/Blindfury.jpg/revision/latest"
     },
     {
-      "id": "d5e2c518-8e7c-5b02-abe9-26b269a28583",
+      "id": "a29f2989-da08-5c7d-9c86-cc1a8926727d",
       "era": "REBELLION",
       "title": "The Pandora Effect",
       "medium": "Comic",
       "year": 1,
-      "series": "Devilworlds",
+      "series": "The Empire Strikes Back Monthly",
+      "number": "151",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Pandora_Effect",
       "authors": [
@@ -23448,12 +23452,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cc/SplinteroftheMindsEye_4.jpg/revision/latest"
     },
     {
-      "id": "a6a0dc0e-f774-526f-8331-a9db6496a3d2",
+      "id": "07593f81-30b2-524c-9a14-771ecc4250fa",
       "era": "REBELLION",
       "title": "Princess Leia and the Royal Ransom",
       "medium": "Comic",
       "year": -2,
-      "series": "Star Wars Adventures",
+      "series": "Star Wars Adventures (comics)",
       "number": "2",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Adventures:_Princess_Leia_and_the_Royal_Ransom",
@@ -23729,12 +23733,12 @@
       "release_precision": "month"
     },
     {
-      "id": "3c2d35e1-e2a7-5617-a0d2-9601b5953f7a",
+      "id": "10e8dbbe-b450-5b76-b57b-f454c6153c64",
       "era": "REBELLION",
       "title": "Boba Fett and the Ship of Fear",
       "medium": "Comic",
       "year": 2,
-      "series": "Star Wars Adventures",
+      "series": "Star Wars Adventures (comics)",
       "number": "5",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Adventures:_Boba_Fett_and_the_Ship_of_Fear",
@@ -24108,12 +24112,12 @@
       "release_precision": "year"
     },
     {
-      "id": "4f89461d-7170-53e4-8b6b-4f5fb5e39e67",
+      "id": "feb09c46-f2f4-5f5b-9449-031215b8875e",
       "era": "REBELLION",
       "title": "Luke Skywalker and the Treasure of the Dragonsnakes",
       "medium": "Comic",
       "year": -3,
-      "series": "Star Wars Adventures",
+      "series": "Star Wars Adventures (comics)",
       "number": "3",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Adventures:_Luke_Skywalker_and_the_Treasure_of_the_Dragonsnakes",
@@ -24241,12 +24245,12 @@
       "release_precision": "month"
     },
     {
-      "id": "3e678633-a412-5a83-ad98-c0f3732dc79e",
+      "id": "76fbccd4-2d9c-5ecf-a605-0fc8072339c2",
       "era": "REBELLION",
       "title": "The Will of Darth Vader",
       "medium": "Comic",
       "year": 3,
-      "series": "Star Wars Adventures",
+      "series": "Star Wars Adventures (comics)",
       "number": "4",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Adventures:_The_Will_of_Darth_Vader",
@@ -24448,12 +24452,13 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/23/LuckyStars.jpg/revision/latest"
     },
     {
-      "id": "988be8cf-8179-5c08-b365-45787805e809",
+      "id": "11173f46-3734-55d2-9f5b-9389e6c68728",
       "era": "REBELLION",
       "title": "Rust Never Sleeps",
       "medium": "Comic",
       "year": 3,
-      "series": "Devilworlds",
+      "series": "The Empire Strikes Back Monthly",
+      "number": "156",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Rust_Never_Sleeps",
       "authors": [
@@ -24466,12 +24471,13 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6f/Rustneversleeps.jpg/revision/latest"
     },
     {
-      "id": "863c7125-9f22-5f94-9898-880eab3db4ab",
+      "id": "dcc665b9-0e1c-5675-8208-0d5ef8f38566",
       "era": "REBELLION",
       "title": "Dark Knight's Devilry",
       "medium": "Comic",
       "year": 3,
-      "series": "Devilworlds",
+      "series": "The Empire Strikes Back Monthly",
+      "number": "153",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Dark_Knight%27s_Devilry",
       "authors": [
