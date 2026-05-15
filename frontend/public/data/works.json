@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-15T16:09:36+00:00",
+  "generated_at": "2026-05-15T18:22:09+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -2313,7 +2313,7 @@
         "Drew Karpyshyn",
         "David Gaider"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "LucasArts Entertainment",
       "release_date": "2003-07-15",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/15/KotOR_Cover.png/revision/latest"
@@ -2353,6 +2353,7 @@
         "Chris Avellone",
         "Ferret Baudoin"
       ],
+      "publisher": "LucasArts Entertainment",
       "release_date": "2004-12-06",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d9/Kotoriibox.jpg/revision/latest"
@@ -2672,6 +2673,7 @@
         "Arnie Jorgensen",
         "Daniel Erickson"
       ],
+      "publisher": "LucasArts Entertainment",
       "release_date": "2011-12-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f2/The_Old_Republic_cover.png/revision/latest"
@@ -2818,6 +2820,7 @@
       "series": "The Old Republic",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Old_Republic:_Rise_of_the_Hutt_Cartel",
+      "publisher": "LucasArts Entertainment",
       "release_date": "2013-04-09",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/94/Rise_of_the_Hutt_Cartel.png/revision/latest"
@@ -2883,6 +2886,7 @@
       "series": "The Old Republic",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Shadow_of_Revan",
+      "publisher": "LucasArts Entertainment",
       "release_date": "2014-12-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e5/Shadow_of_Revan_Cover.jpg/revision/latest"
@@ -2936,6 +2940,7 @@
       "series": "The Old Republic",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Knights_of_the_Fallen_Empire",
+      "publisher": "LucasArts Entertainment",
       "release_date": "2015-10-20",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b0/Knights_of_the_Fallen_Empire_cover.jpg/revision/latest"
@@ -2965,6 +2970,7 @@
       "series": "The Old Republic",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_The_Old_Republic:_Knights_of_the_Eternal_Throne",
+      "publisher": "LucasArts Entertainment",
       "release_date": "2016-12-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a2/Knights_of_the_Eternal_Throne_Offical_Cover.jpg/revision/latest"
@@ -5208,7 +5214,7 @@
       "authors": [
         "James Luceno"
       ],
-      "publisher": "Del Rey, Random House Worlds",
+      "publisher": "Del Rey",
       "release_date": "2001-05-29",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b6/CloakofDeception_Cover.jpg/revision/latest"
@@ -5226,6 +5232,7 @@
       "authors": [
         "George Lucas"
       ],
+      "publisher": "Lucasfilm",
       "release_date": "1999-05-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/75/EPI_TPM_poster.png/revision/latest"
@@ -5332,6 +5339,7 @@
       "year": -32,
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Episode_I_Racer",
+      "publisher": "LucasArts Entertainment",
       "release_date": "1999-05-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cd/Racer_N64.jpg/revision/latest"
@@ -5353,7 +5361,7 @@
         "Robert Teranishi",
         "Galen Showman"
       ],
-      "publisher": "Dark Horse Comics, Wizard Entertainment",
+      "publisher": "Dark Horse Comics",
       "release_date": "1999-07-21",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c6/Episode_I-_The_Phantom_Menace_0.5_Cover.jpg/revision/latest"
@@ -5597,7 +5605,7 @@
       "authors": [
         "James Luceno"
       ],
-      "publisher": "Del Rey (US), Arrow (UK)",
+      "publisher": "Del Rey",
       "release_date": "2012-01-10",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/05/Darthplagueis-cover.jpg/revision/latest"
@@ -7357,6 +7365,7 @@
         "George Lucas",
         "Jonathan Hales"
       ],
+      "publisher": "Lucasfilm",
       "release_date": "2002-05-16",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/dd/Attack-Clones-Poster.jpg/revision/latest"
@@ -7374,7 +7383,7 @@
       "authors": [
         "R. A. Salvatore"
       ],
-      "publisher": "Del Rey (US), Arrow Books (UK)",
+      "publisher": "Del Rey",
       "release_date": "2002-04-23",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3a/Attack_of_the_Clones_Cover.jpg/revision/latest"
@@ -7479,6 +7488,7 @@
       "series": "Republic Commando",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Republic_Commando",
+      "publisher": "LucasArts Entertainment",
       "release_date": "2005-02-28",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2d/RCcover.jpg/revision/latest"
@@ -7502,12 +7512,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e9/TheLesson.jpg/revision/latest"
     },
     {
-      "id": "9a4eeca2-9810-505e-8ce9-f05ceb6fce5d",
+      "id": "1e05fee8-03eb-5957-8f90-4a67765404b1",
       "era": "THE CLONE WARS",
       "title": "Machines of War",
       "medium": "Comic",
       "year": -22,
-      "series": "Hasbro Toys Us R",
+      "series": "Hasbro Toys R Us",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Machines_of_War",
       "authors": [
@@ -7520,12 +7530,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8c/MachinesOfWar.jpg/revision/latest"
     },
     {
-      "id": "e746aad9-3719-5e8f-ba85-ea9e34c38b30",
+      "id": "69b96418-11c3-5991-9dbe-746ddc7a0868",
       "era": "THE CLONE WARS",
       "title": "Most Precious Weapon",
       "medium": "Comic",
       "year": -22,
-      "series": "Hasbro Toys Us R",
+      "series": "Hasbro Toys R Us",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Most_Precious_Weapon",
       "authors": [
@@ -7942,6 +7952,7 @@
         "Paul Rudish",
         "Genndy Tartakovsky"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2003-11-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/50/CW_Chapter_1.png/revision/latest"
@@ -7956,6 +7967,7 @@
       "number": "1x02",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_2_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2003-11-10",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/66/CW_Chapter_2.png/revision/latest"
@@ -7970,6 +7982,7 @@
       "number": "1x03",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_3_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2003-11-11",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ea/CW_Chapter_3.png/revision/latest"
@@ -7984,6 +7997,7 @@
       "number": "1x04",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_4_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2003-11-12",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4b/CW_Chapter_4.png/revision/latest"
@@ -7998,6 +8012,7 @@
       "number": "1x05",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_5_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2003-11-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d3/CW_Chapter_5.png/revision/latest"
@@ -8012,6 +8027,7 @@
       "number": "1x06",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_6_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2003-11-15",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/be/CW_Chapter_6.png/revision/latest"
@@ -8026,6 +8042,7 @@
       "number": "1x07",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_7_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2003-11-17",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3e/CW_Chapter_7.png/revision/latest"
@@ -8040,6 +8057,7 @@
       "number": "1x08",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_8_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2003-11-18",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/03/CW_Chapter_8.png/revision/latest"
@@ -8054,6 +8072,7 @@
       "number": "1x09",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_9_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2003-11-19",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9a/CW_Chapter_9.png/revision/latest"
@@ -8068,6 +8087,7 @@
       "number": "1x10",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_10_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2003-11-20",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/71/CW_Chapter_10.png/revision/latest"
@@ -8082,6 +8102,7 @@
       "number": "2x01",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_11_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2004-03-26",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/51/CW_Chapter_11.png/revision/latest"
@@ -8096,6 +8117,7 @@
       "number": "2x02",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_12_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2004-03-29",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/80/CW_Chapter_12.png/revision/latest"
@@ -8110,6 +8132,7 @@
       "number": "2x03",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_13_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2004-03-30",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/32/CW_Chapter_13.png/revision/latest"
@@ -8124,6 +8147,7 @@
       "number": "2x04",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_14_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2004-03-31",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/bc/CW_Chapter_14.png/revision/latest"
@@ -8138,6 +8162,7 @@
       "number": "2x05",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_15_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2004-04-01",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/ad/CW_Chapter_15.png/revision/latest"
@@ -8152,6 +8177,7 @@
       "number": "2x06",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_16_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2004-04-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/ae/CW_Chapter_16.png/revision/latest"
@@ -8166,6 +8192,7 @@
       "number": "2x07",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_17_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2004-04-05",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fa/CW_Chapter_17.png/revision/latest"
@@ -8180,6 +8207,7 @@
       "number": "2x08",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_18_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2004-04-06",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b7/CW_Chapter_18.png/revision/latest"
@@ -8194,6 +8222,7 @@
       "number": "2x09",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_19_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2004-04-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4d/CW_Chapter_19.png/revision/latest"
@@ -8208,6 +8237,7 @@
       "number": "2x10",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_20_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2004-04-08",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7b/CW_Chapter_20.png/revision/latest"
@@ -8226,7 +8256,7 @@
         "Shawn Fillbach",
         "Ben Caldwell"
       ],
-      "publisher": "Dark Horse Comics (worldwide), Titan Magazines (UK)",
+      "publisher": "Dark Horse Comics",
       "release_date": "2004-07-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d9/CloneWarsAdventures1.jpg/revision/latest"
@@ -9085,6 +9115,7 @@
         "Brian Larsen",
         "Drew Z. Greenberg"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-03-26",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f8/Epguide216.jpg/revision/latest"
@@ -9119,6 +9150,7 @@
       "authors": [
         "Drew Z. Greenberg"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2009-02-06",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6c/Epguide016.jpg/revision/latest"
@@ -9137,6 +9169,7 @@
         "Scott Murphy",
         "Steven Melching"
       ],
+      "publisher": "Lucasfilm",
       "release_date": "2008-08-14",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/ff/The_Clone_Wars_film_poster.jpg/revision/latest"
@@ -9171,6 +9204,7 @@
       "authors": [
         "Cameron Litvack"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-09-17",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/bb/Epguide301.png/revision/latest"
@@ -9190,6 +9224,7 @@
         "Eoghan Mahony",
         "Drew Z. Greenberg"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-09-24",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/10/Epguide303.png/revision/latest"
@@ -9226,6 +9261,7 @@
         "Steven Melching",
         "Henry Gilroy"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2008-10-03",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/91/Ambush_Yoda_clones.png/revision/latest"
@@ -9282,6 +9318,7 @@
         "Steven Melching",
         "Henry Gilroy"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2008-10-03",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/74/Rising_Malevolence.png/revision/latest"
@@ -9317,6 +9354,7 @@
         "Steven Melching",
         "Henry Gilroy"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2008-10-10",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/76/Btlbywing.png/revision/latest"
@@ -9353,6 +9391,7 @@
         "Scott Murphy",
         "Henry Gilroy"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2008-10-17",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6b/Destroy_Malevolence.jpg/revision/latest"
@@ -9479,6 +9518,7 @@
         "Henry Gilroy",
         "Scott Murphy"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2008-10-24",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/74/Rookies-EpisodeGuideThumbnail.jpg/revision/latest"
@@ -9515,6 +9555,7 @@
         "George Krstic",
         "Henry Gilroy"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2008-11-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b9/Downfall_of_a_Droid.png/revision/latest"
@@ -9550,6 +9591,7 @@
         "Kevin Campbell",
         "Henry Gilroy"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2008-11-14",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5a/Epguide007.jpg/revision/latest"
@@ -9620,6 +9662,7 @@
         "Henry Gilroy",
         "Steven Melching"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2008-11-21",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/87/Epguide08.png/revision/latest"
@@ -9656,6 +9699,7 @@
         "Paul Dini",
         "Henry Gilroy"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2008-12-05",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f2/Epguide09.jpg/revision/latest"
@@ -9693,6 +9737,7 @@
       "authors": [
         "Henry Gilroy"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2008-12-12",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f4/Epguide010.png/revision/latest"
@@ -9749,6 +9794,7 @@
         "Scott Murphy",
         "Henry Gilroy"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2009-01-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/47/Epguide11.png/revision/latest"
@@ -9785,6 +9831,7 @@
         "Scott Murphy",
         "Henry Gilroy"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2009-01-09",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/11/TheGunganGeneralThumbnail-TCW.png/revision/latest"
@@ -9842,6 +9889,7 @@
         "Henry Gilroy",
         "Scott Murphy"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2009-01-16",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/67/Epguide013.png/revision/latest"
@@ -9876,6 +9924,7 @@
       "authors": [
         "Bill Canterbury"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2009-01-23",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/97/Epguide014.png/revision/latest"
@@ -9944,6 +9993,7 @@
       "authors": [
         "Steven Melching"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2009-01-30",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fd/Epguide015.png/revision/latest"
@@ -9978,6 +10028,7 @@
       "authors": [
         "Craig Titley"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2009-02-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5b/Epguide017.png/revision/latest"
@@ -9995,6 +10046,7 @@
       "authors": [
         "Brian Larsen"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2009-02-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7b/Epguide018.png/revision/latest"
@@ -10107,6 +10159,7 @@
       "authors": [
         "George Krstic"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2009-02-27",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/14/Epguide019.png/revision/latest"
@@ -10143,6 +10196,7 @@
         "Scott Murphy",
         "Randy Stradley"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2009-03-06",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b9/Epguide020.jpg/revision/latest"
@@ -10178,6 +10232,7 @@
       "authors": [
         "Henry Gilroy"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2009-03-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f9/Epguide021.png/revision/latest"
@@ -10236,7 +10291,7 @@
         "Paul Dini",
         "Scott Murphy"
       ],
-      "publisher": "StarWars.com",
+      "publisher": "Cartoon Network",
       "release_date": "2009-10-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a3/Epguide201.png/revision/latest"
@@ -10255,6 +10310,7 @@
         "George Krstic",
         "Scott Murphy"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2009-10-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/35/Epguide202.jpg/revision/latest"
@@ -10275,6 +10331,7 @@
         "Brian Larsen",
         "Wendy Meracle"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2009-10-09",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/40/Epguide203.jpg/revision/latest"
@@ -10309,7 +10366,7 @@
       "authors": [
         "Carl Ellsworth"
       ],
-      "publisher": "DK Publishing",
+      "publisher": "Cartoon Network",
       "release_date": "2010-04-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ef/Epguide217.png/revision/latest"
@@ -10327,6 +10384,7 @@
       "authors": [
         "Craig Titley"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-04-09",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/47/Epguide218.jpg/revision/latest"
@@ -10344,6 +10402,7 @@
       "authors": [
         "Steven Melching"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-04-16",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b7/Epguide219.jpg/revision/latest"
@@ -10361,7 +10420,7 @@
       "authors": [
         "Henry Gilroy",
         "Steven Melching",
-        "Brian Kolchak"
+        "Brian Koschak"
       ],
       "publisher": "Dark Horse Comics",
       "release_date": "2009-11-11",
@@ -10381,7 +10440,7 @@
       "authors": [
         "Henry Gilroy",
         "Steven Melching",
-        "Brian Kolchak"
+        "Brian Koschak"
       ],
       "publisher": "Dark Horse Comics",
       "release_date": "2009-12-09",
@@ -10401,7 +10460,7 @@
       "authors": [
         "Henry Gilroy",
         "Steven Melching",
-        "Brian Kolchak"
+        "Brian Koschak"
       ],
       "publisher": "Dark Horse Comics",
       "release_date": "2010-01-06",
@@ -10423,6 +10482,7 @@
         "Drew Z. Greenberg",
         "Brian Larsen"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2009-10-16",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b4/EpGuide204.png/revision/latest"
@@ -10441,6 +10501,7 @@
         "Brian Larsen",
         "Drew Z. Greenberg"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2009-11-04",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b0/Epguide205.jpg/revision/latest"
@@ -10459,6 +10520,7 @@
         "Brian Larsen",
         "Drew Z. Greenberg"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2009-11-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/78/Epguide206.jpg/revision/latest"
@@ -10478,7 +10540,7 @@
         "Drew Z. Greenberg",
         "Brian Larsen"
       ],
-      "publisher": "Penguin Books",
+      "publisher": "Cartoon Network",
       "release_date": "2009-11-20",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/50/Epguide207.jpg/revision/latest"
@@ -10498,6 +10560,7 @@
         "Drew Z. Greenberg",
         "Brian Larsen"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2009-12-04",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ef/BarrissInfected-BrainInvaders.jpg/revision/latest"
@@ -10517,6 +10580,7 @@
         "Drew Z. Greenberg",
         "Brian Larsen"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-01-01",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d3/Epguide209.jpg/revision/latest"
@@ -10536,6 +10600,7 @@
         "Drew Z. Greenberg",
         "Brian Larsen"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-01-01",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/bf/Epguide210.png/revision/latest"
@@ -10553,6 +10618,7 @@
       "authors": [
         "Drew Z. Greenberg"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-01-22",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/28/Epguide211.jpg/revision/latest"
@@ -10571,6 +10637,7 @@
         "Melinda Hsu",
         "Drew Z. Greenberg"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-01-29",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/85/Epguide212.png/revision/latest"
@@ -10589,6 +10656,7 @@
         "Paul Dini",
         "Henry Gilroy"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-02-05",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b8/Epguide213.jpg/revision/latest"
@@ -10607,6 +10675,7 @@
         "Drew Z. Greenberg",
         "Brian Larsen"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-02-12",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/39/Epguide214.jpg/revision/latest"
@@ -10626,6 +10695,7 @@
         "Drew Z. Greenberg",
         "Brian Larsen"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-04-23",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/95/Epguide220.jpg/revision/latest"
@@ -10645,6 +10715,7 @@
         "Drew Z. Greenberg",
         "Brian Larsen"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-04-30",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e5/Epguide221.png/revision/latest"
@@ -10664,6 +10735,7 @@
         "Drew Z. Greenberg",
         "Brian Larsen"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-04-30",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/82/Epguide222.jpg/revision/latest"
@@ -10718,6 +10790,7 @@
       "authors": [
         "Cameron Litvack"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-10-08",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/37/Epguide305.png/revision/latest"
@@ -10736,6 +10809,7 @@
         "Katie Lucas",
         "Steven Melching"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-10-15",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/bb/Epguide306.jpg/revision/latest"
@@ -10754,6 +10828,7 @@
         "Katie Lucas",
         "Drew Z. Greenberg"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-10-22",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c6/Epguide307.jpg/revision/latest"
@@ -10771,6 +10846,7 @@
       "authors": [
         "Cameron Litvack"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-09-17",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/63/Epguide302.png/revision/latest"
@@ -10808,6 +10884,7 @@
         "Steven Melching",
         "Drew Z. Greenberg"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-10-01",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/04/Epguide304b.png/revision/latest"
@@ -10845,6 +10922,7 @@
         "Steve Mitchell",
         "Craig Van Sickle"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-11-05",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/92/Epguide308.png/revision/latest"
@@ -10881,6 +10959,7 @@
         "Brian Larsen",
         "Drew Z. Greenberg"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2009-03-20",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/07/Epguide022.jpg/revision/latest"
@@ -10952,6 +11031,7 @@
         "Steve Mitchell",
         "Craig Van Sickle"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-11-12",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7d/Epguide309.png/revision/latest"
@@ -10969,6 +11049,7 @@
       "authors": [
         "Daniel Arkin"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-11-19",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b3/Epguide310.png/revision/latest"
@@ -10986,6 +11067,7 @@
       "authors": [
         "Daniel Arkin"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-12-03",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5f/EpGuide311.jpg/revision/latest"
@@ -11004,6 +11086,7 @@
         "Drew Z. Greenberg",
         "Brian Larsen"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2010-03-19",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/12/Epguide215.jpg/revision/latest"
@@ -11021,6 +11104,7 @@
       "authors": [
         "Katie Lucas"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-01-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/87/Epguide312.jpg/revision/latest"
@@ -11057,6 +11141,7 @@
       "authors": [
         "Katie Lucas"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-01-14",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/Epguide313.jpg/revision/latest"
@@ -11074,6 +11159,7 @@
       "authors": [
         "Katie Lucas"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-01-21",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5c/Epguide314.jpg/revision/latest"
@@ -11110,6 +11196,7 @@
       "authors": [
         "Christian Taylor"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-01-28",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f9/Epguide315.jpg/revision/latest"
@@ -11127,6 +11214,7 @@
       "authors": [
         "Christian Taylor"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-02-04",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/eb/TransferForce-AOM.png/revision/latest"
@@ -11144,6 +11232,7 @@
       "authors": [
         "Christian Taylor"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-02-11",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/1a/Epguide317.jpg/revision/latest"
@@ -11161,6 +11250,7 @@
       "authors": [
         "Matt Michnovetz"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-02-18",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/48/Epguide318.jpg/revision/latest"
@@ -11178,6 +11268,7 @@
       "authors": [
         "Matt Michnovetz"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-03-04",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/03/Epguide319.png/revision/latest"
@@ -11195,6 +11286,7 @@
       "authors": [
         "Matt Michnovetz"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-03-11",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/47/CitadelRescue-EpisodeGuideThumbnail.jpg/revision/latest"
@@ -11212,6 +11304,7 @@
       "authors": [
         "Bonnie Mark"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-03-19",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7c/PadawanLost-EpisodeGuideThumbnail.jpg/revision/latest"
@@ -11229,6 +11322,7 @@
       "authors": [
         "Bonnie Mark"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-04-01",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/Epguide322.jpg/revision/latest"
@@ -11266,6 +11360,7 @@
       "authors": [
         "Jose Molina"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-09-16",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4e/Epguide401.png/revision/latest"
@@ -11283,6 +11378,7 @@
       "authors": [
         "Jose Molina"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-09-16",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/72/Epguide402.jpg/revision/latest"
@@ -11300,7 +11396,7 @@
       "authors": [
         "Jose Molina"
       ],
-      "publisher": "Del Rey",
+      "publisher": "Cartoon Network",
       "release_date": "2011-09-23",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e4/Epguide403.jpg/revision/latest"
@@ -11336,6 +11432,7 @@
       "authors": [
         "Daniel Arkin"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-09-30",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f0/Epguide404.jpg/revision/latest"
@@ -11353,6 +11450,7 @@
       "authors": [
         "Bonnie Mark"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-10-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/Epguide405.jpg/revision/latest"
@@ -11371,6 +11469,7 @@
         "Steve Mitchell",
         "Craig Van Sickle"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-10-14",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d1/Epguide406.jpg/revision/latest"
@@ -11388,6 +11487,7 @@
       "authors": [
         "Matt Michnovetz"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-10-28",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/72/Epguide407.jpg/revision/latest"
@@ -11405,6 +11505,7 @@
       "authors": [
         "Matt Michnovetz"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-11-04",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/91/Epguide408.png/revision/latest"
@@ -11422,6 +11523,7 @@
       "authors": [
         "Matt Michnovetz"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-11-11",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ef/Epguide409.png/revision/latest"
@@ -11439,6 +11541,7 @@
       "authors": [
         "Matt Michnovetz"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-11-18",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/1b/Epguide410.jpg/revision/latest"
@@ -11457,6 +11560,7 @@
         "Henry Gilroy",
         "Steven Melching"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2011-11-25",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/46/Epguide411.jpg/revision/latest"
@@ -11475,7 +11579,7 @@
         "Henry Gilroy",
         "Steven Melching"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Cartoon Network",
       "release_date": "2011-12-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a1/SlavesOfTheRepublic-EpisodeGuideThumbnail.jpg/revision/latest"
@@ -11494,6 +11598,7 @@
         "Henry Gilroy",
         "Steven Melching"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-01-06",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f5/PloKoonLeadingHisBros-EscapeFromKadavo.jpg/revision/latest"
@@ -11625,6 +11730,7 @@
       "authors": [
         "Christian Taylor"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-01-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f8/Epguide414.jpg/revision/latest"
@@ -11642,6 +11748,7 @@
       "authors": [
         "Brent Friedman"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-01-20",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c1/Epguide415.jpg/revision/latest"
@@ -11659,6 +11766,7 @@
       "authors": [
         "Brent Friedman"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-01-27",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b6/Epguide416.png/revision/latest"
@@ -11676,6 +11784,7 @@
       "authors": [
         "Brent Friedman"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-02-03",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5a/Epguide417.png/revision/latest"
@@ -11693,6 +11802,7 @@
       "authors": [
         "Brent Friedman"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-02-10",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cc/Epguide418.jpg/revision/latest"
@@ -11745,6 +11855,7 @@
       "authors": [
         "Katie Lucas"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-02-24",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/55/Epguide419.png/revision/latest"
@@ -11762,6 +11873,7 @@
       "authors": [
         "Katie Lucas"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-03-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/30/Epguide420.png/revision/latest"
@@ -11779,6 +11891,7 @@
       "authors": [
         "Katie Lucas"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-03-09",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/23/Epguide421.jpg/revision/latest"
@@ -11796,6 +11909,7 @@
       "authors": [
         "Katie Lucas"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-03-16",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a2/Epguide422.png/revision/latest"
@@ -11944,6 +12058,7 @@
       "authors": [
         "Chris Collins"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-10-06",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/be/Epguide502.jpg/revision/latest"
@@ -11961,6 +12076,7 @@
       "authors": [
         "Chris Collins"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-10-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/80/Epguide503.jpg/revision/latest"
@@ -11978,6 +12094,7 @@
       "authors": [
         "Chris Collins"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-10-20",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/72/Epguide504.jpg/revision/latest"
@@ -11995,6 +12112,7 @@
       "authors": [
         "Chris Collins"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-10-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/ae/Epguide505.jpg/revision/latest"
@@ -12012,6 +12130,7 @@
       "authors": [
         "Christian Taylor"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-11-03",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e0/Epguide506.jpg/revision/latest"
@@ -12029,6 +12148,7 @@
       "authors": [
         "Christian Taylor"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-11-10",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9e/Epguide507.jpg/revision/latest"
@@ -12046,6 +12166,7 @@
       "authors": [
         "Christian Taylor"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-11-17",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/14/Epguide508.png/revision/latest"
@@ -12063,6 +12184,7 @@
       "authors": [
         "Christian Taylor"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-11-24",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/72/Epguide509.png/revision/latest"
@@ -12080,6 +12202,7 @@
       "authors": [
         "Brent Friedman"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-12-01",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/05/Epguide510.png/revision/latest"
@@ -12097,6 +12220,7 @@
       "authors": [
         "Brent Friedman"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-12-08",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c1/Epguide511.png/revision/latest"
@@ -12114,6 +12238,7 @@
       "authors": [
         "Brent Friedman"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2013-01-05",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b6/Epguide512.png/revision/latest"
@@ -12131,6 +12256,7 @@
       "authors": [
         "Brent Friedman"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2013-01-12",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9b/Epguide513.png/revision/latest"
@@ -12148,6 +12274,7 @@
       "authors": [
         "Chris Collins"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2012-08-24",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/20/Epguide501.jpg/revision/latest"
@@ -12165,6 +12292,7 @@
       "authors": [
         "Chris Collins"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2013-01-19",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4b/Epguide514.jpg/revision/latest"
@@ -12182,6 +12310,7 @@
       "authors": [
         "Chris Collins"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2013-01-26",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/da/Epguide515.png/revision/latest"
@@ -12199,6 +12328,7 @@
       "authors": [
         "Chris Collins"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2013-02-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c3/Epguide516.png/revision/latest"
@@ -12234,6 +12364,7 @@
       "authors": [
         "Charles Murray"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2013-02-09",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/70/Epguide517.png/revision/latest"
@@ -12251,6 +12382,7 @@
       "authors": [
         "Charles Murray"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2013-02-16",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/25/Epguide518.jpg/revision/latest"
@@ -12268,6 +12400,7 @@
       "authors": [
         "Charles Murray"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2013-02-23",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/ad/Epguide519.png/revision/latest"
@@ -12285,6 +12418,7 @@
       "authors": [
         "Charles Murray"
       ],
+      "publisher": "Cartoon Network",
       "release_date": "2013-03-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4a/Epguide520.png/revision/latest"
@@ -12302,6 +12436,7 @@
       "authors": [
         "Katie Lucas"
       ],
+      "publisher": "Netflix",
       "release_date": "2014-03-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/34/EpGuide601.png/revision/latest"
@@ -12319,6 +12454,7 @@
       "authors": [
         "Katie Lucas"
       ],
+      "publisher": "Netflix",
       "release_date": "2014-03-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c3/EpGuide602.png/revision/latest"
@@ -12336,6 +12472,7 @@
       "authors": [
         "Katie Lucas"
       ],
+      "publisher": "Netflix",
       "release_date": "2014-03-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/dd/EpGuide603.png/revision/latest"
@@ -12353,6 +12490,7 @@
       "authors": [
         "Katie Lucas"
       ],
+      "publisher": "Netflix",
       "release_date": "2014-03-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a1/EpGuide604.png/revision/latest"
@@ -12370,6 +12508,7 @@
       "authors": [
         "Christian Taylor"
       ],
+      "publisher": "Netflix",
       "release_date": "2014-03-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0f/EpGuide605.png/revision/latest"
@@ -12387,6 +12526,7 @@
       "authors": [
         "Christian Taylor"
       ],
+      "publisher": "Netflix",
       "release_date": "2014-03-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c3/EpGuide606.png/revision/latest"
@@ -12404,6 +12544,7 @@
       "authors": [
         "Christian Taylor"
       ],
+      "publisher": "Netflix",
       "release_date": "2014-03-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/10/EpGuide607.png/revision/latest"
@@ -12421,6 +12562,7 @@
       "authors": [
         "Jonathan W. Rinzler"
       ],
+      "publisher": "Netflix",
       "release_date": "2014-03-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/00/EpGuide608.png/revision/latest"
@@ -12438,6 +12580,7 @@
       "authors": [
         "Jonathan W. Rinzler"
       ],
+      "publisher": "Netflix",
       "release_date": "2014-03-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b1/EpGuide609.png/revision/latest"
@@ -12455,6 +12598,7 @@
       "authors": [
         "Christian Taylor"
       ],
+      "publisher": "Netflix",
       "release_date": "2014-03-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/31/EpGuide610.png/revision/latest"
@@ -12472,6 +12616,7 @@
       "authors": [
         "Christian Taylor"
       ],
+      "publisher": "Netflix",
       "release_date": "2014-03-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b8/EpGuide611.png/revision/latest"
@@ -12489,6 +12634,7 @@
       "authors": [
         "Christian Taylor"
       ],
+      "publisher": "Netflix",
       "release_date": "2014-03-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d1/Epguide612.png/revision/latest"
@@ -12506,6 +12652,7 @@
       "authors": [
         "Christian Taylor"
       ],
+      "publisher": "Netflix",
       "release_date": "2014-03-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c7/EpGuide613.png/revision/latest"
@@ -13123,6 +13270,7 @@
       "number": "3x01",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_21_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2005-03-21",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8c/CW_Chapter_21.png/revision/latest"
@@ -13137,6 +13285,7 @@
       "number": "3x02",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_22_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2005-03-22",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/CW_Chapter_22.png/revision/latest"
@@ -13151,6 +13300,7 @@
       "number": "3x03",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_23_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2005-03-23",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/61/CW_Chapter_23.png/revision/latest"
@@ -13165,6 +13315,7 @@
       "number": "3x04",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_24_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2005-03-24",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/56/CW_Chapter_24.png/revision/latest"
@@ -13179,6 +13330,7 @@
       "number": "3x05",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chapter_25_(Star_Wars:_Clone_Wars)",
+      "publisher": "Cartoon Network",
       "release_date": "2005-03-25",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/61/CW_Chapter_25.png/revision/latest"
@@ -13214,6 +13366,7 @@
       "authors": [
         "George Lucas"
       ],
+      "publisher": "Lucasfilm",
       "release_date": "2005-05-19",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e7/EPIII_RotS_poster.png/revision/latest"
@@ -15119,7 +15272,7 @@
         "David Manak",
         "John Romita Sr."
       ],
-      "publisher": "Star Comics",
+      "publisher": "Marvel Comics",
       "release_date": "1986-02-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/Droids1986-1.jpg/revision/latest"
@@ -15214,6 +15367,7 @@
       "authors": [
         "Peter Sauder"
       ],
+      "publisher": "ABC",
       "release_date": "1985-09-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7f/Ep01_05_bg.jpg/revision/latest"
@@ -15231,6 +15385,7 @@
       "authors": [
         "Peter Sauder"
       ],
+      "publisher": "ABC",
       "release_date": "1985-09-14",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fb/TigFromm3.jpg/revision/latest"
@@ -15249,6 +15404,7 @@
         "Richard Beban",
         "Peter Sauder"
       ],
+      "publisher": "ABC",
       "release_date": "1985-09-21",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cc/TigFromm5.jpg/revision/latest"
@@ -15267,6 +15423,7 @@
         "Peter Sauder",
         "Steven Wright"
       ],
+      "publisher": "ABC",
       "release_date": "1985-09-28",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e2/BobaFett-ARaceToTheFinish.png/revision/latest"
@@ -15284,6 +15441,7 @@
       "authors": [
         "Peter Sauder"
       ],
+      "publisher": "ABC",
       "release_date": "1985-10-05",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5d/Droids-lostprin.jpg/revision/latest"
@@ -15301,6 +15459,7 @@
       "authors": [
         "Peter Sauder"
       ],
+      "publisher": "ABC",
       "release_date": "1985-10-12",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/77/Droids-newking.jpg/revision/latest"
@@ -15318,6 +15477,7 @@
       "authors": [
         "Peter Sauder"
       ],
+      "publisher": "ABC",
       "release_date": "1985-10-19",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d9/Droids-pirates.jpg/revision/latest"
@@ -15335,6 +15495,7 @@
       "authors": [
         "Peter Sauder"
       ],
+      "publisher": "ABC",
       "release_date": "1985-10-26",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/71/Droids-revengekybo.jpg/revision/latest"
@@ -15353,6 +15514,7 @@
         "Joe Johnston",
         "Peter Sauder"
       ],
+      "publisher": "ABC",
       "release_date": "1985-11-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a1/Ep09_01_bg.jpg/revision/latest"
@@ -15369,6 +15531,7 @@
       "authors": [
         "Ben Burtt"
       ],
+      "publisher": "ABC",
       "release_date": "1986-06-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a7/GreatHeepLogo.jpg/revision/latest"
@@ -15387,6 +15550,7 @@
         "Ben Burtt",
         "Michael Reaves"
       ],
+      "publisher": "ABC",
       "release_date": "1985-11-09",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/13/Droids-trailroon.jpg/revision/latest"
@@ -15406,6 +15570,7 @@
         "Gordon Kent",
         "Peter Sauder"
       ],
+      "publisher": "ABC",
       "release_date": "1985-11-16",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a3/Games.jpg/revision/latest"
@@ -15424,6 +15589,7 @@
         "Ben Burtt",
         "Sharman DiVono"
       ],
+      "publisher": "ABC",
       "release_date": "1985-11-23",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c7/Droids-acrossronsea.jpg/revision/latest"
@@ -15442,6 +15608,7 @@
         "Ben Burtt",
         "Paul Dini"
       ],
+      "publisher": "ABC",
       "release_date": "1985-11-30",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ef/Droids-frozencitadel.jpg/revision/latest"
@@ -16152,11 +16319,12 @@
       "release_precision": "month"
     },
     {
-      "id": "550d6c97-b793-5436-bcca-4ecef59d8cce",
+      "id": "9c4c5c74-5e04-5792-904a-b4f0f7bd5081",
       "era": "THE DARK TIMES",
       "title": "Lando Calrissian and the Flamewind of Oseon",
       "medium": "Novel",
       "year": -4,
+      "series": "Lando Calrissian Adventures",
       "number": "2",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Lando_Calrissian_and_the_Flamewind_of_Oseon",
@@ -16169,11 +16337,12 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/de/Flamewind_of_Oseon_Cover.jpg/revision/latest"
     },
     {
-      "id": "e18260ae-3633-5025-9750-0ca81e82fd3f",
+      "id": "9278d6cb-02be-5e81-97ba-c3da1dfc4393",
       "era": "THE DARK TIMES",
       "title": "Lando Calrissian and the Starcave of ThonBoka",
       "medium": "Novel",
       "year": -3,
+      "series": "Lando Calrissian Adventures",
       "number": "3",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Lando_Calrissian_and_the_Starcave_of_ThonBoka",
@@ -16317,6 +16486,7 @@
         "Cameron Suey",
         "Matt Emery"
       ],
+      "publisher": "LucasArts Entertainment",
       "release_date": "2008-09-16",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/86/TFU_cover_art.png/revision/latest"
@@ -16866,6 +17036,7 @@
         "John Stafford",
         "Cameron Suey"
       ],
+      "publisher": "LucasArts Entertainment",
       "release_date": "2010-10-26",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/96/TFUII_Xbox360_Cover.png/revision/latest"
@@ -16941,7 +17112,7 @@
       "authors": [
         "William C. Dietz"
       ],
-      "publisher": "Dark Horse Comics, Boulevard",
+      "publisher": "Dark Horse Comics",
       "release_date": "1997-02-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d6/DarkForces-SoldierForTheEmpire.jpg/revision/latest"
@@ -17249,7 +17420,7 @@
       "authors": [
         "Rusel DeMaria"
       ],
-      "publisher": "LucasArts Entertainment",
+      "publisher": "Prima Publishing",
       "release_date": "1993-02-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/35/FarlanderPapers.jpg/revision/latest"
@@ -17287,7 +17458,7 @@
         "Mike W. Barr",
         "Gary Erskine"
       ],
-      "publisher": "Dark Horse Comics, Wizard Entertainment",
+      "publisher": "Dark Horse Comics",
       "release_date": "1997-02-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a9/Xwing1-2.jpg/revision/latest"
@@ -17372,6 +17543,7 @@
       "series": "Empire at War",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Empire_at_War",
+      "publisher": "LucasArts Entertainment",
       "release_date": "2006-02-16",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b3/Eaw_keyart.jpg/revision/latest"
@@ -17385,6 +17557,7 @@
       "series": "Empire at War",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Empire_at_War:_Forces_of_Corruption",
+      "publisher": "LucasArts Entertainment",
       "release_date": "2006-10-24",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7a/FoC.jpg/revision/latest"
@@ -17613,7 +17786,7 @@
       "authors": [
         "George Lucas"
       ],
-      "publisher": "Ballantine Books",
+      "publisher": "Lucasfilm",
       "release_date": "1977-05-25",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/44/1977-StarWars-theatricalposter.jpg/revision/latest"
@@ -17762,6 +17935,7 @@
       "authors": [
         "Justin Chin"
       ],
+      "publisher": "LucasArts Entertainment",
       "release_date": "1995-02-15",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d2/Dark_Forces_Box_Cover.jpg/revision/latest"
@@ -18053,7 +18227,7 @@
         "C. B. Cebulski",
         "Makoto Nakatsuka"
       ],
-      "publisher": "Mike Richardson",
+      "publisher": "Dark Horse Comics",
       "release_date": "2002-06-05",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/dc/OnceBitten.jpg/revision/latest"
@@ -18536,7 +18710,7 @@
         "Roy Thomas",
         "Howard Chaykin"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1977-10-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e8/The_keepers_world_1_front_panel.jpg/revision/latest"
@@ -18555,7 +18729,7 @@
         "Roy Thomas",
         "Howard Chaykin"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1977-11-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/39/The_keepers_world_2_front_panel.jpg/revision/latest"
@@ -18574,7 +18748,7 @@
         "Roy Thomas",
         "Howard Chaykin"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1977-12-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/43/Dread_discovery_front_panel.jpg/revision/latest"
@@ -18593,7 +18767,7 @@
         "Roy Thomas",
         "Howard Chaykin"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1978-01-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0f/A_matter_of_monsters_front_panel.jpg/revision/latest"
@@ -18612,7 +18786,7 @@
         "Roy Thomas",
         "Howard Chaykin"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1978-02-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/45/Pursuit_among_the_ruins_front_panel.jpg/revision/latest"
@@ -18631,7 +18805,7 @@
         "Roy Thomas",
         "Howard Chaykin"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1978-03-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5a/Do_you_know_what_your_children_are_front_panel.jpg/revision/latest"
@@ -18650,7 +18824,7 @@
         "Archie Goodwin",
         "Tony DeZuniga"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1978-04-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2a/Caverns_of_mystery_front_panel.jpg/revision/latest"
@@ -18669,7 +18843,7 @@
         "Archie Goodwin",
         "Tony DeZuniga"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1978-05-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8d/The_keepers_secret_front_panel.jpg/revision/latest"
@@ -18688,7 +18862,7 @@
         "Archie Goodwin",
         "Tony DeZuniga"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1978-06-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/90/The_final_fury_first_panel.jpg/revision/latest"
@@ -18707,7 +18881,7 @@
         "Archie Goodwin",
         "Walt Simonson"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1978-07-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/58/Kingdom_of_Ice_title.jpg/revision/latest"
@@ -18726,7 +18900,7 @@
         "Archie Goodwin",
         "Walt Simonson"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1978-08-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fb/The_snow_demons_title_panel.jpg/revision/latest"
@@ -18745,7 +18919,7 @@
         "Archie Goodwin",
         "Walt Simonson"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1978-09-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/36/Treachery_title_panel.jpg/revision/latest"
@@ -18764,7 +18938,7 @@
         "Archie Goodwin",
         "Walt Simonson"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1978-10-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a2/Death_trap_first_page.jpg/revision/latest"
@@ -18783,7 +18957,7 @@
         "Archie Goodwin",
         "Dave Cockrum"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1978-11-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7b/Snow_fury_first_panel.jpg/revision/latest"
@@ -18802,7 +18976,7 @@
         "Archie Goodwin",
         "Dave Cockrum"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1978-12-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/19/The_ice_worm_cometh_front_panel.jpg/revision/latest"
@@ -18821,7 +18995,7 @@
         "Archie Goodwin",
         "Dave Cockrum"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1979-01-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a9/Showdown_first_panel.jpg/revision/latest"
@@ -18840,7 +19014,7 @@
         "Archie Goodwin",
         "Dave Cockrum"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1979-04-18",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/27/Pursuit_front_panel.jpg/revision/latest"
@@ -18875,7 +19049,7 @@
         "Russ Manning",
         "Rick Hoberg"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1994-08-09",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e3/ClassicStarWarsEarlyAdventures1CC.jpg/revision/latest"
@@ -18894,7 +19068,7 @@
         "Russ Manning",
         "Rick Hoberg"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1994-09-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d0/ClassicStarWarsEarlyAdventures2CC.jpg/revision/latest"
@@ -18913,7 +19087,7 @@
         "Russ Manning",
         "Rick Hoberg"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1994-10-11",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f7/ClassicStarWarsEarlyAdventures3CC.jpg/revision/latest"
@@ -18949,7 +19123,7 @@
         "Russ Manning",
         "Rick Hoberg"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1994-11-08",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a8/CSWTEA4-LEC.png/revision/latest"
@@ -18969,7 +19143,7 @@
         "Brian Snoddy",
         "Rick Hoberg"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1994-12-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/44/CSWTEA5-LEC.png/revision/latest"
@@ -18989,7 +19163,7 @@
         "Brian Snoddy",
         "Rick Hoberg"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1995-01-03",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f1/CSWTEA6-LEC.png/revision/latest"
@@ -19009,7 +19183,7 @@
         "Brian Snoddy",
         "Rick Hoberg"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1995-02-14",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0b/CSWTEA7-LEC.png/revision/latest"
@@ -19027,7 +19201,7 @@
       "authors": [
         "Russ Manning"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1995-03-14",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a5/CSWTEA8-LEC.png/revision/latest"
@@ -19046,7 +19220,7 @@
         "Russ Manning",
         "Rick Hoberg"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1995-04-11",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ec/CSWTEA9-LEC.png/revision/latest"
@@ -20435,7 +20609,7 @@
         "Archie Goodwin",
         "Al Williamson"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1992-08-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b6/ClassicStarWars1.jpg/revision/latest"
@@ -20454,7 +20628,7 @@
         "Archie Goodwin",
         "Al Williamson"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1992-09-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5f/ClassicStarWars2.jpg/revision/latest"
@@ -20473,7 +20647,7 @@
         "Archie Goodwin",
         "Al Williamson"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1992-10-20",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c1/CSW3-LEC.png/revision/latest"
@@ -20492,7 +20666,7 @@
         "Archie Goodwin",
         "Al Williamson"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1992-11-03",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a1/CSW4-Legends.png/revision/latest"
@@ -20511,7 +20685,7 @@
         "Archie Goodwin",
         "Al Williamson"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1992-12-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/27/ClassicStarWars5CC.jpg/revision/latest"
@@ -20530,7 +20704,7 @@
         "Archie Goodwin",
         "Al Williamson"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1993-01-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/56/ClassicStarWars6CC.jpg/revision/latest"
@@ -20550,7 +20724,7 @@
         "Al Williamson",
         "Allen Nunis"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1993-02-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8a/ClassicStarWars7CC.jpg/revision/latest"
@@ -20570,7 +20744,7 @@
         "Al Williamson",
         "Allen Nunis"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1993-04-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/35/ClassicStarWars8CC.jpg/revision/latest"
@@ -20589,7 +20763,7 @@
         "Archie Goodwin",
         "Al Williamson"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1993-05-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e7/ClassicStarWars9CC.jpg/revision/latest"
@@ -20608,7 +20782,7 @@
         "Archie Goodwin",
         "Al Williamson"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1993-06-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/40/ClassicStarWars10CC.jpg/revision/latest"
@@ -20627,7 +20801,7 @@
         "Archie Goodwin",
         "Al Williamson"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1993-07-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/88/ClassicStarWars11CC.jpg/revision/latest"
@@ -20814,7 +20988,7 @@
         "Carmine Infantino",
         "Pablo Marcos"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1979-12-12",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fd/Wayofthewookiee_title.jpg/revision/latest"
@@ -20834,7 +21008,7 @@
         "Carmine Infantino",
         "Pablo Marcos"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1979-12-18",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/05/Chewbacca_Fights_Alone.jpg/revision/latest"
@@ -20854,7 +21028,7 @@
         "Carmine Infantino",
         "Pablo Marcos"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1979-12-26",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/bb/Switch_Marvel.jpg/revision/latest"
@@ -20874,7 +21048,7 @@
         "Carmine Infantino",
         "Gene Day"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1980-01-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/43/Day_after_ds.jpg/revision/latest"
@@ -20894,7 +21068,7 @@
         "Carmine Infantino",
         "Gene Day"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1980-01-09",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d8/Space_Duel.jpg/revision/latest"
@@ -20914,7 +21088,7 @@
         "Carmine Infantino",
         "Gene Day"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1980-01-16",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9f/Empire_Kills.jpg/revision/latest"
@@ -20934,7 +21108,7 @@
         "Carmine Infantino",
         "Steve Mitchell"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1980-02-20",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/69/Weapons_master.jpg/revision/latest"
@@ -20954,7 +21128,7 @@
         "Carmine Infantino",
         "Steve Mitchell"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1980-02-27",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/77/Day_of_the_Assassins.jpg/revision/latest"
@@ -20974,7 +21148,7 @@
         "Carmine Infantino",
         "Steve Mitchell"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1980-03-06",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/ad/My_Enemies_Surround_Me.jpg/revision/latest"
@@ -20994,7 +21168,7 @@
         "Carmine Infantino",
         "Gene Day"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1980-03-12",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3b/World_of_Fire_Marvel.jpg/revision/latest"
@@ -21014,7 +21188,7 @@
         "Carmine Infantino",
         "Gene Day"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1980-03-19",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/71/Star_Terror.jpg/revision/latest"
@@ -21034,7 +21208,7 @@
         "Carmine Infantino",
         "Gene Day"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1980-03-26",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5c/Molten_Doom.jpg/revision/latest"
@@ -21054,7 +21228,7 @@
         "Carmine Infantino",
         "Gene Day"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1980-04-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2c/The_Word_for_World_is_Death.jpg/revision/latest"
@@ -21074,7 +21248,7 @@
         "Carmine Infantino",
         "Gene Day"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1980-04-09",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/69/Unholy_Alliance.jpg/revision/latest"
@@ -21094,7 +21268,7 @@
         "Carmine Infantino",
         "Gene Day"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1980-04-16",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/df/ACreatureintheStars.jpg/revision/latest"
@@ -21114,7 +21288,7 @@
         "Carmine Infantino",
         "Gene Day"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1980-04-23",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a4/The_Guardian_of_Forever.jpg/revision/latest"
@@ -21134,7 +21308,7 @@
         "Carmine Infantino",
         "Gene Day"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1980-04-30",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/07/Betrayal_Marvel.jpg/revision/latest"
@@ -21154,7 +21328,7 @@
         "Carmine Infantino",
         "Gene Day"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1980-05-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/52/The_Monsters_Secret.jpg/revision/latest"
@@ -21172,7 +21346,7 @@
         "Alan Moore",
         "John Stokes"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Marvel UK",
       "release_date": "1982-04-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/27/Darklordconsience.jpg/revision/latest"
@@ -21209,7 +21383,7 @@
         "Archie Goodwin",
         "Al Williamson"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1993-09-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2a/ClassicStarWars12CC.jpg/revision/latest"
@@ -21228,7 +21402,7 @@
         "Archie Goodwin",
         "Al Williamson"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1993-10-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/35/ClassicStarWars13CC.jpg/revision/latest"
@@ -21247,7 +21421,7 @@
         "Archie Goodwin",
         "Al Williamson"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1993-11-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/43/ClassicStarWars14CC.jpg/revision/latest"
@@ -21266,7 +21440,7 @@
         "Archie Goodwin",
         "Al Williamson"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1993-12-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e2/ClassicStarWars15CC.jpg/revision/latest"
@@ -21286,7 +21460,7 @@
         "Al Williamson",
         "Allen Nunis"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1994-02-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e0/ClassicStarWars16CC.jpg/revision/latest"
@@ -21305,7 +21479,7 @@
         "Archie Goodwin",
         "Al Williamson"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1994-03-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/09/ClassicStarWars17CC.jpg/revision/latest"
@@ -21324,7 +21498,7 @@
         "Archie Goodwin",
         "Al Williamson"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1994-04-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fc/ClassicStarWars18CC.jpg/revision/latest"
@@ -21343,7 +21517,7 @@
         "Archie Goodwin",
         "Al Williamson"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1994-05-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/44/ClassicStarWars19CC.jpg/revision/latest"
@@ -21362,7 +21536,7 @@
         "Archie Goodwin",
         "Al Williamson"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Los Angeles Times Syndicate",
       "release_date": "1994-06-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f3/ClassicStarWars20CC.jpg/revision/latest"
@@ -21583,7 +21757,7 @@
       "authors": [
         "John Whitman"
       ],
-      "publisher": "Bantam Skylark",
+      "publisher": "Bantam Spectra",
       "release_date": "1997-01-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d5/Gof1-eatenalive.jpg/revision/latest"
@@ -22394,7 +22568,7 @@
         "Rob Williams",
         "Michel Lacombe"
       ],
-      "publisher": "Mike Richardson",
+      "publisher": "Dark Horse Comics",
       "release_date": "2007-05-16",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/da/Rebellion6.jpg/revision/latest"
@@ -22414,7 +22588,7 @@
         "Rob Williams",
         "Michel Lacombe"
       ],
-      "publisher": "Mike Richardson",
+      "publisher": "Dark Horse Comics",
       "release_date": "2007-06-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/65/Rebellion7.jpg/revision/latest"
@@ -22434,7 +22608,7 @@
         "Rob Williams",
         "Michel Lacombe"
       ],
-      "publisher": "Mike Richardson",
+      "publisher": "Dark Horse Comics",
       "release_date": "2007-07-11",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ee/SWRebellion8_cover.jpg/revision/latest"
@@ -22454,7 +22628,7 @@
         "Rob Williams",
         "Michel Lacombe"
       ],
-      "publisher": "Mike Richardson",
+      "publisher": "Dark Horse Comics",
       "release_date": "2007-08-08",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e1/Rebellion9final.jpg/revision/latest"
@@ -22819,6 +22993,7 @@
         "Mitzie Welch",
         "George Lucas"
       ],
+      "publisher": "CBS",
       "release_date": "1978-11-17",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/23/StarWarsHS.jpg/revision/latest"
@@ -22908,7 +23083,7 @@
         "Alan Moore",
         "John Stokes"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Marvel UK",
       "release_date": "1982-07-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0b/Blindfury.jpg/revision/latest"
@@ -22926,7 +23101,7 @@
         "Alan Moore",
         "Adolfo Buylla"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Marvel UK",
       "release_date": "1981-11-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/94/Pandora.jpg/revision/latest"
@@ -23012,7 +23187,7 @@
       "authors": [
         "James S. A. Corey"
       ],
-      "publisher": "Del Rey, Titan Magazines",
+      "publisher": "Titan Magazines",
       "release_date": "2014-03-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2e/SilverandScarlet.png/revision/latest"
@@ -23195,7 +23370,7 @@
       "authors": [
         "Alan Dean Foster"
       ],
-      "publisher": "Sphere Books (UK), Del Rey (US)",
+      "publisher": "Del Rey",
       "release_date": "1978-02-12",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f6/Splinter_of_the_Minds_Eye.png/revision/latest"
@@ -23213,7 +23388,7 @@
         "Terry Austin",
         "Chris Sprouse"
       ],
-      "publisher": "Mike Richardson",
+      "publisher": "Dark Horse Comics",
       "release_date": "1995-12-26",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/1f/SplinteroftheMindsEye_1.jpg/revision/latest"
@@ -23231,7 +23406,7 @@
         "Terry Austin",
         "Chris Sprouse"
       ],
-      "publisher": "Mike Richardson",
+      "publisher": "Dark Horse Comics",
       "release_date": "1996-02-27",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f7/SplinteroftheMindsEye_2.jpg/revision/latest"
@@ -23249,7 +23424,7 @@
         "Terry Austin",
         "Chris Sprouse"
       ],
-      "publisher": "Mike Richardson",
+      "publisher": "Dark Horse Comics",
       "release_date": "1996-04-23",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d7/SplinteroftheMindsEye_3.jpg/revision/latest"
@@ -23267,7 +23442,7 @@
         "Terry Austin",
         "Chris Sprouse"
       ],
-      "publisher": "Mike Richardson",
+      "publisher": "Dark Horse Comics",
       "release_date": "1996-06-25",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cc/SplinteroftheMindsEye_4.jpg/revision/latest"
@@ -23708,7 +23883,7 @@
         "Leigh Brackett",
         "Lawrence Kasdan"
       ],
-      "publisher": "National Public Radio, HighBridge Audio",
+      "publisher": "Lucasfilm",
       "release_date": "1980-05-21",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e8/1980-EmpireStrikesBack-theatricalposter.jpg/revision/latest"
@@ -24249,7 +24424,7 @@
       "authors": [
         "Steve Moore"
       ],
-      "publisher": "Marvel Comics",
+      "publisher": "Marvel UK",
       "release_date": "1981-08-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/14/Deathmasque.jpg/revision/latest"
@@ -24285,7 +24460,7 @@
         "Alan Moore",
         "Alan Davis"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Marvel UK",
       "release_date": "1982-05-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6f/Rustneversleeps.jpg/revision/latest"
@@ -24303,7 +24478,7 @@
         "Steve Moore",
         "Alan Davis"
       ],
-      "publisher": "Dark Horse Comics",
+      "publisher": "Marvel UK",
       "release_date": "1982-01-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/ff/Darkknightdevlry.jpg/revision/latest"
@@ -24836,6 +25011,7 @@
       "authors": [
         "Paul Dini"
       ],
+      "publisher": "ABC",
       "release_date": "1985-09-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/TheCriesoftheTrees.png/revision/latest"
@@ -24853,6 +25029,7 @@
       "authors": [
         "Paul Dini"
       ],
+      "publisher": "ABC",
       "release_date": "1985-09-14",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b3/TheHauntedVillage.png/revision/latest"
@@ -24870,6 +25047,7 @@
       "authors": [
         "Paul Dini"
       ],
+      "publisher": "ABC",
       "release_date": "1985-09-21",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/63/RampageofthePhlogs.png/revision/latest"
@@ -24887,6 +25065,7 @@
       "authors": [
         "Bob Carrau"
       ],
+      "publisher": "ABC",
       "release_date": "1985-09-28",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/ce/ToSaveDeej.png/revision/latest"
@@ -24904,6 +25083,7 @@
       "authors": [
         "Bob Carrau"
       ],
+      "publisher": "ABC",
       "release_date": "1985-10-05",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/df/TheTravellingJindas.png/revision/latest"
@@ -24921,7 +25101,7 @@
       "authors": [
         "Bob Carrau"
       ],
-      "publisher": "Disney–Lucasfilm Press",
+      "publisher": "ABC",
       "release_date": "1985-10-12",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9a/TheTreeofLight.png/revision/latest"
@@ -24939,6 +25119,7 @@
       "authors": [
         "Bob Carrau"
       ],
+      "publisher": "ABC",
       "release_date": "1985-10-19",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e1/TheCurseoftheJindas.png/revision/latest"
@@ -24956,6 +25137,7 @@
       "authors": [
         "Bob Carrau"
       ],
+      "publisher": "ABC",
       "release_date": "1985-10-26",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/96/TheLandoftheGupins.png/revision/latest"
@@ -24973,6 +25155,7 @@
       "authors": [
         "Paul Dini"
       ],
+      "publisher": "ABC",
       "release_date": "1985-11-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c5/SunstarvsShadowstone.png/revision/latest"
@@ -24990,6 +25173,7 @@
       "authors": [
         "Paul Dini"
       ],
+      "publisher": "ABC",
       "release_date": "1985-11-09",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b3/WicketsWagon.png/revision/latest"
@@ -25007,6 +25191,7 @@
       "authors": [
         "Bob Carrau"
       ],
+      "publisher": "ABC",
       "release_date": "1985-11-16",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9a/TheThreeLessons.png/revision/latest"
@@ -25025,6 +25210,7 @@
         "Paul Dini",
         "Sam Wilson"
       ],
+      "publisher": "ABC",
       "release_date": "1985-11-23",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/bc/BlueHarvest.png/revision/latest"
@@ -25042,6 +25228,7 @@
       "authors": [
         "Paul Dini"
       ],
+      "publisher": "ABC",
       "release_date": "1985-11-30",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d6/Asha-Ewoks.png/revision/latest"
@@ -25059,6 +25246,7 @@
       "authors": [
         "Paul Dini"
       ],
+      "publisher": "ABC",
       "release_date": "1986-09-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/be/Ewoks_2-01b.jpg/revision/latest"
@@ -25076,6 +25264,7 @@
       "authors": [
         "Bob Carrau"
       ],
+      "publisher": "ABC",
       "release_date": "1986-09-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/64/TheWishPlant.png/revision/latest"
@@ -25093,6 +25282,7 @@
       "authors": [
         "Bob Carrau"
       ],
+      "publisher": "ABC",
       "release_date": "1986-09-20",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fa/Ewoks_2-03a.jpg/revision/latest"
@@ -25110,6 +25300,7 @@
       "authors": [
         "Paul Dini"
       ],
+      "publisher": "ABC",
       "release_date": "1986-09-20",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8e/PrincessLatara.png/revision/latest"
@@ -25127,6 +25318,7 @@
       "authors": [
         "Michael Reaves"
       ],
+      "publisher": "ABC",
       "release_date": "1986-09-27",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/57/TheRaich.png/revision/latest"
@@ -25144,6 +25336,7 @@
       "authors": [
         "Bob Carrau"
       ],
+      "publisher": "ABC",
       "release_date": "1986-10-04",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/15/TheTotemMaster.png/revision/latest"
@@ -25161,6 +25354,7 @@
       "authors": [
         "Paul Dini"
       ],
+      "publisher": "ABC",
       "release_date": "1986-10-04",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4a/UrgahSerpent-AGiftForShodu.png/revision/latest"
@@ -25178,6 +25372,7 @@
       "authors": [
         "Paul Dini"
       ],
+      "publisher": "ABC",
       "release_date": "1986-10-11",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2b/NightoftheStranger.png/revision/latest"
@@ -25195,6 +25390,7 @@
       "authors": [
         "Linda Woolverton"
       ],
+      "publisher": "ABC",
       "release_date": "1986-10-18",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/38/GoneWiththeMimphs.png/revision/latest"
@@ -25212,6 +25408,7 @@
       "authors": [
         "Paul Dini"
       ],
+      "publisher": "ABC",
       "release_date": "1986-10-18",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/18/ZarrakTeebo-TheFirstApprentice.jpg/revision/latest"
@@ -25229,6 +25426,7 @@
       "authors": [
         "Michael Reaves"
       ],
+      "publisher": "ABC",
       "release_date": "1986-10-25",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/94/HardSell.png/revision/latest"
@@ -25246,6 +25444,7 @@
       "authors": [
         "Michael Dubil"
       ],
+      "publisher": "ABC",
       "release_date": "1986-10-25",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/95/TeeboClimbsABlog-AWarriorAndALurdo.jpg/revision/latest"
@@ -25263,6 +25462,7 @@
       "authors": [
         "Bob Carrau"
       ],
+      "publisher": "ABC",
       "release_date": "1986-11-01",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/ba/TheSeasonScepter.png/revision/latest"
@@ -25280,6 +25480,7 @@
       "authors": [
         "Bob Carrau"
       ],
+      "publisher": "ABC",
       "release_date": "1986-11-08",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a0/Dulok_battleship_leaking.png/revision/latest"
@@ -25297,6 +25498,7 @@
       "authors": [
         "Linda Woolverton"
       ],
+      "publisher": "ABC",
       "release_date": "1986-11-08",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d0/BagasRival.png/revision/latest"
@@ -25314,6 +25516,7 @@
       "authors": [
         "Paul Dini"
       ],
+      "publisher": "ABC",
       "release_date": "1986-11-15",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/11/Horville.jpg/revision/latest"
@@ -25331,6 +25534,7 @@
       "authors": [
         "Bob Carrau"
       ],
+      "publisher": "ABC",
       "release_date": "1986-11-15",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/bf/TheTragicFlute.png/revision/latest"
@@ -25348,6 +25552,7 @@
       "authors": [
         "Michael Dubil"
       ],
+      "publisher": "ABC",
       "release_date": "1986-11-22",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/08/WicketWWarrickBordokStables-JustMyLuck.jpg/revision/latest"
@@ -25366,6 +25571,7 @@
         "Bob Carrau",
         "Earl Kress"
       ],
+      "publisher": "ABC",
       "release_date": "1986-11-22",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/ab/BringingUpNorky.png/revision/latest"
@@ -25383,6 +25589,7 @@
       "authors": [
         "Paul Dini"
       ],
+      "publisher": "ABC",
       "release_date": "1986-12-06",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d3/BattlefortheSunstar.png/revision/latest"
@@ -25400,6 +25607,7 @@
       "authors": [
         "Bob Carrau"
       ],
+      "publisher": "ABC",
       "release_date": "1986-12-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/02/PartyEwok.png/revision/latest"
@@ -25417,6 +25625,7 @@
       "authors": [
         "Stephen Langford"
       ],
+      "publisher": "ABC",
       "release_date": "1986-12-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/ba/MalaniSunstar-MalaniTheWarrior.jpg/revision/latest"
@@ -25435,7 +25644,7 @@
         "David Manak",
         "Warren Kremer"
       ],
-      "publisher": "Star Comics",
+      "publisher": "Marvel Comics",
       "release_date": "1985-01-29",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e3/MARVELEWOKS1.jpg/revision/latest"
@@ -25728,12 +25937,11 @@
       "release_precision": "month"
     },
     {
-      "id": "3fd17b8b-6a21-58e4-997b-b18d4f13337d",
+      "id": "e3eef181-9077-5f08-8ee5-873007936b7a",
       "era": "REBELLION",
       "title": "Shadows of Endor",
       "medium": "Comic",
       "year": 3,
-      "series": "Ewoks",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Ewoks%E2%80%94Shadows_of_Endor",
       "authors": [
@@ -25756,6 +25964,7 @@
         "Bob Carrau",
         "George Lucas"
       ],
+      "publisher": "ABC",
       "release_date": "1984-11-25",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/60/Caravan_bg.jpg/revision/latest"
@@ -25773,6 +25982,7 @@
         "Ken Wheat",
         "George Lucas"
       ],
+      "publisher": "ABC",
       "release_date": "1985-11-24",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/ad/Ilm-ewok2.jpg/revision/latest"
@@ -25882,6 +26092,7 @@
       "series": "Shadows of the Empire",
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Shadows_of_the_Empire_(video_game)",
+      "publisher": "LucasArts Entertainment",
       "release_date": "1996-11-03",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3a/SOTE-N64.png/revision/latest"
@@ -26519,6 +26730,7 @@
         "George Lucas",
         "Lawrence Kasdan"
       ],
+      "publisher": "Lucasfilm",
       "release_date": "1983-05-25",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b2/ReturnOfTheJediPoster1983.jpg/revision/latest"
@@ -28910,7 +29122,7 @@
         "Paul Davids",
         "Hollace Davids"
       ],
-      "publisher": "Bantam Skylark",
+      "publisher": "Bantam Spectra",
       "release_date": "1992-07-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/ce/GloveofDarthVader.png/revision/latest"
@@ -28929,7 +29141,7 @@
         "Paul Davids",
         "Hollace Davids"
       ],
-      "publisher": "Bantam Skylark",
+      "publisher": "Bantam Spectra",
       "release_date": "1992-07-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0b/LostCityoftheJedi.jpg/revision/latest"
@@ -28948,7 +29160,7 @@
         "Paul Davids",
         "Hollace Davids"
       ],
-      "publisher": "Bantam Skylark",
+      "publisher": "Bantam Spectra",
       "release_date": "1992-08-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a9/ZorbatheHuttsRevenge.jpg/revision/latest"
@@ -29040,7 +29252,7 @@
         "Peter Chan",
         "Justin Chin"
       ],
-      "publisher": "Prima Publishing",
+      "publisher": "LucasArts Entertainment",
       "release_date": "1997-10-09",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6e/Sw-jk_box_art.jpg/revision/latest"
@@ -29058,7 +29270,7 @@
       "authors": [
         "William C. Dietz"
       ],
-      "publisher": "Dark Horse Comics, Berkley Boulevard",
+      "publisher": "Dark Horse Comics",
       "release_date": "1998-03-11",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e4/DarkForces-RebelAgent.jpg/revision/latest"
@@ -29076,7 +29288,7 @@
       "authors": [
         "William C. Dietz"
       ],
-      "publisher": "Dark Horse Comics, Berkley Boulevard",
+      "publisher": "Dark Horse Comics",
       "release_date": "1998-10-14",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c3/DarkForces-JediKnight.jpg/revision/latest"
@@ -29333,7 +29545,7 @@
       "authors": [
         "Patricia A. Jackson"
       ],
-      "publisher": "SWRPGNetwork",
+      "publisher": "Unofficially Published",
       "release_date": "2001-08-01",
       "release_precision": "month"
     },
@@ -30323,6 +30535,7 @@
       "series": "Jedi Knight",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Mysteries_of_the_Sith",
+      "publisher": "LucasArts Entertainment",
       "release_date": "1998-02-16",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7b/MOTS_box.jpg/revision/latest"
@@ -31213,6 +31426,7 @@
       "series": "Jedi Knight",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Outcast",
+      "publisher": "LucasArts Entertainment",
       "release_date": "2002-03-26",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/87/JediOutcastcover.jpg/revision/latest"
@@ -31572,6 +31786,7 @@
       "series": "Jedi Knight",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Jedi_Knight:_Jedi_Academy",
+      "publisher": "LucasArts Entertainment",
       "release_date": "2003-09-16",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f1/Jedi_Academy_PC.png/revision/latest"
@@ -33270,7 +33485,7 @@
         "Sean Williams",
         "Shane Dix"
       ],
-      "publisher": "Lucasfilm",
+      "publisher": "Paizo Publishing",
       "release_date": "2004-03-19",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a2/OrDieTrying.svg/revision/latest"
