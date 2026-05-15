@@ -39,7 +39,10 @@ export function WorkCard({ work, onClick }: { work: Work; onClick: () => void })
         )}
         <div className="flex flex-wrap items-center gap-1 pt-1">
           <Badge style={{ backgroundColor: MEDIUM_COLORS[work.medium], color: "white" }}>{work.medium}</Badge>
-          <Badge style={{ backgroundColor: ERA_COLORS[work.era], color: "white" }}>
+          <Badge
+            className="hidden sm:inline-flex"
+            style={{ backgroundColor: ERA_COLORS[work.era], color: "white" }}
+          >
             {work.era}
           </Badge>
           <span className="text-xs text-muted-foreground">{formatYear(work.year, work.year_end)}</span>
