@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { WorkRow } from "@/components/work/WorkRow";
+import { CollectionRow } from "@/components/work/CollectionRow";
 import { useFilterStore } from "@/store/filterStore";
 import { useScrollResetOnFilterChange } from "@/lib/useScrollResetOnFilterChange";
 import type { Item } from "@/lib/buildItemsList";
@@ -71,9 +72,10 @@ export function TableView({ items }: TableViewProps) {
                     onClick={() => set({ openWorkId: item.work.id })}
                   />
                 ) : (
-                  <div className="flex h-full items-center px-2 text-sm font-medium">
-                    {item.collection.title}
-                  </div>
+                  <CollectionRow
+                    collection={item.collection}
+                    onClick={() => set({ openCollectionId: item.collection.id, openWorkId: null })}
+                  />
                 )}
               </div>
             );

@@ -1,6 +1,7 @@
 import { useRef, useMemo, useEffect, useState } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { WorkCard } from "@/components/work/WorkCard";
+import { CollectionCard } from "@/components/work/CollectionCard";
 import { useFilterStore } from "@/store/filterStore";
 import { useScrollResetOnFilterChange } from "@/lib/useScrollResetOnFilterChange";
 import { computeColumnCount } from "@/lib/computeColumnCount";
@@ -83,13 +84,11 @@ export function CardGrid({ items }: { items: Item[] }) {
                     onClick={() => set({ openWorkId: item.work.id })}
                   />
                 ) : (
-                  <button
+                  <CollectionCard
                     key={item.collection.id}
-                    onClick={() => set({ openWorkId: null, openCollectionId: item.collection.id })}
-                    className="rounded border bg-card p-2 text-sm text-left"
-                  >
-                    {item.collection.title}
-                  </button>
+                    collection={item.collection}
+                    onClick={() => set({ openCollectionId: item.collection.id, openWorkId: null })}
+                  />
                 )
               )}
             </div>

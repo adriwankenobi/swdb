@@ -6,7 +6,7 @@ import { groupForChronology, groupForRelease } from "@/lib/timelineGroups";
 import { useScrollResetOnFilterChange } from "@/lib/useScrollResetOnFilterChange";
 import { useFilterStore } from "@/store/filterStore";
 import type { Item } from "@/lib/buildItemsList";
-import type { Work } from "@/types/work";
+import type { Work, Collection } from "@/types/work";
 
 // ---------------------------------------------------------------------------
 // Marker — a single clickable thumbnail in the timeline.
@@ -50,26 +50,29 @@ function WorkMarker({ work, onClick }: WorkMarkerProps) {
   );
 }
 
-// Placeholder marker for collection items — Phase 6 replaces this with CollectionCard.
 interface CollectionMarkerProps {
-  title: string;
-  coverUrl?: string;
-  eraColor: string;
+  collection: Collection;
   onClick: () => void;
 }
 
-function CollectionMarker({ title, coverUrl, eraColor, onClick }: CollectionMarkerProps) {
+function CollectionMarker({ collection, onClick }: CollectionMarkerProps) {
+  const c = collection;
+  const yearLabel = formatYear(c.year, c.year_end);
+  const tooltip = `${c.title} (${yearLabel})`;
+  const mediumColor = c.mediums.length > 0 ? MEDIUM_COLORS[c.mediums[0]] : "#888888";
+  const eraColor = ERA_COLORS[c.anchor_era];
+
   return (
     <button
       type="button"
       onClick={onClick}
-      title={title}
+      title={tooltip}
       className="size-11 shrink-0 overflow-hidden rounded md:size-16"
-      style={{ boxShadow: `0 0 0 2px ${eraColor}`, outline: `2px dashed ${eraColor}`, outlineOffset: "2px" }}
+      style={{ boxShadow: `0 0 0 2px ${mediumColor}` }}
     >
-      {coverUrl ? (
+      {c.cover_url ? (
         <img
-          src={coverUrl}
+          src={c.cover_url}
           alt=""
           className="h-full w-full object-cover"
         />
@@ -78,7 +81,7 @@ function CollectionMarker({ title, coverUrl, eraColor, onClick }: CollectionMark
           className="flex h-full w-full items-center justify-center px-1 text-center text-[10px] font-semibold leading-tight text-white line-clamp-3 break-words"
           style={{ backgroundColor: eraColor }}
         >
-          {title}
+          {c.title}
         </div>
       )}
     </button>
@@ -98,10 +101,8 @@ function ItemMarker({ item, set }: { item: Item; set: (s: object) => void }) {
   const { collection } = item;
   return (
     <CollectionMarker
-      title={collection.title}
-      coverUrl={collection.cover_url}
-      eraColor={ERA_COLORS[collection.anchor_era]}
-      onClick={() => set({ openCollectionId: collection.id })}
+      collection={collection}
+      onClick={() => set({ openCollectionId: collection.id, openWorkId: null })}
     />
   );
 }
