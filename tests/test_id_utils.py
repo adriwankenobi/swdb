@@ -56,6 +56,7 @@ def test_slugify_transliterates_diacritics_to_ascii():
 
 def test_slugify_is_stable_across_unicode_normalization_forms():
     import unicodedata
+
     nfc = unicodedata.normalize("NFC", "côté")
     nfd = unicodedata.normalize("NFD", "côté")
     assert nfc != nfd  # sanity: the two forms are byte-different
@@ -74,3 +75,15 @@ def test_make_id_pinned_canonical_value():
         number="IV",
     )
     assert result == "34a13f75-b121-5c91-b435-f765f951e4a5"
+
+
+def test_make_collection_id_is_stable_and_distinct():
+    from scripts.id_utils import make_collection_id
+
+    a = make_collection_id("Dark Empire (TPB)")
+    b = make_collection_id("Dark Empire (TPB)")
+    c = make_collection_id("Empire's End (TPB)")
+    assert a == b
+    assert a != c
+    # UUID hex form (no hyphens) — exactly 32 chars.
+    assert len(a.replace("-", "")) == 32

@@ -39,3 +39,8 @@ def make_id(
     ]
     canonical = "|".join(parts)
     return str(uuid.uuid5(_NAMESPACE, canonical))
+
+
+def make_collection_id(title: str) -> str:
+    """Deterministic UUIDv5 for a collection, keyed by title."""
+    return str(uuid.uuid5(_NAMESPACE, f"collection|{title}"))
