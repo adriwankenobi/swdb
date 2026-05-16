@@ -2,6 +2,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { SeriesFilter } from "@/components/filters/SeriesFilter";
 import { AuthorFilter } from "@/components/filters/AuthorFilter";
 import { PublisherFilter } from "@/components/filters/PublisherFilter";
+import { CollectionsFilter } from "@/components/filters/CollectionsFilter";
 import {
   Sheet,
   SheetContent,
@@ -11,10 +12,11 @@ import {
 
 function Filters() {
   return (
-    <div className="space-y-6 text-sm">
+    <div className="space-y-4 text-sm">
       <SeriesFilter />
       <AuthorFilter />
       <PublisherFilter />
+      <CollectionsFilter />
     </div>
   );
 }

@@ -30,7 +30,7 @@ export function FacetMultiSelect({ title, facets, selected, onToggle }: Props) {
         placeholder={`Search ${title.toLowerCase()}…`}
         className="h-7 text-xs"
       />
-      <ScrollArea className="h-28 rounded-md border">
+      <ScrollArea className="h-20 rounded-md border">
         <ul className="space-y-0.5 p-1">
           {filtered.map((f) => (
             <li key={f.value} className="flex items-center gap-2">
