@@ -291,10 +291,8 @@ def _enrich_collection(
         return
     collection["wiki_url"] = url
 
-    excel_full = bool(row.release_date_str and row.cover_url)
-    if excel_full:
-        if row.cover_url:
-            collection["cover_url"] = row.cover_url
+    if row.release_date_str and row.cover_url:
+        collection["cover_url"] = row.cover_url
         return
 
     html = client.fetch_html(url)
