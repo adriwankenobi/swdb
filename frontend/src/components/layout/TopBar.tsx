@@ -10,6 +10,8 @@ import {
   ChartGantt,
   BookOpen,
   Calendar,
+  FileText,
+  Library,
 } from "lucide-react";
 
 interface TopBarProps {
@@ -27,8 +29,13 @@ const SORT_OPTIONS = [
   { value: "release", label: "release", Icon: Calendar },
 ] as const;
 
+const ITEMS_OPTIONS = [
+  { value: "issues", label: "issues", Icon: FileText },
+  { value: "collections", label: "collections", Icon: Library },
+] as const;
+
 export function TopBar({ onHome }: TopBarProps) {
-  const { q, set, view, sort } = useFilterStore();
+  const { q, set, view, sort, items } = useFilterStore();
   const previousQ = useRef(q);
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [isMdUp, setIsMdUp] = useState(
@@ -93,6 +100,21 @@ export function TopBar({ onHome }: TopBarProps) {
                 variant={view === value ? "default" : "ghost"}
                 size="icon-sm"
                 onClick={() => set({ view: value })}
+                className="rounded-none first:rounded-l-md last:rounded-r-md"
+                aria-label={label}
+                title={label}
+              >
+                <Icon />
+              </Button>
+            ))}
+          </div>
+          <div className="flex rounded-md border bg-background">
+            {ITEMS_OPTIONS.map(({ value, label, Icon }) => (
+              <Button
+                key={value}
+                variant={items === value ? "default" : "ghost"}
+                size="icon-sm"
+                onClick={() => set({ items: value })}
                 className="rounded-none first:rounded-l-md last:rounded-r-md"
                 aria-label={label}
                 title={label}
