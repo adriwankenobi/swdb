@@ -436,3 +436,169 @@ def test_derive_collection_release_date_from_excel():
     c = derive_collection(row, members)
     assert c["release_date"] == "1995-01-01"
     assert c["release_precision"] == "day"
+
+
+# ---------------------------------------------------------------------------
+# build() integration tests — collections wiring
+# ---------------------------------------------------------------------------
+
+
+def test_build_emits_collections_and_links_works(tmp_path, monkeypatch):
+    """End-to-end: workbook with two members in a collection -> JSON has both
+    arrays and works link via collection_ids."""
+    from openpyxl import Workbook
+    from scripts.build_data import build, EXCEL_PATH, OUTPUT_PATH
+    import scripts.build_data as bd
+
+    # Build a minimal workbook.
+    wb = Workbook()
+    wb.remove(wb.active)
+    ws = wb.create_sheet("REBELLION")
+    ws.append(["YEAR", "MEDIUM", "SERIES", "TITLE", "#", "AUTHOR",
+               "PUBLISHER", "RELEASE", "COLLECTED", "INFO", "COVER"])
+    ws.append(["10 ABY", "Comic", "Dark Empire", "Issue 1", 1, None, None, None,
+               "Dark Empire (TPB)", None, None])
+    ws.append(["10 ABY", "Comic", "Dark Empire", "Issue 2", 2, None, None, None,
+               "Dark Empire (TPB)", None, None])
+    cs = wb.create_sheet("COLLECTIONS")
+    cs.append(["TITLE", "RELEASE", "INFO", "COVER"])
+    cs.append(["Dark Empire (TPB)", "1995.01.01", None, None])
+    wb_path = tmp_path / "x.xlsx"
+    wb.save(wb_path)
+
+    # Point build at the temp workbook and skip enrichment (dry_run=True
+    # skips _enrich and avoids the network).
+    monkeypatch.setattr(bd, "EXCEL_PATH", wb_path)
+    payload = build(refresh=False, dry_run=True)
+
+    assert "collections" in payload
+    assert len(payload["collections"]) == 1
+    c = payload["collections"][0]
+    assert c["title"] == "Dark Empire (TPB)"
+    assert c["eras"] == ["REBELLION"]
+    assert c["mediums"] == ["Comic"]
+    assert len(c["member_ids"]) == 2
+    for w in payload["works"]:
+        assert w["collection_ids"] == [c["id"]]
+
+
+def test_build_handles_comma_separated_collected(tmp_path, monkeypatch):
+    """A work with two collection titles ends up in both, in cell order."""
+    from openpyxl import Workbook
+    from scripts.build_data import build
+    import scripts.build_data as bd
+
+    wb = Workbook()
+    wb.remove(wb.active)
+    ws = wb.create_sheet("REBELLION")
+    ws.append(["YEAR", "MEDIUM", "SERIES", "TITLE", "#", "AUTHOR",
+               "PUBLISHER", "RELEASE", "COLLECTED", "INFO", "COVER"])
+    ws.append(["5 ABY", "Short Story", "S", "Story 1", 1, None, None, None,
+               "A (TPB), B (TPB)", None, None])
+    ws.append(["5 ABY", "Short Story", "S", "Story 2", 2, None, None, None,
+               "A (TPB)", None, None])
+    ws.append(["5 ABY", "Short Story", "S", "Story 3", 3, None, None, None,
+               "B (TPB)", None, None])
+    cs = wb.create_sheet("COLLECTIONS")
+    cs.append(["TITLE", "RELEASE", "INFO", "COVER"])
+    cs.append(["A (TPB)", None, None, None])
+    cs.append(["B (TPB)", None, None, None])
+    wb_path = tmp_path / "x.xlsx"
+    wb.save(wb_path)
+
+    monkeypatch.setattr(bd, "EXCEL_PATH", wb_path)
+    payload = build(refresh=False, dry_run=True)
+
+    by_title = {c["title"]: c for c in payload["collections"]}
+    assert set(by_title) == {"A (TPB)", "B (TPB)"}
+    assert len(by_title["A (TPB)"]["member_ids"]) == 2
+    assert len(by_title["B (TPB)"]["member_ids"]) == 2
+
+    works_by_title = {w["title"]: w for w in payload["works"]}
+    s1_ids = works_by_title["Story 1"]["collection_ids"]
+    assert len(s1_ids) == 2
+    assert s1_ids == [by_title["A (TPB)"]["id"], by_title["B (TPB)"]["id"]]
+    assert works_by_title["Story 2"]["collection_ids"] == [by_title["A (TPB)"]["id"]]
+    assert works_by_title["Story 3"]["collection_ids"] == [by_title["B (TPB)"]["id"]]
+
+
+def test_build_partial_unmatched_keeps_valid_ids(tmp_path, monkeypatch):
+    """`COLLECTED = "Valid, Bogus"` -> work keeps Valid's id, Bogus is logged."""
+    from openpyxl import Workbook
+    from scripts.build_data import build
+    import scripts.build_data as bd
+
+    wb = Workbook()
+    wb.remove(wb.active)
+    ws = wb.create_sheet("REBELLION")
+    ws.append(["YEAR", "MEDIUM", "SERIES", "TITLE", "#", "AUTHOR",
+               "PUBLISHER", "RELEASE", "COLLECTED", "INFO", "COVER"])
+    ws.append(["5 ABY", "Comic", "S", "Issue 1", 1, None, None, None,
+               "Valid (TPB), Bogus (TPB)", None, None])
+    ws.append(["5 ABY", "Comic", "S", "Issue 2", 2, None, None, None,
+               "Valid (TPB)", None, None])
+    cs = wb.create_sheet("COLLECTIONS")
+    cs.append(["TITLE", "RELEASE", "INFO", "COVER"])
+    cs.append(["Valid (TPB)", None, None, None])
+    wb_path = tmp_path / "x.xlsx"
+    wb.save(wb_path)
+
+    monkeypatch.setattr(bd, "EXCEL_PATH", wb_path)
+    payload = build(refresh=False, dry_run=True)
+
+    valid = payload["collections"][0]
+    works_by_title = {w["title"]: w for w in payload["works"]}
+    assert works_by_title["Issue 1"]["collection_ids"] == [valid["id"]]
+    assert works_by_title["Issue 2"]["collection_ids"] == [valid["id"]]
+
+
+def test_build_drops_single_member_collection(tmp_path, monkeypatch):
+    from openpyxl import Workbook
+    from scripts.build_data import build
+    import scripts.build_data as bd
+
+    wb = Workbook()
+    wb.remove(wb.active)
+    ws = wb.create_sheet("REBELLION")
+    ws.append(["YEAR", "MEDIUM", "SERIES", "TITLE", "#", "AUTHOR",
+               "PUBLISHER", "RELEASE", "COLLECTED", "INFO", "COVER"])
+    ws.append(["10 ABY", "Comic", "Dark Empire", "Issue 1", 1, None, None, None,
+               "Lonely (TPB)", None, None])
+    cs = wb.create_sheet("COLLECTIONS")
+    cs.append(["TITLE", "RELEASE", "INFO", "COVER"])
+    cs.append(["Lonely (TPB)", None, None, None])
+    wb_path = tmp_path / "x.xlsx"
+    wb.save(wb_path)
+
+    monkeypatch.setattr(bd, "EXCEL_PATH", wb_path)
+    payload = build(refresh=False, dry_run=True)
+
+    assert payload["collections"] == []
+    assert len(payload["works"]) == 1
+    assert "collection_ids" not in payload["works"][0]
+
+
+def test_build_unmatched_collected_value_leaves_work_uncollected(
+    tmp_path, monkeypatch,
+):
+    from openpyxl import Workbook
+    from scripts.build_data import build
+    import scripts.build_data as bd
+
+    wb = Workbook()
+    wb.remove(wb.active)
+    ws = wb.create_sheet("REBELLION")
+    ws.append(["YEAR", "MEDIUM", "SERIES", "TITLE", "#", "AUTHOR",
+               "PUBLISHER", "RELEASE", "COLLECTED", "INFO", "COVER"])
+    ws.append(["10 ABY", "Comic", "S", "Issue 1", 1, None, None, None,
+               "Does Not Exist (TPB)", None, None])
+    ws.append(["10 ABY", "Comic", "S", "Issue 2", 2, None, None, None, None,
+               None, None])
+    wb_path = tmp_path / "x.xlsx"
+    wb.save(wb_path)
+
+    monkeypatch.setattr(bd, "EXCEL_PATH", wb_path)
+    payload = build(refresh=False, dry_run=True)
+    assert payload["collections"] == []
+    for w in payload["works"]:
+        assert "collection_ids" not in w

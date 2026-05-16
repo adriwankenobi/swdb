@@ -8,11 +8,8 @@ import sys
 from collections import defaultdict
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import TYPE_CHECKING
 
-if TYPE_CHECKING:
-    from scripts.collections_reader import ExcelCollectionRow
-
+from scripts.collections_reader import ExcelCollectionRow, read_collections
 from scripts.excel_reader import ExcelRow, read_works
 from scripts.excel_writer import update_excel
 from scripts.id_utils import make_id
@@ -29,6 +26,8 @@ IGNORED_NO_YEAR_LOG = REPO_ROOT / "data" / "ignored_no_year.log"
 CACHE_DIR = REPO_ROOT / "data" / ".cache" / "wookieepedia"
 UNMATCHED_LOG = REPO_ROOT / "data" / "unmatched.log"
 DEAD_LINKS_LOG = REPO_ROOT / "data" / "dead_links.log"
+INVALID_COLLECTIONS_LOG = REPO_ROOT / "data" / "invalid_collections.log"
+UNMATCHED_COLLECTIONS_LOG = REPO_ROOT / "data" / "unmatched_collections.log"
 
 # Canonical era list, indexed by ExcelRow.era. Order matches
 # excel_reader.ERA_INDEX. New entries must be APPENDED so existing indices
@@ -124,6 +123,13 @@ def derive_collection(
     if row.color is not None:
         collection["color"] = row.color
     return collection
+
+
+def _split_collected_titles(raw: str | None) -> list[str]:
+    """Split COLLECTED cell on commas; trim and drop empties."""
+    if not raw:
+        return []
+    return [p.strip() for p in raw.split(",") if p.strip()]
 
 
 def _row_to_work(row: ExcelRow) -> dict:
@@ -384,10 +390,57 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
                 file=sys.stderr,
             )
 
+    # --- Collections ---
+    collection_rows = list(read_collections(EXCEL_PATH))
+    members_by_title: dict[str, list[dict]] = defaultdict(list)
+    titles_per_work: dict[str, list[str]] = {}
+    for work, row in zip(works, valid_rows, strict=True):
+        titles = _split_collected_titles(row.collected)
+        if not titles:
+            continue
+        titles_per_work[work["id"]] = titles
+        for t in titles:
+            members_by_title[t].append(work)
+
+    collections_out: list[dict] = []
+    invalid_collections: list[str] = []
+    known_titles: set[str] = set()
+    title_to_id: dict[str, str] = {}
+    for crow in collection_rows:
+        known_titles.add(crow.title)
+        members = members_by_title.get(crow.title, [])
+        if len(members) < 2:
+            invalid_collections.append(
+                f"{crow.title}|members={len(members)}"
+            )
+            continue
+        c = derive_collection(crow, members)
+        collections_out.append(c)
+        title_to_id[crow.title] = c["id"]
+
+    # Attach collection_ids to each work, preserving Excel comma order.
+    # Skip titles that didn't produce a valid collection (single-member or
+    # absent from the COLLECTIONS sheet — both surface via the logs).
+    for work in works:
+        titles = titles_per_work.get(work["id"], [])
+        ids = [title_to_id[t] for t in titles if t in title_to_id]
+        if ids:
+            work["collection_ids"] = ids
+
+    unmatched_collections: list[str] = []
+    for work, row in zip(works, valid_rows, strict=True):
+        titles = _split_collected_titles(row.collected)
+        for t in titles:
+            if t not in known_titles:
+                unmatched_collections.append(
+                    f"{row.era}|{row.title}|{row.medium}|missing={t}"
+                )
+
     _detect_duplicates(works)
     payload = {
         "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
         "works": works,
+        "collections": collections_out,
     }
 
     # Build enriched lookup for Excel writeback
@@ -441,6 +494,16 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
     UNMATCHED_LOG.parent.mkdir(parents=True, exist_ok=True)
     UNMATCHED_LOG.write_text(
         "\n".join(unmatched) + ("\n" if unmatched else ""),
+        encoding="utf-8",
+    )
+    INVALID_COLLECTIONS_LOG.parent.mkdir(parents=True, exist_ok=True)
+    INVALID_COLLECTIONS_LOG.write_text(
+        "\n".join(invalid_collections) + ("\n" if invalid_collections else ""),
+        encoding="utf-8",
+    )
+    UNMATCHED_COLLECTIONS_LOG.parent.mkdir(parents=True, exist_ok=True)
+    UNMATCHED_COLLECTIONS_LOG.write_text(
+        "\n".join(unmatched_collections) + ("\n" if unmatched_collections else ""),
         encoding="utf-8",
     )
     DEAD_LINKS_LOG.parent.mkdir(parents=True, exist_ok=True)
