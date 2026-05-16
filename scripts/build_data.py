@@ -87,7 +87,6 @@ def derive_collection(
     Precondition: len(members) >= 2 (caller has filtered).
     """
     from scripts.id_utils import make_collection_id
-    from scripts.release_utils import parse_excel_release
 
     eras = sorted({m["era"] for m in members})
     mediums = sorted({m["medium"] for m in members})
