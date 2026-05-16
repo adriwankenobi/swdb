@@ -59,16 +59,15 @@ class WikiClient:
         wiki_idx = url.find(wiki_prefix)
         if wiki_idx == -1:
             return None
-        title = unquote(url[wiki_idx + len(wiki_prefix):])
-        api_url = (
-            "https://starwars.fandom.com/api.php?"
-            + urlencode({
+        title = unquote(url[wiki_idx + len(wiki_prefix) :])
+        api_url = "https://starwars.fandom.com/api.php?" + urlencode(
+            {
                 "action": "parse",
                 "page": title,
                 "prop": "text",
                 "format": "json",
                 "redirects": "true",
-            })
+            }
         )
         try:
             time.sleep(POLITE_DELAY_SECONDS)
@@ -191,9 +190,7 @@ class WikiClient:
     def _verify_via_head(self, url: str) -> bool:
         try:
             time.sleep(POLITE_DELAY_SECONDS)
-            response = self._session.head(
-                url, allow_redirects=True, timeout=10
-            )
+            response = self._session.head(url, allow_redirects=True, timeout=10)
         except requests.RequestException:
             return False
         return 200 <= response.status_code < 300
@@ -209,16 +206,18 @@ class WikiClient:
         wiki_idx = url.find("/wiki/")
         if wiki_idx == -1:
             return False
-        title = unquote(url[wiki_idx + len("/wiki/"):])
+        title = unquote(url[wiki_idx + len("/wiki/") :])
         api_url = (
             url[:wiki_idx]
             + "/api.php?"
-            + urlencode({
-                "action": "query",
-                "titles": title,
-                "format": "json",
-                "redirects": "true",
-            })
+            + urlencode(
+                {
+                    "action": "query",
+                    "titles": title,
+                    "format": "json",
+                    "redirects": "true",
+                }
+            )
         )
         try:
             time.sleep(POLITE_DELAY_SECONDS)
@@ -229,7 +228,7 @@ class WikiClient:
             return False
         pages = data.get("query", {}).get("pages", {})
         # "-1" indicates a missing page; any other key has a real pageid.
-        return any(key != "-1" for key in pages.keys())
+        return any(key != "-1" for key in pages)
 
 
 def _is_fandom_wiki_url(url: str) -> bool:

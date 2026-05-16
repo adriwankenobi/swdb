@@ -45,17 +45,18 @@ class ExcelRow:
     era: int
     title: str
     series: str | None
-    medium: str          # canonical Title Case (e.g. "Novel"); emitted as-is in works.json
+    medium: str  # canonical Title Case (e.g. "Novel"); emitted as-is in works.json
     number: str | None
-    year: int | None     # start year; may be None when Excel YEAR is empty
-    year_end: int | None # end year of a range; None for single-year entries
+    year: int | None  # start year; may be None when Excel YEAR is empty
+    year_end: int | None  # end year of a range; None for single-year entries
     info_url: str | None
     cover_url: str | None  # raw — may be ignored later in favor of wiki-fetched cover
-    color: str | None    # '#RRGGBB' from row's Excel fill, or None when row has no fill
+    color: str | None  # '#RRGGBB' from row's Excel fill, or None when row has no fill
     # Excel-as-source-of-truth fields. None when the cell is empty.
     author: str | None
     publisher: str | None
     release_date_str: str | None  # raw Excel "YYYY[.MM[.DD]]" string
+    collected: str | None  # raw Excel COLLECTED cell; None when empty
 
 
 def _normalize_medium(raw: str | None) -> str:
@@ -99,6 +100,7 @@ def read_works(path: Path) -> Iterator[ExcelRow]:
                 author = _stringify(raw[5].value) if len(raw) > 5 else None
                 publisher = _stringify(raw[6].value) if len(raw) > 6 else None
                 release_date_str = _stringify(raw[7].value) if len(raw) > 7 else None
+                collected = _stringify(raw[8].value) if len(raw) > 8 else None
                 info_url = _stringify(raw[9].value) if len(raw) > 9 else None
                 cover_url = _stringify(raw[10].value) if len(raw) > 10 else None
                 if not title or not medium_raw:
@@ -126,6 +128,7 @@ def read_works(path: Path) -> Iterator[ExcelRow]:
                     author=author,
                     publisher=publisher,
                     release_date_str=release_date_str,
+                    collected=collected,
                 )
     finally:
         wb.close()

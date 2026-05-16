@@ -22,6 +22,7 @@ def _row(**over) -> ExcelRow:
         author=None,
         publisher=None,
         release_date_str=None,
+        collected=None,
     )
     base.update(over)
     return ExcelRow(**base)
@@ -41,10 +42,16 @@ def test_row_to_work_id_is_stable_across_schema_change():
     # ID must not change when we switch the JSON shape; make_id consumes
     # `int` era and the canonical medium STRING, so the canonical key string
     # is identical to the pre-refactor era=int / medium=str pipeline.
-    work = _row_to_work(_row(
-        era=5, title="A New Hope", series="Star Wars Episode",
-        medium="Novel", number="IV", year=0,
-    ))
+    work = _row_to_work(
+        _row(
+            era=5,
+            title="A New Hope",
+            series="Star Wars Episode",
+            medium="Novel",
+            number="IV",
+            year=0,
+        )
+    )
     # Frozen value captured from main before any code changes via:
     #   make_id(era=5, series='Star Wars Episode', title='A New Hope',
     #           medium='Novel', number='IV')
@@ -54,6 +61,7 @@ def test_row_to_work_id_is_stable_across_schema_change():
 # ---------------------------------------------------------------------------
 # _enrich tests
 # ---------------------------------------------------------------------------
+
 
 def _full_excel_row(**over):
     return _row(
@@ -129,8 +137,8 @@ def test_enrich_partial_excel_fetches_and_excel_wins_wholesale(monkeypatch):
     def fake_parse(html):
         return {
             "authors": ["Parser Author A", "Parser Author B"],  # discarded
-            "publisher": "Parser Publisher",                    # used
-            "release_date": "1980-05-20",                       # used
+            "publisher": "Parser Publisher",  # used
+            "release_date": "1980-05-20",  # used
             "release_precision": "day",
             "cover_url": "https://example.com/parser-cover.jpg",  # discarded
         }
@@ -231,6 +239,7 @@ def test_normalize_publisher_selects_first_when_no_region_markers():
 # _split_series_and_number tests
 # ---------------------------------------------------------------------------
 
+
 def test_split_series_and_number_single_value():
     assert _split_series_and_number("X-Wing", "5") == (["X-Wing"], ["5"])
 
@@ -284,6 +293,7 @@ def test_split_series_and_number_both_empty():
 # ---------------------------------------------------------------------------
 # _row_to_work array-shape tests
 # ---------------------------------------------------------------------------
+
 
 def test_row_to_work_emits_series_as_array():
     row = _row(series="Star Wars Adventures (comics)", number="1")

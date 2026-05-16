@@ -81,8 +81,8 @@ def test_read_works_yields_rows_in_canonical_excel_order(rows):
 def test_read_works_closes_workbook_on_early_termination():
     """Abandoning the iterator must still trigger wb.close() via the finally clause."""
     gen = read_works(EXCEL_PATH)
-    next(gen)            # consume one row
-    gen.close()          # force GeneratorExit
+    next(gen)  # consume one row
+    gen.close()  # force GeneratorExit
     # If close() had not been wrapped in try/finally, the wb.close() call would
     # have been skipped. We can't directly observe ZipFile state, but exercising
     # this path here documents the contract and surfaces any regressions if
@@ -92,24 +92,57 @@ def test_read_works_closes_workbook_on_early_termination():
 
 def test_reads_author_publisher_release_columns(tmp_path):
     from openpyxl import Workbook
+
     from scripts.excel_reader import read_works
 
     wb = Workbook()
     ws = wb.active
     ws.title = "REBELLION"
-    ws.append([
-        "YEAR", "MEDIUM", "SERIES", "TITLE", "#",
-        "AUTHOR", "PUBLISHER", "RELEASE", "COLLECTED", "INFO", "COVER",
-    ])
-    ws.append([
-        "0 ABY", "Novel", "Star Wars Episode", "A New Hope", "IV",
-        "Alan Dean Foster", "Ballantine Books", "1976.11.12",
-        None, "https://example.com/wiki", "https://example.com/cover.jpg",
-    ])
-    ws.append([
-        "0 ABY", "Comic", None, "Sparse Row", "1",
-        None, None, None, None, None, None,
-    ])
+    ws.append(
+        [
+            "YEAR",
+            "MEDIUM",
+            "SERIES",
+            "TITLE",
+            "#",
+            "AUTHOR",
+            "PUBLISHER",
+            "RELEASE",
+            "COLLECTED",
+            "INFO",
+            "COVER",
+        ]
+    )
+    ws.append(
+        [
+            "0 ABY",
+            "Novel",
+            "Star Wars Episode",
+            "A New Hope",
+            "IV",
+            "Alan Dean Foster",
+            "Ballantine Books",
+            "1976.11.12",
+            None,
+            "https://example.com/wiki",
+            "https://example.com/cover.jpg",
+        ]
+    )
+    ws.append(
+        [
+            "0 ABY",
+            "Comic",
+            None,
+            "Sparse Row",
+            "1",
+            None,
+            None,
+            None,
+            None,
+            None,
+            None,
+        ]
+    )
     path = tmp_path / "test.xlsx"
     wb.save(path)
     wb.close()
@@ -124,3 +157,50 @@ def test_reads_author_publisher_release_columns(tmp_path):
     assert sparse.author is None
     assert sparse.publisher is None
     assert sparse.release_date_str is None
+
+
+def test_read_works_surfaces_collected_value(tmp_path):
+    from openpyxl import Workbook
+
+    from scripts.excel_reader import read_works
+
+    wb = Workbook()
+    wb.remove(wb.active)
+    ws = wb.create_sheet("REBELLION")
+    ws.append(
+        [
+            "YEAR",
+            "MEDIUM",
+            "SERIES",
+            "TITLE",
+            "#",
+            "AUTHOR",
+            "PUBLISHER",
+            "RELEASE",
+            "COLLECTED",
+            "INFO",
+            "COVER",
+        ]
+    )
+    ws.append(
+        [
+            10,
+            "Comic",
+            "Dark Empire",
+            "Issue 1",
+            1,
+            None,
+            None,
+            None,
+            "Dark Empire (TPB)",
+            None,
+            None,
+        ]
+    )
+    ws.append([10, "Comic", "Dark Empire", "Issue 2", 2, None, None, None, None, None, None])
+    path = tmp_path / "test.xlsx"
+    wb.save(path)
+
+    rows = list(read_works(path))
+    assert rows[0].collected == "Dark Empire (TPB)"
+    assert rows[1].collected is None
