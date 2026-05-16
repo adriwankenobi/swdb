@@ -578,6 +578,44 @@ def test_build_drops_single_member_collection(tmp_path, monkeypatch):
     assert "collection_ids" not in payload["works"][0]
 
 
+def test_enrich_collection_populates_wiki_url_and_cover(tmp_path):
+    """When INFO is blank, resolve by title; parse infobox for release+cover."""
+    from scripts.build_data import _enrich_collection
+    from scripts.collections_reader import ExcelCollectionRow
+
+    class FakeClient:
+        def resolve_url(self, info_url, title, series=None):
+            assert info_url is None
+            assert title == "Dark Empire (TPB)"
+            return ("https://example/wiki/DE_TPB", "from_title")
+        def fetch_html(self, url):
+            return "<html><table class='infobox'>…</table></html>"
+        def verify_url_alive(self, url):
+            return True
+
+    def fake_parser(html):
+        return {
+            "cover_url": "https://example/cover.jpg",
+            "release_date": "1995-01-01",
+            "release_precision": "day",
+        }
+
+    crow = ExcelCollectionRow(
+        title="Dark Empire (TPB)", release_date_str=None,
+        info_url=None, cover_url=None, color=None,
+    )
+    collection: dict = {"title": "Dark Empire (TPB)", "id": "c-1"}
+    unmatched: list[str] = []
+    _enrich_collection(
+        collection, crow, FakeClient(), unmatched, parse_infobox=fake_parser,
+    )
+    assert collection["wiki_url"] == "https://example/wiki/DE_TPB"
+    assert collection["cover_url"] == "https://example/cover.jpg"
+    assert collection["release_date"] == "1995-01-01"
+    assert collection["release_precision"] == "day"
+    assert unmatched == []
+
+
 def test_build_unmatched_collected_value_leaves_work_uncollected(
     tmp_path, monkeypatch,
 ):

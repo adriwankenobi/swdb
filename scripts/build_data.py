@@ -268,6 +268,47 @@ def _enrich(
     _merge_excel_priority(work, row, fields)
 
 
+def _enrich_collection(
+    collection: dict,
+    row: ExcelCollectionRow,
+    client: WikiClient,
+    unmatched: list[str],
+    parse_infobox=parse_infobox,
+) -> None:
+    """Resolve wiki URL and populate cover + release on `collection`.
+
+    Excel-supplied release_date_str / cover_url (already on the dict via
+    derive_collection) win wholesale. Author/publisher are not fetched for
+    v1.
+    """
+    url, source = client.resolve_url(
+        info_url=row.info_url,
+        title=row.title,
+        series=None,
+    )
+    if not url:
+        unmatched.append(f"collection|{row.title}|source={source}")
+        return
+    collection["wiki_url"] = url
+
+    excel_full = bool(row.release_date_str and row.cover_url)
+    if excel_full:
+        if row.cover_url:
+            collection["cover_url"] = row.cover_url
+        return
+
+    html = client.fetch_html(url)
+    if not html:
+        unmatched.append(f"collection|{row.title}|source=dead_url")
+        return
+    fields = parse_infobox(html)
+    if "cover_url" not in collection and fields.get("cover_url"):
+        collection["cover_url"] = fields["cover_url"]
+    if "release_date" not in collection and fields.get("release_date"):
+        collection["release_date"] = fields["release_date"]
+        collection["release_precision"] = fields["release_precision"]
+
+
 def _split_series_and_number(
     series_text: str | None,
     number_text: str | None,
@@ -413,6 +454,8 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
             invalid_collections.append(f"{crow.title}|members={len(members)}")
             continue
         c = derive_collection(crow, members)
+        if not dry_run:
+            _enrich_collection(c, crow, client, unmatched)
         collections_out.append(c)
         title_to_id[crow.title] = c["id"]
 
