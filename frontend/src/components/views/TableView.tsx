@@ -3,28 +3,28 @@ import { useVirtualizer } from "@tanstack/react-virtual";
 import { WorkRow } from "@/components/work/WorkRow";
 import { useFilterStore } from "@/store/filterStore";
 import { useScrollResetOnFilterChange } from "@/lib/useScrollResetOnFilterChange";
-import type { Work } from "@/types/work";
+import type { Item } from "@/lib/buildItemsList";
 import { COLUMNS } from "./_tableColumns";
 
 const ROW_HEIGHT = 56; // px
 
 interface TableViewProps {
-  works: Work[];
+  items: Item[];
 }
 
-export function TableView({ works }: TableViewProps) {
+export function TableView({ items }: TableViewProps) {
   const parentRef = useRef<HTMLDivElement>(null);
   const set = useFilterStore((s) => s.set);
   useScrollResetOnFilterChange(parentRef);
 
   const virtualizer = useVirtualizer({
-    count: works.length,
+    count: items.length,
     getScrollElement: () => parentRef.current,
     estimateSize: () => ROW_HEIGHT,
     overscan: 8,
   });
 
-  if (works.length === 0) {
+  if (items.length === 0) {
     return (
       <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
         No works match these filters.
@@ -52,7 +52,7 @@ export function TableView({ works }: TableViewProps) {
         {/* Virtualized rows */}
         <div style={{ height: virtualizer.getTotalSize(), position: "relative" }}>
           {virtualizer.getVirtualItems().map((vr) => {
-            const work = works[vr.index];
+            const item = items[vr.index];
             return (
               <div
                 key={vr.key}
@@ -65,10 +65,16 @@ export function TableView({ works }: TableViewProps) {
                   height: ROW_HEIGHT,
                 }}
               >
-                <WorkRow
-                  work={work}
-                  onClick={() => set({ openWorkId: work.id })}
-                />
+                {item.kind === "work" ? (
+                  <WorkRow
+                    work={item.work}
+                    onClick={() => set({ openWorkId: item.work.id })}
+                  />
+                ) : (
+                  <div className="flex h-full items-center px-2 text-sm font-medium">
+                    {item.collection.title}
+                  </div>
+                )}
               </div>
             );
           })}

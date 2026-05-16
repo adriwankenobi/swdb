@@ -1,10 +1,34 @@
 import { ERAS, type EraName } from "../constants/eras";
-import type { Work } from "../types/work";
+import type { Item } from "./buildItemsList";
+
+// ---------------------------------------------------------------------------
+// Accessor helpers — abstract over work vs collection items.
+// ---------------------------------------------------------------------------
+
+function eraOf(item: Item): EraName {
+  return item.kind === "work" ? item.work.era : item.collection.anchor_era;
+}
+
+function yearOf(item: Item): number {
+  return item.kind === "work" ? item.work.year : item.collection.year;
+}
+
+function yearEndOf(item: Item): number | undefined {
+  return item.kind === "work" ? item.work.year_end : item.collection.year_end;
+}
+
+function releaseDateOf(item: Item): string | undefined {
+  return item.kind === "work" ? item.work.release_date : item.collection.release_date;
+}
+
+// ---------------------------------------------------------------------------
+// Chronology grouping
+// ---------------------------------------------------------------------------
 
 export interface ChronologyRow {
   year: number;
   year_end?: number;
-  works: Work[];
+  items: Item[];
 }
 
 export interface ChronologyGroup {
@@ -12,33 +36,31 @@ export interface ChronologyGroup {
   rows: ChronologyRow[];
 }
 
-export interface ReleaseGroup {
-  year: number | null;
-  works: Work[];
-}
-
-// Walk works in input (= JSON / Excel) order. Within each era, coalesce a run
-// of consecutive works that share the same year span into a single row. The
+// Walk items in input (= JSON / Excel) order. Within each era, coalesce a run
+// of consecutive items that share the same year span into a single row. The
 // row order itself follows Excel position, not year value — so the timeline's
 // chronology mirrors the user's canonical ordering in the workbook.
-export function groupForChronology(works: Work[]): ChronologyGroup[] {
+export function groupForChronology(items: Item[]): ChronologyGroup[] {
   const eraMap = new Map<EraName, ChronologyRow[]>();
 
-  for (const work of works) {
-    if (!eraMap.has(work.era)) {
-      eraMap.set(work.era, []);
+  for (const item of items) {
+    const era = eraOf(item);
+    if (!eraMap.has(era)) {
+      eraMap.set(era, []);
     }
-    const rows = eraMap.get(work.era)!;
+    const rows = eraMap.get(era)!;
     const last = rows[rows.length - 1];
+    const year = yearOf(item);
+    const end = yearEndOf(item);
     const sameSpan =
       last !== undefined &&
-      last.year === work.year &&
-      (last.year_end ?? last.year) === (work.year_end ?? work.year);
+      last.year === year &&
+      (last.year_end ?? last.year) === (end ?? year);
     if (sameSpan) {
-      last.works.push(work);
+      last.items.push(item);
     } else {
-      const row: ChronologyRow = { year: work.year, works: [work] };
-      if (work.year_end !== undefined) row.year_end = work.year_end;
+      const row: ChronologyRow = { year, items: [item] };
+      if (end !== undefined) row.year_end = end;
       rows.push(row);
     }
   }
@@ -52,32 +74,42 @@ export function groupForChronology(works: Work[]): ChronologyGroup[] {
   }));
 }
 
-export function groupForRelease(works: Work[]): ReleaseGroup[] {
-  const yearMap = new Map<number, Work[]>();
-  const undated: Work[] = [];
+// ---------------------------------------------------------------------------
+// Release grouping
+// ---------------------------------------------------------------------------
 
-  for (const work of works) {
-    if (work.release_date) {
-      const parsed = parseInt(work.release_date.slice(0, 4), 10);
+export interface ReleaseGroup {
+  year: number | null;
+  items: Item[];
+}
+
+export function groupForRelease(items: Item[]): ReleaseGroup[] {
+  const yearMap = new Map<number, Item[]>();
+  const undated: Item[] = [];
+
+  for (const item of items) {
+    const rd = releaseDateOf(item);
+    if (rd) {
+      const parsed = parseInt(rd.slice(0, 4), 10);
       if (!Number.isNaN(parsed)) {
         if (!yearMap.has(parsed)) {
           yearMap.set(parsed, []);
         }
-        yearMap.get(parsed)!.push(work);
+        yearMap.get(parsed)!.push(item);
         continue;
       }
     }
-    undated.push(work);
+    undated.push(item);
   }
 
   const sortedYears = [...yearMap.keys()].sort((a, b) => a - b);
   const result: ReleaseGroup[] = sortedYears.map((year) => ({
     year,
-    works: yearMap.get(year)!,
+    items: yearMap.get(year)!,
   }));
 
   if (undated.length > 0) {
-    result.push({ year: null, works: undated });
+    result.push({ year: null, items: undated });
   }
 
   return result;

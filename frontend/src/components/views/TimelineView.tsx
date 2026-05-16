@@ -5,14 +5,19 @@ import { formatYear } from "@/lib/formatYear";
 import { groupForChronology, groupForRelease } from "@/lib/timelineGroups";
 import { useScrollResetOnFilterChange } from "@/lib/useScrollResetOnFilterChange";
 import { useFilterStore } from "@/store/filterStore";
+import type { Item } from "@/lib/buildItemsList";
 import type { Work } from "@/types/work";
 
-interface MarkerProps {
+// ---------------------------------------------------------------------------
+// Marker — a single clickable thumbnail in the timeline.
+// ---------------------------------------------------------------------------
+
+interface WorkMarkerProps {
   work: Work;
   onClick: () => void;
 }
 
-function Marker({ work, onClick }: MarkerProps) {
+function WorkMarker({ work, onClick }: WorkMarkerProps) {
   const yearLabel = formatYear(work.year, work.year_end);
   const seriesStr = (work.series ?? []).join(", ");
   const tooltip = `${work.title}${seriesStr ? ` — ${seriesStr}` : ""} (${yearLabel})`;
@@ -45,13 +50,73 @@ function Marker({ work, onClick }: MarkerProps) {
   );
 }
 
-export function TimelineView({ works }: { works: Work[] }) {
+// Placeholder marker for collection items — Phase 6 replaces this with CollectionCard.
+interface CollectionMarkerProps {
+  title: string;
+  coverUrl?: string;
+  eraColor: string;
+  onClick: () => void;
+}
+
+function CollectionMarker({ title, coverUrl, eraColor, onClick }: CollectionMarkerProps) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      title={title}
+      className="size-11 shrink-0 overflow-hidden rounded md:size-16"
+      style={{ boxShadow: `0 0 0 2px ${eraColor}`, outline: `2px dashed ${eraColor}`, outlineOffset: "2px" }}
+    >
+      {coverUrl ? (
+        <img
+          src={coverUrl}
+          alt=""
+          className="h-full w-full object-cover"
+        />
+      ) : (
+        <div
+          className="flex h-full w-full items-center justify-center px-1 text-center text-[10px] font-semibold leading-tight text-white line-clamp-3 break-words"
+          style={{ backgroundColor: eraColor }}
+        >
+          {title}
+        </div>
+      )}
+    </button>
+  );
+}
+
+// Dispatch to the right marker variant based on item kind.
+function ItemMarker({ item, set }: { item: Item; set: (s: object) => void }) {
+  if (item.kind === "work") {
+    return (
+      <WorkMarker
+        work={item.work}
+        onClick={() => set({ openWorkId: item.work.id })}
+      />
+    );
+  }
+  const { collection } = item;
+  return (
+    <CollectionMarker
+      title={collection.title}
+      coverUrl={collection.cover_url}
+      eraColor={ERA_COLORS[collection.anchor_era]}
+      onClick={() => set({ openCollectionId: collection.id })}
+    />
+  );
+}
+
+// ---------------------------------------------------------------------------
+// TimelineView
+// ---------------------------------------------------------------------------
+
+export function TimelineView({ items }: { items: Item[] }) {
   const sort = useFilterStore((s) => s.sort);
   const set = useFilterStore((s) => s.set);
   const scrollRef = useRef<HTMLDivElement>(null);
   useScrollResetOnFilterChange(scrollRef);
 
-  if (works.length === 0) {
+  if (items.length === 0) {
     return (
       <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
         No works match these filters.
@@ -59,12 +124,8 @@ export function TimelineView({ works }: { works: Work[] }) {
     );
   }
 
-  function openWork(id: string) {
-    set({ openWorkId: id });
-  }
-
   if (sort === "chronology") {
-    const groups = groupForChronology(works);
+    const groups = groupForChronology(items);
     return (
       <div ref={scrollRef} className="h-full overflow-auto">
         <div className="space-y-8 p-4">
@@ -81,7 +142,7 @@ export function TimelineView({ works }: { works: Work[] }) {
                     {group.era}
                   </span>
                 </div>
-                {/* Year rows (in Excel order; consecutive same-span works coalesce) */}
+                {/* Year rows (in Excel order; consecutive same-span items coalesce) */}
                 <div className="space-y-2 pl-2">
                   {group.rows.map((row, idx) => (
                     <div
@@ -92,11 +153,11 @@ export function TimelineView({ works }: { works: Work[] }) {
                         {formatYear(row.year, row.year_end)}
                       </span>
                       <div className="flex flex-wrap gap-1 md:gap-2">
-                        {row.works.map((work) => (
-                          <Marker
-                            key={work.id}
-                            work={work}
-                            onClick={() => openWork(work.id)}
+                        {row.items.map((item) => (
+                          <ItemMarker
+                            key={item.kind === "work" ? item.work.id : item.collection.id}
+                            item={item}
+                            set={set}
                           />
                         ))}
                       </div>
@@ -112,7 +173,7 @@ export function TimelineView({ works }: { works: Work[] }) {
   }
 
   // Release mode
-  const groups = groupForRelease(works);
+  const groups = groupForRelease(items);
   return (
     <div ref={scrollRef} className="h-full overflow-auto">
       <div className="space-y-6 p-4">
@@ -127,13 +188,13 @@ export function TimelineView({ works }: { works: Work[] }) {
                   {headerLabel}
                 </span>
               </div>
-              {/* Works row */}
+              {/* Items row */}
               <div className="flex flex-wrap gap-1 pl-2 md:gap-2">
-                {group.works.map((work) => (
-                  <Marker
-                    key={work.id}
-                    work={work}
-                    onClick={() => openWork(work.id)}
+                {group.items.map((item) => (
+                  <ItemMarker
+                    key={item.kind === "work" ? item.work.id : item.collection.id}
+                    item={item}
+                    set={set}
                   />
                 ))}
               </div>

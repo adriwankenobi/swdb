@@ -4,7 +4,7 @@ import { WorkCard } from "@/components/work/WorkCard";
 import { useFilterStore } from "@/store/filterStore";
 import { useScrollResetOnFilterChange } from "@/lib/useScrollResetOnFilterChange";
 import { computeColumnCount } from "@/lib/computeColumnCount";
-import type { Work } from "@/types/work";
+import type { Item } from "@/lib/buildItemsList";
 
 const ROW_HEIGHT = 360;     // approximate card height + gap
 
@@ -26,19 +26,19 @@ function useResponsiveColumns(parentRef: React.RefObject<HTMLDivElement | null>)
   return cols;
 }
 
-export function CardGrid({ works }: { works: Work[] }) {
+export function CardGrid({ items }: { items: Item[] }) {
   const parentRef = useRef<HTMLDivElement>(null);
   const cols = useResponsiveColumns(parentRef);
   const set = useFilterStore((s) => s.set);
   useScrollResetOnFilterChange(parentRef);
 
   const rows = useMemo(() => {
-    const arr: Work[][] = [];
-    for (let i = 0; i < works.length; i += cols) {
-      arr.push(works.slice(i, i + cols));
+    const arr: Item[][] = [];
+    for (let i = 0; i < items.length; i += cols) {
+      arr.push(items.slice(i, i + cols));
     }
     return arr;
-  }, [works, cols]);
+  }, [items, cols]);
 
   const virtualizer = useVirtualizer({
     count: rows.length,
@@ -47,7 +47,7 @@ export function CardGrid({ works }: { works: Work[] }) {
     overscan: 4,
   });
 
-  if (works.length === 0) {
+  if (items.length === 0) {
     return (
       <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
         No works match these filters.
@@ -75,9 +75,23 @@ export function CardGrid({ works }: { works: Work[] }) {
               className="grid gap-4 pb-4"
               style={{ gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))` }}
             >
-              {rows[vr.index].map((w) => (
-                <WorkCard key={w.id} work={w} onClick={() => set({ openWorkId: w.id })} />
-              ))}
+              {rows[vr.index].map((item) =>
+                item.kind === "work" ? (
+                  <WorkCard
+                    key={item.work.id}
+                    work={item.work}
+                    onClick={() => set({ openWorkId: item.work.id })}
+                  />
+                ) : (
+                  <button
+                    key={item.collection.id}
+                    onClick={() => set({ openWorkId: null, openCollectionId: item.collection.id })}
+                    className="rounded border bg-card p-2 text-sm text-left"
+                  >
+                    {item.collection.title}
+                  </button>
+                )
+              )}
             </div>
           </div>
         ))}

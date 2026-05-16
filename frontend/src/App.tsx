@@ -4,7 +4,7 @@ import { useFilterStore } from "./store/filterStore";
 import { readFromUrl, writeToUrl } from "./lib/urlState";
 import { AppShell } from "./components/layout/AppShell";
 import { Landing } from "./components/layout/Landing";
-import { filterWorks } from "./lib/filterWorks";
+import { filterAndSortItems } from "./lib/filterWorks";
 import { ActiveFilterChips } from "./components/filters/ActiveFilterChips";
 import { CardGrid } from "./components/views/CardGrid";
 import { TableView } from "./components/views/TableView";
@@ -13,7 +13,7 @@ import { WorkDetailModal } from "./components/work/WorkDetailModal";
 import type { EraName } from "./constants/eras";
 
 export default function App() {
-  const { status, works, error, load } = useCatalogStore();
+  const { status, works, collections: catalogCollections, worksById, error, load } = useCatalogStore();
 
   // Subscribe to each field used by writeToUrl with its own selector.
   const eras = useFilterStore((s) => s.eras);
@@ -33,7 +33,7 @@ export default function App() {
   const set = useFilterStore((s) => s.set);
   const clearAll = useFilterStore((s) => s.clearAll);
 
-  // Bundle fields into a stable object for filterWorks and writeToUrl.
+  // Bundle fields into a stable object for filterAndSortItems and writeToUrl.
   const filterState = useMemo(
     () => ({
       eras, mediums, decades, series, authors, publishers, collections,
@@ -91,16 +91,16 @@ export default function App() {
     setShowLanding(true);
   }
 
-  const visible = filterWorks(works, filterState);
+  const visible = filterAndSortItems(works, catalogCollections, filterState, { worksById });
 
   return (
     <>
       <AppShell onHome={handleHome}>
         <div className="flex h-full flex-col">
           <ActiveFilterChips />
-          {view === "cards" && <CardGrid works={visible} />}
-          {view === "table" && <TableView works={visible} />}
-          {view === "timeline" && <TimelineView works={visible} />}
+          {view === "cards" && <CardGrid items={visible} />}
+          {view === "table" && <TableView items={visible} />}
+          {view === "timeline" && <TimelineView items={visible} />}
         </div>
       </AppShell>
       <WorkDetailModal />
