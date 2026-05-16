@@ -8,6 +8,8 @@ data/duplicates.log
 data/missing_medium.log
 data/ignored_no_year.log
 data/dead_links.log
+data/invalid_collections.log
+data/unmatched_collections.log
 
 # Python
 __pycache__/
