@@ -15,7 +15,11 @@ function safeHttpUrl(url: string | undefined): string | undefined {
 export function WorkDetailModal() {
   const { openWorkId, set, toggleArrayValue } = useFilterStore();
   const works = useCatalogStore((s) => s.works);
+  const collectionsById = useCatalogStore((s) => s.collectionsById);
   const work = openWorkId ? works.find((w) => w.id === openWorkId) : null;
+  const collections = (work?.collection_ids ?? [])
+    .map((id) => collectionsById.get(id))
+    .filter((c): c is NonNullable<typeof c> => !!c);
 
   function closeModal() {
     set({ openWorkId: null });
@@ -139,6 +143,33 @@ export function WorkDetailModal() {
                 )}
               </div>
             </div>
+            {collections.length > 0 && (
+              <div className="mt-4 border-t pt-3">
+                <p className="mb-2 text-xs text-muted-foreground">
+                  {collections.length === 1
+                    ? "Collected in:"
+                    : `Collected in (${collections.length}):`}
+                </p>
+                <div className="space-y-2">
+                  {collections.map((collection) => (
+                    <button
+                      key={collection.id}
+                      type="button"
+                      onClick={() => set({ openWorkId: null, openCollectionId: collection.id })}
+                      className="flex w-full items-center gap-3 text-left hover:underline"
+                    >
+                      <div className="w-12 shrink-0 aspect-[2/3] overflow-hidden rounded-sm bg-muted/40">
+                        {collection.cover_url ? (
+                          <img src={collection.cover_url} alt="" className="h-full w-full object-contain" />
+                        ) : null}
+                      </div>
+                      <span className="text-sm font-medium">{collection.title}</span>
+                      <span className="text-muted-foreground">→</span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </>
         )}
       </DialogContent>

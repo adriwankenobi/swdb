@@ -10,6 +10,7 @@ import { CardGrid } from "./components/views/CardGrid";
 import { TableView } from "./components/views/TableView";
 import { TimelineView } from "./components/views/TimelineView";
 import { WorkDetailModal } from "./components/work/WorkDetailModal";
+import { CollectionDetailModal } from "./components/work/CollectionDetailModal";
 import type { EraName } from "./constants/eras";
 
 export default function App() {
@@ -104,6 +105,7 @@ export default function App() {
         </div>
       </AppShell>
       <WorkDetailModal />
+      <CollectionDetailModal />
     </>
   );
 }
