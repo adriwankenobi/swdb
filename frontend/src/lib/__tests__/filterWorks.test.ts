@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import type { Work } from "../../types/work";
+import type { Work, Collection } from "../../types/work";
 import type { FilterState } from "../../store/filterStore";
-import { filterWorks } from "../filterWorks";
+import { filterWorks, filterAndSortItems } from "../filterWorks";
 
 // Era / medium values are canonical name strings (matching ERAS / MEDIUMS).
 const NOVEL = "Novel" as const;
@@ -194,5 +194,55 @@ describe("filterWorks", () => {
     expect(withoutSearch.map((x) => x.id)).toEqual(["inside"]);
     const withSearch = filterWorks(data, { ...empty, decades: [1990], q: "dark" });
     expect(withSearch.map((x) => x.id)).toEqual(["inside", "outside"]);
+  });
+});
+
+const baseState: FilterState = {
+  eras: [], mediums: [], decades: [], series: [], authors: [],
+  publishers: [], collections: [], q: "", releaseUndated: false,
+  view: "cards", sort: "chronology", items: "collections",
+  openWorkId: null, openCollectionId: null,
+};
+
+const work = (id: string, extra: Partial<Work> = {}): Work => ({
+  id, era: "REBELLION", title: id, medium: "Comic", year: 0, ...extra,
+});
+
+describe("filterAndSortItems — collections view aggregation", () => {
+  it("includes a collection when an era matches via any member", () => {
+    const works: Work[] = [
+      work("a", { era: "REBELLION", collection_ids: ["c1"] }),
+      work("b", { era: "NEW REPUBLIC", collection_ids: ["c1"] }),
+    ];
+    const c: Collection = {
+      id: "c1", title: "C", eras: ["REBELLION", "NEW REPUBLIC"],
+      mediums: ["Comic"], year: 0, anchor_year: 0, anchor_era: "REBELLION",
+      anchor_member_id: "a", member_ids: ["a", "b"],
+    };
+    const items = filterAndSortItems(
+      works, [c],
+      { ...baseState, eras: ["NEW REPUBLIC"] },
+      { worksById: new Map(works.map((w) => [w.id, w])) },
+    );
+    expect(items.map((i) => (i.kind === "collection" ? i.collection.id : i.work.id)))
+      .toEqual(["c1"]);
+  });
+
+  it("excludes a collection when no member matches the series filter", () => {
+    const works: Work[] = [
+      work("a", { collection_ids: ["c1"], series: ["Alpha"] }),
+      work("b", { collection_ids: ["c1"], series: ["Alpha"] }),
+    ];
+    const c: Collection = {
+      id: "c1", title: "C", eras: ["REBELLION"], mediums: ["Comic"],
+      year: 0, anchor_year: 0, anchor_era: "REBELLION",
+      anchor_member_id: "a", member_ids: ["a", "b"],
+    };
+    const items = filterAndSortItems(
+      works, [c],
+      { ...baseState, series: ["Beta"] },
+      { worksById: new Map(works.map((w) => [w.id, w])) },
+    );
+    expect(items).toEqual([]);
   });
 });

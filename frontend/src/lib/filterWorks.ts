@@ -1,7 +1,8 @@
 import { ERAS } from "../constants/eras";
 import { UNCREDITED_AUTHOR_VALUE } from "../store/catalogStore";
-import type { Work } from "../types/work";
+import type { Collection, Work } from "../types/work";
 import type { FilterState } from "../store/filterStore";
+import { buildItemsList, type Item } from "./buildItemsList";
 
 function matchesArray<T>(selected: T[], value: T | undefined): boolean {
   if (selected.length === 0) return true;
@@ -87,5 +88,102 @@ export function filterWorks(works: Work[], filters: FilterState): Work[] {
     matchesQuery(w, filters.q),
   );
   const cmp = filters.sort === "release" ? compareRelease : compareChronology;
+  return [...filtered].sort(cmp);
+}
+
+// ---------------------------------------------------------------------------
+// filterAndSortItems — collection-aware filter + sort over Item[]
+// ---------------------------------------------------------------------------
+
+interface ItemsCtx {
+  worksById: Map<string, Work>;
+}
+
+function matchesItemAsWork(filters: FilterState, w: Work): boolean {
+  const searchActive = filters.q.length > 0;
+  return (
+    (searchActive || matchesArray(filters.eras, w.era)) &&
+    matchesArray(filters.mediums, w.medium) &&
+    matchesSeries(filters.series, w.series) &&
+    matchesArray(filters.publishers, w.publisher) &&
+    matchesAuthorsOrUncredited(w, filters.authors) &&
+    (filters.collections.length === 0 ||
+      (w.collection_ids !== undefined &&
+        w.collection_ids.some((id) => filters.collections.includes(id)))) &&
+    (searchActive || matchesDecadeOrUndated(w, filters.decades, filters.releaseUndated)) &&
+    matchesQuery(w, filters.q)
+  );
+}
+
+function matchesItemAsCollection(
+  filters: FilterState,
+  c: Collection,
+  members: Work[],
+): boolean {
+  // Era: OR over c.eras.
+  if (filters.eras.length > 0 && !c.eras.some((e) => filters.eras.includes(e))) return false;
+  // Medium: OR over c.mediums.
+  if (filters.mediums.length > 0 && !c.mediums.some((m) => filters.mediums.includes(m))) return false;
+  // Series / Authors / Publishers: ANY member matches.
+  if (filters.series.length > 0 &&
+      !members.some((m) => matchesSeries(filters.series, m.series))) return false;
+  if (filters.authors.length > 0 &&
+      !members.some((m) => matchesAuthorsOrUncredited(m, filters.authors))) return false;
+  if (filters.publishers.length > 0 &&
+      !members.some((m) => matchesArray(filters.publishers, m.publisher))) return false;
+  // Collections facet: collection's own id is in the selection.
+  if (filters.collections.length > 0 && !filters.collections.includes(c.id)) return false;
+  // Decade: collection's own release_date.
+  if ((filters.decades.length > 0 || filters.releaseUndated) &&
+      !matchesDecadeOrUndated(
+        { release_date: c.release_date } as Work,
+        filters.decades,
+        filters.releaseUndated,
+      )) return false;
+  // Query: collection title OR any member's matchable text.
+  if (filters.q) {
+    const q = filters.q.toLowerCase();
+    if (!c.title.toLowerCase().includes(q) &&
+        !members.some((m) => matchesQuery(m, filters.q))) return false;
+  }
+  return true;
+}
+
+function predicateForItem(filters: FilterState, ctx: ItemsCtx, item: Item): boolean {
+  if (item.kind === "work") {
+    return matchesItemAsWork(filters, item.work);
+  }
+  // Collection — aggregate via members.
+  const members = item.collection.member_ids
+    .map((id) => ctx.worksById.get(id))
+    .filter((w): w is Work => w !== undefined);
+  return matchesItemAsCollection(filters, item.collection, members);
+}
+
+function compareItemsChronology(a: Item, b: Item): number {
+  const aEra = a.kind === "work" ? a.work.era : a.collection.anchor_era;
+  const bEra = b.kind === "work" ? b.work.era : b.collection.anchor_era;
+  return ERAS.indexOf(aEra) - ERAS.indexOf(bEra);
+}
+
+function compareItemsRelease(a: Item, b: Item): number {
+  const ar = (a.kind === "work" ? a.work.release_date : a.collection.release_date) ?? "";
+  const br = (b.kind === "work" ? b.work.release_date : b.collection.release_date) ?? "";
+  if (ar && !br) return -1;
+  if (!ar && br) return 1;
+  if (ar < br) return -1;
+  if (ar > br) return 1;
+  return 0;
+}
+
+export function filterAndSortItems(
+  works: Work[],
+  collections: Collection[],
+  filters: FilterState,
+  ctx: ItemsCtx,
+): Item[] {
+  const list = buildItemsList(works, collections, filters.items);
+  const filtered = list.filter((item) => predicateForItem(filters, ctx, item));
+  const cmp = filters.sort === "release" ? compareItemsRelease : compareItemsChronology;
   return [...filtered].sort(cmp);
 }
