@@ -8,6 +8,10 @@ import sys
 from collections import defaultdict
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from scripts.collections_reader import ExcelCollectionRow
 
 from scripts.excel_reader import ExcelRow, read_works
 from scripts.excel_writer import update_excel
@@ -30,16 +34,16 @@ DEAD_LINKS_LOG = REPO_ROOT / "data" / "dead_links.log"
 # excel_reader.ERA_INDEX. New entries must be APPENDED so existing indices
 # (used internally by make_id) retain their meaning.
 ERAS = [
-    "PRE-REPUBLIC",        # 0
-    "OLD REPUBLIC",        # 1
+    "PRE-REPUBLIC",  # 0
+    "OLD REPUBLIC",  # 1
     "RISE OF THE EMPIRE",  # 2
-    "THE CLONE WARS",      # 3
-    "THE DARK TIMES",      # 4
-    "REBELLION",           # 5
-    "NEW REPUBLIC",        # 6
-    "NEW JEDI ORDER",      # 7
-    "LEGACY",              # 8
-    "NON-CANON",           # 9
+    "THE CLONE WARS",  # 3
+    "THE DARK TIMES",  # 4
+    "REBELLION",  # 5
+    "NEW REPUBLIC",  # 6
+    "NEW JEDI ORDER",  # 7
+    "LEGACY",  # 8
+    "NON-CANON",  # 9
 ]
 
 # Canonical medium list, alphabetical. Order is permanent.
@@ -52,6 +56,75 @@ MEDIUMS = [
     "TV Show",
     "Videogame",
 ]
+
+# Anchor medium priority — highest priority first.
+_MEDIUM_PRIORITY = [
+    "Movie",
+    "TV Show",
+    "Novel",
+    "Junior Novel",
+    "Comic",
+    "Short Story",
+    "Videogame",
+]
+
+
+def _dominant_medium(mediums: set[str]) -> str:
+    """Return the highest-priority medium present in `mediums`."""
+    for m in _MEDIUM_PRIORITY:
+        if m in mediums:
+            return m
+    # Defensive: caller has validated mediums ⊆ MEDIUMS, so this is unreachable.
+    raise ValueError(f"No priority defined for mediums: {mediums}")
+
+
+def derive_collection(
+    row: ExcelCollectionRow,
+    members: list[dict],  # ordered in workbook order
+) -> dict:
+    """Build a Collection dict from the Excel row + ordered member work dicts.
+
+    Precondition: len(members) >= 2 (caller has filtered).
+    """
+    from scripts.id_utils import make_collection_id
+    from scripts.release_utils import parse_excel_release
+
+    eras = sorted({m["era"] for m in members})
+    mediums = sorted({m["medium"] for m in members})
+
+    # Full display range across all members.
+    year_min = min(m["year"] for m in members)
+    year_max = max(m.get("year_end", m["year"]) for m in members)
+
+    # Anchor: dominant-medium members only.
+    dominant = _dominant_medium(set(mediums))
+    dom_members = [m for m in members if m["medium"] == dominant]
+    anchor_year = min(m["year"] for m in dom_members)
+    # First dominant member (workbook order) whose year equals the anchor.
+    anchor = next(m for m in dom_members if m["year"] == anchor_year)
+
+    collection: dict = {
+        "id": make_collection_id(row.title),
+        "title": row.title,
+        "eras": eras,
+        "mediums": mediums,
+        "year": year_min,
+        "anchor_year": anchor_year,
+        "anchor_era": anchor["era"],
+        "anchor_member_id": anchor["id"],
+        "member_ids": [m["id"] for m in members],
+    }
+    if year_max != year_min:
+        collection["year_end"] = year_max
+    if row.release_date_str:
+        parsed = parse_excel_release(row.release_date_str)
+        if parsed:
+            iso, precision = parsed
+            collection["release_date"] = iso
+            collection["release_precision"] = precision
+    if row.color is not None:
+        collection["color"] = row.color
+    return collection
 
 
 def _row_to_work(row: ExcelRow) -> dict:
@@ -121,7 +194,8 @@ def _detect_duplicates(works: list[dict]) -> list[list[dict]]:
                 ]
             )
             for g in groups
-        ) + "\n",
+        )
+        + "\n",
         encoding="utf-8",
     )
     return groups
@@ -141,12 +215,12 @@ def _enrich(
     wiki URL is set, skip fetch+parse entirely and just verify the URLs.
     """
     url, source = client.resolve_url(
-        info_url=row.info_url, title=row.title, series=row.series,
+        info_url=row.info_url,
+        title=row.title,
+        series=row.series,
     )
     if not url:
-        unmatched.append(
-            f"{row.era}|{row.title}|{row.series}|{row.medium}|source={source}"
-        )
+        unmatched.append(f"{row.era}|{row.title}|{row.series}|{row.medium}|source={source}")
         return
     work["wiki_url"] = url
 
@@ -155,15 +229,12 @@ def _enrich(
     # "Uncredited" should NOT count as populated — we want the parser to fill
     # it from the wiki page.
     has_real_author = bool(row.author) and bool(_split_excel_authors(row.author))
-    excel_full = bool(
-        has_real_author and row.publisher and row.release_date_str and row.cover_url
-    )
+    excel_full = bool(has_real_author and row.publisher and row.release_date_str and row.cover_url)
 
     if excel_full:
         if not client.verify_url_alive(url):
             dead_links.append(
-                f"{row.era}|{row.title}|{row.series}|{row.medium}|"
-                f"{row.number}|wiki|{url}"
+                f"{row.era}|{row.title}|{row.series}|{row.medium}|{row.number}|wiki|{url}"
             )
         if not client.verify_url_alive(row.cover_url):
             dead_links.append(
@@ -176,7 +247,9 @@ def _enrich(
     html = client.fetch_html(url)
     if not html and source == "from_excel":
         alt_url, alt_source = client.resolve_url(
-            info_url=None, title=row.title, series=row.series,
+            info_url=None,
+            title=row.title,
+            series=row.series,
         )
         if alt_url and alt_url != url:
             alt_html = client.fetch_html(alt_url)
@@ -184,9 +257,7 @@ def _enrich(
                 work["wiki_url"] = alt_url
                 html = alt_html
     if not html:
-        unmatched.append(
-            f"{row.era}|{row.title}|{row.series}|{row.medium}|source=dead_url"
-        )
+        unmatched.append(f"{row.era}|{row.title}|{row.series}|{row.medium}|source=dead_url")
         return
     fields = parse_infobox(html)
     _merge_excel_priority(work, row, fields)
@@ -202,6 +273,7 @@ def _split_series_and_number(
     drops the numbers too — a number with no series to attach to is
     meaningless.
     """
+
     def _split(text: str | None) -> list[str]:
         if not text:
             return []
@@ -220,10 +292,7 @@ def _split_excel_authors(text: str) -> list[str]:
     Excel author cells use comma-separated names. "Uncredited" is a
     Wookieepedia placeholder we never want to surface as a real name.
     """
-    return [
-        a.strip() for a in text.split(",")
-        if a.strip() and a.strip().lower() != "uncredited"
-    ]
+    return [a.strip() for a in text.split(",") if a.strip() and a.strip().lower() != "uncredited"]
 
 
 def _normalize_publisher(work: dict) -> None:
@@ -298,14 +367,10 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
 
     for i, row in enumerate(rows):
         if row.year is None:
-            ignored_no_year.append(
-                f"{row.era}|{row.title}|{row.series}|{row.medium}"
-            )
+            ignored_no_year.append(f"{row.era}|{row.title}|{row.series}|{row.medium}")
             continue
         if row.medium not in MEDIUMS:
-            missing_medium.append(
-                f"{row.era}|{row.title}|{row.series}|{row.medium}"
-            )
+            missing_medium.append(f"{row.era}|{row.title}|{row.series}|{row.medium}")
             continue
         work = _row_to_work(row)
         if not dry_run:
@@ -344,7 +409,7 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
                 row.era,
                 row.title,
                 row.series,
-                work["medium"],   # already a canonical string
+                work["medium"],  # already a canonical string
                 row.number,
             )
             enriched_lookup[key] = fields
@@ -398,7 +463,8 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "--refresh", action="store_true",
+        "--refresh",
+        action="store_true",
         help="Bypass HTTP cache and re-fetch all Wookieepedia pages.",
     )
     parser.add_argument("--dry-run", action="store_true", help="Do not write the JSON.")

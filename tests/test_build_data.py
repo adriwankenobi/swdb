@@ -321,3 +321,118 @@ def test_row_to_work_omits_number_when_empty_but_series_present():
     work = _row_to_work(row)
     assert work["series"] == ["The Clone Wars"]
     assert "number" not in work
+
+
+# ---------------------------------------------------------------------------
+# derive_collection tests
+# ---------------------------------------------------------------------------
+
+
+def test_derive_collection_single_era_single_medium():
+    from scripts.build_data import derive_collection
+    from scripts.collections_reader import ExcelCollectionRow
+
+    row = ExcelCollectionRow(
+        title="Dark Empire (TPB)",
+        release_date_str="1995.01.01",
+        info_url=None,
+        cover_url=None,
+        color=None,
+    )
+    members = [
+        {"id": "w-1", "era": "REBELLION", "medium": "Comic", "title": "Dark Empire 1", "year": 10},
+        {"id": "w-2", "era": "REBELLION", "medium": "Comic", "title": "Dark Empire 2", "year": 11},
+    ]
+    c = derive_collection(row, members)
+    assert c["title"] == "Dark Empire (TPB)"
+    assert c["eras"] == ["REBELLION"]
+    assert c["mediums"] == ["Comic"]
+    assert c["year"] == 10
+    assert c["year_end"] == 11
+    assert c["anchor_year"] == 10
+    assert c["anchor_era"] == "REBELLION"
+    assert c["anchor_member_id"] == "w-1"
+    assert c["member_ids"] == ["w-1", "w-2"]
+
+
+def test_derive_collection_multi_era_multi_medium_dominant_medium():
+    """Mediums sorted alphabetically. Dominant medium = Novel > Short Story.
+
+    Range spans all members; anchor derived only from dominant members."""
+    from scripts.build_data import derive_collection
+    from scripts.collections_reader import ExcelCollectionRow
+
+    row = ExcelCollectionRow(
+        title="Tales of the Sith",
+        release_date_str=None,
+        info_url=None,
+        cover_url=None,
+        color=None,
+    )
+    members = [
+        {
+            "id": "w-ss-1",
+            "era": "OLD REPUBLIC",
+            "medium": "Short Story",
+            "title": "SS 1",
+            "year": -3000,
+        },
+        {
+            "id": "w-novel",
+            "era": "REBELLION",
+            "medium": "Novel",
+            "title": "Tales Novel",
+            "year": 5,
+            "year_end": 7,
+        },
+        {
+            "id": "w-ss-2",
+            "era": "NEW REPUBLIC",
+            "medium": "Short Story",
+            "title": "SS 2",
+            "year": 20,
+        },
+    ]
+    c = derive_collection(row, members)
+    # Mediums + eras: union sorted.
+    assert c["eras"] == ["NEW REPUBLIC", "OLD REPUBLIC", "REBELLION"]
+    assert c["mediums"] == ["Novel", "Short Story"]
+    # year/year_end: full range across ALL members.
+    assert c["year"] == -3000
+    assert c["year_end"] == 20
+    # Anchor: dominant_medium = Novel, only one Novel member → use it.
+    assert c["anchor_year"] == 5
+    assert c["anchor_era"] == "REBELLION"
+    assert c["anchor_member_id"] == "w-novel"
+
+
+def test_derive_collection_omits_year_end_when_single_year():
+    from scripts.build_data import derive_collection
+    from scripts.collections_reader import ExcelCollectionRow
+
+    row = ExcelCollectionRow(
+        title="X", release_date_str=None, info_url=None, cover_url=None, color=None
+    )
+    members = [
+        {"id": "w-1", "era": "REBELLION", "medium": "Comic", "title": "A", "year": 4},
+        {"id": "w-2", "era": "REBELLION", "medium": "Comic", "title": "B", "year": 4},
+    ]
+    c = derive_collection(row, members)
+    assert c["year"] == 4
+    assert "year_end" not in c
+
+
+def test_derive_collection_release_date_from_excel():
+    from scripts.build_data import derive_collection
+    from scripts.collections_reader import ExcelCollectionRow
+
+    row = ExcelCollectionRow(
+        title="X", release_date_str="1995.01.01", info_url=None, cover_url=None, color=None
+    )
+    members = [
+        {"id": "w-1", "era": "REBELLION", "medium": "Comic", "title": "A", "year": 1},
+        {"id": "w-2", "era": "REBELLION", "medium": "Comic", "title": "B", "year": 1},
+    ]
+    c = derive_collection(row, members)
+    assert c["release_date"] == "1995-01-01"
+    assert c["release_precision"] == "day"
