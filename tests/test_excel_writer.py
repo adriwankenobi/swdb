@@ -176,3 +176,43 @@ def test_update_excel_skips_missing_fields(tmp_path: Path):
     wb.close()
 
 
+def test_update_excel_writes_back_to_collections_sheet(tmp_path):
+    """Cover and release_date are filled back into blank COLLECTIONS cells."""
+    from openpyxl import Workbook, load_workbook
+    from scripts.excel_writer import update_excel
+
+    wb = Workbook()
+    wb.remove(wb.active)
+    cs = wb.create_sheet("COLLECTIONS")
+    cs.append(["TITLE", "RELEASE", "INFO", "COVER"])
+    cs.append(["Dark Empire (TPB)", None, None, None])
+    cs.append(["Other (TPB)", "1996.06", None, "user-cover-already-here"])
+    path = tmp_path / "x.xlsx"
+    wb.save(path)
+
+    update_excel(
+        path,
+        enriched={},
+        collections_enriched={
+            "Dark Empire (TPB)": {
+                "release_date": "1995-01-01",
+                "release_precision": "day",
+                "cover_url": "https://example/cover.jpg",
+            },
+            "Other (TPB)": {
+                # These should be ignored — user cells are non-empty.
+                "release_date": "2000-01-01",
+                "release_precision": "day",
+                "cover_url": "https://example/should-not-overwrite.jpg",
+            },
+        },
+    )
+
+    out = load_workbook(path)["COLLECTIONS"]
+    # Row 2: Dark Empire — got writeback.
+    assert out.cell(row=2, column=2).value == "1995.01.01"
+    assert out.cell(row=2, column=4).value == "https://example/cover.jpg"
+    # Row 3: Other — user values preserved.
+    assert out.cell(row=3, column=2).value == "1996.06"
+    assert out.cell(row=3, column=4).value == "user-cover-already-here"
+

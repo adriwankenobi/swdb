@@ -549,7 +549,22 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
         encoding="utf-8",
     )
 
-    writeback = update_excel(EXCEL_PATH, enriched_lookup)
+    collections_writeback: dict[str, dict] = {}
+    for c in collections_out:
+        fields: dict = {}
+        if "release_date" in c:
+            fields["release_date"] = c["release_date"]
+            fields["release_precision"] = c["release_precision"]
+        if "cover_url" in c:
+            fields["cover_url"] = c["cover_url"]
+        if fields:
+            collections_writeback[c["title"]] = fields
+
+    writeback = update_excel(
+        EXCEL_PATH,
+        enriched_lookup,
+        collections_enriched=collections_writeback,
+    )
     print(
         f"wrote {summary} to {OUTPUT_PATH}; "
         f"excel writeback: {writeback['updated']} updated, "

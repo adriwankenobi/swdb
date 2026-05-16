@@ -39,7 +39,12 @@ def _format_release(iso_date: str, precision: str = "day") -> str:
     return ".".join(parts)
 
 
-def update_excel(path: Path, enriched: dict[tuple, dict]) -> dict:
+def update_excel(
+    path: Path,
+    enriched: dict[tuple, dict],
+    *,
+    collections_enriched: dict[str, dict] | None = None,
+) -> dict:
     """Write enriched fields back into the Excel file.
 
     `enriched` maps each lookup key (era, title, series, medium, number)
@@ -90,6 +95,25 @@ def update_excel(path: Path, enriched: dict[tuple, dict]) -> dict:
                     changed = True
                 if changed:
                     updated += 1
+        if collections_enriched:
+            if "COLLECTIONS" in wb.sheetnames:
+                cs = wb["COLLECTIONS"]
+                title_to_row = {}
+                for r in range(2, cs.max_row + 1):
+                    t = cs.cell(row=r, column=1).value
+                    if t:
+                        title_to_row[str(t).strip()] = r
+                for title, fields in collections_enriched.items():
+                    r = title_to_row.get(title)
+                    if r is None:
+                        continue
+                    rel_iso = fields.get("release_date")
+                    rel_prec = fields.get("release_precision", "day")
+                    cover = fields.get("cover_url")
+                    if rel_iso and not cs.cell(row=r, column=2).value:
+                        cs.cell(row=r, column=2, value=_format_release(rel_iso, rel_prec))
+                    if cover and not cs.cell(row=r, column=4).value:
+                        cs.cell(row=r, column=4, value=cover)
         wb.save(path)
         return {"updated": updated, "not_found_in_excel": not_found}
     finally:
