@@ -410,9 +410,7 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
         known_titles.add(crow.title)
         members = members_by_title.get(crow.title, [])
         if len(members) < 2:
-            invalid_collections.append(
-                f"{crow.title}|members={len(members)}"
-            )
+            invalid_collections.append(f"{crow.title}|members={len(members)}")
             continue
         c = derive_collection(crow, members)
         collections_out.append(c)
@@ -429,12 +427,10 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
 
     unmatched_collections: list[str] = []
     for work, row in zip(works, valid_rows, strict=True):
-        titles = _split_collected_titles(row.collected)
+        titles = titles_per_work.get(work["id"], [])
         for t in titles:
             if t not in known_titles:
-                unmatched_collections.append(
-                    f"{row.era}|{row.title}|{row.medium}|missing={t}"
-                )
+                unmatched_collections.append(f"{row.era}|{row.title}|{row.medium}|missing={t}")
 
     _detect_duplicates(works)
     payload = {
