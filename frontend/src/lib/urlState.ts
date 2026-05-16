@@ -1,7 +1,7 @@
 import { ERAS, type EraName } from "../constants/eras";
 import { MEDIUMS, type MediumName } from "../constants/mediums";
 import { slugify } from "./slug";
-import type { FilterState, ViewMode, SortMode } from "../store/filterStore";
+import type { FilterState, ViewMode, SortMode, ItemsMode } from "../store/filterStore";
 
 const csv = (arr: string[]): string | undefined =>
   arr.length === 0 ? undefined : arr.join(",");
@@ -11,6 +11,7 @@ const parseCsv = (raw: string | null): string[] =>
 
 const VIEWS: ViewMode[] = ["cards", "table", "timeline"];
 const SORTS: SortMode[] = ["chronology", "release"];
+const ITEMS: ItemsMode[] = ["issues", "collections"];
 
 // Reverse maps: slug → canonical name. Built once at module load.
 const ERA_BY_SLUG: Map<string, EraName> = new Map(
@@ -42,6 +43,9 @@ export function readFromUrl(search: string): Partial<FilterState> {
   const p = new URLSearchParams(search);
   const view = p.get("view");
   const sort = p.get("sort");
+  const items = p.get("items");
+  const work = p.get("work");
+  const collection = p.get("collection");
   return {
     eras: readEraSlugs(p.get("era")),
     mediums: readMediumSlugs(p.get("medium")),
@@ -49,11 +53,14 @@ export function readFromUrl(search: string): Partial<FilterState> {
     series: parseCsv(p.get("series")),
     authors: parseCsv(p.get("author")),
     publishers: parseCsv(p.get("publisher")),
+    collections: parseCsv(p.get("coll")),
     q: p.get("q") ?? "",
     releaseUndated: p.get("release_undated") === "1",
     view: VIEWS.includes(view as ViewMode) ? (view as ViewMode) : "cards",
     sort: SORTS.includes(sort as SortMode) ? (sort as SortMode) : "chronology",
-    openWorkId: p.get("work"),
+    items: ITEMS.includes(items as ItemsMode) ? (items as ItemsMode) : "issues",
+    openWorkId: work,
+    openCollectionId: work ? null : collection,
   };
 }
 
@@ -65,17 +72,21 @@ export function writeToUrl(state: FilterState): string {
   const series = csv(state.series);
   const author = csv(state.authors);
   const publisher = csv(state.publishers);
+  const coll = csv(state.collections);
   if (era) p.set("era", era);
   if (medium) p.set("medium", medium);
   if (decade) p.set("decade", decade);
   if (series) p.set("series", series);
   if (author) p.set("author", author);
   if (publisher) p.set("publisher", publisher);
+  if (coll) p.set("coll", coll);
   if (state.q) p.set("q", state.q);
   if (state.releaseUndated) p.set("release_undated", "1");
   if (state.view !== "cards") p.set("view", state.view);
   if (state.sort !== "chronology") p.set("sort", state.sort);
+  if (state.items !== "issues") p.set("items", state.items);
   if (state.openWorkId) p.set("work", state.openWorkId);
+  else if (state.openCollectionId) p.set("collection", state.openCollectionId);
   const qs = p.toString();
   return qs ? `?${qs}` : "";
 }

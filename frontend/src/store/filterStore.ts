@@ -4,6 +4,7 @@ import type { MediumName } from "../constants/mediums";
 
 export type ViewMode = "cards" | "table" | "timeline";
 export type SortMode = "chronology" | "release";
+export type ItemsMode = "issues" | "collections";
 
 export interface FilterState {
   eras: EraName[];
@@ -12,11 +13,14 @@ export interface FilterState {
   series: string[];
   authors: string[];
   publishers: string[];
+  collections: string[];
   q: string;
   releaseUndated: boolean;
   view: ViewMode;
   sort: SortMode;
+  items: ItemsMode;
   openWorkId: string | null;
+  openCollectionId: string | null;
 }
 
 const defaultState: FilterState = {
@@ -26,16 +30,21 @@ const defaultState: FilterState = {
   series: [],
   authors: [],
   publishers: [],
+  collections: [],
   q: "",
   releaseUndated: false,
   view: "cards",
   sort: "chronology",
+  items: "issues",
   openWorkId: null,
+  openCollectionId: null,
 };
 
 interface FilterActions {
   set: (patch: Partial<FilterState>) => void;
-  toggleArrayValue: <K extends "eras" | "mediums" | "decades" | "series" | "authors" | "publishers">(
+  toggleArrayValue: <
+    K extends "eras" | "mediums" | "decades" | "series" | "authors" | "publishers" | "collections",
+  >(
     key: K,
     value: FilterState[K][number],
   ) => void;

@@ -16,9 +16,11 @@ const w = (over: Partial<Work> & { id: string; year: number }): Work => ({
 
 const empty: FilterState = {
   eras: [], mediums: [], decades: [], series: [], authors: [], publishers: [],
+  collections: [],
   q: "",
   releaseUndated: false,
-  view: "cards", sort: "chronology", openWorkId: null,
+  view: "cards", sort: "chronology", items: "issues",
+  openWorkId: null, openCollectionId: null,
 };
 
 describe("filterWorks", () => {

@@ -4,9 +4,11 @@ import type { FilterState } from "../../store/filterStore";
 
 const empty: FilterState = {
   eras: [], mediums: [], decades: [], series: [], authors: [], publishers: [],
+  collections: [],
   q: "",
   releaseUndated: false,
-  view: "cards", sort: "chronology", openWorkId: null,
+  view: "cards", sort: "chronology", items: "issues",
+  openWorkId: null, openCollectionId: null,
 };
 
 describe("urlState", () => {
@@ -79,5 +81,40 @@ describe("urlState", () => {
     const r = readFromUrl("?year_min=-5&year_max=25&release_min=1990-01-01&release_max=2010-12-31");
     expect(r.decades).toEqual([]);
     expect(r.eras).toEqual([]);
+  });
+});
+
+describe("items param", () => {
+  it("defaults to issues when absent", () => {
+    expect(readFromUrl("").items).toBe("issues");
+  });
+  it("reads collections", () => {
+    expect(readFromUrl("?items=collections").items).toBe("collections");
+  });
+  it("drops unknown values silently", () => {
+    expect(readFromUrl("?items=garbage").items).toBe("issues");
+  });
+  it("omits param when default", () => {
+    expect(writeToUrl({ ...empty, items: "issues" })).not.toContain("items=");
+  });
+  it("writes non-default value", () => {
+    expect(writeToUrl({ ...empty, items: "collections" })).toContain("items=collections");
+  });
+});
+
+describe("collection modal param", () => {
+  it("reads collection id", () => {
+    expect(readFromUrl("?collection=c-abc").openCollectionId).toBe("c-abc");
+  });
+  it("work param wins when both present", () => {
+    const s = readFromUrl("?work=w-1&collection=c-1");
+    expect(s.openWorkId).toBe("w-1");
+    expect(s.openCollectionId).toBeNull();
+  });
+});
+
+describe("coll facet param", () => {
+  it("reads slugified collection list", () => {
+    expect(readFromUrl("?coll=alpha,beta").collections).toEqual(["alpha", "beta"]);
   });
 });
