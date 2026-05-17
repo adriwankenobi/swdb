@@ -13,6 +13,7 @@ const VIEWS: ViewMode[] = ["cards", "table", "timeline"];
 const SORTS: SortMode[] = ["chronology", "release"];
 const ITEMS: ItemsMode[] = ["issues", "collections"];
 
+// Reverse maps: slug → canonical name. Built once at module load.
 const ERA_BY_SLUG: Map<string, EraName> = new Map(
   ERAS.map((era) => [slugify(era), era]),
 );
@@ -38,6 +39,8 @@ function readDecades(raw: string | null): number[] {
     .filter((n) => Number.isFinite(n));
 }
 
+// Returns [] when bySlug is omitted (boot-time read, before catalog has loaded).
+// Caller is responsible for re-reading after catalog load with the slug map.
 function readCollectionSlugs(
   raw: string | null,
   bySlug: Map<string, string> | undefined,

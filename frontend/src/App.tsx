@@ -51,6 +51,7 @@ export default function App() {
     const m = new Map<string, string>();
     for (const c of catalogCollections) {
       const slug = slugify(c.title);
+      // first-wins: if two collections slug-collide, keep the first one
       if (!m.has(slug)) m.set(slug, c.id);
     }
     return m;
@@ -96,6 +97,7 @@ export default function App() {
   }, [
     eras, mediums, decades, series, authors, publishers, collections,
     q, releaseUndated, view, sort, items, openWorkId, openCollectionId,
+    collectionsById,
   ]);
 
   if (status === "loading" || status === "idle") return <p className="p-4">Loading…</p>;
