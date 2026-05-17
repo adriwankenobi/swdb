@@ -1,10 +1,11 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { UNCREDITED_AUTHOR_VALUE } from "@/store/catalogStore";
+import { UNCREDITED_AUTHOR_VALUE, useCatalogStore } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
 
 export function ActiveFilterChips() {
   const s = useFilterStore();
+  const collectionsById = useCatalogStore((cs) => cs.collectionsById);
   const chips: { key: string; label: string; clear: () => void }[] = [];
   s.eras.forEach((era) =>
     chips.push({ key: `era:${era}`, label: era, clear: () => s.toggleArrayValue("eras", era) }),
@@ -35,6 +36,15 @@ export function ActiveFilterChips() {
   s.publishers.forEach((m) =>
     chips.push({ key: `publisher:${m}`, label: m, clear: () => s.toggleArrayValue("publishers", m) }),
   );
+  s.collections.forEach((id) => {
+    const c = collectionsById.get(id);
+    if (!c) return;
+    chips.push({
+      key: `collection:${id}`,
+      label: c.title,
+      clear: () => s.toggleArrayValue("collections", id),
+    });
+  });
   if (s.q) chips.push({ key: `q:${s.q}`, label: `"${s.q}"`, clear: () => s.set({ q: "" }) });
   if (chips.length === 0) return null;
   return (
