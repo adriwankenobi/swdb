@@ -1,7 +1,8 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useCatalogStore } from "./store/catalogStore";
 import { useFilterStore } from "./store/filterStore";
 import { readFromUrl, writeToUrl } from "./lib/urlState";
+import { slugify } from "./lib/slug";
 import { AppShell } from "./components/layout/AppShell";
 import { Landing } from "./components/layout/Landing";
 import { filterAndSortItems } from "./lib/filterWorks";
@@ -46,6 +47,19 @@ export default function App() {
     ],
   );
 
+  const collectionsBySlug = useMemo(() => {
+    const m = new Map<string, string>();
+    for (const c of catalogCollections) {
+      const slug = slugify(c.title);
+      if (!m.has(slug)) m.set(slug, c.id);
+    }
+    return m;
+  }, [catalogCollections]);
+
+  const collectionsById = useCatalogStore((cs) => cs.collectionsById);
+
+  const didHydrateCollections = useRef(false);
+
   // Show landing on fresh visit (no query params), stay in catalog if URL has filters
   const [showLanding, setShowLanding] = useState<boolean>(
     () => window.location.search === ""
@@ -58,12 +72,21 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    if (status !== "ready" || didHydrateCollections.current) return;
+    didHydrateCollections.current = true;
+    const fromUrl = readFromUrl(window.location.search, collectionsBySlug);
+    if (fromUrl.collections && fromUrl.collections.length > 0) {
+      set({ collections: fromUrl.collections });
+    }
+  }, [status, collectionsBySlug, set]);
+
+  useEffect(() => {
     const id = setTimeout(() => {
       const next = writeToUrl({
         eras, mediums, decades, series, authors, publishers, collections,
         q, releaseUndated,
         view, sort, items, openWorkId, openCollectionId,
-      });
+      }, collectionsById);
       const target = `${window.location.pathname}${next}`;
       if (target !== window.location.pathname + window.location.search) {
         window.history.replaceState({}, "", target);

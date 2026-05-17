@@ -113,8 +113,49 @@ describe("collection modal param", () => {
   });
 });
 
-describe("coll facet param", () => {
-  it("reads slugified collection list", () => {
-    expect(readFromUrl("?coll=alpha,beta").collections).toEqual(["alpha", "beta"]);
+describe("collections facet param", () => {
+  const slugMap = new Map<string, string>([
+    ["dark-empire-tpb", "id-de"],
+    ["heir-to-the-empire-tpb", "id-htte"],
+  ]);
+  const idMap = new Map<string, { title: string }>([
+    ["id-de", { title: "Dark Empire (TPB)" }],
+    ["id-htte", { title: "Heir to the Empire (TPB)" }],
+  ]);
+
+  it("reads slugs into ids when map is provided", () => {
+    const r = readFromUrl("?collections=dark-empire-tpb,heir-to-the-empire-tpb", slugMap);
+    expect(r.collections).toEqual(["id-de", "id-htte"]);
+  });
+
+  it("returns empty when map is omitted (boot-time read)", () => {
+    const r = readFromUrl("?collections=dark-empire-tpb");
+    expect(r.collections).toEqual([]);
+  });
+
+  it("drops unknown slugs silently", () => {
+    const r = readFromUrl("?collections=dark-empire-tpb,bogus", slugMap);
+    expect(r.collections).toEqual(["id-de"]);
+  });
+
+  it("writes ids back as slugs when map is provided", () => {
+    const qs = writeToUrl({ ...empty, collections: ["id-de"] }, idMap);
+    expect(qs).toContain("collections=dark-empire-tpb");
+  });
+
+  it("omits the param when no map is provided", () => {
+    const qs = writeToUrl({ ...empty, collections: ["id-de"] });
+    expect(qs).not.toContain("collections=");
+    expect(qs).not.toContain("coll=");
+  });
+
+  it("never emits the legacy coll param", () => {
+    const qs = writeToUrl({ ...empty, collections: ["id-de"] }, idMap);
+    expect(qs).not.toContain("coll=");
+  });
+
+  it("ignores legacy coll= param on read", () => {
+    const r = readFromUrl("?coll=id-de", slugMap);
+    expect(r.collections).toEqual([]);
   });
 });

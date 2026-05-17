@@ -13,7 +13,6 @@ const VIEWS: ViewMode[] = ["cards", "table", "timeline"];
 const SORTS: SortMode[] = ["chronology", "release"];
 const ITEMS: ItemsMode[] = ["issues", "collections"];
 
-// Reverse maps: slug → canonical name. Built once at module load.
 const ERA_BY_SLUG: Map<string, EraName> = new Map(
   ERAS.map((era) => [slugify(era), era]),
 );
@@ -39,7 +38,20 @@ function readDecades(raw: string | null): number[] {
     .filter((n) => Number.isFinite(n));
 }
 
-export function readFromUrl(search: string): Partial<FilterState> {
+function readCollectionSlugs(
+  raw: string | null,
+  bySlug: Map<string, string> | undefined,
+): string[] {
+  if (!bySlug) return [];
+  return parseCsv(raw)
+    .map((slug) => bySlug.get(slug))
+    .filter((id): id is string => id !== undefined);
+}
+
+export function readFromUrl(
+  search: string,
+  collectionsBySlug?: Map<string, string>,
+): Partial<FilterState> {
   const p = new URLSearchParams(search);
   const view = p.get("view");
   const sort = p.get("sort");
@@ -53,7 +65,7 @@ export function readFromUrl(search: string): Partial<FilterState> {
     series: parseCsv(p.get("series")),
     authors: parseCsv(p.get("author")),
     publishers: parseCsv(p.get("publisher")),
-    collections: parseCsv(p.get("coll")),
+    collections: readCollectionSlugs(p.get("collections"), collectionsBySlug),
     q: p.get("q") ?? "",
     releaseUndated: p.get("release_undated") === "1",
     view: VIEWS.includes(view as ViewMode) ? (view as ViewMode) : "cards",
@@ -64,7 +76,10 @@ export function readFromUrl(search: string): Partial<FilterState> {
   };
 }
 
-export function writeToUrl(state: FilterState): string {
+export function writeToUrl(
+  state: FilterState,
+  collectionsById?: Map<string, { title: string }>,
+): string {
   const p = new URLSearchParams();
   const era = csv(state.eras.map((e) => slugify(e)));
   const medium = csv(state.mediums.map((m) => slugify(m)));
@@ -72,14 +87,21 @@ export function writeToUrl(state: FilterState): string {
   const series = csv(state.series);
   const author = csv(state.authors);
   const publisher = csv(state.publishers);
-  const coll = csv(state.collections);
+  const collections = collectionsById
+    ? csv(
+        state.collections
+          .map((id) => collectionsById.get(id)?.title)
+          .filter((t): t is string => t !== undefined)
+          .map((title) => slugify(title)),
+      )
+    : undefined;
   if (era) p.set("era", era);
   if (medium) p.set("medium", medium);
   if (decade) p.set("decade", decade);
   if (series) p.set("series", series);
   if (author) p.set("author", author);
   if (publisher) p.set("publisher", publisher);
-  if (coll) p.set("coll", coll);
+  if (collections) p.set("collections", collections);
   if (state.q) p.set("q", state.q);
   if (state.releaseUndated) p.set("release_undated", "1");
   if (state.view !== "cards") p.set("view", state.view);
