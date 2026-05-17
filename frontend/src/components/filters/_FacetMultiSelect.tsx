@@ -31,12 +31,12 @@ export function FacetMultiSelect({ title, facets, selected, onToggle }: Props) {
         className="h-7 text-xs"
       />
       <ScrollArea className="h-20 rounded-md border">
-        <ul className="p-1">
+        <ul className="space-y-0.5 p-1">
           {filtered.map((f) => (
             <li key={f.value}>
               <label
                 htmlFor={`${title}-${f.value}`}
-                className="flex w-full cursor-pointer items-center gap-2 py-1 text-xs"
+                className="flex w-full cursor-pointer items-center gap-2 text-xs"
               >
                 <Checkbox
                   id={`${title}-${f.value}`}
