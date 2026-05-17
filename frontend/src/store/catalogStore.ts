@@ -39,7 +39,7 @@ const empty: CatalogState["facets"] = {
   collections: [],
 };
 
-function buildFacets(works: Work[], collections: Collection[]): CatalogState["facets"] {
+export function buildFacets(works: Work[], collections: Collection[]): CatalogState["facets"] {
   const counts = (key: (w: Work) => string[] | string | undefined): Facet[] => {
     const map = new Map<string, number>();
     for (const w of works) {
@@ -82,7 +82,7 @@ function buildFacets(works: Work[], collections: Collection[]): CatalogState["fa
   }
   const collectionsFacet: Facet[] = collections
     .map((c) => ({ value: c.id, label: c.title, count: c.member_ids.length }))
-    .sort((a, b) => a.label.localeCompare(b.label));
+    .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
   return {
     series: counts((w) => w.series),
     authors,
