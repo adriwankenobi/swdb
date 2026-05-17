@@ -42,6 +42,7 @@ export function FacetMultiSelect({ title, facets, selected, onToggle }: Props) {
                   id={`${title}-${f.value}`}
                   checked={selected.includes(f.value)}
                   onCheckedChange={() => onToggle(f.value)}
+                  className="after:hidden"
                 />
                 <span className="truncate">{f.label}</span>
                 <span className="ml-auto text-muted-foreground">{f.count}</span>
