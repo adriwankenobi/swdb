@@ -3,9 +3,14 @@ import { ERA_COLORS } from "@/constants/eras";
 import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { formatSeriesAndNumber } from "@/lib/formatSeriesAndNumber";
+import { useCatalogStore } from "@/store/catalogStore";
+import { resolveWorkCover } from "@/lib/resolveWorkCover";
 import type { Work } from "@/types/work";
 
 export function WorkCard({ work, onClick }: { work: Work; onClick: () => void }) {
+  const collectionsById = useCatalogStore((s) => s.collectionsById);
+  const cover = resolveWorkCover(work, collectionsById);
+
   return (
     <button
       type="button"
@@ -14,12 +19,12 @@ export function WorkCard({ work, onClick }: { work: Work; onClick: () => void })
       style={{ backgroundColor: work.color ?? "var(--card)" }}
     >
       <div className="aspect-[2/3] w-full overflow-hidden bg-muted">
-        {work.cover_url ? (
+        {cover.src ? (
           <img
-            src={work.cover_url}
+            src={cover.src}
             alt=""
             loading="lazy"
-            className="h-full w-full object-contain bg-muted/40 transition group-hover:scale-[1.02]"
+            className={`h-full w-full object-contain bg-muted/40 transition group-hover:scale-[1.02] ${cover.borrowed ? "opacity-70 saturate-50" : ""}`}
           />
         ) : (
           <div
