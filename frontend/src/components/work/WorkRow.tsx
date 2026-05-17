@@ -5,6 +5,8 @@ import { formatYear } from "@/lib/formatYear";
 import { formatReleaseDateCompact } from "@/lib/formatReleaseDate";
 import type { Work } from "@/types/work";
 import { COLUMNS } from "@/components/views/_tableColumns";
+import { useCatalogStore } from "@/store/catalogStore";
+import { resolveWorkCover } from "@/lib/resolveWorkCover";
 
 interface WorkRowProps {
   work: Work;
@@ -12,6 +14,9 @@ interface WorkRowProps {
 }
 
 export function WorkRow({ work, onClick }: WorkRowProps) {
+  const collectionsById = useCatalogStore((s) => s.collectionsById);
+  const cover = resolveWorkCover(work, collectionsById);
+
   return (
     <div
       onClick={onClick}
@@ -23,12 +28,12 @@ export function WorkRow({ work, onClick }: WorkRowProps) {
         className={`sticky left-0 z-10 shrink-0 px-2 py-1 ${COLUMNS[0].width}`}
         style={{ backgroundColor: work.color ?? "var(--background)" }}
       >
-        {work.cover_url ? (
+        {cover.src ? (
           <img
-            src={work.cover_url}
+            src={cover.src}
             alt=""
             loading="lazy"
-            className="h-12 w-8 rounded object-cover"
+            className={`h-12 w-8 rounded object-cover ${cover.borrowed ? "opacity-70 saturate-50" : ""}`}
           />
         ) : (
           <div
