@@ -111,7 +111,11 @@ export function CollectionDetailModal() {
                     >
                       {(() => {
                         const prefix = formatSeriesAndNumber(member);
-                        return prefix ? `${prefix} — ${member.title}` : member.title;
+                        if (!prefix) return member.title;
+                        const hasSeries = (member.series?.length ?? 0) > 0;
+                        return hasSeries
+                          ? `${prefix} — ${member.title}`
+                          : `${member.title} ${prefix}`;
                       })()}
                     </button>
                   );

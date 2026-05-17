@@ -2,8 +2,10 @@ import type { Work } from "@/types/work";
 
 export function formatSeriesAndNumber(work: Work): string {
   const series = work.series ?? [];
-  if (series.length === 0) return "";
   const numbers = work.number ?? [];
+  if (series.length === 0) {
+    return numbers.map((n) => `#${n}`).join(", ");
+  }
   const isTv = work.medium === "TV Show";
   return series
     .map((s, i) => {
