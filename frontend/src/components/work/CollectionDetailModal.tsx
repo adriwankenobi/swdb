@@ -4,6 +4,7 @@ import { ERA_COLORS } from "@/constants/eras";
 import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { formatReleaseDate } from "@/lib/formatReleaseDate";
+import { formatSeriesAndNumber } from "@/lib/formatSeriesAndNumber";
 import { useCatalogStore } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
 
@@ -108,7 +109,10 @@ export function CollectionDetailModal() {
                       onClick={() => set({ openCollectionId: null, openWorkId: member.id })}
                       className="block w-full text-left text-sm hover:underline px-1 py-0.5 rounded"
                     >
-                      {member.title}
+                      {(() => {
+                        const prefix = formatSeriesAndNumber(member);
+                        return prefix ? `${prefix} — ${member.title}` : member.title;
+                      })()}
                     </button>
                   );
                 })}
