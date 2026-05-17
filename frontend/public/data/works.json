@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-17T17:39:35+00:00",
+  "generated_at": "2026-05-17T18:59:43+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -4986,6 +4986,9 @@
       "title": "Jedi: The Dark Side",
       "medium": "Comic",
       "year": -53,
+      "number": [
+        "1"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi%E2%80%94The_Dark_Side_1",
       "authors": [
@@ -5006,6 +5009,9 @@
       "title": "Jedi: The Dark Side",
       "medium": "Comic",
       "year": -53,
+      "number": [
+        "2"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi%E2%80%94The_Dark_Side_2",
       "authors": [
@@ -5026,6 +5032,9 @@
       "title": "Jedi: The Dark Side",
       "medium": "Comic",
       "year": -53,
+      "number": [
+        "3"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi%E2%80%94The_Dark_Side_3",
       "authors": [
@@ -5046,6 +5055,9 @@
       "title": "Jedi: The Dark Side",
       "medium": "Comic",
       "year": -53,
+      "number": [
+        "4"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi%E2%80%94The_Dark_Side_4",
       "authors": [
@@ -5066,6 +5078,9 @@
       "title": "Jedi: The Dark Side",
       "medium": "Comic",
       "year": -53,
+      "number": [
+        "5"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi%E2%80%94The_Dark_Side_5",
       "authors": [
@@ -5889,6 +5904,9 @@
       "title": "Jedi Council: Acts of War",
       "medium": "Comic",
       "year": -33,
+      "number": [
+        "1"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Council:_Acts_of_War_1",
       "authors": [
@@ -5909,6 +5927,9 @@
       "title": "Jedi Council: Acts of War",
       "medium": "Comic",
       "year": -33,
+      "number": [
+        "2"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Council:_Acts_of_War_2",
       "authors": [
@@ -5929,6 +5950,9 @@
       "title": "Jedi Council: Acts of War",
       "medium": "Comic",
       "year": -33,
+      "number": [
+        "3"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Council:_Acts_of_War_3",
       "authors": [
@@ -5949,6 +5973,9 @@
       "title": "Jedi Council: Acts of War",
       "medium": "Comic",
       "year": -33,
+      "number": [
+        "4"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Council:_Acts_of_War_4",
       "authors": [
@@ -6324,6 +6351,9 @@
       "title": "Darth Maul",
       "medium": "Comic",
       "year": -32,
+      "number": [
+        "1"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Maul_(2000)_1",
       "authors": [
@@ -6344,6 +6374,9 @@
       "title": "Darth Maul",
       "medium": "Comic",
       "year": -32,
+      "number": [
+        "2"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Maul_(2000)_2",
       "authors": [
@@ -6364,6 +6397,9 @@
       "title": "Darth Maul",
       "medium": "Comic",
       "year": -32,
+      "number": [
+        "3"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Maul_(2000)_3",
       "authors": [
@@ -6384,6 +6420,9 @@
       "title": "Darth Maul",
       "medium": "Comic",
       "year": -32,
+      "number": [
+        "4"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Darth_Maul_(2000)_4",
       "authors": [
@@ -7520,6 +7559,9 @@
       "title": "Jango Fett: Open Seasons",
       "medium": "Comic",
       "year": -32,
+      "number": [
+        "1"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jango_Fett:_Open_Seasons_1",
       "authors": [
@@ -7540,6 +7582,9 @@
       "title": "Jango Fett: Open Seasons",
       "medium": "Comic",
       "year": -32,
+      "number": [
+        "2"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jango_Fett:_Open_Seasons_2",
       "authors": [
@@ -7560,6 +7605,9 @@
       "title": "Jango Fett: Open Seasons",
       "medium": "Comic",
       "year": -32,
+      "number": [
+        "3"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jango_Fett:_Open_Seasons_3",
       "authors": [
@@ -7580,6 +7628,9 @@
       "title": "Jango Fett: Open Seasons",
       "medium": "Comic",
       "year": -32,
+      "number": [
+        "4"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jango_Fett:_Open_Seasons_4",
       "authors": [
@@ -8834,6 +8885,9 @@
       "title": "The Master of Disguise",
       "medium": "Junior Novel",
       "year": -25,
+      "number": [
+        "4"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Quest:_The_Master_of_Disguise",
       "authors": [
@@ -8850,6 +8904,9 @@
       "title": "The School of Fear",
       "medium": "Junior Novel",
       "year": -25,
+      "number": [
+        "5"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Quest:_The_School_of_Fear",
       "authors": [
@@ -8866,6 +8923,9 @@
       "title": "The Shadow Trap",
       "medium": "Junior Novel",
       "year": -25,
+      "number": [
+        "6"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Quest:_The_Shadow_Trap",
       "authors": [
@@ -8882,6 +8942,9 @@
       "title": "The Moment of Truth",
       "medium": "Junior Novel",
       "year": -25,
+      "number": [
+        "7"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Quest:_The_Moment_of_Truth",
       "authors": [
@@ -8898,6 +8961,9 @@
       "title": "Starfighter: Crossbones",
       "medium": "Comic",
       "year": -24,
+      "number": [
+        "1"
+      ],
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Starfighter:_Crossbones_1",
       "authors": [
@@ -8918,6 +8984,9 @@
       "title": "Starfighter: Crossbones",
       "medium": "Comic",
       "year": -24,
+      "number": [
+        "2"
+      ],
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Starfighter:_Crossbones_2",
       "authors": [
@@ -8938,6 +9007,9 @@
       "title": "Starfighter: Crossbones",
       "medium": "Comic",
       "year": -24,
+      "number": [
+        "3"
+      ],
       "color": "#FBD9D7",
       "wiki_url": "https://starwars.fandom.com/wiki/Starfighter:_Crossbones_3",
       "authors": [
@@ -8958,6 +9030,9 @@
       "title": "The Changing of the Guard",
       "medium": "Junior Novel",
       "year": -24,
+      "number": [
+        "8"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Quest:_The_Changing_of_the_Guard",
       "authors": [
@@ -8974,6 +9049,9 @@
       "title": "The False Peace",
       "medium": "Junior Novel",
       "year": -24,
+      "number": [
+        "9"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Quest:_The_False_Peace",
       "authors": [
@@ -9129,6 +9207,9 @@
       "title": "The Final Showdown",
       "medium": "Junior Novel",
       "year": -23,
+      "number": [
+        "10"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Quest:_The_Final_Showdown",
       "authors": [
@@ -9511,7 +9592,7 @@
         "Henry Gilroy",
         "Jan Duursema"
       ],
-      "publisher": "StarWars.com",
+      "publisher": "Dark Horse Comics",
       "release_date": "2002-04-24",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/89/Aotccomic2.jpg/revision/latest",
@@ -11454,6 +11535,9 @@
       "title": "General Grievous",
       "medium": "Comic",
       "year": -21,
+      "number": [
+        "1"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/General_Grievous_1",
       "authors": [
@@ -11474,6 +11558,9 @@
       "title": "General Grievous",
       "medium": "Comic",
       "year": -21,
+      "number": [
+        "2"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/General_Grievous_2",
       "authors": [
@@ -11494,6 +11581,9 @@
       "title": "General Grievous",
       "medium": "Comic",
       "year": -21,
+      "number": [
+        "3"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/General_Grievous_3",
       "authors": [
@@ -11514,6 +11604,9 @@
       "title": "General Grievous",
       "medium": "Comic",
       "year": -21,
+      "number": [
+        "4"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/General_Grievous_4",
       "authors": [
@@ -11688,6 +11781,7 @@
         "Pablo Hidalgo",
         "Thomas Hodges"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2009-02-06",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d7/Shadowed_cover.png/revision/latest",
@@ -11809,7 +11903,7 @@
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/10/Epguide303.png/revision/latest",
       "collection_ids": [
-        "0e903d0a-f506-581f-86f9-53a7aacb5617"
+        "6d24baeb-8916-5952-9070-b5fad92ce224"
       ]
     },
     {
@@ -11828,6 +11922,7 @@
         "Thomas Hodges",
         "Grant Gould"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2008-10-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/18/TCW-Prelude-Shakedown.jpg/revision/latest",
@@ -11901,6 +11996,7 @@
         "Grant Gould",
         "Jeffery Carlisle"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2008-10-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/18/TCW-Prelude-Shakedown.jpg/revision/latest",
@@ -11949,6 +12045,7 @@
         "Pablo Hidalgo",
         "Grant Gould"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2008-10-06",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0c/Procedure.png/revision/latest",
@@ -11997,6 +12094,7 @@
         "Pablo Hidalgo",
         "Katie Cook"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2008-10-14",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/67/Agenda.png/revision/latest",
@@ -12152,6 +12250,7 @@
         "Grant Gould",
         "Steven D. Anderson"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2008-10-23",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ef/Mouse_Hunt.png/revision/latest",
@@ -12202,6 +12301,7 @@
         "Thomas Hodges",
         "Grant Gould"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2008-11-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/ae/FallOfFalleen.png/revision/latest",
@@ -12250,6 +12350,7 @@
         "Pablo Hidalgo",
         "Grant Gould"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2008-11-12",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/31/Discount_cover.png/revision/latest",
@@ -12336,6 +12437,7 @@
         "Pablo Hidalgo",
         "Jeffery Carlisle"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2008-11-19",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/20/TCW_Departure.png/revision/latest",
@@ -12386,6 +12488,7 @@
         "Katie Cook",
         "Grant Gould"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2008-12-04",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/47/Transfer_cover.png/revision/latest",
@@ -12437,6 +12540,7 @@
         "Thomas Hodges",
         "Jeffery Carlisle"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2008-12-10",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b4/DreamsOfGrievous.png/revision/latest",
@@ -12508,6 +12612,7 @@
         "Pablo Hidalgo",
         "Grant Gould"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2009-01-02",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e3/Bait_cover.png/revision/latest",
@@ -12557,6 +12662,7 @@
         "Pablo Hidalgo",
         "Katie Cook"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2009-01-09",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/70/Switch.png/revision/latest",
@@ -12631,6 +12737,7 @@
         "Tom Hodges",
         "Grant Gould"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2009-01-15",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f1/Headgames.png/revision/latest",
@@ -12680,6 +12787,7 @@
         "Pablo Hidalgo",
         "Katie Cook"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2009-01-21",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/71/Neighbors.png/revision/latest",
@@ -12765,6 +12873,7 @@
         "Pablo Hidalgo",
         "Jeffery Carlisle"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2009-01-29",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d4/Cold_Snap_cover.png/revision/latest",
@@ -12812,6 +12921,7 @@
         "Pablo Hidalgo",
         "Grant Gould"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2009-02-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/1d/The_Valley_cover.png/revision/latest",
@@ -12988,6 +13098,7 @@
         "Pablo Hidalgo",
         "Grant Gould"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2009-02-26",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/dc/Covetous_cover.png/revision/latest",
@@ -13035,6 +13146,7 @@
         "Pablo Hidalgo",
         "Katie Cook"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2009-03-09",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d3/Curfew_cover.png/revision/latest",
@@ -14049,6 +14161,7 @@
         "Pablo Hidalgo",
         "Thomas Hodges"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2009-03-19",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/09/Invitation_Only.png/revision/latest",
@@ -14101,6 +14214,7 @@
         "Pablo Hidalgo",
         "Thomas Hodges"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2009-06-12",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9b/Hunting_the_Hunters_Part_1.png/revision/latest",
@@ -14126,6 +14240,7 @@
         "Pablo Hidalgo",
         "Katie Cook"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2009-07-16",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/22/Hunting_the_Hunters_Part_2.png/revision/latest",
@@ -14150,6 +14265,7 @@
       "authors": [
         "Pablo Hidalgo"
       ],
+      "publisher": "StarWars.com",
       "release_date": "2009-09-12",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/67/Hunting_the_Hunters_3.png/revision/latest",
@@ -16630,6 +16746,9 @@
       "title": "Obsession",
       "medium": "Comic",
       "year": -19,
+      "number": [
+        "1"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Obsession_1",
       "authors": [
@@ -16650,6 +16769,9 @@
       "title": "Obsession",
       "medium": "Comic",
       "year": -19,
+      "number": [
+        "2"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Obsession_2",
       "authors": [
@@ -16670,6 +16792,9 @@
       "title": "Obsession",
       "medium": "Comic",
       "year": -19,
+      "number": [
+        "3"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Obsession_3",
       "authors": [
@@ -16690,6 +16815,9 @@
       "title": "Obsession",
       "medium": "Comic",
       "year": -19,
+      "number": [
+        "4"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Obsession_4",
       "authors": [
@@ -16710,6 +16838,9 @@
       "title": "Obsession",
       "medium": "Comic",
       "year": -19,
+      "number": [
+        "5"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Obsession_5",
       "authors": [
@@ -22320,6 +22451,9 @@
       "title": "Underworld: The Yavin Vassilika",
       "medium": "Comic",
       "year": -1,
+      "number": [
+        "1"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Underworld:_The_Yavin_Vassilika_1",
       "authors": [
@@ -22340,6 +22474,9 @@
       "title": "Underworld: The Yavin Vassilika",
       "medium": "Comic",
       "year": -1,
+      "number": [
+        "2"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Underworld:_The_Yavin_Vassilika_2",
       "authors": [
@@ -22360,6 +22497,9 @@
       "title": "Underworld: The Yavin Vassilika",
       "medium": "Comic",
       "year": -1,
+      "number": [
+        "3"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Underworld:_The_Yavin_Vassilika_3",
       "authors": [
@@ -22380,6 +22520,9 @@
       "title": "Underworld: The Yavin Vassilika",
       "medium": "Comic",
       "year": -1,
+      "number": [
+        "4"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Underworld:_The_Yavin_Vassilika_4",
       "authors": [
@@ -22400,6 +22543,9 @@
       "title": "Underworld: The Yavin Vassilika",
       "medium": "Comic",
       "year": -1,
+      "number": [
+        "5"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Underworld:_The_Yavin_Vassilika_5",
       "authors": [
@@ -26897,6 +27043,9 @@
       "title": "Vader's Quest",
       "medium": "Comic",
       "year": 0,
+      "number": [
+        "1"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Vader%27s_Quest_1",
       "authors": [
@@ -26917,6 +27066,9 @@
       "title": "Vader's Quest",
       "medium": "Comic",
       "year": 0,
+      "number": [
+        "2"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Vader%27s_Quest_2",
       "authors": [
@@ -26937,6 +27089,9 @@
       "title": "Vader's Quest",
       "medium": "Comic",
       "year": 0,
+      "number": [
+        "3"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Vader%27s_Quest_3",
       "authors": [
@@ -26957,6 +27112,9 @@
       "title": "Vader's Quest",
       "medium": "Comic",
       "year": 0,
+      "number": [
+        "4"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Vader%27s_Quest_4",
       "authors": [
@@ -28289,6 +28447,9 @@
       "title": "River of Chaos",
       "medium": "Comic",
       "year": 0,
+      "number": [
+        "1"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/River_of_Chaos_1",
       "authors": [
@@ -28309,6 +28470,9 @@
       "title": "River of Chaos",
       "medium": "Comic",
       "year": 0,
+      "number": [
+        "2"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/River_of_Chaos_2",
       "authors": [
@@ -28329,6 +28493,9 @@
       "title": "River of Chaos",
       "medium": "Comic",
       "year": 0,
+      "number": [
+        "3"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/River_of_Chaos_3",
       "authors": [
@@ -28349,6 +28516,9 @@
       "title": "River of Chaos",
       "medium": "Comic",
       "year": 0,
+      "number": [
+        "4"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/River_of_Chaos_4",
       "authors": [
@@ -30202,6 +30372,9 @@
       "title": "Splinter of the Mind's Eye",
       "medium": "Comic",
       "year": 2,
+      "number": [
+        "1"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Splinter_of_the_Mind%27s_Eye_1",
       "authors": [
@@ -30222,6 +30395,9 @@
       "title": "Splinter of the Mind's Eye",
       "medium": "Comic",
       "year": 2,
+      "number": [
+        "2"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Splinter_of_the_Mind%27s_Eye_2",
       "authors": [
@@ -30242,6 +30418,9 @@
       "title": "Splinter of the Mind's Eye",
       "medium": "Comic",
       "year": 2,
+      "number": [
+        "3"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Splinter_of_the_Mind%27s_Eye_3",
       "authors": [
@@ -30262,6 +30441,9 @@
       "title": "Splinter of the Mind's Eye",
       "medium": "Comic",
       "year": 2,
+      "number": [
+        "4"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Splinter_of_the_Mind%27s_Eye_4",
       "authors": [
@@ -30656,6 +30838,9 @@
       "title": "Rebel Heist",
       "medium": "Comic",
       "year": 3,
+      "number": [
+        "1"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Rebel_Heist_1",
       "authors": [
@@ -30676,6 +30861,9 @@
       "title": "Rebel Heist",
       "medium": "Comic",
       "year": 3,
+      "number": [
+        "2"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Rebel_Heist_2",
       "authors": [
@@ -30696,6 +30884,9 @@
       "title": "Rebel Heist",
       "medium": "Comic",
       "year": 3,
+      "number": [
+        "3"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Rebel_Heist_3",
       "authors": [
@@ -30716,6 +30907,9 @@
       "title": "Rebel Heist",
       "medium": "Comic",
       "year": 3,
+      "number": [
+        "4"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Rebel_Heist_4",
       "authors": [
@@ -35989,6 +36183,9 @@
       "title": "Mara Jade - By the Emperor's Hand",
       "medium": "Comic",
       "year": 4,
+      "number": [
+        "0"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Mara_Jade_%E2%80%93_By_the_Emperor%27s_Hand_0",
       "authors": [
@@ -36010,6 +36207,9 @@
       "title": "Mara Jade - By the Emperor's Hand",
       "medium": "Comic",
       "year": 4,
+      "number": [
+        "1"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Mara_Jade_%E2%80%93_By_the_Emperor%27s_Hand_1",
       "authors": [
@@ -36031,6 +36231,9 @@
       "title": "Mara Jade - By the Emperor's Hand",
       "medium": "Comic",
       "year": 4,
+      "number": [
+        "2"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Mara_Jade_%E2%80%93_By_the_Emperor%27s_Hand_2",
       "authors": [
@@ -36052,6 +36255,9 @@
       "title": "Mara Jade - By the Emperor's Hand",
       "medium": "Comic",
       "year": 4,
+      "number": [
+        "3"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Mara_Jade_%E2%80%93_By_the_Emperor%27s_Hand_3",
       "authors": [
@@ -36073,6 +36279,9 @@
       "title": "Mara Jade - By the Emperor's Hand",
       "medium": "Comic",
       "year": 4,
+      "number": [
+        "4"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Mara_Jade_%E2%80%93_By_the_Emperor%27s_Hand_4",
       "authors": [
@@ -36093,6 +36302,9 @@
       "title": "Mara Jade - By the Emperor's Hand",
       "medium": "Comic",
       "year": 4,
+      "number": [
+        "5"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Mara_Jade_%E2%80%93_By_the_Emperor%27s_Hand_5",
       "authors": [
@@ -36114,6 +36326,9 @@
       "title": "Mara Jade - By the Emperor's Hand",
       "medium": "Comic",
       "year": 4,
+      "number": [
+        "6"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Mara_Jade_%E2%80%93_By_the_Emperor%27s_Hand_6",
       "authors": [
@@ -37290,6 +37505,9 @@
       "title": "Shadows of the Empire: Evolution",
       "medium": "Comic",
       "year": 4,
+      "number": [
+        "1"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Shadows_of_the_Empire:_Evolution_1",
       "authors": [
@@ -37310,6 +37528,9 @@
       "title": "Shadows of the Empire: Evolution",
       "medium": "Comic",
       "year": 4,
+      "number": [
+        "2"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Shadows_of_the_Empire:_Evolution_2",
       "authors": [
@@ -37330,6 +37551,9 @@
       "title": "Shadows of the Empire: Evolution",
       "medium": "Comic",
       "year": 4,
+      "number": [
+        "3"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Shadows_of_the_Empire:_Evolution_3",
       "authors": [
@@ -37350,6 +37574,9 @@
       "title": "Shadows of the Empire: Evolution",
       "medium": "Comic",
       "year": 4,
+      "number": [
+        "4"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Shadows_of_the_Empire:_Evolution_4",
       "authors": [
@@ -37370,6 +37597,9 @@
       "title": "Shadows of the Empire: Evolution",
       "medium": "Comic",
       "year": 4,
+      "number": [
+        "5"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Shadows_of_the_Empire:_Evolution_5",
       "authors": [
@@ -38532,6 +38762,9 @@
       "title": "Heir to the Empire",
       "medium": "Novel",
       "year": 9,
+      "number": [
+        "1"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Heir_to_the_Empire",
       "authors": [
@@ -38728,6 +38961,9 @@
       "title": "Dark Force Rising",
       "medium": "Novel",
       "year": 9,
+      "number": [
+        "2"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Dark_Force_Rising",
       "authors": [
@@ -38900,6 +39136,9 @@
       "title": "The Last Command",
       "medium": "Novel",
       "year": 9,
+      "number": [
+        "3"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/The_Last_Command",
       "authors": [
@@ -40469,6 +40708,9 @@
       "title": "Jedi Academy: Leviathan",
       "medium": "Comic",
       "year": 13,
+      "number": [
+        "1"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Academy:_Leviathan_1",
       "authors": [
@@ -40490,6 +40732,9 @@
       "title": "Jedi Academy: Leviathan",
       "medium": "Comic",
       "year": 13,
+      "number": [
+        "2"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Academy:_Leviathan_2",
       "authors": [
@@ -40511,6 +40756,9 @@
       "title": "Jedi Academy: Leviathan",
       "medium": "Comic",
       "year": 13,
+      "number": [
+        "3"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Academy:_Leviathan_3",
       "authors": [
@@ -40532,6 +40780,9 @@
       "title": "Jedi Academy: Leviathan",
       "medium": "Comic",
       "year": 13,
+      "number": [
+        "4"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Academy:_Leviathan_4",
       "authors": [
@@ -41040,6 +41291,9 @@
       "title": "Union",
       "medium": "Comic",
       "year": 19,
+      "number": [
+        "1"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Union_1",
       "authors": [
@@ -41060,6 +41314,9 @@
       "title": "Union",
       "medium": "Comic",
       "year": 19,
+      "number": [
+        "2"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Union_2",
       "authors": [
@@ -41080,6 +41337,9 @@
       "title": "Union",
       "medium": "Comic",
       "year": 19,
+      "number": [
+        "3"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Union_3",
       "authors": [
@@ -41100,6 +41360,9 @@
       "title": "Union",
       "medium": "Comic",
       "year": 19,
+      "number": [
+        "4"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Union_4",
       "authors": [
@@ -41762,6 +42025,9 @@
       "title": "Chewbacca",
       "medium": "Comic",
       "year": 25,
+      "number": [
+        "1"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chewbacca_(2000)_1",
       "authors": [
@@ -41783,6 +42049,9 @@
       "title": "Chewbacca",
       "medium": "Comic",
       "year": 25,
+      "number": [
+        "2"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chewbacca_(2000)_2",
       "authors": [
@@ -41805,6 +42074,9 @@
       "title": "Chewbacca",
       "medium": "Comic",
       "year": 25,
+      "number": [
+        "3"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chewbacca_(2000)_3",
       "authors": [
@@ -41827,6 +42099,9 @@
       "title": "Chewbacca",
       "medium": "Comic",
       "year": 25,
+      "number": [
+        "4"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Chewbacca_(2000)_4",
       "authors": [
@@ -43660,6 +43935,9 @@
       "title": "Broken",
       "medium": "Comic",
       "year": 137,
+      "number": [
+        "0"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Legacy_0%C2%BD",
       "authors": [
@@ -47534,6 +47812,7 @@
       "anchor_member_id": "2488744b-efb8-50b4-a512-2ce1218974ad",
       "member_ids": [
         "2488744b-efb8-50b4-a512-2ce1218974ad",
+        "3709205e-ddb6-584a-851a-f49c4ee2c2b1",
         "c98c344e-7d89-5d4e-86e4-a7f9ffcab5f0",
         "a42e59f0-c76a-54aa-be7e-827825ef46cc",
         "e23a6c2c-c09b-5141-9b99-d3b77e8dd202",
@@ -47573,9 +47852,8 @@
       "year": -19,
       "anchor_year": -19,
       "anchor_era": "THE CLONE WARS",
-      "anchor_member_id": "3709205e-ddb6-584a-851a-f49c4ee2c2b1",
+      "anchor_member_id": "51fa848c-9404-5f59-a88b-4cdf87969799",
       "member_ids": [
-        "3709205e-ddb6-584a-851a-f49c4ee2c2b1",
         "51fa848c-9404-5f59-a88b-4cdf87969799",
         "09c4774c-949e-57a8-9293-10cadfa1c4cf",
         "ce6ce5d7-5bf9-5fe8-83ff-c3c38d684158",
@@ -48616,11 +48894,11 @@
         "76fbccd4-2d9c-5ecf-a605-0fc8072339c2"
       ],
       "year_end": 3,
+      "release_date": "2014-01-08",
+      "release_precision": "day",
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Omnibus:_Adventures",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6f/Adventures_Omnibus.jpg/revision/latest",
-      "release_date": "2014-01-08",
-      "release_precision": "day"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6f/Adventures_Omnibus.jpg/revision/latest"
     },
     {
       "id": "3b6cb9f9-ec2d-5860-b8f5-4c194bbc2d08",
