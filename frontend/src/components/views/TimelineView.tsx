@@ -3,7 +3,9 @@ import { ERA_COLORS } from "@/constants/eras";
 import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { groupForChronology, groupForRelease } from "@/lib/timelineGroups";
+import { resolveWorkCover } from "@/lib/resolveWorkCover";
 import { useScrollResetOnFilterChange } from "@/lib/useScrollResetOnFilterChange";
+import { useCatalogStore } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
 import type { Item } from "@/lib/buildItemsList";
 import type { Work, Collection } from "@/types/work";
@@ -18,6 +20,8 @@ interface WorkMarkerProps {
 }
 
 function WorkMarker({ work, onClick }: WorkMarkerProps) {
+  const collectionsById = useCatalogStore((s) => s.collectionsById);
+  const cover = resolveWorkCover(work, collectionsById);
   const yearLabel = formatYear(work.year, work.year_end);
   const seriesStr = (work.series ?? []).join(", ");
   const tooltip = `${work.title}${seriesStr ? ` — ${seriesStr}` : ""} (${yearLabel})`;
@@ -32,11 +36,11 @@ function WorkMarker({ work, onClick }: WorkMarkerProps) {
       className="size-11 shrink-0 overflow-hidden rounded md:size-16"
       style={{ boxShadow: `0 0 0 2px ${mediumColor}` }}
     >
-      {work.cover_url ? (
+      {cover.src ? (
         <img
-          src={work.cover_url}
+          src={cover.src}
           alt=""
-          className="h-full w-full object-cover"
+          className={`h-full w-full object-cover ${cover.borrowed ? "opacity-70 saturate-50" : ""}`}
         />
       ) : (
         <div
