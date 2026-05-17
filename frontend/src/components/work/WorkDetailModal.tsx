@@ -4,6 +4,7 @@ import { ERA_COLORS } from "@/constants/eras";
 import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { formatReleaseDate } from "@/lib/formatReleaseDate";
+import { resolveWorkCover } from "@/lib/resolveWorkCover";
 import { useCatalogStore } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
 
@@ -43,23 +44,28 @@ export function WorkDetailModal() {
             </DialogHeader>
             <div className="flex flex-row gap-4 md:gap-6">
               <div className="w-28 md:w-[200px] shrink-0 aspect-[2/3] overflow-hidden rounded-md bg-muted/40">
-                {work.cover_url ? (() => {
-                  const safeCover = safeHttpUrl(work.cover_url);
+                {(() => {
+                  const cover = resolveWorkCover(work, collectionsById);
+                  if (!cover.src) {
+                    return (
+                      <div
+                        className="flex h-full items-center justify-center px-3 text-center text-base font-semibold leading-snug text-white text-balance line-clamp-6 break-words"
+                        style={{ backgroundColor: ERA_COLORS[work.era] }}
+                      >
+                        {work.title}
+                      </div>
+                    );
+                  }
+                  const safeCover = safeHttpUrl(cover.src);
+                  const imgClass = `h-full w-full object-contain bg-muted/40 ${cover.borrowed ? "opacity-70 saturate-50" : ""}`;
                   return safeCover ? (
                     <a href={safeCover} target="_blank" rel="noopener noreferrer">
-                      <img src={safeCover} alt="" className="h-full w-full object-contain bg-muted/40" />
+                      <img src={safeCover} alt="" className={imgClass} />
                     </a>
                   ) : (
-                    <img src={work.cover_url} alt="" className="h-full w-full object-contain bg-muted/40" />
+                    <img src={cover.src} alt="" className={imgClass} />
                   );
-                })() : (
-                  <div
-                    className="flex h-full items-center justify-center px-3 text-center text-base font-semibold leading-snug text-white text-balance line-clamp-6 break-words"
-                    style={{ backgroundColor: ERA_COLORS[work.era] }}
-                  >
-                    {work.title}
-                  </div>
-                )}
+                })()}
               </div>
               <div className="min-w-0 flex-1 space-y-3 text-sm">
                 {work.series && work.series.length > 0 && (
