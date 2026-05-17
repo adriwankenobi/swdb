@@ -280,10 +280,11 @@ def test_split_series_and_number_empty_number():
     assert _split_series_and_number("X-Wing", None) == (["X-Wing"], [])
 
 
-def test_split_series_and_number_empty_series_drops_number():
-    """Per spec: a number with no series to attach to is dropped."""
-    assert _split_series_and_number(None, "5") == ([], [])
-    assert _split_series_and_number("", "5") == ([], [])
+def test_split_series_and_number_empty_series_keeps_number():
+    """Numbers are kept when series is empty; title acts as the series."""
+    assert _split_series_and_number(None, "5") == ([], ["5"])
+    assert _split_series_and_number("", "5") == ([], ["5"])
+    assert _split_series_and_number(None, "1, 2") == ([], ["1", "2"])
 
 
 def test_split_series_and_number_both_empty():

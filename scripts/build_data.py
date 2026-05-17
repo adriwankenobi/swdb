@@ -313,9 +313,10 @@ def _split_series_and_number(
 ) -> tuple[list[str], list[str]]:
     """Split parallel comma-separated SERIES and # cells into aligned lists.
 
-    Numbers beyond the series count are dropped. An empty series cell
-    drops the numbers too — a number with no series to attach to is
-    meaningless.
+    Numbers beyond the series count are dropped. When the series cell is
+    empty the numbers are still kept — the work's title is acting as the
+    series identifier (e.g. a self-titled mini-series like
+    "Jedi: The Dark Side #1-5").
     """
 
     def _split(text: str | None) -> list[str]:
@@ -324,10 +325,10 @@ def _split_series_and_number(
         return [p.strip() for p in text.split(",") if p.strip()]
 
     series = _split(series_text)
+    numbers = _split(number_text)
     if not series:
-        return [], []
-    numbers = _split(number_text)[: len(series)]
-    return series, numbers
+        return [], numbers
+    return series, numbers[: len(series)]
 
 
 def _split_excel_authors(text: str) -> list[str]:
