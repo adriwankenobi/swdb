@@ -158,4 +158,11 @@ describe("collections facet param", () => {
     const r = readFromUrl("?coll=id-de", slugMap);
     expect(r.collections).toEqual([]);
   });
+
+  it("round-trips ids through slugs", () => {
+    const state: FilterState = { ...empty, collections: ["id-de", "id-htte"] };
+    const qs = writeToUrl(state, idMap);
+    const round = readFromUrl(qs, slugMap);
+    expect(round.collections).toEqual(state.collections);
+  });
 });
