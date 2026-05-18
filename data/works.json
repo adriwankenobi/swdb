@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-17T18:59:43+00:00",
+  "generated_at": "2026-05-18T14:57:53+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -20410,7 +20410,7 @@
         "Tales"
       ],
       "color": "#FBD9D7",
-      "wiki_url": "https://starwars.fandom.com/wiki/Sandstorm",
+      "wiki_url": "https://starwars.fandom.com/wiki/Sandstorm_(comic_story)",
       "authors": [
         "Jason Hall",
         "Sunny Lee"
@@ -20418,6 +20418,7 @@
       "publisher": "Dark Horse Comics",
       "release_date": "2003-03-12",
       "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/75/Sandstorm.jpg/revision/latest",
       "collection_ids": [
         "b0c7811b-0daa-557e-ad90-bc95a7785b96"
       ]
