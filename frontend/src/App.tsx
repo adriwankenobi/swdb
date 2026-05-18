@@ -130,7 +130,7 @@ export default function App() {
         </div>
       </AppShell>
       <WorkDetailModal visibleItems={visible} />
-      <CollectionDetailModal />
+      <CollectionDetailModal visibleItems={visible} />
     </>
   );
 }
