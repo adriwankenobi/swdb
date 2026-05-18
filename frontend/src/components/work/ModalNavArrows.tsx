@@ -8,6 +8,9 @@ interface ModalNavArrowsProps {
   onNext: () => void;
 }
 
+const baseClass =
+  "absolute top-1/2 -translate-y-1/2 z-10 hidden md:flex h-9 w-9 items-center justify-center rounded-full bg-background/70 ring-1 ring-foreground/10 hover:bg-background aria-disabled:opacity-30 aria-disabled:cursor-not-allowed aria-disabled:hover:bg-background/70";
+
 export function ModalNavArrows({
   hasPrev,
   hasNext,
@@ -22,9 +25,9 @@ export function ModalNavArrows({
         type="button"
         aria-label="Previous item"
         title={hasPrev ? "Previous item" : disabledTitle ?? "No previous item"}
-        disabled={!hasPrev}
-        onClick={onPrev}
-        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 hidden md:flex h-9 w-9 items-center justify-center rounded-full bg-background/70 ring-1 ring-foreground/10 hover:bg-background disabled:opacity-30 disabled:cursor-not-allowed disabled:pointer-events-none"
+        aria-disabled={!hasPrev}
+        onClick={() => { if (hasPrev) onPrev(); }}
+        className={`${baseClass} left-2`}
       >
         <ChevronLeft className="h-5 w-5" />
       </button>
@@ -32,9 +35,9 @@ export function ModalNavArrows({
         type="button"
         aria-label="Next item"
         title={hasNext ? "Next item" : disabledTitle ?? "No next item"}
-        disabled={!hasNext}
-        onClick={onNext}
-        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 hidden md:flex h-9 w-9 items-center justify-center rounded-full bg-background/70 ring-1 ring-foreground/10 hover:bg-background disabled:opacity-30 disabled:cursor-not-allowed disabled:pointer-events-none"
+        aria-disabled={!hasNext}
+        onClick={() => { if (hasNext) onNext(); }}
+        className={`${baseClass} right-2`}
       >
         <ChevronRight className="h-5 w-5" />
       </button>
