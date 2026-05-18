@@ -129,7 +129,7 @@ export default function App() {
           {view === "timeline" && <TimelineView items={visible} />}
         </div>
       </AppShell>
-      <WorkDetailModal />
+      <WorkDetailModal visibleItems={visible} />
       <CollectionDetailModal />
     </>
   );

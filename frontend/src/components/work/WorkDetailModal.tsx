@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { ERA_COLORS } from "@/constants/eras";
@@ -7,17 +8,55 @@ import { formatReleaseDate } from "@/lib/formatReleaseDate";
 import { resolveWorkCover } from "@/lib/resolveWorkCover";
 import { useCatalogStore } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
+import { useModalNeighbors } from "@/lib/useModalNeighbors";
+import { useSwipe } from "@/lib/useSwipe";
+import { ModalNavArrows } from "@/components/work/ModalNavArrows";
+import type { Item } from "@/lib/buildItemsList";
 
 function safeHttpUrl(url: string | undefined): string | undefined {
   if (!url) return undefined;
   return /^https?:\/\//i.test(url) ? url : undefined;
 }
 
-export function WorkDetailModal() {
+interface WorkDetailModalProps {
+  visibleItems: Item[];
+}
+
+export function WorkDetailModal({ visibleItems }: WorkDetailModalProps) {
   const { openWorkId, set, toggleArrayValue } = useFilterStore();
   const works = useCatalogStore((s) => s.works);
   const collectionsById = useCatalogStore((s) => s.collectionsById);
   const work = openWorkId ? works.find((w) => w.id === openWorkId) : null;
+  const openCollectionId = useFilterStore((s) => s.openCollectionId);
+  const { hasPrev, hasNext, isOrphan, goPrev, goNext } = useModalNeighbors(
+    visibleItems,
+    openWorkId,
+    openCollectionId,
+  );
+  const contentRef = useRef<HTMLDivElement>(null);
+  useSwipe(contentRef, {
+    onSwipeLeft: goNext,
+    onSwipeRight: goPrev,
+    enabled: !!work,
+  });
+  useEffect(() => {
+    if (!work) return;
+    function onKey(e: KeyboardEvent) {
+      const target = e.target as HTMLElement | null;
+      if (
+        target &&
+        (target.tagName === "INPUT" ||
+          target.tagName === "TEXTAREA" ||
+          target.isContentEditable)
+      ) {
+        return;
+      }
+      if (e.key === "ArrowLeft" && hasPrev) { e.preventDefault(); goPrev(); }
+      else if (e.key === "ArrowRight" && hasNext) { e.preventDefault(); goNext(); }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [work, hasPrev, hasNext, goPrev, goNext]);
   const collections = (work?.collection_ids ?? [])
     .map((id) => collectionsById.get(id))
     .filter((c): c is NonNullable<typeof c> => !!c);
@@ -37,6 +76,14 @@ export function WorkDetailModal() {
         className="!max-w-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden"
         style={work?.color ? { backgroundColor: work.color } : undefined}
       >
+        <ModalNavArrows
+          hasPrev={hasPrev}
+          hasNext={hasNext}
+          isOrphan={isOrphan}
+          onPrev={goPrev}
+          onNext={goNext}
+        />
+        <div ref={contentRef} className="contents">
         {work && (
           <>
             <DialogHeader>
@@ -178,6 +225,7 @@ export function WorkDetailModal() {
             )}
           </>
         )}
+        </div>
       </DialogContent>
     </Dialog>
   );
