@@ -73,7 +73,7 @@ export function WorkDetailModal({ visibleItems }: WorkDetailModalProps) {
       }}
     >
       <DialogContent
-        className="!max-w-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden md:px-14"
+        className="!max-w-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden px-14"
         style={work?.color ? { backgroundColor: work.color } : undefined}
       >
         <ModalNavArrows
@@ -83,7 +83,7 @@ export function WorkDetailModal({ visibleItems }: WorkDetailModalProps) {
           onPrev={goPrev}
           onNext={goNext}
         />
-        <div ref={contentRef} className="contents">
+        <div ref={contentRef} className="flex flex-col gap-4">
         {work && (
           <>
             <DialogHeader>

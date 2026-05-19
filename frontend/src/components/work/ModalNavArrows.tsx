@@ -9,7 +9,7 @@ interface ModalNavArrowsProps {
 }
 
 const baseClass =
-  "absolute top-1/2 -translate-y-1/2 z-10 hidden md:flex h-9 w-9 items-center justify-center rounded-full bg-background/70 ring-1 ring-foreground/10 hover:bg-background aria-disabled:opacity-30 aria-disabled:cursor-not-allowed aria-disabled:hover:bg-background/70";
+  "absolute top-1/2 -translate-y-1/2 z-10 flex h-9 w-9 items-center justify-center rounded-full bg-background/70 ring-1 ring-foreground/10 hover:bg-background aria-disabled:opacity-30 aria-disabled:cursor-not-allowed aria-disabled:hover:bg-background/70";
 
 export function ModalNavArrows({
   hasPrev,
