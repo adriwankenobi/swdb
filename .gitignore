@@ -30,6 +30,7 @@ docs/
 
 # Local Claude config
 CLAUDE.local.md
+.claude/settings.local.json
 
 # Brainstorming session artifacts (visual companion mockups)
 .superpowers/
