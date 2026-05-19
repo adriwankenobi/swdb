@@ -85,16 +85,13 @@ export function CollectionDetailModal({ visibleItems }: CollectionDetailModalPro
             </DialogHeader>
             <div className="flex flex-row gap-4 md:gap-6">
               <div className="w-28 md:w-[200px] shrink-0 aspect-[2/3] overflow-hidden rounded-md bg-muted/40">
-                {collection.cover_url ? (() => {
-                  const safeCover = safeHttpUrl(collection.cover_url);
-                  return safeCover ? (
-                    <a href={safeCover} target="_blank" rel="noopener noreferrer">
-                      <img src={safeCover} alt="" className="h-full w-full object-contain bg-muted/40" />
-                    </a>
-                  ) : (
-                    <img src={collection.cover_url} alt="" className="h-full w-full object-contain bg-muted/40" />
-                  );
-                })() : (
+                {collection.cover_url ? (
+                  <img
+                    src={safeHttpUrl(collection.cover_url) ?? collection.cover_url}
+                    alt=""
+                    className="h-full w-full object-contain bg-muted/40"
+                  />
+                ) : (
                   <div
                     className="flex h-full items-center justify-center px-3 text-center text-base font-semibold leading-snug text-white text-balance line-clamp-6 break-words"
                     style={{ backgroundColor: ERA_COLORS[collection.anchor_era] }}

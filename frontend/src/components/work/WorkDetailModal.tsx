@@ -105,13 +105,7 @@ export function WorkDetailModal({ visibleItems }: WorkDetailModalProps) {
                   }
                   const safeCover = safeHttpUrl(cover.src);
                   const imgClass = `h-full w-full object-contain bg-muted/40 ${cover.borrowed ? "opacity-70 saturate-50" : ""}`;
-                  return safeCover ? (
-                    <a href={safeCover} target="_blank" rel="noopener noreferrer">
-                      <img src={safeCover} alt="" className={imgClass} />
-                    </a>
-                  ) : (
-                    <img src={cover.src} alt="" className={imgClass} />
-                  );
+                  return <img src={safeCover ?? cover.src} alt="" className={imgClass} />;
                 })()}
               </div>
               <div className="min-w-0 flex-1 space-y-3 text-sm">
