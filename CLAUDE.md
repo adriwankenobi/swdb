@@ -17,14 +17,16 @@ specific to this user (terminology preferences, commit conventions, etc.).
 
 ## Tech stack details
 
-- **Python:** managed by [uv](https://docs.astral.sh/uv/). Located at
-  `~/.local/bin/uv`. If `uv` is not on PATH in a fresh shell, run
-  `source ~/.local/bin/env` first.
+- **Python:** `>=3.12` (per `pyproject.toml`; ruff `target-version = "py312"`).
+  Managed by [uv](https://docs.astral.sh/uv/), located at `~/.local/bin/uv`.
+  If `uv` is not on PATH in a fresh shell, run `source ~/.local/bin/env` first.
+- **TypeScript:** `~5.8.3` (pinned in `frontend/package.json`).
 - **Node:** Homebrew node at `/usr/local/opt/node/bin` (version-stable
-  symlink). The user's nvm-installed Node (8.x) is too old for Vite 6. The
-  `justfile` exports this path at the top, so every `just` recipe (`just dev`,
-  `just build`, etc.) Just Works™. For raw `npm` invocations outside `just`,
-  prepend it manually: `PATH="/usr/local/opt/node/bin:$PATH" npm <cmd>`.
+  symlink, currently v25.x). Vite 6 requires Node `^18.0.0 || ^20.0.0 || >=22.0.0`,
+  so the user's nvm-installed Node (8.x) is too old. The `justfile` exports this
+  path at the top, so every `just` recipe (`just dev`, `just build`, etc.) Just
+  Works™. For raw `npm` invocations outside `just`, prepend it manually:
+  `PATH="/usr/local/opt/node/bin:$PATH" npm <cmd>`.
 
 ## Schema (works.json)
 
