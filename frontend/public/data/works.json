@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-18T14:57:53+00:00",
+  "generated_at": "2026-05-19T09:59:27+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -8880,11 +8880,14 @@
       ]
     },
     {
-      "id": "35345b0a-3f2e-5676-bdd6-80e611d7638a",
+      "id": "37fcd169-4e7c-55c8-b0cd-118a6ebe76e0",
       "era": "RISE OF THE EMPIRE",
       "title": "The Master of Disguise",
       "medium": "Junior Novel",
       "year": -25,
+      "series": [
+        "Jedi Quest"
+      ],
       "number": [
         "4"
       ],
@@ -8899,11 +8902,14 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e8/The_Master_of_Disguise.jpg/revision/latest"
     },
     {
-      "id": "55b51810-f94e-58d6-bfee-2e0120df2599",
+      "id": "e582e2d6-ec94-535f-b17e-243a2a292ca3",
       "era": "RISE OF THE EMPIRE",
       "title": "The School of Fear",
       "medium": "Junior Novel",
       "year": -25,
+      "series": [
+        "Jedi Quest"
+      ],
       "number": [
         "5"
       ],
@@ -8918,11 +8924,14 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/05/The_School_of_Fear.jpg/revision/latest"
     },
     {
-      "id": "7012c584-0591-5e34-879f-9b5cd103d572",
+      "id": "c2fae13d-f55d-5848-b81f-0381d6266ccc",
       "era": "RISE OF THE EMPIRE",
       "title": "The Shadow Trap",
       "medium": "Junior Novel",
       "year": -25,
+      "series": [
+        "Jedi Quest"
+      ],
       "number": [
         "6"
       ],
@@ -8937,11 +8946,14 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/13/The_Shadow_Trap.jpg/revision/latest"
     },
     {
-      "id": "45afddfa-99f8-5654-bdb9-645601eaa236",
+      "id": "58f1d068-7370-5be8-9547-e58e93912f1f",
       "era": "RISE OF THE EMPIRE",
       "title": "The Moment of Truth",
       "medium": "Junior Novel",
       "year": -25,
+      "series": [
+        "Jedi Quest"
+      ],
       "number": [
         "7"
       ],
@@ -9025,11 +9037,14 @@
       ]
     },
     {
-      "id": "659b1c5a-dd7b-5311-998c-5edc52d49207",
+      "id": "11e6267e-ad23-5801-acc2-8c3d234e992e",
       "era": "RISE OF THE EMPIRE",
       "title": "The Changing of the Guard",
       "medium": "Junior Novel",
       "year": -24,
+      "series": [
+        "Jedi Quest"
+      ],
       "number": [
         "8"
       ],
@@ -9044,11 +9059,14 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a2/The_Changing_of_the_Guard.jpg/revision/latest"
     },
     {
-      "id": "72ab449f-5a45-5ad4-ba1e-977301d0a000",
+      "id": "88ffe379-fa33-56ee-9a62-5b457732106c",
       "era": "RISE OF THE EMPIRE",
       "title": "The False Peace",
       "medium": "Junior Novel",
       "year": -24,
+      "series": [
+        "Jedi Quest"
+      ],
       "number": [
         "9"
       ],
@@ -9202,11 +9220,14 @@
       ]
     },
     {
-      "id": "a301b312-087e-5556-b039-ffdebd3c7025",
+      "id": "83356882-15b4-59f9-aaba-dc21efa07382",
       "era": "RISE OF THE EMPIRE",
       "title": "The Final Showdown",
       "medium": "Junior Novel",
       "year": -23,
+      "series": [
+        "Jedi Quest"
+      ],
       "number": [
         "10"
       ],
@@ -33819,11 +33840,14 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3a/SOTE-N64.png/revision/latest"
     },
     {
-      "id": "d7379be8-0963-54b9-a1e2-e7b3764fa420",
+      "id": "becfb37d-7b1a-5907-a832-f238c381c71c",
       "era": "REBELLION",
       "title": "Shadows of the Empire",
       "medium": "Novel",
       "year": 3,
+      "series": [
+        "Shadows of the Empire"
+      ],
       "color": "#DAF2F4",
       "wiki_url": "https://starwars.fandom.com/wiki/Shadows_of_the_Empire_(novel)",
       "authors": [
@@ -39866,8 +39890,7 @@
       "medium": "Comic",
       "year": 10,
       "series": [
-        "Boba Fett: Death",
-        "Lies and Treachery"
+        "Boba Fett: Death Lies and Treachery"
       ],
       "number": [
         "1"
@@ -39893,8 +39916,7 @@
       "medium": "Comic",
       "year": 10,
       "series": [
-        "Boba Fett: Death",
-        "Lies and Treachery"
+        "Boba Fett: Death Lies and Treachery"
       ],
       "number": [
         "2"
@@ -39920,8 +39942,7 @@
       "medium": "Comic",
       "year": 10,
       "series": [
-        "Boba Fett: Death",
-        "Lies and Treachery"
+        "Boba Fett: Death Lies and Treachery"
       ],
       "number": [
         "3"
