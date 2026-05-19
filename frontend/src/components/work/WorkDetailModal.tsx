@@ -73,7 +73,7 @@ export function WorkDetailModal({ visibleItems }: WorkDetailModalProps) {
       }}
     >
       <DialogContent
-        className="!max-w-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden"
+        className="!max-w-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden md:px-14"
         style={work?.color ? { backgroundColor: work.color } : undefined}
       >
         <ModalNavArrows

@@ -67,7 +67,7 @@ export function CollectionDetailModal({ visibleItems }: CollectionDetailModalPro
       }}
     >
       <DialogContent
-        className="!max-w-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden"
+        className="!max-w-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden md:px-14"
         style={collection?.color ? { backgroundColor: collection.color } : undefined}
       >
         <ModalNavArrows
