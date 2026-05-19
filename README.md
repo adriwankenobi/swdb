@@ -6,7 +6,7 @@ Live: <https://adriwankenobi.github.io/swdb/>
 
 ## Status
 
-Live at <https://adriwankenobi.github.io/swdb/>. ~1933 works indexed across 10 eras of the Star Wars Expanded Universe, sourced from `Star Wars EU.xlsx` and enriched with Wookieepedia metadata via the MediaWiki API.
+Live at <https://adriwankenobi.github.io/swdb/>. ~1960 works and ~170 collections (omnibus, series, anthology groupings) indexed across 10 eras of the Star Wars Expanded Universe, sourced from `Star Wars EU.xlsx` and enriched with Wookieepedia metadata via the MediaWiki API.
 
 ## Stack
 

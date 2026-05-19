@@ -30,25 +30,54 @@ specific to this user (terminology preferences, commit conventions, etc.).
 
 ## Schema (works.json)
 
-Each work has the shape:
+Top level: `{ generated_at, works: [...], collections: [...] }`.
+
+**Each work** has the shape:
 
 - `id`: stable uuid5 (canonical key: era|series|title|medium|number, with
-  medium as canonical STRING, not the integer)
-- `era`: int 0–9, index into `ERAS` constant
-- `medium`: int 0–6, index into the 7-entry `MEDIUMS` constant
-  (alphabetical: Comic, Junior Novel, Movie, Novel, Short Story, TV Show,
-  Videogame)
-- `title`: string (required)
-- `year`: signed int (negative = BBY, non-negative = ABY) — required
-- `series`, `number`, `release_date`, `release_precision`, `authors[]`,
-  `publisher`, `cover_url`, `wiki_url`: optional, omitted when empty (no
-  nulls in the JSON). `release_precision` is `"day" | "month" | "year"`
-  and is always emitted alongside `release_date` so the frontend can render
-  faithfully (e.g. `"November 1996"` vs `"November 1, 1996"`).
+  medium as canonical STRING; era index kept internally so JSON encoding
+  flips don't change ids).
+- `era`: canonical STRING from the 10-entry `ERAS` list, UPPERCASE
+  (e.g. `"REBELLION"`). Note: internally the era is also represented as an
+  int index 0–9; the emitted JSON uses the string form.
+- `medium`: canonical STRING from the 7-entry `MEDIUMS` list, Title Case
+  (alphabetical: `Comic`, `Junior Novel`, `Movie`, `Novel`, `Short Story`,
+  `TV Show`, `Videogame`).
+- `title`: string (required).
+- `year`: signed int (negative = BBY, non-negative = ABY) — required.
+- `series`, `number`: optional **parallel string arrays** — one work may
+  belong to multiple series with corresponding numbers (e.g. comic
+  cross-series).
+- `release_date`, `release_precision`, `authors[]`, `publisher`,
+  `cover_url`, `wiki_url`, `year_end`, `color`, `collection_ids`: all
+  optional, omitted when empty (no nulls in the JSON). `release_precision`
+  is `"day" | "month" | "year"` and is always emitted alongside
+  `release_date`. `year_end` is present only when the item spans a year
+  range (e.g. multi-year TV runs). `color` is a `#RRGGBB` hex copied from
+  the Excel row's fill color. `collection_ids` lists every collection the
+  work is a member of.
+
+**Each collection** has the shape:
+
+- `id`, `title` (required).
+- `eras[]`, `mediums[]`: deduplicated unions over all member works.
+- `year`, optional `year_end`: full range over members; `year_end` omitted
+  when equal to `year`.
+- `anchor_year`, `anchor_era`, `anchor_member_id`: drawn from the
+  dominant-medium member; used to place the collection on the timeline
+  and to replace the anchor work in Collections view.
+- `member_ids[]`: every work that belongs to the collection, in reading
+  order.
+- `release_date`, `release_precision`, `cover_url`, `wiki_url`, `color`:
+  all optional (same semantics as on works).
 
 Excel rows with no `YEAR` cell are intentional reference-only entries; the
 pipeline excludes them from the JSON and logs them to
-`data/ignored_no_year.log`.
+`data/ignored_no_year.log`. Collection definitions live on a dedicated
+`COLLECTIONS` sheet in the Excel workbook; works cross-link via a
+`COLLECTED` column. The pipeline derives each collection's aggregate
+fields, enriches it from Wookieepedia, writes back to the COLLECTIONS
+sheet, and cross-links `collection_ids` onto each member work.
 
 ## Repo layout (relevant bits)
 
@@ -60,8 +89,8 @@ pipeline excludes them from the JSON and logs them to
 - `docs/superpowers/specs/2026-04-29-star-wars-eu-catalog-design.md` — local-only design doc (gitignored).
 - `docs/superpowers/plans/2026-04-29-star-wars-eu-catalog-plan.md` — local-only implementation plan (gitignored).
 - `data/.cache/wookieepedia/` — HTTP cache (gitignored).
-- `data/{unmatched,duplicates,missing_medium,ignored_no_year}.log` —
-  build-time logs (gitignored).
+- `data/{unmatched,duplicates,missing_medium,ignored_no_year,dead_links,unmatched_collections,invalid_collections}.log`
+  — build-time logs (gitignored).
 
 ## Commands
 
