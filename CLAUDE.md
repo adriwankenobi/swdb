@@ -30,54 +30,62 @@ specific to this user (terminology preferences, commit conventions, etc.).
 
 ## Schema (works.json)
 
-Top level: `{ generated_at, works: [...], collections: [...] }`.
+Top level: `{ generated_at, works: [...] }`. The JSON contains **works only** —
+collections and ownership are per-user (Supabase), not baked into the JSON.
 
 **Each work** has the shape:
 
-- `id`: stable uuid5 (canonical key: era|series|title|medium|number, with
-  medium as canonical STRING; era index kept internally so JSON encoding
-  flips don't change ids).
+- `id`: a **stable, frozen** uuid stored in the Excel `ID` column. The
+  pipeline reads it verbatim; if the cell is blank it generates one (seeded
+  from the legacy `era|series|title|medium|number` uuid5) and **writes it
+  back** to the Excel. Once stamped, the id never changes — editing a title,
+  era, series, etc. does NOT change the id (so per-user data keyed on the id
+  stays valid).
 - `era`: canonical STRING from the 10-entry `ERAS` list, UPPERCASE
-  (e.g. `"REBELLION"`). Note: internally the era is also represented as an
-  int index 0–9; the emitted JSON uses the string form.
-- `medium`: canonical STRING from the 7-entry `MEDIUMS` list, Title Case
-  (alphabetical: `Comic`, `Junior Novel`, `Movie`, `Novel`, `Short Story`,
-  `TV Show`, `Videogame`).
+  (e.g. `"REBELLION"`). Internally also an int index 0–9; the emitted JSON
+  uses the string form.
+- `medium`: canonical STRING from the `MEDIUMS` list, Title Case.
 - `title`: string (required).
 - `year`: signed int (negative = BBY, non-negative = ABY) — required.
 - `series`, `number`: optional **parallel string arrays** — one work may
   belong to multiple series with corresponding numbers (e.g. comic
   cross-series).
 - `release_date`, `release_precision`, `authors[]`, `publisher`,
-  `cover_url`, `wiki_url`, `year_end`, `color`, `collection_ids`: all
-  optional, omitted when empty (no nulls in the JSON). `release_precision`
-  is `"day" | "month" | "year"` and is always emitted alongside
-  `release_date`. `year_end` is present only when the item spans a year
-  range (e.g. multi-year TV runs). `color` is a `#RRGGBB` hex copied from
-  the Excel row's fill color. `collection_ids` lists every collection the
-  work is a member of.
+  `cover_url`, `wiki_url`, `year_end`: all optional, omitted when empty
+  (no nulls). `release_precision` is `"day" | "month" | "year"`, always
+  emitted alongside `release_date`. `year_end` is present only when the item
+  spans a year range (e.g. multi-year TV runs).
 
-**Each collection** has the shape:
+There is no `color` field and no `collection_ids` on works any more (removed
+when collections became per-user; item background is now driven by the
+signed-in user's ownership, and collection membership lives in Supabase).
 
-- `id`, `title` (required).
-- `eras[]`, `mediums[]`: deduplicated unions over all member works.
-- `year`, optional `year_end`: full range over members; `year_end` omitted
-  when equal to `year`.
-- `anchor_year`, `anchor_era`, `anchor_member_id`: drawn from the
-  dominant-medium member; used to place the collection on the timeline
-  and to replace the anchor work in Collections view.
-- `member_ids[]`: every work that belongs to the collection, in reading
-  order.
-- `release_date`, `release_precision`, `cover_url`, `wiki_url`, `color`:
-  all optional (same semantics as on works).
+**Excel sheet layout** (one sheet per era; the old `COLLECTED` column and
+`COLLECTIONS` sheet were removed): columns are read by absolute position —
+`A`=YEAR `B`=MEDIUM `C`=SERIES `D`=TITLE `E`=# `F`=AUTHOR `G`=PUBLISHER
+`H`=RELEASE `I`=INFO/wiki `J`=COVER `K`=ID. Excel rows with no `YEAR` cell are
+intentional reference-only entries; the pipeline excludes them and logs them
+to `data/ignored_no_year.log`.
 
-Excel rows with no `YEAR` cell are intentional reference-only entries; the
-pipeline excludes them from the JSON and logs them to
-`data/ignored_no_year.log`. Collection definitions live on a dedicated
-`COLLECTIONS` sheet in the Excel workbook; works cross-link via a
-`COLLECTED` column. The pipeline derives each collection's aggregate
-fields, enriches it from Wookieepedia, writes back to the COLLECTIONS
-sheet, and cross-links `collection_ids` onto each member work.
+## Per-user features (frontend + Supabase)
+
+Auth, ownership, and collections are entirely client-side against Supabase —
+the static site on GitHub Pages talks to Supabase directly; the Python
+pipeline knows nothing about them.
+
+- **Auth:** Supabase email+password (`userStore`). Anonymous users browse the
+  full catalog; owned/collections are gated behind sign-in.
+- **Ownership:** an `owned` table (per `user_id` + `work_id`). Owned works get
+  a green background; unowned/logged-out get the default.
+- **Collections:** per-user `collections` + `collection_members` tables
+  (RLS-guarded). Display/sort fields (eras, mediums, series, authors,
+  publishers, year range, anchor era, release date) are **derived
+  client-side** from member works (`deriveCollection`). Covers upload to a
+  public `covers` Storage bucket. A work with no cover borrows one from a
+  user collection it belongs to.
+- **Config:** `frontend/.env.local` (gitignored) holds `VITE_SUPABASE_URL`
+  and `VITE_SUPABASE_PUBLISHABLE_KEY` (the browser-safe `sb_publishable_…`
+  key; RLS protects data).
 
 ## Repo layout (relevant bits)
 
@@ -89,7 +97,7 @@ sheet, and cross-links `collection_ids` onto each member work.
 - `docs/superpowers/specs/2026-04-29-star-wars-eu-catalog-design.md` — local-only design doc (gitignored).
 - `docs/superpowers/plans/2026-04-29-star-wars-eu-catalog-plan.md` — local-only implementation plan (gitignored).
 - `data/.cache/wookieepedia/` — HTTP cache (gitignored).
-- `data/{unmatched,duplicates,missing_medium,ignored_no_year,dead_links,unmatched_collections,invalid_collections}.log`
+- `data/{unmatched,duplicates,missing_medium,ignored_no_year,dead_links}.log`
   — build-time logs (gitignored).
 
 ## Commands

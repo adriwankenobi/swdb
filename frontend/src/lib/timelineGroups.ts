@@ -6,7 +6,9 @@ import type { Item } from "./buildItemsList";
 // ---------------------------------------------------------------------------
 
 function eraOf(item: Item): EraName {
-  return item.kind === "work" ? item.work.era : item.collection.anchor_era;
+  // A user collection's anchor_era is a real EraName except for the degenerate
+  // case of zero resolvable members ("" — does not occur in practice).
+  return (item.kind === "work" ? item.work.era : item.collection.anchor_era) as EraName;
 }
 
 function yearOf(item: Item): number {

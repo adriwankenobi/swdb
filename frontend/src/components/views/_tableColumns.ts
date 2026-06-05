@@ -13,3 +13,8 @@ export const COLUMNS = [
   { key: "authors",   label: "Authors",   width: "w-56"  },  // 14rem
   { key: "publisher", label: "Publisher", width: "w-36"  },  // 9rem
 ] as const;
+
+// The "Owned" toggle column is conditional (only rendered when signed in),
+// so it lives outside COLUMNS. Header (TableView) and cell (WorkRow) share
+// this width so they stay aligned.
+export const OWNED_COLUMN_WIDTH = "w-20"; // 5rem

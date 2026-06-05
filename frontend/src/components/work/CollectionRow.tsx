@@ -3,11 +3,11 @@ import { ERA_COLORS } from "@/constants/eras";
 import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { formatReleaseDateCompact } from "@/lib/formatReleaseDate";
-import type { Collection } from "@/types/work";
+import type { DerivedCollection } from "@/types/work";
 import { COLUMNS } from "@/components/views/_tableColumns";
 
 interface CollectionRowProps {
-  collection: Collection;
+  collection: DerivedCollection;
   onClick: () => void;
 }
 
@@ -17,12 +17,12 @@ export function CollectionRow({ collection, onClick }: CollectionRowProps) {
     <div
       onClick={onClick}
       className="flex cursor-pointer items-center border-b text-sm transition-shadow hover:shadow-[inset_0_0_0_9999px_rgba(0,0,0,0.05)]"
-      style={{ backgroundColor: c.color ?? undefined }}
+      style={{ backgroundColor: "var(--owned-bg)" }}
     >
       {/* Cover */}
       <div
         className={`sticky left-0 z-10 shrink-0 px-2 py-1 ${COLUMNS[0].width}`}
-        style={{ backgroundColor: c.color ?? "var(--background)" }}
+        style={{ backgroundColor: "var(--owned-bg)" }}
       >
         {c.cover_url ? (
           <img
@@ -34,7 +34,7 @@ export function CollectionRow({ collection, onClick }: CollectionRowProps) {
         ) : (
           <div
             className="h-12 w-8 rounded"
-            style={{ backgroundColor: ERA_COLORS[c.anchor_era] }}
+            style={{ backgroundColor: c.anchor_era ? ERA_COLORS[c.anchor_era] : "var(--muted)" }}
           />
         )}
       </div>
@@ -44,11 +44,15 @@ export function CollectionRow({ collection, onClick }: CollectionRowProps) {
         {c.title}
       </div>
 
-      {/* Series — blank for collections */}
-      <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[2].width}`} />
+      {/* Series — union of member series */}
+      <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[2].width}`}>
+        {c.series.join(", ")}
+      </div>
 
-      {/* Number — blank for collections */}
-      <div className={`shrink-0 px-2 py-1 text-muted-foreground ${COLUMNS[3].width}`} />
+      {/* Number — the collection's own "#" */}
+      <div className={`shrink-0 px-2 py-1 text-muted-foreground ${COLUMNS[3].width}`}>
+        {c.number ?? ""}
+      </div>
 
       {/* Medium badges */}
       <div className={`shrink-0 px-2 py-1 flex flex-wrap gap-1 ${COLUMNS[4].width}`}>
@@ -78,11 +82,15 @@ export function CollectionRow({ collection, onClick }: CollectionRowProps) {
         {c.release_date ? formatReleaseDateCompact(c.release_date, c.release_precision) : ""}
       </div>
 
-      {/* Authors — blank for collections */}
-      <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[8].width}`} />
+      {/* Authors — union of member authors */}
+      <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[8].width}`}>
+        {c.authors.join(", ")}
+      </div>
 
-      {/* Publisher — blank for collections */}
-      <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[9].width}`} />
+      {/* Publisher — union of member publishers */}
+      <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[9].width}`}>
+        {c.publishers.join(", ")}
+      </div>
     </div>
   );
 }

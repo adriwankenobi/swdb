@@ -1,18 +1,18 @@
-import type { Work, Collection } from "@/types/work";
+import type { Work } from "../types/work";
 
-export type WorkCover =
-  | { src: string; borrowed: false }
-  | { src: string; borrowed: true }
-  | { src: null; borrowed: false };
+export interface WorkCover {
+  src: string | null;
+  borrowed: boolean;
+}
 
+/** A work's cover: its own if set, else borrowed from a user collection that
+ *  contains it (via coverByWorkId), else none. */
 export function resolveWorkCover(
   work: Work,
-  collectionsById: Map<string, Collection>,
+  coverByWorkId: Map<string, string>,
 ): WorkCover {
   if (work.cover_url) return { src: work.cover_url, borrowed: false };
-  for (const id of work.collection_ids ?? []) {
-    const c = collectionsById.get(id);
-    if (c?.cover_url) return { src: c.cover_url, borrowed: true };
-  }
+  const borrowed = coverByWorkId.get(work.id);
+  if (borrowed) return { src: borrowed, borrowed: true };
   return { src: null, borrowed: false };
 }

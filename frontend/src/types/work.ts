@@ -16,30 +16,39 @@ export interface Work {
   publisher?: string;
   cover_url?: string;
   wiki_url?: string;
-  color?: string;
-  collection_ids?: string[];
 }
 
-export interface Collection {
+/** A user-created collection as stored in Supabase (raw, no derived fields). */
+export interface UserCollection {
   id: string;
   title: string;
+  number?: number; // user-set; shown in the table "#" column
+  info_url?: string;
+  cover_url?: string;
+  member_ids: string[]; // work ids in reading order
+}
+
+/** A user collection with display/sort fields derived from its member works. */
+export interface DerivedCollection {
+  id: string;
+  title: string;
+  number?: number; // user-set; shown in the table "#" column
+  info_url?: string;
+  cover_url?: string;
+  member_ids: string[];
   eras: EraName[];
   mediums: MediumName[];
-  year: number;          // full-range min across all members
-  year_end?: number;     // full-range max, omitted when equal to year
-  anchor_year: number;   // min year over dominant-medium members
-  anchor_era: EraName;   // timeline band: era of the anchor member
-  anchor_member_id: string;  // work id of the anchor member
+  series: string[]; // union of member series (deduped)
+  authors: string[]; // union of member authors (deduped)
+  publishers: string[]; // union of member publishers (deduped)
+  year: number;
+  year_end?: number;
+  anchor_era: EraName | ""; // era of the earliest-year member ("" when no members)
   release_date?: string;
-  release_precision?: "day" | "month" | "year";
-  cover_url?: string;
-  wiki_url?: string;
-  color?: string;
-  member_ids: string[];
+  release_precision?: Work["release_precision"];
 }
 
 export interface WorksFile {
   generated_at: string;
   works: Work[];
-  collections: Collection[];
 }

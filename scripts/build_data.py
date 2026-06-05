@@ -9,7 +9,6 @@ from collections import defaultdict
 from datetime import UTC, datetime
 from pathlib import Path
 
-from scripts.collections_reader import ExcelCollectionRow, read_collections
 from scripts.excel_reader import ExcelRow, read_works
 from scripts.excel_writer import update_excel
 from scripts.id_utils import make_id
@@ -26,9 +25,6 @@ IGNORED_NO_YEAR_LOG = REPO_ROOT / "data" / "ignored_no_year.log"
 CACHE_DIR = REPO_ROOT / "data" / ".cache" / "wookieepedia"
 UNMATCHED_LOG = REPO_ROOT / "data" / "unmatched.log"
 DEAD_LINKS_LOG = REPO_ROOT / "data" / "dead_links.log"
-INVALID_COLLECTIONS_LOG = REPO_ROOT / "data" / "invalid_collections.log"
-UNMATCHED_COLLECTIONS_LOG = REPO_ROOT / "data" / "unmatched_collections.log"
-
 # Canonical era list, indexed by ExcelRow.era. Order matches
 # excel_reader.ERA_INDEX. New entries must be APPENDED so existing indices
 # (used internally by make_id) retain their meaning.
@@ -77,61 +73,6 @@ def _dominant_medium(mediums: set[str]) -> str:
     raise ValueError(f"No priority defined for mediums: {mediums}")
 
 
-def derive_collection(
-    row: ExcelCollectionRow,
-    members: list[dict],  # ordered in workbook order
-) -> dict:
-    """Build a Collection dict from the Excel row + ordered member work dicts.
-
-    Precondition: len(members) >= 2 (caller has filtered).
-    """
-    from scripts.id_utils import make_collection_id
-
-    eras = sorted({m["era"] for m in members})
-    mediums = sorted({m["medium"] for m in members})
-
-    # Full display range across all members.
-    year_min = min(m["year"] for m in members)
-    year_max = max(m.get("year_end", m["year"]) for m in members)
-
-    # Anchor: dominant-medium members only.
-    dominant = _dominant_medium(set(mediums))
-    dom_members = [m for m in members if m["medium"] == dominant]
-    anchor_year = min(m["year"] for m in dom_members)
-    # First dominant member (workbook order) whose year equals the anchor.
-    anchor = next(m for m in dom_members if m["year"] == anchor_year)
-
-    collection: dict = {
-        "id": make_collection_id(row.title),
-        "title": row.title,
-        "eras": eras,
-        "mediums": mediums,
-        "year": year_min,
-        "anchor_year": anchor_year,
-        "anchor_era": anchor["era"],
-        "anchor_member_id": anchor["id"],
-        "member_ids": [m["id"] for m in members],
-    }
-    if year_max != year_min:
-        collection["year_end"] = year_max
-    if row.release_date_str:
-        parsed = parse_excel_release(row.release_date_str)
-        if parsed:
-            iso, precision = parsed
-            collection["release_date"] = iso
-            collection["release_precision"] = precision
-    if row.color is not None:
-        collection["color"] = row.color
-    return collection
-
-
-def _split_collected_titles(raw: str | None) -> list[str]:
-    """Split COLLECTED cell on commas; trim and drop empties."""
-    if not raw:
-        return []
-    return [p.strip() for p in raw.split(",") if p.strip()]
-
-
 def _row_to_work(row: ExcelRow) -> dict:
     """Build a work dict.
 
@@ -142,7 +83,8 @@ def _row_to_work(row: ExcelRow) -> dict:
     # key string is unchanged across the JSON schema flip. Do NOT pass
     # ERAS[row.era] here — it would invalidate every existing UUID.
     work: dict = {
-        "id": make_id(
+        "id": row.work_id
+        or make_id(
             era=row.era,
             series=row.series,
             title=row.title,
@@ -161,9 +103,26 @@ def _row_to_work(row: ExcelRow) -> dict:
         work["series"] = series
     if number:
         work["number"] = number
-    if row.color is not None:
-        work["color"] = row.color
     return work
+
+
+def _build_ids_writeback(works: list[dict], rows: list[ExcelRow]) -> dict[tuple, str]:
+    """Map the writer's lookup key -> generated id for rows whose ID cell was
+    blank (so existing ids are never rewritten).
+    """
+    out: dict[tuple, str] = {}
+    for work, row in zip(works, rows, strict=True):
+        if row.work_id:
+            continue
+        key = _work_lookup_key(row, work)
+        out[key] = work["id"]
+    return out
+
+
+def _work_lookup_key(row: ExcelRow, work: dict) -> tuple:
+    """Lookup key matching excel_writer's _make_lookup_key: (era, title,
+    series, canonical-medium, number)."""
+    return (row.era, row.title, row.series, work["medium"], row.number)
 
 
 def _detect_duplicates(works: list[dict]) -> list[list[dict]]:
@@ -266,45 +225,6 @@ def _enrich(
         return
     fields = parse_infobox(html)
     _merge_excel_priority(work, row, fields)
-
-
-def _enrich_collection(
-    collection: dict,
-    row: ExcelCollectionRow,
-    client: WikiClient,
-    unmatched: list[str],
-    parse_infobox=parse_infobox,
-) -> None:
-    """Resolve wiki URL and populate cover + release on `collection`.
-
-    Excel-supplied release_date_str / cover_url (already on the dict via
-    derive_collection) win wholesale. Author/publisher are not fetched for
-    v1.
-    """
-    url, source = client.resolve_url(
-        info_url=row.info_url,
-        title=row.title,
-        series=None,
-    )
-    if not url:
-        unmatched.append(f"collection|{row.title}|source={source}")
-        return
-    collection["wiki_url"] = url
-
-    if row.release_date_str and row.cover_url:
-        collection["cover_url"] = row.cover_url
-        return
-
-    html = client.fetch_html(url)
-    if not html:
-        unmatched.append(f"collection|{row.title}|source=dead_url")
-        return
-    fields = parse_infobox(html)
-    if "cover_url" not in collection and fields.get("cover_url"):
-        collection["cover_url"] = fields["cover_url"]
-    if "release_date" not in collection and fields.get("release_date"):
-        collection["release_date"] = fields["release_date"]
-        collection["release_precision"] = fields["release_precision"]
 
 
 def _split_series_and_number(
@@ -430,55 +350,10 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
                 file=sys.stderr,
             )
 
-    # --- Collections ---
-    collection_rows = list(read_collections(EXCEL_PATH))
-    members_by_title: dict[str, list[dict]] = defaultdict(list)
-    titles_per_work: dict[str, list[str]] = {}
-    for work, row in zip(works, valid_rows, strict=True):
-        titles = _split_collected_titles(row.collected)
-        if not titles:
-            continue
-        titles_per_work[work["id"]] = titles
-        for t in titles:
-            members_by_title[t].append(work)
-
-    collections_out: list[dict] = []
-    invalid_collections: list[str] = []
-    known_titles: set[str] = set()
-    title_to_id: dict[str, str] = {}
-    for crow in collection_rows:
-        known_titles.add(crow.title)
-        members = members_by_title.get(crow.title, [])
-        if len(members) < 2:
-            invalid_collections.append(f"{crow.title}|members={len(members)}")
-            continue
-        c = derive_collection(crow, members)
-        if not dry_run:
-            _enrich_collection(c, crow, client, unmatched)
-        collections_out.append(c)
-        title_to_id[crow.title] = c["id"]
-
-    # Attach collection_ids to each work, preserving Excel comma order.
-    # Skip titles that didn't produce a valid collection (single-member or
-    # absent from the COLLECTIONS sheet — both surface via the logs).
-    for work in works:
-        titles = titles_per_work.get(work["id"], [])
-        ids = [title_to_id[t] for t in titles if t in title_to_id]
-        if ids:
-            work["collection_ids"] = ids
-
-    unmatched_collections: list[str] = []
-    for work, row in zip(works, valid_rows, strict=True):
-        titles = titles_per_work.get(work["id"], [])
-        for t in titles:
-            if t not in known_titles:
-                unmatched_collections.append(f"{row.era}|{row.title}|{row.medium}|missing={t}")
-
     _detect_duplicates(works)
     payload = {
         "generated_at": datetime.now(UTC).isoformat(timespec="seconds"),
         "works": works,
-        "collections": collections_out,
     }
 
     # Build enriched lookup for Excel writeback
@@ -495,13 +370,7 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
         if "cover_url" in work:
             fields["cover_url"] = work["cover_url"]
         if fields:
-            key = (
-                row.era,
-                row.title,
-                row.series,
-                work["medium"],  # already a canonical string
-                row.number,
-            )
+            key = _work_lookup_key(row, work)
             enriched_lookup[key] = fields
 
     summary = (
@@ -534,37 +403,17 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
         "\n".join(unmatched) + ("\n" if unmatched else ""),
         encoding="utf-8",
     )
-    INVALID_COLLECTIONS_LOG.parent.mkdir(parents=True, exist_ok=True)
-    INVALID_COLLECTIONS_LOG.write_text(
-        "\n".join(invalid_collections) + ("\n" if invalid_collections else ""),
-        encoding="utf-8",
-    )
-    UNMATCHED_COLLECTIONS_LOG.parent.mkdir(parents=True, exist_ok=True)
-    UNMATCHED_COLLECTIONS_LOG.write_text(
-        "\n".join(unmatched_collections) + ("\n" if unmatched_collections else ""),
-        encoding="utf-8",
-    )
     DEAD_LINKS_LOG.parent.mkdir(parents=True, exist_ok=True)
     DEAD_LINKS_LOG.write_text(
         "\n".join(dead_links) + ("\n" if dead_links else ""),
         encoding="utf-8",
     )
 
-    collections_writeback: dict[str, dict] = {}
-    for c in collections_out:
-        fields: dict = {}
-        if "release_date" in c:
-            fields["release_date"] = c["release_date"]
-            fields["release_precision"] = c["release_precision"]
-        if "cover_url" in c:
-            fields["cover_url"] = c["cover_url"]
-        if fields:
-            collections_writeback[c["title"]] = fields
-
+    ids_writeback = _build_ids_writeback(works, valid_rows)
     writeback = update_excel(
         EXCEL_PATH,
         enriched_lookup,
-        collections_enriched=collections_writeback,
+        ids=ids_writeback,
     )
     print(
         f"wrote {summary} to {OUTPUT_PATH}; "

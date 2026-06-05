@@ -1,5 +1,9 @@
 import { useEffect, useRef } from "react";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { useEditorStore } from "@/store/editorStore";
+import { useUserStore } from "@/store/userStore";
+import { PencilIcon, TrashIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { ERA_COLORS } from "@/constants/eras";
 import { MEDIUM_COLORS } from "@/constants/mediums";
@@ -11,6 +15,7 @@ import { useFilterStore } from "@/store/filterStore";
 import { useModalNeighbors } from "@/lib/useModalNeighbors";
 import { useSwipe } from "@/lib/useSwipe";
 import { ModalNavArrows } from "@/components/work/ModalNavArrows";
+import { useDerivedCollections } from "@/lib/useDerivedCollections";
 import type { Item } from "@/lib/buildItemsList";
 
 function safeHttpUrl(url: string | undefined): string | undefined {
@@ -23,8 +28,9 @@ interface CollectionDetailModalProps {
 }
 
 export function CollectionDetailModal({ visibleItems }: CollectionDetailModalProps) {
-  const { openCollectionId, set } = useFilterStore();
-  const collectionsById = useCatalogStore((s) => s.collectionsById);
+  const { openCollectionId, set, toggleArrayValue } = useFilterStore();
+  const derivedCollections = useDerivedCollections();
+  const collectionsById = new Map(derivedCollections.map((c) => [c.id, c]));
   const worksById = useCatalogStore((s) => s.worksById);
   const collection = openCollectionId ? collectionsById.get(openCollectionId) ?? null : null;
 
@@ -68,7 +74,7 @@ export function CollectionDetailModal({ visibleItems }: CollectionDetailModalPro
     >
       <DialogContent
         className="!max-w-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden px-14"
-        style={collection?.color ? { backgroundColor: collection.color } : undefined}
+        style={{ backgroundColor: "var(--owned-bg)" }}
       >
         <ModalNavArrows
           hasPrev={hasPrev}
@@ -94,22 +100,31 @@ export function CollectionDetailModal({ visibleItems }: CollectionDetailModalPro
                 ) : (
                   <div
                     className="flex h-full items-center justify-center px-3 text-center text-base font-semibold leading-snug text-white text-balance line-clamp-6 break-words"
-                    style={{ backgroundColor: ERA_COLORS[collection.anchor_era] }}
+                    style={{ backgroundColor: collection.anchor_era ? ERA_COLORS[collection.anchor_era] : "var(--muted)" }}
                   >
                     {collection.title}
                   </div>
                 )}
               </div>
               <div className="min-w-0 flex-1 space-y-3 text-sm">
-                {collection.mediums.length > 0 && (
-                  <div className="flex flex-wrap gap-x-2 gap-y-1">
+                {(collection.series.length > 0 || collection.number != null) && (
+                  <div className="flex flex-wrap items-center gap-x-1 gap-y-1 font-medium break-words">
+                    {collection.series.map((s, i) => (
+                      <span key={s}>
+                        {i > 0 && <span className="text-muted-foreground">, </span>}
+                        {s}
+                      </span>
+                    ))}
+                    {collection.number != null && (
+                      <span>{collection.series.length > 0 ? ` #${collection.number}` : `#${collection.number}`}</span>
+                    )}
+                  </div>
+                )}
+                {(collection.mediums.length > 0 || collection.eras.length > 0) && (
+                  <div className="flex flex-wrap items-center gap-2">
                     {collection.mediums.map((m) => (
                       <Badge key={m} style={{ backgroundColor: MEDIUM_COLORS[m], color: "white" }}>{m}</Badge>
                     ))}
-                  </div>
-                )}
-                {collection.eras.length > 0 && (
-                  <div className="flex flex-wrap gap-x-2 gap-y-1">
                     {collection.eras.map((e) => (
                       <Badge key={e} style={{ backgroundColor: ERA_COLORS[e], color: "white" }}>{e}</Badge>
                     ))}
@@ -125,15 +140,51 @@ export function CollectionDetailModal({ visibleItems }: CollectionDetailModalPro
                     {formatReleaseDate(collection.release_date, collection.release_precision)}
                   </p>
                 )}
-                {safeHttpUrl(collection.wiki_url) && (
+                {collection.authors.length > 0 && (
+                  <p className="break-words">
+                    <span className="text-muted-foreground">Authors:</span>{" "}
+                    {collection.authors.map((author, i) => (
+                      <span key={author}>
+                        {i > 0 && ", "}
+                        <button
+                          type="button"
+                          className="cursor-pointer hover:underline"
+                          onClick={() => { toggleArrayValue("authors", author); set({ openCollectionId: null }); }}
+                        >
+                          {author}
+                        </button>
+                      </span>
+                    ))}
+                  </p>
+                )}
+                {collection.publishers.length > 0 && (
+                  <p className="break-words">
+                    <span className="text-muted-foreground">
+                      {collection.publishers.length === 1 ? "Publisher:" : "Publishers:"}
+                    </span>{" "}
+                    {collection.publishers.map((publisher, i) => (
+                      <span key={publisher}>
+                        {i > 0 && ", "}
+                        <button
+                          type="button"
+                          className="cursor-pointer hover:underline"
+                          onClick={() => { toggleArrayValue("publishers", publisher); set({ openCollectionId: null }); }}
+                        >
+                          {publisher}
+                        </button>
+                      </span>
+                    ))}
+                  </p>
+                )}
+                {safeHttpUrl(collection.info_url) && (
                   <p className="break-words">
                     <a
-                      href={safeHttpUrl(collection.wiki_url)}
+                      href={safeHttpUrl(collection.info_url)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="underline inline-block"
                     >
-                      Open on Wookieepedia →
+                      Open link →
                     </a>
                   </p>
                 )}
@@ -170,6 +221,25 @@ export function CollectionDetailModal({ visibleItems }: CollectionDetailModalPro
           </>
         )}
         </div>
+        {collection && (
+          <DialogFooter>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => { useEditorStore.getState().openEdit(collection.id); set({ openCollectionId: null }); }}
+            >
+              <PencilIcon className="size-4" /> <span className="ml-1">Edit</span>
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-destructive"
+              onClick={() => { void useUserStore.getState().deleteCollection(collection.id); set({ openCollectionId: null }); }}
+            >
+              <TrashIcon className="size-4" /> <span className="ml-1">Delete</span>
+            </Button>
+          </DialogFooter>
+        )}
       </DialogContent>
     </Dialog>
   );

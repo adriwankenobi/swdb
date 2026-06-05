@@ -6,11 +6,16 @@ import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { formatReleaseDate } from "@/lib/formatReleaseDate";
 import { resolveWorkCover } from "@/lib/resolveWorkCover";
+import { useWorkCoverFallback } from "@/lib/useWorkCoverFallback";
 import { useCatalogStore } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
+import { useUserStore } from "@/store/userStore";
 import { useModalNeighbors } from "@/lib/useModalNeighbors";
 import { useSwipe } from "@/lib/useSwipe";
 import { ModalNavArrows } from "@/components/work/ModalNavArrows";
+import { OwnedCheckbox } from "@/components/work/OwnedCheckbox";
+import { AddToCollectionMenu } from "@/components/work/AddToCollectionMenu";
+import { useDerivedCollections } from "@/lib/useDerivedCollections";
 import type { Item } from "@/lib/buildItemsList";
 
 function safeHttpUrl(url: string | undefined): string | undefined {
@@ -25,8 +30,9 @@ interface WorkDetailModalProps {
 export function WorkDetailModal({ visibleItems }: WorkDetailModalProps) {
   const { openWorkId, set, toggleArrayValue } = useFilterStore();
   const works = useCatalogStore((s) => s.works);
-  const collectionsById = useCatalogStore((s) => s.collectionsById);
+  const coverByWorkId = useWorkCoverFallback();
   const work = openWorkId ? works.find((w) => w.id === openWorkId) : null;
+  const isOwned = useUserStore((s) => (work ? s.ownedIds.has(work.id) : false));
   const openCollectionId = useFilterStore((s) => s.openCollectionId);
   const { hasPrev, hasNext, isOrphan, goPrev, goNext } = useModalNeighbors(
     visibleItems,
@@ -57,9 +63,12 @@ export function WorkDetailModal({ visibleItems }: WorkDetailModalProps) {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [work, hasPrev, hasNext, goPrev, goNext]);
-  const collections = (work?.collection_ids ?? [])
-    .map((id) => collectionsById.get(id))
-    .filter((c): c is NonNullable<typeof c> => !!c);
+  // The user's collections that contain this work (not the baked
+  // works.json collection_ids — those are removed in Phase 3c).
+  const derivedCollections = useDerivedCollections();
+  const collections = work
+    ? derivedCollections.filter((c) => c.member_ids.includes(work.id))
+    : [];
 
   function closeModal() {
     set({ openWorkId: null });
@@ -74,7 +83,7 @@ export function WorkDetailModal({ visibleItems }: WorkDetailModalProps) {
     >
       <DialogContent
         className="!max-w-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden px-14"
-        style={work?.color ? { backgroundColor: work.color } : undefined}
+        style={isOwned ? { backgroundColor: "var(--owned-bg)" } : undefined}
       >
         <ModalNavArrows
           hasPrev={hasPrev}
@@ -92,7 +101,7 @@ export function WorkDetailModal({ visibleItems }: WorkDetailModalProps) {
             <div className="flex flex-row gap-4 md:gap-6">
               <div className="w-28 md:w-[200px] shrink-0 aspect-[2/3] overflow-hidden rounded-md bg-muted/40">
                 {(() => {
-                  const cover = resolveWorkCover(work, collectionsById);
+                  const cover = resolveWorkCover(work, coverByWorkId);
                   if (!cover.src) {
                     return (
                       <div
@@ -110,7 +119,7 @@ export function WorkDetailModal({ visibleItems }: WorkDetailModalProps) {
               </div>
               <div className="min-w-0 flex-1 space-y-3 text-sm">
                 {work.series && work.series.length > 0 && (
-                  <div className="flex flex-wrap gap-x-3 gap-y-1">
+                  <div className="flex flex-wrap gap-x-3 gap-y-1 font-medium break-words">
                     {work.series.map((s, i) => {
                       const n = work.number?.[i];
                       const label = !n
@@ -118,16 +127,7 @@ export function WorkDetailModal({ visibleItems }: WorkDetailModalProps) {
                         : work.medium === "TV Show"
                           ? `${s} ${n}`
                           : `${s} #${n}`;
-                      return (
-                        <button
-                          key={s}
-                          type="button"
-                          className="font-medium cursor-pointer hover:underline break-words"
-                          onClick={() => { toggleArrayValue("series", s); closeModal(); }}
-                        >
-                          {label}
-                        </button>
-                      );
+                      return <span key={s}>{label}</span>;
                     })}
                   </div>
                 )}
@@ -188,6 +188,8 @@ export function WorkDetailModal({ visibleItems }: WorkDetailModalProps) {
                     </a>
                   </p>
                 )}
+                <OwnedCheckbox workId={work.id} />
+                <AddToCollectionMenu workId={work.id} />
               </div>
             </div>
             {collections.length > 0 && (

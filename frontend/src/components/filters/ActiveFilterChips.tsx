@@ -1,11 +1,19 @@
+import { useMemo } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { UNCREDITED_AUTHOR_VALUE, useCatalogStore } from "@/store/catalogStore";
+import { UNCREDITED_AUTHOR_VALUE } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
+import { useDerivedCollections } from "@/lib/useDerivedCollections";
 
 export function ActiveFilterChips() {
   const s = useFilterStore();
-  const collectionsById = useCatalogStore((cs) => cs.collectionsById);
+  // Collection filter values are USER collection ids — resolve their titles
+  // from the derived (user) collections, not the catalog's baked map.
+  const derivedCollections = useDerivedCollections();
+  const collectionTitleById = useMemo(
+    () => new Map(derivedCollections.map((c) => [c.id, c.title])),
+    [derivedCollections],
+  );
   const chips: { key: string; label: string; clear: () => void }[] = [];
   s.eras.forEach((era) =>
     chips.push({ key: `era:${era}`, label: era, clear: () => s.toggleArrayValue("eras", era) }),
@@ -37,11 +45,11 @@ export function ActiveFilterChips() {
     chips.push({ key: `publisher:${m}`, label: m, clear: () => s.toggleArrayValue("publishers", m) }),
   );
   s.collections.forEach((id) => {
-    const c = collectionsById.get(id);
-    if (!c) return;
+    const title = collectionTitleById.get(id);
+    if (!title) return;
     chips.push({
       key: `collection:${id}`,
-      label: c.title,
+      label: title,
       clear: () => s.toggleArrayValue("collections", id),
     });
   });

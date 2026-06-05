@@ -9,6 +9,7 @@ const empty: FilterState = {
   releaseUndated: false,
   view: "cards", sort: "chronology", items: "issues",
   openWorkId: null, openCollectionId: null,
+  ownership: "all",
 };
 
 describe("urlState", () => {

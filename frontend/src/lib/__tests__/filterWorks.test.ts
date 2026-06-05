@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { Work, Collection } from "../../types/work";
+import type { Work, DerivedCollection } from "../../types/work";
 import type { FilterState } from "../../store/filterStore";
 import { filterWorks, filterAndSortItems } from "../filterWorks";
 
@@ -21,6 +21,7 @@ const empty: FilterState = {
   releaseUndated: false,
   view: "cards", sort: "chronology", items: "issues",
   openWorkId: null, openCollectionId: null,
+  ownership: "all",
 };
 
 describe("filterWorks", () => {
@@ -202,6 +203,7 @@ const baseState: FilterState = {
   publishers: [], collections: [], q: "", releaseUndated: false,
   view: "cards", sort: "chronology", items: "collections",
   openWorkId: null, openCollectionId: null,
+  ownership: "all",
 };
 
 const work = (id: string, extra: Partial<Work> = {}): Work => ({
@@ -211,13 +213,13 @@ const work = (id: string, extra: Partial<Work> = {}): Work => ({
 describe("filterAndSortItems — collections view aggregation", () => {
   it("includes a collection when an era matches via any member", () => {
     const works: Work[] = [
-      work("a", { era: "REBELLION", collection_ids: ["c1"] }),
-      work("b", { era: "NEW REPUBLIC", collection_ids: ["c1"] }),
+      work("a", { era: "REBELLION" }),
+      work("b", { era: "NEW REPUBLIC" }),
     ];
-    const c: Collection = {
+    const c: DerivedCollection = {
       id: "c1", title: "C", eras: ["REBELLION", "NEW REPUBLIC"],
-      mediums: ["Comic"], year: 0, anchor_year: 0, anchor_era: "REBELLION",
-      anchor_member_id: "a", member_ids: ["a", "b"],
+      mediums: ["Comic"], series: [], authors: [], publishers: [], year: 0, anchor_era: "REBELLION",
+      member_ids: ["a", "b"],
     };
     const items = filterAndSortItems(
       works, [c],
@@ -230,13 +232,13 @@ describe("filterAndSortItems — collections view aggregation", () => {
 
   it("excludes a collection when no member matches the series filter", () => {
     const works: Work[] = [
-      work("a", { collection_ids: ["c1"], series: ["Alpha"] }),
-      work("b", { collection_ids: ["c1"], series: ["Alpha"] }),
+      work("a", { series: ["Alpha"] }),
+      work("b", { series: ["Alpha"] }),
     ];
-    const c: Collection = {
-      id: "c1", title: "C", eras: ["REBELLION"], mediums: ["Comic"],
-      year: 0, anchor_year: 0, anchor_era: "REBELLION",
-      anchor_member_id: "a", member_ids: ["a", "b"],
+    const c: DerivedCollection = {
+      id: "c1", title: "C", eras: ["REBELLION"], mediums: ["Comic"], series: [], authors: [], publishers: [],
+      year: 0, anchor_era: "REBELLION",
+      member_ids: ["a", "b"],
     };
     const items = filterAndSortItems(
       works, [c],
@@ -244,5 +246,80 @@ describe("filterAndSortItems — collections view aggregation", () => {
       { worksById: new Map(works.map((w) => [w.id, w])) },
     );
     expect(items).toEqual([]);
+  });
+
+  it("issues mode: selecting a collection shows its member works (via derived membership)", () => {
+    const works: Work[] = [work("a"), work("b"), work("c")];
+    const c: DerivedCollection = {
+      id: "c1", title: "C", eras: ["REBELLION"], mediums: ["Comic"], series: [], authors: [], publishers: [],
+      year: 0, anchor_era: "REBELLION",
+      member_ids: ["a", "b"],
+    };
+    const items = filterAndSortItems(
+      works, [c],
+      { ...baseState, items: "issues", collections: ["c1"] },
+      { worksById: new Map(works.map((w) => [w.id, w])) },
+    );
+    expect(items.map((i) => (i.kind === "work" ? i.work.id : i.collection.id)).sort())
+      .toEqual(["a", "b"]);
+  });
+});
+
+describe("filterAndSortItems — collections mode owned-only loose works", () => {
+  it("collections mode shows owned loose works + collections, hides unowned loose works", () => {
+    // m1 is a collection member, o1 is an owned loose work, u1 is an unowned loose work.
+    const works: Work[] = [
+      work("m1"),
+      work("o1"),
+      work("u1"),
+    ];
+    const c: DerivedCollection = {
+      id: "c1", title: "C", eras: ["REBELLION"], mediums: ["Comic"], series: [], authors: [], publishers: [],
+      year: 0, anchor_era: "REBELLION",
+      member_ids: ["m1"],
+    };
+    const ownedIds = new Set(["m1", "o1"]);
+    const ctx = { worksById: new Map(works.map((w) => [w.id, w])), ownedIds };
+    const items = filterAndSortItems(
+      works, [c],
+      { ...baseState, items: "collections" },
+      ctx,
+    );
+    const ids = items.map((i) => (i.kind === "collection" ? i.collection.id : i.work.id));
+    // Collection appears; o1 (owned loose) appears; u1 (unowned loose) and m1 (folded) are absent.
+    expect(ids).toContain("c1");
+    expect(ids).toContain("o1");
+    expect(ids).not.toContain("u1");
+    expect(ids).not.toContain("m1");
+  });
+});
+
+describe("filterAndSortItems — ownership", () => {
+  const works = [
+    { id: "w1", era: "REBELLION", title: "Owned One", medium: "Novel", year: 0 },
+    { id: "w2", era: "REBELLION", title: "Unowned Two", medium: "Novel", year: 1 },
+  ] as never[];
+  const ctx = { worksById: new Map((works as any[]).map((w: any) => [w.id, w])), ownedIds: new Set(["w1"]) };
+  const base: FilterState = { ...baseState, items: "issues" };
+
+  it("ownership=all shows both", () => {
+    const out = filterAndSortItems(works, [], { ...base, ownership: "all" }, ctx);
+    expect(out.length).toBe(2);
+  });
+  it("ownership=owned shows only owned", () => {
+    const out = filterAndSortItems(works, [], { ...base, ownership: "owned" }, ctx);
+    expect(out.map((i: any) => i.work.id)).toEqual(["w1"]);
+  });
+  it("ownership=unowned shows only unowned", () => {
+    const out = filterAndSortItems(works, [], { ...base, ownership: "unowned" }, ctx);
+    expect(out.map((i: any) => i.work.id)).toEqual(["w2"]);
+  });
+  it("ignores ownership when signed out (no ownedIds in ctx)", () => {
+    // ownership=owned but ctx has NO ownedIds → must not empty the catalog
+    const out = filterAndSortItems(
+      works, [], { ...base, items: "issues", ownership: "owned" },
+      { worksById: ctx.worksById }, // no ownedIds
+    );
+    expect(out.length).toBe(2);
   });
 });

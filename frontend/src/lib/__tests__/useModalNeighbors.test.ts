@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import type { Item } from "../buildItemsList";
-import type { Work, Collection } from "@/types/work";
+import type { Work, DerivedCollection } from "@/types/work";
 
 const setSpy = vi.fn();
 
@@ -16,16 +16,17 @@ function w(id: string): Work {
   return { id, era: "REBELLION", title: id, medium: "Comic", year: 0 };
 }
 
-function c(id: string): Collection {
+function c(id: string): DerivedCollection {
   return {
     id,
     title: id,
     eras: ["REBELLION"],
     mediums: ["Comic"],
+    series: [],
+    authors: [],
+    publishers: [],
     year: 0,
-    anchor_year: 0,
     anchor_era: "REBELLION",
-    anchor_member_id: "x",
     member_ids: ["x"],
   };
 }

@@ -3,20 +3,24 @@ import { ERA_COLORS } from "@/constants/eras";
 import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { formatSeriesAndNumber } from "@/lib/formatSeriesAndNumber";
-import { useCatalogStore } from "@/store/catalogStore";
 import { resolveWorkCover } from "@/lib/resolveWorkCover";
+import { useWorkCoverFallback } from "@/lib/useWorkCoverFallback";
+import { useUserStore } from "../../store/userStore";
+import { ownedBackground } from "../../lib/ownedBackground";
+import { OwnedCheckbox } from "@/components/work/OwnedCheckbox";
 import type { Work } from "@/types/work";
 
 export function WorkCard({ work, onClick }: { work: Work; onClick: () => void }) {
-  const collectionsById = useCatalogStore((s) => s.collectionsById);
-  const cover = resolveWorkCover(work, collectionsById);
+  const coverByWorkId = useWorkCoverFallback();
+  const cover = resolveWorkCover(work, coverByWorkId);
+  const isOwned = useUserStore((s) => s.ownedIds.has(work.id));
 
   return (
     <button
       type="button"
       onClick={onClick}
       className="group flex flex-col overflow-hidden rounded-lg border text-left shadow-sm transition hover:shadow-md focus:outline-none focus:ring-2 focus:ring-ring"
-      style={{ backgroundColor: work.color ?? "var(--card)" }}
+      style={{ backgroundColor: ownedBackground(isOwned) }}
     >
       <div className="aspect-[2/3] w-full overflow-hidden bg-muted">
         {cover.src ? (
@@ -55,6 +59,7 @@ export function WorkCard({ work, onClick }: { work: Work; onClick: () => void })
         {work.authors && work.authors.length > 0 && (
           <p className="line-clamp-1 text-xs text-muted-foreground">{work.authors.join(", ")}</p>
         )}
+        <OwnedCheckbox workId={work.id} />
       </div>
     </button>
   );

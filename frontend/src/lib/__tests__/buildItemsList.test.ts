@@ -1,9 +1,16 @@
 import { describe, it, expect } from "vitest";
 import { buildItemsList } from "../buildItemsList";
-import type { Work, Collection } from "../../types/work";
+import type { Work, DerivedCollection } from "../../types/work";
 
 const w = (id: string, era: Work["era"], extra: Partial<Work> = {}): Work => ({
   id, era, title: id, medium: "Comic", year: 0, ...extra,
+});
+
+const dc = (id: string, memberIds: string[], extra: Partial<DerivedCollection> = {}): DerivedCollection => ({
+  id, title: id, member_ids: memberIds,
+  eras: ["REBELLION"], mediums: ["Comic"], series: [], authors: [], publishers: [],
+  year: 0, anchor_era: "REBELLION",
+  ...extra,
 });
 
 describe("buildItemsList", () => {
@@ -15,57 +22,78 @@ describe("buildItemsList", () => {
     ]);
   });
 
-  it("inserts a collection at its anchor_member position and drops members", () => {
+  it("issues mode maps all works including members", () => {
     const works = [
-      w("a", "REBELLION", { collection_ids: ["c1"] }),
-      w("b", "REBELLION", { collection_ids: ["c1"] }),
-      w("c", "REBELLION"),
+      w("a", "REBELLION"),
+      w("b", "REBELLION"),
     ];
-    const c: Collection = {
-      id: "c1", title: "C1", eras: ["REBELLION"], mediums: ["Comic"],
-      year: 0, anchor_year: 0, anchor_era: "REBELLION",
-      anchor_member_id: "b", member_ids: ["a", "b"],
-    };
+    const c = dc("c1", ["a"]);
+    const items = buildItemsList(works, [c], "issues");
+    expect(items).toEqual([
+      { kind: "work", work: works[0] },
+      { kind: "work", work: works[1] },
+    ]);
+  });
+
+  it("collections mode: member works are excluded; collection appears once; non-member works appear", () => {
+    const works = [
+      w("m1", "REBELLION"),
+      w("m2", "REBELLION"),
+      w("loose", "REBELLION"),
+    ];
+    const c = dc("c1", ["m1", "m2"]);
     const items = buildItemsList(works, [c], "collections");
     expect(items).toEqual([
-      // 'a' is a member of c1 but not the anchor → skipped.
       { kind: "collection", collection: c },
       { kind: "work", work: works[2] },
     ]);
   });
 
-  it("pushes multiple collections when one work anchors several", () => {
-    // 'b' anchors both c1 and c2.
+  it("collections mode: each collection appears exactly once", () => {
     const works = [
-      w("a", "REBELLION", { collection_ids: ["c1"] }),
-      w("b", "REBELLION", { collection_ids: ["c1", "c2"] }),
-      w("c", "REBELLION", { collection_ids: ["c2"] }),
+      w("a", "REBELLION"),
+      w("b", "REBELLION"),
     ];
-    const c1: Collection = {
-      id: "c1", title: "C1", eras: ["REBELLION"], mediums: ["Comic"],
-      year: 0, anchor_year: 0, anchor_era: "REBELLION",
-      anchor_member_id: "b", member_ids: ["a", "b"],
-    };
-    const c2: Collection = {
-      id: "c2", title: "C2", eras: ["REBELLION"], mediums: ["Comic"],
-      year: 0, anchor_year: 0, anchor_era: "REBELLION",
-      anchor_member_id: "b", member_ids: ["b", "c"],
-    };
+    const c1 = dc("c1", ["a"]);
+    const c2 = dc("c2", ["b"]);
     const items = buildItemsList(works, [c1, c2], "collections");
+    const collectionIds = items
+      .filter((i) => i.kind === "collection")
+      .map((i) => (i as { kind: "collection"; collection: DerivedCollection }).collection.id);
+    expect(collectionIds).toEqual(["c1", "c2"]);
+    // No duplicates.
+    expect(new Set(collectionIds).size).toBe(2);
+  });
+
+  it("collections mode: non-member works appear after collections", () => {
+    const works = [
+      w("member", "REBELLION"),
+      w("loose", "REBELLION"),
+    ];
+    const c = dc("c1", ["member"]);
+    const items = buildItemsList(works, [c], "collections");
+    expect(items[0]).toEqual({ kind: "collection", collection: c });
+    expect(items[1]).toEqual({ kind: "work", work: works[1] });
+  });
+
+  it("collections mode: work in multiple collections is excluded from loose works", () => {
+    const works = [
+      w("shared", "REBELLION"),
+      w("only-c1", "REBELLION"),
+    ];
+    const c1 = dc("c1", ["shared", "only-c1"]);
+    const c2 = dc("c2", ["shared"]);
+    const items = buildItemsList(works, [c1, c2], "collections");
+    // Both collections appear, no loose works.
     expect(items).toEqual([
       { kind: "collection", collection: c1 },
       { kind: "collection", collection: c2 },
     ]);
   });
 
-  it("appends orphan collections (anchor_member_id not in works) at the end", () => {
+  it("collections mode: works with no collections at all appear as loose", () => {
     const works = [w("a", "REBELLION")];
-    const c: Collection = {
-      id: "c-orphan", title: "Orphan", eras: ["REBELLION"], mediums: ["Comic"],
-      year: 0, anchor_year: 0, anchor_era: "REBELLION",
-      anchor_member_id: "missing", member_ids: ["missing"],
-    };
-    const items = buildItemsList(works, [c], "collections");
-    expect(items[items.length - 1]).toEqual({ kind: "collection", collection: c });
+    const items = buildItemsList(works, [], "collections");
+    expect(items).toEqual([{ kind: "work", work: works[0] }]);
   });
 });

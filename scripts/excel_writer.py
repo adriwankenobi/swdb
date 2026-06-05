@@ -12,7 +12,8 @@ from scripts.excel_reader import ERA_INDEX, _normalize_medium, _stringify
 COL_AUTHOR = 6     # F
 COL_PUBLISHER = 7  # G
 COL_RELEASE = 8    # H
-COL_COVER = 11     # K
+COL_COVER = 10     # J
+COL_ID = 11        # K
 
 
 def _make_lookup_key(
@@ -43,7 +44,7 @@ def update_excel(
     path: Path,
     enriched: dict[tuple, dict],
     *,
-    collections_enriched: dict[str, dict] | None = None,
+    ids: dict[tuple, str] | None = None,
 ) -> dict:
     """Write enriched fields back into the Excel file.
 
@@ -61,6 +62,8 @@ def update_excel(
             if sheet_name not in wb.sheetnames:
                 continue
             ws = wb[sheet_name]
+            if ids is not None and not ws.cell(row=1, column=COL_ID).value:
+                ws.cell(row=1, column=COL_ID, value="ID")
             for row in ws.iter_rows(min_row=2):
                 medium_raw = _stringify(row[1].value)
                 series = _stringify(row[2].value)
@@ -70,6 +73,10 @@ def update_excel(
                     continue
                 medium = _normalize_medium(medium_raw)
                 key = _make_lookup_key(era, title, series, medium, number)
+                if ids is not None:
+                    gen_id = ids.get(key)
+                    if gen_id and not row[COL_ID - 1].value:
+                        row[COL_ID - 1].value = gen_id
                 fields = enriched.get(key)
                 if fields is None:
                     not_found += 1
@@ -95,25 +102,6 @@ def update_excel(
                     changed = True
                 if changed:
                     updated += 1
-        if collections_enriched:
-            if "COLLECTIONS" in wb.sheetnames:
-                cs = wb["COLLECTIONS"]
-                title_to_row = {}
-                for r in range(2, cs.max_row + 1):
-                    t = cs.cell(row=r, column=1).value
-                    if t:
-                        title_to_row[str(t).strip()] = r
-                for title, fields in collections_enriched.items():
-                    r = title_to_row.get(title)
-                    if r is None:
-                        continue
-                    rel_iso = fields.get("release_date")
-                    rel_prec = fields.get("release_precision", "day")
-                    cover = fields.get("cover_url")
-                    if rel_iso and not cs.cell(row=r, column=2).value:
-                        cs.cell(row=r, column=2, value=_format_release(rel_iso, rel_prec))
-                    if cover and not cs.cell(row=r, column=4).value:
-                        cs.cell(row=r, column=4, value=cover)
         wb.save(path)
         return {"updated": updated, "not_found_in_excel": not_found}
     finally:

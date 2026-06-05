@@ -4,11 +4,11 @@ import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { groupForChronology, groupForRelease } from "@/lib/timelineGroups";
 import { resolveWorkCover } from "@/lib/resolveWorkCover";
+import { useWorkCoverFallback } from "@/lib/useWorkCoverFallback";
 import { useScrollResetOnFilterChange } from "@/lib/useScrollResetOnFilterChange";
-import { useCatalogStore } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
 import type { Item } from "@/lib/buildItemsList";
-import type { Work, Collection } from "@/types/work";
+import type { Work, DerivedCollection } from "@/types/work";
 
 // ---------------------------------------------------------------------------
 // Marker — a single clickable thumbnail in the timeline.
@@ -20,8 +20,8 @@ interface WorkMarkerProps {
 }
 
 function WorkMarker({ work, onClick }: WorkMarkerProps) {
-  const collectionsById = useCatalogStore((s) => s.collectionsById);
-  const cover = resolveWorkCover(work, collectionsById);
+  const coverByWorkId = useWorkCoverFallback();
+  const cover = resolveWorkCover(work, coverByWorkId);
   const yearLabel = formatYear(work.year, work.year_end);
   const seriesStr = (work.series ?? []).join(", ");
   const tooltip = `${work.title}${seriesStr ? ` — ${seriesStr}` : ""} (${yearLabel})`;
@@ -55,7 +55,7 @@ function WorkMarker({ work, onClick }: WorkMarkerProps) {
 }
 
 interface CollectionMarkerProps {
-  collection: Collection;
+  collection: DerivedCollection;
   onClick: () => void;
 }
 
@@ -64,7 +64,7 @@ function CollectionMarker({ collection, onClick }: CollectionMarkerProps) {
   const yearLabel = formatYear(c.year, c.year_end);
   const tooltip = `${c.title} (${yearLabel})`;
   const mediumColor = c.mediums.length > 0 ? MEDIUM_COLORS[c.mediums[0]] : "#888888";
-  const eraColor = ERA_COLORS[c.anchor_era];
+  const eraColor = c.anchor_era ? ERA_COLORS[c.anchor_era] : "#888888";
 
   return (
     <button

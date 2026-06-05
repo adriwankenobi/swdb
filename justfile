@@ -9,11 +9,13 @@ default:
 
 # Run the build pipeline (Excel -> works.json). Uses on-disk cache.
 #
-# When to run:
-#   - New row added to Excel (with YEAR, MEDIUM, TITLE, J=wiki URL; leave
-#     F/G/H/K empty): `just scrape` then `just deploy`.
-#   - Existing row's wiki link is dead: replace J with the new URL AND clear
-#     F/G/H/K (else excel_full=true skips re-parsing), then `just scrape`
+# When to run (column letters after the COLLECTED column was removed:
+# A=YEAR B=MEDIUM C=SERIES D=TITLE E=# F=AUTHOR G=PUBLISHER H=RELEASE
+# I=INFO/wiki J=COVER K=ID):
+#   - New row added to Excel (with YEAR, MEDIUM, TITLE, I=wiki URL; leave
+#     F/G/H/J empty): `just scrape` then `just deploy`.
+#   - Existing row's wiki link is dead: replace I with the new URL AND clear
+#     F/G/H/J (else excel_full=true skips re-parsing), then `just scrape`
 #     then `just deploy`.
 scrape:
     uv run python -m scripts.build_data

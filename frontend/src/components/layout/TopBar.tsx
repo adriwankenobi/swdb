@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useFilterStore } from "@/store/filterStore";
 import { MobileSidebar } from "./Sidebar";
+import { AuthMenu } from "./AuthMenu";
 import {
   MenuIcon,
   LayoutGrid,
@@ -138,6 +139,7 @@ export function TopBar({ onHome }: TopBarProps) {
               </Button>
             ))}
           </div>
+          <AuthMenu />
         </div>
       </header>
       <MobileSidebar open={drawerOpen} onOpenChange={setDrawerOpen} />

@@ -21,6 +21,10 @@ __pycache__/
 frontend/node_modules/
 frontend/dist/
 
+# Local environment (Supabase keys — never commit)
+frontend/.env.local
+frontend/.env*.local
+
 # Editors
 .vscode/
 .idea/

@@ -1,4 +1,5 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { OwnershipFilter } from "@/components/filters/OwnershipFilter";
 import { SeriesFilter } from "@/components/filters/SeriesFilter";
 import { AuthorFilter } from "@/components/filters/AuthorFilter";
 import { PublisherFilter } from "@/components/filters/PublisherFilter";
@@ -13,6 +14,7 @@ import {
 function Filters() {
   return (
     <div className="space-y-4 text-sm">
+      <OwnershipFilter />
       <SeriesFilter />
       <AuthorFilter />
       <PublisherFilter />

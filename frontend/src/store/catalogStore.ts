@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { MEDIUMS, type MediumName } from "../constants/mediums";
-import type { Collection, Work, WorksFile } from "../types/work";
+import type { Work, WorksFile } from "../types/work";
 
 // Sentinel value for the synthetic "Uncredited" author facet that lets users
 // filter works with no listed author. Real author names will never collide
@@ -16,9 +16,7 @@ export interface Facet<V = string> {
 interface CatalogState {
   status: "idle" | "loading" | "ready" | "error";
   works: Work[];
-  collections: Collection[];
   worksById: Map<string, Work>;
-  collectionsById: Map<string, Collection>;
   generatedAt: string | null;
   error: string | null;
   facets: {
@@ -26,7 +24,6 @@ interface CatalogState {
     authors: Facet[];
     publishers: Facet[];
     mediums: Facet<MediumName>[];
-    collections: Facet[];
   };
   load: (url: string) => Promise<void>;
 }
@@ -36,10 +33,9 @@ const empty: CatalogState["facets"] = {
   authors: [],
   publishers: [],
   mediums: [],
-  collections: [],
 };
 
-export function buildFacets(works: Work[], collections: Collection[]): CatalogState["facets"] {
+export function buildFacets(works: Work[]): CatalogState["facets"] {
   const counts = (key: (w: Work) => string[] | string | undefined): Facet[] => {
     const map = new Map<string, number>();
     for (const w of works) {
@@ -80,24 +76,18 @@ export function buildFacets(works: Work[], collections: Collection[]): CatalogSt
     if (idx === -1) authors.push(uncredited);
     else authors.splice(idx, 0, uncredited);
   }
-  const collectionsFacet: Facet[] = collections
-    .map((c) => ({ value: c.id, label: c.title, count: c.member_ids.length }))
-    .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
   return {
     series: counts((w) => w.series),
     authors,
     publishers: counts((w) => w.publisher),
     mediums,
-    collections: collectionsFacet,
   };
 }
 
 export const useCatalogStore = create<CatalogState>((set) => ({
   status: "idle",
   works: [],
-  collections: [],
   worksById: new Map(),
-  collectionsById: new Map(),
   generatedAt: null,
   error: null,
   facets: empty,
@@ -107,15 +97,12 @@ export const useCatalogStore = create<CatalogState>((set) => ({
       const res = await fetch(url);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
       const data = (await res.json()) as WorksFile;
-      const collections = data.collections ?? [];
       set({
         status: "ready",
         works: data.works,
-        collections,
         worksById: new Map(data.works.map((w) => [w.id, w])),
-        collectionsById: new Map(collections.map((c) => [c.id, c])),
         generatedAt: data.generated_at,
-        facets: buildFacets(data.works, collections),
+        facets: buildFacets(data.works),
       });
     } catch (err) {
       set({ status: "error", error: (err as Error).message });

@@ -5,6 +5,7 @@ from unittest.mock import MagicMock
 from scripts import build_data
 from scripts.build_data import _enrich, _row_to_work, _split_series_and_number
 from scripts.excel_reader import ExcelRow
+from scripts.id_utils import make_id
 
 
 def _row(**over) -> ExcelRow:
@@ -18,11 +19,10 @@ def _row(**over) -> ExcelRow:
         year_end=None,
         info_url=None,
         cover_url=None,
-        color=None,
         author=None,
         publisher=None,
         release_date_str=None,
-        collected=None,
+        work_id=None,
     )
     base.update(over)
     return ExcelRow(**base)
@@ -235,6 +235,24 @@ def test_normalize_publisher_selects_first_when_no_region_markers():
     assert work["publisher"] == "National Public Radio"
 
 
+def test_ids_writeback_only_for_blank_rows():
+    """build_data records a generated id for rows whose work_id was blank,
+    keyed by the writer's lookup tuple, and skips rows that already have an id."""
+    from scripts.build_data import _build_ids_writeback
+
+    rows = [
+        _row(era=5, work_id=None, title="A New Hope", series="Star Wars Episode",
+             medium="Novel", number="IV"),
+        _row(era=5, work_id="frozen-007", title="Some Comic", series=None,
+             medium="Comic", number="1"),
+    ]
+    works = [_row_to_work(r) for r in rows]
+    ids = _build_ids_writeback(works, rows)
+
+    assert ids[(5, "A New Hope", "Star Wars Episode", "Novel", "IV")] == works[0]["id"]
+    assert (5, "Some Comic", None, "Comic", "1") not in ids
+
+
 # ---------------------------------------------------------------------------
 # _split_series_and_number tests
 # ---------------------------------------------------------------------------
@@ -325,319 +343,29 @@ def test_row_to_work_omits_number_when_empty_but_series_present():
 
 
 # ---------------------------------------------------------------------------
-# derive_collection tests
+# work_id / make_id fallback tests
 # ---------------------------------------------------------------------------
 
 
-def test_derive_collection_single_era_single_medium():
-    from scripts.build_data import derive_collection
-    from scripts.collections_reader import ExcelCollectionRow
-
-    row = ExcelCollectionRow(
-        title="Dark Empire (TPB)",
-        release_date_str="1995.01.01",
-        info_url=None,
-        cover_url=None,
-        color=None,
-    )
-    members = [
-        {"id": "w-1", "era": "REBELLION", "medium": "Comic", "title": "Dark Empire 1", "year": 10},
-        {"id": "w-2", "era": "REBELLION", "medium": "Comic", "title": "Dark Empire 2", "year": 11},
-    ]
-    c = derive_collection(row, members)
-    assert c["title"] == "Dark Empire (TPB)"
-    assert c["eras"] == ["REBELLION"]
-    assert c["mediums"] == ["Comic"]
-    assert c["year"] == 10
-    assert c["year_end"] == 11
-    assert c["anchor_year"] == 10
-    assert c["anchor_era"] == "REBELLION"
-    assert c["anchor_member_id"] == "w-1"
-    assert c["member_ids"] == ["w-1", "w-2"]
+def _work_id_row(**kw):
+    defaults = dict(era=5, title="A New Hope", series="Star Wars Episode",
+                    medium="Novel", number="IV", year=0)
+    defaults.update(kw)
+    return _row(**defaults)
 
 
-def test_derive_collection_multi_era_multi_medium_dominant_medium():
-    """Mediums sorted alphabetically. Dominant medium = Novel > Short Story.
-
-    Range spans all members; anchor derived only from dominant members."""
-    from scripts.build_data import derive_collection
-    from scripts.collections_reader import ExcelCollectionRow
-
-    row = ExcelCollectionRow(
-        title="Tales of the Sith",
-        release_date_str=None,
-        info_url=None,
-        cover_url=None,
-        color=None,
-    )
-    members = [
-        {
-            "id": "w-ss-1",
-            "era": "OLD REPUBLIC",
-            "medium": "Short Story",
-            "title": "SS 1",
-            "year": -3000,
-        },
-        {
-            "id": "w-novel",
-            "era": "REBELLION",
-            "medium": "Novel",
-            "title": "Tales Novel",
-            "year": 5,
-            "year_end": 7,
-        },
-        {
-            "id": "w-ss-2",
-            "era": "NEW REPUBLIC",
-            "medium": "Short Story",
-            "title": "SS 2",
-            "year": 20,
-        },
-    ]
-    c = derive_collection(row, members)
-    # Mediums + eras: union sorted.
-    assert c["eras"] == ["NEW REPUBLIC", "OLD REPUBLIC", "REBELLION"]
-    assert c["mediums"] == ["Novel", "Short Story"]
-    # year/year_end: full range across ALL members.
-    assert c["year"] == -3000
-    assert c["year_end"] == 20
-    # Anchor: dominant_medium = Novel, only one Novel member → use it.
-    assert c["anchor_year"] == 5
-    assert c["anchor_era"] == "REBELLION"
-    assert c["anchor_member_id"] == "w-novel"
+def test_row_to_work_uses_explicit_work_id():
+    work = _row_to_work(_work_id_row(work_id="frozen-007"))
+    assert work["id"] == "frozen-007"
 
 
-def test_derive_collection_omits_year_end_when_single_year():
-    from scripts.build_data import derive_collection
-    from scripts.collections_reader import ExcelCollectionRow
-
-    row = ExcelCollectionRow(
-        title="X", release_date_str=None, info_url=None, cover_url=None, color=None
-    )
-    members = [
-        {"id": "w-1", "era": "REBELLION", "medium": "Comic", "title": "A", "year": 4},
-        {"id": "w-2", "era": "REBELLION", "medium": "Comic", "title": "B", "year": 4},
-    ]
-    c = derive_collection(row, members)
-    assert c["year"] == 4
-    assert "year_end" not in c
+def test_row_to_work_id_is_stable_across_title_edit():
+    a = _row_to_work(_work_id_row(work_id="frozen-007", title="A New Hope"))
+    b = _row_to_work(_work_id_row(work_id="frozen-007", title="A New Hope (typo fixed)"))
+    assert a["id"] == b["id"] == "frozen-007"
 
 
-def test_derive_collection_release_date_from_excel():
-    from scripts.build_data import derive_collection
-    from scripts.collections_reader import ExcelCollectionRow
-
-    row = ExcelCollectionRow(
-        title="X", release_date_str="1995.01.01", info_url=None, cover_url=None, color=None
-    )
-    members = [
-        {"id": "w-1", "era": "REBELLION", "medium": "Comic", "title": "A", "year": 1},
-        {"id": "w-2", "era": "REBELLION", "medium": "Comic", "title": "B", "year": 1},
-    ]
-    c = derive_collection(row, members)
-    assert c["release_date"] == "1995-01-01"
-    assert c["release_precision"] == "day"
-
-
-# ---------------------------------------------------------------------------
-# build() integration tests — collections wiring
-# ---------------------------------------------------------------------------
-
-
-def test_build_emits_collections_and_links_works(tmp_path, monkeypatch):
-    """End-to-end: workbook with two members in a collection -> JSON has both
-    arrays and works link via collection_ids."""
-    from openpyxl import Workbook
-    from scripts.build_data import build, EXCEL_PATH, OUTPUT_PATH
-    import scripts.build_data as bd
-
-    # Build a minimal workbook.
-    wb = Workbook()
-    wb.remove(wb.active)
-    ws = wb.create_sheet("REBELLION")
-    ws.append(["YEAR", "MEDIUM", "SERIES", "TITLE", "#", "AUTHOR",
-               "PUBLISHER", "RELEASE", "COLLECTED", "INFO", "COVER"])
-    ws.append(["10 ABY", "Comic", "Dark Empire", "Issue 1", 1, None, None, None,
-               "Dark Empire (TPB)", None, None])
-    ws.append(["10 ABY", "Comic", "Dark Empire", "Issue 2", 2, None, None, None,
-               "Dark Empire (TPB)", None, None])
-    cs = wb.create_sheet("COLLECTIONS")
-    cs.append(["TITLE", "RELEASE", "INFO", "COVER"])
-    cs.append(["Dark Empire (TPB)", "1995.01.01", None, None])
-    wb_path = tmp_path / "x.xlsx"
-    wb.save(wb_path)
-
-    # Point build at the temp workbook and skip enrichment (dry_run=True
-    # skips _enrich and avoids the network).
-    monkeypatch.setattr(bd, "EXCEL_PATH", wb_path)
-    payload = build(refresh=False, dry_run=True)
-
-    assert "collections" in payload
-    assert len(payload["collections"]) == 1
-    c = payload["collections"][0]
-    assert c["title"] == "Dark Empire (TPB)"
-    assert c["eras"] == ["REBELLION"]
-    assert c["mediums"] == ["Comic"]
-    assert len(c["member_ids"]) == 2
-    for w in payload["works"]:
-        assert w["collection_ids"] == [c["id"]]
-
-
-def test_build_handles_comma_separated_collected(tmp_path, monkeypatch):
-    """A work with two collection titles ends up in both, in cell order."""
-    from openpyxl import Workbook
-    from scripts.build_data import build
-    import scripts.build_data as bd
-
-    wb = Workbook()
-    wb.remove(wb.active)
-    ws = wb.create_sheet("REBELLION")
-    ws.append(["YEAR", "MEDIUM", "SERIES", "TITLE", "#", "AUTHOR",
-               "PUBLISHER", "RELEASE", "COLLECTED", "INFO", "COVER"])
-    ws.append(["5 ABY", "Short Story", "S", "Story 1", 1, None, None, None,
-               "A (TPB), B (TPB)", None, None])
-    ws.append(["5 ABY", "Short Story", "S", "Story 2", 2, None, None, None,
-               "A (TPB)", None, None])
-    ws.append(["5 ABY", "Short Story", "S", "Story 3", 3, None, None, None,
-               "B (TPB)", None, None])
-    cs = wb.create_sheet("COLLECTIONS")
-    cs.append(["TITLE", "RELEASE", "INFO", "COVER"])
-    cs.append(["A (TPB)", None, None, None])
-    cs.append(["B (TPB)", None, None, None])
-    wb_path = tmp_path / "x.xlsx"
-    wb.save(wb_path)
-
-    monkeypatch.setattr(bd, "EXCEL_PATH", wb_path)
-    payload = build(refresh=False, dry_run=True)
-
-    by_title = {c["title"]: c for c in payload["collections"]}
-    assert set(by_title) == {"A (TPB)", "B (TPB)"}
-    assert len(by_title["A (TPB)"]["member_ids"]) == 2
-    assert len(by_title["B (TPB)"]["member_ids"]) == 2
-
-    works_by_title = {w["title"]: w for w in payload["works"]}
-    s1_ids = works_by_title["Story 1"]["collection_ids"]
-    assert len(s1_ids) == 2
-    assert s1_ids == [by_title["A (TPB)"]["id"], by_title["B (TPB)"]["id"]]
-    assert works_by_title["Story 2"]["collection_ids"] == [by_title["A (TPB)"]["id"]]
-    assert works_by_title["Story 3"]["collection_ids"] == [by_title["B (TPB)"]["id"]]
-
-
-def test_build_partial_unmatched_keeps_valid_ids(tmp_path, monkeypatch):
-    """`COLLECTED = "Valid, Bogus"` -> work keeps Valid's id, Bogus is logged."""
-    from openpyxl import Workbook
-    from scripts.build_data import build
-    import scripts.build_data as bd
-
-    wb = Workbook()
-    wb.remove(wb.active)
-    ws = wb.create_sheet("REBELLION")
-    ws.append(["YEAR", "MEDIUM", "SERIES", "TITLE", "#", "AUTHOR",
-               "PUBLISHER", "RELEASE", "COLLECTED", "INFO", "COVER"])
-    ws.append(["5 ABY", "Comic", "S", "Issue 1", 1, None, None, None,
-               "Valid (TPB), Bogus (TPB)", None, None])
-    ws.append(["5 ABY", "Comic", "S", "Issue 2", 2, None, None, None,
-               "Valid (TPB)", None, None])
-    cs = wb.create_sheet("COLLECTIONS")
-    cs.append(["TITLE", "RELEASE", "INFO", "COVER"])
-    cs.append(["Valid (TPB)", None, None, None])
-    wb_path = tmp_path / "x.xlsx"
-    wb.save(wb_path)
-
-    monkeypatch.setattr(bd, "EXCEL_PATH", wb_path)
-    payload = build(refresh=False, dry_run=True)
-
-    valid = payload["collections"][0]
-    works_by_title = {w["title"]: w for w in payload["works"]}
-    assert works_by_title["Issue 1"]["collection_ids"] == [valid["id"]]
-    assert works_by_title["Issue 2"]["collection_ids"] == [valid["id"]]
-
-
-def test_build_drops_single_member_collection(tmp_path, monkeypatch):
-    from openpyxl import Workbook
-    from scripts.build_data import build
-    import scripts.build_data as bd
-
-    wb = Workbook()
-    wb.remove(wb.active)
-    ws = wb.create_sheet("REBELLION")
-    ws.append(["YEAR", "MEDIUM", "SERIES", "TITLE", "#", "AUTHOR",
-               "PUBLISHER", "RELEASE", "COLLECTED", "INFO", "COVER"])
-    ws.append(["10 ABY", "Comic", "Dark Empire", "Issue 1", 1, None, None, None,
-               "Lonely (TPB)", None, None])
-    cs = wb.create_sheet("COLLECTIONS")
-    cs.append(["TITLE", "RELEASE", "INFO", "COVER"])
-    cs.append(["Lonely (TPB)", None, None, None])
-    wb_path = tmp_path / "x.xlsx"
-    wb.save(wb_path)
-
-    monkeypatch.setattr(bd, "EXCEL_PATH", wb_path)
-    payload = build(refresh=False, dry_run=True)
-
-    assert payload["collections"] == []
-    assert len(payload["works"]) == 1
-    assert "collection_ids" not in payload["works"][0]
-
-
-def test_enrich_collection_populates_wiki_url_and_cover(tmp_path):
-    """When INFO is blank, resolve by title; parse infobox for release+cover."""
-    from scripts.build_data import _enrich_collection
-    from scripts.collections_reader import ExcelCollectionRow
-
-    class FakeClient:
-        def resolve_url(self, info_url, title, series=None):
-            assert info_url is None
-            assert title == "Dark Empire (TPB)"
-            return ("https://example/wiki/DE_TPB", "from_title")
-        def fetch_html(self, url):
-            return "<html><table class='infobox'>…</table></html>"
-        def verify_url_alive(self, url):
-            return True
-
-    def fake_parser(html):
-        return {
-            "cover_url": "https://example/cover.jpg",
-            "release_date": "1995-01-01",
-            "release_precision": "day",
-        }
-
-    crow = ExcelCollectionRow(
-        title="Dark Empire (TPB)", release_date_str=None,
-        info_url=None, cover_url=None, color=None,
-    )
-    collection: dict = {"title": "Dark Empire (TPB)", "id": "c-1"}
-    unmatched: list[str] = []
-    _enrich_collection(
-        collection, crow, FakeClient(), unmatched, parse_infobox=fake_parser,
-    )
-    assert collection["wiki_url"] == "https://example/wiki/DE_TPB"
-    assert collection["cover_url"] == "https://example/cover.jpg"
-    assert collection["release_date"] == "1995-01-01"
-    assert collection["release_precision"] == "day"
-    assert unmatched == []
-
-
-def test_build_unmatched_collected_value_leaves_work_uncollected(
-    tmp_path, monkeypatch,
-):
-    from openpyxl import Workbook
-    from scripts.build_data import build
-    import scripts.build_data as bd
-
-    wb = Workbook()
-    wb.remove(wb.active)
-    ws = wb.create_sheet("REBELLION")
-    ws.append(["YEAR", "MEDIUM", "SERIES", "TITLE", "#", "AUTHOR",
-               "PUBLISHER", "RELEASE", "COLLECTED", "INFO", "COVER"])
-    ws.append(["10 ABY", "Comic", "S", "Issue 1", 1, None, None, None,
-               "Does Not Exist (TPB)", None, None])
-    ws.append(["10 ABY", "Comic", "S", "Issue 2", 2, None, None, None, None,
-               None, None])
-    wb_path = tmp_path / "x.xlsx"
-    wb.save(wb_path)
-
-    monkeypatch.setattr(bd, "EXCEL_PATH", wb_path)
-    payload = build(refresh=False, dry_run=True)
-    assert payload["collections"] == []
-    for w in payload["works"]:
-        assert "collection_ids" not in w
+def test_row_to_work_falls_back_to_make_id_when_blank():
+    work = _row_to_work(_work_id_row(work_id=None))
+    assert work["id"] == make_id(era=5, series="Star Wars Episode",
+                                 title="A New Hope", medium="Novel", number="IV")

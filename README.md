@@ -6,12 +6,12 @@ Live: <https://adriwankenobi.github.io/swdb/>
 
 ## Status
 
-Live at <https://adriwankenobi.github.io/swdb/>. ~1960 works and ~170 collections (omnibus, series, anthology groupings) indexed across 10 eras of the Star Wars Expanded Universe, sourced from `Star Wars EU.xlsx` and enriched with Wookieepedia metadata via the MediaWiki API.
+Live at <https://adriwankenobi.github.io/swdb/>. ~1960 works indexed across 10 eras of the Star Wars Expanded Universe, sourced from `Star Wars EU.xlsx` and enriched with Wookieepedia metadata via the MediaWiki API. Signed-in users can mark works they **own** and group them into their own **collections** (stored in Supabase, per user); see [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## Stack
 
-- **Pipeline:** Python (uv, openpyxl, requests, beautifulsoup4) reads `Star Wars EU.xlsx` and enriches each row from Wookieepedia, emitting `frontend/public/data/works.json`.
-- **Frontend:** Vite + React + TypeScript + Tailwind + shadcn/ui + zustand. Static deploy to GitHub Pages.
+- **Pipeline:** Python (uv, openpyxl, requests, beautifulsoup4) reads `Star Wars EU.xlsx` and enriches each row from Wookieepedia, emitting `frontend/public/data/works.json` (works only — collections and ownership are per-user).
+- **Frontend:** Vite + React + TypeScript + Tailwind + shadcn/ui + zustand, with Supabase for auth + per-user ownership/collections. Static deploy to GitHub Pages.
 
 ## Development
 
@@ -27,8 +27,10 @@ just --list          # all commands
 
 ### When to run `just scrape`
 
-- **New row added to Excel** (with YEAR, MEDIUM, TITLE, J=wiki URL; leave F/G/H/K empty): `just scrape` then `just deploy`.
-- **Existing row's wiki link is dead**: replace J with the new URL AND clear F/G/H/K (else `excel_full=true` skips re-parsing), then `just scrape` then `just deploy`.
+Column letters (the `COLLECTED` column was removed): `A`=YEAR `B`=MEDIUM `C`=SERIES `D`=TITLE `E`=# `F`=AUTHOR `G`=PUBLISHER `H`=RELEASE `I`=INFO/wiki `J`=COVER `K`=ID.
+
+- **New row added to Excel** (with YEAR, MEDIUM, TITLE, `I`=wiki URL; leave F/G/H/J empty): `just scrape` then `just deploy`.
+- **Existing row's wiki link is dead**: replace `I` with the new URL AND clear F/G/H/J (else `excel_full=true` skips re-parsing), then `just scrape` then `just deploy`.
 
 ## Repo layout
 

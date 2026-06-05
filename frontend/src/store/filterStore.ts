@@ -5,6 +5,7 @@ import type { MediumName } from "../constants/mediums";
 export type ViewMode = "cards" | "table" | "timeline";
 export type SortMode = "chronology" | "release";
 export type ItemsMode = "issues" | "collections";
+export type Ownership = "all" | "owned" | "unowned";
 
 export interface FilterState {
   eras: EraName[];
@@ -21,6 +22,7 @@ export interface FilterState {
   items: ItemsMode;
   openWorkId: string | null;
   openCollectionId: string | null;
+  ownership: Ownership;
 }
 
 const defaultState: FilterState = {
@@ -38,6 +40,7 @@ const defaultState: FilterState = {
   items: "issues",
   openWorkId: null,
   openCollectionId: null,
+  ownership: "all",
 };
 
 interface FilterActions {
@@ -53,7 +56,10 @@ interface FilterActions {
 
 export const useFilterStore = create<FilterState & FilterActions>((set, get) => ({
   ...defaultState,
-  set: (patch) => set(patch),
+  set: (patch) =>
+    // Switching to collections mode clears the ownership filter — everything
+    // shown there is owned, so the filter is meaningless (and would mislead).
+    set(patch.items === "collections" ? { ...patch, ownership: "all" } : patch),
   toggleArrayValue: (key, value) => {
     const current = get()[key] as readonly (string | number)[];
     const next = current.includes(value as never)

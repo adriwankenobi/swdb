@@ -1,37 +1,69 @@
 import { describe, expect, it } from "vitest";
-import { buildFacets } from "../catalogStore";
-import type { Collection, Work } from "../../types/work";
+import { buildFacets, UNCREDITED_AUTHOR_VALUE } from "../catalogStore";
+import type { Work } from "../../types/work";
 
-function mkCollection(id: string, title: string, memberIds: string[]): Collection {
-  return {
-    id,
-    title,
-    eras: ["REBELLION"],
-    mediums: ["Comic"],
-    year: 0,
-    anchor_year: 0,
-    anchor_era: "REBELLION",
-    anchor_member_id: memberIds[0] ?? "",
-    member_ids: memberIds,
-  };
-}
+const w = (id: string, over: Partial<Work> = {}): Work => ({
+  id, era: "REBELLION", title: id, medium: "Comic", year: 0, ...over,
+});
 
-describe("buildFacets — collections", () => {
-  it("sorts collections by member count desc, then title asc", () => {
-    const works: Work[] = [];
-    const collections: Collection[] = [
-      mkCollection("c-small", "Alpha (TPB)", ["w1"]),
-      mkCollection("c-big-z", "Zeta (TPB)", ["w1", "w2", "w3"]),
-      mkCollection("c-big-a", "Beta (TPB)", ["w1", "w2", "w3"]),
-      mkCollection("c-mid", "Gamma (TPB)", ["w1", "w2"]),
+describe("buildFacets — series", () => {
+  it("counts series occurrences correctly", () => {
+    const works: Work[] = [
+      w("a", { series: ["Dark Empire"] }),
+      w("b", { series: ["Dark Empire", "Tales of the Jedi"] }),
+      w("c", { series: ["Tales of the Jedi"] }),
     ];
-    const f = buildFacets(works, collections).collections;
-    expect(f.map((x) => x.label)).toEqual([
-      "Beta (TPB)",  // count 3, label A < Z
-      "Zeta (TPB)",  // count 3
-      "Gamma (TPB)", // count 2
-      "Alpha (TPB)", // count 1
-    ]);
-    expect(f.map((x) => x.count)).toEqual([3, 3, 2, 1]);
+    const f = buildFacets(works).series;
+    expect(f.find((x) => x.value === "Dark Empire")?.count).toBe(2);
+    expect(f.find((x) => x.value === "Tales of the Jedi")?.count).toBe(2);
+  });
+});
+
+describe("buildFacets — authors", () => {
+  it("inserts Uncredited sentinel when works have no authors", () => {
+    const works: Work[] = [
+      w("a", { authors: ["Foster"] }),
+      w("b"),
+    ];
+    const f = buildFacets(works).authors;
+    const uncredited = f.find((x) => x.value === UNCREDITED_AUTHOR_VALUE);
+    expect(uncredited).toBeDefined();
+    expect(uncredited?.count).toBe(1);
+  });
+
+  it("does not include Uncredited when all works have authors", () => {
+    const works: Work[] = [
+      w("a", { authors: ["Foster"] }),
+      w("b", { authors: ["Salvatore"] }),
+    ];
+    const f = buildFacets(works).authors;
+    expect(f.find((x) => x.value === UNCREDITED_AUTHOR_VALUE)).toBeUndefined();
+  });
+});
+
+describe("buildFacets — publishers", () => {
+  it("counts publishers correctly", () => {
+    const works: Work[] = [
+      w("a", { publisher: "Dark Horse" }),
+      w("b", { publisher: "Dark Horse" }),
+      w("c", { publisher: "Bantam" }),
+    ];
+    const f = buildFacets(works).publishers;
+    expect(f.find((x) => x.value === "Dark Horse")?.count).toBe(2);
+    expect(f.find((x) => x.value === "Bantam")?.count).toBe(1);
+  });
+});
+
+describe("buildFacets — mediums", () => {
+  it("returns mediums in MEDIUMS canonical order", () => {
+    const works: Work[] = [
+      w("a", { medium: "Novel" }),
+      w("b", { medium: "Comic" }),
+      w("c", { medium: "Novel" }),
+    ];
+    const f = buildFacets(works).mediums;
+    // Comic (index 0) < Novel (index 3) in MEDIUMS order
+    expect(f[0].value).toBe("Comic");
+    expect(f[1].value).toBe("Novel");
   });
 });

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { Work, Collection } from "../../types/work";
+import type { Work, DerivedCollection } from "../../types/work";
 import type { Item } from "../buildItemsList";
 import type { EraName } from "../../constants/eras";
 import { groupForChronology, groupForRelease } from "../timelineGroups";
@@ -21,20 +21,21 @@ const w = (over: Partial<Work> & { id: string; year: number }): Work => ({
 // Wrap a Work as a work Item.
 const wi = (work: Work): Item => ({ kind: "work", work });
 
-// Build a minimal Collection item.
+// Build a minimal DerivedCollection item.
 const ci = (
-  over: Partial<Collection> & { id: string; year: number; anchor_era: EraName },
+  over: Partial<DerivedCollection> & { id: string; year: number; anchor_era: EraName },
 ): Item => ({
   kind: "collection",
   collection: {
     title: "C",
     eras: [over.anchor_era],
     mediums: ["Novel"],
-    anchor_year: over.year,
-    anchor_member_id: "m1",
+    series: [],
+    authors: [],
+    publishers: [],
     member_ids: ["m1"],
     ...over,
-  } as Collection,
+  } as DerivedCollection,
 });
 
 describe("groupForChronology", () => {

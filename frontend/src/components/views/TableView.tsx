@@ -3,9 +3,10 @@ import { useVirtualizer } from "@tanstack/react-virtual";
 import { WorkRow } from "@/components/work/WorkRow";
 import { CollectionRow } from "@/components/work/CollectionRow";
 import { useFilterStore } from "@/store/filterStore";
+import { useUserStore } from "@/store/userStore";
 import { useScrollResetOnFilterChange } from "@/lib/useScrollResetOnFilterChange";
 import type { Item } from "@/lib/buildItemsList";
-import { COLUMNS } from "./_tableColumns";
+import { COLUMNS, OWNED_COLUMN_WIDTH } from "./_tableColumns";
 
 const ROW_HEIGHT = 56; // px
 
@@ -16,6 +17,10 @@ interface TableViewProps {
 export function TableView({ items }: TableViewProps) {
   const parentRef = useRef<HTMLDivElement>(null);
   const set = useFilterStore((s) => s.set);
+  const itemsMode = useFilterStore((s) => s.items);
+  const signedIn = useUserStore((s) => s.session !== null);
+  // The owned column only applies in issues mode (hidden in collections mode).
+  const showOwnedColumn = signedIn && itemsMode !== "collections";
   useScrollResetOnFilterChange(parentRef);
 
   const virtualizer = useVirtualizer({
@@ -48,6 +53,9 @@ export function TableView({ items }: TableViewProps) {
               {col.label}
             </div>
           ))}
+          {showOwnedColumn && (
+            <div className={`shrink-0 px-2 py-2 ${OWNED_COLUMN_WIDTH}`}>Owned</div>
+          )}
         </div>
 
         {/* Virtualized rows */}

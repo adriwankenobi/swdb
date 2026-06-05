@@ -1,7 +1,7 @@
 import { ERAS, type EraName } from "../constants/eras";
 import { MEDIUMS, type MediumName } from "../constants/mediums";
 import { slugify } from "./slug";
-import type { FilterState, ViewMode, SortMode, ItemsMode } from "../store/filterStore";
+import type { FilterState, ViewMode, SortMode, ItemsMode, Ownership } from "../store/filterStore";
 
 const csv = (arr: string[]): string | undefined =>
   arr.length === 0 ? undefined : arr.join(",");
@@ -12,6 +12,7 @@ const parseCsv = (raw: string | null): string[] =>
 const VIEWS: ViewMode[] = ["cards", "table", "timeline"];
 const SORTS: SortMode[] = ["chronology", "release"];
 const ITEMS: ItemsMode[] = ["issues", "collections"];
+const OWNERSHIPS: Ownership[] = ["all", "owned", "unowned"];
 
 // Reverse maps: slug → canonical name. Built once at module load.
 const ERA_BY_SLUG: Map<string, EraName> = new Map(
@@ -59,6 +60,7 @@ export function readFromUrl(
   const view = p.get("view");
   const sort = p.get("sort");
   const items = p.get("items");
+  const ownership = p.get("ownership");
   const work = p.get("work");
   const collection = p.get("collection");
   return {
@@ -74,6 +76,7 @@ export function readFromUrl(
     view: VIEWS.includes(view as ViewMode) ? (view as ViewMode) : "cards",
     sort: SORTS.includes(sort as SortMode) ? (sort as SortMode) : "chronology",
     items: ITEMS.includes(items as ItemsMode) ? (items as ItemsMode) : "issues",
+    ownership: OWNERSHIPS.includes(ownership as Ownership) ? (ownership as Ownership) : "all",
     openWorkId: work,
     openCollectionId: work ? null : collection,
   };
@@ -110,6 +113,7 @@ export function writeToUrl(
   if (state.view !== "cards") p.set("view", state.view);
   if (state.sort !== "chronology") p.set("sort", state.sort);
   if (state.items !== "issues") p.set("items", state.items);
+  if (state.ownership !== "all") p.set("ownership", state.ownership);
   if (state.openWorkId) p.set("work", state.openWorkId);
   else if (state.openCollectionId) p.set("collection", state.openCollectionId);
   const qs = p.toString();

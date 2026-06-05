@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useCatalogStore } from "./store/catalogStore";
 import { useFilterStore } from "./store/filterStore";
+import { useUserStore } from "./store/userStore";
 import { readFromUrl, writeToUrl } from "./lib/urlState";
 import { slugify } from "./lib/slug";
 import { AppShell } from "./components/layout/AppShell";
@@ -12,10 +13,18 @@ import { TableView } from "./components/views/TableView";
 import { TimelineView } from "./components/views/TimelineView";
 import { WorkDetailModal } from "./components/work/WorkDetailModal";
 import { CollectionDetailModal } from "./components/work/CollectionDetailModal";
+import { CollectionEditorDialog } from "./components/work/CollectionEditorDialog";
+import { useDerivedCollections } from "./lib/useDerivedCollections";
+import { useEditorStore } from "./store/editorStore";
+import { Button } from "./components/ui/button";
+import { PlusIcon } from "lucide-react";
 import type { EraName } from "./constants/eras";
 
 export default function App() {
-  const { status, works, collections: catalogCollections, worksById, error, load } = useCatalogStore();
+  const { status, works, worksById, error, load } = useCatalogStore();
+  const session = useUserStore((s) => s.session);
+  const ownedIds = useUserStore((s) => s.ownedIds);
+  const derivedCollections = useDerivedCollections();
 
   // Subscribe to each field used by writeToUrl with its own selector.
   const eras = useFilterStore((s) => s.eras);
@@ -30,6 +39,7 @@ export default function App() {
   const view = useFilterStore((s) => s.view);
   const sort = useFilterStore((s) => s.sort);
   const items = useFilterStore((s) => s.items);
+  const ownership = useFilterStore((s) => s.ownership);
   const openWorkId = useFilterStore((s) => s.openWorkId);
   const openCollectionId = useFilterStore((s) => s.openCollectionId);
   const set = useFilterStore((s) => s.set);
@@ -39,25 +49,31 @@ export default function App() {
   const filterState = useMemo(
     () => ({
       eras, mediums, decades, series, authors, publishers, collections,
-      q, releaseUndated, view, sort, items, openWorkId, openCollectionId,
+      q, releaseUndated, view, sort, items, ownership, openWorkId, openCollectionId,
     }),
     [
       eras, mediums, decades, series, authors, publishers, collections,
-      q, releaseUndated, view, sort, items, openWorkId, openCollectionId,
+      q, releaseUndated, view, sort, items, ownership, openWorkId, openCollectionId,
     ],
   );
 
   const collectionsBySlug = useMemo(() => {
     const m = new Map<string, string>();
-    for (const c of catalogCollections) {
+    for (const c of derivedCollections) {
       const slug = slugify(c.title);
       // first-wins: if two collections slug-collide, keep the first one
       if (!m.has(slug)) m.set(slug, c.id);
     }
     return m;
-  }, [catalogCollections]);
+  }, [derivedCollections]);
 
-  const collectionsById = useCatalogStore((cs) => cs.collectionsById);
+  const collectionsById = useMemo(() => {
+    const m = new Map<string, { title: string }>();
+    for (const c of derivedCollections) {
+      m.set(c.id, { title: c.title });
+    }
+    return m;
+  }, [derivedCollections]);
 
   const didHydrateCollections = useRef(false);
 
@@ -65,6 +81,8 @@ export default function App() {
   const [showLanding, setShowLanding] = useState<boolean>(
     () => window.location.search === ""
   );
+
+  useEffect(() => useUserStore.getState().init(), []);
 
   useEffect(() => {
     set(readFromUrl(window.location.search));
@@ -86,7 +104,7 @@ export default function App() {
       const next = writeToUrl({
         eras, mediums, decades, series, authors, publishers, collections,
         q, releaseUndated,
-        view, sort, items, openWorkId, openCollectionId,
+        view, sort, items, ownership, openWorkId, openCollectionId,
       }, collectionsById);
       const target = `${window.location.pathname}${next}`;
       if (target !== window.location.pathname + window.location.search) {
@@ -96,7 +114,7 @@ export default function App() {
     return () => clearTimeout(id);
   }, [
     eras, mediums, decades, series, authors, publishers, collections,
-    q, releaseUndated, view, sort, items, openWorkId, openCollectionId,
+    q, releaseUndated, view, sort, items, ownership, openWorkId, openCollectionId,
     collectionsById,
   ]);
 
@@ -117,20 +135,49 @@ export default function App() {
     setShowLanding(true);
   }
 
-  const visible = filterAndSortItems(works, catalogCollections, filterState, { worksById });
+  const visible = filterAndSortItems(works, derivedCollections, filterState, {
+    worksById,
+    ownedIds: session ? ownedIds : undefined,
+  });
 
   return (
     <>
       <AppShell onHome={handleHome}>
         <div className="flex h-full flex-col">
           <ActiveFilterChips />
-          {view === "cards" && <CardGrid items={visible} />}
-          {view === "table" && <TableView items={visible} />}
-          {view === "timeline" && <TimelineView items={visible} />}
+          {items === "collections" && !session ? (
+            <div className="flex h-full flex-col items-center justify-center gap-1 px-6 text-center text-muted-foreground">
+              <p className="text-sm font-medium">Sign in to build your collections</p>
+              <p className="text-xs">
+                Create an account to mark works you own and group them into your
+                own collections.
+              </p>
+            </div>
+          ) : (
+            <>
+              {items === "collections" && session && (
+                <div className="pb-2">
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="px-0"
+                    onClick={() => useEditorStore.getState().openNew()}
+                  >
+                    <PlusIcon className="size-4" />
+                    <span className="ml-1">New collection</span>
+                  </Button>
+                </div>
+              )}
+              {view === "cards" && <CardGrid items={visible} />}
+              {view === "table" && <TableView items={visible} />}
+              {view === "timeline" && <TimelineView items={visible} />}
+            </>
+          )}
         </div>
       </AppShell>
       <WorkDetailModal visibleItems={visible} />
       <CollectionDetailModal visibleItems={visible} />
+      <CollectionEditorDialog />
     </>
   );
 }

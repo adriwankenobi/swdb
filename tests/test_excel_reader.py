@@ -47,12 +47,6 @@ def test_year_parsed(rows):
     assert sample.year == 0
 
 
-def test_excel_row_has_color_for_filled_row(rows):
-    sample = next(r for r in rows if r.title == "A New Hope" and r.medium == "Novel")
-    assert sample.color is not None
-    assert sample.color.startswith("#") and len(sample.color) == 7
-
-
 def test_excel_row_skips_empty_rows(rows):
     # Defensive — no rows should be missing a title.
     assert all(row.title for row in rows)
@@ -108,7 +102,6 @@ def test_reads_author_publisher_release_columns(tmp_path):
             "AUTHOR",
             "PUBLISHER",
             "RELEASE",
-            "COLLECTED",
             "INFO",
             "COVER",
         ]
@@ -123,7 +116,6 @@ def test_reads_author_publisher_release_columns(tmp_path):
             "Alan Dean Foster",
             "Ballantine Books",
             "1976.11.12",
-            None,
             "https://example.com/wiki",
             "https://example.com/cover.jpg",
         ]
@@ -135,7 +127,6 @@ def test_reads_author_publisher_release_columns(tmp_path):
             None,
             "Sparse Row",
             "1",
-            None,
             None,
             None,
             None,
@@ -159,48 +150,28 @@ def test_reads_author_publisher_release_columns(tmp_path):
     assert sparse.release_date_str is None
 
 
-def test_read_works_surfaces_collected_value(tmp_path):
+def test_reads_work_id_column_when_present(tmp_path):
     from openpyxl import Workbook
 
-    from scripts.excel_reader import read_works
-
     wb = Workbook()
-    wb.remove(wb.active)
-    ws = wb.create_sheet("REBELLION")
-    ws.append(
-        [
-            "YEAR",
-            "MEDIUM",
-            "SERIES",
-            "TITLE",
-            "#",
-            "AUTHOR",
-            "PUBLISHER",
-            "RELEASE",
-            "COLLECTED",
-            "INFO",
-            "COVER",
-        ]
-    )
-    ws.append(
-        [
-            10,
-            "Comic",
-            "Dark Empire",
-            "Issue 1",
-            1,
-            None,
-            None,
-            None,
-            "Dark Empire (TPB)",
-            None,
-            None,
-        ]
-    )
-    ws.append([10, "Comic", "Dark Empire", "Issue 2", 2, None, None, None, None, None, None])
-    path = tmp_path / "test.xlsx"
+    ws = wb.active
+    ws.title = "REBELLION"
+    ws.append([
+        "YEAR", "MEDIUM", "SERIES", "TITLE", "#",
+        "AUTHOR", "PUBLISHER", "RELEASE", "INFO", "COVER", "ID",
+    ])
+    ws.append([
+        "0 ABY", "Novel", "Star Wars Episode", "A New Hope", "IV",
+        None, None, None, None, None, "fixed-id-123",
+    ])
+    ws.append([
+        "1 ABY", "Comic", None, "Some Comic", "1",
+        None, None, None, None, None, None,  # blank ID
+    ])
+    path = tmp_path / "ids.xlsx"
     wb.save(path)
+    wb.close()
 
     rows = list(read_works(path))
-    assert rows[0].collected == "Dark Empire (TPB)"
-    assert rows[1].collected is None
+    assert rows[0].work_id == "fixed-id-123"
+    assert rows[1].work_id is None
