@@ -13,6 +13,10 @@ interface CollectionRowProps {
 
 export function CollectionRow({ collection, onClick }: CollectionRowProps) {
   const c = collection;
+  // A collection can span multiple eras/mediums; the table shows one badge
+  // plus a "+N" overflow count (full list is in the detail modal).
+  const primaryMedium = c.mediums[0];
+  const primaryEra = (c.anchor_era || c.eras[0]) as keyof typeof ERA_COLORS;
   return (
     <div
       onClick={onClick}
@@ -54,22 +58,28 @@ export function CollectionRow({ collection, onClick }: CollectionRowProps) {
         {c.number ?? ""}
       </div>
 
-      {/* Medium badges */}
-      <div className={`shrink-0 px-2 py-1 flex flex-wrap gap-1 ${COLUMNS[4].width}`}>
-        {c.mediums.map((m) => (
-          <Badge key={m} style={{ backgroundColor: MEDIUM_COLORS[m], color: "white" }}>
-            {m}
+      {/* Medium — first badge + overflow count */}
+      <div className={`shrink-0 px-2 py-1 flex items-center gap-1 overflow-hidden ${COLUMNS[4].width}`}>
+        {primaryMedium && (
+          <Badge style={{ backgroundColor: MEDIUM_COLORS[primaryMedium], color: "white" }}>
+            {primaryMedium}
           </Badge>
-        ))}
+        )}
+        {c.mediums.length > 1 && (
+          <span className="shrink-0 text-xs text-muted-foreground">+{c.mediums.length - 1}</span>
+        )}
       </div>
 
-      {/* Era badges */}
-      <div className={`shrink-0 px-2 py-1 flex flex-wrap gap-1 ${COLUMNS[5].width}`}>
-        {c.eras.map((e) => (
-          <Badge key={e} style={{ backgroundColor: ERA_COLORS[e], color: "white" }}>
-            {e}
+      {/* Era — first badge + overflow count */}
+      <div className={`shrink-0 px-2 py-1 flex items-center gap-1 overflow-hidden ${COLUMNS[5].width}`}>
+        {c.eras.length > 0 && (
+          <Badge style={{ backgroundColor: ERA_COLORS[primaryEra], color: "white" }}>
+            {primaryEra}
           </Badge>
-        ))}
+        )}
+        {c.eras.length > 1 && (
+          <span className="shrink-0 text-xs text-muted-foreground">+{c.eras.length - 1}</span>
+        )}
       </div>
 
       {/* Year */}

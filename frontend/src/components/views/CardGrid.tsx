@@ -12,14 +12,23 @@ const ROW_HEIGHT = 360;     // approximate card height + gap
 function useResponsiveColumns(parentRef: React.RefObject<HTMLDivElement | null>) {
   const [cols, setCols] = useState(4);
   useEffect(() => {
-    if (!parentRef.current) return;
     const el = parentRef.current;
-    const update = () => setCols(computeColumnCount(el.clientWidth, window.innerWidth));
+    if (!el) return;
+    const update = () => {
+      const w = el.clientWidth;
+      // Ignore pre-layout 0-width reads — otherwise cols collapses to 1
+      // (giant single-column cards) on a fresh direct-URL mount.
+      if (w === 0) return;
+      setCols(computeColumnCount(w, window.innerWidth));
+    };
     update();
+    // Re-measure after the first paint in case layout wasn't settled yet.
+    const raf = requestAnimationFrame(update);
     const ro = new ResizeObserver(update);
     ro.observe(el);
     window.addEventListener("resize", update);
     return () => {
+      cancelAnimationFrame(raf);
       ro.disconnect();
       window.removeEventListener("resize", update);
     };
@@ -48,16 +57,16 @@ export function CardGrid({ items }: { items: Item[] }) {
     overscan: 4,
   });
 
-  if (items.length === 0) {
-    return (
-      <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
-        No works match these filters.
-      </div>
-    );
-  }
-
+  // The scroll container (with parentRef) is ALWAYS mounted so the
+  // ResizeObserver attaches reliably even when items arrive async (e.g.
+  // collections hydrating on a direct ?items=collections load).
   return (
     <div ref={parentRef} className="h-full overflow-auto">
+      {items.length === 0 ? (
+        <div className="flex h-full items-center justify-center text-sm text-muted-foreground">
+          No works match these filters.
+        </div>
+      ) : (
       <div style={{ height: virtualizer.getTotalSize(), position: "relative", width: "100%" }}>
         {virtualizer.getVirtualItems().map((vr) => (
           <div
@@ -95,6 +104,7 @@ export function CardGrid({ items }: { items: Item[] }) {
           </div>
         ))}
       </div>
+      )}
     </div>
   );
 }
