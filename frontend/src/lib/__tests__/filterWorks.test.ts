@@ -230,6 +230,33 @@ describe("filterAndSortItems — collections view aggregation", () => {
       .toEqual(["c1"]);
   });
 
+  it("chronology: collection sorts at the Excel position of its earliest issue, interleaved with loose works", () => {
+    // Excel (works.json) order: loose1, m1, loose2, m2.
+    const works: Work[] = [
+      work("loose1"),
+      work("m1"),
+      work("loose2"),
+      work("m2"),
+    ];
+    const c: DerivedCollection = {
+      id: "c1", title: "C", eras: ["REBELLION"], mediums: ["Comic"], series: [], authors: [], publishers: [],
+      year: 0, anchor_era: "REBELLION",
+      member_ids: ["m1", "m2"],
+    };
+    const items = filterAndSortItems(
+      works, [c],
+      { ...baseState },
+      {
+        worksById: new Map(works.map((w) => [w.id, w])),
+        // Loose works only show in collections mode when owned.
+        ownedIds: new Set(["loose1", "loose2"]),
+      },
+    );
+    // c borrows m1's position (index 1), landing between loose1 (0) and loose2 (2).
+    expect(items.map((i) => (i.kind === "collection" ? i.collection.id : i.work.id)))
+      .toEqual(["loose1", "c1", "loose2"]);
+  });
+
   it("excludes a collection when no member matches the series filter", () => {
     const works: Work[] = [
       work("a", { series: ["Alpha"] }),

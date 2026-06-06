@@ -4,6 +4,7 @@ import { beforeEach, describe, expect, it, vi } from "vitest";
 const mockInsert = vi.fn();
 const mockDelete = vi.fn();
 const mockSelect = vi.fn();
+const mockOwnedDeleteIn = vi.fn(async () => ({ error: null }));
 const mockFrom = vi.fn((table: string) => {
   if (table === "collections") return collectionsApi;
   if (table === "collection_members") return membersApi;
@@ -13,7 +14,9 @@ const mockFrom = vi.fn((table: string) => {
 // ownedApi — matches the existing tests' expectations for mockInsert/mockDelete/mockSelect
 const ownedApi = {
   insert: mockInsert,
-  delete: () => ({ eq: () => ({ eq: mockDelete }) }),
+  // .delete().eq("user_id", …) then either .eq("work_id", …) (toggleOwned)
+  // or .in("work_id", […]) (deleteCollection).
+  delete: () => ({ eq: () => ({ eq: mockDelete, in: mockOwnedDeleteIn }) }),
   // hydrateOwned now paginates: select(cols).range(a,b). Route range -> mockSelect.
   select: () => ({ range: () => mockSelect() }),
   upsert: vi.fn(async () => ({ error: null })),
@@ -76,6 +79,7 @@ function reset() {
   membersApi.select.mockClear();
   membersApi.insert.mockClear();
   ownedApi.upsert.mockClear();
+  mockOwnedDeleteIn.mockClear().mockResolvedValue({ error: null });
 }
 
 describe("userStore.toggleOwned", () => {
@@ -150,6 +154,61 @@ describe("userStore.collections", () => {
     });
     await useUserStore.getState().deleteCollection("c1");
     expect(useUserStore.getState().collections.find((c) => c.id === "c1")).toBeUndefined();
+  });
+
+  it("deleteCollection un-owns its members", async () => {
+    useUserStore.setState({
+      session: { user: { id: "u1" } } as never,
+      collections: [{ id: "c1", title: "X", member_ids: ["w1", "w2"] }],
+      ownedIds: new Set(["w1", "w2"]),
+    });
+    await useUserStore.getState().deleteCollection("c1");
+    expect(useUserStore.getState().ownedIds.has("w1")).toBe(false);
+    expect(useUserStore.getState().ownedIds.has("w2")).toBe(false);
+    expect(mockOwnedDeleteIn).toHaveBeenCalledWith("work_id", ["w1", "w2"]);
+  });
+
+  it("deleteCollection keeps members that still belong to another collection owned", async () => {
+    useUserStore.setState({
+      session: { user: { id: "u1" } } as never,
+      collections: [
+        { id: "c1", title: "X", member_ids: ["w1", "w2"] },
+        { id: "c2", title: "Y", member_ids: ["w2"] },
+      ],
+      ownedIds: new Set(["w1", "w2"]),
+    });
+    await useUserStore.getState().deleteCollection("c1");
+    expect(useUserStore.getState().ownedIds.has("w1")).toBe(false);
+    expect(useUserStore.getState().ownedIds.has("w2")).toBe(true);
+    expect(mockOwnedDeleteIn).toHaveBeenCalledWith("work_id", ["w1"]);
+  });
+
+  it("setCollectionMembers un-owns works removed from the collection", async () => {
+    useUserStore.setState({
+      session: { user: { id: "u1" } } as never,
+      collections: [{ id: "c1", title: "X", member_ids: ["w1", "w2", "w3"] }],
+      ownedIds: new Set(["w1", "w2", "w3"]),
+    });
+    // Drop w3.
+    await useUserStore.getState().setCollectionMembers("c1", ["w1", "w2"]);
+    expect(useUserStore.getState().ownedIds.has("w3")).toBe(false);
+    expect(useUserStore.getState().ownedIds.has("w1")).toBe(true);
+    expect(mockOwnedDeleteIn).toHaveBeenCalledWith("work_id", ["w3"]);
+  });
+
+  it("setCollectionMembers keeps a removed work owned if it's in another collection", async () => {
+    useUserStore.setState({
+      session: { user: { id: "u1" } } as never,
+      collections: [
+        { id: "c1", title: "X", member_ids: ["w1", "w2"] },
+        { id: "c2", title: "Y", member_ids: ["w2"] },
+      ],
+      ownedIds: new Set(["w1", "w2"]),
+    });
+    // Drop w2 from c1, but it's still in c2.
+    await useUserStore.getState().setCollectionMembers("c1", ["w1"]);
+    expect(useUserStore.getState().ownedIds.has("w2")).toBe(true);
+    expect(mockOwnedDeleteIn).not.toHaveBeenCalled();
   });
 
   it("updateCollection patches the title in state", async () => {

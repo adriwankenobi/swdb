@@ -178,12 +178,33 @@ function predicateForItem(filters: FilterState, ctx: ItemsCtx, item: Item): bool
   return matchesItemAsCollection(filters, item.collection, members);
 }
 
-function compareItemsChronology(a: Item, b: Item): number {
-  const aEra = a.kind === "work" ? a.work.era : a.collection.anchor_era;
-  const bEra = b.kind === "work" ? b.work.era : b.collection.anchor_era;
-  // anchor_era may be "" for a collection with no resolvable members;
-  // indexOf("") is -1, sorting such degenerate items first.
-  return (ERAS as readonly string[]).indexOf(aEra) - (ERAS as readonly string[]).indexOf(bEra);
+// Excel (works.json) position of an item: a work uses its own index; a
+// collection borrows the earliest position among its member issues so it lands
+// in the chronology where its issues first appear. Items with no resolvable
+// position sort last (Infinity).
+function excelPositionOf(item: Item, indexOf: Map<string, number>): number {
+  if (item.kind === "work") return indexOf.get(item.work.id) ?? Infinity;
+  let min = Infinity;
+  for (const id of item.collection.member_ids) {
+    const i = indexOf.get(id);
+    if (i !== undefined && i < min) min = i;
+  }
+  return min;
+}
+
+function makeCompareItemsChronology(indexOf: Map<string, number>) {
+  return (a: Item, b: Item): number => {
+    const aEra = a.kind === "work" ? a.work.era : a.collection.anchor_era;
+    const bEra = b.kind === "work" ? b.work.era : b.collection.anchor_era;
+    // anchor_era may be "" for a collection with no resolvable members;
+    // indexOf("") is -1, sorting such degenerate items first.
+    const eraDiff =
+      (ERAS as readonly string[]).indexOf(aEra) - (ERAS as readonly string[]).indexOf(bEra);
+    if (eraDiff !== 0) return eraDiff;
+    // Same era: order by Excel position so collections interleave with works
+    // at the spot their issues appear in the workbook chronology.
+    return excelPositionOf(a, indexOf) - excelPositionOf(b, indexOf);
+  };
 }
 
 function compareItemsRelease(a: Item, b: Item): number {
@@ -215,6 +236,10 @@ export function filterAndSortItems(
   const fullCtx: ItemsCtx = { ...ctx, memberToCollections };
   const list = buildItemsList(works, collections, filters.items);
   const filtered = list.filter((item) => predicateForItem(filters, fullCtx, item));
-  const cmp = filters.sort === "release" ? compareItemsRelease : compareItemsChronology;
+  // Excel-order index: works array is in workbook order, so position = index.
+  const indexOf = new Map<string, number>();
+  works.forEach((w, i) => indexOf.set(w.id, i));
+  const cmp =
+    filters.sort === "release" ? compareItemsRelease : makeCompareItemsChronology(indexOf);
   return [...filtered].sort(cmp);
 }

@@ -1,6 +1,7 @@
 import { useMemo } from "react";
 import { useFilterStore } from "@/store/filterStore";
 import { useDerivedCollections } from "@/lib/useDerivedCollections";
+import { formatCollectionTitle } from "@/lib/formatSeriesAndNumber";
 import { FacetMultiSelect } from "./_FacetMultiSelect";
 
 export function CollectionsFilter() {
@@ -9,7 +10,7 @@ export function CollectionsFilter() {
 
   const facets = useMemo(() => {
     return derivedCollections
-      .map((c) => ({ value: c.id, label: c.title, count: c.member_ids.length }))
+      .map((c) => ({ value: c.id, label: formatCollectionTitle(c), count: c.member_ids.length }))
       .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label));
   }, [derivedCollections]);
 

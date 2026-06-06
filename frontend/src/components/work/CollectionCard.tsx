@@ -2,10 +2,12 @@ import { Badge } from "@/components/ui/badge";
 import { ERA_COLORS } from "@/constants/eras";
 import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
+import { formatCollectionTitle } from "@/lib/formatSeriesAndNumber";
 import type { DerivedCollection } from "@/types/work";
 
 export function CollectionCard({ collection, onClick }: { collection: DerivedCollection; onClick: () => void }) {
   const c = collection;
+  const title = formatCollectionTitle(c);
   return (
     <button
       type="button"
@@ -26,12 +28,12 @@ export function CollectionCard({ collection, onClick }: { collection: DerivedCol
             className="flex h-full items-center justify-center px-3 text-center text-sm font-semibold leading-snug text-white text-balance line-clamp-6 break-words"
             style={{ backgroundColor: c.anchor_era ? ERA_COLORS[c.anchor_era] : "var(--muted)" }}
           >
-            {c.title}
+            {title}
           </div>
         )}
       </div>
       <div className="space-y-1 p-3">
-        <p className="line-clamp-2 font-medium leading-tight">{c.title}</p>
+        <p className="line-clamp-2 font-medium leading-tight">{title}</p>
         {c.series.length > 0 && (
           <p className="line-clamp-1 text-xs text-muted-foreground">{c.series.join(", ")}</p>
         )}

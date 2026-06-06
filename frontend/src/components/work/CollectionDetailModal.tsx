@@ -9,7 +9,7 @@ import { ERA_COLORS } from "@/constants/eras";
 import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { formatReleaseDate } from "@/lib/formatReleaseDate";
-import { formatSeriesAndNumber } from "@/lib/formatSeriesAndNumber";
+import { formatCollectionTitle, formatSeriesAndNumber } from "@/lib/formatSeriesAndNumber";
 import { useCatalogStore } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
 import { useModalNeighbors } from "@/lib/useModalNeighbors";
@@ -87,7 +87,7 @@ export function CollectionDetailModal({ visibleItems }: CollectionDetailModalPro
         {collection && (
           <>
             <DialogHeader>
-              <DialogTitle className="leading-tight break-words">{collection.title}</DialogTitle>
+              <DialogTitle className="leading-tight break-words">{formatCollectionTitle(collection)}</DialogTitle>
             </DialogHeader>
             <div className="flex flex-row gap-4 md:gap-6">
               <div className="w-28 md:w-[200px] shrink-0 aspect-[2/3] overflow-hidden rounded-md bg-muted/40">
@@ -102,12 +102,12 @@ export function CollectionDetailModal({ visibleItems }: CollectionDetailModalPro
                     className="flex h-full items-center justify-center px-3 text-center text-base font-semibold leading-snug text-white text-balance line-clamp-6 break-words"
                     style={{ backgroundColor: collection.anchor_era ? ERA_COLORS[collection.anchor_era] : "var(--muted)" }}
                   >
-                    {collection.title}
+                    {formatCollectionTitle(collection)}
                   </div>
                 )}
               </div>
               <div className="min-w-0 flex-1 space-y-3 text-sm">
-                {(collection.series.length > 0 || collection.number != null) && (
+                {collection.series.length > 0 && (
                   <div className="flex flex-wrap items-center gap-x-1 gap-y-1 font-medium break-words">
                     {collection.series.map((s, i) => (
                       <span key={s}>
@@ -115,9 +115,6 @@ export function CollectionDetailModal({ visibleItems }: CollectionDetailModalPro
                         {s}
                       </span>
                     ))}
-                    {collection.number != null && (
-                      <span>{collection.series.length > 0 ? ` #${collection.number}` : `#${collection.number}`}</span>
-                    )}
                   </div>
                 )}
                 {(collection.mediums.length > 0 || collection.eras.length > 0) && (

@@ -225,16 +225,48 @@ export const useUserStore = create<UserState>((set, get) => ({
   },
 
   deleteCollection: async (id) => {
-    if (!get().session) return;
+    const { session, collections, ownedIds } = get();
+    if (!session) return;
+    const userId = session.user.id;
+
+    // Deleting a collection un-owns its members — but keep any member that
+    // still belongs to another collection (its membership keeps it owned).
+    const target = collections.find((c) => c.id === id);
+    const stillMember = new Set<string>();
+    for (const c of collections) {
+      if (c.id === id) continue;
+      for (const wid of c.member_ids) stillMember.add(wid);
+    }
+    const toUnown = (target?.member_ids ?? []).filter((wid) => !stillMember.has(wid));
+
     await (supabase.from("collections").delete().eq("id", id) as unknown as Promise<{ error: unknown }>);
+    if (toUnown.length > 0) {
+      await (supabase.from("owned").delete().eq("user_id", userId).in("work_id", toUnown) as unknown as Promise<{ error: unknown }>);
+    }
+
+    const nextOwned = new Set(ownedIds);
+    for (const wid of toUnown) nextOwned.delete(wid);
     set((state) => ({
       collections: state.collections.filter((c) => c.id !== id),
+      ownedIds: nextOwned,
     }));
   },
 
   setCollectionMembers: async (id, orderedWorkIds) => {
     if (!get().session) return { error: "Not signed in" };
     const userId = get().session!.user.id;
+
+    // Works dropped from this collection should go unowned — unless they're
+    // still a member of another collection (membership keeps them owned).
+    const collections = get().collections;
+    const nextSet = new Set(orderedWorkIds);
+    const prevMembers = collections.find((c) => c.id === id)?.member_ids ?? [];
+    const stillMember = new Set<string>();
+    for (const c of collections) {
+      if (c.id === id) continue;
+      for (const wid of c.member_ids) stillMember.add(wid);
+    }
+    const toUnown = prevMembers.filter((wid) => !nextSet.has(wid) && !stillMember.has(wid));
 
     // Delete existing members for this collection.
     const del = (await (supabase.from("collection_members").delete().eq("collection_id", id) as unknown as Promise<{ error: { message: string } | null }>));
@@ -256,9 +288,15 @@ export const useUserStore = create<UserState>((set, get) => ({
       if (up.error) return { error: up.error.message };
     }
 
+    // Un-own works removed from the collection.
+    if (toUnown.length > 0) {
+      await (supabase.from("owned").delete().eq("user_id", userId).in("work_id", toUnown) as unknown as Promise<{ error: unknown }>);
+    }
+
     // Update local state.
     const next = new Set(get().ownedIds);
     for (const wid of orderedWorkIds) next.add(wid);
+    for (const wid of toUnown) next.delete(wid);
     set((state) => ({
       ownedIds: next,
       collections: state.collections.map((c) =>

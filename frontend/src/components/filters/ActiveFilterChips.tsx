@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { UNCREDITED_AUTHOR_VALUE } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
 import { useDerivedCollections } from "@/lib/useDerivedCollections";
+import { formatCollectionTitle } from "@/lib/formatSeriesAndNumber";
 
 export function ActiveFilterChips() {
   const s = useFilterStore();
@@ -11,7 +12,7 @@ export function ActiveFilterChips() {
   // from the derived (user) collections, not the catalog's baked map.
   const derivedCollections = useDerivedCollections();
   const collectionTitleById = useMemo(
-    () => new Map(derivedCollections.map((c) => [c.id, c.title])),
+    () => new Map(derivedCollections.map((c) => [c.id, formatCollectionTitle(c)])),
     [derivedCollections],
   );
   const chips: { key: string; label: string; clear: () => void }[] = [];
