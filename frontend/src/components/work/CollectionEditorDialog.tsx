@@ -21,6 +21,8 @@ import { WorkPicker } from "@/components/work/WorkPicker";
 import { formatSeriesAndNumber } from "@/lib/formatSeriesAndNumber";
 import { COLLECTION_TYPES, type CollectionType } from "@/constants/collectionTypes";
 
+const MAX_COVER_BYTES = 1024 * 1024; // 1MB
+
 export function CollectionEditorDialog() {
   const target = useEditorStore((s) => s.target);
   const seedWorkId = useEditorStore((s) => s.seedWorkId);
@@ -82,6 +84,10 @@ export function CollectionEditorDialog() {
   }
 
   async function onUpload(file: File) {
+    if (file.size > MAX_COVER_BYTES) {
+      setError("Image is too large. Maximum size is 1MB.");
+      return;
+    }
     setBusy(true);
     setError(null);
     const { url, error: uploadError } = await uploadCover(file);
@@ -181,7 +187,7 @@ export function CollectionEditorDialog() {
               onChange={(e) => setCoverUrl(e.target.value)}
             />
             <label className="inline-flex cursor-pointer items-center gap-1 text-xs text-muted-foreground hover:text-foreground">
-              <UploadIcon className="size-3.5" /> Upload image
+              <UploadIcon className="size-3.5" /> Upload image (max 1MB)
               <input
                 type="file"
                 accept="image/*"
