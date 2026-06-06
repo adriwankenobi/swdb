@@ -46,6 +46,7 @@ export function deriveCollection(
     id: raw.id,
     title: raw.title,
     number: raw.number,
+    type: raw.type,
     info_url: raw.info_url,
     cover_url: raw.cover_url,
     member_ids: raw.member_ids,

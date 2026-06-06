@@ -117,7 +117,7 @@ export function CollectionDetailModal({ visibleItems }: CollectionDetailModalPro
                     ))}
                   </div>
                 )}
-                {(collection.mediums.length > 0 || collection.eras.length > 0) && (
+                {(collection.mediums.length > 0 || collection.eras.length > 0 || collection.type) && (
                   <div className="flex flex-wrap items-center gap-2">
                     {collection.mediums.map((m) => (
                       <Badge key={m} style={{ backgroundColor: MEDIUM_COLORS[m], color: "white" }}>{m}</Badge>
@@ -125,6 +125,7 @@ export function CollectionDetailModal({ visibleItems }: CollectionDetailModalPro
                     {collection.eras.map((e) => (
                       <Badge key={e} style={{ backgroundColor: ERA_COLORS[e], color: "white" }}>{e}</Badge>
                     ))}
+                    {collection.type && <Badge variant="secondary">{collection.type}</Badge>}
                   </div>
                 )}
                 <p className="whitespace-nowrap">

@@ -4,7 +4,7 @@ import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { formatReleaseDateCompact } from "@/lib/formatReleaseDate";
 import type { Work } from "@/types/work";
-import { COLUMNS, OWNED_COLUMN_WIDTH } from "@/components/views/_tableColumns";
+import { COLUMNS, OWNED_COLUMN_WIDTH, COLLECTION_TYPE_COLUMN_WIDTH } from "@/components/views/_tableColumns";
 import { useFilterStore } from "@/store/filterStore";
 import { resolveWorkCover } from "@/lib/resolveWorkCover";
 import { useWorkCoverFallback } from "@/lib/useWorkCoverFallback";
@@ -25,6 +25,9 @@ export function WorkRow({ work, onClick }: WorkRowProps) {
   const itemsMode = useFilterStore((s) => s.items);
   // Owned cell only in issues mode (matches the TableView header gate).
   const showOwnedCell = session !== null && itemsMode !== "collections";
+  // In collections mode the trailing Type column is shown; standalone works
+  // render an empty cell there to stay aligned with collection rows.
+  const showTypeCell = itemsMode === "collections";
 
   return (
     <div
@@ -73,6 +76,9 @@ export function WorkRow({ work, onClick }: WorkRowProps) {
           {work.medium}
         </Badge>
       </div>
+
+      {/* Type — empty for works; cell present only in collections mode */}
+      {showTypeCell && <div className={`shrink-0 px-2 py-1 ${COLLECTION_TYPE_COLUMN_WIDTH}`} />}
 
       {/* Era badge */}
       <div className={`shrink-0 px-2 py-1 ${COLUMNS[5].width}`}>

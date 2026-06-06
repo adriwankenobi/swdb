@@ -19,6 +19,7 @@ import { useUserStore } from "@/store/userStore";
 import { useCatalogStore } from "@/store/catalogStore";
 import { WorkPicker } from "@/components/work/WorkPicker";
 import { formatSeriesAndNumber } from "@/lib/formatSeriesAndNumber";
+import { COLLECTION_TYPES, type CollectionType } from "@/constants/collectionTypes";
 
 export function CollectionEditorDialog() {
   const target = useEditorStore((s) => s.target);
@@ -40,6 +41,7 @@ export function CollectionEditorDialog() {
 
   const [title, setTitle] = useState("");
   const [number, setNumber] = useState("");
+  const [type, setType] = useState("");
   const [infoUrl, setInfoUrl] = useState("");
   const [coverUrl, setCoverUrl] = useState("");
   const [memberIds, setMemberIds] = useState<string[]>([]);
@@ -52,12 +54,14 @@ export function CollectionEditorDialog() {
     if (editing) {
       setTitle(editing.title);
       setNumber(editing.number != null ? String(editing.number) : "");
+      setType(editing.type ?? "");
       setInfoUrl(editing.info_url ?? "");
       setCoverUrl(editing.cover_url ?? "");
       setMemberIds(editing.member_ids);
     } else {
       setTitle("");
       setNumber("");
+      setType("");
       setInfoUrl("");
       setCoverUrl("");
       setMemberIds(seedWorkId ? [seedWorkId] : []);
@@ -98,6 +102,7 @@ export function CollectionEditorDialog() {
     const patch = {
       title: title.trim(),
       number: num != null && Number.isNaN(num) ? null : num,
+      type: (type as CollectionType) || null,
       info_url: infoUrl.trim() || null,
       cover_url: coverUrl.trim() || null,
     };
@@ -111,6 +116,7 @@ export function CollectionEditorDialog() {
         const c = await createCollection({
           title: patch.title,
           ...(patch.number != null ? { number: patch.number } : {}),
+          ...(patch.type != null ? { type: patch.type } : {}),
           ...(patch.info_url != null ? { info_url: patch.info_url } : {}),
           ...(patch.cover_url != null ? { cover_url: patch.cover_url } : {}),
           member_ids: memberIds,
@@ -148,6 +154,18 @@ export function CollectionEditorDialog() {
             value={number}
             onChange={(e) => setNumber(e.target.value)}
           />
+          <select
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+            className="h-8 w-full min-w-0 rounded-lg border border-input bg-transparent px-2.5 py-1 text-base transition-colors outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/50 md:text-sm dark:bg-input/30"
+          >
+            <option value="">Type (optional)</option>
+            {COLLECTION_TYPES.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
           <Input
             type="url"
             placeholder="Info link (optional)"

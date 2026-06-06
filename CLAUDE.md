@@ -80,9 +80,14 @@ pipeline knows nothing about them.
 - **Collections:** per-user `collections` + `collection_members` tables
   (RLS-guarded). Display/sort fields (eras, mediums, series, authors,
   publishers, year range, anchor era, release date) are **derived
-  client-side** from member works (`deriveCollection`). Covers upload to a
-  public `covers` Storage bucket. A work with no cover borrows one from a
-  user collection it belongs to.
+  client-side** from member works (`deriveCollection`). A few fields are
+  **user-set** on the collection itself (NOT derived): `title`, `number`, and
+  the optional `type` — a physical/media format from `COLLECTION_TYPES`
+  (`Hardcover`, `Softcover`, `Single Issue`, `TPB`, `Omnibus`, `DVD`,
+  `Blu-ray`). `type` is a plain `text` column with no DB constraint; the
+  frontend enum is the source of truth. Covers upload to a public `covers`
+  Storage bucket. A work with no cover borrows one from a user collection it
+  belongs to.
 - **Config:** `frontend/.env.local` (gitignored) holds `VITE_SUPABASE_URL`
   and `VITE_SUPABASE_PUBLISHABLE_KEY` (the browser-safe `sb_publishable_…`
   key; RLS protects data).

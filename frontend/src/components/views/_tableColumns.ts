@@ -18,3 +18,10 @@ export const COLUMNS = [
 // so it lives outside COLUMNS. Header (TableView) and cell (WorkRow) share
 // this width so they stay aligned.
 export const OWNED_COLUMN_WIDTH = "w-20"; // 5rem
+
+// The "Type" column is collection-only, so it's conditional too — rendered
+// only in collections mode (where the Owned column is hidden), inserted
+// between the Medium and Era columns. Lives outside COLUMNS; header
+// (TableView) and cells (CollectionRow / WorkRow) share this width so they
+// stay aligned.
+export const COLLECTION_TYPE_COLUMN_WIDTH = "w-28"; // 7rem

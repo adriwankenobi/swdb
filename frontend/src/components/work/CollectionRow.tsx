@@ -4,7 +4,7 @@ import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { formatReleaseDateCompact } from "@/lib/formatReleaseDate";
 import type { DerivedCollection } from "@/types/work";
-import { COLUMNS } from "@/components/views/_tableColumns";
+import { COLUMNS, COLLECTION_TYPE_COLUMN_WIDTH } from "@/components/views/_tableColumns";
 
 interface CollectionRowProps {
   collection: DerivedCollection;
@@ -68,6 +68,11 @@ export function CollectionRow({ collection, onClick }: CollectionRowProps) {
         {c.mediums.length > 1 && (
           <span className="shrink-0 text-xs text-muted-foreground">+{c.mediums.length - 1}</span>
         )}
+      </div>
+
+      {/* Type — collection-only; column shown only in collections mode */}
+      <div className={`shrink-0 px-2 py-1 ${COLLECTION_TYPE_COLUMN_WIDTH}`}>
+        {c.type && <Badge variant="secondary">{c.type}</Badge>}
       </div>
 
       {/* Era — first badge + overflow count */}

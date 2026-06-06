@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { WorkRow } from "@/components/work/WorkRow";
 import { CollectionRow } from "@/components/work/CollectionRow";
@@ -6,7 +6,7 @@ import { useFilterStore } from "@/store/filterStore";
 import { useUserStore } from "@/store/userStore";
 import { useScrollResetOnFilterChange } from "@/lib/useScrollResetOnFilterChange";
 import type { Item } from "@/lib/buildItemsList";
-import { COLUMNS, OWNED_COLUMN_WIDTH } from "./_tableColumns";
+import { COLUMNS, OWNED_COLUMN_WIDTH, COLLECTION_TYPE_COLUMN_WIDTH } from "./_tableColumns";
 
 const ROW_HEIGHT = 56; // px
 
@@ -21,6 +21,8 @@ export function TableView({ items }: TableViewProps) {
   const signedIn = useUserStore((s) => s.session !== null);
   // The owned column only applies in issues mode (hidden in collections mode).
   const showOwnedColumn = signedIn && itemsMode !== "collections";
+  // The type column is collection-only, so it shows in collections mode.
+  const showTypeColumn = itemsMode === "collections";
   useScrollResetOnFilterChange(parentRef);
 
   const virtualizer = useVirtualizer({
@@ -44,14 +46,19 @@ export function TableView({ items }: TableViewProps) {
         {/* Sticky header */}
         <div className="sticky top-0 z-10 flex border-b bg-background text-xs uppercase text-muted-foreground">
           {COLUMNS.map((col) => (
-            <div
-              key={col.key}
-              className={`shrink-0 px-2 py-2 ${col.width} ${
-                col.key === "cover" ? "sticky left-0 z-20 bg-background" : ""
-              }`}
-            >
-              {col.label}
-            </div>
+            <Fragment key={col.key}>
+              <div
+                className={`shrink-0 px-2 py-2 ${col.width} ${
+                  col.key === "cover" ? "sticky left-0 z-20 bg-background" : ""
+                }`}
+              >
+                {col.label}
+              </div>
+              {/* Type sits between Medium and Era; collections mode only */}
+              {col.key === "medium" && showTypeColumn && (
+                <div className={`shrink-0 px-2 py-2 ${COLLECTION_TYPE_COLUMN_WIDTH}`}>Type</div>
+              )}
+            </Fragment>
           ))}
           {showOwnedColumn && (
             <div className={`shrink-0 px-2 py-2 ${OWNED_COLUMN_WIDTH}`}>Owned</div>

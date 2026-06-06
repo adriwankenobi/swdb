@@ -3,6 +3,7 @@ import type { Session } from "@supabase/supabase-js";
 import { supabase } from "../lib/supabase";
 import { useFilterStore } from "./filterStore";
 import type { UserCollection } from "../types/work";
+import type { CollectionType } from "../constants/collectionTypes";
 
 // PostgREST caps a select() at 1000 rows by default, so fetch in pages and
 // concatenate — owned/collection_members can exceed 1000.
@@ -38,8 +39,8 @@ interface UserState {
   hydrateOwned: () => Promise<void>;
   hydrateCollections: () => Promise<void>;
   toggleOwned: (workId: string) => Promise<void>;
-  createCollection: (args: { title: string; number?: number; info_url?: string; cover_url?: string; member_ids: string[] }) => Promise<{ error: string | null }>;
-  updateCollection: (id: string, patch: { title?: string; number?: number | null; info_url?: string | null; cover_url?: string | null }) => Promise<{ error: string | null }>;
+  createCollection: (args: { title: string; number?: number; type?: CollectionType; info_url?: string; cover_url?: string; member_ids: string[] }) => Promise<{ error: string | null }>;
+  updateCollection: (id: string, patch: { title?: string; number?: number | null; type?: CollectionType | null; info_url?: string | null; cover_url?: string | null }) => Promise<{ error: string | null }>;
   deleteCollection: (id: string) => Promise<void>;
   setCollectionMembers: (id: string, orderedWorkIds: string[]) => Promise<{ error: string | null }>;
   uploadCover: (file: File) => Promise<{ url: string | null; error: string | null }>;
@@ -95,9 +96,9 @@ export const useUserStore = create<UserState>((set, get) => ({
 
   hydrateCollections: async () => {
     const [colsResult, membersResult] = await Promise.all([
-      selectAll<{ id: string; title: string; number: number | null; info_url: string | null; cover_url: string | null }>(
+      selectAll<{ id: string; title: string; number: number | null; type: string | null; info_url: string | null; cover_url: string | null }>(
         "collections",
-        "id,title,number,info_url,cover_url",
+        "id,title,number,type,info_url,cover_url",
       ),
       selectAll<{ collection_id: string; work_id: string; position: number }>(
         "collection_members",
@@ -116,7 +117,7 @@ export const useUserStore = create<UserState>((set, get) => ({
     }
 
     const collections: UserCollection[] = (
-      colsResult.data as Array<{ id: string; title: string; number: number | null; info_url: string | null; cover_url: string | null }>
+      colsResult.data as Array<{ id: string; title: string; number: number | null; type: string | null; info_url: string | null; cover_url: string | null }>
     ).map((row) => {
       const members = (membersByCol.get(row.id) ?? [])
         .sort((a, b) => a.position - b.position)
@@ -125,6 +126,7 @@ export const useUserStore = create<UserState>((set, get) => ({
         id: row.id,
         title: row.title,
         ...(row.number != null ? { number: row.number } : {}),
+        ...(row.type != null ? { type: row.type as CollectionType } : {}),
         ...(row.info_url != null ? { info_url: row.info_url } : {}),
         ...(row.cover_url != null ? { cover_url: row.cover_url } : {}),
         member_ids: members,
@@ -159,13 +161,13 @@ export const useUserStore = create<UserState>((set, get) => ({
     }
   },
 
-  createCollection: async ({ title, number, info_url, cover_url, member_ids }) => {
+  createCollection: async ({ title, number, type, info_url, cover_url, member_ids }) => {
     if (!get().session) return { error: "Not signed in" };
     const userId = get().session!.user.id;
 
     const { data, error } = await supabase
       .from("collections")
-      .insert({ user_id: userId, title, ...(number != null ? { number } : {}), ...(info_url ? { info_url } : {}), ...(cover_url ? { cover_url } : {}) })
+      .insert({ user_id: userId, title, ...(number != null ? { number } : {}), ...(type ? { type } : {}), ...(info_url ? { info_url } : {}), ...(cover_url ? { cover_url } : {}) })
       .select("id")
       .single();
 
@@ -175,6 +177,7 @@ export const useUserStore = create<UserState>((set, get) => ({
       id: data.id,
       title,
       ...(number != null ? { number } : {}),
+      ...(type ? { type } : {}),
       ...(info_url ? { info_url } : {}),
       ...(cover_url ? { cover_url } : {}),
       member_ids: [],
@@ -194,6 +197,7 @@ export const useUserStore = create<UserState>((set, get) => ({
       .update({
         ...(patch.title !== undefined ? { title: patch.title } : {}),
         ...(patch.number !== undefined ? { number: patch.number } : {}),
+        ...(patch.type !== undefined ? { type: patch.type } : {}),
         ...(patch.info_url !== undefined ? { info_url: patch.info_url } : {}),
         ...(patch.cover_url !== undefined ? { cover_url: patch.cover_url } : {}),
       })
@@ -209,6 +213,10 @@ export const useUserStore = create<UserState>((set, get) => ({
         if (patch.number !== undefined) {
           if (patch.number === null) delete updated.number;
           else updated.number = patch.number;
+        }
+        if (patch.type !== undefined) {
+          if (patch.type === null) delete updated.type;
+          else updated.type = patch.type;
         }
         if (patch.info_url !== undefined) {
           if (patch.info_url === null) delete updated.info_url;

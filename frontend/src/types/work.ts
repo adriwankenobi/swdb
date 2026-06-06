@@ -1,5 +1,6 @@
 import type { EraName } from "../constants/eras";
 import type { MediumName } from "../constants/mediums";
+import type { CollectionType } from "../constants/collectionTypes";
 
 export interface Work {
   id: string;
@@ -23,6 +24,7 @@ export interface UserCollection {
   id: string;
   title: string;
   number?: number; // user-set; shown in the table "#" column
+  type?: CollectionType; // user-set physical/media format (optional)
   info_url?: string;
   cover_url?: string;
   member_ids: string[]; // work ids in reading order
@@ -33,6 +35,7 @@ export interface DerivedCollection {
   id: string;
   title: string;
   number?: number; // user-set; shown in the table "#" column
+  type?: CollectionType; // user-set physical/media format (optional)
   info_url?: string;
   cover_url?: string;
   member_ids: string[];

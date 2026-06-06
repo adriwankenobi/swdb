@@ -101,11 +101,14 @@ browse the full catalog; ownership and collections require sign-in.
   write-through). A 3-way **All / Owned / Unowned** sidebar filter applies in
   Issues mode.
 - **Collections:** per-user `collections` (`id, user_id, title, number?,
-  info_url?, cover_url?`) and `collection_members` (`collection_id, work_id,
-  position`) tables, both RLS-guarded. Adding a work to a collection also marks
-  it owned. Covers can be pasted as a URL or uploaded to a public `covers`
+  type?, info_url?, cover_url?`) and `collection_members` (`collection_id,
+  work_id, position`) tables, both RLS-guarded. `type` is an optional user-set
+  format (`Hardcover`, `Softcover`, `Single Issue`, `TPB`, `Omnibus`, `DVD`,
+  `Blu-ray`) stored as plain `text` — the frontend enum is the source of truth,
+  so there's no DB constraint. Adding a work to a collection also marks it
+  owned. Covers can be pasted as a URL or uploaded to a public `covers`
   Storage bucket (`{user_id}/…`). An in-app editor handles create/edit
-  (title, #, info link, cover, member add/remove + ↑/↓ reorder); the work
+  (title, #, type, info link, cover, member add/remove + ↑/↓ reorder); the work
   modal has an "Add to collection" control.
 - **Client-side derivation:** a user collection stores only its raw fields +
   member ids. Display/sort fields — `eras`, `mediums`, `series`, `authors`,

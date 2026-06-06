@@ -44,6 +44,7 @@ export function CollectionCard({ collection, onClick }: { collection: DerivedCol
               {m}
             </Badge>
           ))}
+          {c.type && <Badge variant="secondary">{c.type}</Badge>}
         </div>
         {/* Eras row */}
         <div className="flex flex-wrap items-center gap-1">
