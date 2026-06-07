@@ -219,8 +219,8 @@ export function CollectionEditorDialog() {
                 const w = worksById.get(id);
                 const sn = w ? formatSeriesAndNumber(w) : "";
                 return (
-                <li key={id} className="flex items-center gap-2 text-sm">
-                  <span className="flex-1 truncate">
+                <li key={id} className="flex items-start gap-2 text-sm">
+                  <span className="flex-1 min-w-0 break-words py-1">
                     {w ? w.title : "(unknown work)"}
                     {sn && <span className="ml-1 text-muted-foreground">— {sn}</span>}
                   </span>
