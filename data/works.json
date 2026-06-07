@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-05T11:35:10+00:00",
+  "generated_at": "2026-06-06T20:57:33+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -52,8 +52,7 @@
       ],
       "publisher": "Kindle Daily Post",
       "release_date": "2013-04-25",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Adventures_of_Lanoree_Brock,_Je%27daii_Ranger"
+      "release_precision": "day"
     },
     {
       "id": "5cd24bd9-b39e-5aa6-a8c1-71744ed02aa0",
