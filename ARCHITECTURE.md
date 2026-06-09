@@ -15,7 +15,7 @@ never baked into the JSON.
 
 | Path | Contents |
 |---|---|
-| `Star Wars EU.xlsx` | Source of truth for title / series / medium / # / year |
+| `Star Wars EU.xlsx` | Source of truth for title / series / medium / series # / # / year |
 | `scripts/` | Python pipeline (`build_data.py` orchestrates) |
 | `tests/` | pytest suite for the pipeline |
 | `frontend/` | React SPA (Vite + TS), incl. Supabase client + stores |
@@ -41,7 +41,7 @@ Star Wars EU.xlsx  +  Wookieepedia (MediaWiki API)
 
 **Trusted vs. fetched fields:**
 
-- Excel is the sole authority for `title`, `series`, `medium`, `number`, and
+- Excel is the sole authority for `title`, `series`, `medium`, `series_number, number`, and
   `year`. These are never overwritten by Wookieepedia data.
 - Wookieepedia (via the MediaWiki `action=parse` API, bypassing Cloudflare) is
   the sole source for `authors`, `publisher`, `release_date`, `cover_url`, and
@@ -50,13 +50,12 @@ Star Wars EU.xlsx  +  Wookieepedia (MediaWiki API)
 **Excel sheet layout** (one sheet per era; columns read by absolute position):
 
 ```
-A=YEAR  B=MEDIUM  C=SERIES  D=TITLE  E=#  F=AUTHOR  G=PUBLISHER
-H=RELEASE  I=INFO/wiki  J=COVER  K=ID
+A=YEAR B=MEDIUM C=SERIES D=SERIES # E=TITLE F=# G=AUTHOR H=PUBLISHER I=RELEASE J=INFO K=COVER L=ID
 ```
 
 **Stable IDs:** each work's `id` is read verbatim from the `ID` column (`K`).
 When a cell is blank the pipeline generates an id — seeded from the legacy
-`era|series|title|medium|#` uuid5 — and **writes it back** to the Excel. Once
+`era|series|title|medium|series#` uuid5 — and **writes it back** to the Excel. Once
 stamped, the id is frozen: editing a title, era, series, etc. does not change
 it. This matters because per-user data in Supabase is keyed on `work_id`.
 
@@ -192,8 +191,9 @@ types. An open item not in the current list disables both arrows.
       "medium":       "Novel",
       "title":        "A New Hope",
       "year":         0,
-      "series":       ["Star Wars Episode"],
-      "number":       ["IV"],
+      "series":         ["Star Wars Episode"],
+      "series_number":  ["IV"],
+      "number":         "2",
       "release_date": "1976-11-12",
       "release_precision": "day",
       "authors":      ["Alan Dean Foster"],
@@ -208,11 +208,13 @@ types. An open item not in the current list disables both arrows.
 ### `works[]` shape
 
 **Required:** `id`, `era`, `medium`, `title`, `year`.  
-**Optional** (omitted when unknown, no nulls): `series`, `number`, `year_end`,
-`release_date`, `release_precision`, `authors`, `publisher`, `cover_url`,
-`wiki_url`. `series` and `number` are parallel arrays — a single work can belong
-to multiple series; positional pairing preserves which number applies to which
-series. `release_precision` is `"day" | "month" | "year"`, always emitted
+**Optional** (omitted when unknown, no nulls): `series`, `series_number`,
+`number`, `year_end`, `release_date`, `release_precision`, `authors`,
+`publisher`, `cover_url`, `wiki_url`. `series` and `series_number` are parallel
+arrays — a single work can belong to multiple series; positional pairing
+preserves which issue number applies to which series. `number` is a separate
+scalar: the work's position within its own story arc.
+`release_precision` is `"day" | "month" | "year"`, always emitted
 alongside `release_date`, so the UI can render `"November 1996"` faithfully.
 `year_end` is set only when an item spans a year range (e.g. multi-year TV runs).
 

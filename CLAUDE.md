@@ -47,9 +47,12 @@ collections and ownership are per-user (Supabase), not baked into the JSON.
 - `medium`: canonical STRING from the `MEDIUMS` list, Title Case.
 - `title`: string (required).
 - `year`: signed int (negative = BBY, non-negative = ABY) — required.
-- `series`, `number`: optional **parallel string arrays** — one work may
-  belong to multiple series with corresponding numbers (e.g. comic
-  cross-series).
+- `series`, `series_number`: optional **parallel string arrays** — one work
+  may belong to multiple series with corresponding series issue numbers (e.g.
+  comic cross-series). `series_number` was formerly called `number`.
+- `number`: optional **scalar** string — the work's position within its own
+  story arc (e.g. parts 1–4 of "The Battle of Jabiim", which are Republic
+  55–58). Distinct from `series_number`.
 - `release_date`, `release_precision`, `authors[]`, `publisher`,
   `cover_url`, `wiki_url`, `year_end`: all optional, omitted when empty
   (no nulls). `release_precision` is `"day" | "month" | "year"`, always
@@ -62,8 +65,8 @@ signed-in user's ownership, and collection membership lives in Supabase).
 
 **Excel sheet layout** (one sheet per era; the old `COLLECTED` column and
 `COLLECTIONS` sheet were removed): columns are read by absolute position —
-`A`=YEAR `B`=MEDIUM `C`=SERIES `D`=TITLE `E`=# `F`=AUTHOR `G`=PUBLISHER
-`H`=RELEASE `I`=INFO/wiki `J`=COVER `K`=ID. Excel rows with no `YEAR` cell are
+`A`=YEAR `B`=MEDIUM `C`=SERIES `D`=SERIES # `E`=TITLE `F`=# `G`=AUTHOR
+`H`=PUBLISHER `I`=RELEASE `J`=INFO/wiki `K`=COVER `L`=ID. Excel rows with no `YEAR` cell are
 intentional reference-only entries; the pipeline excludes them and logs them
 to `data/ignored_no_year.log`.
 
