@@ -13,6 +13,7 @@ def _row(**over) -> ExcelRow:
         era=1,
         title="Knight Errant",
         series=None,
+        series_number=None,
         medium="Novel",
         number=None,
         year=-1032,
@@ -47,8 +48,8 @@ def test_row_to_work_id_is_stable_across_schema_change():
             era=5,
             title="A New Hope",
             series="Star Wars Episode",
+            series_number="IV",
             medium="Novel",
-            number="IV",
             year=0,
         )
     )
@@ -242,9 +243,9 @@ def test_ids_writeback_only_for_blank_rows():
 
     rows = [
         _row(era=5, work_id=None, title="A New Hope", series="Star Wars Episode",
-             medium="Novel", number="IV"),
+             series_number="IV", medium="Novel"),
         _row(era=5, work_id="frozen-007", title="Some Comic", series=None,
-             medium="Comic", number="1"),
+             series_number="1", medium="Comic"),
     ]
     works = [_row_to_work(r) for r in rows]
     ids = _build_ids_writeback(works, rows)
@@ -314,31 +315,45 @@ def test_split_series_and_number_both_empty():
 # ---------------------------------------------------------------------------
 
 
-def test_row_to_work_emits_series_as_array():
-    row = _row(series="Star Wars Adventures (comics)", number="1")
+def test_row_to_work_emits_series_number_as_array():
+    row = _row(series="Star Wars Adventures (comics)", series_number="1")
     work = _row_to_work(row)
     assert work["series"] == ["Star Wars Adventures (comics)"]
-    assert work["number"] == ["1"]
+    assert work["series_number"] == ["1"]
 
 
-def test_row_to_work_emits_multi_series_arrays():
-    row = _row(series="X-Wing, Rebel Alliance", number="5, 12")
+def test_row_to_work_emits_multi_series_number_arrays():
+    row = _row(series="X-Wing, Rebel Alliance", series_number="5, 12")
     work = _row_to_work(row)
     assert work["series"] == ["X-Wing", "Rebel Alliance"]
-    assert work["number"] == ["5", "12"]
+    assert work["series_number"] == ["5", "12"]
 
 
 def test_row_to_work_omits_series_when_empty():
-    row = _row(series=None, number=None)
+    row = _row(series=None, series_number=None, number=None)
     work = _row_to_work(row)
     assert "series" not in work
+    assert "series_number" not in work
     assert "number" not in work
 
 
-def test_row_to_work_omits_number_when_empty_but_series_present():
-    row = _row(series="The Clone Wars", number=None)
+def test_row_to_work_omits_series_number_when_empty_but_series_present():
+    row = _row(series="The Clone Wars", series_number=None)
     work = _row_to_work(row)
     assert work["series"] == ["The Clone Wars"]
+    assert "series_number" not in work
+
+
+def test_row_to_work_emits_scalar_number():
+    row = _row(series="Republic", series_number="56", number="2")
+    work = _row_to_work(row)
+    assert work["series_number"] == ["56"]
+    assert work["number"] == "2"  # scalar string, not an array
+
+
+def test_row_to_work_omits_number_when_empty():
+    row = _row(series="Republic", series_number="56", number=None)
+    work = _row_to_work(row)
     assert "number" not in work
 
 
@@ -349,7 +364,7 @@ def test_row_to_work_omits_number_when_empty_but_series_present():
 
 def _work_id_row(**kw):
     defaults = dict(era=5, title="A New Hope", series="Star Wars Episode",
-                    medium="Novel", number="IV", year=0)
+                    medium="Novel", series_number="IV", year=0)
     defaults.update(kw)
     return _row(**defaults)
 
@@ -368,4 +383,4 @@ def test_row_to_work_id_is_stable_across_title_edit():
 def test_row_to_work_falls_back_to_make_id_when_blank():
     work = _row_to_work(_work_id_row(work_id=None))
     assert work["id"] == make_id(era=5, series="Star Wars Episode",
-                                 title="A New Hope", medium="Novel", number="IV")
+                                 title="A New Hope", medium="Novel", series_number="IV")

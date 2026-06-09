@@ -27,7 +27,7 @@ def make_id(
     series: str | None,
     title: str,
     medium: str,
-    number: str | int | None,
+    series_number: str | int | None,
 ) -> str:
     """Deterministic UUIDv5 from the canonical key."""
     parts = [
@@ -35,7 +35,7 @@ def make_id(
         slugify(series or ""),
         slugify(title),
         slugify(medium),
-        slugify(str(number) if number is not None else ""),
+        slugify(str(series_number) if series_number is not None else ""),
     ]
     canonical = "|".join(parts)
     return str(uuid.uuid5(_NAMESPACE, canonical))

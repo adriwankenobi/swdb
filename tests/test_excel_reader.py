@@ -28,7 +28,7 @@ def test_excel_row_required_fields_present(rows):
     sample = next(r for r in rows if r.title == "A New Hope" and r.medium == "Novel")
     assert sample.era == 5  # REBELLION
     assert sample.series == "Star Wars Episode"
-    assert sample.number == "IV"
+    assert sample.series_number == "IV"
 
 
 def test_medium_casing_is_normalized(rows):
@@ -92,48 +92,19 @@ def test_reads_author_publisher_release_columns(tmp_path):
     wb = Workbook()
     ws = wb.active
     ws.title = "REBELLION"
-    ws.append(
-        [
-            "YEAR",
-            "MEDIUM",
-            "SERIES",
-            "TITLE",
-            "#",
-            "AUTHOR",
-            "PUBLISHER",
-            "RELEASE",
-            "INFO",
-            "COVER",
-        ]
-    )
-    ws.append(
-        [
-            "0 ABY",
-            "Novel",
-            "Star Wars Episode",
-            "A New Hope",
-            "IV",
-            "Alan Dean Foster",
-            "Ballantine Books",
-            "1976.11.12",
-            "https://example.com/wiki",
-            "https://example.com/cover.jpg",
-        ]
-    )
-    ws.append(
-        [
-            "0 ABY",
-            "Comic",
-            None,
-            "Sparse Row",
-            "1",
-            None,
-            None,
-            None,
-            None,
-            None,
-        ]
-    )
+    ws.append([
+        "YEAR", "MEDIUM", "SERIES", "SERIES #", "TITLE", "#",
+        "AUTHOR", "PUBLISHER", "RELEASE", "INFO", "COVER",
+    ])
+    ws.append([
+        "0 ABY", "Novel", "Star Wars Episode", "IV", "A New Hope", "IV",
+        "Alan Dean Foster", "Ballantine Books", "1976.11.12",
+        "https://example.com/wiki", "https://example.com/cover.jpg",
+    ])
+    ws.append([
+        "0 ABY", "Comic", None, None, "Sparse Row", "1",
+        None, None, None, None, None,
+    ])
     path = tmp_path / "test.xlsx"
     wb.save(path)
     wb.close()
@@ -157,15 +128,15 @@ def test_reads_work_id_column_when_present(tmp_path):
     ws = wb.active
     ws.title = "REBELLION"
     ws.append([
-        "YEAR", "MEDIUM", "SERIES", "TITLE", "#",
+        "YEAR", "MEDIUM", "SERIES", "SERIES #", "TITLE", "#",
         "AUTHOR", "PUBLISHER", "RELEASE", "INFO", "COVER", "ID",
     ])
     ws.append([
-        "0 ABY", "Novel", "Star Wars Episode", "A New Hope", "IV",
+        "0 ABY", "Novel", "Star Wars Episode", "IV", "A New Hope", "IV",
         None, None, None, None, None, "fixed-id-123",
     ])
     ws.append([
-        "1 ABY", "Comic", None, "Some Comic", "1",
+        "1 ABY", "Comic", None, None, "Some Comic", "1",
         None, None, None, None, None, None,  # blank ID
     ])
     path = tmp_path / "ids.xlsx"

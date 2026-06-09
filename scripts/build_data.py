@@ -89,7 +89,7 @@ def _row_to_work(row: ExcelRow) -> dict:
             series=row.series,
             title=row.title,
             medium=row.medium,
-            number=row.number,
+            series_number=row.series_number,
         ),
         "era": ERAS[row.era],
         "title": row.title,
@@ -98,11 +98,13 @@ def _row_to_work(row: ExcelRow) -> dict:
     }
     if row.year_end is not None:
         work["year_end"] = row.year_end
-    series, number = _split_series_and_number(row.series, row.number)
+    series, series_number = _split_series_and_number(row.series, row.series_number)
     if series:
         work["series"] = series
-    if number:
-        work["number"] = number
+    if series_number:
+        work["series_number"] = series_number
+    if row.number:
+        work["number"] = row.number
     return work
 
 
@@ -121,8 +123,8 @@ def _build_ids_writeback(works: list[dict], rows: list[ExcelRow]) -> dict[tuple,
 
 def _work_lookup_key(row: ExcelRow, work: dict) -> tuple:
     """Lookup key matching excel_writer's _make_lookup_key: (era, title,
-    series, canonical-medium, number)."""
-    return (row.era, row.title, row.series, work["medium"], row.number)
+    series, canonical-medium, series_number)."""
+    return (row.era, row.title, row.series, work["medium"], row.series_number)
 
 
 def _detect_duplicates(works: list[dict]) -> list[list[dict]]:
@@ -198,12 +200,12 @@ def _enrich(
     if excel_full:
         if not client.verify_url_alive(url):
             dead_links.append(
-                f"{row.era}|{row.title}|{row.series}|{row.medium}|{row.number}|wiki|{url}"
+                f"{row.era}|{row.title}|{row.series}|{row.medium}|{row.series_number}|wiki|{url}"
             )
         if not client.verify_url_alive(row.cover_url):
             dead_links.append(
                 f"{row.era}|{row.title}|{row.series}|{row.medium}|"
-                f"{row.number}|cover|{row.cover_url}"
+                f"{row.series_number}|cover|{row.cover_url}"
             )
         _populate_from_excel(work, row)
         return
@@ -229,9 +231,10 @@ def _enrich(
 
 def _split_series_and_number(
     series_text: str | None,
-    number_text: str | None,
+    series_number_text: str | None,
 ) -> tuple[list[str], list[str]]:
-    """Split parallel comma-separated SERIES and # cells into aligned lists.
+    """Split parallel comma-separated SERIES and SERIES # cells into aligned
+    lists.
 
     Numbers beyond the series count are dropped. When the series cell is
     empty the numbers are still kept — the work's title is acting as the
@@ -245,7 +248,7 @@ def _split_series_and_number(
         return [p.strip() for p in text.split(",") if p.strip()]
 
     series = _split(series_text)
-    numbers = _split(number_text)
+    numbers = _split(series_number_text)
     if not series:
         return [], numbers
     return series, numbers[: len(series)]

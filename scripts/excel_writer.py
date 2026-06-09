@@ -9,11 +9,11 @@ from openpyxl import load_workbook
 from scripts.excel_reader import ERA_INDEX, _normalize_medium, _stringify
 
 # Column indices (1-based) into the spreadsheet.
-COL_AUTHOR = 6     # F
-COL_PUBLISHER = 7  # G
-COL_RELEASE = 8    # H
-COL_COVER = 10     # J
-COL_ID = 11        # K
+COL_AUTHOR = 7     # G
+COL_PUBLISHER = 8  # H
+COL_RELEASE = 9    # I
+COL_COVER = 11     # K
+COL_ID = 12        # L
 
 
 def _make_lookup_key(
@@ -21,9 +21,9 @@ def _make_lookup_key(
     title: str | None,
     series: str | None,
     medium: str,
-    number: str | None,
+    series_number: str | None,
 ) -> tuple:
-    return (era, title, series, medium, number)
+    return (era, title, series, medium, series_number)
 
 
 def _format_authors(authors: list[str]) -> str:
@@ -48,7 +48,7 @@ def update_excel(
 ) -> dict:
     """Write enriched fields back into the Excel file.
 
-    `enriched` maps each lookup key (era, title, series, medium, number)
+    `enriched` maps each lookup key (era, title, series, medium, series_number)
     to a dict possibly containing 'authors', 'publisher', 'release_date',
     'cover_url'. Trusted columns are never modified.
 
@@ -67,12 +67,12 @@ def update_excel(
             for row in ws.iter_rows(min_row=2):
                 medium_raw = _stringify(row[1].value)
                 series = _stringify(row[2].value)
-                title = _stringify(row[3].value)
-                number = _stringify(row[4].value)
+                series_number = _stringify(row[3].value)
+                title = _stringify(row[4].value)
                 if not title or not medium_raw:
                     continue
                 medium = _normalize_medium(medium_raw)
-                key = _make_lookup_key(era, title, series, medium, number)
+                key = _make_lookup_key(era, title, series, medium, series_number)
                 if ids is not None:
                     gen_id = ids.get(key)
                     if gen_id and not row[COL_ID - 1].value:

@@ -24,27 +24,27 @@ def test_slugify_handles_empty_string():
 
 
 def test_make_id_is_deterministic_for_same_inputs():
-    a = make_id(era=5, series="Star Wars Episode", title="A New Hope", medium="Novel", number="IV")
-    b = make_id(era=5, series="Star Wars Episode", title="A New Hope", medium="Novel", number="IV")
+    a = make_id(era=5, series="Star Wars Episode", title="A New Hope", medium="Novel", series_number="IV")
+    b = make_id(era=5, series="Star Wars Episode", title="A New Hope", medium="Novel", series_number="IV")
     assert a == b
 
 
 def test_make_id_differs_when_medium_differs():
-    a = make_id(era=5, series="Star Wars Episode", title="A New Hope", medium="Novel", number="IV")
-    b = make_id(era=5, series="Star Wars Episode", title="A New Hope", medium="Movie", number="IV")
+    a = make_id(era=5, series="Star Wars Episode", title="A New Hope", medium="Novel", series_number="IV")
+    b = make_id(era=5, series="Star Wars Episode", title="A New Hope", medium="Movie", series_number="IV")
     assert a != b
 
 
 def test_make_id_handles_missing_optional_inputs():
-    a = make_id(era=4, series=None, title="Hammer", medium="Short Story", number=None)
+    a = make_id(era=4, series=None, title="Hammer", medium="Short Story", series_number=None)
     # Stable across calls
-    b = make_id(era=4, series=None, title="Hammer", medium="Short Story", number=None)
+    b = make_id(era=4, series=None, title="Hammer", medium="Short Story", series_number=None)
     assert a == b
 
 
 def test_make_id_returns_uuid_string():
     result = make_id(
-        era=0, series="Dawn of the Jedi", title="Eruption", medium="Short Story", number=None
+        era=0, series="Dawn of the Jedi", title="Eruption", medium="Short Story", series_number=None
     )
     parsed = uuid.UUID(result)
     assert parsed.version == 5
@@ -72,6 +72,6 @@ def test_make_id_pinned_canonical_value():
         series="Star Wars Episode",
         title="A New Hope",
         medium="Novel",
-        number="IV",
+        series_number="IV",
     )
     assert result == "34a13f75-b121-5c91-b435-f765f951e4a5"

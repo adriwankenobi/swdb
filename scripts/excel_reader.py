@@ -45,8 +45,9 @@ class ExcelRow:
     era: int
     title: str
     series: str | None
+    series_number: str | None  # SERIES # column — issue number within the series
     medium: str  # canonical Title Case (e.g. "Novel"); emitted as-is in works.json
-    number: str | None
+    number: str | None  # # column — the work's position within its own arc
     year: int | None  # start year; may be None when Excel YEAR is empty
     year_end: int | None  # end year of a range; None for single-year entries
     info_url: str | None
@@ -82,19 +83,21 @@ def read_works(path: Path) -> Iterator[ExcelRow]:
             era = ERA_INDEX[sheet_name]
             ws = wb[sheet_name]
             for raw in ws.iter_rows(min_row=2):
-                # Header layout: YEAR, MEDIUM, SERIES, TITLE, #, AUTHOR, PUBLISHER,
-                # RELEASE, INFO, COVER, ID. Columns are read by absolute index.
+                # Header layout: YEAR, MEDIUM, SERIES, SERIES #, TITLE, #,
+                # AUTHOR, PUBLISHER, RELEASE, INFO, COVER, ID. Columns are read
+                # by absolute index.
                 year_raw = _stringify(raw[0].value)
                 medium_raw = _stringify(raw[1].value)
                 series = _stringify(raw[2].value)
-                title = _stringify(raw[3].value)
-                number = _stringify(raw[4].value)
-                author = _stringify(raw[5].value) if len(raw) > 5 else None
-                publisher = _stringify(raw[6].value) if len(raw) > 6 else None
-                release_date_str = _stringify(raw[7].value) if len(raw) > 7 else None
-                info_url = _stringify(raw[8].value) if len(raw) > 8 else None
-                cover_url = _stringify(raw[9].value) if len(raw) > 9 else None
-                work_id = _stringify(raw[10].value) if len(raw) > 10 else None
+                series_number = _stringify(raw[3].value)
+                title = _stringify(raw[4].value)
+                number = _stringify(raw[5].value)
+                author = _stringify(raw[6].value) if len(raw) > 6 else None
+                publisher = _stringify(raw[7].value) if len(raw) > 7 else None
+                release_date_str = _stringify(raw[8].value) if len(raw) > 8 else None
+                info_url = _stringify(raw[9].value) if len(raw) > 9 else None
+                cover_url = _stringify(raw[10].value) if len(raw) > 10 else None
+                work_id = _stringify(raw[11].value) if len(raw) > 11 else None
                 if not title or not medium_raw:
                     continue
                 parsed = parse_year_range(year_raw)
@@ -109,6 +112,7 @@ def read_works(path: Path) -> Iterator[ExcelRow]:
                     era=era,
                     title=title,
                     series=series,
+                    series_number=series_number,
                     medium=_normalize_medium(medium_raw),
                     number=number,
                     year=year_val,

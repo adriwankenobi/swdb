@@ -6,10 +6,10 @@ from openpyxl import Workbook, load_workbook
 from scripts.excel_writer import update_excel
 
 
-# Column layout (no COLLECTED): YEAR, MEDIUM, SERIES, TITLE, #, AUTHOR,
-# PUBLISHER, RELEASE, INFO, COVER[, ID]. COVER is index 9, ID is index 10.
+# Layout: YEAR, MEDIUM, SERIES, SERIES #, TITLE, #, AUTHOR, PUBLISHER,
+# RELEASE, INFO, COVER[, ID]. AUTHOR is index 6, COVER index 10, ID index 11.
 HEADER = [
-    "YEAR", "MEDIUM", "SERIES", "TITLE", "#",
+    "YEAR", "MEDIUM", "SERIES", "SERIES #", "TITLE", "#",
     "AUTHOR", "PUBLISHER", "RELEASE", "INFO", "COVER",
 ]
 HEADER_WITH_ID = [*HEADER, "ID"]
@@ -23,11 +23,11 @@ def tiny_xlsx(tmp_path: Path) -> Path:
     ws.title = "REBELLION"
     ws.append(HEADER)
     ws.append([
-        "0 ABY", "Novel", "Star Wars Episode", "A New Hope", "IV",
+        "0 ABY", "Novel", "Star Wars Episode", "IV", "A New Hope", "IV",
         "OLD AUTHOR", "OLD PUBLISHER", "1976.01.01", None, "OLD COVER",
     ])
     ws.append([
-        "0 ABY", "Comic", None, "Some Comic", "1",
+        "1 ABY", "Comic", None, None, "Some Comic", "1",
         "ANOTHER AUTHOR", None, None, None, None,
     ])
     path = tmp_path / "test.xlsx"
@@ -43,7 +43,7 @@ def test_update_excel_fills_empty_cells(tmp_path: Path):
     ws.title = "REBELLION"
     ws.append(HEADER)
     ws.append([
-        "0 ABY", "Novel", "Star Wars Episode", "A New Hope", "IV",
+        "0 ABY", "Novel", "Star Wars Episode", "IV", "A New Hope", "IV",
         None, None, None, None, None,  # all enriched cells empty
     ])
     path = tmp_path / "empty.xlsx"
@@ -65,10 +65,10 @@ def test_update_excel_fills_empty_cells(tmp_path: Path):
     wb = load_workbook(path, data_only=True)
     ws = wb["REBELLION"]
     row2 = list(ws.iter_rows(min_row=2, max_row=2, values_only=True))[0]
-    assert row2[5] == "Alan Dean Foster"
-    assert row2[6] == "Ballantine Books"
-    assert row2[7] == "1976.11.12"
-    assert row2[9] == "https://example.com/cover.jpg"
+    assert row2[6] == "Alan Dean Foster"
+    assert row2[7] == "Ballantine Books"
+    assert row2[8] == "1976.11.12"
+    assert row2[10] == "https://example.com/cover.jpg"
     wb.close()
 
 
@@ -90,10 +90,10 @@ def test_update_excel_does_not_overwrite_populated_cells(tiny_xlsx: Path):
     wb = load_workbook(tiny_xlsx, data_only=True)
     ws = wb["REBELLION"]
     row2 = list(ws.iter_rows(min_row=2, max_row=2, values_only=True))[0]
-    assert row2[5] == "OLD AUTHOR"
-    assert row2[6] == "OLD PUBLISHER"
-    assert row2[7] == "1976.01.01"
-    assert row2[9] == "OLD COVER"
+    assert row2[6] == "OLD AUTHOR"
+    assert row2[7] == "OLD PUBLISHER"
+    assert row2[8] == "1976.01.01"
+    assert row2[10] == "OLD COVER"
     wb.close()
 
 
@@ -107,7 +107,7 @@ def test_update_excel_writes_release_at_precision(tmp_path: Path, precision, exp
     ws.title = "REBELLION"
     ws.append(HEADER)
     ws.append([
-        "0 ABY", "Novel", "Star Wars Episode", "A New Hope", "IV",
+        "0 ABY", "Novel", "Star Wars Episode", "IV", "A New Hope", "IV",
         None, None, None, None, None,
     ])
     path = tmp_path / f"prec-{precision}.xlsx"
@@ -124,7 +124,7 @@ def test_update_excel_writes_release_at_precision(tmp_path: Path, precision, exp
     wb = load_workbook(path, data_only=True)
     ws = wb["REBELLION"]
     row2 = list(ws.iter_rows(min_row=2, max_row=2, values_only=True))[0]
-    assert row2[7] == expected
+    assert row2[8] == expected
     wb.close()
 
 
@@ -139,7 +139,7 @@ def test_update_excel_does_not_touch_unrelated_rows(tiny_xlsx: Path):
     ws = wb["REBELLION"]
     row3 = list(ws.iter_rows(min_row=3, max_row=3, values_only=True))[0]
     # Some Comic row was not in lookup — author cell stays as-is
-    assert row3[5] == "ANOTHER AUTHOR"
+    assert row3[6] == "ANOTHER AUTHOR"
     wb.close()
 
 
@@ -150,7 +150,7 @@ def test_update_excel_skips_missing_fields(tmp_path: Path):
     ws.title = "REBELLION"
     ws.append(HEADER)
     ws.append([
-        "0 ABY", "Novel", "Star Wars Episode", "A New Hope", "IV",
+        "0 ABY", "Novel", "Star Wars Episode", "IV", "A New Hope", "IV",
         None, "OLD PUBLISHER", "1976.01.01", None, "OLD COVER",
     ])
     path = tmp_path / "partial.xlsx"
@@ -166,10 +166,10 @@ def test_update_excel_skips_missing_fields(tmp_path: Path):
     wb = load_workbook(path, data_only=True)
     ws = wb["REBELLION"]
     row2 = list(ws.iter_rows(min_row=2, max_row=2, values_only=True))[0]
-    assert row2[5] == "Alan Dean Foster"  # was empty, now filled
-    assert row2[6] == "OLD PUBLISHER"     # untouched
-    assert row2[7] == "1976.01.01"        # untouched
-    assert row2[9] == "OLD COVER"         # untouched
+    assert row2[6] == "Alan Dean Foster"  # was empty, now filled
+    assert row2[7] == "OLD PUBLISHER"     # untouched
+    assert row2[8] == "1976.01.01"        # untouched
+    assert row2[10] == "OLD COVER"        # untouched
     wb.close()
 
 
@@ -179,7 +179,7 @@ def test_update_excel_stamps_id_header_when_missing(tmp_path: Path):
     ws.title = "REBELLION"
     ws.append(HEADER)  # no ID header
     ws.append([
-        "0 ABY", "Novel", "Star Wars Episode", "A New Hope", "IV",
+        "0 ABY", "Novel", "Star Wars Episode", "IV", "A New Hope", "IV",
         None, None, None, None, None,
     ])
     path = tmp_path / "noheader.xlsx"
@@ -191,9 +191,9 @@ def test_update_excel_stamps_id_header_when_missing(tmp_path: Path):
 
     wb = load_workbook(path, data_only=True)
     ws = wb["REBELLION"]
-    assert ws.cell(row=1, column=11).value == "ID"  # ID is column K (11)
+    assert ws.cell(row=1, column=12).value == "ID"  # ID is column L (12)
     rows = list(ws.iter_rows(min_row=2, values_only=True))
-    assert rows[0][10] == "gen-001"
+    assert rows[0][11] == "gen-001"
     wb.close()
 
 
@@ -203,11 +203,11 @@ def test_update_excel_writes_generated_ids(tmp_path: Path):
     ws.title = "REBELLION"
     ws.append(HEADER_WITH_ID)
     ws.append([
-        "0 ABY", "Novel", "Star Wars Episode", "A New Hope", "IV",
+        "0 ABY", "Novel", "Star Wars Episode", "IV", "A New Hope", "IV",
         None, None, None, None, None, None,  # blank ID
     ])
     ws.append([
-        "1 ABY", "Comic", None, "Some Comic", "1",
+        "1 ABY", "Comic", None, None, "Some Comic", "1",
         None, None, None, None, None, "already-set",  # ID present
     ])
     path = tmp_path / "ids.xlsx"
@@ -223,6 +223,6 @@ def test_update_excel_writes_generated_ids(tmp_path: Path):
     wb = load_workbook(path, data_only=True)
     ws = wb["REBELLION"]
     rows = list(ws.iter_rows(min_row=2, values_only=True))
-    assert rows[0][10] == "gen-001"          # blank cell filled
-    assert rows[1][10] == "already-set"       # present cell untouched
+    assert rows[0][11] == "gen-001"          # blank cell filled
+    assert rows[1][11] == "already-set"       # present cell untouched
     wb.close()
