@@ -10,7 +10,7 @@ export function formatCollectionTitle(
 
 export function formatSeriesAndNumber(work: Work): string {
   const series = work.series ?? [];
-  const numbers = work.number ?? [];
+  const numbers = work.series_number ?? [];
   if (series.length === 0) {
     return numbers.map((n) => `#${n}`).join(", ");
   }
@@ -22,4 +22,17 @@ export function formatSeriesAndNumber(work: Work): string {
       return isTv ? `${s} ${n}` : `${s} #${n}`;
     })
     .join(", ");
+}
+
+/** A work's display title with its per-work arc number appended, using the
+ *  same format as the series (e.g. "The Battle of Jabiim #2"; TV shows use a
+ *  plain space, "The Clone Wars 1"). The number belongs to the work, not the
+ *  series. */
+export function formatWorkTitle(
+  work: Pick<Work, "title" | "number" | "medium">,
+): string {
+  if (!work.number) return work.title;
+  return work.medium === "TV Show"
+    ? `${work.title} ${work.number}`
+    : `${work.title} #${work.number}`;
 }

@@ -4,6 +4,7 @@ import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { formatReleaseDateCompact } from "@/lib/formatReleaseDate";
 import type { DerivedCollection } from "@/types/work";
+import { formatCollectionTitle } from "@/lib/formatSeriesAndNumber";
 import { COLUMNS, COLLECTION_TYPE_COLUMN_WIDTH } from "@/components/views/_tableColumns";
 
 interface CollectionRowProps {
@@ -43,23 +44,18 @@ export function CollectionRow({ collection, onClick }: CollectionRowProps) {
         )}
       </div>
 
-      {/* Title */}
-      <div className={`shrink-0 px-2 py-1 font-medium truncate ${COLUMNS[1].width}`}>
-        {c.title}
-      </div>
-
       {/* Series — union of member series */}
-      <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[2].width}`}>
+      <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[1].width}`}>
         {c.series.join(", ")}
       </div>
 
-      {/* Number — the collection's own "#" */}
-      <div className={`shrink-0 px-2 py-1 text-muted-foreground ${COLUMNS[3].width}`}>
-        {c.number ?? ""}
+      {/* Title — collection's own "#" folded into the title */}
+      <div className={`shrink-0 px-2 py-1 font-medium truncate ${COLUMNS[2].width}`}>
+        {formatCollectionTitle(c)}
       </div>
 
       {/* Medium — first badge + overflow count */}
-      <div className={`shrink-0 px-2 py-1 flex items-center gap-1 overflow-hidden ${COLUMNS[4].width}`}>
+      <div className={`shrink-0 px-2 py-1 flex items-center gap-1 overflow-hidden ${COLUMNS[3].width}`}>
         {primaryMedium && (
           <Badge style={{ backgroundColor: MEDIUM_COLORS[primaryMedium], color: "white" }}>
             {primaryMedium}
@@ -76,7 +72,7 @@ export function CollectionRow({ collection, onClick }: CollectionRowProps) {
       </div>
 
       {/* Era — first badge + overflow count */}
-      <div className={`shrink-0 px-2 py-1 flex items-center gap-1 overflow-hidden ${COLUMNS[5].width}`}>
+      <div className={`shrink-0 px-2 py-1 flex items-center gap-1 overflow-hidden ${COLUMNS[4].width}`}>
         {c.eras.length > 0 && (
           <Badge style={{ backgroundColor: ERA_COLORS[primaryEra], color: "white" }}>
             {primaryEra}
@@ -88,17 +84,17 @@ export function CollectionRow({ collection, onClick }: CollectionRowProps) {
       </div>
 
       {/* Year */}
-      <div className={`shrink-0 px-2 py-1 text-muted-foreground whitespace-nowrap ${COLUMNS[6].width}`}>
+      <div className={`shrink-0 px-2 py-1 text-muted-foreground whitespace-nowrap ${COLUMNS[5].width}`}>
         {formatYear(c.year, c.year_end)}
       </div>
 
       {/* Release */}
-      <div className={`shrink-0 px-2 py-1 text-muted-foreground whitespace-nowrap ${COLUMNS[7].width}`}>
+      <div className={`shrink-0 px-2 py-1 text-muted-foreground whitespace-nowrap ${COLUMNS[6].width}`}>
         {c.release_date ? formatReleaseDateCompact(c.release_date, c.release_precision) : ""}
       </div>
 
       {/* Authors — union of member authors */}
-      <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[8].width}`}>
+      <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[7].width}`}>
         {c.authors.join(", ")}
       </div>
       {/* Publisher column is intentionally omitted in collections mode. */}

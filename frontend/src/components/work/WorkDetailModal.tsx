@@ -16,7 +16,7 @@ import { ModalNavArrows } from "@/components/work/ModalNavArrows";
 import { OwnedCheckbox } from "@/components/work/OwnedCheckbox";
 import { AddToCollectionMenu } from "@/components/work/AddToCollectionMenu";
 import { useDerivedCollections } from "@/lib/useDerivedCollections";
-import { formatCollectionTitle } from "@/lib/formatSeriesAndNumber";
+import { formatCollectionTitle, formatWorkTitle } from "@/lib/formatSeriesAndNumber";
 import type { Item } from "@/lib/buildItemsList";
 
 function safeHttpUrl(url: string | undefined): string | undefined {
@@ -97,7 +97,20 @@ export function WorkDetailModal({ visibleItems }: WorkDetailModalProps) {
         {work && (
           <>
             <DialogHeader>
-              <DialogTitle className="leading-tight break-words">{work.title}</DialogTitle>
+              {work.series && work.series.length > 0 && (
+                <div className="flex flex-wrap gap-x-3 gap-y-1 text-sm font-medium text-muted-foreground break-words">
+                  {work.series.map((s, i) => {
+                    const n = work.series_number?.[i];
+                    const label = !n
+                      ? s
+                      : work.medium === "TV Show"
+                        ? `${s} ${n}`
+                        : `${s} #${n}`;
+                    return <span key={s}>{label}</span>;
+                  })}
+                </div>
+              )}
+              <DialogTitle className="leading-tight break-words">{formatWorkTitle(work)}</DialogTitle>
             </DialogHeader>
             <div className="flex flex-row gap-4 md:gap-6">
               <div className="w-28 md:w-[200px] shrink-0 aspect-[2/3] overflow-hidden rounded-md bg-muted/40">
@@ -119,19 +132,6 @@ export function WorkDetailModal({ visibleItems }: WorkDetailModalProps) {
                 })()}
               </div>
               <div className="min-w-0 flex-1 space-y-3 text-sm">
-                {work.series && work.series.length > 0 && (
-                  <div className="flex flex-wrap gap-x-3 gap-y-1 font-medium break-words">
-                    {work.series.map((s, i) => {
-                      const n = work.number?.[i];
-                      const label = !n
-                        ? s
-                        : work.medium === "TV Show"
-                          ? `${s} ${n}`
-                          : `${s} #${n}`;
-                      return <span key={s}>{label}</span>;
-                    })}
-                  </div>
-                )}
                 <div className="flex flex-wrap items-center gap-2">
                   <Badge style={{ backgroundColor: MEDIUM_COLORS[work.medium], color: "white" }}>{work.medium}</Badge>
                   <Badge style={{ backgroundColor: ERA_COLORS[work.era], color: "white" }}>

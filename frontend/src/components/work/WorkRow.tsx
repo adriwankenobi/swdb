@@ -3,6 +3,7 @@ import { ERA_COLORS } from "@/constants/eras";
 import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { formatReleaseDateCompact } from "@/lib/formatReleaseDate";
+import { formatSeriesAndNumber, formatWorkTitle } from "@/lib/formatSeriesAndNumber";
 import type { Work } from "@/types/work";
 import { COLUMNS, OWNED_COLUMN_WIDTH, COLLECTION_TYPE_COLUMN_WIDTH } from "@/components/views/_tableColumns";
 import { useFilterStore } from "@/store/filterStore";
@@ -55,23 +56,18 @@ export function WorkRow({ work, onClick }: WorkRowProps) {
         )}
       </div>
 
+      {/* Series (with its series numbers) */}
+      <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[1].width}`}>
+        {formatSeriesAndNumber(work)}
+      </div>
+
       {/* Title */}
-      <div className={`shrink-0 px-2 py-1 font-medium truncate ${COLUMNS[1].width}`}>
-        {work.title}
-      </div>
-
-      {/* Series */}
-      <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[2].width}`}>
-        {work.series?.join(", ") ?? ""}
-      </div>
-
-      {/* Number */}
-      <div className={`shrink-0 px-2 py-1 text-muted-foreground ${COLUMNS[3].width}`}>
-        {work.number?.join(", ") ?? ""}
+      <div className={`shrink-0 px-2 py-1 font-medium truncate ${COLUMNS[2].width}`}>
+        {formatWorkTitle(work)}
       </div>
 
       {/* Medium badge */}
-      <div className={`shrink-0 px-2 py-1 ${COLUMNS[4].width}`}>
+      <div className={`shrink-0 px-2 py-1 ${COLUMNS[3].width}`}>
         <Badge style={{ backgroundColor: MEDIUM_COLORS[work.medium], color: "white" }}>
           {work.medium}
         </Badge>
@@ -81,30 +77,30 @@ export function WorkRow({ work, onClick }: WorkRowProps) {
       {showTypeCell && <div className={`shrink-0 px-2 py-1 ${COLLECTION_TYPE_COLUMN_WIDTH}`} />}
 
       {/* Era badge */}
-      <div className={`shrink-0 px-2 py-1 ${COLUMNS[5].width}`}>
+      <div className={`shrink-0 px-2 py-1 ${COLUMNS[4].width}`}>
         <Badge style={{ backgroundColor: ERA_COLORS[work.era], color: "white" }}>
           {work.era}
         </Badge>
       </div>
 
       {/* Year */}
-      <div className={`shrink-0 px-2 py-1 text-muted-foreground whitespace-nowrap ${COLUMNS[6].width}`}>
+      <div className={`shrink-0 px-2 py-1 text-muted-foreground whitespace-nowrap ${COLUMNS[5].width}`}>
         {formatYear(work.year, work.year_end)}
       </div>
 
       {/* Release */}
-      <div className={`shrink-0 px-2 py-1 text-muted-foreground whitespace-nowrap ${COLUMNS[7].width}`}>
+      <div className={`shrink-0 px-2 py-1 text-muted-foreground whitespace-nowrap ${COLUMNS[6].width}`}>
         {work.release_date ? formatReleaseDateCompact(work.release_date, work.release_precision) : ""}
       </div>
 
       {/* Authors */}
-      <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[8].width}`}>
+      <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[7].width}`}>
         {work.authors?.join(", ") ?? ""}
       </div>
 
       {/* Publisher — hidden in collections mode (matches the TableView header) */}
       {!showTypeCell && (
-        <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[9].width}`}>
+        <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[8].width}`}>
           {work.publisher ?? ""}
         </div>
       )}

@@ -2,6 +2,7 @@ import { useRef } from "react";
 import { ERA_COLORS } from "@/constants/eras";
 import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
+import { formatWorkTitle } from "@/lib/formatSeriesAndNumber";
 import { groupForChronology, groupForRelease } from "@/lib/timelineGroups";
 import { resolveWorkCover } from "@/lib/resolveWorkCover";
 import { useWorkCoverFallback } from "@/lib/useWorkCoverFallback";
@@ -24,7 +25,7 @@ function WorkMarker({ work, onClick }: WorkMarkerProps) {
   const cover = resolveWorkCover(work, coverByWorkId);
   const yearLabel = formatYear(work.year, work.year_end);
   const seriesStr = (work.series ?? []).join(", ");
-  const tooltip = `${work.title}${seriesStr ? ` — ${seriesStr}` : ""} (${yearLabel})`;
+  const tooltip = `${formatWorkTitle(work)}${seriesStr ? ` — ${seriesStr}` : ""} (${yearLabel})`;
   const mediumColor = MEDIUM_COLORS[work.medium];
   const eraColor = ERA_COLORS[work.era];
 

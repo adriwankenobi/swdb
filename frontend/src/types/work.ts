@@ -10,7 +10,8 @@ export interface Work {
   year: number;
   year_end?: number;
   series?: string[];
-  number?: string[];
+  series_number?: string[]; // issue number within each series (parallel to `series`)
+  number?: string; // the work's position within its own story arc (scalar)
   release_date?: string;
   release_precision?: "day" | "month" | "year";
   authors?: string[];

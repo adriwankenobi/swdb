@@ -2,7 +2,7 @@ import { Badge } from "@/components/ui/badge";
 import { ERA_COLORS } from "@/constants/eras";
 import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
-import { formatSeriesAndNumber } from "@/lib/formatSeriesAndNumber";
+import { formatSeriesAndNumber, formatWorkTitle } from "@/lib/formatSeriesAndNumber";
 import { resolveWorkCover } from "@/lib/resolveWorkCover";
 import { useWorkCoverFallback } from "@/lib/useWorkCoverFallback";
 import { useUserStore } from "../../store/userStore";
@@ -40,12 +40,12 @@ export function WorkCard({ work, onClick }: { work: Work; onClick: () => void })
         )}
       </div>
       <div className="space-y-1 p-3">
-        <p className="line-clamp-2 font-medium leading-tight">{work.title}</p>
-        {((work.series?.length ?? 0) > 0 || (work.number?.length ?? 0) > 0) && (
+        {((work.series?.length ?? 0) > 0 || (work.series_number?.length ?? 0) > 0) && (
           <p className="line-clamp-1 text-xs text-muted-foreground">
             {formatSeriesAndNumber(work)}
           </p>
         )}
+        <p className="line-clamp-2 font-medium leading-tight">{formatWorkTitle(work)}</p>
         <div className="flex flex-wrap items-center gap-1 pt-1">
           <Badge style={{ backgroundColor: MEDIUM_COLORS[work.medium], color: "white" }}>{work.medium}</Badge>
           <Badge

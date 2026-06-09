@@ -3,9 +3,8 @@
 // scroll appears only when the viewport is narrower than the column sum.
 export const COLUMNS = [
   { key: "cover",     label: "Cover",     width: "w-14"  },  // 3.5rem
-  { key: "title",     label: "Title",     width: "w-64"  },  // 16rem
   { key: "series",    label: "Series",    width: "w-48"  },  // 12rem
-  { key: "number",    label: "#",         width: "w-12"  },  // 3rem
+  { key: "title",     label: "Title",     width: "w-64"  },  // 16rem
   { key: "medium",    label: "Medium",    width: "w-32"  },  // 8rem
   { key: "era",       label: "Era",       width: "w-44"  },  // 11rem
   { key: "year",      label: "Year",      width: "w-44"  },  // 11rem (fits "25,200 BBY - 671 BBY")

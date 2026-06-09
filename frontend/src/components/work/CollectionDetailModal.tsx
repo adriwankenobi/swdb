@@ -9,7 +9,7 @@ import { ERA_COLORS } from "@/constants/eras";
 import { MEDIUM_COLORS } from "@/constants/mediums";
 import { formatYear } from "@/lib/formatYear";
 import { formatReleaseDate } from "@/lib/formatReleaseDate";
-import { formatCollectionTitle, formatSeriesAndNumber } from "@/lib/formatSeriesAndNumber";
+import { formatCollectionTitle, formatSeriesAndNumber, formatWorkTitle } from "@/lib/formatSeriesAndNumber";
 import { useCatalogStore } from "@/store/catalogStore";
 import { useFilterStore } from "@/store/filterStore";
 import { useModalNeighbors } from "@/lib/useModalNeighbors";
@@ -205,11 +205,12 @@ export function CollectionDetailModal({ visibleItems }: CollectionDetailModalPro
                     >
                       {(() => {
                         const prefix = formatSeriesAndNumber(member);
-                        if (!prefix) return member.title;
+                        const title = formatWorkTitle(member);
+                        if (!prefix) return title;
                         const hasSeries = (member.series?.length ?? 0) > 0;
                         return hasSeries
-                          ? `${prefix} — ${member.title}`
-                          : `${member.title} ${prefix}`;
+                          ? `${prefix} — ${title}`
+                          : `${title} ${prefix}`;
                       })()}
                     </button>
                   );
