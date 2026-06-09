@@ -16,6 +16,7 @@ import { ModalNavArrows } from "@/components/work/ModalNavArrows";
 import { OwnedCheckbox } from "@/components/work/OwnedCheckbox";
 import { AddToCollectionMenu } from "@/components/work/AddToCollectionMenu";
 import { useDerivedCollections } from "@/lib/useDerivedCollections";
+import { formatCollectionTitle } from "@/lib/formatSeriesAndNumber";
 import type { Item } from "@/lib/buildItemsList";
 
 function safeHttpUrl(url: string | undefined): string | undefined {
@@ -212,8 +213,7 @@ export function WorkDetailModal({ visibleItems }: WorkDetailModalProps) {
                           <img src={collection.cover_url} alt="" className="h-full w-full object-contain" />
                         ) : null}
                       </div>
-                      <span className="text-sm font-medium">{collection.title}</span>
-                      <span className="text-muted-foreground">→</span>
+                      <span className="text-sm font-medium">{formatCollectionTitle(collection)}</span>
                     </button>
                   ))}
                 </div>

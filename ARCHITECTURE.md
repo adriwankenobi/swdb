@@ -19,6 +19,7 @@ never baked into the JSON.
 | `scripts/` | Python pipeline (`build_data.py` orchestrates) |
 | `tests/` | pytest suite for the pipeline |
 | `frontend/` | React SPA (Vite + TS), incl. Supabase client + stores |
+| `supabase/` | `setup.sql` — one-shot script to provision tables, RLS, and the `covers` bucket |
 | `data/` | `.cache/wookieepedia/` (gitignored) and build-time log files |
 
 ## Pipeline (Python)
@@ -119,6 +120,11 @@ browse the full catalog; ownership and collections require sign-in.
 
 Reads that can exceed PostgREST's 1000-row default (`owned`,
 `collection_members`) are paginated.
+
+**Provisioning:** `supabase/setup.sql` is a single idempotent script that
+creates the three tables, their RLS policies, and the `covers` bucket (public
+read, owner-only writes, 1 MB image limit). Paste it into the Supabase SQL
+Editor or run `supabase db execute --file supabase/setup.sql`.
 
 ## Frontend (React)
 

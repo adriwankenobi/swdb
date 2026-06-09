@@ -101,11 +101,7 @@ export function CollectionRow({ collection, onClick }: CollectionRowProps) {
       <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[8].width}`}>
         {c.authors.join(", ")}
       </div>
-
-      {/* Publisher — union of member publishers */}
-      <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[9].width}`}>
-        {c.publishers.join(", ")}
-      </div>
+      {/* Publisher column is intentionally omitted in collections mode. */}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-05T11:35:10+00:00",
+  "generated_at": "2026-06-07T19:43:18+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -52,8 +52,7 @@
       ],
       "publisher": "Kindle Daily Post",
       "release_date": "2013-04-25",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Adventures_of_Lanoree_Brock,_Je%27daii_Ranger"
+      "release_precision": "day"
     },
     {
       "id": "5cd24bd9-b39e-5aa6-a8c1-71744ed02aa0",
@@ -2731,8 +2730,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Vacation",
       "publisher": "BioWare",
       "release_date": "2015-07-07",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Vacation"
+      "release_precision": "day"
     },
     {
       "id": "a1229fd4-4055-52b4-8924-5d805ef40590",
@@ -2965,8 +2963,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/The_Final_Trial",
       "publisher": "BioWare",
       "release_date": "2015-03-06",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Final_Trial"
+      "release_precision": "day"
     },
     {
       "id": "93a7a7f6-ab0a-59d3-9541-126a3d21ba3f",
@@ -3001,8 +2998,7 @@
       ],
       "publisher": "BioWare",
       "release_date": "2015-02-05",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Price_of_Power"
+      "release_precision": "day"
     },
     {
       "id": "2129ca0e-5491-54e5-8cf9-08faeb8bbb45",
@@ -3016,8 +3012,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/The_Sixth_Line",
       "publisher": "BioWare",
       "release_date": "2015-04-24",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Sixth_Line"
+      "release_precision": "day"
     },
     {
       "id": "81a6e1e8-d9d0-5762-8302-8cfa3f5a02dd",
@@ -3031,8 +3026,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/The_Sixth_Line",
       "publisher": "BioWare",
       "release_date": "2015-04-24",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Sixth_Line"
+      "release_precision": "day"
     },
     {
       "id": "9afb3af3-ec9b-51d1-9a9f-be62ecde6fb9",
@@ -3232,8 +3226,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Surface_Details",
       "publisher": "BioWare",
       "release_date": "2014-08-14",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Surface_Details"
+      "release_precision": "day"
     },
     {
       "id": "217c8e23-84af-5340-a8f7-fd02f66989e5",
@@ -3247,8 +3240,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Wanted:_Dead_and_Dismantled",
       "publisher": "BioWare",
       "release_date": "2014-08-26",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Wanted:_Dead_and_Dismantled"
+      "release_precision": "day"
     },
     {
       "id": "58ae67e8-c365-5ae0-92e2-9ee48db616af",
@@ -3262,8 +3254,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Remnants",
       "publisher": "BioWare",
       "release_date": "2014-09-04",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Remnants"
+      "release_precision": "day"
     },
     {
       "id": "cb8c6900-e71e-5891-aeb5-5757b6cc745a",
@@ -3277,8 +3268,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Bedtime_on_Concordia",
       "publisher": "BioWare",
       "release_date": "2014-10-28",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Bedtime_on_Concordia"
+      "release_precision": "day"
     },
     {
       "id": "3adadb66-bcb0-5b0f-8830-70b5f923fafa",
@@ -3307,8 +3297,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/One_Night_in_the_Dealer%27s_Den",
       "publisher": "BioWare",
       "release_date": "2015-02-13",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/One_Night_in_the_Dealer%27s_Den"
+      "release_precision": "day"
     },
     {
       "id": "b32c1c90-7e51-5963-920f-88a6c7d956a8",
@@ -3322,8 +3311,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Regrets",
       "publisher": "BioWare",
       "release_date": "2015-04-03",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Regrets"
+      "release_precision": "day"
     },
     {
       "id": "ae7ad940-15cd-54f6-ab7b-aa531eb8e2c7",
@@ -3337,8 +3325,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Brothers_(short_story)",
       "publisher": "BioWare",
       "release_date": "2015-07-28",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Brothers_(short_story)"
+      "release_precision": "day"
     },
     {
       "id": "83ac9e89-aa2a-57f5-aff8-9255cdc169e5",
@@ -3371,8 +3358,7 @@
       ],
       "publisher": "BioWare",
       "release_date": "2016-11-17",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/A_Mother's_Hope"
+      "release_precision": "day"
     },
     {
       "id": "d9af7fce-ad44-5342-8d33-ad064eab9f35",
@@ -3422,8 +3408,7 @@
       ],
       "publisher": "BioWare",
       "release_date": "2017-11-16",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Chasing_Copero"
+      "release_precision": "day"
     },
     {
       "id": "a519ea22-4df9-5287-b980-91c2b4a16e59",
@@ -3503,8 +3488,7 @@
       ],
       "publisher": "Del Rey",
       "release_date": "2012-07-24",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Lost_Tribe_of_the_Sith:_Pandemonium"
+      "release_precision": "day"
     },
     {
       "id": "720e785d-f146-53e1-b1f4-447eba32ec21",
@@ -8420,8 +8404,7 @@
       ],
       "publisher": "StarWars.com",
       "release_date": "2008-04-23",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Precipice"
+      "release_precision": "day"
     },
     {
       "id": "5826bab9-a329-5345-b1ec-44d028a4d556",
@@ -8840,8 +8823,7 @@
       ],
       "publisher": "Paizo Publishing",
       "release_date": "2003-01-21",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Clone_Wars:_The_Pengalan_Tradeoff"
+      "release_precision": "day"
     },
     {
       "id": "ecffd1fa-5e33-59d0-958e-d97524e5db72",
@@ -9468,8 +9450,7 @@
       ],
       "publisher": "Paizo Publishing",
       "release_date": "2003-06-03",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Hero_of_Cartao"
+      "release_precision": "day"
     },
     {
       "id": "0fe3c105-cd9f-51d7-b094-5cbdd36ddd71",
@@ -9483,8 +9464,7 @@
       ],
       "publisher": "Paizo Publishing",
       "release_date": "2003-06-03",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Hero_of_Cartao"
+      "release_precision": "day"
     },
     {
       "id": "c51d128f-6dce-5acc-94f0-4a8bff5b7f03",
@@ -9498,8 +9478,7 @@
       ],
       "publisher": "Paizo Publishing",
       "release_date": "2003-06-03",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Hero_of_Cartao"
+      "release_precision": "day"
     },
     {
       "id": "13144245-d80f-5aa3-adfd-c26f2be2ab8a",
@@ -15187,8 +15166,7 @@
       ],
       "publisher": "Prima Publishing",
       "release_date": "2001-11-07",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Pax_Empirica%E2%80%94The_Wookiee_Annihilation"
+      "release_precision": "day"
     },
     {
       "id": "ad0170c3-7675-5b31-a0f8-df4bdb455165",
@@ -15370,8 +15348,7 @@
       ],
       "publisher": "StarWars.com",
       "release_date": "2015-03-06",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Lone_Wolf:_A_Tale_of_Obi-Wan_and_Luke"
+      "release_precision": "day"
     },
     {
       "id": "d5dc6b85-6635-547b-8003-f799f3c1989e",
@@ -15415,8 +15392,7 @@
       ],
       "publisher": "Scholastic",
       "release_date": "2006-05-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Last_One_Standing"
+      "release_precision": "month"
     },
     {
       "id": "2153e708-472c-5001-be9f-bf9f7f460538",
@@ -16611,7 +16587,7 @@
       "publisher": "Dark Horse Comics",
       "release_date": "2013-03-06",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/03/StarWarsDarkTimes24FireCarrierPart2.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/25/DarkTimes-FireCarrier2.jpg/revision/latest"
     },
     {
       "id": "c4181f7d-4644-5a64-a407-753e36984580",
@@ -16930,8 +16906,7 @@
       ],
       "publisher": "IDG Entertainment",
       "release_date": "2006-06-13",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Ghosts_of_the_Sith"
+      "release_precision": "day"
     },
     {
       "id": "a0f5c9e4-74f5-51b3-b6e6-21da56782695",
@@ -17720,8 +17695,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1993-06-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Hearing"
+      "release_precision": "month"
     },
     {
       "id": "08df7cbd-1da6-5851-b3ed-e515d3534c6d",
@@ -17808,8 +17782,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-02-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Turning_Point_(Charlene_Newcomb)"
+      "release_precision": "month"
     },
     {
       "id": "42d4a534-e6d7-540c-8899-92bc417cc18f",
@@ -18283,8 +18256,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-11-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Final_Exit"
+      "release_precision": "month"
     },
     {
       "id": "9f8c7441-190c-5ec6-83d9-d537db920867",
@@ -18360,8 +18332,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-08-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Passages"
+      "release_precision": "month"
     },
     {
       "id": "5b0d8582-7b54-5c1f-abcb-1ecea231a222",
@@ -18375,8 +18346,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-05-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Out_of_the_Cradle"
+      "release_precision": "month"
     },
     {
       "id": "9c4c5c74-5e04-5792-904a-b4f0f7bd5081",
@@ -18931,8 +18901,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-08-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/When_the_Domino_Falls"
+      "release_precision": "month"
     },
     {
       "id": "c6e706d6-2ef5-55ce-892b-04e924b10d3b",
@@ -19456,8 +19425,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-11-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Tinian_on_Trial"
+      "release_precision": "month"
     },
     {
       "id": "920e16c9-66b2-5fd6-b6ae-a37b1555c121",
@@ -19711,8 +19679,7 @@
       ],
       "publisher": "Topps",
       "release_date": "1996-10-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Wanderer_of_Worlds"
+      "release_precision": "month"
     },
     {
       "id": "333eb427-e9e8-5c80-99eb-c23a0caa33bf",
@@ -19935,8 +19902,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1999-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Interlude_at_Darkknell"
+      "release_precision": "month"
     },
     {
       "id": "24aa4385-22e8-5e90-827f-b50461004689",
@@ -19950,8 +19916,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-05-01",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Ringers"
+      "release_precision": "day"
     },
     {
       "id": "bf4c47f6-1681-5450-884b-0f8bf1fe64c4",
@@ -20201,8 +20166,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/A_Hunter%27s_Fate:_Greedo%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "401633d6-a0b8-51e6-a1fc-890e6d6f192f",
@@ -20216,8 +20180,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/When_the_Desert_Wind_Turns:_The_Stormtrooper%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "dab7f304-b15c-5347-8e0c-5d2b8008d1a7",
@@ -20231,8 +20194,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/We_Don%27t_Do_Weddings:_The_Band%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "65021410-3b84-5c45-8307-22e4206ea91d",
@@ -20246,8 +20208,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Hammertong:_The_Tale_of_the_%22Tonnika_Sisters%22"
+      "release_precision": "month"
     },
     {
       "id": "38619e82-ed98-5391-9f6e-08968a289b71",
@@ -20261,8 +20222,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Play_It_Again,_Figrin_D%27an:_The_Tale_of_Muftak_and_Kabe"
+      "release_precision": "month"
     },
     {
       "id": "7120bb1b-2a6a-5e7b-8f77-4894c1aa6494",
@@ -20276,8 +20236,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Sand_Tender:_The_Hammerhead%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "3a690923-943e-5f26-a5b8-26681ff5be09",
@@ -20291,8 +20250,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Drawing_the_Maps_of_Peace:_The_Moisture_Farmer%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "75091d26-fe6b-5ad7-b327-208d10ad90a7",
@@ -20306,8 +20264,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Be_Still_My_Heart:_The_Bartender%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "b1f80036-dab5-5d11-9b03-e2a5e40c98ce",
@@ -20321,8 +20278,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Nightlily:_The_Lovers%27_Tale"
+      "release_precision": "month"
     },
     {
       "id": "473a2013-fb7f-5237-a8b8-33adb8fcb4ae",
@@ -20336,8 +20292,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Empire_Blues:_The_Devaronian%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "2877e77e-5b89-5b75-953b-3ac08ec98d86",
@@ -20351,8 +20306,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Soup%27s_On:_The_Pipe_Smoker%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "0192d6b3-1aae-5d56-850b-824a1e4a2780",
@@ -20366,8 +20320,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Swap_Meet:_The_Jawa%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "acaeed43-80e0-585b-b1f9-fe23c32f19b1",
@@ -20381,8 +20334,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Trade_Wins:_The_Ranat%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "2f1c82dd-7363-5d14-9264-c81dfc26abf4",
@@ -20396,8 +20348,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/At_the_Crossroads:_The_Spacer%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "c76a99fb-77a1-5dfd-b324-dc2964dfbbad",
@@ -20662,8 +20613,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-08-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Changing_the_Odds:_The_Adventures_of_Dannen_Lifehold"
+      "release_precision": "month"
     },
     {
       "id": "bf32c099-e215-598b-bac0-ec8ec872a0f1",
@@ -20842,8 +20792,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-08-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Droid_Trouble"
+      "release_precision": "month"
     },
     {
       "id": "1bcee4fc-525a-5711-ba87-5afac1ea1ba9",
@@ -20857,8 +20806,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-05-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/To_Fight_Another_Day"
+      "release_precision": "month"
     },
     {
       "id": "77e615f4-4e86-58e5-bede-f636938215bc",
@@ -20872,8 +20820,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1997-02-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Small_Favors"
+      "release_precision": "month"
     },
     {
       "id": "aeb56782-d820-526b-aefa-e3d36a576e23",
@@ -20887,8 +20834,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1997-05-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Occupation_of_Rhamalai"
+      "release_precision": "month"
     },
     {
       "id": "80954653-06d6-5754-8f4b-9aba3c8b5d53",
@@ -20962,8 +20908,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-11-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Uhl_Eharl_Khoehng_(short_story)"
+      "release_precision": "month"
     },
     {
       "id": "a2aea8f8-95ec-5c62-ae53-7b41e6677453",
@@ -24244,8 +24189,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1996-11-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Most_Dangerous_Foe"
+      "release_precision": "month"
     },
     {
       "id": "abc4f379-7e7a-5bf8-a81b-09042b16070d",
@@ -24259,8 +24203,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Doctor_Death:_The_Tale_of_Dr._Evazan_and_Ponda_Baba"
+      "release_precision": "month"
     },
     {
       "id": "a4f0c6de-fe2f-56f2-b09b-ba1480452231",
@@ -24771,8 +24714,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-02-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/A_Bitter_Winter"
+      "release_precision": "month"
     },
     {
       "id": "5ffa4139-212f-504b-96a9-34589a446cbb",
@@ -24895,8 +24837,7 @@
       ],
       "publisher": "StarWars.com",
       "release_date": "2009-06-01",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Death_in_the_Slave_Pits_of_Lorrd"
+      "release_precision": "day"
     },
     {
       "id": "485d5d3a-2597-5782-b6da-662b929b33e8",
@@ -25722,8 +25663,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1989-01-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Camie%27s_Story"
+      "release_precision": "month"
     },
     {
       "id": "385d1565-f60e-5c3b-a5c3-0e39c71a0b0b",
@@ -26123,8 +26063,7 @@
       ],
       "publisher": "StarWars.com",
       "release_date": "2008-05-24",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Lando_Calrissian:_Idiot%27s_Array"
+      "release_precision": "day"
     },
     {
       "id": "4403da10-d94d-51ce-b05d-48261c2f06fd",
@@ -26222,8 +26161,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-05-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Finder%27s_Fee"
+      "release_precision": "month"
     },
     {
       "id": "c2b6523c-8710-5e9e-ac1c-1c4545704ca2",
@@ -26237,8 +26175,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1997-08-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Breath_of_Gelgelar"
+      "release_precision": "month"
     },
     {
       "id": "96f9db4b-9d23-5b66-9936-3c95c3a414fb",
@@ -26425,8 +26362,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1996-02-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Combat_Moon_(short_story)"
+      "release_precision": "month"
     },
     {
       "id": "7bcad6a8-4fd5-5238-a927-724dea8060bb",
@@ -26470,8 +26406,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1997-02-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Idol_Intentions"
+      "release_precision": "month"
     },
     {
       "id": "876ffc28-3a60-51fd-9bed-38bc7acab298",
@@ -26485,8 +26420,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1997-05-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Last_Hand_(short_story)"
+      "release_precision": "month"
     },
     {
       "id": "23f0ee56-842c-5c7a-b123-0fc798561cc5",
@@ -26559,8 +26493,7 @@
       ],
       "publisher": "Unofficially Published",
       "release_date": "1998-02-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/A_Servant_of_the_Empire"
+      "release_precision": "month"
     },
     {
       "id": "f71df683-cbd0-51d6-ad1a-140ca93843d3",
@@ -26574,8 +26507,7 @@
       ],
       "publisher": "Unofficially Published",
       "release_date": "1998-02-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Credit_Denied"
+      "release_precision": "month"
     },
     {
       "id": "4b6b2a52-f9ab-5cd2-a147-bbbfd57d1d5b",
@@ -26589,8 +26521,7 @@
       ],
       "publisher": "Unofficially Published",
       "release_date": "1998-05-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Shifting_Gears"
+      "release_precision": "month"
     },
     {
       "id": "5a382e09-f21e-5148-8e31-198ad69dfc55",
@@ -26996,8 +26927,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1989-01-01",
-      "release_precision": "year",
-      "cover_url": "https://starwars.fandom.com/wiki/Mutiny_on_the_Rand_Ecliptic_(short_story)"
+      "release_precision": "year"
     },
     {
       "id": "2c93452f-8f54-5a7a-bf02-54fd2d71a2d7",
@@ -27011,8 +26941,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1996-01-01",
-      "release_precision": "year",
-      "cover_url": "https://starwars.fandom.com/wiki/One_Step_Ahead"
+      "release_precision": "year"
     },
     {
       "id": "5e7efe3c-7d18-51c5-9fbf-9dc395f40cc5",
@@ -27026,8 +26955,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1989-01-01",
-      "release_precision": "year",
-      "cover_url": "https://starwars.fandom.com/wiki/Running_the_Gauntlet"
+      "release_precision": "year"
     },
     {
       "id": "feb09c46-f2f4-5f5b-9449-031215b8875e",
@@ -27148,8 +27076,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1996-06-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Temporary_Reassignment"
+      "release_precision": "month"
     },
     {
       "id": "f1a60b98-5fb6-5cb1-a501-20711d9bae01",
@@ -27163,8 +27090,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1996-06-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/An_Old_Flame_in_Need..."
+      "release_precision": "month"
     },
     {
       "id": "76fbccd4-2d9c-5ecf-a605-0fc8072339c2",
@@ -27474,8 +27400,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1996-06-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/In_the_Emperor%27s_Service"
+      "release_precision": "month"
     },
     {
       "id": "85bbd33e-b5ed-5845-b8ac-c1b2d897b238",
@@ -27923,8 +27848,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1996-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Of_Possible_Futures:_The_Tale_of_Zuckuss_and_4-LOM"
+      "release_precision": "month"
     },
     {
       "id": "80049ea6-2a14-5edb-a654-0bfa3f212fc9",
@@ -27968,8 +27892,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1996-11-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Longest_Fall"
+      "release_precision": "month"
     },
     {
       "id": "58bc1af2-0c3c-50ec-ae53-1de4eac8dda7",
@@ -29058,8 +28981,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Chief_Chirpa_Kidnapped!",
       "publisher": "Marvel UK",
       "release_date": "1988-08-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Chief_Chirpa_Kidnapped!"
+      "release_precision": "month"
     },
     {
       "id": "1829be59-f139-5431-b094-327fe407a3da",
@@ -29073,8 +28995,7 @@
       "wiki_url": "https://starwars.fandom.com/wiki/Return_of_the_Great_One!",
       "publisher": "Marvel UK",
       "release_date": "1988-08-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Return_of_the_Great_One!"
+      "release_precision": "month"
     },
     {
       "id": "a66d76b2-ee58-5692-8629-c8a5d82978d2",
@@ -29838,8 +29759,7 @@
       ],
       "publisher": "Wizards of the Coast",
       "release_date": "1998-05-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Special_Ops:_The_Art_of_Infiltration"
+      "release_precision": "month"
     },
     {
       "id": "473de2ce-c099-5c57-932f-952a934c6888",
@@ -29872,8 +29792,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1990-01-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Employment_Test"
+      "release_precision": "month"
     },
     {
       "id": "89ef8612-83f8-54d4-99d2-55c463e53861",
@@ -30077,8 +29996,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/A_Boy_and_His_Monster:_The_Rancor_Keeper%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "b8f57772-66c9-5b8e-8617-f03539b28918",
@@ -30093,8 +30011,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/A_Bad_Feeling:_The_Tale_of_EV-9D9"
+      "release_precision": "month"
     },
     {
       "id": "97b3dfe1-0360-5ff9-98ef-50305ccb9cb4",
@@ -30108,8 +30025,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/And_the_Band_Played_On:_The_Band%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "53df6ebd-b109-51b1-bdb7-569d8e5f6541",
@@ -30123,8 +30039,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Sleight_of_Hand:_The_Tale_of_Mara_Jade"
+      "release_precision": "month"
     },
     {
       "id": "4d75bce0-0efb-5a0f-906e-969c7139d17b",
@@ -30138,8 +30053,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Of_the_Day%27s_Annoyances:_Bib_Fortuna%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "f8d55b48-369b-5465-804b-298d8586e082",
@@ -30153,8 +30067,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Shaara_and_the_Sarlacc:_The_Skiff_Guard%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "f3f790c5-d8e6-5a10-863f-d6b261b1fe43",
@@ -30168,8 +30081,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Taster%27s_Choice:_The_Tale_of_Jabba%27s_Chef"
+      "release_precision": "month"
     },
     {
       "id": "90300e83-2cbd-5c0b-9611-487d06fc7a24",
@@ -30183,8 +30095,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/A_Time_to_Mourn,_a_Time_to_Dance:_Oola%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "e1b7b0ea-5502-50b9-8822-f8381b45b082",
@@ -30198,8 +30109,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Goatgrass:_The_Tale_of_Ree-Yees"
+      "release_precision": "month"
     },
     {
       "id": "9ac911df-94ce-54ef-94c7-657db2940d15",
@@ -30213,8 +30123,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/And_Then_There_Were_Some:_The_Gamorrean_Guard%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "dc5be090-4bd7-5cc5-a3e5-b5a2815f65f2",
@@ -30229,8 +30138,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Let_Us_Prey:_The_Whiphid%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "55d84ee8-55ab-5004-ba8d-9657b65e47a8",
@@ -30244,8 +30152,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Tongue-tied:_Bubo%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "38dd2d9a-c680-5c99-9567-b04142a00a20",
@@ -30259,8 +30166,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/A_Free_Quarren_in_the_Palace:_Tessek%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "2b58c028-18a4-51d1-8ef2-9ad9285b50d6",
@@ -30274,8 +30180,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Old_Friends:_Ephant_Mon%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "4063db33-d737-56c4-91ed-d1f2ce284eb3",
@@ -30289,8 +30194,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Great_God_Quay:_The_Tale_of_Barada_and_the_Weequays"
+      "release_precision": "month"
     },
     {
       "id": "27ef90f6-85a5-5c02-89b5-8110d6cc97c3",
@@ -30304,8 +30208,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Shaara_and_the_Sarlacc:_The_Skiff_Guard%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "6d30a44f-78f4-50f3-b209-edc171c5def0",
@@ -30334,8 +30237,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1995-07-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/One_Last_Night_in_the_Mos_Eisley_Cantina:_The_Tale_of_the_Wolfman_and_the_Lamproid"
+      "release_precision": "month"
     },
     {
       "id": "359dcb53-ebd4-59ac-b4d5-4af94a561c99",
@@ -30349,8 +30251,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1996-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Payback:_The_Tale_of_Dengar"
+      "release_precision": "month"
     },
     {
       "id": "d72e6cc6-5d10-51bf-a268-9ab2c4ce6f0f",
@@ -30411,8 +30312,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1990-01-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Briefing_of_Red_Group"
+      "release_precision": "month"
     },
     {
       "id": "0bbf67a0-ab88-58ff-837f-d2c193806776",
@@ -30426,8 +30326,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1990-01-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Gambler%27s_Run"
+      "release_precision": "month"
     },
     {
       "id": "8cd7e38a-f5f6-5a48-a004-7a7ad2c8e760",
@@ -30441,8 +30340,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1996-02-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Deposition_of_General_Solo"
+      "release_precision": "month"
     },
     {
       "id": "b038ebe9-eb87-5dc8-8df7-8812015a9ebc",
@@ -31443,8 +31341,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1997-05-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Day_of_the_Sepulchral_Night_(short_story)"
+      "release_precision": "month"
     },
     {
       "id": "066c3b50-1eee-506f-81e7-0b2462dac086",
@@ -31458,8 +31355,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1999-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Gathering_Shadows"
+      "release_precision": "month"
     },
     {
       "id": "2aa729e4-58d0-5510-8a62-d56690083f82",
@@ -32975,8 +32871,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-05-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Whispers_in_the_Dark"
+      "release_precision": "month"
     },
     {
       "id": "2a7587e2-cd69-5233-9740-47c278f04031",
@@ -32990,8 +32885,7 @@
       ],
       "publisher": "Unofficially Published",
       "release_date": "2001-08-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Emanations_of_Darkness"
+      "release_precision": "month"
     },
     {
       "id": "53c18410-c3ef-579a-9f80-c8fdaa424c8d",
@@ -33089,8 +32983,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1997-05-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Conflict_of_Interest"
+      "release_precision": "month"
     },
     {
       "id": "34ceeb67-0e02-5b35-b10b-832654ff850f",
@@ -33182,8 +33075,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-05-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Big_Quince_(short_story)"
+      "release_precision": "month"
     },
     {
       "id": "ece4d714-18ff-5037-b79d-572d705c10d8",
@@ -33197,8 +33089,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-08-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Explosive_Developments"
+      "release_precision": "month"
     },
     {
       "id": "2712a527-a5d1-53d3-b589-e8f93198e9cb",
@@ -33212,8 +33103,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-11-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Starter%27s_Tale"
+      "release_precision": "month"
     },
     {
       "id": "18dd818b-b1e1-5437-a52e-6fec18dfd0d8",
@@ -33227,8 +33117,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-02-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Vengeance_Strike"
+      "release_precision": "month"
     },
     {
       "id": "b882d26c-c270-5b12-bf12-8ea51de68e29",
@@ -33242,8 +33131,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1995-05-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Kella_Rand,_Reporting..."
+      "release_precision": "month"
     },
     {
       "id": "0b8abddd-0568-53f9-8cca-27e4db1848dd",
@@ -33311,8 +33199,7 @@
       ],
       "publisher": "Del Rey",
       "release_date": "2011-09-06",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Crisis_of_Faith"
+      "release_precision": "day"
     },
     {
       "id": "e86dc7a8-4071-5248-b5ca-0c850589b89d",
@@ -33357,8 +33244,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1999-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Hutt_and_Seek"
+      "release_precision": "month"
     },
     {
       "id": "b0714edb-245d-57ee-9435-7cacf9c35943",
@@ -33372,8 +33258,7 @@
       ],
       "publisher": "Del Rey",
       "release_date": "2003-02-11",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Corphelion_Interlude"
+      "release_precision": "day"
     },
     {
       "id": "0f0b1a64-1d39-5c64-8a67-39e52abb5e03",
@@ -33432,8 +33317,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-08-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Mission_to_Zila"
+      "release_precision": "month"
     },
     {
       "id": "10a6a009-f561-5515-aeea-1e7adca2dccc",
@@ -33462,8 +33346,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1994-11-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Shadows_of_Darkness"
+      "release_precision": "month"
     },
     {
       "id": "22301df5-8036-5db0-b279-114e01b531ae",
@@ -33996,8 +33879,7 @@
       ],
       "publisher": "West End Games",
       "release_date": "1993-04-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/A_Day_at_the_Races"
+      "release_precision": "month"
     },
     {
       "id": "6d5e28c2-f604-507a-ab0f-92c5e0c3972d",
@@ -34007,8 +33889,7 @@
       "year": 9,
       "wiki_url": "https://starwars.fandom.com/wiki/The_Empire%27s_Locate_and_Detain_List",
       "release_date": "1994-03-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/The_Empire%27s_Locate_and_Detain_List"
+      "release_precision": "month"
     },
     {
       "id": "895a8556-af0a-5691-85d0-c59d3569d7fb",
@@ -34081,8 +33962,7 @@
         "Paul Sudlow"
       ],
       "release_date": "1996-04-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/A_Change_of_Command"
+      "release_precision": "month"
     },
     {
       "id": "8f7ddc35-342a-5a30-b971-2feffd1e0c43",
@@ -34109,8 +33989,7 @@
         "Michael Allen Horne"
       ],
       "release_date": "1993-06-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Down_And_Out_On_Coruscant"
+      "release_precision": "month"
     },
     {
       "id": "1cd0df71-afd7-528e-ab82-f667c25936cb",
@@ -34269,8 +34148,7 @@
       ],
       "publisher": "Unofficially Published",
       "release_date": "2022-11-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Lightsider_(story)"
+      "release_precision": "month"
     },
     {
       "id": "e537f74f-53f5-54eb-a770-50b9a2af171b",
@@ -34988,8 +34866,7 @@
       ],
       "publisher": "Unofficially Published",
       "release_date": "1998-05-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Love_Is_a_Warm_Blaster"
+      "release_precision": "month"
     },
     {
       "id": "d6308bec-9258-586f-9f07-3f6f35d7c2d9",
@@ -35055,8 +34932,7 @@
       ],
       "publisher": "StarWars.com",
       "release_date": "2009-12-22",
-      "release_precision": "day",
-      "cover_url": "https://starwars.fandom.com/wiki/Shades_of_Gray"
+      "release_precision": "day"
     },
     {
       "id": "6185dc9c-95c3-5d41-bc60-f428b7622bec",
@@ -35541,8 +35417,7 @@
       ],
       "publisher": "Bantam Spectra",
       "release_date": "1999-12-01",
-      "release_precision": "month",
-      "cover_url": "https://starwars.fandom.com/wiki/Jade_Solitaire"
+      "release_precision": "month"
     },
     {
       "id": "1b8c611c-a3a0-550f-baea-e2e5518afa58",

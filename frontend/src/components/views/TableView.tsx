@@ -46,6 +46,8 @@ export function TableView({ items }: TableViewProps) {
         {/* Sticky header */}
         <div className="sticky top-0 z-10 flex border-b bg-background text-xs uppercase text-muted-foreground">
           {COLUMNS.map((col) => (
+            // Publisher is hidden in collections mode.
+            col.key === "publisher" && showTypeColumn ? null : (
             <Fragment key={col.key}>
               <div
                 className={`shrink-0 px-2 py-2 ${col.width} ${
@@ -59,6 +61,7 @@ export function TableView({ items }: TableViewProps) {
                 <div className={`shrink-0 px-2 py-2 ${COLLECTION_TYPE_COLUMN_WIDTH}`}>Type</div>
               )}
             </Fragment>
+            )
           ))}
           {showOwnedColumn && (
             <div className={`shrink-0 px-2 py-2 ${OWNED_COLUMN_WIDTH}`}>Owned</div>

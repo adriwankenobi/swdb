@@ -102,10 +102,12 @@ export function WorkRow({ work, onClick }: WorkRowProps) {
         {work.authors?.join(", ") ?? ""}
       </div>
 
-      {/* Publisher */}
-      <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[9].width}`}>
-        {work.publisher ?? ""}
-      </div>
+      {/* Publisher — hidden in collections mode (matches the TableView header) */}
+      {!showTypeCell && (
+        <div className={`shrink-0 px-2 py-1 text-muted-foreground truncate ${COLUMNS[9].width}`}>
+          {work.publisher ?? ""}
+        </div>
+      )}
 
       {/* Owned toggle — cell only present in issues mode, matching the header */}
       {showOwnedCell && (
