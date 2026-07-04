@@ -1,0 +1,56 @@
+name: Supabase keepalive
+
+# Keeps the free-tier Supabase project from being paused for inactivity.
+# Supabase pauses free projects after 7 days with no API activity, so we hit
+# the REST API every ~3 days. The URL and publishable key below are already
+# public (they ship in the GitHub Pages JS bundle; RLS protects the data), so
+# there is nothing secret to store here.
+#
+# The job also commits a timestamp file each run. GitHub disables scheduled
+# workflows after 60 days with no repo commits — the self-commit keeps the
+# repo (and therefore this schedule) alive indefinitely, hands-off.
+
+on:
+  schedule:
+    - cron: '0 6 */3 * *' # 06:00 UTC every 3rd day-of-month (gap stays under 7 days)
+  workflow_dispatch: {}    # allows manual runs from the Actions tab
+
+permissions:
+  contents: write # needed for the keep-schedule-alive commit
+
+concurrency:
+  group: supabase-keepalive
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v4
+
+      - name: Ping Supabase REST API
+        env:
+          SUPABASE_URL: https://uimsujgusfnvbtictvtx.supabase.co
+          SUPABASE_KEY: sb_publishable_zOyrNrf-0hDRa2v2IM_Rkw_iyzbCOLh
+        run: |
+          # Anonymous select against an existing table. RLS yields an empty
+          # array for an unauthenticated caller, but the request still runs a
+          # real Postgres query — that counts as activity. -f makes a non-2xx
+          # response fail the job so a broken keepalive shows up red.
+          curl -fsS \
+            --retry 3 --retry-delay 10 --max-time 30 \
+            -H "apikey: ${SUPABASE_KEY}" \
+            -H "Authorization: Bearer ${SUPABASE_KEY}" \
+            "${SUPABASE_URL}/rest/v1/owned?select=work_id&limit=1"
+          echo # newline after the (empty-array) response body
+
+      - name: Keep the schedule alive
+        run: |
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > .github/last-keepalive.txt
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .github/last-keepalive.txt
+          # No-op if the file is somehow unchanged (e.g. two runs same second).
+          git commit -m "chore: supabase keepalive $(date -u +%F)" || exit 0
+          git push
