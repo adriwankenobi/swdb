@@ -11,7 +11,8 @@ function eraOf(item: Item): EraName {
   return (item.kind === "work" ? item.work.era : item.collection.anchor_era) as EraName;
 }
 
-function yearOf(item: Item): number {
+// undefined for NON-CANON items, which have no in-universe year.
+function yearOf(item: Item): number | undefined {
   return item.kind === "work" ? item.work.year : item.collection.year;
 }
 
@@ -28,7 +29,7 @@ function releaseDateOf(item: Item): string | undefined {
 // ---------------------------------------------------------------------------
 
 export interface ChronologyRow {
-  year: number;
+  year?: number; // undefined → the row's year label is left blank (NON-CANON)
   year_end?: number;
   items: Item[];
 }

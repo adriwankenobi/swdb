@@ -83,7 +83,7 @@ slug aliases derive from these spellings via `slugify`.
 |---|---|
 | `data/unmatched.log` | Rows whose Wookieepedia page could not be resolved |
 | `data/duplicates.log` | Rows that resolve to the same canonical key |
-| `data/ignored_no_year.log` | Rows with no Excel `YEAR` cell (excluded from JSON) |
+| `data/ignored_no_year.log` | Non-`NON-CANON` rows with no Excel `YEAR` cell (excluded from JSON) |
 | `data/missing_medium.log` | Rows whose medium is not in `MEDIUMS` (excluded from JSON) |
 | `data/dead_links.log` | Wiki URLs that returned 404 / no longer exist |
 
@@ -207,8 +207,9 @@ types. An open item not in the current list disables both arrows.
 
 ### `works[]` shape
 
-**Required:** `id`, `era`, `medium`, `title`, `year`.  
-**Optional** (omitted when unknown, no nulls): `series`, `series_number`,
+**Required:** `id`, `era`, `medium`, `title`, and `year` for every era except
+`NON-CANON`.  
+**Optional** (omitted when unknown, no nulls): `year`, `series`, `series_number`,
 `number`, `year_end`, `release_date`, `release_precision`, `authors`,
 `publisher`, `cover_url`, `wiki_url`. `series` and `series_number` are parallel
 arrays — a single work can belong to multiple series; positional pairing
@@ -220,7 +221,9 @@ alongside `release_date`, so the UI can render `"November 1996"` faithfully.
 
 - `era` — string from the 10-entry `ERAS` list (UPPERCASE, e.g. `"REBELLION"`).
 - `medium` — string from the `MEDIUMS` list (Title Case, e.g. `"Novel"`).
-- `year` — signed int; negative = BBY, non-negative = ABY.
+- `year` — signed int; negative = BBY, non-negative = ABY. Absent on
+  `NON-CANON` works, which sit outside the in-universe chronology; the UI
+  omits the year entirely for those (no placeholder label).
 - `id` — a frozen uuid stored in the Excel `ID` column (see *Stable IDs* above).
   Not recomputed from content, so edits to title/era/etc. never change it.
 

@@ -50,6 +50,33 @@ it("falls back gracefully when a collection has no known members", () => {
   const d = deriveCollection(raw, byId);
   expect(d.eras).toEqual([]);
   expect(d.mediums).toEqual([]);
-  expect(d.year).toBe(0);
+  expect(d.year).toBeUndefined();
   expect(d.anchor_era).toBe("");
+});
+
+it("derives year and anchor era from year-bearing members only", () => {
+  // NON-CANON works carry no in-universe year; they must not poison the
+  // collection's year / year_end.
+  const mixed: Work[] = [
+    { id: "nc", era: "NON-CANON", title: "Rust Never Sleeps", medium: "Comic" } as Work,
+    { id: "reb", era: "REBELLION", title: "A New Hope", medium: "Novel", year: 0, year_end: 3 } as Work,
+  ];
+  const mixedById = new Map(mixed.map((w) => [w.id, w]));
+  const d = deriveCollection({ id: "c4", title: "Mixed", member_ids: ["nc", "reb"] }, mixedById);
+  expect(d.year).toBe(0);
+  expect(d.year_end).toBe(3);
+  expect(d.anchor_era).toBe("REBELLION");
+});
+
+it("leaves year undefined when no member has a year", () => {
+  const nonCanon: Work[] = [
+    { id: "nc1", era: "NON-CANON", title: "Rust Never Sleeps", medium: "Comic" } as Work,
+    { id: "nc2", era: "NON-CANON", title: "Sandblasted", medium: "Comic" } as Work,
+  ];
+  const ncById = new Map(nonCanon.map((w) => [w.id, w]));
+  const d = deriveCollection({ id: "c5", title: "Infinities", member_ids: ["nc1", "nc2"] }, ncById);
+  expect(d.year).toBeUndefined();
+  expect(d.year_end).toBeUndefined();
+  // The anchor era is still meaningful — it groups the collection in the timeline.
+  expect(d.anchor_era).toBe("NON-CANON");
 });

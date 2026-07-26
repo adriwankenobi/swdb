@@ -10,8 +10,9 @@ const PRE_REPUBLIC: EraName = "PRE-REPUBLIC";        // ERAS index 0
 const THE_CLONE_WARS: EraName = "THE CLONE WARS";    // ERAS index 3
 const OLD_REPUBLIC: EraName = "OLD REPUBLIC";        // ERAS index 1
 const RISE_OF_THE_EMPIRE: EraName = "RISE OF THE EMPIRE"; // ERAS index 2
+const NON_CANON: EraName = "NON-CANON";              // ERAS index 9
 
-const w = (over: Partial<Work> & { id: string; year: number }): Work => ({
+const w = (over: Partial<Work> & { id: string }): Work => ({
   era: REBELLION,
   title: "T",
   medium: "Novel",
@@ -91,6 +92,29 @@ describe("groupForChronology", () => {
     expect(rows[1].year).toBe(-3996);
     expect(rows[1].year_end).toBeUndefined();
     expect(rows[1].items.map((i) => (i.kind === "work" ? i.work.id : i.collection.id))).toEqual(["single"]);
+  });
+
+  it("coalesces consecutive year-less works into one Unknown-year row", () => {
+    const items: Item[] = [
+      wi(w({ id: "nc1", era: NON_CANON })),
+      wi(w({ id: "nc2", era: NON_CANON })),
+      wi(w({ id: "dated", era: NON_CANON, year: 0 })), // real year → breaks the run
+      wi(w({ id: "nc3", era: NON_CANON })),
+    ];
+    const groups = groupForChronology(items);
+    const rows = groups[0].rows;
+    expect(groups[0].era).toBe(NON_CANON);
+    expect(rows.map((r) => r.year)).toEqual([undefined, 0, undefined]);
+    expect(rows[0].items.map((i) => (i.kind === "work" ? i.work.id : i.collection.id))).toEqual(["nc1", "nc2"]);
+    expect(rows[2].items.map((i) => (i.kind === "work" ? i.work.id : i.collection.id))).toEqual(["nc3"]);
+  });
+
+  it("sorts the NON-CANON era band last", () => {
+    const items: Item[] = [
+      wi(w({ id: "nc", era: NON_CANON })),
+      wi(w({ id: "reb", era: REBELLION, year: 0 })),
+    ];
+    expect(groupForChronology(items).map((g) => g.era)).toEqual([REBELLION, NON_CANON]);
   });
 
   it("excludes nothing — every item appears exactly once", () => {

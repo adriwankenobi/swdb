@@ -19,18 +19,27 @@ export function deriveCollection(
     ...new Set(members.map((w) => w.publisher).filter((p): p is string => !!p)),
   ];
 
-  let year = 0;
+  let year: number | undefined;
   let yearEnd: number | undefined;
   let anchorEra: Work["era"] | "" = "";
   let releaseDate: string | undefined;
   let releasePrecision: Work["release_precision"];
 
   if (members.length > 0) {
-    const earliest = members.reduce((a, b) => (b.year < a.year ? b : a));
-    year = earliest.year;
-    anchorEra = earliest.era;
-    const maxEnd = Math.max(...members.map((w) => w.year_end ?? w.year));
-    if (maxEnd !== year) yearEnd = maxEnd;
+    // NON-CANON members carry no year; they must not drag the span to NaN.
+    const yearly = members.filter(
+      (w): w is Work & { year: number } => w.year !== undefined,
+    );
+    // Anchor era places the collection in the timeline, so fall back to the
+    // first member when nothing is dated (an all-NON-CANON collection).
+    anchorEra = members[0].era;
+    if (yearly.length > 0) {
+      const earliest = yearly.reduce((a, b) => (b.year < a.year ? b : a));
+      year = earliest.year;
+      anchorEra = earliest.era;
+      const maxEnd = Math.max(...yearly.map((w) => w.year_end ?? w.year));
+      if (maxEnd !== year) yearEnd = maxEnd;
+    }
     const dated = members.filter((w) => w.release_date);
     if (dated.length > 0) {
       // Latest release among members (the collection is "complete" then).

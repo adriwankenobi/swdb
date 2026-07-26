@@ -3,7 +3,12 @@ function formatOne(year: number): string {
   return year >= 0 ? `${abs} ABY` : `${abs} BBY`;
 }
 
-export function formatYear(year: number, yearEnd?: number): string {
+// NON-CANON works sit outside the in-universe chronology and carry no year;
+// they render as nothing rather than a placeholder label.
+export function formatYear(year: number | undefined, yearEnd?: number): string {
+  if (year === undefined) {
+    return "";
+  }
   if (yearEnd === undefined || yearEnd === year) {
     return formatOne(year);
   }

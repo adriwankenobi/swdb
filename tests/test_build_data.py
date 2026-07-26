@@ -384,3 +384,78 @@ def test_row_to_work_falls_back_to_make_id_when_blank():
     work = _row_to_work(_work_id_row(work_id=None))
     assert work["id"] == make_id(era=5, series="Star Wars Episode",
                                  title="A New Hope", medium="Novel", series_number="IV")
+
+
+# ---------------------------------------------------------------------------
+# NON-CANON / year-less row tests
+# ---------------------------------------------------------------------------
+
+
+def test_row_to_work_omits_year_when_none():
+    # NON-CANON works have no in-universe year; the key is absent rather than
+    # null (works.json never emits nulls).
+    work = _row_to_work(_row(era=build_data.NON_CANON_ERA, year=None))
+    assert "year" not in work
+
+
+def _tiny_workbook(path, rows_by_sheet: dict[str, list[list]]):
+    """Write a workbook with the canonical 12-column layout per sheet."""
+    from openpyxl import Workbook
+
+    header = ["YEAR", "MEDIUM", "SERIES", "SERIES #", "TITLE", "#",
+              "AUTHOR", "PUBLISHER", "RELEASE", "INFO", "COVER", "ID"]
+    wb = Workbook()
+    wb.remove(wb.active)
+    for sheet_name, rows in rows_by_sheet.items():
+        ws = wb.create_sheet(sheet_name)
+        ws.append(header)
+        for row in rows:
+            ws.append(row)
+    wb.save(path)
+    wb.close()
+
+
+def _build_titles(monkeypatch, tmp_path, rows_by_sheet) -> list[str]:
+    """Dry-run the build over a temp workbook; return emitted work titles."""
+    xlsx = tmp_path / "tiny.xlsx"
+    _tiny_workbook(xlsx, rows_by_sheet)
+    monkeypatch.setattr(build_data, "EXCEL_PATH", xlsx)
+    payload = build_data.build(refresh=False, dry_run=True)
+    return [w["title"] for w in payload["works"]]
+
+
+def test_build_keeps_year_less_non_canon_row(monkeypatch, tmp_path):
+    titles = _build_titles(monkeypatch, tmp_path, {
+        "NON-CANON": [
+            [None, "Comic", "The Flight of the Falcon", 157,
+             "Rust Never Sleeps", None, None, None, None, None, None, None],
+        ],
+    })
+    assert titles == ["Rust Never Sleeps"]
+
+
+def test_build_still_ignores_year_less_canon_row(monkeypatch, tmp_path):
+    # A blank YEAR on a canon sheet marks an intentional reference-only entry.
+    titles = _build_titles(monkeypatch, tmp_path, {
+        "REBELLION": [
+            [None, "Novel", None, None, "Reference Only", None,
+             None, None, None, None, None, None],
+            ["0 ABY", "Novel", None, None, "A New Hope", None,
+             None, None, None, None, None, None],
+        ],
+    })
+    assert titles == ["A New Hope"]
+
+
+def test_build_non_canon_work_has_no_year_key(monkeypatch, tmp_path):
+    xlsx = tmp_path / "tiny.xlsx"
+    _tiny_workbook(xlsx, {
+        "NON-CANON": [
+            [None, "Comic", None, None, "Rust Never Sleeps", None,
+             None, None, None, None, None, None],
+        ],
+    })
+    monkeypatch.setattr(build_data, "EXCEL_PATH", xlsx)
+    payload = build_data.build(refresh=False, dry_run=True)
+    assert "year" not in payload["works"][0]
+    assert payload["works"][0]["era"] == "NON-CANON"

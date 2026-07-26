@@ -46,7 +46,11 @@ collections and ownership are per-user (Supabase), not baked into the JSON.
   uses the string form.
 - `medium`: canonical STRING from the `MEDIUMS` list, Title Case.
 - `title`: string (required).
-- `year`: signed int (negative = BBY, non-negative = ABY) — required.
+- `year`: signed int (negative = BBY, non-negative = ABY) — required on every
+  era **except `NON-CANON`**, whose works sit outside the in-universe
+  chronology and legitimately have a blank Excel `YEAR` cell. Omitted (never
+  null) when absent, and the UI omits the year rather than showing a
+  placeholder.
 - `series`, `series_number`: optional **parallel string arrays** — one work
   may belong to multiple series with corresponding series issue numbers (e.g.
   comic cross-series). `series_number` was formerly called `number`.
@@ -66,9 +70,11 @@ signed-in user's ownership, and collection membership lives in Supabase).
 **Excel sheet layout** (one sheet per era; the old `COLLECTED` column and
 `COLLECTIONS` sheet were removed): columns are read by absolute position —
 `A`=YEAR `B`=MEDIUM `C`=SERIES `D`=SERIES # `E`=TITLE `F`=# `G`=AUTHOR
-`H`=PUBLISHER `I`=RELEASE `J`=INFO/wiki `K`=COVER `L`=ID. Excel rows with no `YEAR` cell are
-intentional reference-only entries; the pipeline excludes them and logs them
-to `data/ignored_no_year.log`.
+`H`=PUBLISHER `I`=RELEASE `J`=INFO/wiki `K`=COVER `L`=ID. On the canon sheets,
+rows with no `YEAR` cell are intentional reference-only entries; the pipeline
+excludes them and logs them to `data/ignored_no_year.log`. The `NON-CANON`
+sheet is exempt — a blank `YEAR` there is expected, and those rows are emitted
+without a `year` field.
 
 ## Per-user features (frontend + Supabase)
 

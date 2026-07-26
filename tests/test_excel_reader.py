@@ -15,7 +15,7 @@ def rows():
 
 def test_reads_all_eras(rows):
     eras = {row.era for row in rows}
-    # 9 sheets have data (0..8); NON-CANON sheet (era 9) exists but is currently empty.
+    # The canon sheets (0..8) always have data; NON-CANON (era 9) may be sparse.
     assert set(range(9)).issubset(eras)
     assert eras.issubset(set(range(10)))
 

@@ -128,10 +128,12 @@ export function CollectionDetailModal({ visibleItems }: CollectionDetailModalPro
                     {collection.type && <Badge variant="secondary">{collection.type}</Badge>}
                   </div>
                 )}
-                <p className="whitespace-nowrap">
-                  <span className="text-muted-foreground">Year:</span>{" "}
-                  {formatYear(collection.year, collection.year_end)}
-                </p>
+                {collection.year !== undefined && (
+                  <p className="whitespace-nowrap">
+                    <span className="text-muted-foreground">Year:</span>{" "}
+                    {formatYear(collection.year, collection.year_end)}
+                  </p>
+                )}
                 {collection.release_date && (
                   <p>
                     <span className="text-muted-foreground">Released:</span>{" "}

@@ -138,10 +138,12 @@ export function WorkDetailModal({ visibleItems }: WorkDetailModalProps) {
                     {work.era}
                   </Badge>
                 </div>
-                <p className="whitespace-nowrap">
-                  <span className="text-muted-foreground">Year:</span>{" "}
-                  {formatYear(work.year, work.year_end)}
-                </p>
+                {work.year !== undefined && (
+                  <p className="whitespace-nowrap">
+                    <span className="text-muted-foreground">Year:</span>{" "}
+                    {formatYear(work.year, work.year_end)}
+                  </p>
+                )}
                 {work.release_date && (
                   <p>
                     <span className="text-muted-foreground">Released:</span>{" "}

@@ -25,7 +25,9 @@ function WorkMarker({ work, onClick }: WorkMarkerProps) {
   const cover = resolveWorkCover(work, coverByWorkId);
   const yearLabel = formatYear(work.year, work.year_end);
   const seriesStr = (work.series ?? []).join(", ");
-  const tooltip = `${formatWorkTitle(work)}${seriesStr ? ` — ${seriesStr}` : ""} (${yearLabel})`;
+  const tooltip =
+    `${formatWorkTitle(work)}${seriesStr ? ` — ${seriesStr}` : ""}` +
+    (yearLabel ? ` (${yearLabel})` : "");
   const mediumColor = MEDIUM_COLORS[work.medium];
   const eraColor = ERA_COLORS[work.era];
 
@@ -63,7 +65,7 @@ interface CollectionMarkerProps {
 function CollectionMarker({ collection, onClick }: CollectionMarkerProps) {
   const c = collection;
   const yearLabel = formatYear(c.year, c.year_end);
-  const tooltip = `${c.title} (${yearLabel})`;
+  const tooltip = yearLabel ? `${c.title} (${yearLabel})` : c.title;
   const mediumColor = c.mediums.length > 0 ? MEDIUM_COLORS[c.mediums[0]] : "#888888";
   const eraColor = c.anchor_era ? ERA_COLORS[c.anchor_era] : "#888888";
 

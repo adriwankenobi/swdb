@@ -41,6 +41,11 @@ ERAS = [
     "NON-CANON",  # 9
 ]
 
+# NON-CANON works (infinities, what-if stories) have no place in the in-universe
+# chronology, so their YEAR cell is legitimately blank — unlike a blank YEAR on a
+# canon sheet, which marks a reference-only entry to exclude.
+NON_CANON_ERA = ERAS.index("NON-CANON")
+
 # Canonical medium list, alphabetical. Order is permanent.
 MEDIUMS = [
     "Comic",
@@ -76,8 +81,8 @@ def _dominant_medium(mediums: set[str]) -> str:
 def _row_to_work(row: ExcelRow) -> dict:
     """Build a work dict.
 
-    Precondition: caller has already verified row.year is not None and
-    row.medium is in MEDIUMS.
+    Precondition: caller has already verified row.medium is in MEDIUMS, and
+    that row.year is not None unless the row is NON-CANON.
     """
     # make_id consumes the int era + canonical medium STRING so the canonical
     # key string is unchanged across the JSON schema flip. Do NOT pass
@@ -94,8 +99,9 @@ def _row_to_work(row: ExcelRow) -> dict:
         "era": ERAS[row.era],
         "title": row.title,
         "medium": row.medium,
-        "year": row.year,
     }
+    if row.year is not None:
+        work["year"] = row.year
     if row.year_end is not None:
         work["year_end"] = row.year_end
     series, series_number = _split_series_and_number(row.series, row.series_number)
@@ -334,7 +340,7 @@ def build(*, refresh: bool, dry_run: bool) -> dict:
     total_rows = len(rows)
 
     for i, row in enumerate(rows):
-        if row.year is None:
+        if row.year is None and row.era != NON_CANON_ERA:
             ignored_no_year.append(f"{row.era}|{row.title}|{row.series}|{row.medium}")
             continue
         if row.medium not in MEDIUMS:

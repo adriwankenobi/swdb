@@ -57,7 +57,9 @@ export function CollectionCard({ collection, onClick }: { collection: DerivedCol
               {e}
             </Badge>
           ))}
-          <span className="text-xs text-muted-foreground">{formatYear(c.year, c.year_end)}</span>
+          {c.year !== undefined && (
+            <span className="text-xs text-muted-foreground">{formatYear(c.year, c.year_end)}</span>
+          )}
         </div>
         {c.authors.length > 0 && (
           <p className="line-clamp-1 text-xs text-muted-foreground">{c.authors.join(", ")}</p>

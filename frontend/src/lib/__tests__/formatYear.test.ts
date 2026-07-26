@@ -33,4 +33,9 @@ describe("formatYear", () => {
   it("preserves thousands separators on each endpoint", () => {
     expect(formatYear(-25200, -671)).toBe("25,200 BBY - 671 BBY");
   });
+
+  it("renders nothing for a missing year (NON-CANON works have no in-universe year)", () => {
+    expect(formatYear(undefined)).toBe("");
+    expect(formatYear(undefined, undefined)).toBe("");
+  });
 });

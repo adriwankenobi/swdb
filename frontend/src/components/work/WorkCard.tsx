@@ -54,7 +54,9 @@ export function WorkCard({ work, onClick }: { work: Work; onClick: () => void })
           >
             {work.era}
           </Badge>
-          <span className="text-xs text-muted-foreground">{formatYear(work.year, work.year_end)}</span>
+          {work.year !== undefined && (
+            <span className="text-xs text-muted-foreground">{formatYear(work.year, work.year_end)}</span>
+          )}
         </div>
         {work.authors && work.authors.length > 0 && (
           <p className="line-clamp-1 text-xs text-muted-foreground">{work.authors.join(", ")}</p>

@@ -7,7 +7,7 @@ export interface Work {
   era: EraName;
   title: string;
   medium: MediumName;
-  year: number;
+  year?: number; // absent for NON-CANON works, which sit outside the chronology
   year_end?: number;
   series?: string[];
   series_number?: string[]; // issue number within each series (parallel to `series`)
@@ -45,7 +45,7 @@ export interface DerivedCollection {
   series: string[]; // union of member series (deduped)
   authors: string[]; // union of member authors (deduped)
   publishers: string[]; // union of member publishers (deduped)
-  year: number;
+  year?: number; // absent when no member has a year (all-NON-CANON, or empty)
   year_end?: number;
   anchor_era: EraName | ""; // era of the earliest-year member ("" when no members)
   release_date?: string;
