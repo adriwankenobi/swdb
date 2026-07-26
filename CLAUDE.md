@@ -37,10 +37,13 @@ collections and ownership are per-user (Supabase), not baked into the JSON.
 
 - `id`: a **stable, frozen** uuid stored in the Excel `ID` column. The
   pipeline reads it verbatim; if the cell is blank it generates one (seeded
-  from the legacy `era|series|title|medium|number` uuid5) and **writes it
+  from the legacy `era|series|title|medium|series_number` uuid5, plus
+  `|number` when the per-work `#` cell has a value) and **writes it
   back** to the Excel. Once stamped, the id never changes — editing a title,
   era, series, etc. does NOT change the id (so per-user data keyed on the id
-  stays valid).
+  stays valid). The `#` is appended only when present: rows without one keep
+  their existing ids, while issues of a mini-series (which differ by `#`
+  alone) get distinct ids rather than sharing one.
 - `era`: canonical STRING from the 10-entry `ERAS` list, UPPERCASE
   (e.g. `"REBELLION"`). Internally also an int index 0–9; the emitted JSON
   uses the string form.

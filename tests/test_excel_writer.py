@@ -51,7 +51,7 @@ def test_update_excel_fills_empty_cells(tmp_path: Path):
     wb.close()
 
     enriched = {
-        (5, "A New Hope", "Star Wars Episode", "Novel", "IV"): {
+        (5, "A New Hope", "Star Wars Episode", "Novel", "IV", "IV"): {
             "authors": ["Alan Dean Foster"],
             "publisher": "Ballantine Books",
             "release_date": "1976-11-12",
@@ -75,7 +75,7 @@ def test_update_excel_fills_empty_cells(tmp_path: Path):
 def test_update_excel_does_not_overwrite_populated_cells(tiny_xlsx: Path):
     """Cells that already have a value are NEVER overwritten by the parser."""
     enriched = {
-        (5, "A New Hope", "Star Wars Episode", "Novel", "IV"): {
+        (5, "A New Hope", "Star Wars Episode", "Novel", "IV", "IV"): {
             "authors": ["Alan Dean Foster"],
             "publisher": "Ballantine Books",
             "release_date": "1976-11-12",
@@ -115,7 +115,7 @@ def test_update_excel_writes_release_at_precision(tmp_path: Path, precision, exp
     wb.close()
 
     enriched = {
-        (5, "A New Hope", "Star Wars Episode", "Novel", "IV"): {
+        (5, "A New Hope", "Star Wars Episode", "Novel", "IV", "IV"): {
             "release_date": "1976-11-12",
             "release_precision": precision,
         },
@@ -130,7 +130,7 @@ def test_update_excel_writes_release_at_precision(tmp_path: Path, precision, exp
 
 def test_update_excel_does_not_touch_unrelated_rows(tiny_xlsx: Path):
     enriched = {
-        (5, "A New Hope", "Star Wars Episode", "Novel", "IV"): {
+        (5, "A New Hope", "Star Wars Episode", "Novel", "IV", "IV"): {
             "authors": ["Alan Dean Foster"],
         },
     }
@@ -158,7 +158,7 @@ def test_update_excel_skips_missing_fields(tmp_path: Path):
     wb.close()
 
     enriched = {
-        (5, "A New Hope", "Star Wars Episode", "Novel", "IV"): {
+        (5, "A New Hope", "Star Wars Episode", "Novel", "IV", "IV"): {
             "authors": ["Alan Dean Foster"],  # only authors provided
         },
     }
@@ -186,7 +186,7 @@ def test_update_excel_stamps_id_header_when_missing(tmp_path: Path):
     wb.save(path)
     wb.close()
 
-    ids = {(5, "A New Hope", "Star Wars Episode", "Novel", "IV"): "gen-001"}
+    ids = {(5, "A New Hope", "Star Wars Episode", "Novel", "IV", "IV"): "gen-001"}
     update_excel(path, {}, ids=ids)
 
     wb = load_workbook(path, data_only=True)
@@ -215,8 +215,8 @@ def test_update_excel_writes_generated_ids(tmp_path: Path):
     wb.close()
 
     ids = {
-        (5, "A New Hope", "Star Wars Episode", "Novel", "IV"): "gen-001",
-        (5, "Some Comic", None, "Comic", "1"): "should-not-overwrite",
+        (5, "A New Hope", "Star Wars Episode", "Novel", "IV", "IV"): "gen-001",
+        (5, "Some Comic", None, "Comic", None, "1"): "should-not-overwrite",
     }
     update_excel(path, {}, ids=ids)
 
@@ -225,4 +225,55 @@ def test_update_excel_writes_generated_ids(tmp_path: Path):
     rows = list(ws.iter_rows(min_row=2, values_only=True))
     assert rows[0][11] == "gen-001"          # blank cell filled
     assert rows[1][11] == "already-set"       # present cell untouched
+    wb.close()
+
+
+def test_update_excel_keeps_issues_of_a_series_separate(tmp_path: Path):
+    """Rows differing only by the per-work "#" must not receive each other's
+    data. Before the "#" joined the lookup key they collapsed onto one entry
+    and every issue got the last one's author/release/cover."""
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "NON-CANON"
+    ws.append(HEADER_WITH_ID)
+    for n in (1, 2):
+        ws.append([
+            None, "Comic", "Infinities", None, "A New Hope", n,
+            None, None, None, None, None, None,
+        ])
+    path = tmp_path / "issues.xlsx"
+    wb.save(path)
+    wb.close()
+
+    enriched = {
+        (9, "A New Hope", "Infinities", "Comic", None, "1"): {
+            "authors": ["Chris Warner", "Drew Johnson"],
+            "release_date": "2001-05-02",
+            "release_precision": "day",
+            "cover_url": "https://example.com/anh1.jpg",
+        },
+        (9, "A New Hope", "Infinities", "Comic", None, "2"): {
+            "authors": ["Chris Warner", "Al Rio"],
+            "release_date": "2001-06-06",
+            "release_precision": "day",
+            "cover_url": "https://example.com/anh2.jpg",
+        },
+    }
+    ids = {
+        (9, "A New Hope", "Infinities", "Comic", None, "1"): "id-issue-1",
+        (9, "A New Hope", "Infinities", "Comic", None, "2"): "id-issue-2",
+    }
+    result = update_excel(path, enriched, ids=ids)
+    assert result["updated"] == 2
+
+    wb = load_workbook(path, data_only=True)
+    rows = list(wb["NON-CANON"].iter_rows(min_row=2, values_only=True))
+    assert rows[0][6] == "Chris Warner, Drew Johnson"
+    assert rows[0][8] == "2001.05.02"
+    assert rows[0][10] == "https://example.com/anh1.jpg"
+    assert rows[0][11] == "id-issue-1"
+    assert rows[1][6] == "Chris Warner, Al Rio"
+    assert rows[1][8] == "2001.06.06"
+    assert rows[1][10] == "https://example.com/anh2.jpg"
+    assert rows[1][11] == "id-issue-2"
     wb.close()

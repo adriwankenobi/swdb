@@ -28,8 +28,15 @@ def make_id(
     title: str,
     medium: str,
     series_number: str | int | None,
+    number: str | int | None = None,
 ) -> str:
-    """Deterministic UUIDv5 from the canonical key."""
+    """Deterministic UUIDv5 from the canonical key.
+
+    `number` (the per-work "#" column) is appended only when it has a value.
+    Issues of a mini-series are told apart by it alone, so leaving it out
+    collapses them onto one id; appending it unconditionally would instead
+    change the id of every work that has no "#".
+    """
     parts = [
         str(era),
         slugify(series or ""),
@@ -37,5 +44,7 @@ def make_id(
         slugify(medium),
         slugify(str(series_number) if series_number is not None else ""),
     ]
+    if number is not None and str(number).strip():
+        parts.append(slugify(str(number)))
     canonical = "|".join(parts)
     return str(uuid.uuid5(_NAMESPACE, canonical))

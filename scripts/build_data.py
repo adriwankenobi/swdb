@@ -95,6 +95,7 @@ def _row_to_work(row: ExcelRow) -> dict:
             title=row.title,
             medium=row.medium,
             series_number=row.series_number,
+            number=row.number,
         ),
         "era": ERAS[row.era],
         "title": row.title,
@@ -129,8 +130,13 @@ def _build_ids_writeback(works: list[dict], rows: list[ExcelRow]) -> dict[tuple,
 
 def _work_lookup_key(row: ExcelRow, work: dict) -> tuple:
     """Lookup key matching excel_writer's _make_lookup_key: (era, title,
-    series, canonical-medium, series_number)."""
-    return (row.era, row.title, row.series, work["medium"], row.series_number)
+    series, canonical-medium, series_number, number).
+
+    `number` is part of the key because issues of a mini-series differ by it
+    alone; without it they collapse onto one entry and the last row in the
+    workbook overwrites its siblings' enrichment.
+    """
+    return (row.era, row.title, row.series, work["medium"], row.series_number, row.number)
 
 
 def _detect_duplicates(works: list[dict]) -> list[list[dict]]:

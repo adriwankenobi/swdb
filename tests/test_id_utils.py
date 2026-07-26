@@ -63,6 +63,26 @@ def test_slugify_is_stable_across_unicode_normalization_forms():
     assert slugify(nfc) == slugify(nfd) == "cote"
 
 
+def test_make_id_differs_when_number_differs():
+    # Issues of a mini-series share era/series/title/medium/series_number and
+    # are told apart only by the per-work "#" column.
+    a = make_id(era=9, series="Infinities", title="A New Hope", medium="Comic",
+                series_number=None, number="1")
+    b = make_id(era=9, series="Infinities", title="A New Hope", medium="Comic",
+                series_number=None, number="2")
+    assert a != b
+
+
+def test_make_id_ignores_an_empty_number():
+    # Rows with no "#" keep the ids they were already stamped with, so passing
+    # an absent/blank number must not perturb the canonical key.
+    base = make_id(era=5, series="Star Wars Episode", title="A New Hope",
+                   medium="Novel", series_number="IV")
+    for empty in (None, "", "   "):
+        assert make_id(era=5, series="Star Wars Episode", title="A New Hope",
+                       medium="Novel", series_number="IV", number=empty) == base
+
+
 def test_make_id_pinned_canonical_value():
     # Locks the canonical-key format. If you change the namespace UUID, the
     # field order, or the slug-of-each-field separator, this test will fail

@@ -22,8 +22,11 @@ def _make_lookup_key(
     series: str | None,
     medium: str,
     series_number: str | None,
+    number: str | None,
 ) -> tuple:
-    return (era, title, series, medium, series_number)
+    # `number` (the per-work "#") keeps issues of a mini-series apart; see
+    # build_data._work_lookup_key, which must produce the identical tuple.
+    return (era, title, series, medium, series_number, number)
 
 
 def _format_authors(authors: list[str]) -> str:
@@ -69,10 +72,11 @@ def update_excel(
                 series = _stringify(row[2].value)
                 series_number = _stringify(row[3].value)
                 title = _stringify(row[4].value)
+                number = _stringify(row[5].value)
                 if not title or not medium_raw:
                     continue
                 medium = _normalize_medium(medium_raw)
-                key = _make_lookup_key(era, title, series, medium, series_number)
+                key = _make_lookup_key(era, title, series, medium, series_number, number)
                 if ids is not None:
                     gen_id = ids.get(key)
                     if gen_id and not row[COL_ID - 1].value:

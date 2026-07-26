@@ -250,8 +250,8 @@ def test_ids_writeback_only_for_blank_rows():
     works = [_row_to_work(r) for r in rows]
     ids = _build_ids_writeback(works, rows)
 
-    assert ids[(5, "A New Hope", "Star Wars Episode", "Novel", "IV")] == works[0]["id"]
-    assert (5, "Some Comic", None, "Comic", "1") not in ids
+    assert ids[(5, "A New Hope", "Star Wars Episode", "Novel", "IV", None)] == works[0]["id"]
+    assert (5, "Some Comic", None, "Comic", "1", None) not in ids
 
 
 # ---------------------------------------------------------------------------
@@ -445,6 +445,34 @@ def test_build_still_ignores_year_less_canon_row(monkeypatch, tmp_path):
         ],
     })
     assert titles == ["A New Hope"]
+
+
+def test_build_gives_distinct_ids_to_issues_differing_only_by_number(monkeypatch, tmp_path):
+    # A mini-series whose issues share series/title/medium and have no SERIES #
+    # is told apart only by the "#" column. Each issue is its own work.
+    xlsx = tmp_path / "tiny.xlsx"
+    _tiny_workbook(xlsx, {
+        "NON-CANON": [
+            [None, "Comic", "Infinities", None, "A New Hope", n,
+             None, None, None, None, None, None]
+            for n in (1, 2, 3, 4)
+        ],
+    })
+    monkeypatch.setattr(build_data, "EXCEL_PATH", xlsx)
+    payload = build_data.build(refresh=False, dry_run=True)
+    ids = [w["id"] for w in payload["works"]]
+    assert len(ids) == 4
+    assert len(set(ids)) == 4, "issues differing only by # must not share an id"
+
+
+def test_work_lookup_key_distinguishes_number():
+    # The writeback key must separate issues too, or enrichment for one issue
+    # overwrites its siblings (last row in the workbook wins).
+    rows = [_row(era=9, series="Infinities", title="A New Hope", medium="Comic",
+                 series_number=None, number=str(n)) for n in (1, 2)]
+    works = [_row_to_work(r) for r in rows]
+    keys = {build_data._work_lookup_key(r, w) for r, w in zip(rows, works, strict=True)}
+    assert len(keys) == 2
 
 
 def test_build_non_canon_work_has_no_year_key(monkeypatch, tmp_path):

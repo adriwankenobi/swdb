@@ -55,14 +55,21 @@ A=YEAR B=MEDIUM C=SERIES D=SERIES # E=TITLE F=# G=AUTHOR H=PUBLISHER I=RELEASE J
 
 **Stable IDs:** each work's `id` is read verbatim from the `ID` column (`K`).
 When a cell is blank the pipeline generates an id — seeded from the legacy
-`era|series|title|medium|series#` uuid5 — and **writes it back** to the Excel. Once
+`era|series|title|medium|series#` uuid5, with `|#` appended when the per-work
+`#` column has a value — and **writes it back** to the Excel. Once
 stamped, the id is frozen: editing a title, era, series, etc. does not change
 it. This matters because per-user data in Supabase is keyed on `work_id`.
+The `#` is appended only when present so that rows without one keep the ids
+they were already stamped with, while issues of a mini-series — which differ by
+`#` alone — get distinct ids instead of collapsing onto one.
 
 **Excel writeback:** after enrichment, the Wookieepedia-sourced fields are
 written back into the corresponding Excel cells (`AUTHOR`, `PUBLISHER`,
 `RELEASE`, `COVER`), and any blank `ID` cell is stamped. Trusted columns are
-never modified.
+never modified. Rows are matched on
+`(era, title, series, medium, series #, #)` — the per-work `#` is part of that
+key, or issues of a mini-series would collapse onto one entry and each would be
+written the last one's data.
 
 > The pipeline has no notion of collections or ownership. (An earlier version
 > derived collections from a `COLLECTIONS` sheet + a `COLLECTED` column and
