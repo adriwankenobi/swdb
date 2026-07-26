@@ -7,7 +7,7 @@ import {
   CommandItem,
 } from "@/components/ui/command";
 import { useCatalogStore } from "@/store/catalogStore";
-import { formatSeriesAndNumber } from "@/lib/formatSeriesAndNumber";
+import { formatSeriesAndNumber, formatWorkTitle } from "@/lib/formatSeriesAndNumber";
 
 export function WorkPicker({
   exclude,
@@ -55,7 +55,9 @@ export function WorkPicker({
               setQ("");
             }}
           >
-            <span className="truncate">{w.title}</span>
+            {/* formatWorkTitle, not w.title: issues of a mini-series differ
+                only by the per-work #, so without it they all look alike. */}
+            <span className="truncate">{formatWorkTitle(w)}</span>
             {formatSeriesAndNumber(w) && (
               <span className="ml-2 shrink-0 text-xs text-muted-foreground">
                 {formatSeriesAndNumber(w)}
