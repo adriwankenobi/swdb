@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-09T18:39:11+00:00",
+  "generated_at": "2026-07-26T16:48:12+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -4427,6 +4427,9 @@
       "year": -44,
       "series": [
         "Tales"
+      ],
+      "series_number": [
+        "14"
       ],
       "wiki_url": "https://starwars.fandom.com/wiki/Mythology",
       "authors": [
@@ -26367,6 +26370,50 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cc/SplinteroftheMindsEye_4.jpg/revision/latest"
     },
     {
+      "id": "e9da2702-0dcb-53a2-ad99-15fc2e10c7f3",
+      "era": "REBELLION",
+      "title": "Planet of the Dead",
+      "medium": "Comic",
+      "year": 2,
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "16"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Planet_of_the_Dead",
+      "authors": [
+        "Steve Niles",
+        "Davidé Fabbri"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2003-10-01",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c5/PlanetOfTheDead.jpg/revision/latest"
+    },
+    {
+      "id": "e58e31c2-b37d-5013-9b91-48fe3e123c00",
+      "era": "REBELLION",
+      "title": "The Hidden",
+      "medium": "Comic",
+      "year": 2,
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "6"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Hidden",
+      "authors": [
+        "Sean Konot",
+        "Scott Morse"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2000-12-20",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/39/TheHidden.jpg/revision/latest"
+    },
+    {
       "id": "07593f81-30b2-524c-9a14-771ecc4250fa",
       "era": "REBELLION",
       "title": "Princess Leia and the Royal Ransom",
@@ -35340,6 +35387,9 @@
       "series": [
         "Tales"
       ],
+      "series_number": [
+        "8"
+      ],
       "wiki_url": "https://starwars.fandom.com/wiki/The_Secret_Tales_of_Luke%27s_Hand!",
       "authors": [
         "Henry Gilroy",
@@ -36240,7 +36290,7 @@
     {
       "id": "4d995208-1d2b-5c37-9f08-bea795c31b84",
       "era": "NEW REPUBLIC",
-      "title": "Apocalype Endor",
+      "title": "Apocalypse Endor",
       "medium": "Comic",
       "year": 22,
       "series": [
@@ -39714,6 +39764,1399 @@
       "release_date": "2014-08-27",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/82/Legacy2013-18.jpg/revision/latest"
+    },
+    {
+      "id": "95960f50-5c49-5718-89e2-8e96620e7d61",
+      "era": "NON-CANON",
+      "title": "The Flight of the Falcon",
+      "medium": "Comic",
+      "series": [
+        "The Empire Strikes Back Monthly"
+      ],
+      "series_number": [
+        "157"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Flight_of_the_Falcon",
+      "authors": [
+        "Steve Parkhouse",
+        "John Stokes"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1982-05-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/74/Tfof.jpg/revision/latest"
+    },
+    {
+      "id": "6db48b26-e3ac-52d6-8f8b-61aaadade0ad",
+      "era": "NON-CANON",
+      "title": "A New Hope",
+      "medium": "Comic",
+      "series": [
+        "Infinities"
+      ],
+      "number": "1",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Infinities:_A_New_Hope_1",
+      "authors": [
+        "Chris Warner",
+        "Al Rio"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2001-11-21",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/da/InfinitiesANewHope4.jpg/revision/latest"
+    },
+    {
+      "id": "6db48b26-e3ac-52d6-8f8b-61aaadade0ad",
+      "era": "NON-CANON",
+      "title": "A New Hope",
+      "medium": "Comic",
+      "series": [
+        "Infinities"
+      ],
+      "number": "2",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Infinities:_A_New_Hope_2",
+      "authors": [
+        "Chris Warner",
+        "Al Rio"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2001-11-21",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/da/InfinitiesANewHope4.jpg/revision/latest"
+    },
+    {
+      "id": "6db48b26-e3ac-52d6-8f8b-61aaadade0ad",
+      "era": "NON-CANON",
+      "title": "A New Hope",
+      "medium": "Comic",
+      "series": [
+        "Infinities"
+      ],
+      "number": "3",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Infinities:_A_New_Hope_3",
+      "authors": [
+        "Chris Warner",
+        "Al Rio"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2001-11-21",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/da/InfinitiesANewHope4.jpg/revision/latest"
+    },
+    {
+      "id": "6db48b26-e3ac-52d6-8f8b-61aaadade0ad",
+      "era": "NON-CANON",
+      "title": "A New Hope",
+      "medium": "Comic",
+      "series": [
+        "Infinities"
+      ],
+      "number": "4",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Infinities:_A_New_Hope_4",
+      "authors": [
+        "Chris Warner",
+        "Al Rio"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2001-11-21",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/da/InfinitiesANewHope4.jpg/revision/latest"
+    },
+    {
+      "id": "59c811bf-7c5d-5881-8337-0a8bef0f1e0b",
+      "era": "NON-CANON",
+      "title": "The Empire Strikes Back",
+      "medium": "Comic",
+      "series": [
+        "Infinities"
+      ],
+      "number": "1",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Infinities:_The_Empire_Strikes_Back_1",
+      "authors": [
+        "Dave Land",
+        "Davidé Fabbri"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2002-11-20",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/82/Infinities_esb4.jpg/revision/latest"
+    },
+    {
+      "id": "59c811bf-7c5d-5881-8337-0a8bef0f1e0b",
+      "era": "NON-CANON",
+      "title": "The Empire Strikes Back",
+      "medium": "Comic",
+      "series": [
+        "Infinities"
+      ],
+      "number": "2",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Infinities:_The_Empire_Strikes_Back_2",
+      "authors": [
+        "Dave Land",
+        "Davidé Fabbri"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2002-11-20",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/82/Infinities_esb4.jpg/revision/latest"
+    },
+    {
+      "id": "59c811bf-7c5d-5881-8337-0a8bef0f1e0b",
+      "era": "NON-CANON",
+      "title": "The Empire Strikes Back",
+      "medium": "Comic",
+      "series": [
+        "Infinities"
+      ],
+      "number": "3",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Infinities:_The_Empire_Strikes_Back_3",
+      "authors": [
+        "Dave Land",
+        "Davidé Fabbri"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2002-11-20",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/82/Infinities_esb4.jpg/revision/latest"
+    },
+    {
+      "id": "59c811bf-7c5d-5881-8337-0a8bef0f1e0b",
+      "era": "NON-CANON",
+      "title": "The Empire Strikes Back",
+      "medium": "Comic",
+      "series": [
+        "Infinities"
+      ],
+      "number": "4",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Infinities:_The_Empire_Strikes_Back_4",
+      "authors": [
+        "Dave Land",
+        "Davidé Fabbri"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2002-11-20",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/82/Infinities_esb4.jpg/revision/latest"
+    },
+    {
+      "id": "9f2abd05-fe0c-576c-9ca7-e8a5d1bf443a",
+      "era": "NON-CANON",
+      "title": "Return of the Jedi",
+      "medium": "Comic",
+      "series": [
+        "Infinities"
+      ],
+      "number": "1",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Infinities:_Return_of_the_Jedi_1",
+      "authors": [
+        "Adam Gallardo",
+        "Ryan Benjamin"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-03-31",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/23/Infin_rotj4.jpg/revision/latest"
+    },
+    {
+      "id": "9f2abd05-fe0c-576c-9ca7-e8a5d1bf443a",
+      "era": "NON-CANON",
+      "title": "Return of the Jedi",
+      "medium": "Comic",
+      "series": [
+        "Infinities"
+      ],
+      "number": "2",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Infinities:_Return_of_the_Jedi_2",
+      "authors": [
+        "Adam Gallardo",
+        "Ryan Benjamin"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-03-31",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/23/Infin_rotj4.jpg/revision/latest"
+    },
+    {
+      "id": "9f2abd05-fe0c-576c-9ca7-e8a5d1bf443a",
+      "era": "NON-CANON",
+      "title": "Return of the Jedi",
+      "medium": "Comic",
+      "series": [
+        "Infinities"
+      ],
+      "number": "3",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Infinities:_Return_of_the_Jedi_3",
+      "authors": [
+        "Adam Gallardo",
+        "Ryan Benjamin"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-03-31",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/23/Infin_rotj4.jpg/revision/latest"
+    },
+    {
+      "id": "9f2abd05-fe0c-576c-9ca7-e8a5d1bf443a",
+      "era": "NON-CANON",
+      "title": "Return of the Jedi",
+      "medium": "Comic",
+      "series": [
+        "Infinities"
+      ],
+      "number": "4",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Infinities:_Return_of_the_Jedi_4",
+      "authors": [
+        "Adam Gallardo",
+        "Ryan Benjamin"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-03-31",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/23/Infin_rotj4.jpg/revision/latest"
+    },
+    {
+      "id": "b8d587a6-21f8-502a-9a9a-0e099658bb37",
+      "era": "NON-CANON",
+      "title": "Sergio Aragonés Stomps Star Wars",
+      "medium": "Comic",
+      "wiki_url": "https://starwars.fandom.com/wiki/Sergio_Aragon%C3%A9s_Stomps_Star_Wars",
+      "authors": [
+        "Sergio Aragonés",
+        "Mark Evanier"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2000-02-16",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/45/Sassw1cover.jpg/revision/latest"
+    },
+    {
+      "id": "891f3647-8eb7-5fd2-a7aa-18a3ec987419",
+      "era": "NON-CANON",
+      "title": "Skippy, the Jedi Droid",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "1"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Skippy_the_Jedi_Droid",
+      "authors": [
+        "Peter David",
+        "Martin Egeland"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1999-09-29",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/57/SkippyTJD.jpg/revision/latest"
+    },
+    {
+      "id": "f372efeb-7e53-5b45-bbc8-52d1df603af9",
+      "era": "NON-CANON",
+      "title": "A Death Star is Born",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "4"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/A_Death_Star_Is_Born",
+      "authors": [
+        "Kevin Rubio",
+        "Lucas Marangon"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2000-06-28",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e3/ADeathStarIsBorn.jpg/revision/latest"
+    },
+    {
+      "id": "90e542b8-2350-5f46-9c68-e0700b186d6c",
+      "era": "NON-CANON",
+      "title": "What They Called Me",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "5"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/What_They_Called_Me",
+      "authors": [
+        "Craig Thompson"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2000-09-27",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d1/WhatTheyCalledMe.jpg/revision/latest"
+    },
+    {
+      "id": "bfc4ebda-7b63-5358-af16-594965c707aa",
+      "era": "NON-CANON",
+      "title": "Fortune, Fate, and the Natural History of the Sarlacc",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "6"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Fortune,_Fate,_and_the_Natural_History_of_the_Sarlacc",
+      "authors": [
+        "Mark Schultz",
+        "Kellie Strom"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2000-12-20",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/35/FortuneFateNaturalHistorySarlacc-Tales6.jpg/revision/latest"
+    },
+    {
+      "id": "3dc0be95-e34e-5429-baf4-eb9777f8a35b",
+      "era": "NON-CANON",
+      "title": "Junkheap Hero",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "6"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Junkheap_Hero",
+      "authors": [
+        "Mark Evanier",
+        "Sergio Aragonés"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2000-12-20",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/58/JunkheapHero.jpg/revision/latest"
+    },
+    {
+      "id": "772ba147-837e-5bd6-9bd7-928a806fff72",
+      "era": "NON-CANON",
+      "title": "Force Fiction",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "7"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Force_Fiction",
+      "authors": [
+        "Kevin Rubio",
+        "Lucas Marangon"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2001-03-07",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/71/ForceFiction.jpg/revision/latest"
+    },
+    {
+      "id": "49500fe3-62c7-5926-a15d-7698af5ce067",
+      "era": "NON-CANON",
+      "title": "Hate Leads to Lollipops",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "9"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Hate_Leads_to_Lollipops",
+      "authors": [
+        "Dave McCaig"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2001-10-10",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/65/HateLeadstoLollipops.jpg/revision/latest"
+    },
+    {
+      "id": "e94da16a-51e1-560f-8b93-c06c0bd0dce7",
+      "era": "NON-CANON",
+      "title": "The Rebel Four",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "9"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Rebel_Four",
+      "authors": [
+        "Jay Stephens"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2001-10-10",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/83/TheRebelFour2.jpg/revision/latest"
+    },
+    {
+      "id": "093b1ecc-e71b-5140-993f-97ec678fd93b",
+      "era": "NON-CANON",
+      "title": "Skreej",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "10"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Skreej",
+      "authors": [
+        "Mike Kennedy",
+        "Francisco Ruiz Velasco"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2001-12-12",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/79/Skreej1.jpg/revision/latest"
+    },
+    {
+      "id": "a16975ce-bd9b-5b80-90ce-37151af3d555",
+      "era": "NON-CANON",
+      "title": "A Wookie Scorned!",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "10"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/A_Wookiee_Scorned!",
+      "authors": [
+        "Jason Hall",
+        "Christina Chen"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2001-12-12",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/02/AWookieeScorned.jpg/revision/latest"
+    },
+    {
+      "id": "08d8fae2-bc9e-59b4-ac9a-2e67816cea00",
+      "era": "NON-CANON",
+      "title": "Prey",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "11"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Prey",
+      "authors": [
+        "Kia Asamiya"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2002-03-20",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/bd/PreyComic.jpg/revision/latest"
+    },
+    {
+      "id": "536da25d-9653-5d05-8820-3e4489c788c4",
+      "era": "NON-CANON",
+      "title": "In the Beginning",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "11"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/In_the_Beginning",
+      "authors": [
+        "Garth Ennis",
+        "Amanda Connor"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2002-03-20",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9d/IntheBeginning.jpg/revision/latest"
+    },
+    {
+      "id": "727c4ad4-33ba-53ea-9dd2-c39fcbf1b4e5",
+      "era": "NON-CANON",
+      "title": "Ghost",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "11"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Ghost_(comic_story)",
+      "authors": [
+        "Jan Duursema",
+        "Dave McCaig"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2002-03-20",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4d/Ghost.jpg/revision/latest"
+    },
+    {
+      "id": "3740d104-cd66-57d2-8fa7-670d2f3cc3ec",
+      "era": "NON-CANON",
+      "title": "The Revenge of Tag & Bink",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "12"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Revenge_of_Tag_%26_Bink",
+      "authors": [
+        "Kevin Rubio",
+        "Rick Zombo"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2002-06-05",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/be/TheRevengeofTagandBink.jpg/revision/latest"
+    },
+    {
+      "id": "f29c6f66-f3d8-5ac2-a7e2-d23df64a238b",
+      "era": "NON-CANON",
+      "title": "The Emperor's Court",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "14"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Emperor%27s_Court",
+      "authors": [
+        "Jason Hall",
+        "Ramón Bachs"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2002-12-11",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6e/TheEmperorsCourt.jpg/revision/latest"
+    },
+    {
+      "id": "70b48a92-73b0-5d30-a471-5776c8a64977",
+      "era": "NON-CANON",
+      "title": "Smuggler's Blues",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "14"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Smuggler%27s_Blues",
+      "authors": [
+        "Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2002-12-11",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7b/SmugglersBlues.jpg/revision/latest"
+    },
+    {
+      "id": "1acc1b06-50df-5632-a79b-950ce778da3d",
+      "era": "NON-CANON",
+      "title": "Best Birthday Ever",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "16"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Best_Birthday_Ever",
+      "authors": [
+        "Tod C. Parkhill",
+        "Joey Mason"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2003-06-25",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/27/BestBirthdayEver.jpg/revision/latest"
+    },
+    {
+      "id": "dd742b80-74be-573d-9534-d3e8aaa61c54",
+      "era": "NON-CANON",
+      "title": "The Long, Bad Day",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "16"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Long,_Bad_Day",
+      "authors": [
+        "Mike Denning",
+        "Lucas Marangon"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2003-06-25",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/31/TheLongBadDay.jpg/revision/latest"
+    },
+    {
+      "id": "e57e3ede-5033-5f31-ba5b-661e822d7787",
+      "era": "NON-CANON",
+      "title": "Kessel Run",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "16"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Kessel_Run_(comic_story)",
+      "authors": [
+        "Gilbert Austin"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2003-06-25",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/72/KesselRun.jpg/revision/latest"
+    },
+    {
+      "id": "0a600f8b-cfae-5906-8f4b-c15ae03b3655",
+      "era": "NON-CANON",
+      "title": "Lunch Break",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "16"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Lunch_Break",
+      "authors": [
+        "Jonathan Adams"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2003-06-25",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/23/LunchBreak.jpg/revision/latest"
+    },
+    {
+      "id": "d2133c92-d7c5-5612-81b0-d750c55fad9d",
+      "era": "NON-CANON",
+      "title": "Ghosts of Hoth",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "17"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Ghosts_of_Hoth",
+      "authors": [
+        "Rob Williams",
+        "Cary Nord"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2003-10-01",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/24/GhostsOfHoth.jpg/revision/latest"
+    },
+    {
+      "id": "d35aac7a-2a1e-5d45-b59e-ffeb9a6305bf",
+      "era": "NON-CANON",
+      "title": "Number Two in the Galaxy",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "18"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Number_Two_in_the_Galaxy",
+      "authors": [
+        "Henry Gilroy",
+        "Todd Demong"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2003-12-24",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/00/NumberTwoInTheGalaxy.jpg/revision/latest"
+    },
+    {
+      "id": "35eb085d-c7da-572c-8703-b2554314c1eb",
+      "era": "NON-CANON",
+      "title": "The Rebel Club",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "19"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Rebel_Club",
+      "authors": [
+        "Scott Kurtz"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-05-14",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/24/TheRebelClub.jpg/revision/latest"
+    },
+    {
+      "id": "4c21ce19-a6d9-50d8-aaf4-8056a8023b89",
+      "era": "NON-CANON",
+      "title": "The Lost Lightsaber",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "19"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Lost_Lightsaber",
+      "authors": [
+        "Andrew Robinson",
+        "Jim Royal",
+        "Núria Peris"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-05-14",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5c/TheLostLightsaber.jpg/revision/latest"
+    },
+    {
+      "id": "c3caf0db-f03a-539c-ab68-c2f5951b62f3",
+      "era": "NON-CANON",
+      "title": "Into the Great Unknown",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "19"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Into_the_Great_Unknown",
+      "authors": [
+        "W. Haden Blackman",
+        "Sean Murphy"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-05-14",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f3/IntotheGreatUnknown.jpg/revision/latest"
+    },
+    {
+      "id": "24fef076-0730-5517-9422-7ac00d904b8f",
+      "era": "NON-CANON",
+      "title": "Storyteller",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "19"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Storyteller_(comic_story)",
+      "authors": [
+        "Jason Hall",
+        "Paul Lee"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-05-14",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6a/Storyteller.jpg/revision/latest"
+    },
+    {
+      "id": "1f6c0c99-bf39-52e4-b64b-aa9305fb1d24",
+      "era": "NON-CANON",
+      "title": "Who is Your Daddy",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "20"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Who%27s_Your_Daddy",
+      "authors": [
+        "Jason"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-06-30",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/06/WhosYourDaddy.jpg/revision/latest"
+    },
+    {
+      "id": "3b5ac306-3e2c-54a8-8100-f01c3ffe38a8",
+      "era": "NON-CANON",
+      "title": "Fred Jawa",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "20"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Fred_Jawa_(comic_story)",
+      "authors": [
+        "Bob Fingerman"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-06-30",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f5/FredJawaComic.jpg/revision/latest"
+    },
+    {
+      "id": "07b7408a-c422-57ce-b2d9-4758aa7935e5",
+      "era": "NON-CANON",
+      "title": "Hunger Pains",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "20"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Hunger_Pains",
+      "authors": [
+        "Jim Campbell"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-06-30",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/61/HungerPains.jpg/revision/latest"
+    },
+    {
+      "id": "53dbd503-2aa2-5f53-8d1d-eb8e5a328ef1",
+      "era": "NON-CANON",
+      "title": "Failing up with Jar Jar Binks",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "20"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Failing_Up_With_Jar_Jar_Binks",
+      "authors": [
+        "Peter Bagge"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-06-30",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fb/FailingUpWithJarJarBinks.jpg/revision/latest"
+    },
+    {
+      "id": "94774f93-41bd-53f6-a73c-356df9367e6c",
+      "era": "NON-CANON",
+      "title": "Nobody's Perfect",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "20"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Nobody%27s_Perfect",
+      "authors": [
+        "Peter Bagge"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-06-30",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5e/NobodysPerfect.jpg/revision/latest"
+    },
+    {
+      "id": "9310308c-9ca7-58d8-828d-3b88dcdcd346",
+      "era": "NON-CANON",
+      "title": "Problem Solvers",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "20"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Problem_Solvers",
+      "authors": [
+        "Chris Eliopoulos"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-06-30",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4a/ProblemSolvers.jpg/revision/latest"
+    },
+    {
+      "id": "994d0c32-4d0a-5d75-9f69-fecee2747bb1",
+      "era": "NON-CANON",
+      "title": "Melvin Fett",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "20"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Melvin_Fett_(comic_story)",
+      "authors": [
+        "James Kochalka"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-06-30",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/37/MelvinFett.jpg/revision/latest"
+    },
+    {
+      "id": "c96318ca-e87a-5c52-8444-f1f94726fb72",
+      "era": "NON-CANON",
+      "title": "The Star Wars",
+      "medium": "Comic",
+      "series": [
+        "The Star Wars"
+      ],
+      "number": "0",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Star_Wars_0",
+      "authors": [
+        "Jonathan W. Rinzler",
+        "Mike Mayhew"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2014-05-28",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0d/TheStarWars8cover.jpg/revision/latest"
+    },
+    {
+      "id": "c96318ca-e87a-5c52-8444-f1f94726fb72",
+      "era": "NON-CANON",
+      "title": "The Star Wars",
+      "medium": "Comic",
+      "series": [
+        "The Star Wars"
+      ],
+      "number": "1",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Star_Wars_1",
+      "authors": [
+        "Jonathan W. Rinzler",
+        "Mike Mayhew"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2014-05-28",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0d/TheStarWars8cover.jpg/revision/latest"
+    },
+    {
+      "id": "c96318ca-e87a-5c52-8444-f1f94726fb72",
+      "era": "NON-CANON",
+      "title": "The Star Wars",
+      "medium": "Comic",
+      "series": [
+        "The Star Wars"
+      ],
+      "number": "2",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Star_Wars_2",
+      "authors": [
+        "Jonathan W. Rinzler",
+        "Mike Mayhew"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2014-05-28",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0d/TheStarWars8cover.jpg/revision/latest"
+    },
+    {
+      "id": "c96318ca-e87a-5c52-8444-f1f94726fb72",
+      "era": "NON-CANON",
+      "title": "The Star Wars",
+      "medium": "Comic",
+      "series": [
+        "The Star Wars"
+      ],
+      "number": "3",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Star_Wars_3",
+      "authors": [
+        "Jonathan W. Rinzler",
+        "Mike Mayhew"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2014-05-28",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0d/TheStarWars8cover.jpg/revision/latest"
+    },
+    {
+      "id": "c96318ca-e87a-5c52-8444-f1f94726fb72",
+      "era": "NON-CANON",
+      "title": "The Star Wars",
+      "medium": "Comic",
+      "series": [
+        "The Star Wars"
+      ],
+      "number": "4",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Star_Wars_4",
+      "authors": [
+        "Jonathan W. Rinzler",
+        "Mike Mayhew"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2014-05-28",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0d/TheStarWars8cover.jpg/revision/latest"
+    },
+    {
+      "id": "c96318ca-e87a-5c52-8444-f1f94726fb72",
+      "era": "NON-CANON",
+      "title": "The Star Wars",
+      "medium": "Comic",
+      "series": [
+        "The Star Wars"
+      ],
+      "number": "5",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Star_Wars_5",
+      "authors": [
+        "Jonathan W. Rinzler",
+        "Mike Mayhew"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2014-05-28",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0d/TheStarWars8cover.jpg/revision/latest"
+    },
+    {
+      "id": "c96318ca-e87a-5c52-8444-f1f94726fb72",
+      "era": "NON-CANON",
+      "title": "The Star Wars",
+      "medium": "Comic",
+      "series": [
+        "The Star Wars"
+      ],
+      "number": "6",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Star_Wars_6",
+      "authors": [
+        "Jonathan W. Rinzler",
+        "Mike Mayhew"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2014-05-28",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0d/TheStarWars8cover.jpg/revision/latest"
+    },
+    {
+      "id": "c96318ca-e87a-5c52-8444-f1f94726fb72",
+      "era": "NON-CANON",
+      "title": "The Star Wars",
+      "medium": "Comic",
+      "series": [
+        "The Star Wars"
+      ],
+      "number": "7",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Star_Wars_7",
+      "authors": [
+        "Jonathan W. Rinzler",
+        "Mike Mayhew"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2014-05-28",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0d/TheStarWars8cover.jpg/revision/latest"
+    },
+    {
+      "id": "c96318ca-e87a-5c52-8444-f1f94726fb72",
+      "era": "NON-CANON",
+      "title": "The Star Wars",
+      "medium": "Comic",
+      "series": [
+        "The Star Wars"
+      ],
+      "number": "8",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Star_Wars_8",
+      "authors": [
+        "Jonathan W. Rinzler",
+        "Mike Mayhew"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2014-05-28",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0d/TheStarWars8cover.jpg/revision/latest"
+    },
+    {
+      "id": "53085eba-0a4e-5911-8a16-4b63be4becd2",
+      "era": "NON-CANON",
+      "title": "A New Hope",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga"
+      ],
+      "number": "1",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Manga:_A_New_Hope_1",
+      "authors": [
+        "George Lucas",
+        "Hisao Tamaki"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1998-12-02",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e7/StarWarsManga-ANewHope4.jpg/revision/latest"
+    },
+    {
+      "id": "53085eba-0a4e-5911-8a16-4b63be4becd2",
+      "era": "NON-CANON",
+      "title": "A New Hope",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga"
+      ],
+      "number": "2",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Manga:_A_New_Hope_2",
+      "authors": [
+        "George Lucas",
+        "Hisao Tamaki"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1998-12-02",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e7/StarWarsManga-ANewHope4.jpg/revision/latest"
+    },
+    {
+      "id": "53085eba-0a4e-5911-8a16-4b63be4becd2",
+      "era": "NON-CANON",
+      "title": "A New Hope",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga"
+      ],
+      "number": "3",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Manga:_A_New_Hope_3",
+      "authors": [
+        "George Lucas",
+        "Hisao Tamaki"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1998-12-02",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e7/StarWarsManga-ANewHope4.jpg/revision/latest"
+    },
+    {
+      "id": "53085eba-0a4e-5911-8a16-4b63be4becd2",
+      "era": "NON-CANON",
+      "title": "A New Hope",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga"
+      ],
+      "number": "4",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Manga:_A_New_Hope_4",
+      "authors": [
+        "George Lucas",
+        "Hisao Tamaki"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1998-12-02",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e7/StarWarsManga-ANewHope4.jpg/revision/latest"
+    },
+    {
+      "id": "27b09b93-1a5d-59ec-b761-6419b0254084",
+      "era": "NON-CANON",
+      "title": "The Empire Strikes Back",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga"
+      ],
+      "number": "1",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Manga:_The_Empire_Strikes_Back_1",
+      "authors": [
+        "George Lucas",
+        "Toshiki Kudo"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1999-04-28",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3d/SWManga-TESB4.jpg/revision/latest"
+    },
+    {
+      "id": "27b09b93-1a5d-59ec-b761-6419b0254084",
+      "era": "NON-CANON",
+      "title": "The Empire Strikes Back",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga"
+      ],
+      "number": "2",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Manga:_The_Empire_Strikes_Back_2",
+      "authors": [
+        "George Lucas",
+        "Toshiki Kudo"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1999-04-28",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3d/SWManga-TESB4.jpg/revision/latest"
+    },
+    {
+      "id": "27b09b93-1a5d-59ec-b761-6419b0254084",
+      "era": "NON-CANON",
+      "title": "The Empire Strikes Back",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga"
+      ],
+      "number": "3",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Manga:_The_Empire_Strikes_Back_3",
+      "authors": [
+        "George Lucas",
+        "Toshiki Kudo"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1999-04-28",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3d/SWManga-TESB4.jpg/revision/latest"
+    },
+    {
+      "id": "27b09b93-1a5d-59ec-b761-6419b0254084",
+      "era": "NON-CANON",
+      "title": "The Empire Strikes Back",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga"
+      ],
+      "number": "4",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Manga:_The_Empire_Strikes_Back_4",
+      "authors": [
+        "George Lucas",
+        "Toshiki Kudo"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1999-04-28",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3d/SWManga-TESB4.jpg/revision/latest"
+    },
+    {
+      "id": "2ec7debc-12f3-5416-9389-89293967208a",
+      "era": "NON-CANON",
+      "title": "Return of the Jedi",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga"
+      ],
+      "number": "1",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Manga:_Return_of_the_Jedi_1",
+      "authors": [
+        "George Lucas",
+        "Shin-Ichi Hiromoto"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1999-10-06",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a1/Emperorrotj4.jpg/revision/latest"
+    },
+    {
+      "id": "2ec7debc-12f3-5416-9389-89293967208a",
+      "era": "NON-CANON",
+      "title": "Return of the Jedi",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga"
+      ],
+      "number": "2",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Manga:_Return_of_the_Jedi_2",
+      "authors": [
+        "George Lucas",
+        "Shin-Ichi Hiromoto"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1999-10-06",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a1/Emperorrotj4.jpg/revision/latest"
+    },
+    {
+      "id": "2ec7debc-12f3-5416-9389-89293967208a",
+      "era": "NON-CANON",
+      "title": "Return of the Jedi",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga"
+      ],
+      "number": "3",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Manga:_Return_of_the_Jedi_3",
+      "authors": [
+        "George Lucas",
+        "Shin-Ichi Hiromoto"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1999-10-06",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a1/Emperorrotj4.jpg/revision/latest"
+    },
+    {
+      "id": "2ec7debc-12f3-5416-9389-89293967208a",
+      "era": "NON-CANON",
+      "title": "Return of the Jedi",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga"
+      ],
+      "number": "4",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Manga:_Return_of_the_Jedi_4",
+      "authors": [
+        "George Lucas",
+        "Shin-Ichi Hiromoto"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1999-10-06",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a1/Emperorrotj4.jpg/revision/latest"
+    },
+    {
+      "id": "97136a1f-0174-5e30-b475-772923bf8f69",
+      "era": "NON-CANON",
+      "title": "The Phantom Menace",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga"
+      ],
+      "number": "1",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Manga:_The_Phantom_Menace_1",
+      "authors": [
+        "George Lucas",
+        "Kia Asamiya"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2000-01-19",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/59/TPMmanga2.jpg/revision/latest"
+    },
+    {
+      "id": "97136a1f-0174-5e30-b475-772923bf8f69",
+      "era": "NON-CANON",
+      "title": "The Phantom Menace",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga"
+      ],
+      "number": "2",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_Manga:_The_Phantom_Menace_2",
+      "authors": [
+        "George Lucas",
+        "Kia Asamiya"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2000-01-19",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/59/TPMmanga2.jpg/revision/latest"
+    },
+    {
+      "id": "02433ffc-c394-5734-86ba-9bdbc75252ac",
+      "era": "NON-CANON",
+      "title": "The Complete Saga",
+      "medium": "Videogame",
+      "series": [
+        "LEGO Star Wars"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/LEGO_Star_Wars:_The_Complete_Saga",
+      "release_date": "2007-11-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fc/LEGO_Star_Wars_TCS.jpg/revision/latest"
     }
   ]
 }
