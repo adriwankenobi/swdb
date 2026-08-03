@@ -159,3 +159,40 @@ create policy "covers: owner delete" on storage.objects
     bucket_id = 'covers'
     and (storage.foldername(name))[1] = auth.uid()::text
   );
+
+-- ---------------------------------------------------------------------------
+-- Keepalive heartbeat
+-- ---------------------------------------------------------------------------
+--
+-- Free-tier Supabase projects are paused after ~7 days with no database
+-- activity. A scheduled GitHub Action (.github/workflows/supabase-keepalive.yml)
+-- calls keepalive_ping() every few days to keep the project awake.
+--
+-- keepalive_ping() is a SECURITY DEFINER function: it runs as its owner
+-- (bypassing RLS), upserts the single heartbeat row, and returns the timestamp
+-- it wrote. The upsert is a real database write — that is what registers as
+-- activity — and the returned timestamp lets a caller confirm the write
+-- landed. anon may only EXECUTE the function; it has no direct table access.
+
+create table if not exists public.keepalive (
+  id        smallint primary key,
+  last_ping timestamptz not null default now()
+);
+
+alter table public.keepalive enable row level security;
+-- No anon policy on the table: all access goes through keepalive_ping().
+
+create or replace function public.keepalive_ping()
+returns timestamptz
+language sql
+security definer
+set search_path = public
+as $$
+  insert into public.keepalive (id, last_ping) values (1, now())
+  on conflict (id) do update set last_ping = now()
+  returning last_ping;
+$$;
+
+-- Only this function is exposed to anon; nothing else.
+revoke all on function public.keepalive_ping() from public;
+grant execute on function public.keepalive_ping() to anon;

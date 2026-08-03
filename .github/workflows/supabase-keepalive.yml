@@ -1,10 +1,10 @@
 name: Supabase keepalive
 
 # Keeps the free-tier Supabase project from being paused for inactivity.
-# Supabase pauses free projects after 7 days with no API activity, so we hit
-# the REST API every ~3 days. The URL and publishable key below are already
-# public (they ship in the GitHub Pages JS bundle; RLS protects the data), so
-# there is nothing secret to store here.
+# Supabase pauses free projects after 7 days with no database activity, so we
+# call the keepalive_ping() function (a real write) every ~6 days. The URL and
+# publishable key below are already public (they ship in the GitHub Pages JS
+# bundle; RLS protects the data), so there is nothing secret to store here.
 #
 # The job also commits a timestamp file each run. GitHub disables scheduled
 # workflows after 60 days with no repo commits — the self-commit keeps the
@@ -12,7 +12,7 @@ name: Supabase keepalive
 
 on:
   schedule:
-    - cron: '0 6 */3 * *' # 06:00 UTC every 3rd day-of-month (gap stays under 7 days)
+    - cron: '0 6 */6 * *' # 06:00 UTC every 6th day-of-month (max gap 6 days, under the 7-day limit)
   workflow_dispatch: {}    # allows manual runs from the Actions tab
 
 permissions:
@@ -29,21 +29,24 @@ jobs:
       - name: Check out repo
         uses: actions/checkout@v4
 
-      - name: Ping Supabase REST API
+      - name: Ping Supabase (write heartbeat)
         env:
           SUPABASE_URL: https://uimsujgusfnvbtictvtx.supabase.co
           SUPABASE_KEY: sb_publishable_zOyrNrf-0hDRa2v2IM_Rkw_iyzbCOLh
         run: |
-          # Anonymous select against an existing table. RLS yields an empty
-          # array for an unauthenticated caller, but the request still runs a
-          # real Postgres query — that counts as activity. -f makes a non-2xx
-          # response fail the job so a broken keepalive shows up red.
-          curl -fsS \
-            --retry 3 --retry-delay 10 --max-time 30 \
+          # Call keepalive_ping(): a SECURITY DEFINER function that upserts the
+          # heartbeat row and returns the timestamp it wrote (see
+          # supabase/setup.sql: `keepalive`). The write registers as database
+          # activity, and the returned timestamp confirms it landed. -f fails
+          # the job on any non-2xx; --retry-all-errors so a transient runner DNS
+          # hiccup (curl exit 6) retries instead of failing outright.
+          curl -fsS -X POST \
+            --retry 5 --retry-delay 10 --retry-all-errors --max-time 30 \
             -H "apikey: ${SUPABASE_KEY}" \
             -H "Authorization: Bearer ${SUPABASE_KEY}" \
-            "${SUPABASE_URL}/rest/v1/owned?select=work_id&limit=1"
-          echo # newline after the (empty-array) response body
+            -H "Content-Type: application/json" \
+            "${SUPABASE_URL}/rest/v1/rpc/keepalive_ping"
+          echo # newline after the returned timestamp
 
       - name: Keep the schedule alive
         run: |
