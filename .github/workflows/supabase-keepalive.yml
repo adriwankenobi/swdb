@@ -1,10 +1,11 @@
 name: Supabase keepalive
 
 # Keeps the free-tier Supabase project from being paused for inactivity.
-# Supabase pauses free projects after 7 days with no database activity, so we
-# call the keepalive_ping() function (a real write) every ~6 days. The URL and
-# publishable key below are already public (they ship in the GitHub Pages JS
-# bundle; RLS protects the data), so there is nothing secret to store here.
+# Supabase pauses free projects after 7 days with no *authenticated* database
+# activity — anonymous (publishable-key) requests do not count. The ping
+# therefore authenticates with the service_role key, which bypasses RLS and is
+# sensitive, so it is stored as the repo secret SUPABASE_SERVICE_ROLE_KEY
+# rather than in this file. The project URL is public.
 #
 # The job also commits a timestamp file each run. GitHub disables scheduled
 # workflows after 60 days with no repo commits — the self-commit keeps the
@@ -12,7 +13,7 @@ name: Supabase keepalive
 
 on:
   schedule:
-    - cron: '0 6 */6 * *' # 06:00 UTC every 6th day-of-month (max gap 6 days, under the 7-day limit)
+    - cron: '0 6 * * *' # 06:00 UTC daily (margin against dropped runs; the real test is surviving past a 7-day window)
   workflow_dispatch: {}    # allows manual runs from the Actions tab
 
 permissions:
@@ -32,14 +33,20 @@ jobs:
       - name: Ping Supabase (write heartbeat)
         env:
           SUPABASE_URL: https://uimsujgusfnvbtictvtx.supabase.co
-          SUPABASE_KEY: sb_publishable_zOyrNrf-0hDRa2v2IM_Rkw_iyzbCOLh
+          SUPABASE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
         run: |
+          # Fail loudly if the secret is missing, rather than silently pinging
+          # anonymously (which does not count as activity).
+          if [ -z "${SUPABASE_KEY}" ]; then
+            echo "SUPABASE_SERVICE_ROLE_KEY secret is not set" >&2
+            exit 1
+          fi
           # Call keepalive_ping(): a SECURITY DEFINER function that upserts the
           # heartbeat row and returns the timestamp it wrote (see
-          # supabase/setup.sql: `keepalive`). The write registers as database
-          # activity, and the returned timestamp confirms it landed. -f fails
-          # the job on any non-2xx; --retry-all-errors so a transient runner DNS
-          # hiccup (curl exit 6) retries instead of failing outright.
+          # supabase/setup.sql: `keepalive`). Authenticated with the service_role
+          # key, this counts as project activity. -f fails the job on any
+          # non-2xx; --retry-all-errors so a transient runner DNS hiccup (curl
+          # exit 6) retries instead of failing outright.
           curl -fsS -X POST \
             --retry 5 --retry-delay 10 --retry-all-errors --max-time 30 \
             -H "apikey: ${SUPABASE_KEY}" \
