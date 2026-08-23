@@ -8,10 +8,11 @@ name: Supabase keepalive
 # so it is stored as the repo secret SUPABASE_SERVICE_ROLE_KEY rather than in
 # this file. The project URL is public.
 #
-# The job also refreshes a timestamp file, but at most once every 5 days (not
-# every run — that would spam commits). GitHub disables scheduled workflows
-# after 60 days with no repo commits; the periodic commit keeps the repo (and
-# therefore this schedule) alive indefinitely, hands-off.
+# The job also makes an empty commit, but ONLY when the repo has had no commits
+# for ~45 days. GitHub disables scheduled workflows after 60 days with no repo
+# commits; this self-sustaining commit (it counts its own past commits, so it
+# needs no other repo activity) keeps the schedule enabled indefinitely, while
+# staying dormant whenever normal work is happening.
 
 on:
   schedule:
@@ -61,19 +62,20 @@ jobs:
             exit 1
           fi
 
-      - name: Keep the schedule alive (at most every 5 days)
+      - name: Keep the schedule alive (only if the repo has been idle ~45 days)
         run: |
-          file=.github/last-keepalive.txt
-          last=$(grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' "$file" 2>/dev/null | head -1)
-          last_epoch=$(date -u -d "${last:-1970-01-01}" +%s 2>/dev/null || echo 0)
-          age_days=$(( ( $(date -u +%s) - last_epoch ) / 86400 ))
-          if [ "$age_days" -lt 5 ]; then
-            echo "last keep-alive commit ${age_days}d ago; skipping (commit at most every 5 days)"
+          # GitHub auto-disables a scheduled workflow after 60 days with no repo
+          # commits. Make an empty commit ONLY when the latest commit (yours or
+          # a previous keepalive one) is older than 45 days, so this stays fully
+          # dormant during normal work and fires at most once per idle window.
+          head_epoch=$(git log -1 --format=%ct HEAD)
+          age_days=$(( ( $(date -u +%s) - head_epoch ) / 86400 ))
+          if [ "$age_days" -lt 45 ]; then
+            echo "last commit ${age_days}d ago; schedule safe, nothing to do"
             exit 0
           fi
-          date -u +"%Y-%m-%dT%H:%M:%SZ" > "$file"
+          echo "repo idle ${age_days}d; empty commit to keep the schedule enabled"
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add "$file"
-          git commit -m "chore: supabase keepalive $(date -u +%F)" || exit 0
+          git commit --allow-empty -m "chore: keep scheduled keepalive workflow enabled"
           git push
