@@ -1,19 +1,21 @@
 name: Supabase keepalive
 
 # Keeps the free-tier Supabase project from being paused for inactivity.
-# Supabase pauses free projects after 7 days with no *authenticated* database
-# activity — anonymous (publishable-key) requests do not count. The ping
-# therefore authenticates with the service_role key, which bypasses RLS and is
-# sensitive, so it is stored as the repo secret SUPABASE_SERVICE_ROLE_KEY
-# rather than in this file. The project URL is public.
+# Supabase pauses free projects that lack "sufficient" database activity over a
+# 7-day window, so this runs several times a day and sends a burst of writes
+# each run to keep the request volume up. Each write calls keepalive_ping()
+# authenticated with the service_role key, which bypasses RLS and is sensitive,
+# so it is stored as the repo secret SUPABASE_SERVICE_ROLE_KEY rather than in
+# this file. The project URL is public.
 #
-# The job also commits a timestamp file each run. GitHub disables scheduled
-# workflows after 60 days with no repo commits — the self-commit keeps the
-# repo (and therefore this schedule) alive indefinitely, hands-off.
+# The job also refreshes a timestamp file, but at most once every 5 days (not
+# every run — that would spam commits). GitHub disables scheduled workflows
+# after 60 days with no repo commits; the periodic commit keeps the repo (and
+# therefore this schedule) alive indefinitely, hands-off.
 
 on:
   schedule:
-    - cron: '0 6 * * *' # 06:00 UTC daily (margin against dropped runs; the real test is surviving past a 7-day window)
+    - cron: '0 */6 * * *' # every 6 hours (00/06/12/18 UTC) — activity spread across the day
   workflow_dispatch: {}    # allows manual runs from the Actions tab
 
 permissions:
@@ -41,26 +43,37 @@ jobs:
             echo "SUPABASE_SERVICE_ROLE_KEY secret is not set" >&2
             exit 1
           fi
-          # Call keepalive_ping(): a SECURITY DEFINER function that upserts the
-          # heartbeat row and returns the timestamp it wrote (see
-          # supabase/setup.sql: `keepalive`). Authenticated with the service_role
-          # key, this counts as project activity. -f fails the job on any
-          # non-2xx; --retry-all-errors so a transient runner DNS hiccup (curl
-          # exit 6) retries instead of failing outright.
-          curl -fsS -X POST \
-            --retry 5 --retry-delay 10 --retry-all-errors --max-time 30 \
-            -H "apikey: ${SUPABASE_KEY}" \
-            -H "Authorization: Bearer ${SUPABASE_KEY}" \
-            -H "Content-Type: application/json" \
-            "${SUPABASE_URL}/rest/v1/rpc/keepalive_ping"
-          echo # newline after the returned timestamp
+          url="${SUPABASE_URL}/rest/v1/rpc/keepalive_ping"
+          auth=(-H "apikey: ${SUPABASE_KEY}" -H "Authorization: Bearer ${SUPABASE_KEY}" -H "Content-Type: application/json")
+          # Burst of writes to raise the daily request volume. Each call is a
+          # keepalive_ping() upsert (SECURITY DEFINER; see supabase/setup.sql).
+          # Individual blips are tolerated; the job fails only if EVERY write
+          # fails, so a transient hiccup does not break the keepalive.
+          ok=0
+          for i in $(seq 1 50); do
+            if curl -fsS --max-time 20 -X POST "${auth[@]}" "$url" >/dev/null; then
+              ok=$((ok + 1))
+            fi
+          done
+          echo "successful writes this run: ${ok}/50"
+          if [ "$ok" -eq 0 ]; then
+            echo "all keepalive writes failed" >&2
+            exit 1
+          fi
 
-      - name: Keep the schedule alive
+      - name: Keep the schedule alive (at most every 5 days)
         run: |
-          date -u +"%Y-%m-%dT%H:%M:%SZ" > .github/last-keepalive.txt
+          file=.github/last-keepalive.txt
+          last=$(grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' "$file" 2>/dev/null | head -1)
+          last_epoch=$(date -u -d "${last:-1970-01-01}" +%s 2>/dev/null || echo 0)
+          age_days=$(( ( $(date -u +%s) - last_epoch ) / 86400 ))
+          if [ "$age_days" -lt 5 ]; then
+            echo "last keep-alive commit ${age_days}d ago; skipping (commit at most every 5 days)"
+            exit 0
+          fi
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > "$file"
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .github/last-keepalive.txt
-          # No-op if the file is somehow unchanged (e.g. two runs same second).
+          git add "$file"
           git commit -m "chore: supabase keepalive $(date -u +%F)" || exit 0
           git push
