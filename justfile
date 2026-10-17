@@ -70,3 +70,14 @@ deploy:
 
 # Full rebuild: scrape + build.
 all: scrape build
+
+# Make an upload-sized cover (800px wide WebP, well under the 1MB limit)
+# next to the source: `just small-cover path/to/portada.png` writes
+# path/to/portada-small.webp.
+small-cover image:
+    #!/usr/bin/env bash
+    set -euo pipefail
+    src="{{image}}"
+    out="${src%.*}-small.webp"
+    cwebp -quiet -q 80 -resize 800 0 "$src" -o "$out"
+    echo "$out ($(( $(stat -f %z "$out") / 1024 ))KB)"
