@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-26T17:22:33+00:00",
+  "generated_at": "2026-10-17T17:40:28+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -11468,6 +11468,116 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f7/SWCloneWarsV4.jpg/revision/latest"
     },
     {
+      "id": "0cbdae99-6fba-562e-bf77-aedeb41d613e",
+      "era": "THE CLONE WARS",
+      "title": "Inside Job",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.01"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Inside_Job",
+      "authors": [
+        "Rik Hoskin",
+        "Andres Ponce"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2009-11-12",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/Inside_Job.jpg/revision/latest"
+    },
+    {
+      "id": "a92b6f68-7ca0-5e25-9205-4c59573e5fbf",
+      "era": "THE CLONE WARS",
+      "title": "Keep the Faith!",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.02"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Keep_the_Faith!",
+      "authors": [
+        "Tom DeFalco",
+        "Tanya Roberts"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2009-12-10",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/07/Keep_the_Faith.jpg/revision/latest"
+    },
+    {
+      "id": "c443401d-5609-5c78-8262-8b0e37b79d3e",
+      "era": "THE CLONE WARS",
+      "title": "In Triplicate",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.03"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/In_Triplicate",
+      "authors": [
+        "Rik Hoskin",
+        "Tanya Roberts"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2010-01-07",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b1/In_Triplicate.jpg/revision/latest"
+    },
+    {
+      "id": "e2973dca-fb4d-5a8e-aae9-1cb21e852192",
+      "era": "THE CLONE WARS",
+      "title": "The Droid Deception",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.04"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Droid_Deception",
+      "authors": [
+        "Robin Etherington",
+        "Andres Ponce"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2010-02-04",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9b/The_Droid_Deception.jpg/revision/latest"
+    },
+    {
+      "id": "0c89727e-7374-5bda-98d8-b6b00176721e",
+      "era": "THE CLONE WARS",
+      "title": "Terror on the Twilight",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.05"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Terror_on_the_Twilight",
+      "authors": [
+        "Robin Etherington",
+        "Tanya Roberts"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2010-03-04",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cb/TwilightTerror.jpg/revision/latest"
+    },
+    {
       "id": "41cd333a-b5f3-5bcb-b288-bec21b28c9f2",
       "era": "THE CLONE WARS",
       "title": "Act on Instinct",
@@ -12069,6 +12179,248 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/97/SWCW3DV3-SOL.jpg/revision/latest"
     },
     {
+      "id": "6d473187-9308-5a59-b167-b7ae2ad4c7f4",
+      "era": "THE CLONE WARS",
+      "title": "Milk Run to Maarka!",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.06"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Milk_Run_to_Maarka!",
+      "authors": [
+        "Tom DeFalco",
+        "Andres Ponce"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2010-03-30",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/19/MaarkaMilkRun.jpg/revision/latest"
+    },
+    {
+      "id": "94d334a3-675d-5484-99e9-f02aa988e390",
+      "era": "THE CLONE WARS",
+      "title": "Forclosure",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.07"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Foreclosure",
+      "authors": [
+        "Rik Hoskin",
+        "Tanya Roberts"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2010-04-29",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/be/Foreclosure.jpg/revision/latest"
+    },
+    {
+      "id": "ed2495de-605d-5c52-9319-b038cddc40b4",
+      "era": "THE CLONE WARS",
+      "title": "A Trooper's Tale",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.08"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/A_Trooper%27s_Tale",
+      "authors": [
+        "Robin Etherington",
+        "Andres Ponce"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2010-05-27",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b4/ATroopersTale.jpg/revision/latest"
+    },
+    {
+      "id": "13d44a5d-4b9d-510b-ae03-ff166aa118a4",
+      "era": "THE CLONE WARS",
+      "title": "A Little Help on Hakara",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.09"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/A_Little_Help_on_Hakara",
+      "authors": [
+        "Tom DeFalco",
+        "Tanya Roberts"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2010-06-24",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/93/ALittleHelponHakara.jpg/revision/latest"
+    },
+    {
+      "id": "bb073534-ada2-5282-b6bc-2dbf2960e1ae",
+      "era": "THE CLONE WARS",
+      "title": "Suited",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.10"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Suited",
+      "authors": [
+        "Rik Hoskin",
+        "Andres Ponce"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2010-07-22",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9f/Suited.jpg/revision/latest"
+    },
+    {
+      "id": "f4c6a3bd-cde3-527e-9dfc-d7ac56f32689",
+      "era": "THE CLONE WARS",
+      "title": "Prize Contender",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.11"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Prize_Contender",
+      "authors": [
+        "Rik Hoskin",
+        "Tanya Roberts"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2010-08-19",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0b/Prize_Contender.jpg/revision/latest"
+    },
+    {
+      "id": "1ac49db7-123f-5dec-ba88-3912d90f0b90",
+      "era": "THE CLONE WARS",
+      "title": "The Professional!",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.12"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Professional!",
+      "authors": [
+        "Tom DeFalco",
+        "Andres Ponce"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2010-09-14",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/ad/The_Professional.jpg/revision/latest"
+    },
+    {
+      "id": "f9793d5a-8586-5131-8636-2b94826c5664",
+      "era": "THE CLONE WARS",
+      "title": "The Guns of Nar Hekka",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.13"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Guns_of_Nar_Hekka",
+      "authors": [
+        "Robin Etherington",
+        "Andres Ponce"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2010-10-14",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7d/The_Guns_of_Nar_Hekka.jpg/revision/latest"
+    },
+    {
+      "id": "2bf7523f-f8aa-5015-96b4-cd9d745c5f3d",
+      "era": "THE CLONE WARS",
+      "title": "In the Air",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.14"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/In_the_Air",
+      "authors": [
+        "Rik Hoskin",
+        "Andres Ponce"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2010-11-18",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5f/IntheAir.jpg/revision/latest"
+    },
+    {
+      "id": "bbb9567b-c4c9-5cc7-8a3a-47280af5c6e0",
+      "era": "THE CLONE WARS",
+      "title": "Spices & Spies",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.15"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Spices_%26_Spies",
+      "authors": [
+        "Robin Etherington",
+        "Tanya Roberts"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2010-12-16",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b3/SpicesAndSpies.jpg/revision/latest"
+    },
+    {
+      "id": "164e58ec-9ac6-516f-b87a-adb363f73f2a",
+      "era": "THE CLONE WARS",
+      "title": "Hunted",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.16"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Hunted_(comic_story)",
+      "authors": [
+        "J. P. Rutter",
+        "Barry Spiers"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2011-01-13",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/ce/UKHunted.jpg/revision/latest"
+    },
+    {
       "id": "c98c344e-7d89-5d4e-86e4-a7f9ffcab5f0",
       "era": "THE CLONE WARS",
       "title": "Corruption",
@@ -12428,6 +12780,94 @@
       "release_date": "2010-03-19",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/12/Epguide215.jpg/revision/latest"
+    },
+    {
+      "id": "b286b0ee-adc7-519e-b4f4-6f4f0089b561",
+      "era": "THE CLONE WARS",
+      "title": "Burn the Behemoth!",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.17"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Burn_the_Behemoth!",
+      "authors": [
+        "Robin Etherington",
+        "Tanya Roberts"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2011-02-10",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0d/BurntheBehemoth.jpg/revision/latest"
+    },
+    {
+      "id": "0d909040-1bf6-510d-bea5-b52d969d4c41",
+      "era": "THE CLONE WARS",
+      "title": "Repel All Boarders!",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.18"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Repel_All_Boarders!",
+      "authors": [
+        "Robin Etherington",
+        "Andres Ponce"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2011-03-10",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7e/Repel_All_Boarders.jpg/revision/latest"
+    },
+    {
+      "id": "575f4a79-8caa-5eda-b71d-82a835891d14",
+      "era": "THE CLONE WARS",
+      "title": "Dug Out",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.19"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Dug_Out",
+      "authors": [
+        "Rik Hoskin",
+        "Will Sliney"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2011-04-07",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/23/Dug_Out.jpg/revision/latest"
+    },
+    {
+      "id": "b8cae882-0d85-5513-97da-4fbfc56817e3",
+      "era": "THE CLONE WARS",
+      "title": "Outgunned",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.20"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Outgunned",
+      "authors": [
+        "Rik Hoskin",
+        "Will Sliney"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2011-05-05",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/96/Outgunned.jpg/revision/latest"
     },
     {
       "id": "d7545bf1-ef3d-547f-a5de-530b0c035e99",
@@ -12960,6 +13400,94 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/1b/Epguide410.jpg/revision/latest"
     },
     {
+      "id": "561c9f49-a46b-5441-8e05-520c803cf081",
+      "era": "THE CLONE WARS",
+      "title": "The Feral Queen",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.21"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Feral_Queen",
+      "authors": [
+        "Robin Etherington",
+        "Andres Ponce"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2011-06-02",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/3d/The_Feral_Queen.jpg/revision/latest"
+    },
+    {
+      "id": "c492d80c-7942-514f-842b-1d6fda845ca1",
+      "era": "THE CLONE WARS",
+      "title": "Leisure",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.22"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Leisure",
+      "authors": [
+        "Rik Hoskin",
+        "Tanya Roberts"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2011-06-30",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/df/Leisure.jpg/revision/latest"
+    },
+    {
+      "id": "2d3bdeac-0ee1-55e5-b252-e8e2b5a8594e",
+      "era": "THE CLONE WARS",
+      "title": "Fashion",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.23"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Fashion",
+      "authors": [
+        "Rik Hoskin",
+        "Tanya Roberts"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2011-07-28",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/91/Fashion.jpg/revision/latest"
+    },
+    {
+      "id": "9a1b6e63-12f4-5c46-96d6-6f78ada452c7",
+      "era": "THE CLONE WARS",
+      "title": "Runaway Starfighter",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.24"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Runaway_Starfighter",
+      "authors": [
+        "Mike W. Barr",
+        "Andres Ponce"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2011-08-25",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/10/Runaway_Starfighter.jpg/revision/latest"
+    },
+    {
       "id": "8d0841b5-2e1f-5268-bd7d-793ec559beed",
       "era": "THE CLONE WARS",
       "title": "Kidnapped",
@@ -13164,6 +13692,94 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2d/SWTCW6.jpg/revision/latest"
     },
     {
+      "id": "cd787a06-f13b-51dd-b704-f05e3dcec2dd",
+      "era": "THE CLONE WARS",
+      "title": "Younglings",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.25"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Younglings_(comic_story)",
+      "authors": [
+        "Mike W. Barr",
+        "Tanya Roberts"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2011-09-22",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b2/TCWUK-Younglings.jpg/revision/latest"
+    },
+    {
+      "id": "74245cba-330c-55a3-871c-58e5fe9c4608",
+      "era": "THE CLONE WARS",
+      "title": "The Only Good Clanker",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.26"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Only_Good_Clanker",
+      "authors": [
+        "Robin Etherington",
+        "Will Sliney"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2011-10-20",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8c/The_Only_Good_Clanker.jpg/revision/latest"
+    },
+    {
+      "id": "4529fc05-c6ce-5065-ad4e-731acd46a699",
+      "era": "THE CLONE WARS",
+      "title": "Night Moves!",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.27"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Night_Moves!",
+      "authors": [
+        "Tom DeFalco",
+        "Andres Ponce"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2011-11-17",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a1/Night_Moves.jpg/revision/latest"
+    },
+    {
+      "id": "97e92125-83c9-5ed4-ac90-b70d88cab5b6",
+      "era": "THE CLONE WARS",
+      "title": "Jedi Masquerade",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.28"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Jedi_Masquerade",
+      "authors": [
+        "Mike W. Barr",
+        "Tanya Roberts"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2011-12-15",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f9/Jedi_Masquerade.jpg/revision/latest"
+    },
+    {
       "id": "ce096257-4cc1-5596-a4ca-9eadbdab5d08",
       "era": "THE CLONE WARS",
       "title": "A Friend In Need",
@@ -13183,6 +13799,116 @@
       "release_date": "2012-01-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f8/Epguide414.jpg/revision/latest"
+    },
+    {
+      "id": "5786b673-890a-5ef1-9712-1adf55b8a4d6",
+      "era": "THE CLONE WARS",
+      "title": "Blind Jedi's Bluff",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.29"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Blind_Jedi%27s_Bluff",
+      "authors": [
+        "Mike W. Barr",
+        "Tanya Roberts"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2012-01-12",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d4/Blind_Jedis_Bluff.jpg/revision/latest"
+    },
+    {
+      "id": "56e3f753-881b-5848-8973-4bd72be45b3f",
+      "era": "THE CLONE WARS",
+      "title": "Out",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.30"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Out",
+      "authors": [
+        "Rik Hoskin",
+        "Will Sliney"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2012-02-09",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7b/Out.jpg/revision/latest"
+    },
+    {
+      "id": "7f5763b2-2166-5272-8e7a-c700cd128330",
+      "era": "THE CLONE WARS",
+      "title": "Deadly Droid",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.31"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Deadly_Droid",
+      "authors": [
+        "Mike W. Barr",
+        "Andres Ponce"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2012-03-08",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0e/Deadly_Droid.jpg/revision/latest"
+    },
+    {
+      "id": "ce4dc2f1-f6e7-5751-8c98-f65eb762c571",
+      "era": "THE CLONE WARS",
+      "title": "The Fear Architects",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.32"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Fear_Architects",
+      "authors": [
+        "Rik Hoskin",
+        "Will Sliney"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2012-04-05",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/56/The_Fear_Arichitects.jpg/revision/latest"
+    },
+    {
+      "id": "1fae9a7e-f81f-5449-904c-4fb95d2ba491",
+      "era": "THE CLONE WARS",
+      "title": "A Small Scrappy War!",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.33"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/A_Small_Scrappy_War!",
+      "authors": [
+        "Robin Etherington",
+        "Tanya Roberts"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2012-05-03",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6e/A_small_scrappy_war.jpg/revision/latest"
     },
     {
       "id": "2cfc65b9-da98-55b0-a787-119d54d66f80",
@@ -13284,6 +14010,160 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/37/Speaking_Silently.png/revision/latest"
     },
     {
+      "id": "06be5f03-b680-5946-b40d-cedd68db5cb5",
+      "era": "THE CLONE WARS",
+      "title": "Frozen Out!",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.34"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Frozen_Out!",
+      "authors": [
+        "Rik Hoskin",
+        "Tanya Roberts"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2012-05-31",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/60/FrozenOutTitle.jpg/revision/latest"
+    },
+    {
+      "id": "dfe27162-e4f2-50cc-a7d5-d3d523882c01",
+      "era": "THE CLONE WARS",
+      "title": "Bacta Raid",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.35"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Bacta_Raid",
+      "authors": [
+        "Mike W. Barr",
+        "Andres Ponce"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2012-06-28",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/33/Bacta_Raid.jpg/revision/latest"
+    },
+    {
+      "id": "229d44da-848a-5c88-ada2-f735f3645716",
+      "era": "THE CLONE WARS",
+      "title": "Ahsoka's Ark",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.36"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Ahsoka%27s_Ark",
+      "authors": [
+        "Mike W. Barr",
+        "Will Sliney"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2012-07-26",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/1c/AhsokasArk-SWTCWComicUK6-36.png/revision/latest"
+    },
+    {
+      "id": "f8b1ef47-af66-5422-918e-c62a6de548c7",
+      "era": "THE CLONE WARS",
+      "title": "Incident on Kashyyyk",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.37"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Incident_on_Kashyyyk",
+      "authors": [
+        "Mike W. Barr",
+        "Tanya Roberts"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2012-08-23",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/15/Incident_on_Kashyyyk.jpg/revision/latest"
+    },
+    {
+      "id": "1f6e0e53-30a8-5eb2-af02-881c38dc1fdd",
+      "era": "THE CLONE WARS",
+      "title": "Sabotage",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.38"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Sabotage_(comic_story)",
+      "authors": [
+        "Mike W. Barr",
+        "Will Sliney"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2012-09-20",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/93/Sabotage_comic.png/revision/latest"
+    },
+    {
+      "id": "570a749e-a578-508c-b393-c9862f24ca3a",
+      "era": "THE CLONE WARS",
+      "title": "Dead Shadows",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.39"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Dead_Shadows",
+      "authors": [
+        "Rik Hoskin",
+        "Tanya Roberts"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2012-10-18",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/33/Dead_Shadows.jpg/revision/latest"
+    },
+    {
+      "id": "351f2839-06c1-5719-8f42-45018ad325b6",
+      "era": "THE CLONE WARS",
+      "title": "Hypermatters",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.40"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Hypermatters",
+      "authors": [
+        "J. P. Rutter",
+        "Will Sliney"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2012-11-15",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9e/Hypermatters.jpg/revision/latest"
+    },
+    {
       "id": "60ba60ce-7e24-595e-a1b8-5626e8ddf71f",
       "era": "THE CLONE WARS",
       "title": "The Smuggler's Code",
@@ -13304,6 +14184,49 @@
       "release_date": "2013-06-19",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8b/The_Smugglers_Code.jpg/revision/latest"
+    },
+    {
+      "id": "c9391f6c-e07c-5d25-8847-295ea4827d84",
+      "era": "THE CLONE WARS",
+      "title": "Mandalorian Memories",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.41"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Mandalorian_Memories",
+      "authors": [
+        "Robin Etherington"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2012-12-13",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c5/Mandalorian_Memories.jpg/revision/latest"
+    },
+    {
+      "id": "2c158d2e-e247-503d-8f27-2f2fcd163147",
+      "era": "THE CLONE WARS",
+      "title": "The Collector",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.42"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Collector",
+      "authors": [
+        "Rik Hoskin",
+        "Luca Bertelé"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2013-01-10",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/78/The_Collector.jpg/revision/latest"
     },
     {
       "id": "24070354-f524-58e4-92e8-8a1a13b8dd08",
@@ -13528,6 +14451,199 @@
       "release_date": "2013-03-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/70/Defenders_of_the_Lost_Temple_cover.jpg/revision/latest"
+    },
+    {
+      "id": "1a59e356-d398-5cf2-9b0e-d3902f5b0793",
+      "era": "THE CLONE WARS",
+      "title": "Downhill",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.43"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Downhill",
+      "authors": [
+        "Mike W. Barr",
+        "Andres Ponce"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2013-02-07",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/71/Downhill.jpg/revision/latest"
+    },
+    {
+      "id": "a56cf41e-e91e-5895-ac73-905b8e9d195a",
+      "era": "THE CLONE WARS",
+      "title": "Mask of Iron",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.44"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Mask_of_Iron",
+      "authors": [
+        "Mike W. Barr"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2013-03-07",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8f/Mask_of_Iron.jpg/revision/latest"
+    },
+    {
+      "id": "61d7cfd6-c9f3-5c0b-bc0b-a7993e754326",
+      "era": "THE CLONE WARS",
+      "title": "Power Down",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.45"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Power_Down",
+      "authors": [
+        "Rik Hoskin"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2013-04-04",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/1a/Power_Down.jpg/revision/latest"
+    },
+    {
+      "id": "27dc1f90-0ec5-518d-9a5d-70f1c2f9d327",
+      "era": "THE CLONE WARS",
+      "title": "Bane vs …Bane?",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.46"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Bane_vs_...Bane%3F",
+      "authors": [
+        "Robin Etherington"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2013-05-02",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/39/Bane_vs_...Bane.jpg/revision/latest"
+    },
+    {
+      "id": "632c3d82-61cf-569f-a3a9-67cd99650b18",
+      "era": "THE CLONE WARS",
+      "title": "Lockdown",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.47"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Lockdown_(comic_story)",
+      "authors": [
+        "J. P. Rutter"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2013-05-30",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9c/Lockdown.jpg/revision/latest"
+    },
+    {
+      "id": "6621ca54-0a4d-5493-9ad0-58c9abaabf20",
+      "era": "THE CLONE WARS",
+      "title": "Colony Crisis",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.48"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Colony_Crisis",
+      "authors": [
+        "Mike W. Barr",
+        "Tanya Roberts"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2013-06-27",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/96/Colony_Crisis.jpg/revision/latest"
+    },
+    {
+      "id": "2a60ba4a-f0b8-5fab-8f66-7c53e66ac768",
+      "era": "THE CLONE WARS",
+      "title": "Seeds",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.49"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Seeds",
+      "authors": [
+        "Rik Hoskin",
+        "Luca Bertelé"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2013-07-25",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a8/Seeds.jpg/revision/latest"
+    },
+    {
+      "id": "bd9501f1-067f-5ce5-a8f5-450b78f95cab",
+      "era": "THE CLONE WARS",
+      "title": "The Runaway Ride",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.50"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Runaway_Ride",
+      "authors": [
+        "Robin Etherington",
+        "Bob Molesworth"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2013-08-22",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cf/The_Runaway_Ride.jpg/revision/latest"
+    },
+    {
+      "id": "375606ca-d635-5a1a-a2ab-bbdcc7e9f94c",
+      "era": "THE CLONE WARS",
+      "title": "Deadly Allies",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.51"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Deadly_Allies",
+      "authors": [
+        "Andres Ponce"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2013-09-19",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5a/Deadly_Allies.jpg/revision/latest"
     },
     {
       "id": "cc8a8ee0-0ac3-5d92-bd37-08a2be6d4112",
@@ -14438,6 +15554,158 @@
       "release_date": "2014-08-20",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6f/Darth_Maul_Son_of_Dathomir_4.png/revision/latest"
+    },
+    {
+      "id": "44c63b16-9f94-5798-9911-bf8a04b9869d",
+      "era": "THE CLONE WARS",
+      "title": "Paradise Lost",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.52"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Paradise_Lost",
+      "authors": [
+        "Christopher Cooper"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2013-10-17",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a8/Paradise_Lost.jpg/revision/latest"
+    },
+    {
+      "id": "885da6ca-2527-59ac-a61c-14c45cbc591f",
+      "era": "THE CLONE WARS",
+      "title": "Update",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.53"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Update",
+      "authors": [
+        "Rik Hoskin"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2013-11-14",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fa/Update_comic.jpg/revision/latest"
+    },
+    {
+      "id": "71ad34b0-02cc-5eb8-ac7b-9e27e3526b73",
+      "era": "THE CLONE WARS",
+      "title": "Hotshot",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "6.54"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Hotshot_(comic_story)",
+      "authors": [
+        "Martin Fisher",
+        "Andres Ponce"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2013-12-12",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f1/Hotshot_comic.jpg/revision/latest"
+    },
+    {
+      "id": "c511245a-6a6e-5495-901b-4278f050bf81",
+      "era": "THE CLONE WARS",
+      "title": "Labyrinth",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "7.02"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Labyrinth_(comic_story)",
+      "authors": [
+        "Rik Hoskin",
+        "Luca Bertelé"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2014-02-06",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/58/Labyrinth_comic.jpg/revision/latest"
+    },
+    {
+      "id": "531aa86c-33b4-5c0c-97b3-f762e1487476",
+      "era": "THE CLONE WARS",
+      "title": "The Masked Racer",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "7.03"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Masked_Racer",
+      "authors": [
+        "Martin Fisher",
+        "Andres Ponce"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2014-03-06",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5c/The_Masked_Racer.png/revision/latest"
+    },
+    {
+      "id": "eab066cc-6307-5d97-9515-b827e4225cd8",
+      "era": "THE CLONE WARS",
+      "title": "Under the Hammer",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "7.06"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Under_the_Hammer",
+      "authors": [
+        "Robin Etherington",
+        "Tony Carrillo"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2014-05-29",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c8/Under_the_Hammer.jpg/revision/latest"
+    },
+    {
+      "id": "096ead2d-8b51-5979-bb17-2a521114b22e",
+      "era": "THE CLONE WARS",
+      "title": "Yoda Uncovered",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "The Clone Wars UK"
+      ],
+      "series_number": [
+        "7.08"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Yoda_Uncovered",
+      "authors": [
+        "Martin Fisher",
+        "Alex Sanchez"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2014-07-24",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/51/Yoda_Uncovered.jpg/revision/latest"
     },
     {
       "id": "ee3c04f5-8321-59c3-8cb5-7e8bd6b355c2",
