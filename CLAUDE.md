@@ -103,13 +103,23 @@ pipeline knows nothing about them.
 - **Config:** `frontend/.env.local` (gitignored) holds `VITE_SUPABASE_URL`
   and `VITE_SUPABASE_PUBLISHABLE_KEY` (the browser-safe `sb_publishable_…`
   key; RLS protects data).
+- **Provisioning:** `supabase/setup.sql` (idempotent) creates `owned`,
+  `collections`, `collection_members`, their RLS, the `covers` bucket, and
+  the `keepalive` table + `keepalive_ping()` SECURITY DEFINER function.
+- **Keepalive:** `.github/workflows/supabase-keepalive.yml` runs every 6h,
+  bursting 50 `keepalive_ping()` writes (service_role key in the repo secret
+  `SUPABASE_SERVICE_ROLE_KEY`) so the free-tier project isn't paused. It
+  makes an empty commit only when the repo has been idle 45+ days (GitHub
+  disables schedules after 60 idle days).
 
 ## Repo layout (relevant bits)
 
-- `Star Wars EU.xlsx` — source of truth for title/series/medium/#/year.
+- `Star Wars EU.xlsx` — source of truth for title/series/medium/series #/#/year.
 - `scripts/` — Python pipeline (`build_data.py` orchestrates).
 - `tests/` — pytest suite for the pipeline.
 - `frontend/` — React SPA.
+- `supabase/setup.sql` — one-shot Supabase provisioning script.
+- `.github/workflows/supabase-keepalive.yml` — Supabase keepalive job.
 - `ARCHITECTURE.md` — public technical overview of the shipped system.
 - `docs/superpowers/specs/2026-04-29-star-wars-eu-catalog-design.md` — local-only design doc (gitignored).
 - `docs/superpowers/plans/2026-04-29-star-wars-eu-catalog-plan.md` — local-only implementation plan (gitignored).
@@ -123,5 +133,8 @@ pipeline knows nothing about them.
 - `just dev` — frontend dev server.
 - `just build` / `just deploy` — production build / publish to GitHub Pages.
 - `just test-pipeline` / `just test-frontend` — test suites.
+- `just check-frontend` — `npm run typecheck` + eslint.
+- `just small-cover <image>` — write `<image>-small.webp` (800px wide, via
+  `cwebp`) sized for the 1 MB cover upload limit.
 - `just --list` — all recipes.
 - Bare `just` (no args) opens an fzf picker over the recipes.

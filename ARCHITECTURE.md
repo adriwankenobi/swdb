@@ -19,7 +19,8 @@ never baked into the JSON.
 | `scripts/` | Python pipeline (`build_data.py` orchestrates) |
 | `tests/` | pytest suite for the pipeline |
 | `frontend/` | React SPA (Vite + TS), incl. Supabase client + stores |
-| `supabase/` | `setup.sql` — one-shot script to provision tables, RLS, and the `covers` bucket |
+| `supabase/` | `setup.sql` — one-shot script to provision tables, RLS, the `covers` bucket, and the keepalive heartbeat |
+| `.github/workflows/` | `supabase-keepalive.yml` — scheduled job that keeps the free-tier Supabase project active |
 | `data/` | `.cache/wookieepedia/` (gitignored) and build-time log files |
 
 ## Pipeline (Python)
@@ -41,7 +42,7 @@ Star Wars EU.xlsx  +  Wookieepedia (MediaWiki API)
 
 **Trusted vs. fetched fields:**
 
-- Excel is the sole authority for `title`, `series`, `medium`, `series_number, number`, and
+- Excel is the sole authority for `title`, `series`, `medium`, `series_number`, `number`, and
   `year`. These are never overwritten by Wookieepedia data.
 - Wookieepedia (via the MediaWiki `action=parse` API, bypassing Cloudflare) is
   the sole source for `authors`, `publisher`, `release_date`, `cover_url`, and
@@ -53,7 +54,7 @@ Star Wars EU.xlsx  +  Wookieepedia (MediaWiki API)
 A=YEAR B=MEDIUM C=SERIES D=SERIES # E=TITLE F=# G=AUTHOR H=PUBLISHER I=RELEASE J=INFO K=COVER L=ID
 ```
 
-**Stable IDs:** each work's `id` is read verbatim from the `ID` column (`K`).
+**Stable IDs:** each work's `id` is read verbatim from the `ID` column (`L`).
 When a cell is blank the pipeline generates an id — seeded from the legacy
 `era|series|title|medium|series#` uuid5, with `|#` appended when the per-work
 `#` column has a value — and **writes it back** to the Excel. Once
@@ -77,7 +78,7 @@ written the last one's data.
 > `color` tint; all of that was removed when collections became per-user.)
 
 **Mediums:** `MEDIUMS` is an alphabetical canonical list (`Comic`,
-`Junior Novel`, `Movie`, `Novel`, `Short Story`, `TV Show`, `Videogame`, …).
+`Junior Novel`, `Movie`, `Novel`, `Short Story`, `TV Show`, `Videogame`).
 Order is permanent — `MEDIUMS.indexOf` drives frontend facet ordering, and URL
 slug aliases derive from these spellings via `slugify`.
 
@@ -128,9 +129,20 @@ Reads that can exceed PostgREST's 1000-row default (`owned`,
 `collection_members`) are paginated.
 
 **Provisioning:** `supabase/setup.sql` is a single idempotent script that
-creates the three tables, their RLS policies, and the `covers` bucket (public
-read, owner-only writes, 1 MB image limit). Paste it into the Supabase SQL
-Editor or run `supabase db execute --file supabase/setup.sql`.
+creates the three data tables and their RLS policies, the `covers` bucket
+(public read, owner-only writes, 1 MB image limit), and the keepalive
+heartbeat (below). Paste it into the Supabase SQL Editor or run
+`supabase db execute --file supabase/setup.sql`.
+
+**Keepalive:** Supabase pauses free-tier projects that lack enough database
+activity over a 7-day window. `.github/workflows/supabase-keepalive.yml` runs
+every 6 hours and sends a burst of 50 calls to `keepalive_ping()` — a
+`SECURITY DEFINER` function that upserts a single row in a `keepalive` table
+(RLS on, no direct table access). Calls authenticate with the `service_role`
+key, stored as the repo secret `SUPABASE_SERVICE_ROLE_KEY`. Because GitHub
+disables scheduled workflows after 60 days without repo commits, the job also
+makes an empty commit, but only when the latest commit is more than 45 days
+old.
 
 ## Frontend (React)
 
@@ -154,8 +166,18 @@ their derived `anchor_era` / `year` (chronology) or `release_date` (release).
 scroll; Chronology groups by era then in-universe year, Release groups by
 real-world release year). All virtualized.
 
-**Filters:** top-bar tabs for Era / Medium / Decade (with an "Unknown" toggle
-for works lacking `release_date`); sidebar facets for Series / Author /
+**Landing page:** a fresh visit with no query params opens an era picker
+(per-era work counts plus "browse all"); any URL with params goes straight to
+the catalog.
+
+**Sort:** Chronology (default; era, then in-universe year) or Release
+(real-world release date). The sort also picks the top tab row: Era tabs
+under Chronology, Decade tabs under Release.
+
+**Filters:** top-bar tabs for Era or Decade (by sort; Decade has an "Unknown"
+toggle for works lacking `release_date`) plus Medium. A search box matches
+title, series, and author substrings; while a query is active it ignores the
+Era / Decade selection. Sidebar facets for Series / Author /
 Publisher, plus the user's **Collections** and the **Ownership** 3-way toggle
 (both shown only when signed in / when collections exist). Within a field: OR;
 between fields: AND. Selecting a collection in Issues mode shows that
