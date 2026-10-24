@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-17T17:40:28+00:00",
+  "generated_at": "2026-10-24T13:51:04+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -7615,6 +7615,28 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/54/Zam_Wesell.jpg/revision/latest"
     },
     {
+      "id": "cf719300-8f9b-5581-a4f7-e39aa4da58c8",
+      "era": "RISE OF THE EMPIRE",
+      "title": "Temple of Phantoms",
+      "medium": "Comic",
+      "year": -28,
+      "series": [
+        "Star Wars UK"
+      ],
+      "series_number": [
+        "7.09"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Temple_of_Phantoms",
+      "authors": [
+        "Christopher Cooper",
+        "Bob Molesworth"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2014-08-21",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/95/Temple_of_Phantoms.jpg/revision/latest"
+    },
+    {
       "id": "2d4a230c-3f0c-5bc2-84aa-3966ead34fec",
       "era": "RISE OF THE EMPIRE",
       "title": "Poison Moon",
@@ -8158,6 +8180,28 @@
       "release_date": "2013-09-03",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6f/Hondo_SWI_144.jpg/revision/latest"
+    },
+    {
+      "id": "cf47640e-50e0-5790-9e6e-1840fdcda342",
+      "era": "RISE OF THE EMPIRE",
+      "title": "Too Many Cooks",
+      "medium": "Comic",
+      "year": -23,
+      "series": [
+        "Star Wars UK"
+      ],
+      "series_number": [
+        "7.04"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Too_Many_Cooks",
+      "authors": [
+        "Christopher Cooper",
+        "Alex Sanchez"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2014-04-03",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/2f/Too_Many_Cooks.jpg/revision/latest"
     },
     {
       "id": "c09d0f07-eeac-59af-81f8-e5877218ba3b",
@@ -11474,7 +11518,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.01"
@@ -11496,7 +11540,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.02"
@@ -11518,7 +11562,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.03"
@@ -11540,7 +11584,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.04"
@@ -11562,7 +11606,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.05"
@@ -12185,7 +12229,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.06"
@@ -12207,7 +12251,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.07"
@@ -12229,7 +12273,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.08"
@@ -12251,7 +12295,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.09"
@@ -12273,7 +12317,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.10"
@@ -12295,7 +12339,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.11"
@@ -12317,7 +12361,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.12"
@@ -12339,7 +12383,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.13"
@@ -12361,7 +12405,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.14"
@@ -12383,7 +12427,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.15"
@@ -12405,7 +12449,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.16"
@@ -12788,7 +12832,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.17"
@@ -12810,7 +12854,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.18"
@@ -12832,7 +12876,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.19"
@@ -12854,7 +12898,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.20"
@@ -13406,7 +13450,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.21"
@@ -13428,7 +13472,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.22"
@@ -13450,7 +13494,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.23"
@@ -13472,7 +13516,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.24"
@@ -13698,7 +13742,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.25"
@@ -13720,7 +13764,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.26"
@@ -13742,7 +13786,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.27"
@@ -13764,7 +13808,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.28"
@@ -13807,7 +13851,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.29"
@@ -13829,7 +13873,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.30"
@@ -13851,7 +13895,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.31"
@@ -13873,7 +13917,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.32"
@@ -13895,7 +13939,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.33"
@@ -14016,7 +14060,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.34"
@@ -14038,7 +14082,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.35"
@@ -14060,7 +14104,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.36"
@@ -14082,7 +14126,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.37"
@@ -14104,7 +14148,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.38"
@@ -14126,7 +14170,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.39"
@@ -14148,7 +14192,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.40"
@@ -14192,7 +14236,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.41"
@@ -14213,7 +14257,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.42"
@@ -14459,7 +14503,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.43"
@@ -14481,7 +14525,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.44"
@@ -14502,7 +14546,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.45"
@@ -14523,7 +14567,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.46"
@@ -14544,7 +14588,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.47"
@@ -14565,7 +14609,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.48"
@@ -14587,7 +14631,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.49"
@@ -14609,7 +14653,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.50"
@@ -14631,7 +14675,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.51"
@@ -15562,7 +15606,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.52"
@@ -15583,7 +15627,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.53"
@@ -15604,7 +15648,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "6.54"
@@ -15626,7 +15670,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "7.02"
@@ -15648,7 +15692,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "7.03"
@@ -15670,7 +15714,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "7.06"
@@ -15692,7 +15736,7 @@
       "medium": "Comic",
       "year": -19,
       "series": [
-        "The Clone Wars UK"
+        "Star Wars UK"
       ],
       "series_number": [
         "7.08"
@@ -16583,6 +16627,27 @@
       "release_date": "2006-02-08",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7d/Republic83.jpg/revision/latest"
+    },
+    {
+      "id": "16bd4bef-4511-5518-9e6e-e58a5d098411",
+      "era": "THE DARK TIMES",
+      "title": "Memory Loss",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Star Wars UK"
+      ],
+      "series_number": [
+        "7.13"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Memory_Loss",
+      "authors": [
+        "Christopher Cooper",
+        "Andres Ponce"
+      ],
+      "release_date": "2014-12-11",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b2/MemoryLoss.jpg/revision/latest"
     },
     {
       "id": "bf3dfa99-4eff-5224-9e50-84c236a0c287",
@@ -20562,6 +20627,28 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/38/Extinction.jpg/revision/latest"
     },
     {
+      "id": "4ec5853c-f9bb-5ec0-b357-215df1465c47",
+      "era": "THE DARK TIMES",
+      "title": "The Corellian Kid",
+      "medium": "Comic",
+      "year": -1,
+      "series": [
+        "Star Wars UK"
+      ],
+      "series_number": [
+        "7.11"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Corellian_Kid",
+      "authors": [
+        "Christopher Cooper",
+        "Andres Ponce"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2014-10-16",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/1f/The_Corellian_Kid.jpg/revision/latest"
+    },
+    {
       "id": "5563e37f-fc4f-5967-9c1c-94f1c6dc3e19",
       "era": "THE DARK TIMES",
       "title": "Betrayal",
@@ -21426,6 +21513,28 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/bf/Mswc6cover.jpg/revision/latest"
     },
     {
+      "id": "3fccd807-e52a-5da7-b286-ff50301bd7df",
+      "era": "REBELLION",
+      "title": "War on the Jundland Wastes",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars UK"
+      ],
+      "series_number": [
+        "7.01"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/War_on_the_Jundland_Wastes",
+      "authors": [
+        "Mike W. Barr",
+        "Bob Molesworth"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2014-01-09",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/62/War_on_the_Jundland_Wastes.jpg/revision/latest"
+    },
+    {
       "id": "ba92ae00-0417-5078-be6a-7f8910e33f72",
       "era": "REBELLION",
       "title": "Dark Forces",
@@ -22214,6 +22323,50 @@
       "release_precision": "month"
     },
     {
+      "id": "e487af15-6c11-5b83-8cf4-c3f14872caae",
+      "era": "REBELLION",
+      "title": "Repairs",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars UK"
+      ],
+      "series_number": [
+        "7.05"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Repairs",
+      "authors": [
+        "Rik Hoskin",
+        "Luca Bertelé"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2014-05-01",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/00/Repairs.jpg/revision/latest"
+    },
+    {
+      "id": "0ac11b07-9d15-514d-8b00-fb38cf687cc5",
+      "era": "REBELLION",
+      "title": "My Spaceship, My Enemy",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars UK"
+      ],
+      "series_number": [
+        "7.07"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/My_Spaceship,_My_Enemy",
+      "authors": [
+        "Rik Hoskin",
+        "Luca Bertelé"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2014-06-26",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c3/My_Spaceship_My_Enemy.jpg/revision/latest"
+    },
+    {
       "id": "a2aea8f8-95ec-5c62-ae53-7b41e6677453",
       "era": "REBELLION",
       "title": "The Keeper's World",
@@ -22838,6 +22991,27 @@
       "release_date": "1980-08-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fe/Planet_of_Kadril_title.jpg/revision/latest"
+    },
+    {
+      "id": "6b8030f6-0c61-5fe1-88a5-6e86712b9c0a",
+      "era": "REBELLION",
+      "title": "Leia's Trust",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars UK"
+      ],
+      "series_number": [
+        "7.12"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Leia%27s_Trust",
+      "authors": [
+        "Martin Fisher",
+        "Bob Molesworth"
+      ],
+      "release_date": "2014-11-13",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/50/Leias_Trust.jpg/revision/latest"
     },
     {
       "id": "7bfd504f-6a13-53b4-922f-647d76c16321",
@@ -28670,6 +28844,28 @@
       "release_date": "1981-05-19",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a3/StarWars1977-50.jpg/revision/latest"
+    },
+    {
+      "id": "90df8c0c-2532-555f-9640-1a06f641520d",
+      "era": "REBELLION",
+      "title": "Drone Alone",
+      "medium": "Comic",
+      "year": 3,
+      "series": [
+        "Star Wars UK"
+      ],
+      "series_number": [
+        "7.10"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Drone_Alone",
+      "authors": [
+        "Christopher Cooper",
+        "Bob Molesworth"
+      ],
+      "publisher": "Titan Magazines",
+      "release_date": "2014-09-18",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c3/Drone_Alone.jpg/revision/latest"
     },
     {
       "id": "d2b3e5e0-aebe-52fe-a4d3-df1a1a0f3238",
