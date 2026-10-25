@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-24T13:51:04+00:00",
+  "generated_at": "2026-10-25T16:14:34+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -8851,6 +8851,29 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7d/JoramKithe-Insider73.jpg/revision/latest"
     },
     {
+      "id": "f39956ed-d0f9-5560-a72b-a55fefc8e099",
+      "era": "THE CLONE WARS",
+      "title": "Old Scores",
+      "medium": "Comic",
+      "year": -22,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "8"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Old_Scores",
+      "authors": [
+        "Chris Avellone",
+        "Matthew Fillbach",
+        "Shawn Fillbach"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2007-06-20",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0c/Old_Scores.jpg/revision/latest"
+    },
+    {
       "id": "990286c4-3fa8-5551-9df7-c9934214eb52",
       "era": "THE CLONE WARS",
       "title": "Hard Contact",
@@ -8934,6 +8957,28 @@
       "release_date": "2003-11-07",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/50/CW_Chapter_1.png/revision/latest"
+    },
+    {
+      "id": "6c176840-5393-5eb0-ab85-8d987a2b0652",
+      "era": "THE CLONE WARS",
+      "title": "Graduation Day",
+      "medium": "Comic",
+      "year": -22,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "10"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Graduation_Day",
+      "authors": [
+        "Chris Avellone",
+        "Stewart McKenny"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2007-12-19",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/59/Graduation_Day.jpg/revision/latest"
     },
     {
       "id": "33c1abeb-df2b-5e97-bcb9-6b4fbcf9749d",
@@ -9278,41 +9323,306 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7b/CW_Chapter_20.png/revision/latest"
     },
     {
-      "id": "d2613603-2e5c-55b5-bd53-f99443a880fd",
+      "id": "9f85cb04-966f-5910-ac8d-e31602e70b05",
       "era": "THE CLONE WARS",
-      "title": "Clone Wars Adventures Volume 1",
+      "title": "Blind Force",
       "medium": "Comic",
       "year": -22,
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Clone_Wars_Adventures_Volume_1",
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "1"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Blind_Force",
       "authors": [
         "Haden Blackman",
-        "Matthew Fillbach",
-        "Shawn Fillbach",
         "Ben Caldwell"
       ],
       "publisher": "Dark Horse Comics",
       "release_date": "2004-07-07",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d9/CloneWarsAdventures1.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/67/BlindForce.jpg/revision/latest"
     },
     {
-      "id": "bf900474-f2f8-5976-a2fa-1d81d6d05632",
+      "id": "afb54036-82e4-5fb7-9b19-3a1818d13838",
       "era": "THE CLONE WARS",
-      "title": "Clone Wars Adventures Volume 2",
+      "title": "Fierce Currents",
       "medium": "Comic",
       "year": -22,
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Clone_Wars_Adventures_Volume_2",
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "1"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Fierce_Currents",
       "authors": [
         "Haden Blackman",
+        "Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-07-07",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/97/Fierce_Currents.jpg/revision/latest"
+    },
+    {
+      "id": "b57cac13-bcf5-5801-bb34-99e9cbe0ac0d",
+      "era": "THE CLONE WARS",
+      "title": "Rogue's Gallery",
+      "medium": "Comic",
+      "year": -22,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "3"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Rogue's_Gallery",
+      "authors": [
+        "Haden Blackman",
+        "Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2005-03-02",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/67/RoguesGallery-CWA3.jpg/revision/latest"
+    },
+    {
+      "id": "ff3efe1c-a596-5f10-aae4-f2518bf76bdd",
+      "era": "THE CLONE WARS",
+      "title": "Heroes on Both Sides",
+      "medium": "Comic",
+      "year": -22,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "5"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Heroes_on_Both_Sides_(comic_story)",
+      "authors": [
+        "Chris Avellone",
+        "Stewart McKenny"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2006-04-26",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a7/HeroesonBothSides.jpg/revision/latest"
+    },
+    {
+      "id": "96f8c6b0-857e-53b3-88f6-7a7b49e89b96",
+      "era": "THE CLONE WARS",
+      "title": "Another Fine Mess",
+      "medium": "Comic",
+      "year": -22,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "4"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Another_Fine_Mess",
+      "authors": [
+        "Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2005-10-26",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f6/AnotherFineMess.jpg/revision/latest"
+    },
+    {
+      "id": "5f6de553-9c65-571d-91c6-5ddde429cab7",
+      "era": "THE CLONE WARS",
+      "title": "Spy Girls",
+      "medium": "Comic",
+      "year": -22,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "7"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Spy_Girls",
+      "authors": [
+        "Ryan Kaufman",
+        "Stewart McKenny"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2007-01-31",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/7f/Spy_Girls.jpg/revision/latest"
+    },
+    {
+      "id": "349dcfe6-9db0-5590-8258-15132547d921",
+      "era": "THE CLONE WARS",
+      "title": "Versus",
+      "medium": "Comic",
+      "year": -22,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "8"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Versus_(comic_story)",
+      "authors": [
         "Matthew Fillbach",
-        "Shawn Fillbach",
+        "Shawn Fillbach"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2007-06-20",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c6/Versus.jpg/revision/latest"
+    },
+    {
+      "id": "bd6d1cdf-b7d6-58f2-a59f-0f76475c074b",
+      "era": "THE CLONE WARS",
+      "title": "Appetite for Adventure",
+      "medium": "Comic",
+      "year": -22,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "9"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Appetite_for_Adventure",
+      "authors": [
+        "The Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2007-10-31",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/ff/Appetite_for_Adventure.jpg/revision/latest"
+    },
+    {
+      "id": "e45d8111-3628-52d3-b0f3-90a5fe781f99",
+      "era": "THE CLONE WARS",
+      "title": "Life Below",
+      "medium": "Comic",
+      "year": -22,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "9"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Life_Below",
+      "authors": [
+        "The Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2007-10-31",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/a/a6/Lifebelow.jpg/revision/latest"
+    },
+    {
+      "id": "743d5ddb-c4da-58eb-a639-4837c10d2cba",
+      "era": "THE CLONE WARS",
+      "title": "No Way Out",
+      "medium": "Comic",
+      "year": -22,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "9"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/No_Way_Out",
+      "authors": [
+        "The Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2007-10-31",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ee/No_Way_Out.jpg/revision/latest"
+    },
+    {
+      "id": "2cd2ae00-8a76-59a0-8865-aaa12154e0f9",
+      "era": "THE CLONE WARS",
+      "title": "Waiting",
+      "medium": "Comic",
+      "year": -22,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "10"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Waiting",
+      "authors": [
+        "Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2007-12-19",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/ff/Waiting.jpg/revision/latest"
+    },
+    {
+      "id": "6eeb464c-1d02-565b-974c-c0e60f915921",
+      "era": "THE CLONE WARS",
+      "title": "Heavy Metal Jedi",
+      "medium": "Comic",
+      "year": -22,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "1"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Heavy_Metal_Jedi",
+      "authors": [
+        "Haden Blackman",
+        "The Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-07-07",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cf/Heavy_Metal_Jedi.jpg/revision/latest"
+    },
+    {
+      "id": "ad60794e-dddb-5c4a-aac0-771302489581",
+      "era": "THE CLONE WARS",
+      "title": "Hide in Plain Sight",
+      "medium": "Comic",
+      "year": -22,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "2"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Hide_in_Plain_Sight",
+      "authors": [
         "Welles Hartley",
-        "George Lucas"
+        "Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-07-03",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e8/Hide_in_Plain_Sight.jpg/revision/latest"
+    },
+    {
+      "id": "aac280ca-98f5-5b4d-bae2-a49963cbfc45",
+      "era": "THE CLONE WARS",
+      "title": "Run Mace Run",
+      "medium": "Comic",
+      "year": -22,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "2"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Run_Mace_Run",
+      "authors": [
+        "Fillbach Brothers"
       ],
       "publisher": "Dark Horse Comics",
       "release_date": "2004-11-17",
       "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/bd/CloneWarsAdventures2.jpg/revision/latest"
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c8/Run_Mace_Run.jpg/revision/latest"
     },
     {
       "id": "e039e7d6-5853-5678-b54d-e50d92aca53f",
@@ -10091,25 +10401,6 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ea/Grievous-4.jpg/revision/latest"
     },
     {
-      "id": "b25bea0e-49ca-5b89-b6b5-bc5d60d8d0dd",
-      "era": "THE CLONE WARS",
-      "title": "Clone Wars Adventures Volume 3",
-      "medium": "Comic",
-      "year": -21,
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Clone_Wars_Adventures_Volume_3",
-      "authors": [
-        "Haden Blackman",
-        "Matthew Fillbach",
-        "Shawn Fillbach",
-        "Ryan Kaufman",
-        "Tim Mucci"
-      ],
-      "publisher": "Dark Horse Comics",
-      "release_date": "2005-03-02",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ec/CloneWarsAdventures3.jpg/revision/latest"
-    },
-    {
       "id": "43d503ba-bd75-57f0-824f-3fe079427168",
       "era": "THE CLONE WARS",
       "title": "Battle Surgeons",
@@ -10189,6 +10480,28 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/21/Jedi_Trial_Cover.jpg/revision/latest"
     },
     {
+      "id": "ba1396c1-e1cd-5dac-a5f6-7753b72ff6cc",
+      "era": "THE CLONE WARS",
+      "title": "One of a Kind",
+      "medium": "Comic",
+      "year": -20,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "8"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/One_of_a_Kind_(comic_story)",
+      "authors": [
+        "Jason Hall",
+        "Ethan Beavers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2007-06-20",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/62/One_of_a_Kind.jpg/revision/latest"
+    },
+    {
       "id": "00543660-01b1-52a5-9fa4-df9d18f2e52d",
       "era": "THE CLONE WARS",
       "title": "Yoda: Dark Rendezvous",
@@ -10202,6 +10515,137 @@
       "release_date": "2004-11-23",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f0/YodaDarkRendezvous.jpg/revision/latest"
+    },
+    {
+      "id": "d449ce48-5dd6-5e23-b228-edee27f78ce5",
+      "era": "THE CLONE WARS",
+      "title": "The Package",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "3"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Package_(comic_story)",
+      "authors": [
+        "Ryan Kaufman",
+        "Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2005-03-02",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/95/The_Package_logo.jpg/revision/latest"
+    },
+    {
+      "id": "0059ea04-0d1b-59c4-926d-4e7c1fb3d843",
+      "era": "THE CLONE WARS",
+      "title": "A Stranger in Town",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "3"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/A_Stranger_in_Town",
+      "authors": [
+        "The Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2005-03-02",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/35/AStrangerinTown.jpg/revision/latest"
+    },
+    {
+      "id": "51029fa9-68ae-5ac3-a99e-2a2f3b0f54c3",
+      "era": "THE CLONE WARS",
+      "title": "One Battle",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "3"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/One_Battle",
+      "authors": [
+        "Tim Mucci",
+        "Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2005-03-02",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fa/OneBattle-Title.jpg/revision/latest"
+    },
+    {
+      "id": "0a5ef32c-307f-5abc-a32c-2e4e5a883eff",
+      "era": "THE CLONE WARS",
+      "title": "Impregnable",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "7"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Impregnable_(comic_story)",
+      "authors": [
+        "Chris Avellone",
+        "Ethan Beavers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2007-01-31",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/38/Impregnable.jpg/revision/latest"
+    },
+    {
+      "id": "900a148c-eb69-5206-847f-f9a5edeada7b",
+      "era": "THE CLONE WARS",
+      "title": "This Precious Shining",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "7"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/This_Precious_Shining",
+      "authors": [
+        "Jeremy Barlow",
+        "Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2007-01-31",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/30/ThePreciousShining.jpg/revision/latest"
+    },
+    {
+      "id": "4898c2ef-88b2-5637-ac26-0db67c7f0dc1",
+      "era": "THE CLONE WARS",
+      "title": "Chain of Command",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "10"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Chain_of_Command_(comic_story)",
+      "authors": [
+        "Jason Hall",
+        "Ethan Beavers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2007-12-19",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/1d/Chain_of_Command.jpg/revision/latest"
     },
     {
       "id": "271fb345-ee7c-5b2e-b1a4-2a832ef0c43d",
@@ -15752,6 +16196,51 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/51/Yoda_Uncovered.jpg/revision/latest"
     },
     {
+      "id": "2ac1eee1-a508-506e-8c95-75887628b0e7",
+      "era": "THE CLONE WARS",
+      "title": "Pathways",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "8"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Pathways",
+      "authors": [
+        "Jeremy Barlow",
+        "Matthew Fillbach",
+        "Shawn Fillbach"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2007-06-20",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/95/Pathways.jpg/revision/latest"
+    },
+    {
+      "id": "49fce79d-398c-5ab0-aeeb-7b42f674f7a6",
+      "era": "THE CLONE WARS",
+      "title": "Means and Ends",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "6"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Means_and_Ends",
+      "authors": [
+        "W. Haden Blackman",
+        "Rick Lacy"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2006-08-16",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/99/Means_and_Ends.jpg/revision/latest"
+    },
+    {
       "id": "ee3c04f5-8321-59c3-8cb5-7e8bd6b355c2",
       "era": "THE CLONE WARS",
       "title": "Obsession",
@@ -16049,147 +16538,6 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8d/Reversal.jpg/revision/latest"
     },
     {
-      "id": "758ebcdf-238b-5a6d-898e-728daf72289a",
-      "era": "THE CLONE WARS",
-      "title": "Clone Wars Adventures Volume 4",
-      "medium": "Comic",
-      "year": -19,
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Clone_Wars_Adventures_Volume_4",
-      "authors": [
-        "Haden Blackman",
-        "Matthew Fillbach",
-        "Shawn Fillbach",
-        "Ryan Kaufman",
-        "Justin Lambros",
-        "Rick Lacy"
-      ],
-      "publisher": "Dark Horse Comics",
-      "release_date": "2005-10-26",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/21/CWA_4.jpg/revision/latest"
-    },
-    {
-      "id": "cd72749d-5e70-5d79-afea-ab4ac6a57b19",
-      "era": "THE CLONE WARS",
-      "title": "Clone Wars Adventures Volume 5",
-      "medium": "Comic",
-      "year": -19,
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Clone_Wars_Adventures_Volume_5",
-      "authors": [
-        "Chris Avellone",
-        "Haden Blackman",
-        "Matthew Fillbach",
-        "Shawn Fillbach",
-        "Matt Jacobs",
-        "Ryan Kaufman",
-        "Justin Lambros",
-        "Rick Lacy",
-        "Stewart McKenny"
-      ],
-      "publisher": "Dark Horse Comics",
-      "release_date": "2006-04-26",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8f/Clone_Wars_Adventures_Vol_5.jpg/revision/latest"
-    },
-    {
-      "id": "97420392-2772-51dc-9939-89d7fdf3d515",
-      "era": "THE CLONE WARS",
-      "title": "Clone Wars Adventures Volume 6",
-      "medium": "Comic",
-      "year": -19,
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Clone_Wars_Adventures_Volume_6",
-      "authors": [
-        "Thomas Andrews",
-        "Haden Blackman",
-        "Matthew Fillbach",
-        "Shawn Fillbach",
-        "Mike Kennedy",
-        "Rick Lacy",
-        "Stewart McKenny"
-      ],
-      "publisher": "Dark Horse Comics",
-      "release_date": "2006-08-16",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/29/Clone_Wars_Adventure_Volume_6.jpg/revision/latest"
-    },
-    {
-      "id": "1e866a26-9d6a-5846-ab2d-f5b0ac1b9692",
-      "era": "THE CLONE WARS",
-      "title": "Clone Wars Adventures Volume 7",
-      "medium": "Comic",
-      "year": -19,
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Clone_Wars_Adventures_Volume_7",
-      "authors": [
-        "Chris Avellone",
-        "Jeremy Barlow",
-        "Matthew Fillbach",
-        "Shawn Fillbach",
-        "Ryan Kaufman",
-        "Ethan Beavers",
-        "Stewart McKenny"
-      ],
-      "publisher": "Dark Horse Comics",
-      "release_date": "2007-01-31",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6c/Clone_Wars_Adventure_Volume_7.jpg/revision/latest"
-    },
-    {
-      "id": "4765d390-af52-5024-a5c5-5d44292087d3",
-      "era": "THE CLONE WARS",
-      "title": "Clone Wars Adventures Volume 8",
-      "medium": "Comic",
-      "year": -19,
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Clone_Wars_Adventures_Volume_8",
-      "authors": [
-        "Chris Avellone",
-        "Jeremy Barlow",
-        "Matthew Fillbach",
-        "Shawn Fillbach",
-        "Jason Hall",
-        "Ethan Beavers"
-      ],
-      "publisher": "Dark Horse Comics",
-      "release_date": "2007-06-20",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/2/25/CWA8finished.jpg/revision/latest"
-    },
-    {
-      "id": "e24ce158-4b2a-5690-85fb-ddd2b9d5c475",
-      "era": "THE CLONE WARS",
-      "title": "Clone Wars Adventures Volume 9",
-      "medium": "Comic",
-      "year": -19,
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Clone_Wars_Adventures_Volume_9",
-      "authors": [
-        "Matthew Fillbach",
-        "Shawn Fillbach"
-      ],
-      "publisher": "Dark Horse Comics",
-      "release_date": "2007-10-31",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/34/CWA9full.jpg/revision/latest"
-    },
-    {
-      "id": "72086224-0cf8-53ac-a67d-aca0577d0f22",
-      "era": "THE CLONE WARS",
-      "title": "Clone Wars Adventures Volume 10",
-      "medium": "Comic",
-      "year": -19,
-      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Clone_Wars_Adventures_Volume_10",
-      "authors": [
-        "Chris Avellone",
-        "Matthew Fillbach",
-        "Shawn Fillbach",
-        "Jason Hall",
-        "Ethan Beavers",
-        "Stewart McKenny"
-      ],
-      "publisher": "Dark Horse Comics",
-      "release_date": "2007-12-19",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/82/Clonewars10cover.jpg/revision/latest"
-    },
-    {
       "id": "172f345d-20c1-534e-b892-087f590bf59a",
       "era": "THE CLONE WARS",
       "title": "Chapter 21",
@@ -16224,6 +16572,264 @@
       "release_date": "2005-03-22",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/49/CW_Chapter_22.png/revision/latest"
+    },
+    {
+      "id": "18f44d34-b6c9-5116-9ce1-d12a9a11e3e0",
+      "era": "THE CLONE WARS",
+      "title": "Creature Comfort",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "7"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Creature_Comfort",
+      "authors": [
+        "Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2007-01-31",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/55/Creature_Comfort.jpg/revision/latest"
+    },
+    {
+      "id": "7dfe1724-aa77-54f7-b938-554e6cb6da61",
+      "era": "THE CLONE WARS",
+      "title": "Thunder Road",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "10"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Thunder_Road",
+      "authors": [
+        "Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2007-12-19",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/52/Thunder_Road.jpg/revision/latest"
+    },
+    {
+      "id": "94f6d4dc-6eaf-5220-81e8-39ac7822aeae",
+      "era": "THE CLONE WARS",
+      "title": "The Brink",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "4"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Brink",
+      "authors": [
+        "Justin Lambros",
+        "Rick Lacy"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2005-10-26",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8b/The_Brink.jpg/revision/latest"
+    },
+    {
+      "id": "ba4d42a1-8bfb-5081-85a3-34efd1907abc",
+      "era": "THE CLONE WARS",
+      "title": "Bailed Out",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "5"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Bailed_Out",
+      "authors": [
+        "Justin Lambros",
+        "Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2006-04-26",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cf/BailedOut.jpg/revision/latest"
+    },
+    {
+      "id": "bffb9d0f-c3a3-5a9a-8e4d-1efd40ec235c",
+      "era": "THE CLONE WARS",
+      "title": "What Goes Up...",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "5"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/What_Goes_Up..._(comic_story)",
+      "authors": [
+        "Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2006-04-26",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4e/What_goes_up.jpg/revision/latest"
+    },
+    {
+      "id": "c90c7f95-4758-5143-bdcd-a7669e1ea2be",
+      "era": "THE CLONE WARS",
+      "title": "It Takes a Thief",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "6"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/It_Takes_a_Thief",
+      "authors": [
+        "Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2006-08-16",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fa/It_takes_a_thief.jpg/revision/latest"
+    },
+    {
+      "id": "f5406273-0fd3-59c6-91a7-f3dcd6bb0086",
+      "era": "THE CLONE WARS",
+      "title": "The Drop",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "6"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Drop_(comic_story)",
+      "authors": [
+        "Mike Kennedy",
+        "Stewart McKenny"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2006-08-16",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e6/The_Drop.jpg/revision/latest"
+    },
+    {
+      "id": "c09f269a-aad5-5bbd-9d26-d0f20ed95de8",
+      "era": "THE CLONE WARS",
+      "title": "To the Vanishing Point",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "6"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/To_the_Vanishing_Point",
+      "authors": [
+        "Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2006-08-16",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/62/TotheVanishingPoint.jpg/revision/latest"
+    },
+    {
+      "id": "77ddaf20-9429-5b85-9714-1cde97cbfb53",
+      "era": "THE CLONE WARS",
+      "title": "Orders",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "4"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Orders_(comic_story)",
+      "authors": [
+        "Ryan Kaufman",
+        "Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2005-10-26",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/57/Orders.jpg/revision/latest"
+    },
+    {
+      "id": "0b177352-431a-5bd8-aa79-5d258c630958",
+      "era": "THE CLONE WARS",
+      "title": "The Order of Outcasts",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "5"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Order_of_Outcasts",
+      "authors": [
+        "Matt Jacobs",
+        "Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2006-04-26",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/75/TheOrderofOutcasts.jpg/revision/latest"
+    },
+    {
+      "id": "422a6788-3add-5a1d-bc04-529fa9442b58",
+      "era": "THE CLONE WARS",
+      "title": "Salvaged",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "9"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Salvaged",
+      "authors": [
+        "The Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2007-10-31",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/59/Salvaged.jpg/revision/latest"
+    },
+    {
+      "id": "bfb73174-74e1-5ce0-9796-0a5cf1cff5a4",
+      "era": "THE CLONE WARS",
+      "title": "Descent",
+      "medium": "Comic",
+      "year": -19,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "4"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Descent_(comic_story)",
+      "authors": [
+        "W. Haden Blackman",
+        "Fillbach Brothers"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2005-10-26",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4d/Descent.jpg/revision/latest"
     },
     {
       "id": "654488aa-6850-5ed2-909f-cf660edef1ed",
@@ -19042,6 +19648,12 @@
       "title": "Luke Skywalker: Detective",
       "medium": "Comic",
       "year": -6,
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "20"
+      ],
       "wiki_url": "https://starwars.fandom.com/wiki/Luke_Skywalker:_Detective",
       "authors": [
         "Rick Geary"
@@ -21511,6 +22123,30 @@
       "release_date": "1977-09-13",
       "release_precision": "day",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/bf/Mswc6cover.jpg/revision/latest"
+    },
+    {
+      "id": "5da399bd-90d2-58c3-b99d-1609e32e5686",
+      "era": "REBELLION",
+      "title": "Skywalkers",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Clone Wars Adventures"
+      ],
+      "series_number": [
+        "2"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Skywalkers",
+      "authors": [
+        "W. Haden Blackman",
+        "George Lucas",
+        "Matthew Fillbach",
+        "Shawn Fillbach"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2004-11-17",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/4f/Skywalkers.jpg/revision/latest"
     },
     {
       "id": "3fccd807-e52a-5da7-b286-ff50301bd7df",
@@ -41682,27 +42318,6 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/79/Skreej1.jpg/revision/latest"
     },
     {
-      "id": "a16975ce-bd9b-5b80-90ce-37151af3d555",
-      "era": "NON-CANON",
-      "title": "A Wookie Scorned!",
-      "medium": "Comic",
-      "series": [
-        "Tales"
-      ],
-      "series_number": [
-        "10"
-      ],
-      "wiki_url": "https://starwars.fandom.com/wiki/A_Wookiee_Scorned!",
-      "authors": [
-        "Jason Hall",
-        "Christina Chen"
-      ],
-      "publisher": "Dark Horse Comics",
-      "release_date": "2001-12-12",
-      "release_precision": "day",
-      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/02/AWookieeScorned.jpg/revision/latest"
-    },
-    {
       "id": "08d8fae2-bc9e-59b4-ac9a-2e67816cea00",
       "era": "NON-CANON",
       "title": "Prey",
@@ -42175,6 +42790,27 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/37/MelvinFett.jpg/revision/latest"
     },
     {
+      "id": "e6dde8a3-2ac1-5e45-89ea-d52d48b05786",
+      "era": "NON-CANON",
+      "title": "Fett Club",
+      "medium": "Comic",
+      "series": [
+        "Tales"
+      ],
+      "series_number": [
+        "24"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Fett_Club_(comic_story)",
+      "authors": [
+        "Kevin Rubio",
+        "Roger Langridge"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2005-07-13",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d3/FettClub.jpg/revision/latest"
+    },
+    {
       "id": "c96318ca-e87a-5c52-8444-f1f94726fb72",
       "era": "NON-CANON",
       "title": "The Star Wars",
@@ -42630,6 +43266,248 @@
       "release_date": "2007-11-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fc/LEGO_Star_Wars_TCS.jpg/revision/latest"
+    },
+    {
+      "id": "964ca688-3305-5093-b698-5994c97923da",
+      "era": "NON-CANON",
+      "title": "Tag and Bink Are Dead",
+      "medium": "Comic",
+      "series": [
+        "Tag and Bink"
+      ],
+      "number": "1",
+      "wiki_url": "https://starwars.fandom.com/wiki/Tag_%26_Bink_Are_Dead_1",
+      "authors": [
+        "Kevin Rubio",
+        "Lucas Marangon"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2001-10-03",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8c/Tagbink1.jpg/revision/latest"
+    },
+    {
+      "id": "7b7effde-d3b0-5cbc-b1d4-87c1ce5d3f22",
+      "era": "NON-CANON",
+      "title": "Tag and Bink Are Dead",
+      "medium": "Comic",
+      "series": [
+        "Tag and Bink"
+      ],
+      "number": "2",
+      "wiki_url": "https://starwars.fandom.com/wiki/Tag_%26_Bink_Are_Dead_2",
+      "authors": [
+        "Kevin Rubio",
+        "Lucas Marangon"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2001-12-05",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f1/Tagbink2.jpg/revision/latest"
+    },
+    {
+      "id": "3fbcc252-3c67-513d-a6b1-25211e67d52d",
+      "era": "NON-CANON",
+      "title": "The Return of Tag and Bink: Special Edition",
+      "medium": "Comic",
+      "series": [
+        "Tag and Bink"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Return_of_Tag_%26_Bink:_Special_Edition",
+      "authors": [
+        "Kevin Rubio",
+        "Lucas Marangon"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2006-03-29",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/17/TheReturnofTagandBink-SpecialEdition1.jpg/revision/latest"
+    },
+    {
+      "id": "4808f1a5-eb12-5ce2-b02a-3aca19945d01",
+      "era": "NON-CANON",
+      "title": "Tag and Bink: Revenge of the Clone Menace",
+      "medium": "Comic",
+      "series": [
+        "Tag and Bink"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Tag_%26_Bink:_Revenge_of_the_Clone_Menace",
+      "authors": [
+        "Kevin Rubio",
+        "Lucas Marangon"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2006-04-26",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/92/Revenge_of_the_Clone_Menace.jpg/revision/latest"
+    },
+    {
+      "id": "00eb94d6-773a-5386-a5a5-a44092d86257",
+      "era": "NON-CANON",
+      "title": "Vision of the Blade",
+      "medium": "Comic",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Visions_of_the_Blade",
+      "authors": [
+        "Tom Hodges"
+      ],
+      "publisher": "Namco Bandai Games and StarWars.com",
+      "release_date": "2008-08-21",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/79/VisionsBlade.jpg/revision/latest"
+    },
+    {
+      "id": "f31780bf-68f1-55dc-b01c-49dd55bf208e",
+      "era": "NON-CANON",
+      "title": "Perfect Evil",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga Black"
+      ],
+      "number": "1",
+      "wiki_url": "https://starwars.fandom.com/wiki/Perfect_Evil",
+      "authors": [
+        "Hiromoto-SIN-Ichi"
+      ],
+      "publisher": "Tokyopop",
+      "release_date": "2005-12-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/dc/PerfectEvil.jpg/revision/latest"
+    },
+    {
+      "id": "adbe89e9-38f9-5b9c-9d9c-14a7f1db6af7",
+      "era": "NON-CANON",
+      "title": "Tantive IV",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga Black"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Tantive_IV_(comic_story)",
+      "authors": [
+        "Formalin"
+      ],
+      "publisher": "Tokyopop",
+      "release_date": "2005-12-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0a/TantiveIV.jpg/revision/latest"
+    },
+    {
+      "id": "e3cac6f3-a0af-5dc3-8dbe-66d8da030b2c",
+      "era": "NON-CANON",
+      "title": "Evil Eyes",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga Black"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Evil_Eyes",
+      "authors": [
+        "Nao"
+      ],
+      "publisher": "Tokyopop",
+      "release_date": "2005-12-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/8c/EvilEyes.jpg/revision/latest"
+    },
+    {
+      "id": "2bde8c00-e79d-56b2-84ba-c6f2040b0e30",
+      "era": "NON-CANON",
+      "title": "Dear Anakin",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga Black"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Dear_Anakin",
+      "authors": [
+        "Furi Furi Company"
+      ],
+      "publisher": "Tokyopop",
+      "release_date": "2005-12-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f9/DearAnakin.jpg/revision/latest"
+    },
+    {
+      "id": "0d082519-fe77-5084-bd82-14c4405ad0d0",
+      "era": "NON-CANON",
+      "title": "Perfect Evil",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga Silver"
+      ],
+      "number": "2",
+      "wiki_url": "https://starwars.fandom.com/wiki/Perfect_Evil",
+      "authors": [
+        "Hiromoto-SIN-Ichi"
+      ],
+      "publisher": "Tokyopop",
+      "release_date": "2005-12-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/dc/PerfectEvil.jpg/revision/latest"
+    },
+    {
+      "id": "df16c360-2899-5905-877a-4103f92c64a1",
+      "era": "NON-CANON",
+      "title": "Oh! Jawajawa",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga Silver"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Oh!!_Jawajawa",
+      "authors": [
+        "Hitoshi Ariga"
+      ],
+      "publisher": "Tokyopop",
+      "release_date": "2005-12-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d0/Jawajawa.jpg/revision/latest"
+    },
+    {
+      "id": "3806e91f-2c3f-5d4e-b5c9-d1f2e39519ed",
+      "era": "NON-CANON",
+      "title": "Star Wars: Phantasmagoria",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga Silver"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_-Phantasmagoria-",
+      "authors": [
+        "Baron Ueda"
+      ],
+      "publisher": "Tokyopop",
+      "release_date": "2005-12-01",
+      "release_precision": "month"
+    },
+    {
+      "id": "bf6bd14c-d51d-5aa2-8c03-c2632140d2d0",
+      "era": "NON-CANON",
+      "title": "Vader vs. Artoo & Threepio",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga Silver"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Vader_vs._Artoo_%26_Threepio",
+      "authors": [
+        "Makomo Nakatsuka"
+      ],
+      "publisher": "Tokyopop",
+      "release_date": "2005-12-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/de/VaderR2.jpg/revision/latest"
+    },
+    {
+      "id": "9d152ee7-51c4-5a39-9896-68e38840f061",
+      "era": "NON-CANON",
+      "title": "Dark Jedi",
+      "medium": "Comic",
+      "series": [
+        "Star Wars Manga Silver"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Dark_Jedi_(comic_story)",
+      "authors": [
+        "Yasushi Nirasawa"
+      ],
+      "publisher": "Tokyopop",
+      "release_date": "2005-12-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b9/TokyoPop.jpg/revision/latest"
     }
   ]
 }
