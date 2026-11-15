@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-03T23:39:08+00:00",
+  "generated_at": "2026-11-15T18:43:29+00:00",
   "works": [
     {
       "id": "c457226f-ed74-5976-b195-09914cfc7a0f",
@@ -19527,6 +19527,153 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ef/Droids-frozencitadel.jpg/revision/latest"
     },
     {
+      "id": "88d2da03-96a5-50a2-a35d-27e55587d0dd",
+      "era": "THE DARK TIMES",
+      "title": "Neutralizing Trigon I",
+      "medium": "Comic",
+      "year": -15,
+      "series": [
+        "MyComyc"
+      ],
+      "series_number": [
+        "1"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Neutralizing_Trigon_I",
+      "authors": [
+        "Beaumont Studios"
+      ],
+      "publisher": "Editorial Gepsa",
+      "release_date": "1986-01-01",
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/fa/Neutralizingtrigoni.png/revision/latest"
+    },
+    {
+      "id": "9e529fec-221d-5466-b418-ffe50b047de3",
+      "era": "THE DARK TIMES",
+      "title": "Kea Kidnapped",
+      "medium": "Comic",
+      "year": -15,
+      "series": [
+        "MyComyc"
+      ],
+      "series_number": [
+        "2"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Kea_Kidnapped",
+      "authors": [
+        "Beaumont Studios"
+      ],
+      "publisher": "Editorial Gepsa",
+      "release_date": "1986-01-01",
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ef/KeaKidnapped.png/revision/latest"
+    },
+    {
+      "id": "fac9c214-6587-542e-abec-69d413af46f2",
+      "era": "THE DARK TIMES",
+      "title": "The Stolen Ship",
+      "medium": "Comic",
+      "year": -15,
+      "series": [
+        "MyComyc"
+      ],
+      "series_number": [
+        "3"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Stolen_Ship",
+      "authors": [
+        "Beaumont Studios"
+      ],
+      "publisher": "Editorial Gepsa",
+      "release_date": "1986-01-01",
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/bb/TheStolenShip.png/revision/latest"
+    },
+    {
+      "id": "8fb22557-ca22-5ef0-9329-db8f8ebb1391",
+      "era": "THE DARK TIMES",
+      "title": "Sabotaged Droid",
+      "medium": "Comic",
+      "year": -15,
+      "series": [
+        "MyComyc"
+      ],
+      "series_number": [
+        "4"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Sabotaged_Droid",
+      "authors": [
+        "Beaumont Studios"
+      ],
+      "publisher": "Editorial Gepsa",
+      "release_date": "1986-01-01",
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/bb/Sabotageddroid.png/revision/latest"
+    },
+    {
+      "id": "bdad00ee-9c69-54f1-be01-792dd216df64",
+      "era": "THE DARK TIMES",
+      "title": "Troublesome Outing",
+      "medium": "Comic",
+      "year": -15,
+      "series": [
+        "MyComyc"
+      ],
+      "series_number": [
+        "5"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Troublesome_Outing",
+      "authors": [
+        "Beaumont Studios"
+      ],
+      "publisher": "Editorial Gepsa",
+      "release_date": "1986-01-01",
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/93/Troublesomeouting.png/revision/latest"
+    },
+    {
+      "id": "f30ba436-e47c-5ff5-b656-e0e0c374908a",
+      "era": "THE DARK TIMES",
+      "title": "The Secret Disk",
+      "medium": "Comic",
+      "year": -15,
+      "series": [
+        "MyComyc"
+      ],
+      "series_number": [
+        "6"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Secret_Disk",
+      "authors": [
+        "Beaumont Studios"
+      ],
+      "publisher": "Editorial Gepsa",
+      "release_date": "1986-01-01",
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/5b/TheSecretDisk.png/revision/latest"
+    },
+    {
+      "id": "dd7762a2-6c26-5085-af91-4686b8750c97",
+      "era": "THE DARK TIMES",
+      "title": "The Cloud",
+      "medium": "Comic",
+      "year": -15,
+      "series": [
+        "MyComyc"
+      ],
+      "series_number": [
+        "7"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Cloud",
+      "authors": [
+        "Beaumont Studios"
+      ],
+      "publisher": "Editorial Gepsa",
+      "release_date": "1986-01-01",
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e1/Droids_The_Cloud_english_translated.png/revision/latest"
+    },
+    {
       "id": "6c64ee26-04b1-509f-b911-64aa2ebec997",
       "era": "THE DARK TIMES",
       "title": "Dark Vendetta",
@@ -22413,6 +22560,25 @@
       "release_precision": "month"
     },
     {
+      "id": "f3a75317-0424-5028-8415-c6f14e8cd351",
+      "era": "REBELLION",
+      "title": "Droids",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Apple Jacks"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Droids_(comic_strip)",
+      "authors": [
+        "Ryder Windham",
+        "Bill Hughes"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1995-01-01",
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6c/Dhswdroidscereal.jpg/revision/latest"
+    },
+    {
       "id": "c76a99fb-77a1-5dfd-b324-dc2964dfbbad",
       "era": "REBELLION",
       "title": "Trooper",
@@ -24764,6 +24930,241 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/3/39/Missions12.jpg/revision/latest"
     },
     {
+      "id": "b4e1c3b0-cee4-553a-ac57-2a364c100f65",
+      "era": "REBELLION",
+      "title": "The Rebel Thief",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars Kids (1997)"
+      ],
+      "series_number": [
+        "1"
+      ],
+      "number": "1",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Rebel_Thief",
+      "authors": [
+        "Ryder Windham",
+        "Gary Erskine"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1997-06-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c1/Rebel_Thief_Title_web.jpg/revision/latest"
+    },
+    {
+      "id": "066287a1-e50b-5a97-8185-a6b6bda3c47a",
+      "era": "REBELLION",
+      "title": "The Rebel Thief",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars Kids (1997)"
+      ],
+      "series_number": [
+        "2"
+      ],
+      "number": "2",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Rebel_Thief",
+      "authors": [
+        "Ryder Windham",
+        "Gary Erskine"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1997-06-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c1/Rebel_Thief_Title_web.jpg/revision/latest"
+    },
+    {
+      "id": "1cf85c3c-2dd9-57a9-a5bd-4510e63ebcb7",
+      "era": "REBELLION",
+      "title": "The Rebel Thief",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars Kids (1997)"
+      ],
+      "series_number": [
+        "3"
+      ],
+      "number": "3",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Rebel_Thief",
+      "authors": [
+        "Ryder Windham",
+        "Gary Erskine"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1997-06-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c1/Rebel_Thief_Title_web.jpg/revision/latest"
+    },
+    {
+      "id": "7dc7b49c-d9e1-5b60-9889-9adf70978b8c",
+      "era": "REBELLION",
+      "title": "The Rebel Thief",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars Kids (1997)"
+      ],
+      "series_number": [
+        "4"
+      ],
+      "number": "4",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Rebel_Thief",
+      "authors": [
+        "Ryder Windham",
+        "Gary Erskine"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1997-06-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c1/Rebel_Thief_Title_web.jpg/revision/latest"
+    },
+    {
+      "id": "27422c56-ac8a-58b4-ad97-20246049e044",
+      "era": "REBELLION",
+      "title": "The Rebel Thief",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars Kids (1997)"
+      ],
+      "series_number": [
+        "5"
+      ],
+      "number": "5",
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Rebel_Thief",
+      "authors": [
+        "Ryder Windham",
+        "Gary Erskine"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1997-06-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c1/Rebel_Thief_Title_web.jpg/revision/latest"
+    },
+    {
+      "id": "a11014ed-bd31-56bd-b257-7ecff5bbc853",
+      "era": "REBELLION",
+      "title": "X-Wing Marks the Spot",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars Kids (1997)"
+      ],
+      "series_number": [
+        "6"
+      ],
+      "number": "1",
+      "wiki_url": "https://starwars.fandom.com/wiki/X-Wing_Marks_the_Spot",
+      "authors": [
+        "Mike W. Barr",
+        "Ken Steacy",
+        "Glen Mullaly"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1997-12-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c7/XWing_marks_the_spot_web.jpg/revision/latest"
+    },
+    {
+      "id": "bbf23eae-6039-532f-9ec5-6d8fda5a83d3",
+      "era": "REBELLION",
+      "title": "X-Wing Marks the Spot",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars Kids (1997)"
+      ],
+      "series_number": [
+        "7"
+      ],
+      "number": "2",
+      "wiki_url": "https://starwars.fandom.com/wiki/X-Wing_Marks_the_Spot",
+      "authors": [
+        "Mike W. Barr",
+        "Ken Steacy",
+        "Glen Mullaly"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1997-12-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c7/XWing_marks_the_spot_web.jpg/revision/latest"
+    },
+    {
+      "id": "fb9c398a-67a2-51d4-b084-1ec7c27a43b9",
+      "era": "REBELLION",
+      "title": "X-Wing Marks the Spot",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars Kids (1997)"
+      ],
+      "series_number": [
+        "8"
+      ],
+      "number": "3",
+      "wiki_url": "https://starwars.fandom.com/wiki/X-Wing_Marks_the_Spot",
+      "authors": [
+        "Mike W. Barr",
+        "Ken Steacy",
+        "Glen Mullaly"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1997-12-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c7/XWing_marks_the_spot_web.jpg/revision/latest"
+    },
+    {
+      "id": "78894d55-a399-5ed3-9718-58e924d2df01",
+      "era": "REBELLION",
+      "title": "X-Wing Marks the Spot",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars Kids (1997)"
+      ],
+      "series_number": [
+        "9"
+      ],
+      "number": "4",
+      "wiki_url": "https://starwars.fandom.com/wiki/X-Wing_Marks_the_Spot",
+      "authors": [
+        "Mike W. Barr",
+        "Ken Steacy",
+        "Glen Mullaly"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1997-12-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c7/XWing_marks_the_spot_web.jpg/revision/latest"
+    },
+    {
+      "id": "1ca120d6-25a2-5dd3-a1bc-3cff24d6d4d9",
+      "era": "REBELLION",
+      "title": "X-Wing Marks the Spot",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars Kids (1997)"
+      ],
+      "series_number": [
+        "10"
+      ],
+      "number": "5",
+      "wiki_url": "https://starwars.fandom.com/wiki/X-Wing_Marks_the_Spot",
+      "authors": [
+        "Mike W. Barr",
+        "Ken Steacy",
+        "Glen Mullaly"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1997-12-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c7/XWing_marks_the_spot_web.jpg/revision/latest"
+    },
+    {
       "id": "f277b3c8-8015-5b2c-844a-5d75ab220e8e",
       "era": "REBELLION",
       "title": "In the Shadow of Yavin",
@@ -26236,6 +26637,186 @@
       "release_date": "1993-12-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e2/ClassicStarWars15CC.jpg/revision/latest"
+    },
+    {
+      "id": "e44be437-9f7b-5cf1-847e-c7870b490d18",
+      "era": "REBELLION",
+      "title": "Star Wars 3-D",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars 3-D"
+      ],
+      "number": "1",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_3-D_1",
+      "authors": [
+        "Len Wein",
+        "Glen Johnson"
+      ],
+      "publisher": "Blackthorne Publishing",
+      "release_date": "1987-12-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/f/f1/Star_Wars_3D.jpg/revision/latest"
+    },
+    {
+      "id": "d84c6b03-5349-54e2-8814-0f3121aff59f",
+      "era": "REBELLION",
+      "title": "Star Wars 3-D",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars 3-D"
+      ],
+      "number": "2",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_3-D_2",
+      "authors": [
+        "Len Wein",
+        "Patrick Zircher"
+      ],
+      "publisher": "Blackthorne Publishing",
+      "release_date": "1988-03-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/6/6a/SW3D2-HavocOnHoth.jpg/revision/latest"
+    },
+    {
+      "id": "1df952cc-3d42-5918-bd6b-04150e88b95c",
+      "era": "REBELLION",
+      "title": "Star Wars 3-D",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars 3-D"
+      ],
+      "number": "3",
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars_3-D_3",
+      "authors": [
+        "John Stephenson",
+        "Cesar Magsombol"
+      ],
+      "publisher": "Blackthorne Publishing",
+      "release_date": "1988-06-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/8/81/SW3D3-DarkSideOfDantooine.jpg/revision/latest"
+    },
+    {
+      "id": "453f3fad-1ab3-53da-afe3-72db78aa5497",
+      "era": "REBELLION",
+      "title": "Imperial Spy",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars Kids (1997)"
+      ],
+      "series_number": [
+        "11"
+      ],
+      "number": "1",
+      "wiki_url": "https://starwars.fandom.com/wiki/Imperial_Spy",
+      "authors": [
+        "Mike W. Barr",
+        "Ken Steacy",
+        "Glen Mullaly"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1998-05-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/52/Imperial_spy_header.jpg/revision/latest"
+    },
+    {
+      "id": "34097635-64cb-5bcf-954f-94618acd549a",
+      "era": "REBELLION",
+      "title": "Imperial Spy",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars Kids (1997)"
+      ],
+      "series_number": [
+        "12"
+      ],
+      "number": "2",
+      "wiki_url": "https://starwars.fandom.com/wiki/Imperial_Spy",
+      "authors": [
+        "Mike W. Barr",
+        "Ken Steacy",
+        "Glen Mullaly"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1998-05-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/52/Imperial_spy_header.jpg/revision/latest"
+    },
+    {
+      "id": "c1b77cb3-5ae6-5223-a1ff-bd5c134d71b7",
+      "era": "REBELLION",
+      "title": "Imperial Spy",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars Kids (1997)"
+      ],
+      "series_number": [
+        "13"
+      ],
+      "number": "3",
+      "wiki_url": "https://starwars.fandom.com/wiki/Imperial_Spy",
+      "authors": [
+        "Mike W. Barr",
+        "Ken Steacy",
+        "Glen Mullaly"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1998-05-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/52/Imperial_spy_header.jpg/revision/latest"
+    },
+    {
+      "id": "38ba71bd-511b-5f94-a825-1e34ad4490ee",
+      "era": "REBELLION",
+      "title": "Imperial Spy",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars Kids (1997)"
+      ],
+      "series_number": [
+        "14"
+      ],
+      "number": "4",
+      "wiki_url": "https://starwars.fandom.com/wiki/Imperial_Spy",
+      "authors": [
+        "Mike W. Barr",
+        "Ken Steacy",
+        "Glen Mullaly"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1998-05-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/52/Imperial_spy_header.jpg/revision/latest"
+    },
+    {
+      "id": "fa9d6e8a-862f-559e-ae97-ffab8e925f0e",
+      "era": "REBELLION",
+      "title": "Imperial Spy",
+      "medium": "Comic",
+      "year": 0,
+      "series": [
+        "Star Wars Kids (1997)"
+      ],
+      "series_number": [
+        "15"
+      ],
+      "number": "5",
+      "wiki_url": "https://starwars.fandom.com/wiki/Imperial_Spy",
+      "authors": [
+        "Mike W. Barr",
+        "Ken Steacy",
+        "Glen Mullaly"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1998-05-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/5/52/Imperial_spy_header.jpg/revision/latest"
     },
     {
       "id": "6c2a3f27-4414-50ee-ae7e-52514648f3bd",
@@ -30948,6 +31529,172 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/ba/MalaniSunstar-MalaniTheWarrior.jpg/revision/latest"
     },
     {
+      "id": "362fefcf-3e44-5714-8474-c93fb0c61060",
+      "era": "REBELLION",
+      "title": "Princess Kneesaa's Birthday",
+      "medium": "Comic",
+      "year": 3,
+      "series": [
+        "MyComyc"
+      ],
+      "series_number": [
+        "1"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Princess_Kneesaa%27s_Birthday",
+      "authors": [
+        "Beaumont Studios"
+      ],
+      "release_date": "1986-01-01",
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/04/Kneesas_birthday.png/revision/latest"
+    },
+    {
+      "id": "539ab5d8-dfff-51cc-b5f0-4e74327b324e",
+      "era": "REBELLION",
+      "title": "Perfect Antidote",
+      "medium": "Comic",
+      "year": 3,
+      "series": [
+        "MyComyc"
+      ],
+      "series_number": [
+        "2"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Perfect_Antidote",
+      "authors": [
+        "Beaumont Studios"
+      ],
+      "publisher": "Editorial Gepsa",
+      "release_date": "1986-01-01",
+      "release_precision": "year"
+    },
+    {
+      "id": "ffa62d3e-d548-523f-93ef-2a7998550008",
+      "era": "REBELLION",
+      "title": "The Princess in a Predicament",
+      "medium": "Comic",
+      "year": 3,
+      "series": [
+        "MyComyc"
+      ],
+      "series_number": [
+        "3"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Princess_in_a_Predicament",
+      "authors": [
+        "Beaumont Studios"
+      ],
+      "publisher": "Editorial Gepsa",
+      "release_date": "1986-01-01",
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/d/d6/The_Princess_in_a_Predicament.png/revision/latest"
+    },
+    {
+      "id": "d60d857f-ab5d-59b8-a05e-72026615c74c",
+      "era": "REBELLION",
+      "title": "Snare in the Forest",
+      "medium": "Comic",
+      "year": 3,
+      "series": [
+        "MyComyc"
+      ],
+      "series_number": [
+        "4"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Snare_in_the_Forest",
+      "authors": [
+        "Beaumont Studios"
+      ],
+      "publisher": "Editorial Gepsa",
+      "release_date": "1986-01-01",
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cd/Snare_in_the_Forest.png/revision/latest"
+    },
+    {
+      "id": "8d82df71-df1a-59d9-8aeb-9742b6883ba8",
+      "era": "REBELLION",
+      "title": "The Balloon",
+      "medium": "Comic",
+      "year": 3,
+      "series": [
+        "MyComyc"
+      ],
+      "series_number": [
+        "5"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Balloon",
+      "authors": [
+        "Beaumont Studios"
+      ],
+      "publisher": "Editorial Gepsa",
+      "release_date": "1986-01-01",
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/bb/The_Balloon.png/revision/latest"
+    },
+    {
+      "id": "8425f767-b03d-5bab-92ba-23e7ff82f968",
+      "era": "REBELLION",
+      "title": "To Trap Latara",
+      "medium": "Comic",
+      "year": 3,
+      "series": [
+        "MyComyc"
+      ],
+      "series_number": [
+        "6"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/To_Trap_Latara",
+      "authors": [
+        "Beaumont Studios"
+      ],
+      "publisher": "Editorial Gepsa",
+      "release_date": "1986-01-01",
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/9/9e/To_Trap_Latara.png/revision/latest"
+    },
+    {
+      "id": "db9e5e04-b680-53ea-88fb-20d1c3569ac2",
+      "era": "REBELLION",
+      "title": "Logray's Staff",
+      "medium": "Comic",
+      "year": 3,
+      "series": [
+        "MyComyc"
+      ],
+      "series_number": [
+        "7"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Logray%27s_Staff",
+      "authors": [
+        "Beaumont Studios"
+      ],
+      "publisher": "Editorial Gepsa",
+      "release_date": "1986-01-01",
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/7/76/LograysStaff.png/revision/latest"
+    },
+    {
+      "id": "a6abc8f1-2131-5d6d-9a32-78ba972781b6",
+      "era": "REBELLION",
+      "title": "Painting Exposition",
+      "medium": "Comic",
+      "year": 3,
+      "series": [
+        "MyComyc"
+      ],
+      "series_number": [
+        "8"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Painting_Exposition",
+      "authors": [
+        "Beaumont Studios"
+      ],
+      "publisher": "Editorial Gepsa",
+      "release_date": "1986-01-01",
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/0c/Painting_Exposition.png/revision/latest"
+    },
+    {
       "id": "ee346c17-3daa-5d4d-8b6d-35b5282e519f",
       "era": "REBELLION",
       "title": "The Rainbow Bridge",
@@ -31753,6 +32500,44 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/b/b1/Dead_End_Drop.jpg/revision/latest"
     },
     {
+      "id": "06747217-ba85-5f38-a358-5b3619d4cb99",
+      "era": "REBELLION",
+      "title": "Galoob",
+      "medium": "Comic",
+      "year": 3,
+      "series": [
+        "Shadows of the Empire minicomic"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Shadows_of_the_Empire_Galoob_minicomic",
+      "authors": [
+        "Ryder Windham",
+        "Bill Hughes"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1996-01-01",
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/1/19/Shadowsmini.jpg/revision/latest"
+    },
+    {
+      "id": "b4712191-e264-5f8c-9777-19ec109ec975",
+      "era": "REBELLION",
+      "title": "Ertl",
+      "medium": "Comic",
+      "year": 3,
+      "series": [
+        "Shadows of the Empire minicomic"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/Star_Wars:_Shadows_of_the_Empire_Ertl_minicomic",
+      "authors": [
+        "John Wagner",
+        "Ron Randall"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "1996-01-01",
+      "release_precision": "year",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/cf/Shadowsmini4.jpg/revision/latest"
+    },
+    {
       "id": "0d5756fb-355f-5fa3-90ce-f19b1ebc6931",
       "era": "REBELLION",
       "title": "Scoundrel's Wages",
@@ -32126,6 +32911,27 @@
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/0/07/StopThatJawa.jpg/revision/latest"
     },
     {
+      "id": "be8153ea-45b9-5979-bf3d-e5b31608ed10",
+      "era": "REBELLION",
+      "title": "The Gambler's Quest",
+      "medium": "Comic",
+      "year": 4,
+      "series": [
+        "Star Wars Kids (1999)"
+      ],
+      "series_number": [
+        "12"
+      ],
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Gambler%27s_Quest",
+      "authors": [
+        "Robert Rath"
+      ],
+      "publisher": "Dark Horse Comics",
+      "release_date": "2000-08-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/e6/Kids12a.jpg/revision/latest"
+    },
+    {
       "id": "bd1381ba-3643-5ab1-b86e-a3abe6474928",
       "era": "REBELLION",
       "title": "Return of the Jedi",
@@ -32269,6 +33075,18 @@
       "release_date": "1983-09-01",
       "release_precision": "month",
       "cover_url": "https://static.wikia.nocookie.net/starwars/images/e/ef/ROTJ4.jpg/revision/latest"
+    },
+    {
+      "id": "0bb0fdd9-784c-5860-8b5f-03c4b2a11d62",
+      "era": "REBELLION",
+      "title": "An Ewok Adventure",
+      "medium": "Comic",
+      "year": 4,
+      "wiki_url": "https://starwars.fandom.com/wiki/An_Ewok_Adventure",
+      "publisher": "Golden Books",
+      "release_date": "1997-01-02",
+      "release_precision": "day",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/4/47/Sw-aea-00.jpg/revision/latest"
     },
     {
       "id": "9521029d-0238-58eb-89f4-3423605efdeb",
@@ -35458,6 +36276,22 @@
       "publisher": "West End Games",
       "release_date": "1995-05-01",
       "release_precision": "month"
+    },
+    {
+      "id": "8157097e-1e21-5bef-8d32-88239cd8ed26",
+      "era": "NEW REPUBLIC",
+      "title": "The Mixed-Up Droid",
+      "medium": "Comic",
+      "year": 8,
+      "wiki_url": "https://starwars.fandom.com/wiki/The_Mixed-Up_Droid",
+      "authors": [
+        "John Whitman",
+        "Ryder Windham"
+      ],
+      "publisher": "Time Warner AudioBooks",
+      "release_date": "1995-06-01",
+      "release_precision": "month",
+      "cover_url": "https://static.wikia.nocookie.net/starwars/images/c/c7/Mixed-up.jpg/revision/latest"
     },
     {
       "id": "0b8abddd-0568-53f9-8cca-27e4db1848dd",
